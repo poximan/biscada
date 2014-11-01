@@ -101,7 +101,8 @@ public class ServBusqueda implements ObjetosBorrables {
 
 	public List<Alarma> buscAlarma(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
 			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
-			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo equipo, Suceso suceso) {
+			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo equipo, Suceso suceso,
+			long ruido_maximo) {
 
 		liberarObjetos();
 
@@ -119,42 +120,25 @@ public class ServBusqueda implements ObjetosBorrables {
 		// inicio crear parametros
 		// -------------------------------------
 
-		if (calendarDesde != null) {
-			if (rbtnDesdeInicio.isSelected())
-				agregarParametroDesde("fecha_inicio", calendarDesde);
+		if (calendarDesde != null)
+			agregarPredicadoFechaDesde(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin);
 
-			if (rbtnDesdeAck.isSelected())
-				agregarParametroDesde("fecha_ack", calendarDesde);
+		if (calendarHasta != null)
+			agregarPredicadoFechaHasta(calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
 
-			if (rbtnDesdeFin.isSelected())
-				agregarParametroDesde("fecha_finalizacion", calendarDesde);
-		}
-		if (calendarHasta != null) {
-			if (rbtnHastaInicio.isSelected())
-				agregarParametroHasta("fecha_inicio", calendarHasta);
+		if (familia != null)
+			agregarPredicadoFamilia(familia);
 
-			if (rbtnHastaAck.isSelected())
-				agregarParametroHasta("fecha_ack", calendarHasta);
+		if (sitio != null)
+			agregarPredicadoSitio(sitio);
 
-			if (rbtnHastaFin.isSelected())
-				agregarParametroHasta("fecha_finalizacion", calendarHasta);
-		}
-		if (familia != null) {
-			ParameterExpression<Familia> p = crit_builder.parameter(Familia.class, "familia");
-			criteria.add(crit_builder.equal(root_alarmas.get("familia"), p));
-		}
-		if (sitio != null) {
-			ParameterExpression<Sitio> p = crit_builder.parameter(Sitio.class, "sitio");
-			criteria.add(crit_builder.equal(root_alarmas.get("sitio"), p));
-		}
-		if (equipo != null) {
-			ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, "equipo");
-			criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get("tipo_de_equipo"), p));
-		}
-		if (suceso != null) {
-			ParameterExpression<Suceso> p = crit_builder.parameter(Suceso.class, "suceso");
-			criteria.add(crit_builder.equal(root_alarmas.get("suceso"), p));
-		}
+		if (equipo != null)
+			agregarPredicadoTipoDeEquipo(equipo);
+
+		if (suceso != null)
+			agregarPredicadoSuceso(suceso);
+
+		agregarPredicadoRuido(ruido_maximo);
 
 		// -------------------------------------
 		//
@@ -207,6 +191,60 @@ public class ServBusqueda implements ObjetosBorrables {
 		}
 
 		return typed_query.getResultList();
+	}
+
+	private void agregarPredicadoRuido(long ruido) {
+
+	}
+
+	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,
+			JRadioButton rbtnDesdeAck, JRadioButton rbtnDesdeFin) {
+
+		if (rbtnDesdeInicio.isSelected())
+			agregarParametroDesde("fecha_inicio", calendarDesde);
+
+		if (rbtnDesdeAck.isSelected())
+			agregarParametroDesde("fecha_ack", calendarDesde);
+
+		if (rbtnDesdeFin.isSelected())
+			agregarParametroDesde("fecha_finalizacion", calendarDesde);
+	}
+
+	private void agregarPredicadoFechaHasta(Calendar calendarHasta, JRadioButton rbtnHastaInicio,
+			JRadioButton rbtnHastaAck, JRadioButton rbtnHastaFin) {
+
+		if (rbtnHastaInicio.isSelected())
+			agregarParametroHasta("fecha_inicio", calendarHasta);
+
+		if (rbtnHastaAck.isSelected())
+			agregarParametroHasta("fecha_ack", calendarHasta);
+
+		if (rbtnHastaFin.isSelected())
+			agregarParametroHasta("fecha_finalizacion", calendarHasta);
+	}
+
+	private void agregarPredicadoFamilia(Familia familia) {
+
+		ParameterExpression<Familia> p = crit_builder.parameter(Familia.class, "familia");
+		criteria.add(crit_builder.equal(root_alarmas.get("familia"), p));
+	}
+
+	private void agregarPredicadoSitio(Sitio sitio) {
+
+		ParameterExpression<Sitio> p = crit_builder.parameter(Sitio.class, "sitio");
+		criteria.add(crit_builder.equal(root_alarmas.get("sitio"), p));
+	}
+
+	private void agregarPredicadoTipoDeEquipo(TipoDeEquipo tipo_de_equipo) {
+
+		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, "equipo");
+		criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get("tipo_de_equipo"), p));
+	}
+
+	private void agregarPredicadoSuceso(Suceso suceso) {
+
+		ParameterExpression<Suceso> p = crit_builder.parameter(Suceso.class, "suceso");
+		criteria.add(crit_builder.equal(root_alarmas.get("suceso"), p));
 	}
 
 	private void agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {

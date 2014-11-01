@@ -733,12 +733,13 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoCons
 
 	private List<Alarma> getListaAlarmas() {
 
+		long ruido_maximo = 3000;
 		ServBusqueda busqueda = new ServBusqueda();
 
 		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
 				choosHasta.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin,
 				(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
-				(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem());
+				(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(), ruido_maximo);
 	}
 
 	/* ............................................. */

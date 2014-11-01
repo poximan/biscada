@@ -8,10 +8,7 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
-
-import org.apache.log4j.Logger;
+import control_general.MainBI;
 
 /* ............................................. */
 /* ............................................. */
@@ -25,10 +22,7 @@ public class EventoETL implements ActionListener {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(EventoETL.class);
-
 	private VistaETL vista_etl;
-	private JFrame frame_consultas;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -48,16 +42,7 @@ public class EventoETL implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == vista_etl.getBtn_iniciar()) {
-
-			frame_consultas = new JFrame("BIS - software BI para SCADA");
-			log.trace("se crea marco para panel consultas");
-
-			frame_consultas.setContentPane(new VistaConsultas());
-			log.trace("se lanza pantalla de consultas");
-
-			frame_consultas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			frame_consultas.pack();
-			frame_consultas.setVisible(true);
+			new MainBI();
 
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {

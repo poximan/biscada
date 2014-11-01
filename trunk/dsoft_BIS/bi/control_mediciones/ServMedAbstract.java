@@ -44,7 +44,8 @@ public abstract class ServMedAbstract {
 	 *            es el servicio de manejo de intervalos de fechas. en particular interesa en intervalo mayor, que es el
 	 *            que incluye a la alarma mas antigua y a la mas reciente
 	 * @return
-	 * @throws IndexOutOfBoundsException TODO
+	 * @throws IndexOutOfBoundsException
+	 *             TODO
 	 */
 	public abstract float[] completarFila(List<Alarma> alarmas, ServIntervaloFechas serv_intervalo,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo) throws IndexOutOfBoundsException;

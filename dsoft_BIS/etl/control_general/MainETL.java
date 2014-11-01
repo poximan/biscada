@@ -21,15 +21,14 @@ import vistas.VistaETL;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
-/*  Dh4Gk2Nz4yP9 */
-public class ControlPrincipal {
+public class MainETL {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(ControlPrincipal.class);
+	private static Logger log = Logger.getLogger(MainETL.class);
 
 	private JFrame frame_etl;
 
@@ -48,17 +47,7 @@ public class ControlPrincipal {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ControlPrincipal() {
-
-		lanzarVentanaETL();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	private void lanzarVentanaETL() {
+	public MainETL() {
 
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
@@ -70,6 +59,11 @@ public class ControlPrincipal {
 		frame_etl.pack();
 		frame_etl.setVisible(true);
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
 
 	/* ............................................. */
 	/* ............................................. */
@@ -88,7 +82,7 @@ public class ControlPrincipal {
 		}
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
-			log.error(ControlPrincipal.class.getName());
+			log.error(MainETL.class.getName());
 		}
 
 		PropertyConfigurator.configure("log4j.properties");
@@ -98,7 +92,7 @@ public class ControlPrincipal {
 			@Override
 			public void run() {
 				try {
-					new ControlPrincipal();
+					new MainETL();
 				}
 				catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());

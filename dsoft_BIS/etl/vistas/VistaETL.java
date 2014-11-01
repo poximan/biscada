@@ -21,9 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import modelo.ArchivoDBF;
+
 import org.apache.log4j.Logger;
 
-import modelo.ArchivoDBF;
 import control_etl.MultipleArchivoETL;
 
 /* ............................................. */
@@ -339,7 +340,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 	 * paso 1 [.w.] [.x.] - [.y.] [.z.] ...............................................................................
 	 * paso 2 [.w.] [.x.] - [.y.] [+=y] ...............................................................................
 	 * paso 3 [.w.] [.x.] - [-=y] [(y)] ...............................................................................
-	 *
+	 * 
 	 */
 	public void removerCandidatoExtraer() {
 

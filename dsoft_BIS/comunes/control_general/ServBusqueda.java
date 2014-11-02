@@ -13,6 +13,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
@@ -20,7 +21,9 @@ import javax.persistence.criteria.Root;
 import javax.swing.JRadioButton;
 
 import modelo.Alarma;
+import modelo.CalendarExtendido;
 import modelo.Familia;
+import modelo.RuidoExtendida;
 import modelo.Sitio;
 import modelo.Suceso;
 import modelo.TipoDeEquipo;
@@ -101,7 +104,7 @@ public class ServBusqueda implements ObjetosBorrables {
 
 	public List<Alarma> buscAlarma(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
 			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
-			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo equipo, Suceso suceso,
+			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
 			long ruido_maximo) {
 
 		liberarObjetos();
@@ -132,8 +135,8 @@ public class ServBusqueda implements ObjetosBorrables {
 		if (sitio != null)
 			agregarPredicadoSitio(sitio);
 
-		if (equipo != null)
-			agregarPredicadoTipoDeEquipo(equipo);
+		if (tipo_de_equipo != null)
+			agregarPredicadoTipoDeEquipo(tipo_de_equipo);
 
 		if (suceso != null)
 			agregarPredicadoSuceso(suceso);
@@ -159,42 +162,55 @@ public class ServBusqueda implements ObjetosBorrables {
 
 		if (calendarDesde != null) {
 			if (rbtnDesdeInicio.isSelected())
-				typed_query.setParameter("fecha_inicio", calendarDesde);
+				typed_query.setParameter("param_fecha_inicio", calendarDesde);
 
 			if (rbtnDesdeAck.isSelected())
-				typed_query.setParameter("fecha_ack", calendarDesde);
+				typed_query.setParameter("param_fecha_ack", calendarDesde);
 
 			if (rbtnDesdeFin.isSelected())
-				typed_query.setParameter("fecha_finalizacion", calendarDesde);
+				typed_query.setParameter("param_fecha_finalizacion", calendarDesde);
 		}
 		if (calendarHasta != null) {
 			if (rbtnHastaInicio.isSelected())
-				typed_query.setParameter("fecha_inicio", calendarHasta);
+				typed_query.setParameter("param_fecha_inicio", calendarHasta);
 
 			if (rbtnHastaAck.isSelected())
-				typed_query.setParameter("fecha_ack", calendarHasta);
+				typed_query.setParameter("param_fecha_ack", calendarHasta);
 
 			if (rbtnHastaFin.isSelected())
-				typed_query.setParameter("fecha_finalizacion", calendarHasta);
+				typed_query.setParameter("param_fecha_finalizacion", calendarHasta);
 		}
 		if (familia != null) {
-			typed_query.setParameter("familia", familia);
+			typed_query.setParameter("param_familia", familia);
 		}
 		if (sitio != null) {
-			typed_query.setParameter("sitio", sitio);
+			typed_query.setParameter("param_sitio", sitio);
 		}
-		if (equipo != null) {
-			typed_query.setParameter("equipo", equipo);
+		if (tipo_de_equipo != null) {
+			typed_query.setParameter("param_tipo_de_equipo", tipo_de_equipo);
 		}
 		if (suceso != null) {
-			typed_query.setParameter("suceso", suceso);
+			typed_query.setParameter("param_suceso", suceso);
 		}
+
+		typed_query.setParameter("param_ruido_maximo", ruido_maximo);
 
 		return typed_query.getResultList();
 	}
 
-	private void agregarPredicadoRuido(long ruido) {
+	private void agregarPredicadoRuido(long ruido_maximo) {
 
+		CalendarExtendido inicio_alarma = new CalendarExtendido(root_alarmas, "fecha_inicio");
+		CalendarExtendido fin_alarma = new CalendarExtendido(root_alarmas, "fecha_finalizacion");
+		RuidoExtendida ruido = new RuidoExtendida(ruido_maximo);
+
+		Expression<CalendarExtendido> expresion_inicio_alarma = crit_builder.literal(inicio_alarma);
+		Expression<CalendarExtendido> expresion_fin_alarma = crit_builder.literal(fin_alarma);
+		Expression<RuidoExtendida> expresion_ruido = crit_builder.literal(ruido);
+
+		Expression<CalendarExtendido> diferencia = crit_builder.diff(expresion_fin_alarma, expresion_inicio_alarma);
+
+		criteria.add(crit_builder.ge(diferencia, expresion_ruido));
 	}
 
 	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,

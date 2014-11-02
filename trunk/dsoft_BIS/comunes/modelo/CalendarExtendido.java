@@ -8,10 +8,7 @@ package modelo;
 import java.util.Calendar;
 
 import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-
-import org.eclipse.persistence.internal.jpa.querydef.PathImpl;
 
 /* ............................................. */
 /* ............................................. */

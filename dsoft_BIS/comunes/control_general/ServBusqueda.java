@@ -141,7 +141,8 @@ public class ServBusqueda implements ObjetosBorrables {
 		if (suceso != null)
 			agregarPredicadoSuceso(suceso);
 
-		agregarPredicadoRuido(ruido_maximo);
+		if (ruido_maximo != 0)
+			agregarPredicadoRuido(ruido_maximo);
 
 		// -------------------------------------
 		//
@@ -193,7 +194,8 @@ public class ServBusqueda implements ObjetosBorrables {
 			typed_query.setParameter("param_suceso", suceso);
 		}
 
-		typed_query.setParameter("param_ruido_maximo", ruido_maximo);
+		if (ruido_maximo != 0)
+			typed_query.setParameter("param_ruido_maximo", ruido_maximo);
 
 		return typed_query.getResultList();
 	}

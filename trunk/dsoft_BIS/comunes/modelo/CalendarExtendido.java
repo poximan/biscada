@@ -7,7 +7,11 @@ package modelo;
 
 import java.util.Calendar;
 
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
+
+import org.eclipse.persistence.internal.jpa.querydef.PathImpl;
 
 /* ............................................. */
 /* ............................................. */
@@ -32,6 +36,7 @@ public class CalendarExtendido extends Number {
 
 	public CalendarExtendido(Root<Alarma> root_alarmas, String atributo) {
 
+		Expression<Calendar> obj = root_alarmas.get(atributo);
 		this.fecha = (Calendar) root_alarmas.get(atributo);
 	}
 

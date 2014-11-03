@@ -19,16 +19,16 @@ import vistas.VistaETL;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class MainETL {
+public class GestorETL {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(MainETL.class);
+	private static Logger log = Logger.getLogger(GestorETL.class);
 
-	private static MainETL main_etl;
+	private static GestorETL main_etl;
 	private JFrame frame_etl;
 
 	/* laburo */
@@ -46,7 +46,7 @@ public class MainETL {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	private MainETL() {
+	private GestorETL() {
 
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
@@ -60,10 +60,10 @@ public class MainETL {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public static MainETL getSingletonETL() {
+	public static GestorETL getSingletonETL() {
 
 		if (main_etl == null)
-			main_etl = new MainETL();
+			main_etl = new GestorETL();
 		return main_etl;
 	}
 

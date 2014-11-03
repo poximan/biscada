@@ -57,7 +57,7 @@ public class MainComun {
 		}
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
-			log.error(MainETL.class.getName());
+			log.error(GestorETL.class.getName());
 		}
 
 		new VistaInicio();

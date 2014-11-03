@@ -8,7 +8,7 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import control_general.MainBI;
+import control_general.GestorBI;
 
 /* ............................................. */
 /* ............................................. */
@@ -42,7 +42,7 @@ public class EventoETL implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == vista_etl.getBtn_iniciar_bi()) {
-			MainBI.getSingletonBI().mostrarVentana();
+			GestorBI.getSingletonBI().mostrarVentana();
 
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {

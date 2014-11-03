@@ -111,13 +111,13 @@ public class MultipleArchivoETL {
 
 		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorDisponibles();
 
-		for (int numero_archivo = 1; iterador.hasNext(); numero_archivo++) {
+		while (iterador.hasNext()) {
 
 			archivo_actual = iterador.next();
 
-			log.info("\nETL en archivo "
-					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " ["
-					+ numero_archivo + "-" + dbf_servicio_crud.getCantDisponibles() + "] ");
+			log.info("ETL en archivo "
+					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " [restan "
+					+ dbf_servicio_crud.getCantDisponibles() + "]");
 
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);

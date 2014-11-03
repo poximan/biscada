@@ -54,8 +54,7 @@ public class CampoTextoDefectuoso {
 	@Override
 	public String toString() {
 
-		String retorno = new String(textos_rechazados.toString());
-		retorno = "\n";
+		String retorno = "\n";
 
 		for (String alarma_actual : textos_rechazados)
 			retorno += alarma_actual + "\n";
@@ -65,6 +64,10 @@ public class CampoTextoDefectuoso {
 	private boolean yaExiste(String campo_texto) {
 
 		return textos_rechazados.contains(campo_texto);
+	}
+
+	public boolean estaVacia() {
+		return textos_rechazados.isEmpty();
 	}
 
 	/* ............................................. */

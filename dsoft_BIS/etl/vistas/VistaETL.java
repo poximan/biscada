@@ -70,7 +70,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 	private JButton btn_remover_candidato_extraer;
 	private JButton btn_agregar_candidato_extraer;
 	private JButton btn_guardar;
-	private JButton btn_iniciar;
+	private JButton btn_iniciar_bi;
 	private JButton btn_reiniciar;
 
 	private JScrollPane scrollPane_candidatosProcesar;
@@ -234,8 +234,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 		btn_guardar = new JButton("Guardar");
 		pl_botones.add(btn_guardar);
 
-		btn_iniciar = new JButton("Iniciar BI");
-		pl_botones.add(btn_iniciar);
+		btn_iniciar_bi = new JButton("Iniciar BI");
+		pl_botones.add(btn_iniciar_bi);
 	}
 
 	@Override
@@ -244,7 +244,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 		EventoETL eventos = new EventoETL(this);
 
 		btn_guardar.addActionListener(eventos);
-		btn_iniciar.addActionListener(eventos);
+		btn_iniciar_bi.addActionListener(eventos);
 		btn_reiniciar.addActionListener(eventos);
 		btn_agregar_candidato_extraer.addActionListener(eventos);
 		btn_agregar_candidato_procesar.addActionListener(eventos);
@@ -475,8 +475,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 		return btn_guardar;
 	}
 
-	public JButton getBtn_iniciar() {
-		return btn_iniciar;
+	public JButton getBtn_iniciar_bi() {
+		return btn_iniciar_bi;
 	}
 
 	public JButton getBtn_reiniciar() {

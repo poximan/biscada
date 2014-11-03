@@ -5,13 +5,6 @@
 
 package vistas;
 
-import javax.swing.UnsupportedLookAndFeelException;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-import control_general.MainBI;
-import control_general.MainETL;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -24,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import control_general.MainBI;
+import control_general.MainETL;
 
 /* ............................................. */
 /* ............................................. */
@@ -36,8 +31,6 @@ public class VistaInicio extends Application {
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
-
-	private static Logger log = Logger.getLogger(VistaInicio.class);
 
 	private BorderPane root;
 	private VBox topContainer;
@@ -82,15 +75,15 @@ public class VistaInicio extends Application {
 		btn_etl.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent arg0) {
-				new MainETL();
-			};
+				MainETL.getSingletonETL().mostrarVentana();
+			}
 		});
 
 		Button btn_bi = new Button("analisis de datos");
 		btn_bi.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent arg0) {
-				new MainBI();
+				MainBI.getSingletonBI().mostrarVentana();
 			};
 		});
 
@@ -110,25 +103,5 @@ public class VistaInicio extends Application {
 		Menu menu_ayuda = new Menu("Ayuda");
 
 		mainMenu.getMenus().addAll(menu_archivo, menu_edicion, menu_ayuda);
-	}
-
-	public static void main(String[] args) {
-
-		PropertyConfigurator.configure("log4j.properties");
-
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Windows".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		}
-		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException ex) {
-			log.error(MainETL.class.getName());
-		}
-
-		launch();
 	}
 }

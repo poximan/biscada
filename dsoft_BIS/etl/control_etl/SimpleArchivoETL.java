@@ -77,7 +77,7 @@ public class SimpleArchivoETL {
 		int extraidas, transformadas;
 		CampoTextoDefectuoso alarmas_defectuosas = new CampoTextoDefectuoso();
 
-		dbf_servicio_crud.actualizarFecha(archivo_actual);
+		dbf_servicio_crud.actualizar(archivo_actual);
 
 		extractor = new ETL0Extraer(archivo_actual, parametros);
 		alarmas_extraidas = extractor.extraerAlarmas();
@@ -96,8 +96,7 @@ public class SimpleArchivoETL {
 		reportar(extraidas, transformadas, alarmas_defectuosas);
 		actualizarTotalizadores(extraidas, transformadas);
 
-		dbf_servicio_crud.actualizarFecha(archivo_actual);
-		dbf_servicio_crud.removerDeLista(archivo_actual);
+		dbf_servicio_crud.actualizar(archivo_actual);
 	}
 
 	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,

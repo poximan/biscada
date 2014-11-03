@@ -17,16 +17,16 @@ import vistas.VistaConsultas;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class MainBI {
+public class GestorBI {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(MainBI.class);
+	private static Logger log = Logger.getLogger(GestorBI.class);
 
-	private static MainBI main_bi;
+	private static GestorBI main_bi;
 	private JFrame frame_bi;
 
 	/* ............................................. */
@@ -34,7 +34,7 @@ public class MainBI {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	private MainBI() {
+	private GestorBI() {
 
 		frame_bi = new JFrame("BIS - software BI para SCADA");
 		log.trace("se crea marco para panel consultas");
@@ -48,10 +48,10 @@ public class MainBI {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public static MainBI getSingletonBI() {
+	public static GestorBI getSingletonBI() {
 
 		if (main_bi == null)
-			main_bi = new MainBI();
+			main_bi = new GestorBI();
 		return main_bi;
 	}
 

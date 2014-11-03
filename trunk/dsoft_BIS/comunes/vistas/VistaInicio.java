@@ -17,8 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import control_general.MainBI;
-import control_general.MainETL;
+import control_general.GestorBI;
+import control_general.GestorETL;
 
 /* ............................................. */
 /* ............................................. */
@@ -75,7 +75,7 @@ public class VistaInicio extends Application {
 		btn_etl.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent arg0) {
-				MainETL.getSingletonETL().mostrarVentana();
+				GestorETL.getSingletonETL().mostrarVentana();
 			}
 		});
 
@@ -83,7 +83,7 @@ public class VistaInicio extends Application {
 		btn_bi.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent arg0) {
-				MainBI.getSingletonBI().mostrarVentana();
+				GestorBI.getSingletonBI().mostrarVentana();
 			};
 		});
 

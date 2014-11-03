@@ -64,7 +64,7 @@ public class GestorComun {
 
 	public void mostrarVentana() {
 
-		frame_comun.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		frame_comun.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame_comun.pack();
 		frame_comun.setVisible(true);
 	}

@@ -33,6 +33,9 @@ public class VistaInicio extends JPanel implements PanelIniciable, EventoConfigu
 	private JButton btnGestionarArchivos;
 	private JButton btnAnalisisDeDatos;
 
+	private Thread instancia_archivos;
+	private Thread instancia_analisis;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -66,28 +69,38 @@ public class VistaInicio extends JPanel implements PanelIniciable, EventoConfigu
 	public void configEventos() {
 
 		btnGestionarArchivos.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Runnable hilo = new Runnable() {
-					@Override
-					public void run() {
-						GestorETL.getSingleton().mostrarVentana();
-					}
-				};
-				new Thread(hilo);
+
+				if (instancia_archivos == null) {
+					instancia_archivos = new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							GestorETL.getSingleton().mostrarVentana();
+						}
+					});
+					instancia_archivos.start();
+				}
 			}
 		});
 
 		btnAnalisisDeDatos.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Runnable hilo = new Runnable() {
-					@Override
-					public void run() {
-						GestorBI.getSingleton().mostrarVentana();
-					}
-				};
-				new Thread(hilo);
+
+				if (instancia_analisis == null) {
+					instancia_analisis = new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							GestorBI.getSingleton().mostrarVentana();
+						}
+					});
+					instancia_analisis.start();
+				}
 			}
 		});
 	}

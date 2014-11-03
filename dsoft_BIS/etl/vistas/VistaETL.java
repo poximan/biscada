@@ -69,9 +69,9 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 	private JButton btn_remover_candidato_procesar;
 	private JButton btn_remover_candidato_extraer;
 	private JButton btn_agregar_candidato_extraer;
-	private JButton btn_guardar;
-	private JButton btn_iniciar_bi;
-	private JButton btn_reiniciar;
+	private JButton btn_confirmar_cambios;
+	private JButton btn_analisis_datos;
+	private JButton btn_restablecer;
 
 	private JScrollPane scrollPane_candidatosProcesar;
 	private JScrollPane scrollPane_procesados;
@@ -228,14 +228,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 		gbc_pl_botones.gridy = 6;
 		add(pl_botones, gbc_pl_botones);
 
-		btn_reiniciar = new JButton("Reiniciar");
-		pl_botones.add(btn_reiniciar);
+		btn_restablecer = new JButton("Restablecer");
+		pl_botones.add(btn_restablecer);
 
-		btn_guardar = new JButton("Guardar");
-		pl_botones.add(btn_guardar);
+		btn_confirmar_cambios = new JButton("Confirmar cambios");
+		pl_botones.add(btn_confirmar_cambios);
 
-		btn_iniciar_bi = new JButton("Iniciar BI");
-		pl_botones.add(btn_iniciar_bi);
+		btn_analisis_datos = new JButton("Iniciar Analisis Datos (BI)");
+		pl_botones.add(btn_analisis_datos);
 	}
 
 	@Override
@@ -243,9 +243,9 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 
 		EventoETL eventos = new EventoETL(this);
 
-		btn_guardar.addActionListener(eventos);
-		btn_iniciar_bi.addActionListener(eventos);
-		btn_reiniciar.addActionListener(eventos);
+		btn_confirmar_cambios.addActionListener(eventos);
+		btn_analisis_datos.addActionListener(eventos);
+		btn_restablecer.addActionListener(eventos);
 		btn_agregar_candidato_extraer.addActionListener(eventos);
 		btn_agregar_candidato_procesar.addActionListener(eventos);
 		btn_remover_candidato_extraer.addActionListener(eventos);
@@ -472,15 +472,15 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaCo
 	}
 
 	public JButton getBtn_guardar() {
-		return btn_guardar;
+		return btn_confirmar_cambios;
 	}
 
 	public JButton getBtn_iniciar_bi() {
-		return btn_iniciar_bi;
+		return btn_analisis_datos;
 	}
 
 	public JButton getBtn_reiniciar() {
-		return btn_reiniciar;
+		return btn_restablecer;
 	}
 
 	/* ............................................. */

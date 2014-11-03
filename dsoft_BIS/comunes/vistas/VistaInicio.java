@@ -45,6 +45,10 @@ public class VistaInicio extends Application {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public static void lanzar() {
+		launch();
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 

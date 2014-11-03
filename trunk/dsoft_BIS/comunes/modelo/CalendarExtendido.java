@@ -33,8 +33,7 @@ public class CalendarExtendido extends Number {
 
 	public CalendarExtendido(Root<Alarma> root_alarmas, String atributo) {
 
-		Expression<Calendar> obj = root_alarmas.get(atributo);
-		this.fecha = (Calendar) root_alarmas.get(atributo);
+		Expression<Calendar> fecha = root_alarmas.get(atributo);		
 	}
 
 	/* ............................................. */

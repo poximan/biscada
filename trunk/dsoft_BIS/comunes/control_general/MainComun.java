@@ -63,18 +63,5 @@ public class MainComun {
 		}
 
 		PropertyConfigurator.configure("log4j.properties");
-
-		EventQueue.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					VistaInicio.lanzar();
-				}
-				catch (Exception e) {
-					log.error("problema en implementacion runnable: " + e.getMessage());
-				}
-			}
-		});
 	}
 }

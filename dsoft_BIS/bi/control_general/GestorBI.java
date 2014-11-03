@@ -48,7 +48,7 @@ public class GestorBI {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public static GestorBI getSingletonBI() {
+	public static GestorBI getSingleton() {
 
 		if (main_bi == null)
 			main_bi = new GestorBI();

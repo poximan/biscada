@@ -68,14 +68,26 @@ public class VistaInicio extends JPanel implements PanelIniciable, EventoConfigu
 		btnGestionarArchivos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GestorETL.getSingletonETL().mostrarVentana();
+				Runnable hilo = new Runnable() {
+					@Override
+					public void run() {
+						GestorETL.getSingleton().mostrarVentana();
+					}
+				};
+				new Thread(hilo);
 			}
 		});
 
 		btnAnalisisDeDatos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GestorBI.getSingletonBI().mostrarVentana();
+				Runnable hilo = new Runnable() {
+					@Override
+					public void run() {
+						GestorBI.getSingleton().mostrarVentana();
+					}
+				};
+				new Thread(hilo);
 			}
 		});
 	}

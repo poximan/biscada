@@ -60,7 +60,7 @@ public class GestorETL {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public static GestorETL getSingletonETL() {
+	public static GestorETL getSingleton() {
 
 		if (main_etl == null)
 			main_etl = new GestorETL();

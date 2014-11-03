@@ -5,7 +5,6 @@
 
 package vistas;
 
-import graficas.GraficoBarraSegundo;
 import graficas.GraficoBarrasPrimero;
 import graficas.GraficoLineas;
 import graficas.GraficoTorta;
@@ -502,25 +501,21 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	public void armarSolapasGraficas() {
 
 		GraficoBarrasPrimero primer_grafico = new GraficoBarrasPrimero(datos_tabla, encabezado_tabla, tbl_titulo_filas);
-		GraficoBarraSegundo segundo_grafico = new GraficoBarraSegundo(datos_tabla, encabezado_tabla, tbl_titulo_filas);
 		GraficoLineas tercer_grafico = new GraficoLineas(datos_tabla, encabezado_tabla, tbl_titulo_filas);
 		GraficoTorta cuarto_grafico = new GraficoTorta(datos_tabla, tbl_titulo_filas);
 
 		JScrollPane scroll_primer_grafico = primer_grafico.construirPanel();
-		JScrollPane scroll_segundo_grafico = segundo_grafico.construirPanel();
-		JScrollPane scroll_tercer_grafico = tercer_grafico.construirPanel();
-		JScrollPane scroll_cuarto_grafico = cuarto_grafico.construirPanel();
+		JScrollPane scroll_segundo_grafico = tercer_grafico.construirPanel();
+		JScrollPane scroll_tercer_grafico = cuarto_grafico.construirPanel();
 
 		if (tabPane_grafico.getTabCount() == 0) {
-			tabPane_grafico.addTab("graf barras 1", scroll_primer_grafico);
-			tabPane_grafico.addTab("graf barras 2", scroll_segundo_grafico);
-			tabPane_grafico.addTab("graf lineas 1", scroll_tercer_grafico);
-			tabPane_grafico.addTab("graf torta 1", scroll_cuarto_grafico);
+			tabPane_grafico.addTab(". barras .", scroll_primer_grafico);
+			tabPane_grafico.addTab(". lineas .", scroll_segundo_grafico);
+			tabPane_grafico.addTab(". torta .", scroll_tercer_grafico);
 		} else {
 			tabPane_grafico.setComponentAt(0, scroll_primer_grafico);
-			tabPane_grafico.setComponentAt(1, scroll_segundo_grafico);
-			tabPane_grafico.setComponentAt(2, scroll_tercer_grafico);
-			tabPane_grafico.setComponentAt(3, scroll_cuarto_grafico);
+			tabPane_grafico.setComponentAt(2, scroll_segundo_grafico);
+			tabPane_grafico.setComponentAt(3, scroll_tercer_grafico);
 		}
 
 		tabPane_grafico.validate();

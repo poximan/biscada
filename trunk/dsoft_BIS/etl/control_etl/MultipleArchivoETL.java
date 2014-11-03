@@ -96,26 +96,41 @@ public class MultipleArchivoETL {
 	/**
 	 * comieza el proceso ETL de todos los archivos validos para ser insertados
 	 */
-	public void procesarArchivosEncontrados() {
+	public void insertarArchivosSeleccionados() {
 
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
 		SimpleArchivoETL gestor = new SimpleArchivoETL();
 		ArchivoDBF archivo_actual;
 
-		while ((archivo_actual = dbf_servicio_crud.getProximoArchivo()) != null) {
+		while ((archivo_actual = dbf_servicio_crud.getProximoArchivoInsertar()) != null) {
 
 			log.info("comienza ETL en archivo "
 					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " ["
 					+ dbf_servicio_crud.getPosActualVentana() + "-" + dbf_servicio_crud.getCantArchivos() + "] ");
 
 			em.getTransaction().begin();
-			gestor.procesarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 			em.getTransaction().commit();
 			em.clear();
 		}
 
 		log.info("se extrajeron " + SimpleArchivoETL.getTotalizador_extraidas() + " filas de potenciales alarmas");
 		log.info("se transformaron " + SimpleArchivoETL.getTotalizador_transformadas() + " filas del total extraidas");
+	}
+
+	public void borrarArchivosSeleccionados() {
+
+		ParametrosConexion parametros = new ParametrosConexion(481, 164);
+		SimpleArchivoETL gestor = new SimpleArchivoETL();
+		ArchivoDBF archivo_actual;
+
+		while ((archivo_actual = dbf_servicio_crud.getProximoArchivoBorrar()) != null) {
+
+			em.getTransaction().begin();
+			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+			em.getTransaction().commit();
+			em.clear();
+		}
 	}
 
 	/* ............................................. */

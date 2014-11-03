@@ -17,7 +17,7 @@ public interface InterfazCRUD {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void actualizar(Object entidad);
+	public void actualizarFecha(Object entidad);
 
 	public void borrar(Object entidad);
 

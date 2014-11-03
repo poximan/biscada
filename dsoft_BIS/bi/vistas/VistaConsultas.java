@@ -61,7 +61,7 @@ import control_general.ServBusqueda;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaConsultas extends JPanel implements PanelIniciable, EventoConsultaConfigurable, ObjetosBorrables {
+public class VistaConsultas extends JPanel implements PanelIniciable, EventoConfigurable, ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */

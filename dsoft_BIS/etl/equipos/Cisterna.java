@@ -19,7 +19,7 @@ public class Cisterna extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc][Ii][Ss][Tt][Ee][Rr][Nn][Aa]|TANQUE)";
+	private static String expresion_regular = "([Cc][Ii][Ss][Tt][Ee][Rr][Nn][Aa]|TANQUE|RESERVA)";
 	private static String descripcion = "cisterna";
 
 	/* ............................................. */

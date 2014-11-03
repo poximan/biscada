@@ -19,7 +19,7 @@ import control_general.GestorETL;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaInicio extends JPanel implements PanelIniciable, EventoConsultaConfigurable {
+public class VistaInicio extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */

@@ -33,7 +33,7 @@ import control_etl.MultipleArchivoETL;
 /* ............................................. */
 
 @SuppressWarnings({ "unchecked" })
-public class VistaETL extends JPanel implements PanelIniciable, EventoConsultaConfigurable {
+public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */

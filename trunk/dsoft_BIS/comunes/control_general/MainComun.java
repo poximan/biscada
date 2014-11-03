@@ -5,7 +5,7 @@
 
 package control_general;
 
-import javafx.application.Application;
+import java.awt.EventQueue;
 
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -33,6 +33,10 @@ public class MainComun {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
+	public MainComun() {
+
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
@@ -45,8 +49,6 @@ public class MainComun {
 
 	public static void main(String[] args) {
 
-		PropertyConfigurator.configure("log4j.properties");
-
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Windows".equals(info.getName())) {
@@ -57,10 +59,22 @@ public class MainComun {
 		}
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
-			log.error(GestorETL.class.getName());
+			log.error(MainComun.class.getName());
 		}
 
-		new VistaInicio();
-		Application.launch(args);
+		PropertyConfigurator.configure("log4j.properties");
+
+		EventQueue.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					VistaInicio.lanzar();
+				}
+				catch (Exception e) {
+					log.error("problema en implementacion runnable: " + e.getMessage());
+				}
+			}
+		});
 	}
 }

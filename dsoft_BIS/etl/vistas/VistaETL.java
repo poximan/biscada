@@ -26,6 +26,7 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_etl.MultipleArchivoETL;
+import javax.swing.JTextField;
 
 /* ............................................. */
 /* ............................................. */
@@ -75,6 +76,13 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	private JScrollPane scrollPane_candidatosProcesar;
 	private JScrollPane scrollPane_procesados;
+	private JTextField txt_sin_procesar;
+	private JTextField txt_candidatos_procesar;
+	private JTextField txt_candidatos_extraer;
+	private JTextField txt_procesados;
+	private JLabel lblDireccionFuente;
+	private JTextField textField;
+	private JButton btnCambiar;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -104,27 +112,71 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 150, 0, 150, 150, 0, 150 };
-		gridBagLayout.rowHeights = new int[] { 0, 200, 0, 0, 0, 200, 20 };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 200, 0, 200, 0, 20 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0, 0.0, 1.0 };
 		setLayout(gridBagLayout);
+		
+		lblDireccionFuente = new JLabel("Direccion fuente:");
+		lblDireccionFuente.setHorizontalAlignment(SwingConstants.RIGHT);
+		GridBagConstraints gbc_lblDireccionFuente = new GridBagConstraints();
+		gbc_lblDireccionFuente.anchor = GridBagConstraints.EAST;
+		gbc_lblDireccionFuente.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDireccionFuente.gridx = 0;
+		gbc_lblDireccionFuente.gridy = 0;
+		add(lblDireccionFuente, gbc_lblDireccionFuente);
+		
+		textField = new JTextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 4;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 1;
+		gbc_textField.gridy = 0;
+		add(textField, gbc_textField);
+		textField.setColumns(10);
+		
+		btnCambiar = new JButton("cambiar...");
+		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
+		gbc_btnCambiar.anchor = GridBagConstraints.WEST;
+		gbc_btnCambiar.insets = new Insets(0, 0, 5, 0);
+		gbc_btnCambiar.gridx = 5;
+		gbc_btnCambiar.gridy = 0;
+		add(btnCambiar, gbc_btnCambiar);
+		
+				// -------------------------------------
+				//
+				// botones comando
+				// -------------------------------------
+		
+				btn_agregar_candidato_procesar = new JButton(BTN_AGREGAR);
+				btn_agregar_candidato_procesar.setAlignmentX(0.5f);
+				add(btn_agregar_candidato_procesar, new GridBagConstraints(1, 2, 1, 1, 0, .25, GridBagConstraints.CENTER,
+						GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 
 		scrollPane_candidatosProcesar = new JScrollPane((Component) null);
 		GridBagConstraints gbc_scrollPane_candidatosProcesar = new GridBagConstraints();
-		gbc_scrollPane_candidatosProcesar.gridheight = 5;
+		gbc_scrollPane_candidatosProcesar.gridheight = 3;
 		gbc_scrollPane_candidatosProcesar.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_candidatosProcesar.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_candidatosProcesar.gridx = 2;
-		gbc_scrollPane_candidatosProcesar.gridy = 1;
+		gbc_scrollPane_candidatosProcesar.gridy = 2;
 		add(scrollPane_candidatosProcesar, gbc_scrollPane_candidatosProcesar);
+		
+				btn_remover_candidato_extraer = new JButton(">>");
+				GridBagConstraints gbc_btn_remover_candidato_extraer = new GridBagConstraints();
+				gbc_btn_remover_candidato_extraer.insets = new Insets(0, 0, 5, 5);
+				gbc_btn_remover_candidato_extraer.gridx = 4;
+				gbc_btn_remover_candidato_extraer.gridy = 2;
+				add(btn_remover_candidato_extraer, gbc_btn_remover_candidato_extraer);
 
 		scrollPane_procesados = new JScrollPane((Component) null);
 		GridBagConstraints gbc_scrollPane_procesados = new GridBagConstraints();
-		gbc_scrollPane_procesados.gridheight = 5;
+		gbc_scrollPane_procesados.gridheight = 3;
 		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane_procesados.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_procesados.gridx = 5;
-		gbc_scrollPane_procesados.gridy = 1;
+		gbc_scrollPane_procesados.gridy = 2;
 		add(scrollPane_procesados, gbc_scrollPane_procesados);
 
 		// -------------------------------------
@@ -162,7 +214,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		lbl_candidatosExtraer.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_candidatosExtraer.setHorizontalTextPosition(SwingConstants.LEADING);
 
-		add(lbl_disponibles, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+		add(lbl_disponibles, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
 				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
 
 		lbl_candidatosProcesar = new JLabel("Candidatos a procesar");
@@ -171,52 +223,72 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_lbl_candidatosProcesar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lbl_candidatosProcesar.insets = new Insets(0, 0, 5, 5);
 		gbc_lbl_candidatosProcesar.gridx = 2;
-		gbc_lbl_candidatosProcesar.gridy = 0;
+		gbc_lbl_candidatosProcesar.gridy = 1;
 		add(lbl_candidatosProcesar, gbc_lbl_candidatosProcesar);
 
 		GridBagConstraints gbc_lbl_procesados = new GridBagConstraints();
 		gbc_lbl_procesados.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lbl_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_lbl_procesados.gridx = 5;
-		gbc_lbl_procesados.gridy = 0;
+		gbc_lbl_procesados.gridy = 1;
 
 		add(lbl_procesados, gbc_lbl_procesados);
-		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 1, 1, 5, .5, 1, GridBagConstraints.CENTER,
+		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 2, 1, 3, .5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
 
-		add(lbl_candidatosExtraer, new GridBagConstraints(3, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+		add(lbl_candidatosExtraer, new GridBagConstraints(3, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
 				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
 
-		add(new JScrollPane(list_candidatos_extraer), new GridBagConstraints(3, 1, 1, 5, .5, 1.0,
+		add(new JScrollPane(list_candidatos_extraer), new GridBagConstraints(3, 2, 1, 3, .5, 1.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
-
-		// -------------------------------------
-		//
-		// botones comando
-		// -------------------------------------
-
-		btn_agregar_candidato_procesar = new JButton(BTN_AGREGAR);
-		btn_agregar_candidato_procesar.setAlignmentX(0.5f);
-		add(btn_agregar_candidato_procesar, new GridBagConstraints(1, 2, 1, 1, 0, .25, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
-
-		btn_remover_candidato_extraer = new JButton(">>");
-		GridBagConstraints gbc_btn_remover_candidato_extraer = new GridBagConstraints();
-		gbc_btn_remover_candidato_extraer.insets = new Insets(0, 0, 5, 5);
-		gbc_btn_remover_candidato_extraer.gridx = 4;
-		gbc_btn_remover_candidato_extraer.gridy = 2;
-		add(btn_remover_candidato_extraer, gbc_btn_remover_candidato_extraer);
-
-		btn_remover_candidato_procesar = new JButton(BTN_REMOVER);
-		add(btn_remover_candidato_procesar, new GridBagConstraints(1, 4, 1, 1, 0, .25, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(0, 5, 5, 5), 0, 0));
-
-		btn_agregar_candidato_extraer = new JButton("<<");
-		GridBagConstraints gbc_btn_agregar_candidato_extraer = new GridBagConstraints();
-		gbc_btn_agregar_candidato_extraer.insets = new Insets(0, 0, 5, 5);
-		gbc_btn_agregar_candidato_extraer.gridx = 4;
-		gbc_btn_agregar_candidato_extraer.gridy = 4;
-		add(btn_agregar_candidato_extraer, gbc_btn_agregar_candidato_extraer);
+		
+				btn_remover_candidato_procesar = new JButton(BTN_REMOVER);
+				add(btn_remover_candidato_procesar, new GridBagConstraints(1, 4, 1, 1, 0, .25, GridBagConstraints.CENTER,
+						GridBagConstraints.NONE, new Insets(0, 5, 5, 5), 0, 0));
+		
+				btn_agregar_candidato_extraer = new JButton("<<");
+				GridBagConstraints gbc_btn_agregar_candidato_extraer = new GridBagConstraints();
+				gbc_btn_agregar_candidato_extraer.insets = new Insets(0, 0, 5, 5);
+				gbc_btn_agregar_candidato_extraer.gridx = 4;
+				gbc_btn_agregar_candidato_extraer.gridy = 4;
+				add(btn_agregar_candidato_extraer, gbc_btn_agregar_candidato_extraer);
+		
+		txt_sin_procesar = new JTextField();
+		GridBagConstraints gbc_txt_sin_procesar = new GridBagConstraints();
+		gbc_txt_sin_procesar.anchor = GridBagConstraints.NORTH;
+		gbc_txt_sin_procesar.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_sin_procesar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_sin_procesar.gridx = 0;
+		gbc_txt_sin_procesar.gridy = 5;
+		add(txt_sin_procesar, gbc_txt_sin_procesar);
+		txt_sin_procesar.setColumns(10);
+		
+		txt_candidatos_procesar = new JTextField();
+		txt_candidatos_procesar.setColumns(10);
+		GridBagConstraints gbc_txt_candidatos_procesar = new GridBagConstraints();
+		gbc_txt_candidatos_procesar.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_candidatos_procesar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_candidatos_procesar.gridx = 2;
+		gbc_txt_candidatos_procesar.gridy = 5;
+		add(txt_candidatos_procesar, gbc_txt_candidatos_procesar);
+		
+		txt_candidatos_extraer = new JTextField();
+		txt_candidatos_extraer.setColumns(10);
+		GridBagConstraints gbc_txt_candidatos_extraer = new GridBagConstraints();
+		gbc_txt_candidatos_extraer.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_candidatos_extraer.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_candidatos_extraer.gridx = 3;
+		gbc_txt_candidatos_extraer.gridy = 5;
+		add(txt_candidatos_extraer, gbc_txt_candidatos_extraer);
+		
+		txt_procesados = new JTextField();
+		txt_procesados.setColumns(10);
+		GridBagConstraints gbc_txt_procesados = new GridBagConstraints();
+		gbc_txt_procesados.insets = new Insets(0, 0, 5, 0);
+		gbc_txt_procesados.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_procesados.gridx = 5;
+		gbc_txt_procesados.gridy = 5;
+		add(txt_procesados, gbc_txt_procesados);
 
 		pl_botones = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pl_botones.getLayout();

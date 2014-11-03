@@ -109,8 +109,11 @@ public class SimpleArchivoETL {
 
 		log.info("se extrajeron " + extraidas + " filas del archivo DBF");
 		log.info("se transformaron " + transformadas + " filas de las extraidas");
-		log.info("se encontraron defectos en... ");
-		log.info(alarmas_defectuosas.toString());
-		log.info("de estas se aceptaron aquellas que se pudo distinguir sitio y suceso\n");
+
+		if (!alarmas_defectuosas.estaVacia()) {
+			log.info("se encontraron defectos en...");
+			log.trace(alarmas_defectuosas.toString());
+			log.info("de las defectuosas se aceptaron aquellas con sitio y suceso");
+		}
 	}
 }

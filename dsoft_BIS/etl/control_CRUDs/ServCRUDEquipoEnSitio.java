@@ -51,7 +51,7 @@ public class ServCRUDEquipoEnSitio implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
+	public void actualizarFecha(Object entidad) {
 	}
 
 	@Override

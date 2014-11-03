@@ -65,7 +65,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
+	public void actualizarFecha(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
 
@@ -135,7 +135,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		return lista_nuevos.indexOf(ultimo_archivo_entregado) + 1;
 	}
 
-	public ArchivoDBF getProximoArchivo() {
+	public ArchivoDBF getProximoArchivoInsertar() {
 
 		if (iterador_archivos == null)
 			iterador_archivos = lista_nuevos.iterator();
@@ -155,6 +155,15 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public Object leer(Object entidad) {
+		return null;
+	}
+
+	public void removerDeLista(ArchivoDBF archivo_actual) {
+		iterador_archivos.remove();
+	}
+	
+	public ArchivoDBF getProximoArchivoBorrar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

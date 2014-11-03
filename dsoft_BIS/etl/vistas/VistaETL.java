@@ -268,19 +268,19 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void modificarListas() {
 
-		int indice_mayor = list_candidatos_procesar.getModel().getSize() - 1;
-		if (indice_mayor >= 0) {
-			list_candidatos_procesar.setSelectionInterval(0, indice_mayor);
+		int indice_mayor = list_candidatos_procesar.getModel().getSize();
+		if (indice_mayor > 0) {
+			list_candidatos_procesar.setSelectionInterval(0, indice_mayor - 1);
 			lector.getDbf_servicio_crud().setLista_nuevos(list_candidatos_procesar.getSelectedValuesList());
 		}
 
 		indice_mayor = list_candidatos_extraer.getModel().getSize() - 1;
-		if (indice_mayor >= 0) {
-			list_candidatos_extraer.setSelectionInterval(0, indice_mayor);
+		if (indice_mayor > 0) {
+			list_candidatos_extraer.setSelectionInterval(0, indice_mayor - 1);
 			lector.getDbf_servicio_crud().setLista_borrar(list_candidatos_extraer.getSelectedValuesList());
 		}
 
-		lector.procesarArchivosEncontrados();
+		lector.insertarArchivosSeleccionados();
 		restablecerListas();
 	}
 

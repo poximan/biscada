@@ -71,13 +71,13 @@ public class SimpleArchivoETL {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public void procesarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
+	public void insertarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
 			ParametrosConexion parametros) {
 
 		int extraidas, transformadas;
 		CampoTextoDefectuoso alarmas_defectuosas = new CampoTextoDefectuoso();
 
-		dbf_servicio_crud.actualizar(archivo_actual);
+		dbf_servicio_crud.actualizarFecha(archivo_actual);
 
 		extractor = new ETL0Extraer(archivo_actual, parametros);
 		alarmas_extraidas = extractor.extraerAlarmas();
@@ -96,7 +96,14 @@ public class SimpleArchivoETL {
 		reportar(extraidas, transformadas, alarmas_defectuosas);
 		actualizarTotalizadores(extraidas, transformadas);
 
-		dbf_servicio_crud.actualizar(archivo_actual);
+		dbf_servicio_crud.actualizarFecha(archivo_actual);
+		dbf_servicio_crud.removerDeLista(archivo_actual);
+	}
+
+	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
+			ParametrosConexion parametros) {
+		// TODO Auto-generated method stub
+
 	}
 
 	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {

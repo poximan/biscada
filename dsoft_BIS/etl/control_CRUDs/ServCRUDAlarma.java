@@ -50,7 +50,7 @@ public class ServCRUDAlarma implements InterfazCRUD {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
+	public void actualizarFecha(Object entidad) {
 
 	}
 

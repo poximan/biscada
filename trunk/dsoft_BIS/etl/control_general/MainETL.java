@@ -6,14 +6,11 @@
 package control_general;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import vistas.VistaETL;
 
@@ -21,6 +18,7 @@ import vistas.VistaETL;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
+
 public class MainETL {
 
 	/* ............................................. */
@@ -30,6 +28,7 @@ public class MainETL {
 
 	private static Logger log = Logger.getLogger(MainETL.class);
 
+	private static MainETL main_etl;
 	private JFrame frame_etl;
 
 	/* laburo */
@@ -47,17 +46,13 @@ public class MainETL {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public MainETL() {
+	private MainETL() {
 
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
 
 		frame_etl.getContentPane().add(new VistaETL(direccion_lectura), BorderLayout.CENTER);
 		log.trace("se lanza pantalla etl");
-
-		frame_etl.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame_etl.pack();
-		frame_etl.setVisible(true);
 	}
 
 	/* ............................................. */
@@ -65,40 +60,17 @@ public class MainETL {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	/* ............................................. */
-	/* ............................................. */
-	/* MAIN ........................................ */
-	/* ............................................. */
+	public static MainETL getSingletonETL() {
 
-	public static void main(String[] args) {
+		if (main_etl == null)
+			main_etl = new MainETL();
+		return main_etl;
+	}
 
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Windows".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		}
-		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException ex) {
-			log.error(MainETL.class.getName());
-		}
+	public void mostrarVentana() {
 
-		PropertyConfigurator.configure("log4j.properties");
-
-		EventQueue.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					new MainETL();
-				}
-				catch (Exception e) {
-					log.error("problema en implementacion runnable: " + e.getMessage());
-					e.printStackTrace();
-				}
-			}
-		});
+		frame_etl.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		frame_etl.pack();
+		frame_etl.setVisible(true);
 	}
 }

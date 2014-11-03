@@ -41,8 +41,8 @@ public class EventoETL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (evt.getSource() == vista_etl.getBtn_iniciar()) {
-			new MainBI();
+		if (evt.getSource() == vista_etl.getBtn_iniciar_bi()) {
+			MainBI.getSingletonBI().mostrarVentana();
 
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {

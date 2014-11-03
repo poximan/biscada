@@ -52,7 +52,7 @@ public class ServCRUDSitio implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizarFecha(Object entidad) {
+	public void actualizar(Object entidad) {
 	}
 
 	@Override

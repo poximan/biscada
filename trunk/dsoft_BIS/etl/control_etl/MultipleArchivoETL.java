@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 
 import javax.persistence.EntityManager;
 
@@ -71,8 +72,12 @@ public class MultipleArchivoETL {
 			DirectoryStream<Path> directorio_contenedor = Files.newDirectoryStream(obj_direccion);
 
 			for (Path entrada_archivo : directorio_contenedor)
-				if (esExtensionValida(entrada_archivo) && !dbf_servicio_crud.existeEnBD(entrada_archivo))
-					dbf_servicio_crud.agendarArchivo(entrada_archivo);
+
+				if (esExtensionValida(entrada_archivo))
+					if (dbf_servicio_crud.existeEnBD(entrada_archivo))
+						dbf_servicio_crud.agregarProcesados(entrada_archivo);
+					else
+						dbf_servicio_crud.agregarDisponibles(entrada_archivo);
 
 			directorio_contenedor.close();
 		}
@@ -83,7 +88,9 @@ public class MultipleArchivoETL {
 		catch (IOException excepcion) {
 			excepcion.printStackTrace();
 		}
-		log.info("\n\nse leyeron " + dbf_servicio_crud.getCantArchivos() + " archivos DBF\n");
+		log.info("\n... ... ... ... ... ... ... ... ... ... ... ... ... ... ...");
+		log.info(dbf_servicio_crud.getCantDisponibles() + " archivos disponibles");
+		log.info(dbf_servicio_crud.getCantProcesados() + " archivos procesados");
 	}
 
 	private boolean esExtensionValida(Path entrada_archivo) {
@@ -102,16 +109,22 @@ public class MultipleArchivoETL {
 		SimpleArchivoETL gestor = new SimpleArchivoETL();
 		ArchivoDBF archivo_actual;
 
-		while ((archivo_actual = dbf_servicio_crud.getProximoArchivoInsertar()) != null) {
+		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorDisponibles();
 
-			log.info("comienza ETL en archivo "
+		for (int numero_archivo = 1; iterador.hasNext(); numero_archivo++) {
+
+			archivo_actual = iterador.next();
+
+			log.info("\nETL en archivo "
 					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " ["
-					+ dbf_servicio_crud.getPosActualVentana() + "-" + dbf_servicio_crud.getCantArchivos() + "] ");
+					+ numero_archivo + "-" + dbf_servicio_crud.getCantDisponibles() + "] ");
 
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 			em.getTransaction().commit();
 			em.clear();
+
+			iterador.remove();
 		}
 
 		log.info("se extrajeron " + SimpleArchivoETL.getTotalizador_extraidas() + " filas de potenciales alarmas");
@@ -124,12 +137,18 @@ public class MultipleArchivoETL {
 		SimpleArchivoETL gestor = new SimpleArchivoETL();
 		ArchivoDBF archivo_actual;
 
-		while ((archivo_actual = dbf_servicio_crud.getProximoArchivoBorrar()) != null) {
+		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorProcesados();
+
+		while (iterador.hasNext()) {
+
+			archivo_actual = iterador.next();
 
 			em.getTransaction().begin();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 			em.getTransaction().commit();
 			em.clear();
+
+			iterador.remove();
 		}
 	}
 

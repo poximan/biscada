@@ -163,35 +163,35 @@ public class ServBusqueda implements ObjetosBorrables {
 
 		if (calendarDesde != null) {
 			if (rbtnDesdeInicio.isSelected())
-				typed_query.setParameter("param_fecha_inicio", calendarDesde);
+				typed_query.setParameter("fecha_inicio", calendarDesde);
 
 			if (rbtnDesdeAck.isSelected())
-				typed_query.setParameter("param_fecha_ack", calendarDesde);
+				typed_query.setParameter("fecha_ack", calendarDesde);
 
 			if (rbtnDesdeFin.isSelected())
-				typed_query.setParameter("param_fecha_finalizacion", calendarDesde);
+				typed_query.setParameter("fecha_finalizacion", calendarDesde);
 		}
 		if (calendarHasta != null) {
 			if (rbtnHastaInicio.isSelected())
-				typed_query.setParameter("param_fecha_inicio", calendarHasta);
+				typed_query.setParameter("fecha_inicio", calendarHasta);
 
 			if (rbtnHastaAck.isSelected())
-				typed_query.setParameter("param_fecha_ack", calendarHasta);
+				typed_query.setParameter("fecha_ack", calendarHasta);
 
 			if (rbtnHastaFin.isSelected())
-				typed_query.setParameter("param_fecha_finalizacion", calendarHasta);
+				typed_query.setParameter("fecha_finalizacion", calendarHasta);
 		}
 		if (familia != null) {
-			typed_query.setParameter("param_familia", familia);
+			typed_query.setParameter("familia", familia);
 		}
 		if (sitio != null) {
-			typed_query.setParameter("param_sitio", sitio);
+			typed_query.setParameter("sitio", sitio);
 		}
 		if (tipo_de_equipo != null) {
-			typed_query.setParameter("param_tipo_de_equipo", tipo_de_equipo);
+			typed_query.setParameter("tipo_de_equipo", tipo_de_equipo);
 		}
 		if (suceso != null) {
-			typed_query.setParameter("param_suceso", suceso);
+			typed_query.setParameter("suceso", suceso);
 		}
 
 		if (ruido_maximo != 0)
@@ -255,7 +255,7 @@ public class ServBusqueda implements ObjetosBorrables {
 
 	private void agregarPredicadoTipoDeEquipo(TipoDeEquipo tipo_de_equipo) {
 
-		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, "equipo");
+		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, "tipo_de_equipo");
 		criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get("tipo_de_equipo"), p));
 	}
 

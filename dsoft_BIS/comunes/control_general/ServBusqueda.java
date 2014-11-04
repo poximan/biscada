@@ -104,7 +104,7 @@ public class ServBusqueda implements ObjetosBorrables {
 	public List<Alarma> buscAlarma(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
 			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
 			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
-			long ruido_maximo) {
+			Integer ruido_maximo) {
 
 		liberarObjetos();
 
@@ -140,7 +140,7 @@ public class ServBusqueda implements ObjetosBorrables {
 		if (suceso != null)
 			agregarPredicadoSuceso(suceso);
 
-		if (ruido_maximo != 0)
+		if (ruido_maximo != null)
 			agregarPredicadoRuido(ruido_maximo);
 
 		// -------------------------------------
@@ -193,21 +193,21 @@ public class ServBusqueda implements ObjetosBorrables {
 			typed_query.setParameter("suceso", suceso);
 		}
 
-		if (ruido_maximo != 0)
+		if (ruido_maximo != null)
 			typed_query.setParameter("ruido_maximo", ruido_maximo);
 
 		return typed_query.getResultList();
 	}
 
-	private void agregarPredicadoRuido(long ruido_maximo) {
+	private void agregarPredicadoRuido(Integer ruido_maximo) {
 
-		Expression<CalendarExtendido> expresion = crit_builder.diff(
+		ParameterExpression<Integer> p = crit_builder.parameter(Integer.class, "ruido_maximo");
+
+		Expression<CalendarExtendido> diferencia_fechas = crit_builder.diff(
 				root_alarmas.get("fecha_inicio").as(CalendarExtendido.class), root_alarmas.get("fecha_finalizacion")
 						.as(CalendarExtendido.class));
 
-		Expression<Long> expresion_ruido = crit_builder.literal(ruido_maximo);
-
-		criteria.add(crit_builder.ge(expresion, expresion_ruido));
+		criteria.add(crit_builder.ge(p, diferencia_fechas));
 	}
 
 	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,

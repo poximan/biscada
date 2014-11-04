@@ -201,15 +201,13 @@ public class ServBusqueda implements ObjetosBorrables {
 
 	private void agregarPredicadoRuido(long ruido_maximo) {
 
-		Calendar fecha_incio = (Calendar) root_alarmas.get("fecha_inicio").as(Calendar.class);
-		Calendar fecha_fin = (Calendar) root_alarmas.get("fecha_finalizacion").as(Calendar.class);
+		Expression<CalendarExtendido> expresion = crit_builder.diff(
+				root_alarmas.get("fecha_inicio").as(CalendarExtendido.class), root_alarmas.get("fecha_finalizacion")
+						.as(CalendarExtendido.class));
 
-		CalendarExtendido diferencia = new CalendarExtendido(fecha_fin.getTimeInMillis()
-				- fecha_incio.getTimeInMillis());
-		Expression<CalendarExtendido> diferencia_expresion = crit_builder.literal(diferencia);
+		Expression<Long> expresion_ruido = crit_builder.literal(ruido_maximo);
 
-		ParameterExpression<Long> p = crit_builder.parameter(Long.class, "ruido_maximo");
-		criteria.add(crit_builder.ge(diferencia_expresion, p));
+		criteria.add(crit_builder.ge(expresion, expresion_ruido));
 	}
 
 	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,

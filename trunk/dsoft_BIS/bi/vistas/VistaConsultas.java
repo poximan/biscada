@@ -8,6 +8,8 @@ package vistas;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.beans.Beans;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,12 +22,17 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
@@ -74,18 +81,21 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	private final ButtonGroup buttonGroupHasta = new ButtonGroup();
 
 	private BindingGroup bindingGroup;
+
 	private GroupLayout groupLayout;
 	private GroupLayout gl_panelFechas;
 	private GroupLayout gl_panelCampoSimple;
 
 	private List<Alarma> consultas;
 
+	private JFrame frame_bi;
 	private JPanel panelFiltros;
 	private JPanel panelTabla;
 	private JPanel panelDimensiones;
 	private JPanel panelCampoSimple;
-	private JTable tblConsulta;
 	private JPanel panelFechas;
+
+	private JTable tblConsulta;
 
 	private JLabel lblSitio;
 	private JLabel lblFamilia;
@@ -124,7 +134,9 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultas() {
+	public VistaConsultas(JFrame frame_bi) {
+
+		this.frame_bi = frame_bi;
 
 		iniciarComponentes();
 		configBinding();
@@ -137,7 +149,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 			private static final long serialVersionUID = 1L;
 
-			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ms");
+			SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ms");
 
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -156,6 +168,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		configEventos();
 		organizarTablas();
+		configMenu();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -186,24 +199,26 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelDimensiones = new JPanel();
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								groupLayout
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(panelFiltros, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 794,
-												Short.MAX_VALUE)
-										.addComponent(panelTabla, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 794,
-												Short.MAX_VALUE)
-										.addComponent(panelDimensiones, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												794, Short.MAX_VALUE)).addContainerGap()));
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(
+						groupLayout
+								.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(
+										groupLayout
+												.createParallelGroup(Alignment.LEADING)
+												.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 1047,
+														Short.MAX_VALUE)
+												.addComponent(panelDimensiones, GroupLayout.DEFAULT_SIZE, 1047,
+														Short.MAX_VALUE)
+												.addComponent(panelFiltros, Alignment.TRAILING,
+														GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE))
+								.addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
 				groupLayout.createSequentialGroup().addContainerGap()
 						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelTabla, GroupLayout.PREFERRED_SIZE, 226, Short.MAX_VALUE)
+						.addComponent(panelTabla, GroupLayout.PREFERRED_SIZE, 454, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
@@ -484,7 +499,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 																.addPreferredGap(ComponentPlacement.RELATED)
 																.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE,
 																		118, GroupLayout.PREFERRED_SIZE))
-												.addComponent(panelCampoSimple, GroupLayout.DEFAULT_SIZE, 575,
+												.addComponent(panelCampoSimple, GroupLayout.DEFAULT_SIZE, 828,
 														Short.MAX_VALUE)).addContainerGap()));
 		gl_panelFiltros.setVerticalGroup(gl_panelFiltros.createParallelGroup(Alignment.TRAILING).addGroup(
 				gl_panelFiltros
@@ -497,15 +512,19 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 												gl_panelFiltros
 														.createSequentialGroup()
 														.addComponent(panelCampoSimple, GroupLayout.PREFERRED_SIZE,
-																117, GroupLayout.PREFERRED_SIZE)
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(ComponentPlacement.RELATED,
 																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addGroup(
 																gl_panelFiltros.createParallelGroup(Alignment.BASELINE)
 																		.addComponent(btnBuscar)
 																		.addComponent(lblProcesando)))
-										.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 134,
-												GroupLayout.PREFERRED_SIZE)).addContainerGap()));
+										.addGroup(
+												gl_panelFiltros
+														.createSequentialGroup()
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 134,
+																GroupLayout.PREFERRED_SIZE))).addContainerGap()));
 
 		lblSitio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFamilia.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -524,6 +543,36 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelFiltros.setLayout(gl_panelFiltros);
 
 		setLayout(groupLayout);
+	}
+
+	private void configMenu() {
+
+		JMenuBar menubar = new JMenuBar();
+		JMenu menu_ruido = new JMenu("Ruido");
+		menu_ruido.setMnemonic(KeyEvent.VK_F);
+
+		JMenuItem item_ruido = new JMenuItem("Nivel ruido");
+		item_ruido.setMnemonic(KeyEvent.VK_N);
+
+		JMenuItem item_salir = new JMenuItem("Salir");
+		item_salir.setMnemonic(KeyEvent.VK_C);
+		item_salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
+
+		item_salir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
+
+		menu_ruido.add(item_ruido);
+		menu_ruido.addSeparator();
+		menu_ruido.add(item_salir);
+		menubar.add(menu_ruido);
+
+		frame_bi.setJMenuBar(menubar);
+		frame_bi.setTitle("Submenu");
+		frame_bi.setLocationRelativeTo(null);
 	}
 
 	private void organizarTablas() {
@@ -733,7 +782,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private List<Alarma> getListaAlarmas() {
 
-		long ruido_maximo = 0;
+		long ruido_maximo = 3;
 		ServBusqueda busqueda = new ServBusqueda();
 
 		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,

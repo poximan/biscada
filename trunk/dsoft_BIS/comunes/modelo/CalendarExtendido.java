@@ -5,11 +5,6 @@
 
 package modelo;
 
-import java.util.Calendar;
-
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Root;
-
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -24,16 +19,15 @@ public class CalendarExtendido extends Number {
 
 	private static final long serialVersionUID = 1L;
 
-	private Calendar fecha;
+	private long diferencia_fechas;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CalendarExtendido(Root<Alarma> root_alarmas, String atributo) {
-
-		Expression<Calendar> fecha = root_alarmas.get(atributo);		
+	public CalendarExtendido(long diferencia_fechas) {
+		this.diferencia_fechas = diferencia_fechas;
 	}
 
 	/* ............................................. */
@@ -58,6 +52,6 @@ public class CalendarExtendido extends Number {
 
 	@Override
 	public long longValue() {
-		return fecha.getTimeInMillis();
+		return diferencia_fechas;
 	}
 }

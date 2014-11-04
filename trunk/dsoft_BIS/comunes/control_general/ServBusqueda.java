@@ -23,7 +23,6 @@ import javax.swing.JRadioButton;
 import modelo.Alarma;
 import modelo.CalendarExtendido;
 import modelo.Familia;
-import modelo.RuidoExtendida;
 import modelo.Sitio;
 import modelo.Suceso;
 import modelo.TipoDeEquipo;
@@ -202,22 +201,15 @@ public class ServBusqueda implements ObjetosBorrables {
 
 	private void agregarPredicadoRuido(long ruido_maximo) {
 
-		Path<Calendar> fecha_incio = root_alarmas.get("fecha_inicio");
-		Path<Calendar> fecha_fin = root_alarmas.get("fecha_finalizacion");
+		Calendar fecha_incio = (Calendar) root_alarmas.get("fecha_inicio").as(Calendar.class);
+		Calendar fecha_fin = (Calendar) root_alarmas.get("fecha_finalizacion").as(Calendar.class);
+
+		CalendarExtendido diferencia = new CalendarExtendido(fecha_fin.getTimeInMillis()
+				- fecha_incio.getTimeInMillis());
+		Expression<CalendarExtendido> diferencia_expresion = crit_builder.literal(diferencia);
 
 		ParameterExpression<Long> p = crit_builder.parameter(Long.class, "ruido_maximo");
-
-		CalendarExtendido inicio_alarma = new CalendarExtendido(root_alarmas, "fecha_inicio");
-		CalendarExtendido fin_alarma = new CalendarExtendido(root_alarmas, "fecha_finalizacion");
-		RuidoExtendida ruido = new RuidoExtendida(ruido_maximo);
-
-		Expression<CalendarExtendido> expresion_inicio_alarma = crit_builder.literal(inicio_alarma);
-		Expression<CalendarExtendido> expresion_fin_alarma = crit_builder.literal(fin_alarma);
-		Expression<RuidoExtendida> expresion_ruido = crit_builder.literal(ruido);
-
-		Expression<CalendarExtendido> diferencia = crit_builder.diff(expresion_fin_alarma, expresion_inicio_alarma);
-
-		criteria.add(crit_builder.ge(diferencia, expresion_ruido));
+		criteria.add(crit_builder.ge(diferencia_expresion, p));
 	}
 
 	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,

@@ -129,6 +129,9 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private JTextField txt_reg_encontrados;
 
+	private ComponentDuracionAlarma componente_ruido_minimo;
+	private ComponentDuracionAlarma componente_ruido_maximo;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -145,6 +148,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		//
 		// editar visualizacion calendar
 		// -------------------------------------
+
 		TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
 
 			private static final long serialVersionUID = 1L;
@@ -547,32 +551,39 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private void configMenu() {
 
+		// barra menu
 		JMenuBar menubar = new JMenuBar();
-		JMenu menu_ruido = new JMenu("Ruido");
-		menu_ruido.setMnemonic(KeyEvent.VK_F);
 
-		JMenuItem item_ruido = new JMenuItem("Nivel ruido");
-		item_ruido.setMnemonic(KeyEvent.VK_N);
+		// submeun
+		JMenu menu_ruido = new JMenu("Ruido");
+		JMenu config_ruido = new JMenu("Configurar");
+
+		componente_ruido_minimo = new ComponentDuracionAlarma("minimo para ser aceptada", true);
+		componente_ruido_maximo = new ComponentDuracionAlarma("maximo para ser aceptada", false);
+
+		config_ruido.add(componente_ruido_minimo);
+		config_ruido.add(componente_ruido_maximo);
 
 		JMenuItem item_salir = new JMenuItem("Salir");
-		item_salir.setMnemonic(KeyEvent.VK_C);
 		item_salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
 
 		item_salir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				System.exit(0);
+				frame_bi.dispose();
 			}
 		});
 
-		menu_ruido.add(item_ruido);
+		// agregar opciones del menu
+		menu_ruido.add(config_ruido);
 		menu_ruido.addSeparator();
 		menu_ruido.add(item_salir);
+
+		// agregar menu a la barra
 		menubar.add(menu_ruido);
 
 		frame_bi.setJMenuBar(menubar);
 		frame_bi.setTitle("Submenu");
-		frame_bi.setLocationRelativeTo(null);
 	}
 
 	private void organizarTablas() {
@@ -609,10 +620,10 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 				while (hilo_consulta.isAlive()) {
 					try {
 						lblProcesando.setVisible(true);
-						Thread.sleep(600);
+						Thread.sleep(200);
 
 						lblProcesando.setVisible(false);
-						Thread.sleep(100);
+						Thread.sleep(40);
 					}
 					catch (InterruptedException excepcion) {
 						lblProcesando.setVisible(false);
@@ -782,13 +793,13 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private List<Alarma> getListaAlarmas() {
 
-		long ruido_maximo = 3;
 		ServBusqueda busqueda = new ServBusqueda();
 
 		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
 				choosHasta.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin,
 				(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
-				(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(), ruido_maximo);
+				(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(),
+				componente_ruido_minimo.getSegundos());
 	}
 
 	/* ............................................. */

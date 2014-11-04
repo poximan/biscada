@@ -38,11 +38,12 @@ public class ComponentDuracionAlarma extends JPanel implements EventoConfigurabl
 	/* ............................................. */
 
 	public ComponentDuracionAlarma(String titulo, boolean estado_inicial_check) {
+
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 		flowLayout.setVgap(1);
 		flowLayout.setHgap(2);
 
-		JCheckBox chckbxSegundos = new JCheckBox(titulo, estado_inicial_check);
+		chckbxSegundos = new JCheckBox(titulo, estado_inicial_check);
 		add(chckbxSegundos);
 
 		spinner = new JSpinner();

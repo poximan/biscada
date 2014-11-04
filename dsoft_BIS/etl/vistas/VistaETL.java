@@ -10,7 +10,6 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -33,7 +32,6 @@ import control_etl.MultipleArchivoETL;
 /* CLASE ....................................... */
 /* ............................................. */
 
-@SuppressWarnings({ "unchecked" })
 public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */
@@ -254,6 +252,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(btn_agregar_candidato_extraer, gbc_btn_agregar_candidato_extraer);
 
 		txt_sin_procesar = new JTextField();
+		txt_sin_procesar.setEditable(false);
 		GridBagConstraints gbc_txt_sin_procesar = new GridBagConstraints();
 		gbc_txt_sin_procesar.anchor = GridBagConstraints.NORTH;
 		gbc_txt_sin_procesar.insets = new Insets(0, 0, 5, 5);
@@ -264,6 +263,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txt_sin_procesar.setColumns(10);
 
 		txt_candidatos_procesar = new JTextField();
+		txt_candidatos_procesar.setEditable(false);
 		txt_candidatos_procesar.setColumns(10);
 		GridBagConstraints gbc_txt_candidatos_procesar = new GridBagConstraints();
 		gbc_txt_candidatos_procesar.insets = new Insets(0, 0, 5, 5);
@@ -273,6 +273,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(txt_candidatos_procesar, gbc_txt_candidatos_procesar);
 
 		txt_candidatos_extraer = new JTextField();
+		txt_candidatos_extraer.setEditable(false);
 		txt_candidatos_extraer.setColumns(10);
 		GridBagConstraints gbc_txt_candidatos_extraer = new GridBagConstraints();
 		gbc_txt_candidatos_extraer.insets = new Insets(0, 0, 5, 5);
@@ -282,6 +283,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(txt_candidatos_extraer, gbc_txt_candidatos_extraer);
 
 		txt_procesados = new JTextField();
+		txt_procesados.setEditable(false);
 		txt_procesados.setColumns(10);
 		GridBagConstraints gbc_txt_procesados = new GridBagConstraints();
 		gbc_txt_procesados.insets = new Insets(0, 0, 5, 0);
@@ -373,6 +375,10 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		borrarElementoListDisponibles();
 	}
 
+	private void actualizarContadorCandidatosProcesar() {
+		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
+	}
+
 	/**
 	 * de la lista de archivos candidatos para agregar a la BD, recupera la sublista de los seleccionados y los devuelve
 	 * a la lista de disponibles. Hasta que el usuario no confirme no se realizará la operacion.
@@ -426,18 +432,22 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void agregarElementoDisponible(Object elementos[]) {
 		llenarListModel(model_disponibles, elementos);
+		txt_sin_procesar.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
 	public void agregarElementoCandidatoProcesar(Object elementos[]) {
 		llenarListModel(model_candidatos_procesar, elementos);
+		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
 	public void agregarElementoCandidatoExtraer(Object elementos[]) {
 		llenarListModel(model_candidatos_extraer, elementos);
+		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
 	public void agregarElementoProcesado(Object elementos[]) {
 		llenarListModel(model_procesados, elementos);
+		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
 
 	/**
@@ -452,15 +462,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		model_lista.addAll(nuevos_valores);
 	}
 
-	private void borrarElementoListCandidatoProcesar() {
-
-		Object selected[] = list_candidatos_procesar.getSelectedValuesList().toArray();
-		for (int i = selected.length - 1; i >= 0; --i) {
-			model_candidatos_procesar.removeElement(selected[i]);
-		}
-		list_candidatos_procesar.getSelectionModel().clearSelection();
-	}
-
 	private void borrarElementoListDisponibles() {
 
 		Object selected[] = list_disponibles.getSelectedValuesList().toArray();
@@ -468,6 +469,17 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 			model_disponibles.removeElement(selected[i]);
 		}
 		list_disponibles.getSelectionModel().clearSelection();
+		txt_sin_procesar.setText(String.valueOf(model_disponibles.getSize()));
+	}
+
+	private void borrarElementoListCandidatoProcesar() {
+
+		Object selected[] = list_candidatos_procesar.getSelectedValuesList().toArray();
+		for (int i = selected.length - 1; i >= 0; --i) {
+			model_candidatos_procesar.removeElement(selected[i]);
+		}
+		list_candidatos_procesar.getSelectionModel().clearSelection();
+		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
 	private void borrarElementoListCandidatoExtraer() {
@@ -477,6 +489,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 			model_candidatos_extraer.removeElement(selected[i]);
 		}
 		list_candidatos_extraer.getSelectionModel().clearSelection();
+		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
 	private void borrarElementoListProcesado() {
@@ -486,6 +499,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 			model_procesados.removeElement(selected[i]);
 		}
 		list_procesados.getSelectionModel().clearSelection();
+		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
 
 	/*
@@ -505,21 +519,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void borrarModelProcesados() {
 		model_procesados.clear();
-	}
-
-	/*
-	 * iteradores
-	 */
-	public Iterator<ArchivoDBF> getIteratorCandidatos() {
-		return model_candidatos_extraer.iterator();
-	}
-
-	public Iterator<ArchivoDBF> getIteratorDisponibles() {
-		return model_disponibles.iterator();
-	}
-
-	public Iterator<ArchivoDBF> getIteratorProcesados() {
-		return model_disponibles.iterator();
 	}
 
 	/* ............................................. */

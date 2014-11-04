@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 /* ............................................. */
 /* ............................................. */
@@ -48,6 +50,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 
 	private GraficoKPI indicador_kpi;
 
+	private JSpinner spinner;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -75,9 +79,12 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		// seccion componentes visuales
 		// -------------------------------------
 
-		gl_panelGeneral = new GroupLayout(this);
 		panelIndicador = new JPanel();
 		panelResumen = new JPanel();
+
+		JLabel label = new JLabel("%");
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(5, 1, 100, 1));
 
 		lblTotal = new JLabel("Total");
 		lblPromedio = new JLabel("Promedio");
@@ -109,24 +116,25 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		panelResumen.add(txtPromedio);
 		txtPromedio.setColumns(10);
 
-		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panelGeneral.createSequentialGroup().addContainerGap()
-								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-								.addContainerGap()));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelGeneral
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panelGeneral
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 147,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
-						.addContainerGap()));
+		gl_panelGeneral = new GroupLayout(this);
+		gl_panelGeneral.setHorizontalGroup(
+			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panelGeneral.setVerticalGroup(
+			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+					.addContainerGap())
+		);
 
 		panelResumen.add(lblActual);
 
@@ -135,6 +143,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		txtActual.setColumns(10);
 
 		panelResumen.add(txtActual);
+
+		panelResumen.add(label);
+
+		panelResumen.add(spinner);
 
 		setLayout(gl_panelGeneral);
 	}
@@ -167,9 +179,4 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 	public JTextField getTxtTotal() {
 		return txtTotal;
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
 }

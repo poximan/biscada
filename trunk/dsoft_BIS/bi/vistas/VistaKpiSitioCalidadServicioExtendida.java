@@ -44,6 +44,8 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo, ServMedAbstract serv_medicion,
 			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
 
+		super.configEventos(new EventoKPI(this));
+
 		try {
 			llenarCampoTextos(serv_dim_sitio, serv_unidad_tiempo, serv_medicion, servIntervaloFechas, sitio_actual);
 

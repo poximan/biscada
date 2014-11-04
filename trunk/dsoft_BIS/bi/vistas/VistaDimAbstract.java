@@ -509,9 +509,9 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		JScrollPane scroll_tercer_grafico = cuarto_grafico.construirPanel();
 
 		if (tabPane_grafico.getTabCount() == 0) {
-			tabPane_grafico.addTab(". barras .", scroll_primer_grafico);
-			tabPane_grafico.addTab(". lineas .", scroll_segundo_grafico);
-			tabPane_grafico.addTab(". torta .", scroll_tercer_grafico);
+			tabPane_grafico.addTab("..barras", scroll_primer_grafico);
+			tabPane_grafico.addTab("..lineas", scroll_segundo_grafico);
+			tabPane_grafico.addTab("..torta", scroll_tercer_grafico);
 		} else {
 			tabPane_grafico.setComponentAt(0, scroll_primer_grafico);
 			tabPane_grafico.setComponentAt(2, scroll_segundo_grafico);

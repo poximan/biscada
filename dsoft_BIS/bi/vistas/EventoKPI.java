@@ -8,8 +8,6 @@ package vistas;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.apache.log4j.Logger;
-
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -22,7 +20,6 @@ public class EventoKPI implements ChangeListener {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(EventoKPI.class);
 	private VistaKpiAbstract vista_kpi;
 
 	/* ............................................. */

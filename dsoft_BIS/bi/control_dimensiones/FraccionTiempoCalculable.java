@@ -31,5 +31,15 @@ public interface FraccionTiempoCalculable {
 
 	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual);
 
+	/**
+	 * cuenta la cantidad de unidades de tiempo existentes entre dos fechas dadas. por ejemplo dos fechas que se separan
+	 * por un mes entre si, contadas de a mes daran como resultado 1, pero el mismo set de datos comparado contra una
+	 * unidad de tiempo quincena, resultara en 4 unidades. por este motivo la responsabilidad de determinar las unidades
+	 * de tiempo involucradas es establecida por la clase concreta
+	 * 
+	 * @param primer_alarma
+	 * @param ultima_alarma
+	 * @return
+	 */
 	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma);
 }

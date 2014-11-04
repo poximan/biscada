@@ -8,7 +8,6 @@ package control_dimensiones;
 import java.util.Calendar;
 import java.util.List;
 
-import modelo.Alarma;
 import modelo.IntervaloFechas;
 import control_general.ServIntervaloFechas;
 

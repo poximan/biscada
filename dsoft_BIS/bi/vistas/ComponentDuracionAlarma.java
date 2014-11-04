@@ -10,14 +10,17 @@ import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JLabel;
+
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ComponentDuracionAlarma extends JPanel {
+public class ComponentDuracionAlarma extends JPanel implements EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -27,6 +30,7 @@ public class ComponentDuracionAlarma extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JSpinner spinner;
+	private JCheckBox chckbxSegundos;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -42,11 +46,13 @@ public class ComponentDuracionAlarma extends JPanel {
 		add(chckbxSegundos);
 
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(2, 0, 1800, 2));
+		spinner.setModel(new SpinnerNumberModel(2, 0, 1800, 1));
 		add(spinner);
 
 		JLabel lblSeg = new JLabel("seg.");
 		add(lblSeg);
+
+		configEventos();
 	}
 
 	/* ............................................. */
@@ -54,13 +60,30 @@ public class ComponentDuracionAlarma extends JPanel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public void configEventos() {
+		chckbxSegundos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (chckbxSegundos.isEnabled())
+					spinner.setEnabled(false);
+				else
+					spinner.setEnabled(true);
+			}
+		});
+
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
 	public int getSegundos() {
-		return ((Integer) spinner.getValue()).intValue();
+
+		if (spinner.isEnabled())
+			return ((Integer) spinner.getValue()).intValue();
+		return 0;
 	}
 
 	/* ............................................. */

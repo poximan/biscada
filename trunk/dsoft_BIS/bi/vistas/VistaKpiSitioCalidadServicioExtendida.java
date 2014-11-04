@@ -36,6 +36,7 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 	 */
 	public VistaKpiSitioCalidadServicioExtendida(float datos[][]) {
 
+		super.configEventos(new EventoKPI(this));
 		llenarCampoTextos(datos);
 	}
 

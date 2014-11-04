@@ -26,7 +26,7 @@ import javax.swing.SpinnerNumberModel;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable {
+public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -50,7 +50,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 
 	private GraficoKPI indicador_kpi;
 
-	private JSpinner spinner;
+	private JSpinner spinner_porcentaje;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -83,8 +83,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		panelResumen = new JPanel();
 
 		JLabel label = new JLabel("%");
-		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(5, 1, 100, 1));
+		spinner_porcentaje = new JSpinner();
+		spinner_porcentaje.setModel(new SpinnerNumberModel(5, 1, 100, 1));
 
 		lblTotal = new JLabel("Total");
 		lblPromedio = new JLabel("Promedio");
@@ -117,24 +117,24 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		txtPromedio.setColumns(10);
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panelGeneral.setVerticalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
-					.addContainerGap())
-		);
+		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelGeneral.createSequentialGroup().addContainerGap()
+								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+								.addContainerGap()));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panelGeneral
+						.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(
+								gl_panelGeneral
+										.createParallelGroup(Alignment.LEADING)
+										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 164,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+						.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -146,7 +146,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 
 		panelResumen.add(label);
 
-		panelResumen.add(spinner);
+		panelResumen.add(spinner_porcentaje);
 
 		setLayout(gl_panelGeneral);
 	}
@@ -159,11 +159,23 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable 
 		dialog.setVisible(true);
 	}
 
+	@Override
+	public void configEventos(EventoKPI eventos) {
+
+		spinner_porcentaje.getModel().addChangeListener(eventos);
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	/**
+	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
+	 * relacionados con la dimension concreta que esta realizando la solicitud
+	 * 
+	 * @return
+	 */
 	public GraficoKPI getIndicador_kpi() {
 		return indicador_kpi;
 	}

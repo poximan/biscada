@@ -8,18 +8,21 @@ package vistas;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.apache.log4j.Logger;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class EventoKPI implements ChangeListener {
+public class EventoKPI implements ChangeListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
+	private static Logger log = Logger.getLogger(EventoKPI.class);
 	private VistaKpiAbstract vista_kpi;
 
 	/* ............................................. */
@@ -38,7 +41,7 @@ public abstract class EventoKPI implements ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
+		// TODO jorge: aca pone lo que quieran hacer con este evento
 	}
 
 	/* ............................................. */

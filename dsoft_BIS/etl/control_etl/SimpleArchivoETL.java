@@ -101,7 +101,7 @@ public class SimpleArchivoETL {
 
 	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
 			ParametrosConexion parametros) {
-		// TODO Auto-generated method stub
+		// TODO hugo: etl todavia no elimina archivos ingresados a bd
 
 	}
 

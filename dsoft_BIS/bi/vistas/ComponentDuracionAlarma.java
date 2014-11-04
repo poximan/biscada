@@ -72,7 +72,6 @@ public class ComponentDuracionAlarma extends JPanel implements EventoConfigurabl
 					spinner.setEnabled(true);
 			}
 		});
-
 	}
 
 	/* ............................................. */

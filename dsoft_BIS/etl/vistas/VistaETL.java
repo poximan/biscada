@@ -375,10 +375,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		borrarElementoListDisponibles();
 	}
 
-	private void actualizarContadorCandidatosProcesar() {
-		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
-	}
-
 	/**
 	 * de la lista de archivos candidatos para agregar a la BD, recupera la sublista de los seleccionados y los devuelve
 	 * a la lista de disponibles. Hasta que el usuario no confirme no se realizará la operacion.

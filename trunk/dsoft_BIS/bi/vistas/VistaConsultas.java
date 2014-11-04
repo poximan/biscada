@@ -203,29 +203,27 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelDimensiones = new JPanel();
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(
-						groupLayout
-								.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										groupLayout
-												.createParallelGroup(Alignment.LEADING)
-												.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 1047,
-														Short.MAX_VALUE)
-												.addComponent(panelDimensiones, GroupLayout.DEFAULT_SIZE, 1047,
-														Short.MAX_VALUE)
-												.addComponent(panelFiltros, Alignment.TRAILING,
-														GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE))
-								.addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelTabla, GroupLayout.PREFERRED_SIZE, 454, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+						.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+						.addComponent(panelDimensiones, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 
 		btnBuscar = new JButton("Buscar");
 		btnTiempoDespeje = new JButton("tiempo despeje");

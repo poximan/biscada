@@ -105,12 +105,6 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract implemen
 		return ((dif_anios * 12) + ultima_alarma.get(Calendar.MONTH) - primer_alarma.get(Calendar.MONTH)) + 1;
 	}
 
-	@Override
-	public float ultimaFraccion(List<Alarma> lista_interes) {
-		// TODO hugo: completar ultima fraccion
-		return 0;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

@@ -72,7 +72,19 @@ public abstract class ServDimUnidadTiempoAbstract {
 	 */
 	public abstract String[] getEncabezado();
 
-	public abstract float ultimaFraccion(List<Alarma> lista_interes);
+	/**
+	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como quincena, mes, etc se busca la ultima,
+	 * es decir la ultima quincena, ultimo mes, etc del intervalo definido por el rango. De todas las que pertenecen a
+	 * la ultima fraccion se devuelve el total de repeticiones, es decir cuántas ocurrencias hubieron de una determinada
+	 * dimension durante la ultima fraccion de tiempo
+	 * 
+	 * @param lista_interes
+	 * @return
+	 */
+	public float ultimaFraccion(List<Alarma> lista_interes) {
+		// TODO hugo: completar ultima fraccion
+		return 0;
+	}
 
 	/* ............................................. */
 	/* ............................................. */

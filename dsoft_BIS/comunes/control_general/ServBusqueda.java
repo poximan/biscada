@@ -195,12 +195,17 @@ public class ServBusqueda implements ObjetosBorrables {
 		}
 
 		if (ruido_maximo != 0)
-			typed_query.setParameter("param_ruido_maximo", ruido_maximo);
+			typed_query.setParameter("ruido_maximo", ruido_maximo);
 
 		return typed_query.getResultList();
 	}
 
 	private void agregarPredicadoRuido(long ruido_maximo) {
+
+		Path<Calendar> fecha_incio = root_alarmas.get("fecha_inicio");
+		Path<Calendar> fecha_fin = root_alarmas.get("fecha_finalizacion");
+
+		ParameterExpression<Long> p = crit_builder.parameter(Long.class, "ruido_maximo");
 
 		CalendarExtendido inicio_alarma = new CalendarExtendido(root_alarmas, "fecha_inicio");
 		CalendarExtendido fin_alarma = new CalendarExtendido(root_alarmas, "fecha_finalizacion");

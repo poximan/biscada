@@ -113,12 +113,6 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract im
 		return desripcion;
 	}
 
-	@Override
-	public float ultimaFraccion(List<Alarma> lista_interes) {
-		// TODO hugo: completar ultima fraccion
-		return 0;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

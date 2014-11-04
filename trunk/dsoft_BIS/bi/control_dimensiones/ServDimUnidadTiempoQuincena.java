@@ -135,12 +135,6 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract imp
 		return ((dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma)) + 1;
 	}
 
-	@Override
-	public float ultimaFraccion(List<Alarma> lista_interes) {
-		// TODO hugo: completar ultima fraccion
-		return 0;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

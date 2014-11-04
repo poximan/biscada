@@ -6,6 +6,7 @@
 package control_dimensiones;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import modelo.Alarma;
@@ -17,7 +18,7 @@ import control_general.ServIntervaloFechas;
 /* INTERFASE ................................... */
 /* ............................................. */
 
-public abstract class ServDimUnidadTiempoAbstract {
+public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalculable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -81,8 +82,22 @@ public abstract class ServDimUnidadTiempoAbstract {
 	 * @param lista_interes
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public float ultimaFraccion(List<Alarma> lista_interes) {
+
 		// TODO hugo: completar ultima fraccion
+
+		Collections.sort(lista_interes);
+		Collections.reverse(lista_interes);
+
+		Calendar primer_alarma = lista_interes.get(0).getFecha_inicio();
+		for (Alarma alarma_actual : lista_interes) {
+
+			Calendar fecha_alarma_actual = alarma_actual.getFecha_inicio();
+
+			unidadTiempoInvolucradas(fecha_alarma_actual, primer_alarma);
+		}
+
 		return 0;
 	}
 

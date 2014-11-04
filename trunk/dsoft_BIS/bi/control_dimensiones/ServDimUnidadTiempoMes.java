@@ -9,7 +9,6 @@ import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.List;
 
-import modelo.Alarma;
 import modelo.IntervaloFechas;
 import control_general.ServIntervaloFechas;
 

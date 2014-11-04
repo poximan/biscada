@@ -66,10 +66,10 @@ public class ComponentDuracionAlarma extends JPanel implements EventoConfigurabl
 		chckbxSegundos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (chckbxSegundos.isEnabled())
-					spinner.setEnabled(false);
-				else
+				if (chckbxSegundos.isSelected())
 					spinner.setEnabled(true);
+				else
+					spinner.setEnabled(false);
 			}
 		});
 	}
@@ -79,11 +79,11 @@ public class ComponentDuracionAlarma extends JPanel implements EventoConfigurabl
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public int getSegundos() {
+	public Integer getSegundos() {
 
 		if (spinner.isEnabled())
-			return ((Integer) spinner.getValue()).intValue();
-		return 0;
+			return (Integer) spinner.getValue();
+		return null;
 	}
 
 	/* ............................................. */

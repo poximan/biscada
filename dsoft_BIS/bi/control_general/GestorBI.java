@@ -39,7 +39,7 @@ public class GestorBI {
 		frame_bi = new JFrame("BIS - software BI para SCADA");
 		log.trace("se crea marco para panel consultas");
 
-		frame_bi.setContentPane(new VistaConsultas());
+		frame_bi.setContentPane(new VistaConsultas(frame_bi));
 		log.trace("se lanza pantalla de consultas");
 	}
 

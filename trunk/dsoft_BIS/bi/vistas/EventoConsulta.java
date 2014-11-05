@@ -66,7 +66,13 @@ public class EventoConsulta implements ActionListener {
 							JFrame frame = new JFrame("Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
 							lanzarVentanaDimension(frame,
 									new VistaDimTiempoDespejeExtendida(vista_consulta.getConsultas()));
-						}
+						}else
+							if (evt.getSource() == vista_consulta.getBtnTemporada()) {
+
+								JFrame frame = new JFrame("Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");
+								lanzarVentanaDimension(frame,
+										new VistaDimTiempoDespejeExtendida(vista_consulta.getConsultas()));
+							}
 			} else
 				notificarError("consulta vacia, cargue restricciones (opcional) y presione Buscar para obtener resultados");
 		}

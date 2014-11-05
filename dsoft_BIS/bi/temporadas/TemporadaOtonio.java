@@ -5,6 +5,8 @@
 
 package temporadas;
 
+import java.util.Calendar;
+
 import modelo.Alarma;
 import modelo.Temporada;
 
@@ -20,12 +22,19 @@ public class TemporadaOtonio extends Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
+	private int dia_inicio = 21;
+	private int dia_fin = 21;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public TemporadaOtonio() {
+
+		super();
+		definirDesde(dia_inicio, Calendar.MARCH);
+		definirHasta(dia_fin, Calendar.JUNE);
 	}
 
 	/* ............................................. */

@@ -5,7 +5,7 @@
 
 package modelo;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /* ............................................. */
 /* ............................................. */
@@ -19,8 +19,8 @@ public abstract class Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private Date inicio;
-	private Date fin;
+	private Calendar desde;
+	private Calendar hasta;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,6 +38,23 @@ public abstract class Temporada {
 
 	public int diferenciaEntreFechas(Alarma alarma_actual) throws NullPointerException {
 		return 10;
+	}
+
+	public void definirDesde(int dia_inicio, int mes_inicio) {
+		definirFecha(desde, dia_inicio, mes_inicio);
+	}
+
+	public void definirHasta(int dia_fin, int mes_fin) {
+		definirFecha(hasta, dia_fin, mes_fin);
+	}
+
+	private void definirFecha(Calendar fecha, int dia, int mes) {
+
+		fecha = Calendar.getInstance();
+		fecha.setTimeInMillis(0);
+
+		fecha.set(Calendar.DAY_OF_MONTH, dia);
+		fecha.set(Calendar.MONTH, mes);
 	}
 
 	/* ............................................. */

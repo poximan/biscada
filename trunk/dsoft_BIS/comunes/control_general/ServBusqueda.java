@@ -20,6 +20,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.swing.JRadioButton;
 
+import org.apache.log4j.Logger;
+
 import modelo.Alarma;
 import modelo.CalendarExtendido;
 import modelo.Familia;
@@ -38,6 +40,8 @@ public class ServBusqueda implements ObjetosBorrables {
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
+
+	private static Logger log = Logger.getLogger(ServBusqueda.class);
 
 	private CriteriaBuilder crit_builder;
 
@@ -129,19 +133,19 @@ public class ServBusqueda implements ObjetosBorrables {
 			agregarPredicadoFechaHasta(calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
 
 		if (familia != null)
-			agregarPredicadoFamilia(familia);
+			agregarPredicadoFamilia("familia");
 
 		if (sitio != null)
-			agregarPredicadoSitio(sitio);
+			agregarPredicadoSitio("sitio");
 
 		if (tipo_de_equipo != null)
-			agregarPredicadoTipoDeEquipo(tipo_de_equipo);
+			agregarPredicadoTipoDeEquipo("tipo_de_equipo");
 
 		if (suceso != null)
-			agregarPredicadoSuceso(suceso);
+			agregarPredicadoSuceso("suceso");
 
 		if (ruido_maximo != null)
-			agregarPredicadoRuido(ruido_maximo);
+			agregarPredicadoRuido("fecha_inicio", "fecha_finalizacion", ruido_maximo);
 
 		// -------------------------------------
 		//
@@ -199,8 +203,18 @@ public class ServBusqueda implements ObjetosBorrables {
 		return typed_query.getResultList();
 	}
 
-	private void agregarPredicadoRuido(Integer ruido_maximo) {
+	private void agregarPredicadoRuido(String fecha_inicio, String fecha_finalizacion, Integer ruido_maximo) {
 
+		if (ruido_maximo != null)
+			return;
+
+		// primer aproximacion
+		Path<Calendar> pathParaInterpretarCalendarFechaInicio = root_alarmas.get(fecha_inicio);
+		Path<Calendar> pathParaInterpretarCalendarFechaFin = root_alarmas.get(fecha_finalizacion);
+
+		// long h = pathParaInterpretarCalendarFechaInicio.get("milis");
+
+		// otra aproximacion
 		ParameterExpression<Integer> p = crit_builder.parameter(Integer.class, "ruido_maximo");
 
 		Expression<CalendarExtendido> diferencia_fechas = crit_builder.diff(
@@ -236,28 +250,28 @@ public class ServBusqueda implements ObjetosBorrables {
 			agregarParametroHasta("fecha_finalizacion", calendarHasta);
 	}
 
-	private void agregarPredicadoFamilia(Familia familia) {
+	private void agregarPredicadoFamilia(String atributo) {
 
-		ParameterExpression<Familia> p = crit_builder.parameter(Familia.class, "familia");
-		criteria.add(crit_builder.equal(root_alarmas.get("familia"), p));
+		ParameterExpression<Familia> p = crit_builder.parameter(Familia.class, atributo);
+		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
-	private void agregarPredicadoSitio(Sitio sitio) {
+	private void agregarPredicadoSitio(String atributo) {
 
-		ParameterExpression<Sitio> p = crit_builder.parameter(Sitio.class, "sitio");
-		criteria.add(crit_builder.equal(root_alarmas.get("sitio"), p));
+		ParameterExpression<Sitio> p = crit_builder.parameter(Sitio.class, atributo);
+		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
-	private void agregarPredicadoTipoDeEquipo(TipoDeEquipo tipo_de_equipo) {
+	private void agregarPredicadoTipoDeEquipo(String atributo) {
 
-		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, "tipo_de_equipo");
-		criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get("tipo_de_equipo"), p));
+		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, atributo);
+		criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get(atributo), p));
 	}
 
-	private void agregarPredicadoSuceso(Suceso suceso) {
+	private void agregarPredicadoSuceso(String atributo) {
 
-		ParameterExpression<Suceso> p = crit_builder.parameter(Suceso.class, "suceso");
-		criteria.add(crit_builder.equal(root_alarmas.get("suceso"), p));
+		ParameterExpression<Suceso> p = crit_builder.parameter(Suceso.class, atributo);
+		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
 	private void agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {

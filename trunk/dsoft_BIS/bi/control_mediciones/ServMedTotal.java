@@ -41,11 +41,11 @@ public class ServMedTotal extends ServMedAbstract {
 	public float[] completarFila(List<Alarma> alarmas, ServIntervaloFechas serv_intervalo,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo) throws IndexOutOfBoundsException {
 
-		Calendar proximo_mes = Calendar.getInstance(), fecha_alarma_actual;
+		Calendar fecha_referencia = Calendar.getInstance(), fecha_alarma_actual;
 		List<Float> fracciones_tiempo = new ArrayList<Float>();
 
 		try {
-			proximo_mes.setTimeInMillis(alarmas.get(0).getFecha_inicio().getTimeInMillis());
+			fecha_referencia.setTimeInMillis(alarmas.get(0).getFecha_inicio().getTimeInMillis());
 		}
 		catch (IndexOutOfBoundsException excepcion) {
 			throw excepcion;
@@ -56,9 +56,9 @@ public class ServMedTotal extends ServMedAbstract {
 
 			fecha_alarma_actual = alarma_actual.getFecha_inicio();
 
-			if (serv_unidad_tiempo.alarmaEsMayorIgualReferencia(fecha_alarma_actual, proximo_mes)) {
+			if (serv_unidad_tiempo.alarmaEsMayorIgualReferencia(fecha_alarma_actual, fecha_referencia)) {
 
-				serv_unidad_tiempo.contrarNuevasFraccionesTiempo(serv_intervalo, fecha_alarma_actual, proximo_mes,
+				serv_unidad_tiempo.contrarNuevasFraccionesTiempo(serv_intervalo, fecha_alarma_actual, fecha_referencia,
 						fracciones_tiempo);
 			}
 			// agrego 1 al contador de alarmas del mes

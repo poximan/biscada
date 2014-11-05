@@ -48,20 +48,20 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	 * 
 	 * @param fecha_alarma_actual
 	 *            es la ultima alarma recuperada de la lista
-	 * @param ultima_fecha_registrada
+	 * @param fecha_referencia
 	 *            es el mes esperado para la proxima alarma
 	 * @return
 	 */
-	public boolean alarmaEsMayorIgualReferencia(Calendar fecha_alarma_actual, Calendar ultima_fecha_registrada) {
+	public boolean alarmaEsMayorIgualReferencia(Calendar fecha_alarma_actual, Calendar fecha_referencia) {
 
-		if (fecha_alarma_actual.before(ultima_fecha_registrada))
+		if (fecha_alarma_actual.before(fecha_referencia))
 			return false;
 
 		return true;
 	}
 
 	public abstract void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo,
-			Calendar fecha_alarma_actual, Calendar proxima_fraccion, List<Float> fracciones_tiempo);
+			Calendar fecha_alarma_actual, Calendar fecha_referencia, List<Float> fracciones_tiempo);
 
 	public abstract int getDivisor_en_dias();
 

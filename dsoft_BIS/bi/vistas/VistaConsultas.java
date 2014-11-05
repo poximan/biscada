@@ -62,6 +62,8 @@ import com.toedter.calendar.JDateChooser;
 
 import control_general.ObjetosBorrables;
 import control_general.ServBusqueda;
+import java.awt.FlowLayout;
+import java.awt.ComponentOrientation;
 
 /* ............................................. */
 /* ............................................. */
@@ -109,6 +111,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	private JButton btnSuceso;
 	private JButton btnSitio;
 	private JButton btnBuscar;
+	private JButton btnTemporada;
 
 	private JScrollPane scrPaneTabla;
 
@@ -201,33 +204,44 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelTabla.setBorder(new TitledBorder(null, "Resultado consulta", TitledBorder.LEADING, TitledBorder.TOP, null,
 				null));
 		panelDimensiones = new JPanel();
+		panelDimensiones.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
+				Alignment.LEADING,
 				groupLayout
 						.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(
 								groupLayout
 										.createParallelGroup(Alignment.LEADING)
+										.addComponent(panelDimensiones, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+												794, Short.MAX_VALUE)
 										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
 										.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 794,
-												Short.MAX_VALUE)
-										.addComponent(panelDimensiones, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-												794, Short.MAX_VALUE)).addContainerGap()));
+												Short.MAX_VALUE)).addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
 				groupLayout.createSequentialGroup().addContainerGap()
 						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
 
 		btnBuscar = new JButton("Buscar");
 		btnTiempoDespeje = new JButton("tiempo despeje");
+		btnTiempoDespeje.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnTiempoDespeje.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnTiempoDespeje.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		btnSuceso = new JButton("suceso");
+		btnSuceso.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSuceso.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnSuceso.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		btnSitio = new JButton("sitio");
+		btnSitio.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnSitio.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnSitio.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrPaneTabla = new JScrollPane();
 		tblConsulta = new JTable();
 		panelFechas = new JPanel();
@@ -416,23 +430,16 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Segundo nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-		GroupLayout gl_panelDimensiones = new GroupLayout(panelDimensiones);
-		gl_panelDimensiones.setHorizontalGroup(gl_panelDimensiones.createParallelGroup(Alignment.TRAILING).addGroup(
-				gl_panelDimensiones.createSequentialGroup().addContainerGap(433, Short.MAX_VALUE)
-						.addComponent(btnSitio, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnSuceso)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnTiempoDespeje).addContainerGap()));
-		gl_panelDimensiones.setVerticalGroup(gl_panelDimensiones.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelDimensiones
-						.createSequentialGroup()
-						.addGroup(
-								gl_panelDimensiones.createParallelGroup(Alignment.LEADING).addComponent(btnSuceso)
-										.addComponent(btnTiempoDespeje).addComponent(btnSitio))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		gl_panelDimensiones.linkSize(SwingConstants.HORIZONTAL,
-				new Component[] { btnTiempoDespeje, btnSuceso, btnSitio });
-		panelDimensiones.setLayout(gl_panelDimensiones);
+		btnTemporada = new JButton("temporada");
+		btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelDimensiones.add(btnTemporada);
+		panelDimensiones.add(btnSitio);
+		panelDimensiones.add(btnSuceso);
+		panelDimensiones.add(btnTiempoDespeje);
 
 		txt_reg_encontrados = new JTextField();
 		txt_reg_encontrados.setEditable(false);
@@ -773,6 +780,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		btnSitio.addActionListener(eventos);
 		btnSuceso.addActionListener(eventos);
 		btnTiempoDespeje.addActionListener(eventos);
+		btnTemporada.addActionListener(eventos);
 
 		cargarTodasLasFamilias();
 		cargarTodosLosSitios();
@@ -817,6 +825,10 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	public JButton getBtnBuscar() {
 		return btnBuscar;
+	}
+
+	public JButton getBtnTemporada() {
+		return btnTemporada;
 	}
 
 	public List<Alarma> getConsultas() {

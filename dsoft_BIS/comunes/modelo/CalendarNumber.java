@@ -10,7 +10,7 @@ package modelo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CalendarExtendido extends Number {
+public class CalendarNumber extends Number {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -26,7 +26,7 @@ public class CalendarExtendido extends Number {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CalendarExtendido(long diferencia_fechas) {
+	public CalendarNumber(long diferencia_fechas) {
 		this.diferencia_fechas = diferencia_fechas;
 	}
 

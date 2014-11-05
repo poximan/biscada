@@ -20,14 +20,19 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.swing.JRadioButton;
 
-import org.apache.log4j.Logger;
-
 import modelo.Alarma;
-import modelo.CalendarExtendido;
+import modelo.CalendarNumber;
 import modelo.Familia;
 import modelo.Sitio;
 import modelo.Suceso;
 import modelo.TipoDeEquipo;
+
+import org.apache.log4j.Logger;
+import org.eclipse.persistence.internal.jpa.EJBQueryImpl;
+import org.eclipse.persistence.jpa.JpaEntityManager;
+import org.eclipse.persistence.queries.DatabaseQuery;
+import org.eclipse.persistence.sessions.DatabaseRecord;
+import org.eclipse.persistence.sessions.Session;
 
 /* ............................................. */
 /* ............................................. */
@@ -44,9 +49,7 @@ public class ServBusqueda implements ObjetosBorrables {
 	private static Logger log = Logger.getLogger(ServBusqueda.class);
 
 	private CriteriaBuilder crit_builder;
-
 	private Root<Alarma> root_alarmas;
-
 	private List<Predicate> criteria;
 
 	/* ............................................. */
@@ -105,6 +108,11 @@ public class ServBusqueda implements ObjetosBorrables {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("Suceso.buscTodos").getResultList();
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* ....... CONSULTA FILTRADA ................... */
+	/* ............................................. */
+
 	public List<Alarma> buscAlarma(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
 			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
 			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
@@ -117,7 +125,6 @@ public class ServBusqueda implements ObjetosBorrables {
 
 		root_alarmas = crit_query.from(Alarma.class);
 		crit_query.select(root_alarmas);
-		crit_query.distinct(true);
 
 		criteria = new ArrayList<Predicate>();
 
@@ -196,34 +203,61 @@ public class ServBusqueda implements ObjetosBorrables {
 		if (suceso != null) {
 			typed_query.setParameter("suceso", suceso);
 		}
-
 		if (ruido_maximo != null)
 			typed_query.setParameter("ruido_maximo", ruido_maximo);
+
+		mostrarQuery(typed_query);
 
 		return typed_query.getResultList();
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* ....... AUXILIARES CONSULTA FILTRADA ........ */
+	/* ............................................. */
+
+	private void mostrarQuery(TypedQuery<Alarma> typed_query) {
+
+		Session session1 = EMFSingleton.getInstanciaEM().unwrap(JpaEntityManager.class).getActiveSession();
+		DatabaseQuery databaseQuery1 = ((EJBQueryImpl<Alarma>) typed_query).getDatabaseQuery();
+		databaseQuery1.prepareCall(session1, new DatabaseRecord());
+		String sqlString1 = databaseQuery1.getSQLString();
+
+		log.trace(sqlString1);
+	}
+
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * si el usuario habilitó la opcion de filtrar las alarmas por tiempo minimo de vida, para descartar de esta manera
+	 * alarmas que duren menos que un periodo de tiempo indicado en segundos, este metodo será ejecutado.
+	 * 
+	 * @param fecha_inicio
+	 * @param fecha_finalizacion
+	 * @param ruido_maximo
+	 */
 	private void agregarPredicadoRuido(String fecha_inicio, String fecha_finalizacion, Integer ruido_maximo) {
 
-		if (ruido_maximo != null)
-			return;
-
-		// primer aproximacion
-		Path<Calendar> pathParaInterpretarCalendarFechaInicio = root_alarmas.get(fecha_inicio);
-		Path<Calendar> pathParaInterpretarCalendarFechaFin = root_alarmas.get(fecha_finalizacion);
-
-		// long h = pathParaInterpretarCalendarFechaInicio.get("milis");
-
-		// otra aproximacion
 		ParameterExpression<Integer> p = crit_builder.parameter(Integer.class, "ruido_maximo");
 
-		Expression<CalendarExtendido> diferencia_fechas = crit_builder.diff(
-				root_alarmas.get("fecha_inicio").as(CalendarExtendido.class), root_alarmas.get("fecha_finalizacion")
-						.as(CalendarExtendido.class));
+		Expression<CalendarNumber> diferencia_fechas = crit_builder.diff(
+				root_alarmas.get(fecha_finalizacion).as(CalendarNumber.class),
+				root_alarmas.get(fecha_inicio).as(CalendarNumber.class));
 
 		criteria.add(crit_builder.ge(p, diferencia_fechas));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * si el usuario especificó una "fecha desde" en particular, se traeran solo alarmas con fecha >= para el campo
+	 * especificado [fecha inicio, ack, fin]
+	 * 
+	 * @param calendarDesde
+	 * @param rbtnDesdeInicio
+	 * @param rbtnDesdeAck
+	 * @param rbtnDesdeFin
+	 */
 	private void agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,
 			JRadioButton rbtnDesdeAck, JRadioButton rbtnDesdeFin) {
 
@@ -237,6 +271,17 @@ public class ServBusqueda implements ObjetosBorrables {
 			agregarParametroDesde("fecha_finalizacion", calendarDesde);
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * si el usuario especificó una "fecha hasta" en particular, se traeran solo alarmas con fecha <= para el campo
+	 * especificado [fecha inicio, ack, fin]
+	 * 
+	 * @param calendarHasta
+	 * @param rbtnHastaInicio
+	 * @param rbtnHastaAck
+	 * @param rbtnHastaFin
+	 */
 	private void agregarPredicadoFechaHasta(Calendar calendarHasta, JRadioButton rbtnHastaInicio,
 			JRadioButton rbtnHastaAck, JRadioButton rbtnHastaFin) {
 
@@ -250,36 +295,83 @@ public class ServBusqueda implements ObjetosBorrables {
 			agregarParametroHasta("fecha_finalizacion", calendarHasta);
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * si el usuario especifico una familia de alarmas en particular, se traeran solo alarmas cuya familia sea = a la
+	 * del parametro especificado.
+	 * 
+	 * @param atributo
+	 */
 	private void agregarPredicadoFamilia(String atributo) {
 
 		ParameterExpression<Familia> p = crit_builder.parameter(Familia.class, atributo);
 		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * analogo a campo familia, referirse a su javadoc
+	 * 
+	 * @param atributo
+	 */
 	private void agregarPredicadoSitio(String atributo) {
 
 		ParameterExpression<Sitio> p = crit_builder.parameter(Sitio.class, atributo);
 		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * analogo a campo familia, referirse a su javadoc
+	 * 
+	 * @param atributo
+	 */
 	private void agregarPredicadoTipoDeEquipo(String atributo) {
 
 		ParameterExpression<TipoDeEquipo> p = crit_builder.parameter(TipoDeEquipo.class, atributo);
 		criteria.add(crit_builder.equal(root_alarmas.get("equipo_en_sitio").get(atributo), p));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * analogo a campo familia, referirse a su javadoc
+	 * 
+	 * @param atributo
+	 */
 	private void agregarPredicadoSuceso(String atributo) {
 
 		ParameterExpression<Suceso> p = crit_builder.parameter(Suceso.class, atributo);
 		criteria.add(crit_builder.equal(root_alarmas.get(atributo), p));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * utilizado por agregarPredicadoFechaDesde cuando encuentra una seleccion para el tipo desde (que debe ser del
+	 * enumerado [inicio, ack, fin])
+	 * 
+	 * @param fecha_usada
+	 * @param calendarDesde
+	 */
 	private void agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {
 
 		Path<Calendar> pathParaInterpretarCalendar = root_alarmas.get(fecha_usada);
 		criteria.add(crit_builder.greaterThanOrEqualTo(pathParaInterpretarCalendar, calendarDesde));
 	}
 
+	/**
+	 * creador de parametro dinamico.
+	 * 
+	 * utilizado por agregarPredicadoFechaHasta cuando encuentra una seleccion para el tipo hasta (que debe ser del
+	 * enumerado [inicio, ack, fin])
+	 * 
+	 * @param fecha_usada
+	 * @param calendarHasta
+	 */
 	private void agregarParametroHasta(String fecha_usada, Calendar calendarHasta) {
 
 		Path<Calendar> pathParaInterpretarCalendar = root_alarmas.get(fecha_usada);

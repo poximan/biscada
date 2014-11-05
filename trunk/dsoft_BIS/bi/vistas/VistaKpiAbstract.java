@@ -20,13 +20,15 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.JCheckBox;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
+public abstract class VistaKpiAbstract extends JPanel implements
+		PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -51,6 +53,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	private GraficoKPI indicador_kpi;
 
 	private JSpinner spinner_porcentaje;
+	private JCheckBox chckbxPorcentaje;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -117,24 +120,38 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		txtPromedio.setColumns(10);
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panelGeneral.createSequentialGroup().addContainerGap()
-								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-								.addContainerGap()));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
+		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(
+				Alignment.LEADING).addGroup(
 				gl_panelGeneral
 						.createSequentialGroup()
 						.addContainerGap()
+						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE,
+								90, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE,
+								472, Short.MAX_VALUE).addContainerGap()));
+		gl_panelGeneral
+				.setVerticalGroup(gl_panelGeneral
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(
 								gl_panelGeneral
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 164,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
-						.addContainerGap()));
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												gl_panelGeneral
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addComponent(
+																panelResumen,
+																GroupLayout.PREFERRED_SIZE,
+																201,
+																GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																panelIndicador,
+																GroupLayout.DEFAULT_SIZE,
+																335,
+																Short.MAX_VALUE))
+										.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -148,12 +165,16 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		panelResumen.add(spinner_porcentaje);
 
+		chckbxPorcentaje = new JCheckBox("Calcular");
+		panelResumen.add(chckbxPorcentaje);
+
 		setLayout(gl_panelGeneral);
 	}
 
 	public void notificarError(String mensaje) {
 
-		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
+		JOptionPane optionPane = new JOptionPane(mensaje,
+				JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
@@ -163,6 +184,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	public void configEventos(EventoKPI eventos) {
 
 		spinner_porcentaje.getModel().addChangeListener(eventos);
+
+		// System.out.println("esto es el spinner " +
+		// spinner_porcentaje.getValue());
 	}
 
 	/* ............................................. */
@@ -171,8 +195,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
-	 * relacionados con la dimension concreta que esta realizando la solicitud
+	 * se solicita el grafico instanciado en la superclase y que hasta este
+	 * momento no posee datos especificos relacionados con la dimension concreta
+	 * que esta realizando la solicitud
 	 * 
 	 * @return
 	 */
@@ -190,5 +215,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public JTextField getTxtTotal() {
 		return txtTotal;
+	}
+
+	public JSpinner getSpinner_porcentaje() {
+		return spinner_porcentaje;
 	}
 }

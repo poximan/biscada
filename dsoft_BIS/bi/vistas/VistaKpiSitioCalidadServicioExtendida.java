@@ -51,6 +51,7 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 
 			getIndicador_kpi().contruir(Float.parseFloat(getTxtTotal().getText()),
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
+			getIndicador_kpi().createPanel();
 		}
 		catch (NumberFormatException excepcion) {
 			getIndicador_kpi().contruir(0, 0, 0);

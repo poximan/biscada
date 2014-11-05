@@ -39,7 +39,10 @@ public class GraficoKPI extends JPanel {
 	private JPanel panel;
 	private static double canTotal;
 	private double promHist;
-	private static float primRango;
+	private double porcentajeF;
+	
+	//porcentaje por default
+	int porcentaje = 5;
 
 	public GraficoKPI(String s) {
 
@@ -73,8 +76,8 @@ public class GraficoKPI extends JPanel {
 
 	private JFreeChart createChart() {
 
-		double rangoMin = promHist - Porcentaje(15);
-		double rangoMax = promHist + Porcentaje(15);
+		double rangoMin = promHist - porcentajeF;
+		double rangoMax = promHist + porcentajeF;
 
 		MeterPlot meterplot = new MeterPlot(dataset);
 		// Fijamos el rango mínimo y máximo
@@ -114,10 +117,10 @@ public class GraficoKPI extends JPanel {
 	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
 	 */
 
-	private double Porcentaje(int porcentaje) {
-		double num = (promHist * porcentaje) / 100;
-		System.out.println("El " + porcentaje + " % de " + num + " es " + num);
-		return num;
+	private void Porcentaje(int porcentaje) {
+		porcentajeF = (promHist * porcentaje) / 100;
+		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
+		//return num;
 	}
 
 }

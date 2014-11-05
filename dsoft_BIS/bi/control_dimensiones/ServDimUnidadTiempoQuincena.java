@@ -60,15 +60,15 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 
 	@Override
 	public void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo, Calendar fecha_alarma_actual,
-			Calendar proxima_fraccion, List<Float> fracciones_tiempo) {
+			Calendar fecha_referencia, List<Float> fracciones_tiempo) {
 
-		int quincenas_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, proxima_fraccion);
+		int quincenas_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, fecha_referencia);
 
 		while (quincenas_involucrados-- > 0)
 			fracciones_tiempo.add(new Float(0));
 
-		proxima_fraccion.setTimeInMillis(fecha_alarma_actual.getTimeInMillis());
-		proxima_fraccion.add(Calendar.DAY_OF_MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
+		fecha_referencia.setTimeInMillis(fecha_alarma_actual.getTimeInMillis());
+		fecha_referencia.add(Calendar.DAY_OF_MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
 	}
 
 	@Override
@@ -95,11 +95,17 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 		return encabezado;
 	}
 
+	/**
+	 * devuelve el numero de quincena pensada como un entero entre 1-24 para representar todas las quincenas del año
+	 * 
+	 * @param fecha_actual
+	 * @return
+	 */
 	private int getNumeroQuincena(Calendar fecha_actual) {
 
 		int quincenas_acumuladas_hasta_mes_anterior = fecha_actual.get(Calendar.MONTH) * 2;
 
-		if (fecha_actual.get(Calendar.WEEK_OF_MONTH) <= 2)
+		if (fecha_actual.get(Calendar.DAY_OF_MONTH) <= 15)
 			quincenas_acumuladas_hasta_mes_anterior += 1;
 		else
 			quincenas_acumuladas_hasta_mes_anterior += 2;
@@ -131,7 +137,7 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
 
 		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return ((dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma)) + 1;
+		return (dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma) + 1;
 	}
 
 	/* ............................................. */

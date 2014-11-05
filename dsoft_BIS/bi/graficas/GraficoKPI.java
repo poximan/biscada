@@ -55,23 +55,28 @@ public class GraficoKPI extends JPanel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ChartPanel createPanel() {
+	public JPanel createPanel() {
 
 		JFreeChart chart = createChart();
 		ChartPanel chartpanel = new ChartPanel(chart);
-		return chartpanel;
+		chartpanel.setPreferredSize(new Dimension(300, 250));
+		panel = chartpanel;
+		add(panel);
+		panel.setPreferredSize(new Dimension(300, 250));
+		return panel;
 	}
 
 	public void contruir(float cantTotal, float promH, float cantAct) {
-		dataset = new DefaultValueDataset(promH);
+		dataset = new DefaultValueDataset(cantAct);
 
 		promHist = promH;
 		System.out.println("verificando cuanto es el prom act " + promHist);
 		canTotal = cantTotal;
 
-		panel = createPanel();
+		/*panel = createPanel();
 		add(panel);
 		panel.setPreferredSize(new Dimension(300, 250));
+		*/
 	}
 
 	private JFreeChart createChart() {
@@ -117,7 +122,7 @@ public class GraficoKPI extends JPanel {
 	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
 	 */
 
-	private void Porcentaje(int porcentaje) {
+	public void Porcentaje(int porcentaje) {
 		porcentajeF = (promHist * porcentaje) / 100;
 		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
 		// return num;

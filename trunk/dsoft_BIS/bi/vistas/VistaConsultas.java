@@ -431,15 +431,15 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"Segundo nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-
-		btnTemporada = new JButton("temporada");
-		btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.add(btnTemporada);
 		panelDimensiones.add(btnSitio);
 		panelDimensiones.add(btnSuceso);
 		panelDimensiones.add(btnTiempoDespeje);
+		
+				btnTemporada = new JButton("temporada");
+				btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
+				btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+				btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
+				panelDimensiones.add(btnTemporada);
 
 		txt_reg_encontrados = new JTextField();
 		txt_reg_encontrados.setEditable(false);

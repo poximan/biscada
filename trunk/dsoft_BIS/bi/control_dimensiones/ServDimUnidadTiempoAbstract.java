@@ -85,8 +85,7 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	@SuppressWarnings("unchecked")
 	public float ultimaFraccion(List<Alarma> lista_interes) {
 
-		// TODO hugo: completar ultima fraccion
-
+		float valor_retorno = 0;
 		Collections.sort(lista_interes);
 		Collections.reverse(lista_interes);
 
@@ -95,10 +94,12 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 
 			Calendar fecha_alarma_actual = alarma_actual.getFecha_inicio();
 
-			unidadTiempoInvolucradas(fecha_alarma_actual, primer_alarma);
+			if (unidadTiempoInvolucradas(fecha_alarma_actual, primer_alarma) > 1)
+				break;
+			valor_retorno++;
 		}
 
-		return 0;
+		return valor_retorno;
 	}
 
 	/* ............................................. */

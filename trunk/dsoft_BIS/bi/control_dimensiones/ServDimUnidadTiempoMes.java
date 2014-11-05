@@ -17,7 +17,7 @@ import control_general.ServIntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract implements FraccionTiempoCalculable {
+public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 
 	/* ............................................. */
 	/* ............................................. */

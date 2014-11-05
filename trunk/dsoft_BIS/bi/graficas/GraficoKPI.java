@@ -40,8 +40,8 @@ public class GraficoKPI extends JPanel {
 	private static double canTotal;
 	private double promHist;
 	private double porcentajeF;
-	
-	//porcentaje por default
+
+	// porcentaje por default
 	int porcentaje = 5;
 
 	public GraficoKPI(String s) {
@@ -120,7 +120,7 @@ public class GraficoKPI extends JPanel {
 	private void Porcentaje(int porcentaje) {
 		porcentajeF = (promHist * porcentaje) / 100;
 		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
-		//return num;
+		// return num;
 	}
 
 }

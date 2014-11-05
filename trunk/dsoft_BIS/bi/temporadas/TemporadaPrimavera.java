@@ -5,6 +5,8 @@
 
 package temporadas;
 
+import java.util.Calendar;
+
 import modelo.Alarma;
 import modelo.Temporada;
 
@@ -20,11 +22,8 @@ public class TemporadaPrimavera extends Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private int dia_inicio;
-	private int mes_inicio;
-
-	private int dia_fin;
-	private int mes_fin;
+	private int dia_inicio = 21;
+	private int dia_fin = 21;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -33,6 +32,9 @@ public class TemporadaPrimavera extends Temporada {
 
 	public TemporadaPrimavera() {
 
+		super();
+		definirDesde(dia_inicio, Calendar.SEPTEMBER);
+		definirHasta(dia_fin, Calendar.DECEMBER);
 	}
 
 	/* ............................................. */

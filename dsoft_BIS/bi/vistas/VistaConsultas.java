@@ -580,7 +580,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		menubar.add(menu_ruido);
 
 		frame_bi.setJMenuBar(menubar);
-		frame_bi.setTitle("Submenu");
 	}
 
 	private void organizarTablas() {

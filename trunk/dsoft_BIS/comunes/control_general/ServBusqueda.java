@@ -244,7 +244,7 @@ public class ServBusqueda implements ObjetosBorrables {
 				root_alarmas.get(fecha_finalizacion).as(CalendarNumber.class),
 				root_alarmas.get(fecha_inicio).as(CalendarNumber.class));
 
-		criteria.add(crit_builder.ge(p, diferencia_fechas));
+		criteria.add(crit_builder.ge(diferencia_fechas, p));
 	}
 
 	/**

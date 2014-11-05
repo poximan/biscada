@@ -20,12 +20,19 @@ public class TemporadaPrimavera extends Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
+	private int dia_inicio;
+	private int mes_inicio;
+
+	private int dia_fin;
+	private int mes_fin;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public TemporadaPrimavera() {
+
 	}
 
 	/* ............................................. */
@@ -40,7 +47,7 @@ public class TemporadaPrimavera extends Temporada {
 
 	@Override
 	public String toString() {
-		return "invierno";
+		return "primavera";
 	}
 
 	/* ............................................. */

@@ -40,7 +40,7 @@ public class TemporadaOtonio extends Temporada {
 
 	@Override
 	public String toString() {
-		return "invierno";
+		return "otoño";
 	}
 
 	/* ............................................. */

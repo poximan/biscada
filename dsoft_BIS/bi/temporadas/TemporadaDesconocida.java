@@ -26,7 +26,7 @@ public class TemporadaDesconocida extends Temporada {
 	/* ............................................. */
 
 	public TemporadaDesconocida() {
-		super();
+		super(0, 0, 0, 0);
 	}
 
 	/* ............................................. */

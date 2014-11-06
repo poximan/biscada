@@ -22,7 +22,7 @@ public class TemporadaVerano extends Temporada {
 	/* ............................................. */
 
 	private static int dia_inicio = 21;
-	private static int dia_fin = 21;
+	private static int dia_fin = 20;
 
 	/* ............................................. */
 	/* ............................................. */

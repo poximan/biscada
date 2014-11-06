@@ -7,6 +7,8 @@ package vistas;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -62,8 +64,6 @@ import com.toedter.calendar.JDateChooser;
 
 import control_general.ObjetosBorrables;
 import control_general.ServBusqueda;
-import java.awt.FlowLayout;
-import java.awt.ComponentOrientation;
 
 /* ............................................. */
 /* ............................................. */
@@ -434,12 +434,12 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelDimensiones.add(btnSitio);
 		panelDimensiones.add(btnSuceso);
 		panelDimensiones.add(btnTiempoDespeje);
-		
-				btnTemporada = new JButton("temporada");
-				btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
-				btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-				btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
-				panelDimensiones.add(btnTemporada);
+
+		btnTemporada = new JButton("temporada");
+		btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelDimensiones.add(btnTemporada);
 
 		txt_reg_encontrados = new JTextField();
 		txt_reg_encontrados.setEditable(false);

@@ -382,6 +382,6 @@ public class ServBusqueda implements ObjetosBorrables {
 	public void liberarObjetos() {
 
 		// EMFSingleton.getInstanciaEM().clear(); // TODO hugo: quiza haya que borrar esta linea para acelerar respuesta
-		//System.gc();
+		// System.gc();
 	}
 }

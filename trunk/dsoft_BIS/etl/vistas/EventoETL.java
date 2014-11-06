@@ -43,7 +43,6 @@ public class EventoETL implements ActionListener {
 
 		if (evt.getSource() == vista_etl.getBtn_iniciar_bi()) {
 			GestorBI.getSingleton().mostrarVentana();
-
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {
 				vista_etl.modificarListas();

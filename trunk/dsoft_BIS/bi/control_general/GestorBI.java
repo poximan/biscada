@@ -5,11 +5,11 @@
 
 package control_general;
 
-import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
+import vistas.ComponentMenu;
 import vistas.VistaConsultas;
 
 /* ............................................. */
@@ -27,7 +27,7 @@ public class GestorBI {
 	private static Logger log = Logger.getLogger(GestorBI.class);
 
 	private static GestorBI main_bi;
-	private JFrame frame_bi;
+	private ComponentMenu frame_bi;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class GestorBI {
 
 	private GestorBI() {
 
-		frame_bi = new JFrame("BIS - software BI para SCADA");
+		frame_bi = new ComponentMenu("BIS - software BI para SCADA");
 		log.trace("se crea marco para panel consultas");
 
 		frame_bi.setContentPane(new VistaConsultas(frame_bi));

@@ -10,8 +10,6 @@ import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.beans.Beans;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,17 +22,12 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
@@ -90,7 +83,8 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private List<Alarma> consultas;
 
-	private JFrame frame_bi;
+	private ComponentMenu frame_bi;
+
 	private JPanel panelFiltros;
 	private JPanel panelTabla;
 	private JPanel panelDimensiones;
@@ -132,15 +126,12 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private JTextField txt_reg_encontrados;
 
-	private ComponentDuracionAlarma componente_ruido_minimo;
-	private ComponentDuracionAlarma componente_ruido_maximo;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultas(JFrame frame_bi) {
+	public VistaConsultas(ComponentMenu frame_bi) {
 
 		this.frame_bi = frame_bi;
 
@@ -175,7 +166,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		configEventos();
 		organizarTablas();
-		configMenu();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -553,42 +543,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		setLayout(groupLayout);
 	}
 
-	private void configMenu() {
-
-		// barra menu
-		JMenuBar menubar = new JMenuBar();
-
-		// submeun
-		JMenu menu_ruido = new JMenu("Ruido");
-		JMenu config_ruido = new JMenu("Configurar");
-
-		componente_ruido_minimo = new ComponentDuracionAlarma("minimo para ser aceptada", true);
-		componente_ruido_maximo = new ComponentDuracionAlarma("maximo para ser aceptada", false);
-
-		config_ruido.add(componente_ruido_minimo);
-		config_ruido.add(componente_ruido_maximo);
-
-		JMenuItem item_salir = new JMenuItem("Salir");
-		item_salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
-
-		item_salir.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				frame_bi.dispose();
-			}
-		});
-
-		// agregar opciones del menu
-		menu_ruido.add(config_ruido);
-		menu_ruido.addSeparator();
-		menu_ruido.add(item_salir);
-
-		// agregar menu a la barra
-		menubar.add(menu_ruido);
-
-		frame_bi.setJMenuBar(menubar);
-	}
-
 	private void organizarTablas() {
 
 		RowSorter<TableModel> ordenador_filas = new TableRowSorter<TableModel>(tblConsulta.getModel());
@@ -799,11 +753,10 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		ServBusqueda busqueda = new ServBusqueda();
 
-		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
-				choosHasta.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin,
-				(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
-				(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(),
-				componente_ruido_minimo.getSegundos());
+		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, choosHasta
+				.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, (Familia) cboxFamilia.getSelectedItem(),
+				(Sitio) cboxSitio.getSelectedItem(), (TipoDeEquipo) cboxTipoEquipo.getSelectedItem(),
+				(Suceso) cboxSuceso.getSelectedItem(), frame_bi.getComponente_ruido_minimo().getSegundos());
 	}
 
 	/* ............................................. */

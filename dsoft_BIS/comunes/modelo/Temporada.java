@@ -33,7 +33,7 @@ public abstract class Temporada {
 	/* ............................................. */
 
 	public boolean contiene(Alarma alarma_actual) {
-		return false;
+		return (desde.before(alarma_actual) && hasta.after(alarma_actual));
 	}
 
 	public int diferenciaEntreFechas(Alarma alarma_actual) throws NullPointerException {
@@ -66,5 +66,4 @@ public abstract class Temporada {
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
-
 }

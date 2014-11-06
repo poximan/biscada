@@ -308,7 +308,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		btn_confirmar_cambios = new JButton("Confirmar cambios");
 		pl_botones.add(btn_confirmar_cambios);
 
-		btn_analisis_datos = new JButton("Iniciar Analisis Datos (BI)");
+		btn_analisis_datos = new JButton("Analisis Datos (BI) -->");
 		pl_botones.add(btn_analisis_datos);
 	}
 

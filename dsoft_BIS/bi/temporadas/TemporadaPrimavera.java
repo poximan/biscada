@@ -21,8 +21,8 @@ public class TemporadaPrimavera extends Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private int dia_inicio = 21;
-	private int dia_fin = 21;
+	private static int dia_inicio = 21;
+	private static int dia_fin = 21;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,9 +31,7 @@ public class TemporadaPrimavera extends Temporada {
 
 	public TemporadaPrimavera() {
 
-		super();
-		definirDesde(dia_inicio, Calendar.SEPTEMBER);
-		definirHasta(dia_fin, Calendar.DECEMBER);
+		super(dia_inicio, Calendar.SEPTEMBER, dia_fin, Calendar.DECEMBER);
 	}
 
 	/* ............................................. */

@@ -41,16 +41,17 @@ public abstract class Temporada {
 	}
 
 	public void definirDesde(int dia_inicio, int mes_inicio) {
+		desde = Calendar.getInstance();
 		definirFecha(desde, dia_inicio, mes_inicio);
 	}
 
 	public void definirHasta(int dia_fin, int mes_fin) {
+		hasta = Calendar.getInstance();
 		definirFecha(hasta, dia_fin, mes_fin);
 	}
 
 	private void definirFecha(Calendar fecha, int dia, int mes) {
 
-		fecha = Calendar.getInstance();
 		fecha.setTimeInMillis(0);
 
 		fecha.set(Calendar.DAY_OF_MONTH, dia);

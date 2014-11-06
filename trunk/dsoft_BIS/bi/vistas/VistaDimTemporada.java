@@ -40,7 +40,7 @@ public class VistaDimTemporada extends VistaDimAbstract {
 		super(new ServDimTemporada(), new ServDimSitio(), consultas);
 		configEventos(new EventoDimTemporada(this));
 	}
-	
+
 	@Override
 	public void configEventos(EventoDim eventos) {
 

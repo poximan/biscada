@@ -33,8 +33,10 @@ public class ComponentMenu extends JFrame {
 
 	private JMenuBar barra_menu;
 
+	private JMenu entrada_menu_archivo;
 	private JMenu entrada_menu_ruido;
 	private JMenu entrada_menu_etl;
+	private JMenu entrada_menu_propiedades;
 
 	private ComponentDuracionAlarma componente_ruido_minimo;
 	private ComponentDuracionAlarma componente_ruido_maximo;
@@ -47,7 +49,7 @@ public class ComponentMenu extends JFrame {
 	public ComponentMenu(String titulo) {
 
 		super(titulo);
-		setBounds(100, 100, 945, 557);
+		setBounds(100, 100, 1110, 701);
 		configMenu();
 	}
 
@@ -61,21 +63,19 @@ public class ComponentMenu extends JFrame {
 		// barra menu
 		barra_menu = new JMenuBar();
 
+		configMenuArchivo();
 		configMenuRuido();
 		configMenuETL();
+		configMenuPropiedades();
+
+		setJMenuBar(barra_menu);
 	}
 
-	private void configMenuRuido() {
+	private void configMenuArchivo() {
 
 		// submeun
-		entrada_menu_ruido = new JMenu("Ruido");
-		JMenu submenu_config_ruido = new JMenu("Configurar");
-
-		componente_ruido_minimo = new ComponentDuracionAlarma("minimo para ser aceptada", true);
-		componente_ruido_maximo = new ComponentDuracionAlarma("maximo para ser aceptada", false);
-
-		submenu_config_ruido.add(componente_ruido_minimo);
-		submenu_config_ruido.add(componente_ruido_maximo);
+		entrada_menu_archivo = new JMenu("Archivo");
+		entrada_menu_archivo.setMinimumSize(getMinimumSize());
 
 		JMenuItem item_salir = new JMenuItem("Salir");
 		item_salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
@@ -88,14 +88,33 @@ public class ComponentMenu extends JFrame {
 		});
 
 		// agregar opciones del menu
+		entrada_menu_archivo.add(item_salir);
+		entrada_menu_archivo.addSeparator();
+
+		// agregar menu a la barra
+		barra_menu.add(entrada_menu_archivo);
+	}
+
+	private void configMenuRuido() {
+
+		// submeun
+		entrada_menu_ruido = new JMenu("Ruido");
+		entrada_menu_ruido.setMinimumSize(getMinimumSize());
+
+		JMenu submenu_config_ruido = new JMenu("Configurar");
+
+		componente_ruido_minimo = new ComponentDuracionAlarma("minimo para ser aceptada", true);
+		componente_ruido_maximo = new ComponentDuracionAlarma("maximo para ser aceptada", false);
+
+		submenu_config_ruido.add(componente_ruido_minimo);
+		submenu_config_ruido.add(componente_ruido_maximo);
+
+		// agregar opciones del menu
 		entrada_menu_ruido.add(submenu_config_ruido);
 		entrada_menu_ruido.addSeparator();
-		entrada_menu_ruido.add(item_salir);
 
 		// agregar menu a la barra
 		barra_menu.add(entrada_menu_ruido);
-
-		setJMenuBar(barra_menu);
 	}
 
 	private void configMenuETL() {
@@ -111,25 +130,33 @@ public class ComponentMenu extends JFrame {
 			}
 		});
 
-		JMenuItem item_salir = new JMenuItem("Salir");
-		item_salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
+		// agregar opciones del menu
+		entrada_menu_etl.add(item_etl);
+		entrada_menu_etl.addSeparator();
 
-		item_salir.addActionListener(new ActionListener() {
+		// agregar menu a la barra
+		barra_menu.add(entrada_menu_etl);
+	}
+
+	private void configMenuPropiedades() {
+
+		entrada_menu_propiedades = new JMenu("Parametros");
+		entrada_menu_propiedades.setMinimumSize(getMinimumSize());
+
+		JMenuItem item_etl = new JMenuItem("Configurar...");
+		item_etl.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				dispose();
+				// TODO hugo: hacer archivo propertys y levantar ventana desde aca
 			}
 		});
 
 		// agregar opciones del menu
-		entrada_menu_etl.add(item_etl);
-		entrada_menu_etl.addSeparator();
-		entrada_menu_etl.add(item_salir);
+		entrada_menu_propiedades.add(item_etl);
+		entrada_menu_propiedades.addSeparator();
 
 		// agregar menu a la barra
-		barra_menu.add(entrada_menu_etl);
-
-		setJMenuBar(barra_menu);
+		barra_menu.add(entrada_menu_propiedades);
 	}
 
 	/* ............................................. */

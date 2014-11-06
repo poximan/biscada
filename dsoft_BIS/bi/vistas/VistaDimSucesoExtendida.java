@@ -38,6 +38,12 @@ public class VistaDimSucesoExtendida extends VistaDimAbstract {
 	public VistaDimSucesoExtendida(List<Alarma> consultas) {
 
 		super(new ServDimSuceso(), new ServDimSitio(), consultas);
-		super.configEventos(new EventoDimSuceso(this));
+		configEventos(new EventoDimSuceso(this));
+	}
+
+	@Override
+	public void configEventos(EventoDim eventos) {
+
+		super.configEventos(eventos);
 	}
 }

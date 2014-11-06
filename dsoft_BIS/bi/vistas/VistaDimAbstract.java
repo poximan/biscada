@@ -190,23 +190,22 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 		panel = new JPanel();
 		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla.setHorizontalGroup(
-			gl_pl_tabla.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pl_tabla.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		gl_pl_tabla.setVerticalGroup(
-			gl_pl_tabla.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pl_tabla.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pl_tabla
+						.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(
+								gl_pl_tabla
+										.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
+						.addContainerGap()));
+		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pl_tabla.createSequentialGroup()
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE).addContainerGap()));
 		panel.setLayout(null);
 
 		chckbxColumnasNulas = new JCheckBox("columnas nulas");
@@ -441,7 +440,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		btnCalidadServicio.addActionListener(eventos);
 		btnEjecutar.addActionListener(eventos);
 		chckbxAlarmaIncompleta.addActionListener(eventos);
-		tbl_titulo_filas.addMouseListener(eventos);
 	}
 
 	private void cargarTodasLasMediciones() {
@@ -490,7 +488,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		tbl_medicion.setModel(new TableModelMedicionTemporal(datos_tabla, encabezado_tabla));
 		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 
-		// armarSolapasGraficas();
+		armarSolapasGraficas();
 	}
 
 	@Override

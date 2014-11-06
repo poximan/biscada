@@ -37,6 +37,13 @@ public class VistaDimSitioExtendida extends VistaDimAbstract {
 	public VistaDimSitioExtendida(List<Alarma> consultas) {
 
 		super(new ServDimSitio(), consultas);
-		super.configEventos(new EventoDimSitio(this));
+		configEventos(new EventoDimSitio(this));
+	}
+
+	@Override
+	public void configEventos(EventoDim eventos) {
+
+		super.configEventos(eventos);
+		getTbl_titulo_filas().addMouseListener(eventos);
 	}
 }

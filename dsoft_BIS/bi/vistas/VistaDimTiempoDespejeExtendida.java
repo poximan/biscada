@@ -38,6 +38,12 @@ public class VistaDimTiempoDespejeExtendida extends VistaDimAbstract {
 	public VistaDimTiempoDespejeExtendida(List<Alarma> consultas) {
 
 		super(new ServDimTiempoDespeje(), new ServDimSitio(), consultas);
-		super.configEventos(new EventoDimTiempoDespeje(this));
+		configEventos(new EventoDimTiempoDespeje(this));
+	}
+
+	@Override
+	public void configEventos(EventoDim eventos) {
+
+		super.configEventos(eventos);
 	}
 }

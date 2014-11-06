@@ -92,7 +92,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	private JLabel lbl_medicion;
 	private JLabel lblPrimera;
 	private JLabel lblUltima;
-	private JLabel lblSeleccioneUnSitio;
 
 	private JTable tbl_medicion;
 	private JTable tbl_titulo_filas;
@@ -191,31 +190,28 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 		panel = new JPanel();
 		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tabla
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_pl_tabla
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 469,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
-						.addContainerGap()));
-		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tabla.createSequentialGroup()
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE).addContainerGap()));
+		gl_pl_tabla.setHorizontalGroup(
+			gl_pl_tabla.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pl_tabla.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		gl_pl_tabla.setVerticalGroup(
+			gl_pl_tabla.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pl_tabla.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 		panel.setLayout(null);
 
 		chckbxColumnasNulas = new JCheckBox("columnas nulas");
 		chckbxColumnasNulas.setBounds(6, 5, 97, 23);
 		panel.add(chckbxColumnasNulas);
-
-		lblSeleccioneUnSitio = new JLabel("Seleccione un sitio para obtener Indicador de Calidad de Servicio");
-		lblSeleccioneUnSitio.setBounds(150, 9, 309, 14);
-		panel.add(lblSeleccioneUnSitio);
 		gl_pl_grafico = new GroupLayout(pl_grafico);
 		gl_contentPane = new GroupLayout(this);
 

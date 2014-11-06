@@ -33,7 +33,7 @@ public abstract class Temporada {
 		establecerRangos(fecha_inicio, dia_inicio, mes_inicio);
 
 		fecha_fin = Calendar.getInstance();
-		establecerRangos(fecha_fin, dia_fin, mes_fin);
+		establecerRangos(fecha_fin, dia_fin + 1, mes_fin);
 	}
 
 	/* ............................................. */

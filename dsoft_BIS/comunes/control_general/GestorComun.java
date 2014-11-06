@@ -7,14 +7,10 @@ package control_general;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
-import vistas.VistaInicio;
 
 /* ............................................. */
 /* ............................................. */
@@ -30,44 +26,20 @@ public class GestorComun {
 
 	private static Logger log = Logger.getLogger(GestorComun.class);
 
-	private static GestorComun main_comun;
-	private JFrame frame_comun;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-	private GestorComun() {
+	public GestorComun() {
 
-		frame_comun = new JFrame("inicio");
-		log.trace("se crea marco para panel consultas");
-
-		frame_comun.setContentPane(new VistaInicio());
-		log.trace("se lanza pantalla de consultas");
+		GestorBI.getSingleton().mostrarVentana();
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	public static GestorComun getSingletonBI() {
-
-		if (main_comun == null)
-			main_comun = new GestorComun();
-		return main_comun;
-	}
-
-	public void mostrarVentana() {
-
-		frame_comun.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame_comun.pack();
-		frame_comun.setVisible(true);
-	}
 
 	/* ............................................. */
 	/* ............................................. */
@@ -95,7 +67,7 @@ public class GestorComun {
 			@Override
 			public void run() {
 				try {
-					GestorComun.getSingletonBI().mostrarVentana();
+					new GestorComun();
 				}
 				catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());

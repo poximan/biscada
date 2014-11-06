@@ -66,7 +66,7 @@ public class GestorETL {
 	public void mostrarVentana() {
 
 		frame_etl.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame_etl.pack();
+		frame_etl.setBounds(100, 100, 900, 600);
 		frame_etl.setVisible(true);
 	}
 }

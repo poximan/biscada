@@ -15,7 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import control_general.GestorETL;
+import control_general.GestorPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -126,7 +126,7 @@ public class ComponentMenu extends JFrame {
 		item_etl.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				GestorETL.getSingleton().mostrarVentana();
+				GestorPropiedades.getSingleton().mostrarVentana();
 			}
 		});
 
@@ -147,7 +147,7 @@ public class ComponentMenu extends JFrame {
 		item_etl.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				// TODO hugo: hacer archivo propertys y levantar ventana desde aca
+				GestorPropiedades.getSingleton().mostrarVentana();
 			}
 		});
 

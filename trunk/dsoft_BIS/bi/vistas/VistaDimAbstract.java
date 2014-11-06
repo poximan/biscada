@@ -494,7 +494,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		tbl_medicion.setModel(new TableModelMedicionTemporal(datos_tabla, encabezado_tabla));
 		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 
-		//armarSolapasGraficas();
+		// armarSolapasGraficas();
 	}
 
 	@Override

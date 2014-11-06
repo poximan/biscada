@@ -19,8 +19,11 @@ public abstract class Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private Calendar desde;
-	private Calendar hasta;
+	private int dia_inicio;
+	private int mes_inicio;
+
+	private int dia_fin;
+	private int mes_fin;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -29,8 +32,11 @@ public abstract class Temporada {
 
 	public Temporada(int dia_inicio, int mes_inicio, int dia_fin, int mes_fin) {
 
-		definirFecha(desde, dia_inicio, mes_inicio);
-		definirFecha(hasta, dia_fin, mes_fin);
+		this.dia_inicio = dia_inicio;
+		this.mes_inicio = mes_inicio;
+
+		this.dia_fin = dia_fin;
+		this.mes_fin = mes_fin;
 	}
 
 	/* ............................................. */
@@ -38,26 +44,14 @@ public abstract class Temporada {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Temporada() {
-	}
-
 	public boolean contiene(Alarma alarma_actual) {
 
-		desde.set(Calendar.YEAR, alarma_actual.getFecha_inicio().get(Calendar.YEAR));
-		hasta.set(Calendar.YEAR, alarma_actual.getFecha_inicio().get(Calendar.YEAR));
+		int dia_actual = alarma_actual.getFecha_inicio().get(Calendar.DAY_OF_MONTH);
+		int mes_actual = alarma_actual.getFecha_inicio().get(Calendar.MONTH);
 
-		return (desde.before(alarma_actual.getFecha_inicio()) && hasta.after(alarma_actual.getFecha_inicio()));
+		return (((dia_inicio + mes_inicio) <= dia_actual + mes_actual) && ((dia_fin + mes_fin) >= dia_actual
+				+ mes_actual));
 	}
-
-	private void definirFecha(Calendar fecha, int dia, int mes) {
-
-		fecha = Calendar.getInstance();
-		fecha.setTimeInMillis(0);
-
-		fecha.set(Calendar.DAY_OF_MONTH, dia);
-		fecha.set(Calendar.MONTH, mes);
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

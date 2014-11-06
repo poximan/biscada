@@ -121,7 +121,7 @@ public class GraficoKPI extends JPanel {
 	}
 
 	public void actualizarIntervalos() {
-		
+
 		intervaloNormal = new MeterInterval("Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
 				new Color(255, 255, 0, 64));
 

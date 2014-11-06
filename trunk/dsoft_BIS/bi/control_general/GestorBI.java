@@ -58,7 +58,6 @@ public class GestorBI {
 	public void mostrarVentana() {
 
 		frame_bi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame_bi.pack();
 		frame_bi.setVisible(true);
 	}
 }

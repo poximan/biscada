@@ -26,13 +26,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -403,17 +400,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		tbl_medicion.setIntercellSpacing(new Dimension(0, 0));
 	}
 
-	private void organizarTablas() {
-
-		TableModelMedicionTemporal modelo_tabla_medicion = new TableModelMedicionTemporal(new float[0][0],
-				new String[] { "" });
-
-		tbl_medicion = new JTable(modelo_tabla_medicion);
-		RowSorter<TableModel> ordenador_filas = new TableRowSorter<TableModel>(modelo_tabla_medicion);
-
-		tbl_medicion.setRowSorter(ordenador_filas);
-	}
-
 	@SuppressWarnings({ "rawtypes" })
 	public void configBinding() {
 
@@ -508,8 +494,8 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 			tabPane_grafico.addTab("..torta", scroll_tercer_grafico);
 		} else {
 			tabPane_grafico.setComponentAt(0, scroll_primer_grafico);
-			tabPane_grafico.setComponentAt(2, scroll_segundo_grafico);
-			tabPane_grafico.setComponentAt(3, scroll_tercer_grafico);
+			tabPane_grafico.setComponentAt(1, scroll_segundo_grafico);
+			tabPane_grafico.setComponentAt(2, scroll_tercer_grafico);
 		}
 
 		tabPane_grafico.validate();

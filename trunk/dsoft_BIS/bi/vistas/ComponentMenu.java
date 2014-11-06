@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import control_general.GestorETL;
 import control_general.GestorPropiedades;
 
 /* ............................................. */
@@ -123,10 +124,11 @@ public class ComponentMenu extends JFrame {
 		entrada_menu_etl.setMinimumSize(getMinimumSize());
 
 		JMenuItem item_etl = new JMenuItem("Abrir ETL");
+
 		item_etl.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				GestorPropiedades.getSingleton().mostrarVentana();
+				GestorETL.getSingleton().mostrarVentana();
 			}
 		});
 
@@ -143,8 +145,9 @@ public class ComponentMenu extends JFrame {
 		entrada_menu_propiedades = new JMenu("Parametros");
 		entrada_menu_propiedades.setMinimumSize(getMinimumSize());
 
-		JMenuItem item_etl = new JMenuItem("Configurar...");
-		item_etl.addActionListener(new ActionListener() {
+		JMenuItem item_propiedades = new JMenuItem("Configurar...");
+
+		item_propiedades.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				GestorPropiedades.getSingleton().mostrarVentana();
@@ -152,7 +155,7 @@ public class ComponentMenu extends JFrame {
 		});
 
 		// agregar opciones del menu
-		entrada_menu_propiedades.add(item_etl);
+		entrada_menu_propiedades.add(item_propiedades);
 		entrada_menu_propiedades.addSeparator();
 
 		// agregar menu a la barra

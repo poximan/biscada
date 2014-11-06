@@ -49,12 +49,32 @@ public abstract class Temporada {
 
 	/**
 	 * factor de correccion. todos los rangos de fechas se miden igual salvo el de temporada verano. alli, por como esta
-	 * implementada la logica, la comparacion de fecha inicio se hace por una fecha cuyo año está desplazado una unidad,
-	 * por lo tanto es necesario desplazar esta diferencia solo en ese unico caso.
+	 * implementada la logica, la comparacion de fecha inicio se hace por una fecha cuyo año adelantado una unidad, por
+	 * lo tanto es necesario corregir esta diferencia
 	 * 
-	 * @return 1 para el verano, y 0 para el resto de las temporadas
+	 * @param fecha_actual
+	 *            se toma como referencia para saber si se debe aplicar la correccion. Incluso para la temporada verano,
+	 *            si la alarma es de la parte de la temporada que cae despues de diciembre se debe aplicar correccion.
+	 * 
+	 * @return segun el contexto podría ser 1 para el verano, y 0 para el resto de las temporadas
+	 * 
 	 */
-	public int correccion() {
+	public int correccionInicio(Calendar fecha_actual) {
+		return 0;
+	}
+
+	/**
+	 * factor de correccion. todos los rangos de fechas se miden igual salvo el de temporada verano. alli, por como esta
+	 * implementada la logica, la comparacion de fecha inicio se hace por una fecha cuyo año adelantado una unidad, por
+	 * lo tanto es necesario corregir esta diferencia
+	 * 
+	 * @param fecha_actual
+	 *            se toma como referencia para saber si se debe aplicar la correccion. Incluso para la temporada verano,
+	 *            si la alarma es de la parte de la temporada que cae despues de diciembre se debe aplicar correccion.
+	 * 
+	 * @return segun el contexto podría ser 1 para el verano, y 0 para el resto de las temporadas
+	 */
+	public int correccionFin(Calendar fecha_actual) {
 		return 0;
 	}
 
@@ -84,10 +104,10 @@ public abstract class Temporada {
 
 		Calendar fecha_actual = alarma_actual.getFecha_inicio();
 
-		fecha_limite_inicio.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) - correccion());
+		fecha_limite_inicio.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) - correccionInicio(fecha_actual));
 		fecha_limite_inicio.get(Calendar.YEAR);
 
-		fecha_limite_fin.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR));
+		fecha_limite_fin.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) + correccionFin(fecha_actual));
 		fecha_limite_fin.get(Calendar.YEAR);
 
 		return (!fecha_limite_inicio.after(fecha_actual) && !fecha_limite_fin.before(fecha_actual));

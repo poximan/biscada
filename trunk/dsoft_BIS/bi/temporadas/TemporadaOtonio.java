@@ -7,7 +7,6 @@ package temporadas;
 
 import java.util.Calendar;
 
-import modelo.Alarma;
 import modelo.Temporada;
 
 /* ............................................. */
@@ -41,11 +40,6 @@ public class TemporadaOtonio extends Temporada {
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@Override
-	public boolean contiene(Alarma alarma_actual) {
-		return false;
-	}
 
 	@Override
 	public String toString() {

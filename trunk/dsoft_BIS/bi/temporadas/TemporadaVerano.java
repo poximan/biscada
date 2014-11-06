@@ -44,6 +44,11 @@ public class TemporadaVerano extends Temporada {
 		return "verano";
 	}
 
+	@Override
+	public int correccion() {
+		return 1;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

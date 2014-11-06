@@ -21,8 +21,8 @@ public class TemporadaOtonio extends Temporada {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private int dia_inicio = 21;
-	private int dia_fin = 21;
+	private static int dia_inicio = 21;
+	private static int dia_fin = 21;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,9 +31,7 @@ public class TemporadaOtonio extends Temporada {
 
 	public TemporadaOtonio() {
 
-		super();
-		definirDesde(dia_inicio, Calendar.MARCH);
-		definirHasta(dia_fin, Calendar.JUNE);
+		super(dia_inicio, Calendar.MARCH, dia_fin, Calendar.JUNE);
 	}
 
 	/* ............................................. */

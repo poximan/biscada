@@ -106,16 +106,16 @@ public class ServDimTemporada extends ServDimAbstract {
 	@Override
 	public Object[] getGrupos() {
 
-		List<Temporada> lista_segun_despeje = new ArrayList<Temporada>();
+		List<Temporada> lista_segun_temporada = new ArrayList<Temporada>();
 
 		Set<Temporada> keys = map.keySet();
 
 		for (Temporada rango_encontrado : keys)
-			lista_segun_despeje.add(rango_encontrado);
+			lista_segun_temporada.add(rango_encontrado);
 
-		Temporada arreglo_tiempos[] = new Temporada[lista_segun_despeje.size()];
-		arreglo_tiempos = lista_segun_despeje.toArray(arreglo_tiempos);
-		lista_segun_despeje.clear();
+		Temporada arreglo_tiempos[] = new Temporada[lista_segun_temporada.size()];
+		arreglo_tiempos = lista_segun_temporada.toArray(arreglo_tiempos);
+		lista_segun_temporada.clear();
 
 		return arreglo_tiempos;
 	}

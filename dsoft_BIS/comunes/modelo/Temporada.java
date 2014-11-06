@@ -33,7 +33,11 @@ public abstract class Temporada {
 	/* ............................................. */
 
 	public boolean contiene(Alarma alarma_actual) {
-		return (desde.before(alarma_actual) && hasta.after(alarma_actual));
+
+		desde.set(Calendar.YEAR, alarma_actual.getFecha_inicio().get(Calendar.YEAR));
+		hasta.set(Calendar.YEAR, alarma_actual.getFecha_inicio().get(Calendar.YEAR));
+
+		return (desde.before(alarma_actual.getFecha_inicio()) && hasta.after(alarma_actual.getFecha_inicio()));
 	}
 
 	public int diferenciaEntreFechas(Alarma alarma_actual) throws NullPointerException {

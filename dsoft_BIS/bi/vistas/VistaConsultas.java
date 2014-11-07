@@ -45,6 +45,7 @@ import modelo.Sitio;
 import modelo.Suceso;
 import modelo.TipoDeEquipo;
 
+import org.apache.log4j.Logger;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BindingGroup;
 import org.jdesktop.beansbinding.ELProperty;
@@ -69,6 +70,8 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
+
+	private static Logger log = Logger.getLogger(VistaConsultas.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -736,10 +739,15 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		btnTiempoDespeje.addActionListener(eventos);
 		btnTemporada.addActionListener(eventos);
 
-		cargarTodasLasFamilias();
-		cargarTodosLosSitios();
-		cargarTodosLosSucesos();
-		cargarTodosLosEquipos();
+		try {
+			cargarTodasLasFamilias();
+			cargarTodosLosSitios();
+			cargarTodosLosSucesos();
+			cargarTodosLosEquipos();
+		}
+		catch (NullPointerException excepcion) {
+			log.error("no esta habilitado el servicio MySQL");
+		}
 	}
 
 	@Override

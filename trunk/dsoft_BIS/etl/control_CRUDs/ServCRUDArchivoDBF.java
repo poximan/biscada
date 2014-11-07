@@ -68,12 +68,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		lista_disponibles.add(archivo_propietario);
 	}
 
-	public void agregarProcesados(Path entrada_archivo) {
-
-		ArchivoDBF archivo_propietario = crearDBF(entrada_archivo);
-		lista_procesados.add(archivo_propietario);
-	}
-
 	private ArchivoDBF crearDBF(Path entrada_archivo) {
 
 		ArchivoDBF archivo_propietario = new ArchivoDBF();

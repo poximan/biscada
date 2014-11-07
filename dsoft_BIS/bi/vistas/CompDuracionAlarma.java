@@ -20,7 +20,7 @@ import javax.swing.SpinnerNumberModel;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ComponentDuracionAlarma extends JPanel implements EventoConfigurable {
+public class CompDuracionAlarma extends JPanel implements EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +37,7 @@ public class ComponentDuracionAlarma extends JPanel implements EventoConfigurabl
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ComponentDuracionAlarma(String titulo, boolean estado_inicial_check) {
+	public CompDuracionAlarma(String titulo, boolean estado_inicial_check) {
 
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 		flowLayout.setVgap(1);

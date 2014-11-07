@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
 
 import control_general.GestorBI;
 
@@ -78,23 +77,24 @@ public class EventoETL implements ActionListener, DocumentListener {
 		resolverCambioTextoDireccion(evt);
 	}
 
+	/**
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
+	 * para que permitirá lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
+	 * 
+	 * @param evt
+	 */
 	@Override
 	public void insertUpdate(DocumentEvent evt) {
 		resolverCambioTextoDireccion(evt);
 	}
 
 	/**
-	 * el campo de texto de direccion origen de datos tiene asociado un evento para que cuando se modifique su contenido
-	 * se busquen los archivos .dbf que pudieran haber en esa direccion
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
+	 * para que permitirá lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
 	 * 
 	 * @param evt
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
-		try {
-			vista_etl.actualizarLector(evt.getDocument().getText(0, evt.getDocument().getLength()));
-		}
-		catch (BadLocationException excepcion) {
-			excepcion.printStackTrace();
-		}
+		vista_etl.actualizarLector();
 	}
 }

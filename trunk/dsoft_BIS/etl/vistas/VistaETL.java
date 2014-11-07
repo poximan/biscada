@@ -89,6 +89,12 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
+	/**
+	 * construye la vista para gestionar los archivos .dbf de una direccion dada. luego esta direccion podrá ser
+	 * cambiada
+	 * 
+	 * @param direccion_lectura
+	 */
 	public VistaETL(String direccion_lectura) {
 
 		log.trace("se contruyo esquema de BD y se buscaron archivos para agregar");
@@ -110,7 +116,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 150, 0, 150, 150, 0, 150 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 200, 0, 200, 0, 20 };
+		gridBagLayout.rowHeights = new int[] { 50, 36, 200, 0, 200, 0, 20 };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0, 0.0, 1.0 };
 		setLayout(gridBagLayout);
@@ -125,6 +131,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(lblDireccionFuente, gbc_lblDireccionFuente);
 
 		txtDireccionFuente = new JTextField();
+		txtDireccionFuente.setEditable(false);
 		GridBagConstraints gbc_txtDireccionFuente = new GridBagConstraints();
 		gbc_txtDireccionFuente.gridwidth = 4;
 		gbc_txtDireccionFuente.insets = new Insets(0, 0, 5, 5);
@@ -212,12 +219,13 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		lbl_candidatosExtraer.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_candidatosExtraer.setHorizontalTextPosition(SwingConstants.LEADING);
 
-		add(lbl_disponibles, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
+		add(lbl_disponibles, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.SOUTH,
 				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
 
 		lbl_candidatosProcesar = new JLabel("Candidatos a procesar");
 		lbl_candidatosProcesar.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lbl_candidatosProcesar = new GridBagConstraints();
+		gbc_lbl_candidatosProcesar.anchor = GridBagConstraints.SOUTH;
 		gbc_lbl_candidatosProcesar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lbl_candidatosProcesar.insets = new Insets(0, 0, 5, 5);
 		gbc_lbl_candidatosProcesar.gridx = 2;
@@ -225,6 +233,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(lbl_candidatosProcesar, gbc_lbl_candidatosProcesar);
 
 		GridBagConstraints gbc_lbl_procesados = new GridBagConstraints();
+		gbc_lbl_procesados.anchor = GridBagConstraints.SOUTH;
 		gbc_lbl_procesados.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lbl_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_lbl_procesados.gridx = 5;
@@ -234,7 +243,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 2, 1, 3, .5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
 
-		add(lbl_candidatosExtraer, new GridBagConstraints(3, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
+		add(lbl_candidatosExtraer, new GridBagConstraints(3, 1, 1, 1, 0, 0, GridBagConstraints.SOUTH,
 				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
 
 		add(new JScrollPane(list_candidatos_extraer), new GridBagConstraints(3, 2, 1, 3, .5, 1.0,
@@ -328,13 +337,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	}
 
 	/**
-	 * se ejecuta cada vez que se modifica el campo de texto de direccion origen desde dodne se nutrirá el proceso ETL
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
+	 * para que permitirá lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
 	 * 
-	 * @param direccion_lectura
+	 * @param evt
 	 */
-	public void actualizarLector(String direccion_lectura) {
+	public void actualizarLector() {
 
-		lector = new MultipleArchivoETL(direccion_lectura);
+		lector = new MultipleArchivoETL(txtDireccionFuente.getText());
 		lector.buscarNuevosArchivos();
 		restablecerListas();
 	}

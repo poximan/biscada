@@ -40,7 +40,7 @@ public class EventoKPI implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 
 		vista_kpi.getIndicador_kpi().Porcentaje((int) vista_kpi.getSpinner_porcentaje().getValue());
-		vista_kpi.getIndicador_kpi().repaint();
+		vista_kpi.getIndicador_kpi().validate();
 	}
 
 	/* ............................................. */

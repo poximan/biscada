@@ -8,6 +8,10 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+
 import control_general.GestorBI;
 
 /* ............................................. */
@@ -15,7 +19,7 @@ import control_general.GestorBI;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoETL implements ActionListener {
+public class EventoETL implements ActionListener, DocumentListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -62,5 +66,35 @@ public class EventoETL implements ActionListener {
 								if (evt.getSource() == vista_etl.getBtn_remover_candidato_procesar()) {
 									vista_etl.removerCandidatoProcesar();
 								}
+	}
+
+	@Override
+	public void changedUpdate(DocumentEvent evt) {
+		resolverCambioTextoDireccion(evt);
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent evt) {
+		resolverCambioTextoDireccion(evt);
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent evt) {
+		resolverCambioTextoDireccion(evt);
+	}
+
+	/**
+	 * el campo de texto de direccion origen de datos tiene asociado un evento para que cuando se modifique su contenido
+	 * se busquen los archivos .dbf que pudieran haber en esa direccion
+	 * 
+	 * @param evt
+	 */
+	public void resolverCambioTextoDireccion(DocumentEvent evt) {
+		try {
+			vista_etl.actualizarLector(evt.getDocument().getText(0, evt.getDocument().getLength()));
+		}
+		catch (BadLocationException excepcion) {
+			excepcion.printStackTrace();
+		}
 	}
 }

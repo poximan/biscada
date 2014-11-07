@@ -84,7 +84,7 @@ public class ComponentMenu extends JFrame {
 		item_salir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				dispose();
+				System.exit(0);
 			}
 		});
 

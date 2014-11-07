@@ -74,9 +74,7 @@ public class MultipleArchivoETL {
 			for (Path entrada_archivo : directorio_contenedor)
 
 				if (esExtensionValida(entrada_archivo))
-					if (dbf_servicio_crud.existeEnBD(entrada_archivo))
-						dbf_servicio_crud.agregarProcesados(entrada_archivo);
-					else
+					if (!dbf_servicio_crud.existeEnBD(entrada_archivo))
 						dbf_servicio_crud.agregarDisponibles(entrada_archivo);
 
 			directorio_contenedor.close();

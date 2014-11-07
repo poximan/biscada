@@ -51,6 +51,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JLabel lbl_disponibles;
 	private JLabel lbl_procesados;
 	private JLabel lbl_candidatosProcesar;
+	private JLabel lblDireccionFuente;
 
 	private ListModelOrdenada model_disponibles;
 	private ListModelOrdenada model_candidatos_procesar;
@@ -74,13 +75,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	private JScrollPane scrollPane_candidatosProcesar;
 	private JScrollPane scrollPane_procesados;
+
 	private JTextField txt_sin_procesar;
 	private JTextField txt_candidatos_procesar;
 	private JTextField txt_candidatos_extraer;
 	private JTextField txt_procesados;
-	private JLabel lblDireccionFuente;
-	private JTextField textField;
-	private JButton btnCambiar;
+	private JTextField txtDireccionFuente;
+
+	private CompSeleccionarDireccion btnCambiar;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -89,14 +91,12 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public VistaETL(String direccion_lectura) {
 
-		lector = new MultipleArchivoETL(direccion_lectura);
-		lector.buscarNuevosArchivos();
-
 		log.trace("se contruyo esquema de BD y se buscaron archivos para agregar");
 
 		iniciarComponentes();
 		configEventos();
-		restablecerListas();
+
+		txtDireccionFuente.setText(direccion_lectura);
 	}
 
 	/* ............................................. */
@@ -124,17 +124,17 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_lblDireccionFuente.gridy = 0;
 		add(lblDireccionFuente, gbc_lblDireccionFuente);
 
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 4;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtDireccionFuente = new JTextField();
+		GridBagConstraints gbc_txtDireccionFuente = new GridBagConstraints();
+		gbc_txtDireccionFuente.gridwidth = 4;
+		gbc_txtDireccionFuente.insets = new Insets(0, 0, 5, 5);
+		gbc_txtDireccionFuente.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtDireccionFuente.gridx = 1;
+		gbc_txtDireccionFuente.gridy = 0;
+		add(txtDireccionFuente, gbc_txtDireccionFuente);
+		txtDireccionFuente.setColumns(10);
 
-		btnCambiar = new JButton("cambiar...");
+		btnCambiar = new CompSeleccionarDireccion(txtDireccionFuente);
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
 		gbc_btnCambiar.anchor = GridBagConstraints.WEST;
 		gbc_btnCambiar.insets = new Insets(0, 0, 5, 0);
@@ -317,6 +317,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		EventoETL eventos = new EventoETL(this);
 
+		txtDireccionFuente.getDocument().addDocumentListener(eventos);
 		btn_confirmar_cambios.addActionListener(eventos);
 		btn_analisis_datos.addActionListener(eventos);
 		btn_restablecer.addActionListener(eventos);
@@ -324,6 +325,18 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		btn_agregar_candidato_procesar.addActionListener(eventos);
 		btn_remover_candidato_extraer.addActionListener(eventos);
 		btn_remover_candidato_procesar.addActionListener(eventos);
+	}
+
+	/**
+	 * se ejecuta cada vez que se modifica el campo de texto de direccion origen desde dodne se nutrirá el proceso ETL
+	 * 
+	 * @param direccion_lectura
+	 */
+	public void actualizarLector(String direccion_lectura) {
+
+		lector = new MultipleArchivoETL(direccion_lectura);
+		lector.buscarNuevosArchivos();
+		restablecerListas();
 	}
 
 	public void restablecerListas() {

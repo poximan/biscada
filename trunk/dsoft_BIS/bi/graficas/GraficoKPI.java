@@ -67,23 +67,17 @@ public class GraficoKPI extends JPanel {
 
 		JFreeChart chart = createChart();
 		ChartPanel chartpanel = new ChartPanel(chart);
-		chartpanel.setPreferredSize(new Dimension(300, 250));
+		//chartpanel.setPreferredSize(new Dimension(300, 250));
 		panel = chartpanel;
 		add(panel);
 		panel.setPreferredSize(new Dimension(300, 250));
 		return panel;
 	}
 
-	public void cargarDatos(float cantTotal, float promH, float cantAct) {
-
-		dataset = new DefaultValueDataset(cantAct);
-
-		promHist = promH;
-		System.out.println("verificando cuanto es el prom act " + promHist);
-		canTotal = cantTotal;
-
-	}
-
+	
+	/*
+	 * Se genera el dibujo con los datos ingresados.
+	 */
 	private JFreeChart createChart() {
 
 		rangoMin = promHist - porcentajeF;
@@ -121,6 +115,11 @@ public class GraficoKPI extends JPanel {
 		JFreeChart jfreechart = new JFreeChart("KPI", JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
 		return jfreechart;
 	}
+	
+	/*
+	 * se crean y actualizan los intervalos según el evento que ocurra (inicio o seteo de porcentaje).
+	 * 
+	 */
 
 	public void actualizarIntervalos() {
 
@@ -133,11 +132,25 @@ public class GraficoKPI extends JPanel {
 		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black, new BasicStroke(
 				3.0F), Color.RED);
 	}
-
+	
+	
 	/*
-	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
+	 * Se cargan los datos para ser reflejados en el semáforo
+	 * 
 	 */
 
+	public void cargarDatos(float cantTotal, float promH, float cantAct) {
+		dataset = new DefaultValueDataset(cantAct);
+		promHist = promH;
+		canTotal = cantTotal;
+
+	}
+
+	
+	/*
+	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
+	 * 
+	 */
 	public void Porcentaje(int porcentaje) {
 		porcentajeF = (promHist * porcentaje) / 100;
 		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
@@ -145,16 +158,21 @@ public class GraficoKPI extends JPanel {
 		actualizarIntervalos();
 		refreshChart();
 	}
-
+	
+	
+	/*
+	 * Actualización del gráfico cada ves que se agrande el rango del promedio
+	 * 
+	 */
 	private void refreshChart() {
 		panel.removeAll();
-		panel.revalidate(); // This removes the old chart
+		panel.revalidate(); // remueve el dibujo anterior
 		JFreeChart aChart = createChart();
 		aChart.removeLegend();
 		ChartPanel chartPanel = new ChartPanel(aChart);
 		chartPanel.setPreferredSize(new Dimension(300, 250));
 		panel.setLayout(new BorderLayout());
 		panel.add(chartPanel);
-		panel.repaint(); // This method makes the new chart appear
+		panel.repaint(); // se muestra el nuevo dibujo
 	}
 }

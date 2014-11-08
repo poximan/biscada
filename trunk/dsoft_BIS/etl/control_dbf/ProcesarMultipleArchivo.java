@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package control_etl;
+package control_dbf;
 
 import java.beans.Beans;
 import java.io.IOException;
@@ -21,7 +21,6 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_CRUDs.ServCRUDArchivoDBF;
-import control_dbf.ParametrosConexion;
 import control_general.EMFSingleton;
 
 /* ............................................. */

@@ -77,11 +77,11 @@ public class GraficoKPI extends JPanel {
 	public void cargarDatos(float cantTotal, float promH, float cantAct) {
 
 		dataset = new DefaultValueDataset(cantAct);
-		
+
 		promHist = promH;
 		System.out.println("verificando cuanto es el prom act " + promHist);
 		canTotal = cantTotal;
-		
+
 	}
 
 	private JFreeChart createChart() {
@@ -118,22 +118,20 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValuePaint(Color.black);
 		meterplot.setValueFont(new Font("Arial", 1, 14));
 
-		JFreeChart jfreechart = new JFreeChart("KPI",
-				JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
+		JFreeChart jfreechart = new JFreeChart("KPI", JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
 		return jfreechart;
 	}
 
 	public void actualizarIntervalos() {
 
-		intervaloNormal = new MeterInterval("Normal", new Range(0, rangoMin),
-				Color.black, new BasicStroke(3.0F), new Color(255, 255, 0, 64));
+		intervaloNormal = new MeterInterval("Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
+				new Color(255, 255, 0, 64));
 
-		intervaloAdvertencia = new MeterInterval("Advertencia", new Range(
-				rangoMin, rangoMax), Color.black, new BasicStroke(2.0F),
-				Color.yellow.brighter());
+		intervaloAdvertencia = new MeterInterval("Advertencia", new Range(rangoMin, rangoMax), Color.black,
+				new BasicStroke(2.0F), Color.yellow.brighter());
 
-		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax,
-				canTotal), Color.black, new BasicStroke(3.0F), Color.RED);
+		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black, new BasicStroke(
+				3.0F), Color.RED);
 	}
 
 	/*
@@ -142,8 +140,7 @@ public class GraficoKPI extends JPanel {
 
 	public void Porcentaje(int porcentaje) {
 		porcentajeF = (promHist * porcentaje) / 100;
-		System.out.println("El " + porcentaje + " % de " + promHist + " es "
-				+ porcentajeF);
+		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
 
 		actualizarIntervalos();
 		refreshChart();

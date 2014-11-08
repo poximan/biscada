@@ -5,6 +5,7 @@
 
 package vistas;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,8 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import java.awt.FlowLayout;
 
 /* ............................................. */
 /* ............................................. */
@@ -79,6 +78,7 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 	 * cuando el usuario presiona el boton cambiar se despliega una ventana de navegacion para seleccionar la nueva
 	 * carpeta origen de los datos para procesar por el ETL
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)

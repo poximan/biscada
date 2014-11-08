@@ -76,7 +76,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JScrollPane scrollPane_candidatosProcesar;
 	private JScrollPane scrollPane_procesados;
 
-	private JTextField txt_sin_procesar;
+	private JTextField txt_disponibles;
 	private JTextField txt_candidatos_procesar;
 	private JTextField txt_candidatos_extraer;
 	private JTextField txt_procesados;
@@ -267,16 +267,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_btn_agregar_candidato_extraer.gridy = 4;
 		add(btn_agregar_candidato_extraer, gbc_btn_agregar_candidato_extraer);
 
-		txt_sin_procesar = new JTextField();
-		txt_sin_procesar.setEditable(false);
+		txt_disponibles = new JTextField();
+		txt_disponibles.setEditable(false);
 		GridBagConstraints gbc_txt_sin_procesar = new GridBagConstraints();
 		gbc_txt_sin_procesar.anchor = GridBagConstraints.NORTH;
 		gbc_txt_sin_procesar.insets = new Insets(0, 0, 5, 5);
 		gbc_txt_sin_procesar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txt_sin_procesar.gridx = 0;
 		gbc_txt_sin_procesar.gridy = 5;
-		add(txt_sin_procesar, gbc_txt_sin_procesar);
-		txt_sin_procesar.setColumns(10);
+		add(txt_disponibles, gbc_txt_sin_procesar);
+		txt_disponibles.setColumns(10);
 
 		txt_candidatos_procesar = new JTextField();
 		txt_candidatos_procesar.setEditable(false);
@@ -334,13 +334,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		EventoETL eventos = new EventoETL(this);
 
 		txtDireccionFuente.getDocument().addDocumentListener(eventos);
+
+		btn_restablecer.addActionListener(eventos);
 		btn_confirmar_cambios.addActionListener(eventos);
 		btn_analisis_datos.addActionListener(eventos);
-		btn_restablecer.addActionListener(eventos);
-		btn_agregar_candidato_extraer.addActionListener(eventos);
+
 		btn_agregar_candidato_procesar.addActionListener(eventos);
-		btn_remover_candidato_extraer.addActionListener(eventos);
 		btn_remover_candidato_procesar.addActionListener(eventos);
+
+		btn_agregar_candidato_extraer.addActionListener(eventos);
+		btn_remover_candidato_extraer.addActionListener(eventos);
 	}
 
 	/**
@@ -353,19 +356,21 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		lector = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
 		lector.buscarNuevosArchivos();
-		restablecerListas();
+		actionReiniciar();
 	}
 
-	public void restablecerListas() {
+	public void actionReiniciar() {
 
 		List<ArchivoDBF> lista_diponible = lector.getDbf_servicio_crud().getLista_nuevos();
 		List<ArchivoDBF> lista_procesado = lector.getDbf_servicio_crud().getLista_anteriores();
 
-		agregarElementoDisponible(lista_diponible.toArray());
-		agregarElementoProcesado(lista_procesado.toArray());
+		borrarTodasLasListas();
+
+		agregarDisponible(lista_diponible.toArray());
+		agregarProcesado(lista_procesado.toArray());
 	}
 
-	public void modificarListas() {
+	public void actionGuardar() {
 
 		int indice_mayor = list_candidatos_procesar.getModel().getSize();
 		if (indice_mayor > 0) {
@@ -373,7 +378,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 			lector.getDbf_servicio_crud().setLista_nuevos(list_candidatos_procesar.getSelectedValuesList());
 		}
 
-		indice_mayor = list_candidatos_extraer.getModel().getSize() - 1;
+		indice_mayor = list_candidatos_extraer.getModel().getSize();
 		if (indice_mayor > 0) {
 			list_candidatos_extraer.setSelectionInterval(0, indice_mayor - 1);
 			lector.getDbf_servicio_crud().setLista_borrar(list_candidatos_extraer.getSelectedValuesList());
@@ -382,7 +387,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		lector.insertarArchivosSeleccionados();
 		lector.borrarArchivosSeleccionados();
 
-		restablecerListas();
+		actionReiniciar();
 	}
 
 	/**
@@ -395,11 +400,11 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * paso 3 [-=w] [(w)] - [.y.] [.z.] ...............................................................................
 	 * 
 	 */
-	public void agregarCandidatoProcesar() {
+	public void actionAgregarCandidatoProcesar() {
 
 		Object lista_seleccionados[] = list_disponibles.getSelectedValuesList().toArray();
-		agregarElementoCandidatoProcesar(lista_seleccionados);
-		borrarElementoListDisponibles();
+		agregarCandidatoProcesar(lista_seleccionados);
+		borrarDisponible(lista_seleccionados);
 	}
 
 	/**
@@ -411,11 +416,11 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * paso 3 [(x)] [-=x] - [.y.] [.z.] ...............................................................................
 	 * 
 	 */
-	public void removerCandidatoProcesar() {
+	public void actionRemoverCandidatoProcesar() {
 
-		Object selected[] = list_candidatos_extraer.getSelectedValuesList().toArray();
-		agregarElementoDisponible(selected);
-		borrarElementoListCandidatoProcesar();
+		Object lista_seleccionados[] = list_candidatos_procesar.getSelectedValuesList().toArray();
+		agregarDisponible(lista_seleccionados);
+		borrarCandidatoProcesar(lista_seleccionados);
 	}
 
 	/**
@@ -427,11 +432,11 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * paso 3 [.w.] [.x.] - [(z)] [-=z] ...............................................................................
 	 * 
 	 */
-	public void agregarCandidatoExtraer() {
+	public void actionAgregarCandidatoExtraer() {
 
-		Object selected[] = list_procesados.getSelectedValuesList().toArray();
-		agregarElementoCandidatoExtraer(selected);
-		borrarElementoListProcesado();
+		Object lista_seleccionados[] = list_procesados.getSelectedValuesList().toArray();
+		agregarCandidatoExtraer(lista_seleccionados);
+		borrarProcesado(lista_seleccionados);
 	}
 
 	/**
@@ -443,40 +448,49 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * paso 3 [.w.] [.x.] - [-=y] [(y)] ...............................................................................
 	 * 
 	 */
-	public void removerCandidatoExtraer() {
+	public void actionRemoverCandidatoExtraer() {
 
-		Object selected[] = list_candidatos_extraer.getSelectedValuesList().toArray();
-		agregarElementoProcesado(selected);
-		borrarElementoListCandidatoExtraer();
+		Object lista_seleccionados[] = list_candidatos_extraer.getSelectedValuesList().toArray();
+		agregarProcesado(lista_seleccionados);
+		borrarCandidatoExtraer(lista_seleccionados);
+	}
+
+	private void borrarTodasLasListas() {
+
+		model_disponibles.clear();
+		model_candidatos_procesar.clear();
+		model_candidatos_extraer.clear();
+		model_procesados.clear();
+
+		txt_disponibles.setText("0");
+		txt_candidatos_procesar.setText("0");
+		txt_candidatos_extraer.setText("0");
+		txt_procesados.setText("0");
 	}
 
 	/*
 	 * agregado y extraccion en lista
 	 */
-	public void agregarElementoDisponible(Object elementos[]) {
+	public void agregarDisponible(Object elementos[]) {
 
-		model_disponibles.clear();
 		llenarListModel(model_disponibles, elementos);
-		txt_sin_procesar.setText(String.valueOf(model_disponibles.getSize()));
+		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
-	public void agregarElementoCandidatoProcesar(Object elementos[]) {
+	public void agregarCandidatoProcesar(Object elementos[]) {
 
-		model_candidatos_procesar.clear();
 		llenarListModel(model_candidatos_procesar, elementos);
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
-	public void agregarElementoCandidatoExtraer(Object elementos[]) {
+	public void agregarCandidatoExtraer(Object elementos[]) {
 
-		model_candidatos_extraer.clear();
 		llenarListModel(model_candidatos_extraer, elementos);
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
-	public void agregarElementoProcesado(Object elementos[]) {
+	public void agregarProcesado(Object elementos[]) {
 
-		model_procesados.clear();
 		llenarListModel(model_procesados, elementos);
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
@@ -493,42 +507,38 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		model_lista.addAll(nuevos_valores);
 	}
 
-	private void borrarElementoListDisponibles() {
+	private void borrarDisponible(Object[] lista_seleccionados) {
 
-		Object selected[] = list_disponibles.getSelectedValuesList().toArray();
-		for (int i = selected.length - 1; i >= 0; --i) {
-			model_disponibles.removeElement(selected[i]);
-		}
+		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
+			model_disponibles.removeElement(lista_seleccionados[i]);
+
 		list_disponibles.getSelectionModel().clearSelection();
-		txt_sin_procesar.setText(String.valueOf(model_disponibles.getSize()));
+		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
-	private void borrarElementoListCandidatoProcesar() {
+	private void borrarCandidatoProcesar(Object[] lista_seleccionados) {
 
-		Object selected[] = list_candidatos_procesar.getSelectedValuesList().toArray();
-		for (int i = selected.length - 1; i >= 0; --i) {
-			model_candidatos_procesar.removeElement(selected[i]);
-		}
+		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
+			model_candidatos_procesar.removeElement(lista_seleccionados[i]);
+
 		list_candidatos_procesar.getSelectionModel().clearSelection();
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
-	private void borrarElementoListCandidatoExtraer() {
+	private void borrarCandidatoExtraer(Object[] lista_seleccionados) {
 
-		Object selected[] = list_candidatos_extraer.getSelectedValuesList().toArray();
-		for (int i = selected.length - 1; i >= 0; --i) {
-			model_candidatos_extraer.removeElement(selected[i]);
-		}
+		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
+			model_candidatos_extraer.removeElement(lista_seleccionados[i]);
+
 		list_candidatos_extraer.getSelectionModel().clearSelection();
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
-	private void borrarElementoListProcesado() {
+	private void borrarProcesado(Object[] lista_seleccionados) {
 
-		Object selected[] = list_procesados.getSelectedValuesList().toArray();
-		for (int i = selected.length - 1; i >= 0; --i) {
-			model_procesados.removeElement(selected[i]);
-		}
+		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
+			model_procesados.removeElement(lista_seleccionados[i]);
+
 		list_procesados.getSelectionModel().clearSelection();
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}

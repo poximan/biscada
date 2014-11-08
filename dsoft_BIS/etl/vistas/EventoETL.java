@@ -48,22 +48,23 @@ public class EventoETL implements ActionListener, DocumentListener {
 			GestorBI.getSingleton().mostrarVentana();
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {
-				vista_etl.modificarListas();
+				vista_etl.actionGuardar();
 			} else
 				if (evt.getSource() == vista_etl.getBtn_reiniciar()) {
-					vista_etl.restablecerListas();
+					vista_etl.actionReiniciar();
 				} else
 					if (evt.getSource() == vista_etl.getBtn_agregar_candidato_extraer()) {
-						vista_etl.agregarCandidatoExtraer();
+						vista_etl.actionAgregarCandidatoExtraer();
 					} else
-						if (evt.getSource() == vista_etl.getBtn_agregar_candidato_procesar()) {
-							vista_etl.agregarCandidatoProcesar();
+						if (evt.getSource() == vista_etl.getBtn_remover_candidato_extraer()) {
+							vista_etl.actionRemoverCandidatoExtraer();
 						} else
-							if (evt.getSource() == vista_etl.getBtn_remover_candidato_extraer()) {
-								vista_etl.removerCandidatoExtraer();
+							if (evt.getSource() == vista_etl.getBtn_agregar_candidato_procesar()) {
+								vista_etl.actionAgregarCandidatoProcesar();
 							} else
+
 								if (evt.getSource() == vista_etl.getBtn_remover_candidato_procesar()) {
-									vista_etl.removerCandidatoProcesar();
+									vista_etl.actionRemoverCandidatoProcesar();
 								}
 	}
 

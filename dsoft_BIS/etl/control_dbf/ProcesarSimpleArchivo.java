@@ -35,12 +35,12 @@ public class ProcesarSimpleArchivo {
 	private static int totalizador_extraidas = 0;
 	private static int totalizador_transformadas = 0;
 
-	private List<ArchAlarma> alarmas_extraidas;
-	private List<Alarma> alarmas_transformadas;
-
 	private ETL0Extraer extractor;
 	private ETL1Transformar transformador;
 	private ETL2Cargar cargador;
+
+	private List<ArchAlarma> alarmas_extraidas;
+	private List<Alarma> alarmas_transformadas;
 
 	/* ............................................. */
 	/* ............................................. */

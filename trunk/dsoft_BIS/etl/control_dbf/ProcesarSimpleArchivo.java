@@ -30,21 +30,15 @@ public class ProcesarSimpleArchivo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
+	private static Logger log = Logger.getLogger(ProcesarSimpleArchivo.class);
+
 	private static int totalizador_extraidas = 0;
 	private static int totalizador_transformadas = 0;
 
-	private static Logger log = Logger.getLogger(ProcesarSimpleArchivo.class);
-
-	public static int getTotalizador_extraidas() {
-		return totalizador_extraidas;
-	}
-
-	public static int getTotalizador_transformadas() {
-		return totalizador_transformadas;
-	}
+	private List<ArchAlarma> alarmas_extraidas;
+	private List<Alarma> alarmas_transformadas;
 
 	private ETL0Extraer extractor;
-
 	private ETL1Transformar transformador;
 	private ETL2Cargar cargador;
 
@@ -53,24 +47,12 @@ public class ProcesarSimpleArchivo {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	private List<ArchAlarma> alarmas_extraidas;
-
-	private List<Alarma> alarmas_transformadas;
-
-	private void actualizarTotalizadores(int extraidas, int transformadas) {
-
-		totalizador_extraidas += extraidas;
-		totalizador_transformadas += transformadas;
+	public ProcesarSimpleArchivo() {
 	}
 
 	/* ............................................. */
 	/* ............................................. */
-	/* GET'S ....................................... */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	public void insertarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
@@ -108,6 +90,12 @@ public class ProcesarSimpleArchivo {
 		reportar(eliminados);
 	}
 
+	private void actualizarTotalizadores(int extraidas, int transformadas) {
+
+		totalizador_extraidas += extraidas;
+		totalizador_transformadas += transformadas;
+	}
+
 	private void reportar(int eliminados) {
 		// TODO hugo: falta reporte luego de eliminacion
 	}
@@ -122,5 +110,18 @@ public class ProcesarSimpleArchivo {
 			log.trace(alarmas_defectuosas.toString());
 			log.info("de las defectuosas se aceptaron aquellas con sitio y suceso");
 		}
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public static int getTotalizador_extraidas() {
+		return totalizador_extraidas;
+	}
+
+	public static int getTotalizador_transformadas() {
+		return totalizador_transformadas;
 	}
 }

@@ -359,15 +359,18 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		actionReiniciar();
 	}
 
+	/**
+	 * pide las listas del servicio CRUD de archivos dbf y completa en los componentes graficos que corresponden
+	 */
 	public void actionReiniciar() {
 
-		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getLista_nuevos();
-		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getLista_anteriores();
+		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getListaDisponibles();
+		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getListaProcesados();
 
 		borrarTodasLasListas();
 
-		agregarDisponible(lista_diponible.toArray());
-		agregarProcesado(lista_procesado.toArray());
+		agregarDisponible((ArchivoDBF[]) lista_diponible.toArray());
+		agregarProcesado((ArchivoDBF[]) lista_procesado.toArray());
 	}
 
 	public void actionGuardar() {
@@ -375,19 +378,22 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		int indice_mayor = list_candidatos_procesar.getModel().getSize();
 		if (indice_mayor > 0) {
 			list_candidatos_procesar.setSelectionInterval(0, indice_mayor - 1);
+
 			procesador_archivos.getDbf_servicio_crud().setListaCandidatosProcesar(
 					list_candidatos_procesar.getSelectedValuesList());
+
+			procesador_archivos.insertarArchivosSeleccionados();
 		}
 
 		indice_mayor = list_candidatos_extraer.getModel().getSize();
 		if (indice_mayor > 0) {
 			list_candidatos_extraer.setSelectionInterval(0, indice_mayor - 1);
+
 			procesador_archivos.getDbf_servicio_crud().setListaCandidatosExtraer(
 					list_candidatos_extraer.getSelectedValuesList());
-		}
 
-		procesador_archivos.insertarArchivosSeleccionados();
-		procesador_archivos.borrarArchivosSeleccionados();
+			procesador_archivos.borrarArchivosSeleccionados();
+		}
 
 		actionReiniciar();
 	}
@@ -404,7 +410,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionAgregarCandidatoProcesar() {
 
-		Object lista_seleccionados[] = list_disponibles.getSelectedValuesList().toArray();
+		ArchivoDBF lista_seleccionados[] = (ArchivoDBF[]) list_disponibles.getSelectedValuesList().toArray();
 		agregarCandidatoProcesar(lista_seleccionados);
 		borrarDisponible(lista_seleccionados);
 	}
@@ -420,7 +426,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionRemoverCandidatoProcesar() {
 
-		Object lista_seleccionados[] = list_candidatos_procesar.getSelectedValuesList().toArray();
+		ArchivoDBF lista_seleccionados[] = (ArchivoDBF[]) list_candidatos_procesar.getSelectedValuesList().toArray();
 		agregarDisponible(lista_seleccionados);
 		borrarCandidatoProcesar(lista_seleccionados);
 	}
@@ -436,7 +442,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionAgregarCandidatoExtraer() {
 
-		Object lista_seleccionados[] = list_procesados.getSelectedValuesList().toArray();
+		ArchivoDBF lista_seleccionados[] = (ArchivoDBF[]) list_procesados.getSelectedValuesList().toArray();
 		agregarCandidatoExtraer(lista_seleccionados);
 		borrarProcesado(lista_seleccionados);
 	}
@@ -452,7 +458,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionRemoverCandidatoExtraer() {
 
-		Object lista_seleccionados[] = list_candidatos_extraer.getSelectedValuesList().toArray();
+		ArchivoDBF lista_seleccionados[] = (ArchivoDBF[]) list_candidatos_extraer.getSelectedValuesList().toArray();
+
 		agregarProcesado(lista_seleccionados);
 		borrarCandidatoExtraer(lista_seleccionados);
 	}
@@ -473,43 +480,31 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	/*
 	 * agregado y extraccion en lista
 	 */
-	public void agregarDisponible(Object elementos[]) {
+	public void agregarDisponible(ArchivoDBF elementos[]) {
 
-		llenarListModel(model_disponibles, elementos);
+		model_disponibles.addAll(elementos);
 		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
-	public void agregarCandidatoProcesar(Object elementos[]) {
+	public void agregarCandidatoProcesar(ArchivoDBF elementos[]) {
 
-		llenarListModel(model_candidatos_procesar, elementos);
+		model_candidatos_procesar.addAll(elementos);
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
-	public void agregarCandidatoExtraer(Object elementos[]) {
+	public void agregarCandidatoExtraer(ArchivoDBF elementos[]) {
 
-		llenarListModel(model_candidatos_extraer, elementos);
+		model_candidatos_extraer.addAll(elementos);
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
-	public void agregarProcesado(Object elementos[]) {
+	public void agregarProcesado(ArchivoDBF elementos[]) {
 
-		llenarListModel(model_procesados, elementos);
+		model_procesados.addAll(elementos);
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
 
-	/**
-	 * agrega nuevos elementos a una lista existente
-	 * 
-	 * @param model_lista
-	 *            de esta forma se puede utilizar el metodo en mas de una lista.
-	 * @param nuevos_valores
-	 *            a agregar, del tipo de la lista
-	 */
-	private void llenarListModel(ListModelOrdenada model_lista, Object nuevos_valores[]) {
-		model_lista.addAll(nuevos_valores);
-	}
-
-	private void borrarDisponible(Object[] lista_seleccionados) {
+	private void borrarDisponible(ArchivoDBF[] lista_seleccionados) {
 
 		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
 			model_disponibles.removeElement(lista_seleccionados[i]);
@@ -518,7 +513,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
-	private void borrarCandidatoProcesar(Object[] lista_seleccionados) {
+	private void borrarCandidatoProcesar(ArchivoDBF[] lista_seleccionados) {
 
 		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
 			model_candidatos_procesar.removeElement(lista_seleccionados[i]);
@@ -527,7 +522,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
-	private void borrarCandidatoExtraer(Object[] lista_seleccionados) {
+	private void borrarCandidatoExtraer(ArchivoDBF[] lista_seleccionados) {
 
 		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
 			model_candidatos_extraer.removeElement(lista_seleccionados[i]);
@@ -536,7 +531,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
-	private void borrarProcesado(Object[] lista_seleccionados) {
+	private void borrarProcesado(ArchivoDBF[] lista_seleccionados) {
 
 		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
 			model_procesados.removeElement(lista_seleccionados[i]);

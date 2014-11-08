@@ -174,11 +174,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public List<ArchivoDBF> getLista_anteriores() {
+	public List<ArchivoDBF> getListaProcesados() {
+		actualizarLista();
 		return list_procesados;
 	}
 
-	public List<ArchivoDBF> getLista_nuevos() {
+	public List<ArchivoDBF> getListaDisponibles() {
 		return list_disponibles;
 	}
 

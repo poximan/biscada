@@ -25,7 +25,7 @@ import modelo.ArchivoDBF;
 
 import org.apache.log4j.Logger;
 
-import control_etl.MultipleArchivoETL;
+import control_etl.ProcesarMultipleArchivo;
 
 /* ............................................. */
 /* ............................................. */
@@ -45,7 +45,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private static final String BTN_AGREGAR = ">>";
 	private static final String BTN_REMOVER = "<<";
 
-	private MultipleArchivoETL lector;
+	private ProcesarMultipleArchivo lector;
 
 	private JLabel lbl_candidatosExtraer;
 	private JLabel lbl_disponibles;
@@ -82,6 +82,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JTextField txt_procesados;
 	private JTextField txtDireccionFuente;
 
+	private String direccion_lectura;
 	private CompSeleccionarDireccion btnCambiar;
 
 	/* ............................................. */
@@ -97,12 +98,17 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public VistaETL(String direccion_lectura) {
 
-		log.trace("se contruyo esquema de BD y se buscaron archivos para agregar");
+		log.trace("set direccion por defecto para origen de datos");
+		this.direccion_lectura = direccion_lectura;
 
+		log.trace("inicia componentes");
 		iniciarComponentes();
+
+		log.trace("carga eventos");
 		configEventos();
 
-		txtDireccionFuente.setText(direccion_lectura);
+		log.trace("llenar listas");
+		actualizarLector();
 	}
 
 	/* ............................................. */
@@ -140,6 +146,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txtDireccionFuente.gridy = 0;
 		add(txtDireccionFuente, gbc_txtDireccionFuente);
 		txtDireccionFuente.setColumns(10);
+		txtDireccionFuente.setText(direccion_lectura);
 
 		btnCambiar = new CompSeleccionarDireccion(txtDireccionFuente);
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
@@ -344,7 +351,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actualizarLector() {
 
-		lector = new MultipleArchivoETL(txtDireccionFuente.getText());
+		lector = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
 		lector.buscarNuevosArchivos();
 		restablecerListas();
 	}
@@ -353,11 +360,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		List<ArchivoDBF> lista_diponible = lector.getDbf_servicio_crud().getLista_nuevos();
 		List<ArchivoDBF> lista_procesado = lector.getDbf_servicio_crud().getLista_anteriores();
-
-		borrarModelDisponibles();
-		borrarModelCandidatosProcesar();
-		borrarModelCandidatosExtraer();
-		borrarModelProcesados();
 
 		agregarElementoDisponible(lista_diponible.toArray());
 		agregarElementoProcesado(lista_procesado.toArray());
@@ -378,6 +380,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		}
 
 		lector.insertarArchivosSeleccionados();
+		lector.borrarArchivosSeleccionados();
+
 		restablecerListas();
 	}
 
@@ -450,21 +454,29 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * agregado y extraccion en lista
 	 */
 	public void agregarElementoDisponible(Object elementos[]) {
+
+		model_disponibles.clear();
 		llenarListModel(model_disponibles, elementos);
 		txt_sin_procesar.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
 	public void agregarElementoCandidatoProcesar(Object elementos[]) {
+
+		model_candidatos_procesar.clear();
 		llenarListModel(model_candidatos_procesar, elementos);
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
 	public void agregarElementoCandidatoExtraer(Object elementos[]) {
+
+		model_candidatos_extraer.clear();
 		llenarListModel(model_candidatos_extraer, elementos);
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
 	public void agregarElementoProcesado(Object elementos[]) {
+
+		model_procesados.clear();
 		llenarListModel(model_procesados, elementos);
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
@@ -519,25 +531,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		}
 		list_procesados.getSelectionModel().clearSelection();
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
-	}
-
-	/*
-	 * model
-	 */
-	public void borrarModelDisponibles() {
-		model_candidatos_extraer.clear();
-	}
-
-	public void borrarModelCandidatosProcesar() {
-		model_candidatos_procesar.clear();
-	}
-
-	public void borrarModelCandidatosExtraer() {
-		model_candidatos_extraer.clear();
-	}
-
-	public void borrarModelProcesados() {
-		model_procesados.clear();
 	}
 
 	/* ............................................. */

@@ -11,6 +11,8 @@ import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -32,11 +34,8 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 
 	private JButton btnCambiar;
 	private JFileChooser chooser;
-	private String choosertitle;
 
 	private JTextField txtDireccionFuente;
-	private File texto_directorio;
-	private File texto_archivo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -46,6 +45,17 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 	public CompSeleccionarDireccion(JTextField txtDireccionFuente) {
 
 		this.txtDireccionFuente = txtDireccionFuente;
+		File origen_datos = new File(txtDireccionFuente.getText());
+
+		chooser = new JFileChooser();
+		chooser.setCurrentDirectory(origen_datos);
+		chooser.setDialogTitle("Seleccione origen/destino para los datos");
+		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		chooser.setAcceptAllFileFilterUsed(false);
+
+		if (!origen_datos.exists())
+			JOptionPane.showMessageDialog(new JFrame("Error"), "Carpeta origen de datos no existe", "Backup problem",
+					JOptionPane.ERROR_MESSAGE);
 
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -56,6 +66,8 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 		btnCambiar = new JButton("Cambiar...");
 		btnCambiar.addActionListener(this);
 		add(btnCambiar);
+
+		actualizarDireccion();
 	}
 
 	/* ............................................. */
@@ -69,30 +81,30 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		chooser = new JFileChooser();
-		chooser.setCurrentDirectory(new java.io.File(txtDireccionFuente.getText()));
-		chooser.setDialogTitle(choosertitle);
-		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-		chooser.setAcceptAllFileFilterUsed(false);
-
-		if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-
-			texto_archivo = chooser.getSelectedFile();
-			txtDireccionFuente.setText(texto_archivo.getPath());
-		}
+		if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+			actualizarDireccion();
 	}
 
+	/**
+	 * carga en la barra de texto solo direcciones validades por el navegador de carpetas (en esta implementacion
+	 * jfilechooser)
+	 */
+	private void actualizarDireccion() {
+
+		String directorio_actual = null, archivo_seleccionado;
+
+		try {
+			directorio_actual = chooser.getCurrentDirectory().getPath();
+			archivo_seleccionado = chooser.getSelectedFile().getPath();
+			archivo_seleccionado = archivo_seleccionado.substring(archivo_seleccionado.lastIndexOf("\\"));
+		}
+		catch (NullPointerException excepcion) {
+			archivo_seleccionado = "";
+		}
+		txtDireccionFuente.setText(directorio_actual + archivo_seleccionado);
+	}
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	public File getTexto_directorio() {
-		return texto_directorio;
-	}
-
-	public File getTexto_archivo() {
-		return texto_archivo;
-	}
 }

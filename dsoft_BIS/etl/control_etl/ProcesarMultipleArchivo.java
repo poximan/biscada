@@ -29,14 +29,14 @@ import control_general.EMFSingleton;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class MultipleArchivoETL {
+public class ProcesarMultipleArchivo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(MultipleArchivoETL.class);
+	private static Logger log = Logger.getLogger(ProcesarMultipleArchivo.class);
 
 	private Path obj_direccion;
 
@@ -49,7 +49,7 @@ public class MultipleArchivoETL {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public MultipleArchivoETL(String directorio) {
+	public ProcesarMultipleArchivo(String directorio) {
 
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 
@@ -104,7 +104,7 @@ public class MultipleArchivoETL {
 	public void insertarArchivosSeleccionados() {
 
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
-		SimpleArchivoETL gestor = new SimpleArchivoETL();
+		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
 
 		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorDisponibles();
@@ -125,14 +125,18 @@ public class MultipleArchivoETL {
 			iterador.remove();
 		}
 
-		log.info("se extrajeron " + SimpleArchivoETL.getTotalizador_extraidas() + " filas de potenciales alarmas");
-		log.info("se transformaron " + SimpleArchivoETL.getTotalizador_transformadas() + " filas del total extraidas");
+		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
+		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
+				+ " filas del total extraidas");
 	}
 
+	/**
+	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
+	 */
 	public void borrarArchivosSeleccionados() {
 
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
-		SimpleArchivoETL gestor = new SimpleArchivoETL();
+		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
 
 		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorProcesados();
@@ -140,6 +144,9 @@ public class MultipleArchivoETL {
 		while (iterador.hasNext()) {
 
 			archivo_actual = iterador.next();
+
+			log.info("Eliminacion de archivo "
+					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 
 			em.getTransaction().begin();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);

@@ -84,7 +84,7 @@ public class ProcesarSimpleArchivo {
 	}
 
 	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
-		
+
 		dbf_servicio_crud.borrar(archivo_actual);
 	}
 

@@ -151,7 +151,7 @@ public class ProcesarMultipleArchivo {
 			log.info("Se elimino archivo "
 					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 
-			//iterador.remove();
+			iterador.remove();
 		}
 	}
 

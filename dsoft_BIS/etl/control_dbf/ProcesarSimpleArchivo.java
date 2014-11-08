@@ -101,12 +101,11 @@ public class ProcesarSimpleArchivo {
 		dbf_servicio_crud.actualizar(archivo_actual);
 	}
 
-	public void borrarSimpleArchivo(ArchivoDBF archivo_actual) {
+	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
 
 		int eliminados = 0;
-
+		dbf_servicio_crud.borrar(archivo_actual);
 		reportar(eliminados);
-		// TODO hugo: falta eliminacion
 	}
 
 	private void reportar(int eliminados) {

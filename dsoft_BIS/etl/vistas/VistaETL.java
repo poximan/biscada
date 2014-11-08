@@ -45,7 +45,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private static final String BTN_AGREGAR = ">>";
 	private static final String BTN_REMOVER = "<<";
 
-	private ProcesarMultipleArchivo lector;
+	private ProcesarMultipleArchivo procesador_archivos;
 
 	private JLabel lbl_candidatosExtraer;
 	private JLabel lbl_disponibles;
@@ -354,15 +354,15 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actualizarLector() {
 
-		lector = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
-		lector.buscarNuevosArchivos();
+		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
+		procesador_archivos.buscarNuevosArchivos();
 		actionReiniciar();
 	}
 
 	public void actionReiniciar() {
 
-		List<ArchivoDBF> lista_diponible = lector.getDbf_servicio_crud().getLista_nuevos();
-		List<ArchivoDBF> lista_procesado = lector.getDbf_servicio_crud().getLista_anteriores();
+		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getLista_nuevos();
+		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getLista_anteriores();
 
 		borrarTodasLasListas();
 
@@ -375,17 +375,19 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		int indice_mayor = list_candidatos_procesar.getModel().getSize();
 		if (indice_mayor > 0) {
 			list_candidatos_procesar.setSelectionInterval(0, indice_mayor - 1);
-			lector.getDbf_servicio_crud().setLista_nuevos(list_candidatos_procesar.getSelectedValuesList());
+			procesador_archivos.getDbf_servicio_crud().setListaCandidatosProcesar(
+					list_candidatos_procesar.getSelectedValuesList());
 		}
 
 		indice_mayor = list_candidatos_extraer.getModel().getSize();
 		if (indice_mayor > 0) {
 			list_candidatos_extraer.setSelectionInterval(0, indice_mayor - 1);
-			lector.getDbf_servicio_crud().setLista_borrar(list_candidatos_extraer.getSelectedValuesList());
+			procesador_archivos.getDbf_servicio_crud().setListaCandidatosExtraer(
+					list_candidatos_extraer.getSelectedValuesList());
 		}
 
-		lector.insertarArchivosSeleccionados();
-		lector.borrarArchivosSeleccionados();
+		procesador_archivos.insertarArchivosSeleccionados();
+		procesador_archivos.borrarArchivosSeleccionados();
 
 		actionReiniciar();
 	}

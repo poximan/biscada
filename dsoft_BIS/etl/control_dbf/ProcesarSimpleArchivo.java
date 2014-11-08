@@ -101,10 +101,16 @@ public class ProcesarSimpleArchivo {
 		dbf_servicio_crud.actualizar(archivo_actual);
 	}
 
-	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
-			ParametrosConexion parametros) {
-		// TODO hugo: etl todavia no elimina archivos ingresados a bd
+	public void borrarSimpleArchivo(ArchivoDBF archivo_actual) {
 
+		int eliminados = 0;
+
+		reportar(eliminados);
+		// TODO hugo: falta eliminacion
+	}
+
+	private void reportar(int eliminados) {
+		// TODO hugo: falta reporte luego de eliminacion
 	}
 
 	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {

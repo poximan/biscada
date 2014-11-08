@@ -143,13 +143,12 @@ public class ProcesarMultipleArchivo {
 
 			archivo_actual = iterador.next();
 
-			log.info("Eliminacion de archivo "
-					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
-
 			em.getTransaction().begin();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 			em.getTransaction().commit();
-			em.clear();
+
+			log.info("Se elimino archivo "
+					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 
 			iterador.remove();
 		}

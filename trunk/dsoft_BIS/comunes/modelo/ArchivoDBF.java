@@ -6,7 +6,9 @@
 package modelo;
 
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
+
+import org.eclipse.persistence.annotations.PrivateOwned;
 
 /* ............................................. */
 /* ............................................. */
@@ -55,6 +60,10 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	@Column(name = "VALIDO")
 	private Boolean valido;
+
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "archivo_propietario")
+	@PrivateOwned
+	private List<Alarma> lista_alarmas;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -100,6 +109,10 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	public Integer getId() {
+		return id;
+	}
 
 	public String getRuta() {
 		return ruta;

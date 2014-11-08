@@ -17,6 +17,7 @@ import control_etl.CampoTextoDefectuoso;
 import control_etl.ETL0Extraer;
 import control_etl.ETL1Transformar;
 import control_etl.ETL2Cargar;
+import control_general.EMFSingleton;
 
 /* ............................................. */
 /* ............................................. */
@@ -84,20 +85,14 @@ public class ProcesarSimpleArchivo {
 	}
 
 	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
-
-		int eliminados = 0;
+		
 		dbf_servicio_crud.borrar(archivo_actual);
-		reportar(eliminados);
 	}
 
 	private void actualizarTotalizadores(int extraidas, int transformadas) {
 
 		totalizador_extraidas += extraidas;
 		totalizador_transformadas += transformadas;
-	}
-
-	private void reportar(int eliminados) {
-		// TODO hugo: falta reporte luego de eliminacion
 	}
 
 	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {

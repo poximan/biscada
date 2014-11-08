@@ -149,8 +149,13 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public void borrar(Object entidad) {
-
+		
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+/*
+		ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM()
+				.find(ArchivoDBF.class, ((ArchivoDBF) entidad).getId());
+		*/
+		em.refresh(archivo_actual);
 		em.remove(archivo_actual);
 	}
 

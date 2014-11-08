@@ -51,20 +51,20 @@ public class ServPropiedades {
 	/* ......... CLASE Gestor_cola ................. */
 	/* ............................................. */
 	/**
-	 * longitud maxima que puede tomar la cola. aquellos clientes que ingresen al sistema en
-	 * momentos en que la cola este llena, no se uniran.
+	 * longitud maxima que puede tomar la cola. aquellos clientes que ingresen al sistema en momentos en que la cola
+	 * este llena, no se uniran.
 	 */
 	public static final String MAX_LONG_COLA = "Gestor_cola.MAX_LONG_COLA";
 
 	/**
-	 * indicador de cuantos clientes esta permitido que no se unan antes de generar una solicitud de
-	 * apertura de un nuevo servidor.
+	 * indicador de cuantos clientes esta permitido que no se unan antes de generar una solicitud de apertura de un
+	 * nuevo servidor.
 	 */
 	public static final String TOLERANCIA_NO_UNIDOS = "Gestor_cola.TOLERANCIA_NO_UNIDOS";
 
 	/**
-	 * indicador de cuantos clientes esta permitido que abandonen la cola antes de generar una
-	 * solicitud de apertura de un nuevo servidor.
+	 * indicador de cuantos clientes esta permitido que abandonen la cola antes de generar una solicitud de apertura de
+	 * un nuevo servidor.
 	 */
 	public static final String TOLERANCIA_ABANDONARON = "Gestor_cola.TOLERANCIA_ABANDONARON";
 
@@ -73,14 +73,12 @@ public class ServPropiedades {
 	/* ......... CLASE Gestor_simulacion ........... */
 	/* ............................................. */
 	/**
-	 * maximo tiempo (expresado en milisegundos) que pasara entre nuevos ingresos de clientes al
-	 * sistema
+	 * maximo tiempo (expresado en milisegundos) que pasara entre nuevos ingresos de clientes al sistema
 	 */
 	public static final String MAX_FREC_LLEGADA_CLI = "Gestor_simulacion.MAX_FREC_LLEGADA_CLI";
 
 	/**
-	 * minimo tiempo (expresado en milisegundos) que pasara entre nuevos ingresos de clientes al
-	 * sistema
+	 * minimo tiempo (expresado en milisegundos) que pasara entre nuevos ingresos de clientes al sistema
 	 */
 	public static final String MIN_FREC_LLEGADA_CLI = "Gestor_simulacion.MIN_FREC_LLEGADA_CLI";
 
@@ -99,14 +97,14 @@ public class ServPropiedades {
 	/* ......... CLASE Servidor .................... */
 	/* ............................................. */
 	/**
-	 * maximo tiempo (expresado en milisegundos) que se tomara un servidor para despechar a un
-	 * cliente, contando desde que lo toma
+	 * maximo tiempo (expresado en milisegundos) que se tomara un servidor para despechar a un cliente, contando desde
+	 * que lo toma
 	 */
 	public static final String MAX_TMP_ATENCION_SERV = "Servidor.MAX_TMP_ATENCION_SERV";
 
 	/**
-	 * minimo tiempo (expresado en milisegundos) que se tomara un servidor para despechar a un
-	 * cliente, contando desde que lo toma
+	 * minimo tiempo (expresado en milisegundos) que se tomara un servidor para despechar a un cliente, contando desde
+	 * que lo toma
 	 */
 	public static final String MIN_TMP_ATENCION_SERV = "Servidor.MIN_TMP_ATENCION_SERV";
 

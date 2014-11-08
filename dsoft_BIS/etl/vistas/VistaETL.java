@@ -25,7 +25,7 @@ import modelo.ArchivoDBF;
 
 import org.apache.log4j.Logger;
 
-import control_etl.ProcesarMultipleArchivo;
+import control_dbf.ProcesarMultipleArchivo;
 
 /* ............................................. */
 /* ............................................. */

@@ -16,7 +16,7 @@ import java.util.Calendar;
  * implementa patron plantilla
  * 
  * @author hdonato
- *
+ * 
  */
 public abstract class Temporada {
 

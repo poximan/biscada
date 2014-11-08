@@ -15,7 +15,7 @@ package vistas;
  * particular de configuracion de eventos en pantallas de dimension, porque alli es necesario un parametro adicional
  * 
  * @author hdonato
- *
+ * 
  */
 public interface EventoConfigurable {
 

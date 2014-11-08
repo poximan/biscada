@@ -15,7 +15,7 @@ package vistas;
  * agregar un argumento adicional
  * 
  * @author hdonato
- *
+ * 
  */
 public interface EventoKPIConfigurable {
 

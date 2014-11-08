@@ -74,7 +74,6 @@ public class EventoETL implements ActionListener, DocumentListener {
 
 	@Override
 	public void removeUpdate(DocumentEvent evt) {
-		resolverCambioTextoDireccion(evt);
 	}
 
 	/**

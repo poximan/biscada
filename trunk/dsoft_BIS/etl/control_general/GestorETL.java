@@ -32,10 +32,10 @@ public class GestorETL {
 	private JFrame frame_etl;
 
 	/* laburo */
-	private String direccion_lectura = "D:\\hugo\\proyectos\\uni\\desarrollo_soft\\datos\\Histo_alarm";
+	// private String direccion_lectura = "D:\\hugo\\proyectos\\uni\\desarrollo_soft\\datos\\Histo_alarm";
 
 	/* casa */
-	// private String direccion_lectura = "D:\\documentos\\hugo\\escull\\desarrollo_soft\\datos\\Histo_alarm";
+	private String direccion_lectura = "D:\\documentos\\hugo\\escull\\desarrollo_soft\\datos\\Histo_alarm";
 
 	/* ............................................. */
 	/* ............................................. */

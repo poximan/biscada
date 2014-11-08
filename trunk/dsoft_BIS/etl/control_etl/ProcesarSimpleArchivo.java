@@ -21,7 +21,7 @@ import control_dbf.ParametrosConexion;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class SimpleArchivoETL {
+public class ProcesarSimpleArchivo {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,7 +31,7 @@ public class SimpleArchivoETL {
 	private static int totalizador_extraidas = 0;
 	private static int totalizador_transformadas = 0;
 
-	private static Logger log = Logger.getLogger(SimpleArchivoETL.class);
+	private static Logger log = Logger.getLogger(ProcesarSimpleArchivo.class);
 
 	public static int getTotalizador_extraidas() {
 		return totalizador_extraidas;

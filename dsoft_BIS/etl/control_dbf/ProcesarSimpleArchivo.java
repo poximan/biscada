@@ -17,7 +17,6 @@ import control_etl.CampoTextoDefectuoso;
 import control_etl.ETL0Extraer;
 import control_etl.ETL1Transformar;
 import control_etl.ETL2Cargar;
-import control_general.EMFSingleton;
 
 /* ............................................. */
 /* ............................................. */

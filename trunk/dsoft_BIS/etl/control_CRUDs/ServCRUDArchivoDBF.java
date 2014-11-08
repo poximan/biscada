@@ -37,10 +37,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 	private EntityManager em;
 
-	private List<ArchivoDBF> lista_procesados;
-	private List<ArchivoDBF> lista_disponibles;
-	private List<ArchivoDBF> lista_borrar;
-	private ArchivoDBF ultimo_archivo_entregado;
+	private List<ArchivoDBF> list_disponibles;
+	private List<ArchivoDBF> list_candidatos_procesar;
+	private List<ArchivoDBF> list_candidatos_extraer;
+	private List<ArchivoDBF> list_procesados;
+
 	private ArchivoDBF archivo_propietario;
 
 	/* ............................................. */
@@ -53,7 +54,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		archivo_propietario = new ArchivoDBF();
 
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
-		lista_disponibles = new ArrayList<ArchivoDBF>();
+
+		list_disponibles = new ArrayList<ArchivoDBF>();
+
+		// solo para que no sean nulas, la instancia se controla desde la vista
+		list_candidatos_extraer = list_candidatos_procesar = new ArrayList<ArchivoDBF>();
+
 		actualizarLista();
 	}
 
@@ -65,7 +71,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void agregarDisponibles(Path entrada_archivo) {
 
 		ArchivoDBF archivo_propietario = crearDBF(entrada_archivo);
-		lista_disponibles.add(archivo_propietario);
+		list_disponibles.add(archivo_propietario);
 	}
 
 	private ArchivoDBF crearDBF(Path entrada_archivo) {
@@ -78,38 +84,34 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public boolean existeEnBD(Path entrada_archivo) {
 
 		archivo_propietario.setRuta(entrada_archivo.toString());
-		return lista_procesados.contains(archivo_propietario);
+		return list_procesados.contains(archivo_propietario);
 	}
 
 	public int getCantDisponibles() {
-		return lista_disponibles.size();
+		return list_disponibles.size();
 	}
 
 	public int getCantProcesados() {
-		return lista_procesados.size();
+		return list_procesados.size();
 	}
 
 	private int getIndiceCacheBD(Alarma alarma_actual) {
-		return lista_procesados.lastIndexOf(alarma_actual.getArchivo_propietario());
+		return list_procesados.lastIndexOf(alarma_actual.getArchivo_propietario());
 	}
 
-	public int getPosActualVentana() {
-		return lista_disponibles.indexOf(ultimo_archivo_entregado) + 1;
+	public Iterator<ArchivoDBF> getIteradorCandidatosProcesar() {
+		return list_candidatos_procesar.iterator();
 	}
 
-	public Iterator<ArchivoDBF> getIteradorDisponibles() {
-		return lista_disponibles.iterator();
-	}
-
-	public Iterator<ArchivoDBF> getIteradorProcesados() {
-		return lista_procesados.iterator();
+	public Iterator<ArchivoDBF> getIteradorCandidatosExtraer() {
+		return list_candidatos_extraer.iterator();
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
-		lista_procesados = Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections
+		list_procesados = Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections
 				.observableList(getQueryTodos().getResultList());
 	}
 
@@ -119,7 +121,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		int indice;
 
 		if ((indice = getIndiceCacheBD(alarma_actual)) != -1)
-			alarma_actual.setArchivo_propietario(lista_procesados.get(indice));
+			alarma_actual.setArchivo_propietario(list_procesados.get(indice));
 		else {
 			alarma_actual.getArchivo_propietario().setValido(true);
 			crear(alarma_actual.getArchivo_propietario());
@@ -147,6 +149,9 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public void borrar(Object entidad) {
+
+		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+		em.remove(archivo_actual);
 	}
 
 	@Override
@@ -167,11 +172,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	public List<ArchivoDBF> getLista_anteriores() {
-		return lista_procesados;
+		return list_procesados;
 	}
 
 	public List<ArchivoDBF> getLista_nuevos() {
-		return lista_disponibles;
+		return list_disponibles;
 	}
 
 	/* ............................................. */
@@ -179,15 +184,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setLista_anteriores(List<ArchivoDBF> lista_anteriores) {
-		this.lista_procesados = lista_anteriores;
+	public void setLista_nuevos(List<ArchivoDBF> list_candidatos_procesar) {
+		this.list_candidatos_procesar = list_candidatos_procesar;
 	}
 
-	public void setLista_nuevos(List<ArchivoDBF> lista_nuevos) {
-		this.lista_disponibles = lista_nuevos;
-	}
-
-	public void setLista_borrar(List<ArchivoDBF> lista_borrar) {
-		this.lista_borrar = lista_borrar;
+	public void setLista_borrar(List<ArchivoDBF> list_candidatos_extraer) {
+		this.list_candidatos_extraer = list_candidatos_extraer;
 	}
 }

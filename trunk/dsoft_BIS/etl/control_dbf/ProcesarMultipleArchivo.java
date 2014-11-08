@@ -106,7 +106,7 @@ public class ProcesarMultipleArchivo {
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
 
-		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorDisponibles();
+		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorCandidatosProcesar();
 
 		while (iterador.hasNext()) {
 
@@ -137,7 +137,7 @@ public class ProcesarMultipleArchivo {
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
 
-		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorProcesados();
+		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorCandidatosExtraer();
 
 		while (iterador.hasNext()) {
 
@@ -147,7 +147,7 @@ public class ProcesarMultipleArchivo {
 					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 
 			em.getTransaction().begin();
-			gestor.borrarSimpleArchivo(archivo_actual);
+			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 			em.getTransaction().commit();
 			em.clear();
 

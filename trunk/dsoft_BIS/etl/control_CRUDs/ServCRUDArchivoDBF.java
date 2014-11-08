@@ -150,11 +150,9 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public void borrar(Object entidad) {
 
-		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-		/*
-		 * ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM() .find(ArchivoDBF.class, ((ArchivoDBF)
-		 * entidad).getId());
-		 */
+		ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM()
+				.find(ArchivoDBF.class, ((ArchivoDBF) entidad).getId());
+
 		em.refresh(archivo_actual);
 		em.remove(archivo_actual);
 	}
@@ -189,11 +187,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setLista_nuevos(List<ArchivoDBF> list_candidatos_procesar) {
+	public void setListaCandidatosProcesar(List<ArchivoDBF> list_candidatos_procesar) {
 		this.list_candidatos_procesar = list_candidatos_procesar;
 	}
 
-	public void setLista_borrar(List<ArchivoDBF> list_candidatos_extraer) {
+	public void setListaCandidatosExtraer(List<ArchivoDBF> list_candidatos_extraer) {
 		this.list_candidatos_extraer = list_candidatos_extraer;
 	}
 }

@@ -369,8 +369,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		borrarTodasLasListas();
 
-		agregarDisponible((ArchivoDBF[]) lista_diponible.toArray());
-		agregarProcesado((ArchivoDBF[]) lista_procesado.toArray());
+		agregarDisponible(lista_diponible.toArray());
+		agregarProcesado(lista_procesado.toArray());
 	}
 
 	public void actionGuardar() {
@@ -410,7 +410,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionAgregarCandidatoProcesar() {
 
-		ArchivoDBF lista_seleccionados[] = (ArchivoDBF[]) list_disponibles.getSelectedValuesList().toArray();
+		Object lista_seleccionados[] = list_disponibles.getSelectedValuesList().toArray();
 		agregarCandidatoProcesar(lista_seleccionados);
 		borrarDisponible(lista_seleccionados);
 	}
@@ -480,15 +480,15 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	/*
 	 * agregado y extraccion en lista
 	 */
-	public void agregarDisponible(ArchivoDBF elementos[]) {
+	public void agregarDisponible(Object[] objects) {
 
-		model_disponibles.addAll(elementos);
+		model_disponibles.addAll(objects);
 		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
-	public void agregarCandidatoProcesar(ArchivoDBF elementos[]) {
+	public void agregarCandidatoProcesar(Object[] lista_seleccionados) {
 
-		model_candidatos_procesar.addAll(elementos);
+		model_candidatos_procesar.addAll(lista_seleccionados);
 		txt_candidatos_procesar.setText(String.valueOf(model_candidatos_procesar.getSize()));
 	}
 
@@ -498,13 +498,13 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txt_candidatos_extraer.setText(String.valueOf(model_candidatos_extraer.getSize()));
 	}
 
-	public void agregarProcesado(ArchivoDBF elementos[]) {
+	public void agregarProcesado(Object[] objects) {
 
-		model_procesados.addAll(elementos);
+		model_procesados.addAll(objects);
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
 	}
 
-	private void borrarDisponible(ArchivoDBF[] lista_seleccionados) {
+	private void borrarDisponible(Object[] lista_seleccionados) {
 
 		for (int i = lista_seleccionados.length - 1; i >= 0; --i)
 			model_disponibles.removeElement(lista_seleccionados[i]);

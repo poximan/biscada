@@ -86,7 +86,7 @@ public class ProcesarMultipleArchivo {
 			excepcion.printStackTrace();
 		}
 		log.info("\n... ... ... ... ... ... ... ... ... ... ... ... ... ... ...");
-		log.info(dbf_servicio_crud.getCantDisponibles() + " archivos disponibles");
+		log.info(dbf_servicio_crud.getCantParaProcesar() + " archivos disponibles");
 		log.info(dbf_servicio_crud.getCantProcesados() + " archivos procesados");
 	}
 
@@ -102,6 +102,7 @@ public class ProcesarMultipleArchivo {
 	 */
 	public void insertarArchivosSeleccionados() {
 
+		int totales = dbf_servicio_crud.getCantParaProcesar();
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
@@ -113,8 +114,8 @@ public class ProcesarMultipleArchivo {
 			archivo_actual = iterador.next();
 
 			log.info("ETL en archivo "
-					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " [restan "
-					+ dbf_servicio_crud.getCantDisponibles() + "]");
+					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " ["
+					+ dbf_servicio_crud.getCantParaProcesar() + "-" + totales + "]");
 
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);

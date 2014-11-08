@@ -134,7 +134,6 @@ public class ProcesarMultipleArchivo {
 	 */
 	public void borrarArchivosSeleccionados() {
 
-		ParametrosConexion parametros = new ParametrosConexion(481, 164);
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 		ArchivoDBF archivo_actual;
 
@@ -148,7 +147,7 @@ public class ProcesarMultipleArchivo {
 					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 
 			em.getTransaction().begin();
-			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+			gestor.borrarSimpleArchivo(archivo_actual);
 			em.getTransaction().commit();
 			em.clear();
 

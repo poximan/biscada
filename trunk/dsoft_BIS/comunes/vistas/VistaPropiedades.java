@@ -93,7 +93,7 @@ public class VistaPropiedades extends JPanel {
 		panelPropiedades.add(spinnerPisoRuido, gbc_spinnerPisoRuido);
 		spinnerPisoRuido.setModel(new SpinnerNumberModel(1, 1, 3600, 1));
 
-		JLabel lblTechoRuido = new JLabel("piso de ruido alarmas");
+		JLabel lblTechoRuido = new JLabel("techo de ruido alarmas");
 		GridBagConstraints gbc_lblTechoRuido = new GridBagConstraints();
 		gbc_lblTechoRuido.anchor = GridBagConstraints.EAST;
 		gbc_lblTechoRuido.insets = new Insets(0, 0, 0, 5);

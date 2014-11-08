@@ -87,8 +87,8 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		return list_procesados.contains(archivo_propietario);
 	}
 
-	public int getCantDisponibles() {
-		return list_disponibles.size();
+	public int getCantParaProcesar() {
+		return list_candidatos_procesar.size();
 	}
 
 	public int getCantProcesados() {
@@ -149,12 +149,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public void borrar(Object entidad) {
-		
+
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-/*
-		ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM()
-				.find(ArchivoDBF.class, ((ArchivoDBF) entidad).getId());
-		*/
+		/*
+		 * ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM() .find(ArchivoDBF.class, ((ArchivoDBF)
+		 * entidad).getId());
+		 */
 		em.refresh(archivo_actual);
 		em.remove(archivo_actual);
 	}

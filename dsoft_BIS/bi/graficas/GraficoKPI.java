@@ -52,7 +52,7 @@ public class GraficoKPI extends JPanel {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public GraficoKPI(String s) {
+	public GraficoKPI() {
 
 		setSize(400, 400);
 		setVisible(true);
@@ -67,10 +67,10 @@ public class GraficoKPI extends JPanel {
 
 		JFreeChart chart = createChart();
 		ChartPanel chartpanel = new ChartPanel(chart);
-		//chartpanel.setPreferredSize(new Dimension(300, 250));
+		chartpanel.setPreferredSize(new Dimension(300, 300));
 		panel = chartpanel;
 		add(panel);
-		panel.setPreferredSize(new Dimension(300, 250));
+		panel.setPreferredSize(new Dimension(300, 300));
 		return panel;
 	}
 
@@ -170,7 +170,7 @@ public class GraficoKPI extends JPanel {
 		JFreeChart aChart = createChart();
 		aChart.removeLegend();
 		ChartPanel chartPanel = new ChartPanel(aChart);
-		chartPanel.setPreferredSize(new Dimension(300, 250));
+		chartPanel.setPreferredSize(new Dimension(300, 300));
 		panel.setLayout(new BorderLayout());
 		panel.add(chartPanel);
 		panel.repaint(); // se muestra el nuevo dibujo

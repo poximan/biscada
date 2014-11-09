@@ -10,7 +10,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -35,8 +34,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	private EntityManager em;
 
 	private List<ArchivoDBF> list_disponibles;
-	private List<ArchivoDBF> list_candidatos_procesar;
-	private List<ArchivoDBF> list_candidatos_extraer;
 	private List<ArchivoDBF> list_procesados;
 
 	private ArchivoDBF archivo_propietario;
@@ -123,14 +120,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		return list_procesados.lastIndexOf(alarma_actual.getArchivo_propietario());
 	}
 
-	public Iterator<ArchivoDBF> getIteradorCandidatosProcesar() {
-		return list_candidatos_procesar.iterator();
-	}
-
-	public Iterator<ArchivoDBF> getIteradorCandidatosExtraer() {
-		return list_candidatos_extraer.iterator();
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
@@ -174,6 +163,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void borrar(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+
+		em.merge(archivo_actual);
+		em.getTransaction().commit();
+
+		em.getTransaction().begin();
 		em.remove(archivo_actual);
 	}
 
@@ -181,6 +175,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void crear(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+
+		em.merge(archivo_actual);
+		em.getTransaction().commit();
+
+		em.getTransaction().begin();
 		em.persist(archivo_actual);
 	}
 
@@ -207,12 +206,4 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
-
-	public void setListaCandidatosProcesar(List<ArchivoDBF> list_candidatos_procesar) {
-		this.list_candidatos_procesar = list_candidatos_procesar;
-	}
-
-	public void setListaCandidatosExtraer(List<ArchivoDBF> list_candidatos_extraer) {
-		this.list_candidatos_extraer = list_candidatos_extraer;
-	}
 }

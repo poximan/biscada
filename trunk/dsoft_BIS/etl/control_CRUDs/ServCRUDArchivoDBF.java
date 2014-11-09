@@ -90,6 +90,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	 * @param archivo_actual
 	 */
 	public void agregarDisponible(ArchivoDBF archivo_actual) {
+		archivo_actual.setId(null);
 		list_disponibles.add(archivo_actual);
 	}
 
@@ -106,14 +107,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	 */
 	public void quitarDisponible(ArchivoDBF archivo_actual) {
 		list_disponibles.remove(archivo_actual);
-	}
-
-	public int getCantParaProcesar() {
-		return list_disponibles.size();
-	}
-
-	public int getCantProcesados() {
-		return list_procesados.size();
 	}
 
 	private int getIndiceCacheBD(Alarma alarma_actual) {
@@ -163,11 +156,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void borrar(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-
+/*
 		em.merge(archivo_actual);
 		em.getTransaction().commit();
 
 		em.getTransaction().begin();
+		*/
 		em.remove(archivo_actual);
 	}
 
@@ -175,11 +169,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void crear(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-
+/*
 		em.merge(archivo_actual);
 		em.getTransaction().commit();
 
 		em.getTransaction().begin();
+		*/
 		em.persist(archivo_actual);
 	}
 

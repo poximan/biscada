@@ -91,7 +91,7 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 		configEventos();
 
 		log.trace("llenar listas");
-		actualizarLector();
+		actionRestablecer();
 	}
 
 	/* ............................................. */
@@ -243,24 +243,17 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 	}
 
 	/**
+	 * accion ejecutada al presionar el boton restablecer y el evento de cambiar el contenido del texto.
+	 * 
 	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
 	 * para que permitirá lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
-	 * 
-	 * @param evt
-	 */
-	public void actualizarLector() {
-
-		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
-		procesador_archivos.buscarNuevosArchivos();
-		actionRestablecer();
-	}
-
-	/**
-	 * accion ejecutada al presionar el boton restablecer
 	 * 
 	 * pide las listas del servicio CRUD de archivos dbf y completa en los componentes graficos que corresponden
 	 */
 	public void actionRestablecer() {
+
+		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
+		procesador_archivos.buscarNuevosArchivos();
 
 		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getListaDisponibles();
 		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getListaProcesados();

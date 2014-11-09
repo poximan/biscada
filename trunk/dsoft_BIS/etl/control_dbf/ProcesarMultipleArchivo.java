@@ -88,8 +88,8 @@ public class ProcesarMultipleArchivo {
 			excepcion.printStackTrace();
 		}
 		log.info("\n... ... ... ... ... ... ... ... ... ... ... ... ... ... ...");
-		log.info(dbf_servicio_crud.getCantParaProcesar() + " archivos disponibles");
-		log.info(dbf_servicio_crud.getCantProcesados() + " archivos procesados");
+		log.info(dbf_servicio_crud.getListaDisponibles().size() + " archivos disponibles");
+		log.info(dbf_servicio_crud.getListaProcesados().size() + " archivos procesados");
 	}
 
 	private boolean esExtensionValida(Path entrada_archivo) {
@@ -121,13 +121,8 @@ public class ProcesarMultipleArchivo {
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 
-			try {
-				terminarTrasaccion();
-			}
-			catch (RollbackException excepcion) {
-			}
+			terminarTrasaccion();
 
-			dbf_servicio_crud.quitarDisponible(archivo_actual);
 		}
 		mostarInfo();
 	}
@@ -163,8 +158,6 @@ public class ProcesarMultipleArchivo {
 			}
 			catch (RollbackException excepcion) {
 			}
-
-			dbf_servicio_crud.agregarDisponible(archivo_actual);
 		}
 	}
 

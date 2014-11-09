@@ -82,6 +82,6 @@ public class EventoETLPrueba implements ActionListener, DocumentListener {
 	 * @param evt
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
-		vista_etl.actualizarLector();
+		vista_etl.actionRestablecer();
 	}
 }

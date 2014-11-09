@@ -13,8 +13,10 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.RollbackException;
 
 import modelo.ArchivoDBF;
 
@@ -99,31 +101,49 @@ public class ProcesarMultipleArchivo {
 
 	/**
 	 * comieza el proceso ETL de todos los archivos validos para ser insertados
+	 * 
+	 * @param lista_candidatos_procesar
 	 */
-	public void insertarArchivosSeleccionados() {
+	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar) {
 
-		int totales = dbf_servicio_crud.getCantParaProcesar();
+		int totales = lista_candidatos_procesar.size();
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
-		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
-		ArchivoDBF archivo_actual;
 
-		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorCandidatosProcesar();
+		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
+
+		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
 		while (iterador.hasNext()) {
 
-			archivo_actual = iterador.next();
-
-			log.info("ETL en archivo "
-					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1) + " ["
-					+ dbf_servicio_crud.getCantParaProcesar() + "-" + totales + "]");
+			ArchivoDBF archivo_actual = iterador.next();
+			gestor.mostarInfo(dbf_servicio_crud, archivo_actual, totales);
 
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
-			em.getTransaction().commit();
-			em.clear();
 
+			terminarTrasaccion();
+
+			em.clear();
+			dbf_servicio_crud.quitarDisponible(archivo_actual);
 			iterador.remove();
 		}
+		mostarInfo();
+	}
+
+	private void terminarTrasaccion() {
+
+		try {
+			em.getTransaction().commit();
+		}
+		catch (RollbackException excepcion) {
+			log.error("comienza rollback");
+
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		}
+	}
+
+	private void mostarInfo() {
 
 		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
 		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
@@ -132,25 +152,28 @@ public class ProcesarMultipleArchivo {
 
 	/**
 	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
+	 * 
+	 * @param llista_candidatos_extraer
 	 */
-	public void borrarArchivosSeleccionados() {
+	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {
 
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
-		ArchivoDBF archivo_actual;
 
-		Iterator<ArchivoDBF> iterador = dbf_servicio_crud.getIteradorCandidatosExtraer();
+		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
 		while (iterador.hasNext()) {
 
-			archivo_actual = iterador.next();
+			ArchivoDBF archivo_actual = iterador.next();
 
 			em.getTransaction().begin();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
-			em.getTransaction().commit();
 
-			log.info("Se elimino archivo "
-					+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
+			terminarTrasaccion();
 
+			gestor.mostarInfo(archivo_actual);
+
+			em.clear();
+			dbf_servicio_crud.agregarDisponible(archivo_actual);
 			iterador.remove();
 		}
 	}

@@ -74,7 +74,6 @@ public class GraficoKPI extends JPanel {
 		return panel;
 	}
 
-	
 	/*
 	 * Se genera el dibujo con los datos ingresados.
 	 */
@@ -115,10 +114,9 @@ public class GraficoKPI extends JPanel {
 		JFreeChart jfreechart = new JFreeChart("KPI", JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
 		return jfreechart;
 	}
-	
+
 	/*
 	 * se crean y actualizan los intervalos según el evento que ocurra (inicio o seteo de porcentaje).
-	 * 
 	 */
 
 	public void actualizarIntervalos() {
@@ -132,11 +130,9 @@ public class GraficoKPI extends JPanel {
 		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black, new BasicStroke(
 				3.0F), Color.RED);
 	}
-	
-	
+
 	/*
 	 * Se cargan los datos para ser reflejados en el semáforo
-	 * 
 	 */
 
 	public void cargarDatos(float cantTotal, float promH, float cantAct) {
@@ -146,10 +142,8 @@ public class GraficoKPI extends JPanel {
 
 	}
 
-	
 	/*
 	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
-	 * 
 	 */
 	public void Porcentaje(int porcentaje) {
 		porcentajeF = (promHist * porcentaje) / 100;
@@ -158,11 +152,9 @@ public class GraficoKPI extends JPanel {
 		actualizarIntervalos();
 		refreshChart();
 	}
-	
-	
+
 	/*
 	 * Actualización del gráfico cada ves que se agrande el rango del promedio
-	 * 
 	 */
 	private void refreshChart() {
 		panel.removeAll();

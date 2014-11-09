@@ -26,9 +26,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "equipo_en_sitio", uniqueConstraints = @UniqueConstraint(columnNames = { "ID_SITIO", "ID_TIPO_DE_EQUIPO",
 		"NUMERO_EQUIPO" }))
-@NamedQueries({//
-/*    */@NamedQuery(name = "EquipoEnSitio.buscTodos", query = "SELECT tabla FROM EquipoEnSitio tabla"),
-		@NamedQuery(name = "EquipoEnSitio.consulta2", query = "SELECT tabla FROM EquipoEnSitio tabla"), })
+@NamedQueries({ @NamedQuery(name = "EquipoEnSitio.buscTodos", query = "SELECT tabla FROM EquipoEnSitio tabla"), })
 public class EquipoEnSitio {
 
 	/* ............................................. */

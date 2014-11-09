@@ -22,10 +22,9 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "suceso")
-@NamedQueries({//
+@NamedQueries({
 		@NamedQuery(name = "Suceso.buscTodos", query = "SELECT tabla FROM Suceso tabla"),
-		@NamedQuery(name = "Suceso.buscDescripcion", query = "SELECT tabla FROM Suceso tabla WHERE tabla.descripcion = :descripcion"),
-		@NamedQuery(name = "Suceso.consulta2", query = "SELECT tabla FROM Suceso tabla"), })
+		@NamedQuery(name = "Suceso.buscDescripcion", query = "SELECT tabla FROM Suceso tabla WHERE tabla.descripcion = :descripcion"), })
 public class Suceso {
 
 	/* ............................................. */

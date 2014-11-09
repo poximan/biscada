@@ -18,21 +18,21 @@ import control_general.GestorBI;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoETL implements ActionListener, DocumentListener {
+public class EventoETLPrueba implements ActionListener, DocumentListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaETL vista_etl;
+	private VistaETLPrueba vista_etl;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoETL(VistaETL vista_etl) {
+	public EventoETLPrueba(VistaETLPrueba vista_etl) {
 		this.vista_etl = vista_etl;
 	}
 
@@ -48,24 +48,11 @@ public class EventoETL implements ActionListener, DocumentListener {
 			GestorBI.getSingleton().mostrarVentana();
 		} else
 			if (evt.getSource() == vista_etl.getBtn_guardar()) {
-				vista_etl.actionGuardar();
+				vista_etl.actionConfirmarCambios();
 			} else
 				if (evt.getSource() == vista_etl.getBtn_reiniciar()) {
-					vista_etl.actionReiniciar();
-				} else
-					if (evt.getSource() == vista_etl.getBtn_agregar_candidato_extraer()) {
-						vista_etl.actionAgregarCandidatoExtraer();
-					} else
-						if (evt.getSource() == vista_etl.getBtn_remover_candidato_extraer()) {
-							vista_etl.actionRemoverCandidatoExtraer();
-						} else
-							if (evt.getSource() == vista_etl.getBtn_agregar_candidato_procesar()) {
-								vista_etl.actionAgregarCandidatoProcesar();
-							} else
-
-								if (evt.getSource() == vista_etl.getBtn_remover_candidato_procesar()) {
-									vista_etl.actionRemoverCandidatoProcesar();
-								}
+					vista_etl.actionRestablecer();
+				}
 	}
 
 	@Override

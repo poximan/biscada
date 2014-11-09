@@ -15,8 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -29,22 +27,6 @@ import javax.persistence.Temporal;
 @SuppressWarnings("rawtypes")
 @Entity
 @Table(name = "alarma")
-@NamedQueries({//
-/*   */@NamedQuery(name = "Alarma.buscConFiltros", query = "SELECT tabla FROM Alarma tabla "//
-		+ "WHERE " + //
-		"tabla.fecha_inicio BETWEEN :param_desde AND :param_hasta"//
-		+ " AND " + //
-		"(:param_familia = 'todos' OR tabla.familia.descripcion = :param_familia)"//
-		+ " AND " + //
-		"(:param_sitio = 'todos' OR tabla.sitio.descripcion = :param_sitio)"//
-		+ " AND " + //
-		"(:param_equipo = 'todos' OR tabla.equipo_en_sitio.tipo_de_equipo.descripcion = :param_equipo)"//
-		+ " AND " + //
-		"(:param_suceso = 'todos' OR tabla.suceso.descripcion = :param_suceso)"//
-), //
-		@NamedQuery(name = "Alarma.buscPrimeraGenerada", query = "SELECT MIN(tabla.fecha_inicio) FROM Alarma tabla"//
-		), //
-})
 public class Alarma implements Comparable {
 
 	/* ............................................. */

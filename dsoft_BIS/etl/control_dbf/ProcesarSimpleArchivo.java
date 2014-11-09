@@ -106,6 +106,29 @@ public class ProcesarSimpleArchivo {
 		}
 	}
 
+	/**
+	 * muestra resultados creacion de un archivo
+	 * 
+	 * @param dbf_servicio_crud
+	 * @param archivo_actual
+	 * @param totales
+	 */
+	public void mostarInfo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual, int totales) {
+
+		log.info("ETL en archivo " + archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1)
+				+ " [" + dbf_servicio_crud.getCantParaProcesar() + "-" + totales + "]");
+	}
+
+	/**
+	 * muestra resultados eliminacion de un archivo
+	 * 
+	 * @param archivo_actual
+	 */
+	public void mostarInfo(ArchivoDBF archivo_actual) {
+		log.info("Se elimino archivo "
+				+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

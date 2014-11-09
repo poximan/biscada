@@ -6,7 +6,7 @@
 package modelo;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,8 +32,7 @@ import org.eclipse.persistence.annotations.PrivateOwned;
 @Table(name = "archivo_dbf")
 @NamedQueries({
 		@NamedQuery(name = "ArchivoDBF.buscTodos", query = "SELECT tabla FROM ArchivoDBF tabla"),
-		@NamedQuery(name = "ArchivoDBF.buscRuta", query = "SELECT tabla FROM ArchivoDBF tabla WHERE tabla.ruta = :ruta"),
-		@NamedQuery(name = "ArchivoDBF.consulta2", query = "SELECT tabla FROM ArchivoDBF tabla"), })
+		@NamedQuery(name = "ArchivoDBF.buscRuta", query = "SELECT tabla FROM ArchivoDBF tabla WHERE tabla.ruta = :ruta"), })
 public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	/* ............................................. */
@@ -61,9 +60,9 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	@Column(name = "VALIDO")
 	private Boolean valido;
 
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "archivo_propietario")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "archivo_propietario")
 	@PrivateOwned
-	private List<Alarma> lista_alarmas;
+	private Collection<Alarma> lista_alarmas;
 
 	/* ............................................. */
 	/* ............................................. */

@@ -8,6 +8,7 @@ package vistas;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.Beans;
 import java.io.File;
 
 import javax.swing.JButton;
@@ -52,7 +53,7 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		chooser.setAcceptAllFileFilterUsed(false);
 
-		if (!origen_datos.exists())
+		if (!Beans.isDesignTime() && !origen_datos.exists())
 			JOptionPane.showMessageDialog(new JFrame("Error"), "Carpeta origen de datos no existe", "Backup problem",
 					JOptionPane.ERROR_MESSAGE);
 

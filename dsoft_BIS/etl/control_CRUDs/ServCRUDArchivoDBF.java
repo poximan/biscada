@@ -18,9 +18,6 @@ import javax.persistence.Query;
 
 import modelo.Alarma;
 import modelo.ArchivoDBF;
-
-import org.jdesktop.observablecollections.ObservableCollections;
-
 import control_general.EMFSingleton;
 
 /* ............................................. */
@@ -57,9 +54,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 
 		list_disponibles = new ArrayList<ArchivoDBF>();
 
-		// solo para que no sean nulas, la instancia se controla desde la vista
-		list_candidatos_extraer = list_candidatos_procesar = new ArrayList<ArchivoDBF>();
-
 		actualizarLista();
 	}
 
@@ -87,8 +81,38 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 		return list_procesados.contains(archivo_propietario);
 	}
 
+	/**
+	 * cuando se lanza la ventana de operacion ETL completa los contadores y las listas con valores iniciales relativo
+	 * al contexto (archivos para procesador, archivos insertados en BD). en la medida que el usuario usa la pantalla
+	 * este contexto comienza a cambiar. para mantaner los contadores y listas de valores en orden se utilizan metodos
+	 * de soporte, uno de ellos es este.
+	 * 
+	 * PRE: archivo fue borrado de BD ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+	 * agrega un nuevo archivo a la lista de disponibles, no debe existir en la BD.
+	 * 
+	 * @param archivo_actual
+	 */
+	public void agregarDisponible(ArchivoDBF archivo_actual) {
+		list_disponibles.add(archivo_actual);
+	}
+
+	/**
+	 * cuando se lanza la ventana de operacion ETL completa los contadores y las listas con valores iniciales relativo
+	 * al contexto (archivos para procesador, archivos insertados en BD). en la medida que el usuario usa la pantalla
+	 * este contexto comienza a cambiar. para mantaner los contadores y listas de valores en orden se utilizan metodos
+	 * de soporte, uno de ellos es este.
+	 * 
+	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+	 * quita un archivo a la lista de disponibles si es que se pudo ingresar satisfactoriamente a la BD.
+	 * 
+	 * @param archivo_actual
+	 */
+	public void quitarDisponible(ArchivoDBF archivo_actual) {
+		list_disponibles.remove(archivo_actual);
+	}
+
 	public int getCantParaProcesar() {
-		return list_candidatos_procesar.size();
+		return list_disponibles.size();
 	}
 
 	public int getCantProcesados() {
@@ -111,8 +135,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
-		list_procesados = Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections
-				.observableList(getQueryTodos().getResultList());
+		list_procesados = Beans.isDesignTime() ? Collections.emptyList() : getQueryTodos().getResultList();
 	}
 
 	@Override
@@ -150,10 +173,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public void borrar(Object entidad) {
 
-		ArchivoDBF archivo_actual = EMFSingleton.getInstanciaEM()
-				.find(ArchivoDBF.class, ((ArchivoDBF) entidad).getId());
-
-		em.refresh(archivo_actual);
+		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
 		em.remove(archivo_actual);
 	}
 

@@ -96,31 +96,6 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 		return false;
 	}
 
-	public Calendar getComienzo() {
-		return comienzo;
-	}
-
-	public Calendar getFin() {
-		return fin;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getRuta() {
-		return ruta;
-	}
-
-	public Boolean getValido() {
-		return valido;
-	}
-
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no implica Objetos desiguales tengan diferente
 	 * hash, como asi tampoco que dos ojetos con el mismo codigo hash deben ser iguales.
@@ -139,14 +114,44 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 		return hash;
 	}
 
-	public void setComienzo(Calendar comienzo) {
-		this.comienzo = comienzo;
+	@Override
+	public String toString() {
+		return ruta.substring(ruta.lastIndexOf("\\") + 1);
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public Calendar getComienzo() {
+		return comienzo;
+	}
+
+	public Calendar getFin() {
+		return fin;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public Boolean getValido() {
+		return valido;
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	public void setComienzo(Calendar comienzo) {
+		this.comienzo = comienzo;
+	}
 
 	public void setFin(Calendar fin) {
 		this.fin = fin;
@@ -158,10 +163,5 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	public void setValido(Boolean valido) {
 		this.valido = valido;
-	}
-
-	@Override
-	public String toString() {
-		return ruta.substring(ruta.lastIndexOf("\\") + 1);
 	}
 }

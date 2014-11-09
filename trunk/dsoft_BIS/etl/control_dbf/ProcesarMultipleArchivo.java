@@ -121,26 +121,15 @@ public class ProcesarMultipleArchivo {
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 
-			terminarTrasaccion();
+			try {
+				terminarTrasaccion();
+			}
+			catch (RollbackException excepcion) {
+			}
 
-			em.clear();
 			dbf_servicio_crud.quitarDisponible(archivo_actual);
-			iterador.remove();
 		}
 		mostarInfo();
-	}
-
-	private void terminarTrasaccion() {
-
-		try {
-			em.getTransaction().commit();
-		}
-		catch (RollbackException excepcion) {
-			log.error("comienza rollback");
-
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		}
 	}
 
 	private void mostarInfo() {
@@ -168,13 +157,28 @@ public class ProcesarMultipleArchivo {
 			em.getTransaction().begin();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 
-			terminarTrasaccion();
+			try {
+				terminarTrasaccion();
+				gestor.mostarInfo(archivo_actual);
+			}
+			catch (RollbackException excepcion) {
+			}
 
-			gestor.mostarInfo(archivo_actual);
-
-			em.clear();
 			dbf_servicio_crud.agregarDisponible(archivo_actual);
-			iterador.remove();
+		}
+	}
+
+	private void terminarTrasaccion() {
+
+		try {
+			em.getTransaction().commit();
+		}
+		catch (RollbackException excepcion) {
+			log.error("comienza rollback");
+
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+			throw excepcion;
 		}
 	}
 

@@ -149,6 +149,10 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public void setComienzo(Calendar comienzo) {
 		this.comienzo = comienzo;
 	}

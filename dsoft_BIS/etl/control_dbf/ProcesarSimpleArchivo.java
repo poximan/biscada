@@ -116,7 +116,7 @@ public class ProcesarSimpleArchivo {
 	public void mostarInfo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual, int totales) {
 
 		log.info("ETL en archivo " + archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1)
-				+ " [" + dbf_servicio_crud.getCantParaProcesar() + "-" + totales + "]");
+				+ " [" + dbf_servicio_crud.getListaDisponibles().size() + "-" + totales + "]");
 	}
 
 	/**

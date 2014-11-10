@@ -6,7 +6,6 @@
 package control_general;
 
 import java.awt.BorderLayout;
-import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -29,12 +28,10 @@ public class GestorETL {
 
 	private static Logger log = Logger.getLogger(GestorETL.class);
 
-	private Properties propiedades;
-
 	private static GestorETL main_etl;
 	private JFrame frame_etl;
 
-	private String direccion_lectura = propiedades.getProperty("Datos.DIRECCION_LECTURA_DATOS");
+	private String direccion_lectura = ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS");
 
 	/* ............................................. */
 	/* ............................................. */
@@ -42,8 +39,6 @@ public class GestorETL {
 	/* ............................................. */
 
 	private GestorETL() {
-
-		propiedades = new Properties();
 
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");

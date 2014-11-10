@@ -30,6 +30,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 	/* ............................................. */
 
 	private int columna_mayor;
+	private float arregloVarianza[];
 
 	/* ............................................. */
 	/* ............................................. */
@@ -95,8 +96,27 @@ public class ServKpiCalidadServicio implements ServKpi {
 		catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}
+		
+		arregloVarianza = arreglo_valores;
+		varianza();
 		return promediar(arreglo_valores);
 	}
+	
+	public void varianza(){
+		
+		float vari = 0;
+		float vari2 = 0;
+		
+		for(int i = 0; i < arregloVarianza.length; i++){
+			vari += Math.pow(arregloVarianza[i], 2);
+			System.out.println(arregloVarianza[i] + " cuadrado " + Math.pow(arregloVarianza[i], 2));
+			vari2 += arregloVarianza[i];
+		}
+		
+		System.out.println("vari es "+ vari + " " + vari2);
+		//return vari;
+	}
+
 
 	private float promediar(float[] arreglo_valores) {
 

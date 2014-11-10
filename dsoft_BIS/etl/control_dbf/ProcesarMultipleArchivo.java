@@ -106,7 +106,7 @@ public class ProcesarMultipleArchivo {
 	 */
 	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar) {
 
-		int totales = lista_candidatos_procesar.size();
+		int totales = lista_candidatos_procesar.size(), actual = 1;
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
 
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
@@ -116,13 +116,12 @@ public class ProcesarMultipleArchivo {
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
-			gestor.mostarInfo(dbf_servicio_crud, archivo_actual, totales);
+			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 
 			terminarTrasaccion();
-
 		}
 		mostarInfo();
 	}

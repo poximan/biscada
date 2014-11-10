@@ -109,14 +109,14 @@ public class ProcesarSimpleArchivo {
 	/**
 	 * muestra resultados creacion de un archivo
 	 * 
-	 * @param dbf_servicio_crud
 	 * @param archivo_actual
 	 * @param totales
+	 * @param totales
 	 */
-	public void mostarInfo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual, int totales) {
+	public void mostarInfo(ArchivoDBF archivo_actual, int totales, int actual) {
 
 		log.info("ETL en archivo " + archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1)
-				+ " [" + dbf_servicio_crud.getListaDisponibles().size() + "-" + totales + "]");
+				+ " [" + actual + "-" + totales + "]");
 	}
 
 	/**

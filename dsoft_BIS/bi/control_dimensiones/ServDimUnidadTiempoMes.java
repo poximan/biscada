@@ -83,13 +83,13 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 		}
 		return encabezado;
 	}
-	
+
 	/*
-	 * Genero un nuevo método para devolver el encabezado pero en formato "Date"
-	 * (non-Javadoc)
+	 * Genero un nuevo método para devolver el encabezado pero en formato "Date" (non-Javadoc)
+	 * 
 	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
 	 */
-	
+
 	@Override
 	public Date[] getEncabezadoFecha() {
 

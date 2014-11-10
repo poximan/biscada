@@ -10,7 +10,6 @@ import java.awt.EventQueue;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 /* ............................................. */
 /* ............................................. */
@@ -60,8 +59,6 @@ public class GestorComun {
 				| UnsupportedLookAndFeelException ex) {
 			log.error(GestorComun.class.getName());
 		}
-
-		PropertyConfigurator.configure("log4j.properties");
 
 		EventQueue.invokeLater(new Runnable() {
 			@Override

@@ -83,11 +83,11 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 	}
 
 	/*
-	 * Genero el método para pasar el arreglo de fechas
-	 * 	(non-Javadoc)
+	 * Genero el método para pasar el arreglo de fechas (non-Javadoc)
+	 * 
 	 * @see control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(java.util.Calendar)
 	 */
-	
+
 	@Override
 	public Date[] getEncabezadoFecha() {
 
@@ -110,7 +110,7 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		}
 		return encabezado;
 	}
-	
+
 	@Override
 	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual) {
 		return String.valueOf(fecha_alarma_actual.get(Calendar.YEAR));

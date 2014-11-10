@@ -156,12 +156,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void borrar(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-/*
-		em.merge(archivo_actual);
-		em.getTransaction().commit();
-
-		em.getTransaction().begin();
-		*/
+		/*
+		 * em.merge(archivo_actual); em.getTransaction().commit();
+		 * 
+		 * em.getTransaction().begin();
+		 */
 		em.remove(archivo_actual);
 	}
 
@@ -169,12 +168,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	public void crear(Object entidad) {
 
 		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-/*
-		em.merge(archivo_actual);
-		em.getTransaction().commit();
-
-		em.getTransaction().begin();
-		*/
+		/*
+		 * em.merge(archivo_actual); em.getTransaction().commit();
+		 * 
+		 * em.getTransaction().begin();
+		 */
 		em.persist(archivo_actual);
 	}
 

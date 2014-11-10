@@ -73,7 +73,7 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	 *         intervalo
 	 */
 	public abstract String[] getEncabezado();
-	
+
 	public abstract Date[] getEncabezadoFecha();
 
 	/**

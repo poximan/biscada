@@ -156,14 +156,18 @@ public class GraficoHistorial extends JPanel {
 
 		String prueba = new String("prueba1");
 		TimeSeries serieFecha = new TimeSeries(prueba);
-		String newstring;
+		String dia, mes, anio;
 		/*for (int i = 0; i < fechas.length; i++)
 			serieFecha.add(new Day(fechas[i].getDay(), fechas[i].getMonth(), fechas[i].getYear()), 50);
 */
 		System.out.println("llegaron las fechas!!! :)");
 		for (int i = 0; i < fechas.length; i++){
-			newstring = new SimpleDateFormat("dd-MM-yyyy").format(fechas[i]);  
-			System.out.println(newstring);
+			dia = new SimpleDateFormat("dd").format(fechas[i]);  
+			System.out.println(dia);
+			mes = new SimpleDateFormat("MM").format(fechas[i]);  
+			System.out.println(mes);
+			anio = new SimpleDateFormat("YYYY").format(fechas[i]);  
+			System.out.println(anio);
 			
 			System.out.println(" esto va a ser: " + fechas[i].getDay());
 		}

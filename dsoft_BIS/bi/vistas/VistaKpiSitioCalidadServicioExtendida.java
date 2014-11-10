@@ -53,7 +53,8 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
 			getIndicador_kpi().createPanel();
 
-			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH);
+			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH, Float.parseFloat(getTxtTotal().getText()), 
+					Float.parseFloat(getTxtPromedio().getText()));
 			getHisto_kpi().createPanel();
 
 		}

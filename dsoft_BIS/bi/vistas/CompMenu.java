@@ -17,6 +17,7 @@ import javax.swing.KeyStroke;
 
 import control_general.GestorETL;
 import control_general.GestorPropiedades;
+import control_general.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -104,8 +105,11 @@ public class CompMenu extends JFrame {
 
 		JMenu submenu_config_ruido = new JMenu("Configurar");
 
-		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", true);
-		componente_ruido_maximo = new CompDuracionAlarma("maximo para ser aceptada", false);
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getPropiedades()
+				.getProperty("Ruido.VALOR_INCIAL_RUIDO_ALARMA"));
+
+		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", valor_inicial, true);
+		componente_ruido_maximo = new CompDuracionAlarma("maximo para ser aceptada", valor_inicial, false);
 
 		submenu_config_ruido.add(componente_ruido_minimo);
 		submenu_config_ruido.add(componente_ruido_maximo);

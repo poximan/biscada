@@ -158,6 +158,7 @@ public class GraficoHistorial extends JPanel {
 		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;
 		int day, month, year;
+		double veriValor =datos.length;
 		coleccion = new TimeSeriesCollection();
 		
 		// Convirtiendo y pasando la fecha y el dato al histograma
@@ -174,10 +175,15 @@ public class GraficoHistorial extends JPanel {
 			month = Integer.parseInt(mes);
 			year = Integer.parseInt(anio);
 			
-			if(datos[i] != 0){
+			//asigno el valor actual a veriValor
+			//veriValor = (double)datos[i];
+			
+			System.out.print("imprimo la cantidad de rango: " + datos.length + " long fecha " + fechas.length);
+			
+			if(veriValor > i){
 				System.out.println("normal");
-				serieFecha.add(new Day(day, month, year), (double)datos[i]);
-			}if(datos[i] == 0){
+				serieFecha.add(new Day(day, month, year), datos[i]);
+			}if( i >= veriValor){
 				System.out.println("entro");
 				serieFecha.add(new Day(day, month, year), 0);
 			}

@@ -8,6 +8,7 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -68,6 +69,9 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 
 		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getTbl_medicion().getModel())
 				.getDatosFila(fila);
+
+		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo().getEncabezado().length;
+		valores = Arrays.copyOf(valores, maximo_arreglo);
 
 		JFrame frame = new JFrame();
 		lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getServ_dim_sitio(),

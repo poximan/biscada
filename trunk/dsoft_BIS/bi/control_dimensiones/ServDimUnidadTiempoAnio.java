@@ -6,6 +6,7 @@
 package control_dimensiones;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import modelo.IntervaloFechas;
@@ -81,6 +82,35 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		return encabezado;
 	}
 
+	/*
+	 * Genero el método para pasar el arreglo de fechas
+	 * 	(non-Javadoc)
+	 * @see control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(java.util.Calendar)
+	 */
+	
+	@Override
+	public Date[] getEncabezadoFecha() {
+
+		int indice = 0;
+
+		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
+			return new Date[1];
+
+		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
+				.getUltima_alarma())];
+
+		Calendar fecha_alarma_actual = Calendar.getInstance();
+		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
+
+		while (unidadTiempoInvolucradas(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
+
+			encabezado[indice++] = fecha_alarma_actual.getTime();
+
+			fecha_alarma_actual.add(Calendar.YEAR, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
+		}
+		return encabezado;
+	}
+	
 	@Override
 	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual) {
 		return String.valueOf(fecha_alarma_actual.get(Calendar.YEAR));

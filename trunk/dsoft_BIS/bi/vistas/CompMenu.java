@@ -41,7 +41,6 @@ public class CompMenu extends JFrame {
 	private JMenu entrada_menu_propiedades;
 
 	private CompDuracionAlarma componente_ruido_minimo;
-	private CompDuracionAlarma componente_ruido_maximo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -110,10 +109,8 @@ public class CompMenu extends JFrame {
 				"Ruido.VALOR_INCIAL_RUIDO_ALARMA"));
 
 		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", valor_inicial, true);
-		componente_ruido_maximo = new CompDuracionAlarma("maximo para ser aceptada", valor_inicial, false);
 
 		submenu_config_ruido.add(componente_ruido_minimo);
-		submenu_config_ruido.add(componente_ruido_maximo);
 
 		// agregar opciones del menu
 		entrada_menu_ruido.add(submenu_config_ruido);
@@ -174,10 +171,6 @@ public class CompMenu extends JFrame {
 
 	public CompDuracionAlarma getComponente_ruido_minimo() {
 		return componente_ruido_minimo;
-	}
-
-	public CompDuracionAlarma getComponente_ruido_maximo() {
-		return componente_ruido_maximo;
 	}
 
 	/* ............................................. */

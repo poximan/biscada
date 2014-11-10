@@ -35,13 +35,14 @@ public class GraficoHistorial extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panel;
+	private TimeSeriesCollection coleccion;
 
 	public GraficoHistorial() {
 	}
 
 	public JPanel createPanel() {
-		XYDataset xydataset = createDataset();
-		JFreeChart jfreechart = createChart(xydataset);
+		//XYDataset xydataset = createDataset();
+		JFreeChart jfreechart = createChart(coleccion);
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
 		chartpanel.setPreferredSize(new Dimension(700, 300));
 		chartpanel.setDomainZoomable(true);
@@ -154,12 +155,12 @@ public class GraficoHistorial extends JPanel {
 
 	public void cargarDatos(Date[] fechas, float[] datos) {
 
-		String prueba = new String("prueba1");
-		TimeSeries serieFecha = new TimeSeries(prueba);
+		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;
-		/*for (int i = 0; i < fechas.length; i++)
-			serieFecha.add(new Day(fechas[i].getDay(), fechas[i].getMonth(), fechas[i].getYear()), 50);
-*/
+		int day, month, year;
+		coleccion = new TimeSeriesCollection();
+		
+		// Convirtiendo y pasando la fecha y el dato al histograma
 		System.out.println("llegaron las fechas!!! :)");
 		for (int i = 0; i < fechas.length; i++){
 			dia = new SimpleDateFormat("dd").format(fechas[i]);  
@@ -169,8 +170,15 @@ public class GraficoHistorial extends JPanel {
 			anio = new SimpleDateFormat("YYYY").format(fechas[i]);  
 			System.out.println(anio);
 			
-			System.out.println(" esto va a ser: " + fechas[i].getDay());
+			day = Integer.parseInt(dia);
+			month = Integer.parseInt(mes);
+			year = Integer.parseInt(anio);
+			
+			serieFecha.add(new Day(day, month, year), (double)datos[i]);
+			
 		}
 			
+		
+		coleccion.addSeries(serieFecha);
 	}
 }

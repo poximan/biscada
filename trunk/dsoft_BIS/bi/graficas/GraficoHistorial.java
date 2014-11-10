@@ -142,7 +142,7 @@ public class GraficoHistorial extends JPanel {
 		series1.add(new Month(11, 2006), 5500);
 		series1.add(new Month(12, 2006), 6000);
 		series1.add(new Month(1, 2007), 6500);
-
+	
 		timeseriescollection.addSeries(series1);
 		return timeseriescollection;
 	}
@@ -156,12 +156,17 @@ public class GraficoHistorial extends JPanel {
 
 		String prueba = new String("prueba1");
 		TimeSeries serieFecha = new TimeSeries(prueba);
-
-		for (int i = 0; i < fechas.length; i++)
+		String newstring;
+		/*for (int i = 0; i < fechas.length; i++)
 			serieFecha.add(new Day(fechas[i].getDay(), fechas[i].getMonth(), fechas[i].getYear()), 50);
-
+*/
 		System.out.println("llegaron las fechas!!! :)");
-		for (int i = 0; i < fechas.length; i++)
-			System.out.println(fechas[i]);
+		for (int i = 0; i < fechas.length; i++){
+			newstring = new SimpleDateFormat("dd-MM-yyyy").format(fechas[i]);  
+			System.out.println(newstring);
+			
+			System.out.println(" esto va a ser: " + fechas[i].getDay());
+		}
+			
 	}
 }

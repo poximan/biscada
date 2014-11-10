@@ -46,7 +46,7 @@ public class GraficoHistorial extends JPanel {
 		// XYDataset xydataset = createDataset();
 		JFreeChart jfreechart = createChart(coleccion);
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		chartpanel.setPreferredSize(new Dimension(900, 300));
+		//chartpanel.setPreferredSize(new Dimension(900, 300));
 		chartpanel.setDomainZoomable(true);
 		chartpanel.setRangeZoomable(true);
 		chartpanel.getAutoscrolls();

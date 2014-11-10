@@ -115,51 +115,10 @@ public class GraficoHistorial extends JPanel {
 		return jfreechart;
 	}
 
-	private static XYDataset createDataset() {
-
-		/*
-		 * crear los puntos de las fechas
-		 */
-
-		TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
-		String prueba = new String("prueba");
-		TimeSeries series1 = new TimeSeries(prueba);
-
-		series1.add(new Month(1, 2005), 1200);
-		series1.add(new Month(2, 2005), 1400);
-		series1.add(new Month(3, 2005), 1500);
-		series1.add(new Month(4, 2005), 1700);
-		series1.add(new Month(5, 2005), 1600);
-		series1.add(new Month(6, 2005), 2400);
-		series1.add(new Month(7, 2005), 2100);
-		series1.add(new Month(8, 2005), 2200);
-		series1.add(new Month(9, 2005), 800);
-		series1.add(new Month(10, 2005), 2350);
-		series1.add(new Month(11, 2005), 500);
-		series1.add(new Month(12, 2005), 700);
-		series1.add(new Month(1, 2006), 900);
-		series1.add(new Month(2, 2006), 1500);
-		series1.add(new Month(3, 2006), 2100);
-		series1.add(new Month(4, 2006), 2200);
-		series1.add(new Month(5, 2006), 1900);
-		series1.add(new Month(6, 2006), 3000);
-		series1.add(new Month(7, 2006), 3780);
-		series1.add(new Month(8, 2006), 4000);
-		series1.add(new Month(9, 2006), 4500);
-		series1.add(new Month(10, 2006), 7000);
-		series1.add(new Month(11, 2006), 5500);
-		series1.add(new Month(12, 2006), 6000);
-		series1.add(new Month(1, 2007), 6500);
-
-		timeseriescollection.addSeries(series1);
-		return timeseriescollection;
-	}
-
-	public static JPanel createDemoPanel() {
-		JFreeChart jfreechart = createChart(createDataset());
-		return new ChartPanel(jfreechart);
-	}
-
+	/*
+	 * Se crea el dataset de datos
+	 *  
+	 */
 	public void cargarDatos(Date[] fechas, float[] datos, float Total,
 			float promedio) {
 
@@ -173,7 +132,6 @@ public class GraficoHistorial extends JPanel {
 		coleccion = new TimeSeriesCollection();
 
 		// Convirtiendo y pasando la fecha y el dato al histograma
-		System.out.println("llegaron las fechas!!! :)");
 		for (int i = 0; i < fechas.length; i++) {
 			dia = new SimpleDateFormat("dd").format(fechas[i]);
 			System.out.println(dia);

@@ -5,7 +5,9 @@
 
 package control_dimensiones;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import modelo.IntervaloFechas;
@@ -85,6 +87,36 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 
 			encabezado[indice++] = getTextoColumnaUnidadTiempo(fecha_alarma_actual) + "'"
 					+ String.valueOf(fecha_alarma_actual.get(Calendar.YEAR)).substring(2);
+
+			fecha_alarma_actual.add(Calendar.MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
+		}
+		return encabezado;
+	}
+	
+	
+	/*
+	 * Genero un nuevo método para devolver el encabezado pero en formato "Date"
+	 * (non-Javadoc)
+	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
+	 */
+	
+	@Override
+	public Date[] getEncabezadoFecha() {
+
+		int indice = 0;
+
+		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
+			return new Date[1];
+
+		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
+				.getUltima_alarma())];
+
+		Calendar fecha_alarma_actual = Calendar.getInstance();
+		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
+
+		while (unidadTiempoInvolucradas(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
+
+			encabezado[indice++] = fecha_alarma_actual.getTime();
 
 			fecha_alarma_actual.add(Calendar.MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
 		}

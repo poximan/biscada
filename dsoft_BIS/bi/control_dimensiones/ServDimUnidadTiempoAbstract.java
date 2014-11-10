@@ -7,6 +7,7 @@ package control_dimensiones;
 
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import modelo.Alarma;
@@ -72,6 +73,8 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	 *         intervalo
 	 */
 	public abstract String[] getEncabezado();
+	
+	public abstract Date[] getEncabezadoFecha();
 
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como quincena, mes, etc se busca la ultima,

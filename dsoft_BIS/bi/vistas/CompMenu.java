@@ -105,8 +105,7 @@ public class CompMenu extends JFrame {
 
 		JMenu submenu_config_ruido = new JMenu("Configurar");
 
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
-				"Ruido.VALOR_INCIAL_RUIDO_ALARMA"));
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.PISO_RUIDO_ALARMA"));
 
 		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", valor_inicial, true);
 

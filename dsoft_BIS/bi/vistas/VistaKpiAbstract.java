@@ -5,13 +5,14 @@
 
 package vistas;
 
+import graficas.GraficoHistorial;
 import graficas.GraficoKPI;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,12 +24,16 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import java.awt.Color;
+import javax.swing.border.MatteBorder;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
+public abstract class VistaKpiAbstract extends JPanel implements
+		PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -54,6 +59,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	private JSpinner spinner_porcentaje;
 
 	private JPanel panelHistograma;
+	private GraficoHistorial histo_kpi;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -61,12 +67,17 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	public VistaKpiAbstract() {
+		setBorder(null);
 
 		iniciarComponentes();
 		indicador_kpi = new GraficoKPI();
 
 		panelIndicador.add(indicador_kpi);
 		panelIndicador.validate();
+
+		histo_kpi = new GraficoHistorial();
+		panelHistograma.add(histo_kpi);
+		panelHistograma.validate();
 	}
 
 	/* ............................................. */
@@ -83,7 +94,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		// -------------------------------------
 
 		panelIndicador = new JPanel();
-		panelIndicador.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new LineBorder(new Color(0, 0, 0)));
 
@@ -131,28 +141,46 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 						gl_panelGeneral
 								.createSequentialGroup()
 								.addContainerGap()
-								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 391,
-										GroupLayout.PREFERRED_SIZE).addGap(218))
+								.addComponent(panelResumen,
+										GroupLayout.PREFERRED_SIZE, 90,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(62)
+								.addComponent(panelIndicador,
+										GroupLayout.DEFAULT_SIZE, 391,
+										Short.MAX_VALUE).addGap(162))
 				.addGroup(
-						gl_panelGeneral.createSequentialGroup().addGap(20)
-								.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-								.addGap(29)));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelGeneral
-						.createSequentialGroup()
-						.addContainerGap()
+						gl_panelGeneral
+								.createSequentialGroup()
+								.addGap(35)
+								.addComponent(panelHistograma,
+										GroupLayout.DEFAULT_SIZE, 644,
+										Short.MAX_VALUE).addGap(36)));
+		gl_panelGeneral
+				.setVerticalGroup(gl_panelGeneral
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(
 								gl_panelGeneral
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 181,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 250,
-												GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-						.addContainerGap()));
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												gl_panelGeneral
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addComponent(
+																panelResumen,
+																GroupLayout.PREFERRED_SIZE,
+																181,
+																GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																panelIndicador,
+																GroupLayout.PREFERRED_SIZE,
+																250,
+																GroupLayout.PREFERRED_SIZE))
+										.addGap(11)
+										.addComponent(panelHistograma,
+												GroupLayout.DEFAULT_SIZE, 189,
+												Short.MAX_VALUE)
+										.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -171,7 +199,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public void notificarError(String mensaje) {
 
-		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
+		JOptionPane optionPane = new JOptionPane(mensaje,
+				JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
@@ -181,6 +210,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	public void configEventos(EventoKPI eventos) {
 
 		spinner_porcentaje.getModel().addChangeListener(eventos);
+
 	}
 
 	/* ............................................. */
@@ -189,8 +219,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
-	 * relacionados con la dimension concreta que esta realizando la solicitud
+	 * se solicita el grafico instanciado en la superclase y que hasta este
+	 * momento no posee datos especificos relacionados con la dimension concreta
+	 * que esta realizando la solicitud
 	 * 
 	 * @return
 	 */
@@ -198,8 +229,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		return indicador_kpi;
 	}
 
-	public JPanel getPanelHistograma() {
-		return panelHistograma;
+	public GraficoHistorial getHisto_kpi() {
+		return histo_kpi;
 	}
 
 	public JTextField getTxtActual() {

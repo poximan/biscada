@@ -122,7 +122,10 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_spinnerAceptacion.gridx = 1;
 		gbc_spinnerAceptacion.gridy = 2;
 		panelPropiedades.add(spinnerAceptacion, gbc_spinnerAceptacion);
-		spinnerAceptacion.setModel(new SpinnerNumberModel(1, 1, 100, 1));
+
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
+				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		spinnerAceptacion.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
 
 		spinnerPisoRuido = new JSpinner();
 		GridBagConstraints gbc_spinnerPisoRuido = new GridBagConstraints();
@@ -131,7 +134,9 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_spinnerPisoRuido.gridx = 1;
 		gbc_spinnerPisoRuido.gridy = 3;
 		panelPropiedades.add(spinnerPisoRuido, gbc_spinnerPisoRuido);
-		spinnerPisoRuido.setModel(new SpinnerNumberModel(1, 1, 3600, 1));
+
+		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.PISO_RUIDO_ALARMA"));
+		spinnerPisoRuido.setModel(new SpinnerNumberModel(valor_inicial, 1, 3600, 1));
 
 		JLabel lblPisoRuido = new JLabel("piso de ruido alarmas");
 		GridBagConstraints gbc_lblPisoRuido = new GridBagConstraints();

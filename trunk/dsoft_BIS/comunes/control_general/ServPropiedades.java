@@ -25,9 +25,9 @@ public class ServPropiedades {
 
 	private static Logger log = Logger.getLogger(ServPropiedades.class);
 
-	public static final String NOMBRE_ARCHIVO_PROPIEDADES = "cfg.properties";
+	private static String NOMBRE_ARCHIVO_PROPIEDADES = "cfg.properties";
 
-	private static Properties propiedades = null;
+	private Properties propiedades = null;
 	private static ServPropiedades instancia = null;
 
 	/* ............................................. */
@@ -35,17 +35,17 @@ public class ServPropiedades {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public synchronized static Properties getInstancia() {
+	public static ServPropiedades getInstancia() {
 
 		if (instancia == null)
 			instancia = new ServPropiedades();
 
-		return propiedades;
+		return instancia;
 	}
 
 	private ServPropiedades() {
 
-		ServPropiedades.propiedades = new Properties();
+		propiedades = new Properties();
 
 		try {
 			FileInputStream archivo_entrada = new FileInputStream(NOMBRE_ARCHIVO_PROPIEDADES);
@@ -61,4 +61,8 @@ public class ServPropiedades {
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	public Properties getPropiedades() {
+		return propiedades;
+	}
 }

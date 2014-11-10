@@ -37,7 +37,7 @@ public class CompDuracionAlarma extends JPanel implements EventoConfigurable {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CompDuracionAlarma(String titulo, boolean estado_inicial_check) {
+	public CompDuracionAlarma(String titulo, int valor_inicial, boolean estado_inicial_check) {
 
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 		flowLayout.setVgap(1);
@@ -47,7 +47,7 @@ public class CompDuracionAlarma extends JPanel implements EventoConfigurable {
 		add(chckbxSegundos);
 
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(2, 0, 1800, 1));
+		spinner.setModel(new SpinnerNumberModel(valor_inicial, 0, 1800, 1));
 		add(spinner);
 
 		JLabel lblSeg = new JLabel("seg.");

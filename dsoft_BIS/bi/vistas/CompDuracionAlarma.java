@@ -63,6 +63,7 @@ public class CompDuracionAlarma extends JPanel implements EventoConfigurable {
 
 	@Override
 	public void configEventos() {
+		
 		chckbxSegundos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

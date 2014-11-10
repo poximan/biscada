@@ -31,11 +31,7 @@ public class GestorETL {
 	private static GestorETL main_etl;
 	private JFrame frame_etl;
 
-	/* laburo */
-	// private String direccion_lectura = "D:\\hugo\\proyectos\\uni\\desarrollo_soft\\datos\\Histo_alarm";
-
-	/* casa */
-	private String direccion_lectura = "D:\\documentos\\hugo\\escull\\desarrollo_soft\\datos\\Histo_alarm";
+	private String direccion_lectura = ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS");
 
 	/* ............................................. */
 	/* ............................................. */

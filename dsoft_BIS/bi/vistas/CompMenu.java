@@ -8,6 +8,7 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -17,7 +18,6 @@ import javax.swing.KeyStroke;
 
 import control_general.GestorETL;
 import control_general.GestorPropiedades;
-import control_general.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -32,6 +32,8 @@ public class CompMenu extends JFrame {
 	/* ............................................. */
 
 	private static final long serialVersionUID = 1L;
+
+	private Properties propiedades;
 
 	private JMenuBar barra_menu;
 
@@ -51,6 +53,9 @@ public class CompMenu extends JFrame {
 	public CompMenu(String titulo) {
 
 		super(titulo);
+
+		propiedades = new Properties();
+
 		setBounds(100, 100, 1110, 701);
 		configMenu();
 	}
@@ -105,8 +110,7 @@ public class CompMenu extends JFrame {
 
 		JMenu submenu_config_ruido = new JMenu("Configurar");
 
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getPropiedades()
-				.getProperty("Ruido.VALOR_INCIAL_RUIDO_ALARMA"));
+		int valor_inicial = Integer.valueOf(propiedades.getProperty("Ruido.VALOR_INCIAL_RUIDO_ALARMA"));
 
 		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", valor_inicial, true);
 		componente_ruido_maximo = new CompDuracionAlarma("maximo para ser aceptada", valor_inicial, false);

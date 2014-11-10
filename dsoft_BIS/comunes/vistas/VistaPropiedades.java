@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -40,8 +41,11 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	private static final long serialVersionUID = 1L;
 
+	private Properties propiedades;
+
+	private CompSeleccionarDireccion btnCambiar;
 	private JButton btnConfirmarCambios;
-	private JTextField textField;
+	private JTextField txt_direccion_fuente;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -50,6 +54,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	public VistaPropiedades() {
 
+		propiedades = new Properties();
 		iniciarComponentes();
 		configEventos();
 	}
@@ -65,11 +70,11 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		panelPropiedades.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		GridBagLayout gbl_panelPropiedades = new GridBagLayout();
 		gbl_panelPropiedades.columnWidths = new int[] { 195, 110, 110, 110, 0 };
-		gbl_panelPropiedades.rowHeights = new int[] { 20, 0, 20, 20, 20, 0 };
+		gbl_panelPropiedades.rowHeights = new int[] { 20, 20, 20, 20, 20, 0 };
 		gbl_panelPropiedades.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panelPropiedades.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panelPropiedades.setLayout(gbl_panelPropiedades);
-		
+
 		JLabel lblDireccionFuente = new JLabel("direccion fuente");
 		GridBagConstraints gbc_lblDireccionFuente = new GridBagConstraints();
 		gbc_lblDireccionFuente.anchor = GridBagConstraints.EAST;
@@ -77,18 +82,19 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_lblDireccionFuente.gridx = 0;
 		gbc_lblDireccionFuente.gridy = 0;
 		panelPropiedades.add(lblDireccionFuente, gbc_lblDireccionFuente);
-		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridwidth = 3;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		panelPropiedades.add(textField, gbc_textField);
-		textField.setColumns(10);
-		
-		JButton btnCambiar = new JButton("cambiar...");
+
+		txt_direccion_fuente = new JTextField(propiedades.getProperty("Datos.DIRECCION_LECTURA_DATOS"));
+
+		GridBagConstraints gbc_txt_direccion_fuente = new GridBagConstraints();
+		gbc_txt_direccion_fuente.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_direccion_fuente.gridwidth = 3;
+		gbc_txt_direccion_fuente.insets = new Insets(0, 0, 5, 0);
+		gbc_txt_direccion_fuente.gridx = 1;
+		gbc_txt_direccion_fuente.gridy = 0;
+		panelPropiedades.add(txt_direccion_fuente, gbc_txt_direccion_fuente);
+		txt_direccion_fuente.setColumns(10);
+
+		btnCambiar = new CompSeleccionarDireccion(txt_direccion_fuente);
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
 		gbc_btnCambiar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCambiar.insets = new Insets(0, 0, 5, 0);
@@ -103,15 +109,15 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_lblAceptacion.gridx = 0;
 		gbc_lblAceptacion.gridy = 2;
 		panelPropiedades.add(lblAceptacion, gbc_lblAceptacion);
-		
-				JSpinner spinnerAceptacion = new JSpinner();
-				GridBagConstraints gbc_spinnerAceptacion = new GridBagConstraints();
-				gbc_spinnerAceptacion.fill = GridBagConstraints.HORIZONTAL;
-				gbc_spinnerAceptacion.insets = new Insets(0, 0, 5, 5);
-				gbc_spinnerAceptacion.gridx = 1;
-				gbc_spinnerAceptacion.gridy = 2;
-				panelPropiedades.add(spinnerAceptacion, gbc_spinnerAceptacion);
-				spinnerAceptacion.setModel(new SpinnerNumberModel(1, 1, 100, 1));
+
+		JSpinner spinnerAceptacion = new JSpinner();
+		GridBagConstraints gbc_spinnerAceptacion = new GridBagConstraints();
+		gbc_spinnerAceptacion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerAceptacion.insets = new Insets(0, 0, 5, 5);
+		gbc_spinnerAceptacion.gridx = 1;
+		gbc_spinnerAceptacion.gridy = 2;
+		panelPropiedades.add(spinnerAceptacion, gbc_spinnerAceptacion);
+		spinnerAceptacion.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 
 		JLabel lblPisoRuido = new JLabel("piso de ruido alarmas");
 		GridBagConstraints gbc_lblPisoRuido = new GridBagConstraints();
@@ -120,15 +126,15 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_lblPisoRuido.gridx = 0;
 		gbc_lblPisoRuido.gridy = 3;
 		panelPropiedades.add(lblPisoRuido, gbc_lblPisoRuido);
-		
-				JSpinner spinnerPisoRuido = new JSpinner();
-				GridBagConstraints gbc_spinnerPisoRuido = new GridBagConstraints();
-				gbc_spinnerPisoRuido.fill = GridBagConstraints.HORIZONTAL;
-				gbc_spinnerPisoRuido.insets = new Insets(0, 0, 5, 5);
-				gbc_spinnerPisoRuido.gridx = 1;
-				gbc_spinnerPisoRuido.gridy = 3;
-				panelPropiedades.add(spinnerPisoRuido, gbc_spinnerPisoRuido);
-				spinnerPisoRuido.setModel(new SpinnerNumberModel(1, 1, 3600, 1));
+
+		JSpinner spinnerPisoRuido = new JSpinner();
+		GridBagConstraints gbc_spinnerPisoRuido = new GridBagConstraints();
+		gbc_spinnerPisoRuido.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerPisoRuido.insets = new Insets(0, 0, 5, 5);
+		gbc_spinnerPisoRuido.gridx = 1;
+		gbc_spinnerPisoRuido.gridy = 3;
+		panelPropiedades.add(spinnerPisoRuido, gbc_spinnerPisoRuido);
+		spinnerPisoRuido.setModel(new SpinnerNumberModel(1, 1, 3600, 1));
 
 		JLabel lblTechoRuido = new JLabel("techo de ruido alarmas");
 		GridBagConstraints gbc_lblTechoRuido = new GridBagConstraints();
@@ -140,32 +146,35 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 		JPanel panelBtnConfirmar = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panelBtnConfirmar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-						.addComponent(panelPropiedades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panelPropiedades, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(panelBtnConfirmar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-		);
-		
-				JSpinner spinnerTechoRuido = new JSpinner();
-				GridBagConstraints gbc_spinnerTechoRuido = new GridBagConstraints();
-				gbc_spinnerTechoRuido.fill = GridBagConstraints.HORIZONTAL;
-				gbc_spinnerTechoRuido.insets = new Insets(0, 0, 0, 5);
-				gbc_spinnerTechoRuido.gridx = 1;
-				gbc_spinnerTechoRuido.gridy = 4;
-				panelPropiedades.add(spinnerTechoRuido, gbc_spinnerTechoRuido);
-				spinnerTechoRuido.setModel(new SpinnerNumberModel(0, 0, 3600, 1));
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
+				groupLayout
+						.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(
+								groupLayout
+										.createParallelGroup(Alignment.TRAILING)
+										.addComponent(panelBtnConfirmar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+												525, Short.MAX_VALUE)
+										.addComponent(panelPropiedades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
+				groupLayout
+						.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(panelPropiedades, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panelBtnConfirmar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)));
+
+		JSpinner spinnerTechoRuido = new JSpinner();
+		GridBagConstraints gbc_spinnerTechoRuido = new GridBagConstraints();
+		gbc_spinnerTechoRuido.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerTechoRuido.insets = new Insets(0, 0, 0, 5);
+		gbc_spinnerTechoRuido.gridx = 1;
+		gbc_spinnerTechoRuido.gridy = 4;
+		panelPropiedades.add(spinnerTechoRuido, gbc_spinnerTechoRuido);
+		spinnerTechoRuido.setModel(new SpinnerNumberModel(0, 0, 3600, 1));
 
 		btnConfirmarCambios = new JButton("confirmar cambios");
 		panelBtnConfirmar.add(btnConfirmarCambios);
@@ -176,11 +185,9 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	public void configEventos() {
 
 		btnConfirmarCambios.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
+				propiedades.setProperty("Datos.DIRECCION_LECTURA_DATOS", txt_direccion_fuente.getText());
 			}
 		});
 	}

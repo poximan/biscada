@@ -57,14 +57,9 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(new JFrame("Error"), "Carpeta origen de datos no existe", "Backup problem",
 					JOptionPane.ERROR_MESSAGE);
 
-		FlowLayout flowLayout = (FlowLayout) getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		flowLayout.setAlignOnBaseline(true);
-		flowLayout.setVgap(1);
-		flowLayout.setHgap(1);
-
 		btnCambiar = new JButton("Cambiar...");
 		btnCambiar.addActionListener(this);
+		setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		add(btnCambiar);
 
 		actualizarDireccion();

@@ -25,35 +25,32 @@ public class ServPropiedades {
 
 	private static Logger log = Logger.getLogger(ServPropiedades.class);
 
-	private Properties propiedades = null;
-	private static ServPropiedades instancia = null;
-
 	public static final String NOMBRE_ARCHIVO_PROPIEDADES = "cfg.properties";
-	public static final String PORCENTAGE_ACEPTACION_RESPECTO_MEDIA = "Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA";
-	public static final String PISO_RUIDO_ALARMA = "Ruido.PISO_RUIDO_ALARMA";
-	public static final String TECHO_RUIDO_ALARMA = "Ruido.TECHO_RUIDO_ALARMA";
+
+	private static Properties propiedades = null;
+	private static ServPropiedades instancia = null;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public synchronized static ServPropiedades getInstancia() {
+	public synchronized static Properties getInstancia() {
 
 		if (instancia == null)
 			instancia = new ServPropiedades();
 
-		return instancia;
+		return propiedades;
 	}
 
 	private ServPropiedades() {
 
-		this.propiedades = new Properties();
+		ServPropiedades.propiedades = new Properties();
 
 		try {
-			FileInputStream in = new FileInputStream(NOMBRE_ARCHIVO_PROPIEDADES);
-			propiedades.load(in);
-			in.close();
+			FileInputStream archivo_entrada = new FileInputStream(NOMBRE_ARCHIVO_PROPIEDADES);
+			propiedades.load(archivo_entrada);
+			archivo_entrada.close();
 		}
 		catch (IllegalArgumentException | IOException excepcion) {
 			log.error("leyendo archivo de propiedades");
@@ -64,12 +61,4 @@ public class ServPropiedades {
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	public int getProp(String key) {
-		return Integer.parseInt(propiedades.getProperty(key));
-	}
-
-	public void setProp(String key, String nuevo_valor) {
-		this.propiedades.setProperty(key, nuevo_valor);
-	}
 }

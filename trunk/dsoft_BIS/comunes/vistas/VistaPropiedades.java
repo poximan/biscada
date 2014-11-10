@@ -37,6 +37,8 @@ public class VistaPropiedades extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	private JButton btnConfirmarCambios;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -133,7 +135,7 @@ public class VistaPropiedades extends JPanel {
 						.addComponent(panelBtnConfirmar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE).addContainerGap()));
 
-		JButton btnConfirmarCambios = new JButton("confirmar cambios");
+		btnConfirmarCambios = new JButton("confirmar cambios");
 		panelBtnConfirmar.add(btnConfirmarCambios);
 		setLayout(groupLayout);
 	}

@@ -6,6 +6,8 @@
 package control_general;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -35,14 +37,6 @@ public class ServPropiedades {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public static Properties getInstancia() {
-
-		if (instancia == null)
-			instancia = new ServPropiedades();
-
-		return propiedades;
-	}
-
 	private ServPropiedades() {
 
 		propiedades = new Properties();
@@ -62,7 +56,30 @@ public class ServPropiedades {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public static Properties getInstancia() {
+
+		if (instancia == null)
+			instancia = new ServPropiedades();
+
+		return propiedades;
+	}
+
 	public Properties getPropiedades() {
 		return propiedades;
+	}
+
+	public static void guardarCambios() {
+
+		try {
+			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
+			propiedades.store(archivo_salida, "");
+			archivo_salida.close();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

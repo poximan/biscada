@@ -184,10 +184,13 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	public void configEventos() {
 
 		btnConfirmarCambios.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
 				ServPropiedades.getInstancia().setProperty("Datos.DIRECCION_LECTURA_DATOS",
 						txt_direccion_fuente.getText());
+				ServPropiedades.guardarCambios();
 			}
 		});
 	}

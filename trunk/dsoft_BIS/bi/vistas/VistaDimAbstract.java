@@ -465,9 +465,9 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 				chckbxColumnasNulas.isSelected());
 
 		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
-		
-		for(int i = 0; i< encabezado_tabla.length; i++){
-			System.out.println("imprimo encabezado"+encabezado_tabla[i]);
+
+		for (int i = 0; i < encabezado_tabla.length; i++) {
+			System.out.println("imprimo encabezado" + encabezado_tabla[i]);
 		}
 
 		txtPrimera.setText(serv_intervalo.getIntervalo()

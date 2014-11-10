@@ -8,32 +8,27 @@ package vistas;
 import graficas.GraficoHistorial;
 import graficas.GraficoKPI;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
-import java.awt.Color;
-import javax.swing.border.MatteBorder;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements
-		PanelIniciable, EventoKPIConfigurable {
+public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -138,49 +133,28 @@ public abstract class VistaKpiAbstract extends JPanel implements
 		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral
 				.createParallelGroup(Alignment.LEADING)
 				.addGroup(
-						gl_panelGeneral
-								.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(panelResumen,
-										GroupLayout.PREFERRED_SIZE, 90,
-										GroupLayout.PREFERRED_SIZE)
+						gl_panelGeneral.createSequentialGroup().addContainerGap()
+								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 								.addGap(62)
-								.addComponent(panelIndicador,
-										GroupLayout.DEFAULT_SIZE, 391,
-										Short.MAX_VALUE).addGap(162))
+								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+								.addGap(162))
 				.addGroup(
-						gl_panelGeneral
-								.createSequentialGroup()
-								.addGap(35)
-								.addComponent(panelHistograma,
-										GroupLayout.DEFAULT_SIZE, 644,
-										Short.MAX_VALUE).addGap(36)));
-		gl_panelGeneral
-				.setVerticalGroup(gl_panelGeneral
-						.createParallelGroup(Alignment.LEADING)
+						gl_panelGeneral.createSequentialGroup().addGap(35)
+								.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+								.addGap(36)));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panelGeneral
+						.createSequentialGroup()
+						.addContainerGap()
 						.addGroup(
 								gl_panelGeneral
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												gl_panelGeneral
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addComponent(
-																panelResumen,
-																GroupLayout.PREFERRED_SIZE,
-																181,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																panelIndicador,
-																GroupLayout.PREFERRED_SIZE,
-																250,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(11)
-										.addComponent(panelHistograma,
-												GroupLayout.DEFAULT_SIZE, 189,
-												Short.MAX_VALUE)
-										.addContainerGap()));
+										.createParallelGroup(Alignment.LEADING)
+										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 181,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 250,
+												GroupLayout.PREFERRED_SIZE)).addGap(11)
+						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+						.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -199,8 +173,7 @@ public abstract class VistaKpiAbstract extends JPanel implements
 
 	public void notificarError(String mensaje) {
 
-		JOptionPane optionPane = new JOptionPane(mensaje,
-				JOptionPane.ERROR_MESSAGE);
+		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
@@ -219,9 +192,8 @@ public abstract class VistaKpiAbstract extends JPanel implements
 	/* ............................................. */
 
 	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este
-	 * momento no posee datos especificos relacionados con la dimension concreta
-	 * que esta realizando la solicitud
+	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
+	 * relacionados con la dimension concreta que esta realizando la solicitud
 	 * 
 	 * @return
 	 */

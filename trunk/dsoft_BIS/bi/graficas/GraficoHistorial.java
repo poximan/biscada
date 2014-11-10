@@ -33,11 +33,10 @@ import org.jfree.ui.TextAnchor;
 
 public class GraficoHistorial extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel panel;
 
 	public GraficoHistorial() {
-		// super("");
-
 	}
 
 	public JPanel createPanel() {
@@ -155,7 +154,6 @@ public class GraficoHistorial extends JPanel {
 
 	public void cargarDatos(Date[] fechas, float[] datos) {
 
-		TimeSeriesCollection coleccionDatos = new TimeSeriesCollection();
 		String prueba = new String("prueba1");
 		TimeSeries serieFecha = new TimeSeries(prueba);
 
@@ -166,5 +164,4 @@ public class GraficoHistorial extends JPanel {
 		for (int i = 0; i < fechas.length; i++)
 			System.out.println(fechas[i]);
 	}
-
 }

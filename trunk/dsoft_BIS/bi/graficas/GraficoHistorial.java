@@ -174,7 +174,13 @@ public class GraficoHistorial extends JPanel {
 			month = Integer.parseInt(mes);
 			year = Integer.parseInt(anio);
 			
-			serieFecha.add(new Day(day, month, year), (double)datos[i]);
+			if(datos[i] != 0){
+				System.out.println("normal");
+				serieFecha.add(new Day(day, month, year), (double)datos[i]);
+			}if(datos[i] == 0){
+				System.out.println("entro");
+				serieFecha.add(new Day(day, month, year), 0);
+			}
 			
 		}
 			

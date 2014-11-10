@@ -5,6 +5,8 @@
 
 package vistas;
 
+import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
+
 import modelo.Sitio;
 import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
@@ -42,7 +44,7 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 
 	public VistaKpiSitioCalidadServicioExtendida(ServDimSitio serv_dim_sitio,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo, ServMedAbstract serv_medicion,
-			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
+			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual, float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
 
@@ -52,6 +54,9 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 			getIndicador_kpi().cargarDatos(Float.parseFloat(getTxtTotal().getText()),
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
 			getIndicador_kpi().createPanel();
+			
+			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH);
+			getHisto_kpi().createPanel();
 
 		}
 		catch (NumberFormatException excepcion) {

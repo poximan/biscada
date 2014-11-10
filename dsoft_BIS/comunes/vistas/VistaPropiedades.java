@@ -13,7 +13,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -26,6 +25,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+
+import control_general.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -41,8 +42,6 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	private static final long serialVersionUID = 1L;
 
-	private Properties propiedades;
-
 	private CompSeleccionarDireccion btnCambiar;
 	private JButton btnConfirmarCambios;
 	private JTextField txt_direccion_fuente;
@@ -54,7 +53,6 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	public VistaPropiedades() {
 
-		propiedades = new Properties();
 		iniciarComponentes();
 		configEventos();
 	}
@@ -83,7 +81,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_lblDireccionFuente.gridy = 0;
 		panelPropiedades.add(lblDireccionFuente, gbc_lblDireccionFuente);
 
-		txt_direccion_fuente = new JTextField(propiedades.getProperty("Datos.DIRECCION_LECTURA_DATOS"));
+		txt_direccion_fuente = new JTextField(ServPropiedades.getInstancia().getProperty(
+				"Datos.DIRECCION_LECTURA_DATOS"));
 
 		GridBagConstraints gbc_txt_direccion_fuente = new GridBagConstraints();
 		gbc_txt_direccion_fuente.fill = GridBagConstraints.HORIZONTAL;
@@ -187,7 +186,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		btnConfirmarCambios.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				propiedades.setProperty("Datos.DIRECCION_LECTURA_DATOS", txt_direccion_fuente.getText());
+				ServPropiedades.getInstancia().setProperty("Datos.DIRECCION_LECTURA_DATOS",
+						txt_direccion_fuente.getText());
 			}
 		});
 	}

@@ -18,21 +18,21 @@ import control_general.GestorBI;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoETLPrueba implements ActionListener, DocumentListener {
+public class EventoETL implements ActionListener, DocumentListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaETLPrueba vista_etl;
+	private VistaETL vista_etl;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoETLPrueba(VistaETLPrueba vista_etl) {
+	public EventoETL(VistaETL vista_etl) {
 		this.vista_etl = vista_etl;
 	}
 

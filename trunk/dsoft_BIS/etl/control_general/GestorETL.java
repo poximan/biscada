@@ -12,7 +12,7 @@ import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
-import vistas.VistaETLPrueba;
+import vistas.VistaETL;
 
 /* ............................................. */
 /* ............................................. */
@@ -41,7 +41,7 @@ public class GestorETL {
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
 
-		frame_etl.getContentPane().add(new VistaETLPrueba(), BorderLayout.CENTER);
+		frame_etl.getContentPane().add(new VistaETL(), BorderLayout.CENTER);
 		log.trace("se lanza pantalla etl");
 	}
 

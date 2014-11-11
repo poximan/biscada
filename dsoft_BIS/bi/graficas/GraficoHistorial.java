@@ -2,7 +2,6 @@ package graficas;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,17 +14,14 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.PeriodAxis;
 import org.jfree.chart.axis.PeriodAxisLabelInfo;
 import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.plot.IntervalMarker;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.ValueMarker;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.time.Day;
-import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.ui.Layer;
 import org.jfree.ui.LengthAdjustmentType;
 import org.jfree.ui.RectangleAnchor;
 import org.jfree.ui.TextAnchor;
@@ -56,9 +52,8 @@ public class GraficoHistorial extends JPanel {
 	}
 
 	private static JFreeChart createChart(XYDataset xydataset) {
-		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas",
-				"Cantidad", xydataset, PlotOrientation.VERTICAL, false, true,
-				false);
+		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas", "Cantidad", xydataset,
+				PlotOrientation.VERTICAL, false, true, false);
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
 		xyplot.setDomainGridlinePaint(Color.lightGray);
 		xyplot.setDomainGridlineStroke(new BasicStroke(1.0F));
@@ -69,8 +64,7 @@ public class GraficoHistorial extends JPanel {
 		// Se configura eje x y la manera en que se muestran las etiquetas
 		PeriodAxis periodaxis = new PeriodAxis(null);
 		PeriodAxisLabelInfo aperiodaxislabelinfo[] = new PeriodAxisLabelInfo[1];
-		aperiodaxislabelinfo[0] = new PeriodAxisLabelInfo(Day.class,
-				new SimpleDateFormat("MMM-YYYY"));
+		aperiodaxislabelinfo[0] = new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat("MMM-YYYY"));
 		periodaxis.setLabelInfo(aperiodaxislabelinfo);
 		xyplot.setDomainAxis(periodaxis);
 
@@ -92,23 +86,17 @@ public class GraficoHistorial extends JPanel {
 		xyplot.addRangeMarker(valuemarker);
 
 		/*
-		 * Hour hour = new Hour(18, 30, 6, 2005); Hour hour1 = new Hour(20, 30,
-		 * 6, 2005); double d = hour.getFirstMillisecond(); double d1 =
-		 * hour1.getFirstMillisecond();
+		 * Hour hour = new Hour(18, 30, 6, 2005); Hour hour1 = new Hour(20, 30, 6, 2005); double d =
+		 * hour.getFirstMillisecond(); double d1 = hour1.getFirstMillisecond();
 		 * 
 		 * IntervalMarker intervalmarker = new IntervalMarker(d, d1);
-		 * intervalmarker.setLabelOffsetType(LengthAdjustmentType.EXPAND);
-		 * intervalmarker.setPaint(new Color(150, 150, 255));
-		 * intervalmarker.setLabel("Mes actual");
-		 * intervalmarker.setLabelFont(new Font("SansSerif", 0, 11));
-		 * intervalmarker.setLabelPaint(Color.blue);
-		 * intervalmarker.setLabelAnchor(RectangleAnchor.TOP_LEFT);
-		 * intervalmarker.setLabelTextAnchor(TextAnchor.TOP_RIGHT);
-		 * xyplot.addDomainMarker(intervalmarker, Layer.BACKGROUND); ValueMarker
-		 * valuemarker1 = new ValueMarker(d, Color.blue, new BasicStroke(2.0F));
-		 * ValueMarker valuemarker2 = new ValueMarker(d1, Color.blue, new
-		 * BasicStroke(2.0F)); xyplot.addDomainMarker(valuemarker1,
-		 * Layer.BACKGROUND); xyplot.addDomainMarker(valuemarker2,
+		 * intervalmarker.setLabelOffsetType(LengthAdjustmentType.EXPAND); intervalmarker.setPaint(new Color(150, 150,
+		 * 255)); intervalmarker.setLabel("Mes actual"); intervalmarker.setLabelFont(new Font("SansSerif", 0, 11));
+		 * intervalmarker.setLabelPaint(Color.blue); intervalmarker.setLabelAnchor(RectangleAnchor.TOP_LEFT);
+		 * intervalmarker.setLabelTextAnchor(TextAnchor.TOP_RIGHT); xyplot.addDomainMarker(intervalmarker,
+		 * Layer.BACKGROUND); ValueMarker valuemarker1 = new ValueMarker(d, Color.blue, new BasicStroke(2.0F));
+		 * ValueMarker valuemarker2 = new ValueMarker(d1, Color.blue, new BasicStroke(2.0F));
+		 * xyplot.addDomainMarker(valuemarker1, Layer.BACKGROUND); xyplot.addDomainMarker(valuemarker2,
 		 * Layer.BACKGROUND);
 		 */
 		return jfreechart;
@@ -117,11 +105,7 @@ public class GraficoHistorial extends JPanel {
 	/*
 	 * Se crea el dataset de datos
 	 */
-	public void cargarDatos(Date[] fechas, float[] datos, float Total,
-			float promedio) {
-
-		this.Total = Total;
-		this.promedio = promedio;
+	public void cargarDatos(Date[] fechas, float[] datos, float Total, float promedio) {
 
 		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;

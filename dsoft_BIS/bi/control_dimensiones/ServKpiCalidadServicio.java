@@ -31,6 +31,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 	private int columna_mayor;
 	private float arregloVarianza[];
+	private float varianza;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -104,23 +105,29 @@ public class ServKpiCalidadServicio implements ServKpi {
 	
 	public float Varianza(){
 		
-		float vari = 0;
+		varianza = 0;
 		float divisor = arregloVarianza.length;
 		float promedioCuadrado = 0;
 		
 		for(int i = 0; i < arregloVarianza.length; i++){
 			System.out.print("el cuadrado de " + arregloVarianza[i]);
-			vari = (float) (vari + Math.pow(arregloVarianza[i], 2));
-			System.out.println( " es " + vari);
+			varianza = (float) (varianza + Math.pow(arregloVarianza[i], 2));
+			System.out.println( " es " + varianza);
 		}
 		
-		System.out.println("cuadrado es " + vari + " divisor " + divisor);
+		System.out.println("la varianza al cuadrado es: " + varianza + " divisor " + divisor);
 		
 		promedioCuadrado = (float) Math.pow(promediar(arregloVarianza), 2);		
 		System.out.println("el promedio al 2 es " + promedioCuadrado);
-		vari = (vari - promedioCuadrado)/ divisor;
-		System.out.println("a enviar " + vari);
-		return vari;
+		varianza = (varianza / divisor) - promedioCuadrado;
+		System.out.println("a enviar " + varianza);
+		return varianza;
+	}
+	
+	public float desviacionEstandar(){
+		float desvEstandar = (float) Math.sqrt(varianza);
+		
+		return desvEstandar;
 	}
 
 

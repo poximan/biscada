@@ -51,7 +51,7 @@ public class GraficoKPI extends JPanel {
 
 	public GraficoKPI() {
 
-		setSize(200, 200);
+		setSize(115, 103);
 		setVisible(true);
 	}
 

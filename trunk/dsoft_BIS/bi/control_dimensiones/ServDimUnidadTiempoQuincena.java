@@ -97,11 +97,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	}
 
 	/*
-	 * Genero un nuevo método para devolver el encabezado pero en formato "Date" (non-Javadoc)
-	 * 
-	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
+	 * Genero un nuevo método para devolver el encabezado pero en formato "Date"
 	 */
-
 	@Override
 	public Date[] getEncabezadoFecha() {
 
@@ -148,7 +145,7 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 
 		String texto_quincena;
 
-		if (fecha_alarma_actual.get(Calendar.WEEK_OF_MONTH) <= 2)
+		if (fecha_alarma_actual.get(Calendar.DAY_OF_MONTH) <= 15)
 			texto_quincena = "1 ";
 		else
 			texto_quincena = "2 ";

@@ -120,6 +120,8 @@ public class ProcesarMultipleArchivo {
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+
+			em.clear();
 		}
 		em.getTransaction().commit();
 		mostarInfo();

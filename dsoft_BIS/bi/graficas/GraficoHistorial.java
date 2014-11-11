@@ -106,6 +106,9 @@ public class GraficoHistorial extends JPanel {
 	 * Se crea el dataset de datos
 	 */
 	public void cargarDatos(Date[] fechas, float[] datos, float Total, float promedio) {
+		
+		this.Total = Total;
+		this.promedio = promedio;
 
 		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;

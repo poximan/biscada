@@ -5,6 +5,8 @@
 
 package control_etl;
 
+import control_general.EMFSingleton;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -32,26 +34,24 @@ public class TransaccionArchivo implements Transaccionable {
 
 	@Override
 	public void beginBULK() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void commitBULK() {
-		// TODO Auto-generated method stub
+	}
 
+	@Override
+	public void limpiarCacheBULK() {
 	}
 
 	@Override
 	public void beginArchivo() {
-		// TODO Auto-generated method stub
-
+		EMFSingleton.getInstanciaEM().getTransaction().begin();
 	}
 
 	@Override
 	public void commitArchivo() {
-		// TODO Auto-generated method stub
-
+		EMFSingleton.getInstanciaEM().getTransaction().commit();
 	}
 
 	/* ............................................. */

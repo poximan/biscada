@@ -25,7 +25,12 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_dbf.ProcesarMultipleArchivo;
+import control_etl.TransaccionArchivo;
+import control_etl.TransaccionBULK;
+import control_etl.Transaccionable;
 import control_general.ServPropiedades;
+
+import javax.swing.JCheckBox;
 
 /* ............................................. */
 /* ............................................. */
@@ -67,6 +72,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JTextField txtDireccionFuente;
 
 	private CompSeleccionarDireccion btnCambiar;
+	private JCheckBox chckbxUsarInsercionPor;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -104,8 +110,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 150, 150, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 50, 36, 200, 0, 20 };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0 };
+		gridBagLayout.rowHeights = new int[] { 50, 0, 36, 200, 0, 20 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 };
 		setLayout(gridBagLayout);
 
@@ -139,13 +145,21 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_btnCambiar.gridy = 0;
 		add(btnCambiar, gbc_btnCambiar);
 
+		chckbxUsarInsercionPor = new JCheckBox("insercion por lotes (mas de 100 archivos)");
+		GridBagConstraints gbc_chckbxUsarInsercionPor = new GridBagConstraints();
+		gbc_chckbxUsarInsercionPor.gridwidth = 2;
+		gbc_chckbxUsarInsercionPor.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxUsarInsercionPor.gridx = 1;
+		gbc_chckbxUsarInsercionPor.gridy = 1;
+		add(chckbxUsarInsercionPor, gbc_chckbxUsarInsercionPor);
+
 		scrollPane_procesados = new JScrollPane((Component) null);
 		GridBagConstraints gbc_scrollPane_procesados = new GridBagConstraints();
 		gbc_scrollPane_procesados.gridwidth = 3;
-		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane_procesados.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_procesados.gridx = 3;
-		gbc_scrollPane_procesados.gridy = 2;
+		gbc_scrollPane_procesados.gridy = 3;
 		add(scrollPane_procesados, gbc_scrollPane_procesados);
 
 		// -------------------------------------
@@ -174,19 +188,19 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		lbl_procesados.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_procesados.setHorizontalTextPosition(SwingConstants.LEADING);
 
-		add(lbl_disponibles, new GridBagConstraints(0, 1, 3, 1, 0, 0, GridBagConstraints.SOUTH,
+		add(lbl_disponibles, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.SOUTH,
 				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
 
 		GridBagConstraints gbc_lbl_procesados = new GridBagConstraints();
 		gbc_lbl_procesados.gridwidth = 3;
 		gbc_lbl_procesados.anchor = GridBagConstraints.SOUTH;
 		gbc_lbl_procesados.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lbl_procesados.insets = new Insets(0, 0, 5, 5);
+		gbc_lbl_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_lbl_procesados.gridx = 3;
-		gbc_lbl_procesados.gridy = 1;
+		gbc_lbl_procesados.gridy = 2;
 
 		add(lbl_procesados, gbc_lbl_procesados);
-		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 2, 3, 1, .5, 1, GridBagConstraints.CENTER,
+		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 3, 3, 1, .5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
 
 		txt_disponibles = new JTextField();
@@ -196,7 +210,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_sin_procesar.insets = new Insets(0, 0, 5, 5);
 		gbc_txt_sin_procesar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txt_sin_procesar.gridx = 1;
-		gbc_txt_sin_procesar.gridy = 3;
+		gbc_txt_sin_procesar.gridy = 4;
 		add(txt_disponibles, gbc_txt_sin_procesar);
 		txt_disponibles.setColumns(10);
 
@@ -207,7 +221,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_procesados.insets = new Insets(0, 0, 5, 5);
 		gbc_txt_procesados.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txt_procesados.gridx = 4;
-		gbc_txt_procesados.gridy = 3;
+		gbc_txt_procesados.gridy = 4;
 		add(txt_procesados, gbc_txt_procesados);
 
 		pl_botones = new JPanel();
@@ -216,7 +230,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_pl_botones.fill = GridBagConstraints.HORIZONTAL;
 		gbc_pl_botones.gridwidth = 2;
 		gbc_pl_botones.gridx = 2;
-		gbc_pl_botones.gridy = 4;
+		gbc_pl_botones.gridy = 5;
 		add(pl_botones, gbc_pl_botones);
 
 		btn_restablecer = new JButton("Restablecer");
@@ -268,8 +282,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public void actionConfirmarCambios() {
 
+		Transaccionable metodo_insercion;
+
+		if (chckbxUsarInsercionPor.isSelected())
+			metodo_insercion = new TransaccionBULK();
+		else
+			metodo_insercion = new TransaccionArchivo();
+
 		if (!list_disponibles.isSelectionEmpty())
-			procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
+			procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList(),
+					metodo_insercion);
 
 		if (!list_procesados.isSelectionEmpty())
 			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());

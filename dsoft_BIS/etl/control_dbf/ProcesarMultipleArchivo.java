@@ -23,6 +23,7 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_CRUDs.ServCRUDArchivoDBF;
+import control_etl.Transaccionable;
 import control_general.EMFSingleton;
 
 /* ............................................. */
@@ -103,8 +104,10 @@ public class ProcesarMultipleArchivo {
 	 * comieza el proceso ETL de todos los archivos validos para ser insertados
 	 * 
 	 * @param lista_candidatos_procesar
+	 * @param metodo_insercion
 	 */
-	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar) {
+	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar,
+			Transaccionable metodo_insercion) {
 
 		int totales = lista_candidatos_procesar.size(), actual = 1;
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
@@ -113,17 +116,22 @@ public class ProcesarMultipleArchivo {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
-		em.getTransaction().begin();
+		metodo_insercion.beginBULK();
+
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
+			metodo_insercion.beginArchivo();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+			metodo_insercion.commitArchivo();
 
-			em.clear();
+			metodo_insercion.limpiarCacheBULK();
 		}
-		em.getTransaction().commit();
+
+		metodo_insercion.commitBULK();
+
 		mostarInfo();
 	}
 

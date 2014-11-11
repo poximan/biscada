@@ -46,10 +46,9 @@ public class GraficoHistorial extends JPanel {
 		// XYDataset xydataset = createDataset();
 		JFreeChart jfreechart = createChart(coleccion);
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		//chartpanel.setPreferredSize(new Dimension(900, 300));
+		// chartpanel.setPreferredSize(new Dimension(900, 300));
 		chartpanel.setDomainZoomable(true);
 		chartpanel.setRangeZoomable(true);
-		chartpanel.getAutoscrolls();
 
 		panel = chartpanel;
 		add(panel);
@@ -65,7 +64,7 @@ public class GraficoHistorial extends JPanel {
 		xyplot.setDomainGridlineStroke(new BasicStroke(1.0F));
 		xyplot.setRangeGridlinePaint(Color.lightGray);
 		xyplot.setRangeGridlineStroke(new BasicStroke(1.0F));
-		//xyplot.setRangeTickBandPaint(new Color(240, 240, 240));
+		// xyplot.setRangeTickBandPaint(new Color(240, 240, 240));
 
 		// Se configura eje x y la manera en que se muestran las etiquetas
 		PeriodAxis periodaxis = new PeriodAxis(null);
@@ -117,7 +116,6 @@ public class GraficoHistorial extends JPanel {
 
 	/*
 	 * Se crea el dataset de datos
-	 *  
 	 */
 	public void cargarDatos(Date[] fechas, float[] datos, float Total,
 			float promedio) {
@@ -128,30 +126,19 @@ public class GraficoHistorial extends JPanel {
 		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;
 		int day, month, year;
-		double veriValor = datos.length;
 		coleccion = new TimeSeriesCollection();
 
 		// Convirtiendo y pasando la fecha y el dato al histograma
 		for (int i = 0; i < fechas.length; i++) {
 			dia = new SimpleDateFormat("dd").format(fechas[i]);
-			System.out.println(dia);
 			mes = new SimpleDateFormat("MM").format(fechas[i]);
-			System.out.println(mes);
 			anio = new SimpleDateFormat("YYYY").format(fechas[i]);
-			System.out.println(anio);
 
 			day = Integer.parseInt(dia);
 			month = Integer.parseInt(mes);
 			year = Integer.parseInt(anio);
 
-			if (veriValor > i) {
-				System.out.println("normal");
-				serieFecha.add(new Day(day, month, year), datos[i]);
-			}
-			if (i >= veriValor) {
-				System.out.println("entro");
-				serieFecha.add(new Day(day, month, year), 0);
-			}
+			serieFecha.add(new Day(day, month, year), datos[i]);
 		}
 
 		coleccion.addSeries(serieFecha);

@@ -25,6 +25,7 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_dbf.ProcesarMultipleArchivo;
+import control_general.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -65,7 +66,6 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 	private JTextField txt_procesados;
 	private JTextField txtDireccionFuente;
 
-	private String direccion_lectura;
 	private CompSeleccionarDireccion btnCambiar;
 
 	/* ............................................. */
@@ -79,10 +79,9 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 	 * 
 	 * @param direccion_lectura
 	 */
-	public VistaETLPrueba(String direccion_lectura) {
+	public VistaETLPrueba() {
 
 		log.trace("set direccion por defecto para origen de datos");
-		this.direccion_lectura = direccion_lectura;
 
 		log.trace("inicia componentes");
 		iniciarComponentes();
@@ -130,7 +129,7 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 		add(txtDireccionFuente, gbc_txtDireccionFuente);
 		txtDireccionFuente.setColumns(10);
 
-		txtDireccionFuente.setText(direccion_lectura);
+		txtDireccionFuente.setText(ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS"));
 		btnCambiar = new CompSeleccionarDireccion(txtDireccionFuente);
 
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();

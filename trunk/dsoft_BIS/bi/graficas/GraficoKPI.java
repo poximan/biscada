@@ -44,9 +44,6 @@ public class GraficoKPI extends JPanel {
 	private double rangoMin;
 	private double rangoMax;
 
-	// porcentaje por default
-	int porcentaje = 5;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -54,7 +51,7 @@ public class GraficoKPI extends JPanel {
 
 	public GraficoKPI() {
 
-		setSize(400, 400);
+		setSize(200, 200);
 		setVisible(true);
 	}
 
@@ -74,7 +71,7 @@ public class GraficoKPI extends JPanel {
 		return panel;
 	}
 
-	/*
+	/**
 	 * Se genera el dibujo con los datos ingresados.
 	 */
 	private JFreeChart createChart() {
@@ -115,10 +112,9 @@ public class GraficoKPI extends JPanel {
 		return jfreechart;
 	}
 
-	/*
+	/**
 	 * se crean y actualizan los intervalos según el evento que ocurra (inicio o seteo de porcentaje).
 	 */
-
 	public void actualizarIntervalos() {
 
 		intervaloNormal = new MeterInterval("Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
@@ -131,10 +127,9 @@ public class GraficoKPI extends JPanel {
 				3.0F), Color.RED);
 	}
 
-	/*
+	/**
 	 * Se cargan los datos para ser reflejados en el semáforo
 	 */
-
 	public void cargarDatos(float cantTotal, float promH, float cantAct) {
 		dataset = new DefaultValueDataset(cantAct);
 		promHist = promH;
@@ -142,7 +137,7 @@ public class GraficoKPI extends JPanel {
 
 	}
 
-	/*
+	/**
 	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
 	 */
 	public void Porcentaje(int porcentaje) {
@@ -153,10 +148,11 @@ public class GraficoKPI extends JPanel {
 		refreshChart();
 	}
 
-	/*
+	/**
 	 * Actualización del gráfico cada ves que se agrande el rango del promedio
 	 */
 	private void refreshChart() {
+
 		panel.removeAll();
 		panel.revalidate(); // remueve el dibujo anterior
 		JFreeChart aChart = createChart();

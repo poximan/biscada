@@ -89,10 +89,17 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	public float ultimaFraccion(List<Alarma> lista_interes) {
 
 		float valor_retorno = 0;
+		Calendar primer_alarma;
 		Collections.sort(lista_interes);
 		Collections.reverse(lista_interes);
 
-		Calendar primer_alarma = lista_interes.get(0).getFecha_inicio();
+		try {
+			primer_alarma = lista_interes.get(0).getFecha_inicio();
+		}
+		catch (IndexOutOfBoundsException excepcion) {
+			return 0;
+		}
+
 		for (Alarma alarma_actual : lista_interes) {
 
 			Calendar fecha_alarma_actual = alarma_actual.getFecha_inicio();

@@ -9,7 +9,6 @@ import java.beans.Beans;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -117,7 +116,7 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
-		list_procesados = Beans.isDesignTime() ? Collections.emptyList() : getQueryTodos().getResultList();
+		list_procesados = getQueryTodos().getResultList();
 	}
 
 	@Override

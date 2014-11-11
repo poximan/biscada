@@ -31,8 +31,6 @@ public class GestorETL {
 	private static GestorETL main_etl;
 	private JFrame frame_etl;
 
-	private String direccion_lectura = ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS");
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -43,7 +41,7 @@ public class GestorETL {
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
 
-		frame_etl.getContentPane().add(new VistaETLPrueba(direccion_lectura), BorderLayout.CENTER);
+		frame_etl.getContentPane().add(new VistaETLPrueba(), BorderLayout.CENTER);
 		log.trace("se lanza pantalla etl");
 	}
 

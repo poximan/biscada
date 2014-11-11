@@ -83,6 +83,8 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 		getTxtActual().setText(
 				String.valueOf(serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio, serv_unidad_tiempo,
 						serv_medicion, sitio_actual)));
+		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
+	
 	}
 
 	private void llenarCampoTextos(float[][] datos) {

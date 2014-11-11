@@ -113,15 +113,15 @@ public class ProcesarMultipleArchivo {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
+		em.getTransaction().begin();
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
-			em.getTransaction().begin();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
-			em.getTransaction().commit();
 		}
+		em.getTransaction().commit();
 		mostarInfo();
 	}
 

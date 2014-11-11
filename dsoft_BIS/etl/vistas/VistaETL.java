@@ -32,14 +32,14 @@ import control_general.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConfigurable {
+public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(VistaETLPrueba.class);
+	private static Logger log = Logger.getLogger(VistaETL.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -79,7 +79,7 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 	 * 
 	 * @param direccion_lectura
 	 */
-	public VistaETLPrueba() {
+	public VistaETL() {
 
 		log.trace("set direccion por defecto para origen de datos");
 
@@ -232,7 +232,7 @@ public class VistaETLPrueba extends JPanel implements PanelIniciable, EventoConf
 	@Override
 	public void configEventos() {
 
-		EventoETLPrueba eventos = new EventoETLPrueba(this);
+		EventoETL eventos = new EventoETL(this);
 
 		btn_restablecer.addActionListener(eventos);
 		btn_confirmar_cambios.addActionListener(eventos);

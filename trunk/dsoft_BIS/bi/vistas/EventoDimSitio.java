@@ -49,8 +49,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(
-					getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getValoresTabla()));
 		}
 	}
 
@@ -68,22 +67,18 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		int fila = tabla.getSelectedRow();
 		Sitio sitio_actual = (Sitio) tabla.getValueAt(fila, 0);
 
-		float valores[] = ((TableModelMedicionTemporal) getVista_dimension()
-				.getTbl_medicion().getModel()).getDatosFila(fila);
+		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getTbl_medicion().getModel())
+				.getDatosFila(fila);
 
-		System.out.println("encontrando nombre sitio "
-				+ sitio_actual.getDescripcion());
+		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
 
-		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo()
-				.getEncabezado().length;
+		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo().getEncabezado().length;
 		valores = Arrays.copyOf(valores, maximo_arreglo);
 
 		JFrame frame = new JFrame(sitio_actual.getDescripcion());
-		lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(
-				getVista_dimension().getServ_dim_sitio(), getVista_dimension()
-						.getServ_unidad_tiempo(), getVista_dimension()
-						.getServ_medicion(), getVista_dimension()
-						.getServ_intervalo(), sitio_actual, valores));
+		lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getServ_dim_sitio(),
+				getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
+				getVista_dimension().getServ_intervalo(), sitio_actual, valores));
 	}
 
 	@Override

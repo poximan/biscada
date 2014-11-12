@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -28,16 +29,15 @@ import control_dbf.ProcesarMultipleArchivo;
 import control_etl.TransaccionArchivo;
 import control_etl.TransaccionBULK;
 import control_etl.Transaccionable;
+import control_general.ObjetosBorrables;
 import control_general.ServPropiedades;
-
-import javax.swing.JCheckBox;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurable {
+public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurable, ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -323,6 +323,18 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		model_procesados.addAll(objects);
 		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
+	}
+
+	@Override
+	public void liberarObjetos() {
+
+		list_disponibles.removeAll();
+		list_procesados.removeAll();
+
+		model_disponibles.clear();
+		model_procesados.clear();
+
+		procesador_archivos.liberarObjetos();
 	}
 
 	/* ............................................. */

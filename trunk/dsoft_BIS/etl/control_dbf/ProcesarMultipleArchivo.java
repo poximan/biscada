@@ -25,13 +25,14 @@ import org.apache.log4j.Logger;
 import control_CRUDs.ServCRUDArchivoDBF;
 import control_etl.Transaccionable;
 import control_general.EMFSingleton;
+import control_general.ObjetosBorrables;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ProcesarMultipleArchivo {
+public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -181,6 +182,11 @@ public class ProcesarMultipleArchivo {
 				em.getTransaction().rollback();
 			throw excepcion;
 		}
+	}
+
+	@Override
+	public void liberarObjetos() {
+		dbf_servicio_crud.liberarObjetos();
 	}
 
 	/* ............................................. */

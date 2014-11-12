@@ -28,8 +28,8 @@ public class GestorETL {
 
 	private static Logger log = Logger.getLogger(GestorETL.class);
 
-	private static GestorETL main_etl;
 	private JFrame frame_etl;
+	private static VistaETL vista_etl;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -41,7 +41,9 @@ public class GestorETL {
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
 		log.trace("se crea marco para panel etl");
 
-		frame_etl.getContentPane().add(new VistaETL(), BorderLayout.CENTER);
+		vista_etl = new VistaETL();
+
+		frame_etl.getContentPane().add(vista_etl, BorderLayout.CENTER);
 		log.trace("se lanza pantalla etl");
 	}
 
@@ -52,9 +54,10 @@ public class GestorETL {
 
 	public static GestorETL getSingleton() {
 
-		if (main_etl == null)
-			main_etl = new GestorETL();
-		return main_etl;
+		if (vista_etl != null)
+			vista_etl.liberarObjetos();
+
+		return new GestorETL();
 	}
 
 	public void mostrarVentana() {

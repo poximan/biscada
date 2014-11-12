@@ -17,13 +17,14 @@ import javax.persistence.Query;
 import modelo.Alarma;
 import modelo.ArchivoDBF;
 import control_general.EMFSingleton;
+import control_general.ObjetosBorrables;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
+public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -178,6 +179,13 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public Object leer(Object entidad) {
 		return null;
+	}
+
+	@Override
+	public void liberarObjetos() {
+
+		list_disponibles.clear();
+		list_procesados.clear();
 	}
 
 	/* ............................................. */

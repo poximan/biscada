@@ -8,9 +8,13 @@ package vistas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JList;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import modelo.ArchivoDBF;
 import control_general.GestorBI;
 
 /* ............................................. */
@@ -18,7 +22,7 @@ import control_general.GestorBI;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoETL implements ActionListener, DocumentListener {
+public class EventoETL implements ActionListener, DocumentListener, ListSelectionListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -83,5 +87,11 @@ public class EventoETL implements ActionListener, DocumentListener {
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
 		vista_etl.actionRestablecer();
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+
+		JList<ArchivoDBF> elemento = (JList<ArchivoDBF>) arg0.getSource();
 	}
 }

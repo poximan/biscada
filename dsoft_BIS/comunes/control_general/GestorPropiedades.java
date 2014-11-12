@@ -39,7 +39,7 @@ public class GestorPropiedades {
 	private GestorPropiedades() {
 
 		frame_etl = new JFrame("Parametros arranque");
-		frame_etl.getContentPane().add(new VistaPropiedades(), BorderLayout.CENTER);
+		frame_etl.getContentPane().add(new VistaPropiedades(frame_etl), BorderLayout.CENTER);
 		log.trace("se crea panel de propiedades");
 	}
 
@@ -58,7 +58,8 @@ public class GestorPropiedades {
 	public void mostrarVentana() {
 
 		frame_etl.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame_etl.setBounds(100, 100, 600, 250);
+		frame_etl.setBounds(100, 100, 580, 200);
 		frame_etl.setVisible(true);
+		frame_etl.setResizable(false);
 	}
 }

@@ -53,8 +53,8 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
 			getIndicador_kpi().createPanel();
 
-			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH, Float.parseFloat(getTxtTotal().getText()), 
-					Float.parseFloat(getTxtPromedio().getText()));
+			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH,
+					Float.parseFloat(getTxtTotal().getText()), Float.parseFloat(getTxtPromedio().getText()));
 			getHisto_kpi().createPanel();
 
 		}
@@ -85,7 +85,7 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 						serv_medicion, sitio_actual)));
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
 		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
-	
+
 	}
 
 	private void llenarCampoTextos(float[][] datos) {

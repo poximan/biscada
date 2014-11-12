@@ -17,11 +17,13 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
@@ -41,6 +43,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	private static final long serialVersionUID = 1L;
 
+	private JFrame frame_etl;
+
 	private CompSeleccionarDireccion btnCambiar;
 	private JTextField txt_direccion_fuente;
 	private JButton btnConfirmarCambios;
@@ -53,7 +57,9 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaPropiedades() {
+	public VistaPropiedades(JFrame frame_etl) {
+
+		this.frame_etl = frame_etl;
 
 		iniciarComponentes();
 		configEventos();
@@ -159,7 +165,9 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 						.addContainerGap(103, Short.MAX_VALUE)));
 
 		btnConfirmarCambios = new JButton("confirmar cambios");
+		btnConfirmarCambios.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.anchor = GridBagConstraints.EAST;
 		gbc_button.gridwidth = 2;
 		gbc_button.gridx = 2;
 		gbc_button.gridy = 4;
@@ -185,6 +193,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 						String.valueOf(spinnerPisoRuido.getModel().getValue()));
 
 				ServPropiedades.guardarCambios();
+
+				frame_etl.dispose();
 			}
 		});
 	}

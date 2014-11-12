@@ -7,7 +7,6 @@ package modelo;
 
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -82,11 +81,11 @@ public class Alarma implements Comparable {
 	@JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO", nullable = false)
 	private Sitio sitio; // ex primera parte de texto
 
-	@ManyToOne(optional = true /* JPA lo resuelve en tiempo de ejecucion */, cascade = CascadeType.PERSIST)
+	@ManyToOne(optional = true /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_EQUIPO_EN_SITIO", referencedColumnName = "ID_EQUIPO_EN_SITIO", nullable = true)
 	private EquipoEnSitio equipo_en_sitio; // ex segunda parte de texto
 
-	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */, cascade = CascadeType.PERSIST)
+	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_SUCESO", referencedColumnName = "ID_SUCESO", nullable = false)
 	private Suceso suceso; // ex tercera parte de texto
 

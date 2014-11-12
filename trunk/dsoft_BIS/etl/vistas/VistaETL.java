@@ -53,8 +53,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JPanel pl_botones;
 	private JScrollPane scrollPane_procesados;
 
-	private JLabel lbl_disponibles;
-	private JLabel lbl_procesados;
+	private JLabel lbl_totDisponibles;
+	private JLabel lbl_totProcesados;
 	private JLabel lblDireccionFuente;
 
 	private ListModelOrdenada model_disponibles;
@@ -67,12 +67,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JButton btn_analisis_datos;
 	private JButton btn_restablecer;
 
-	private JTextField txt_disponibles;
-	private JTextField txt_procesados;
+	private JTextField txt_totDisponibles;
+	private JTextField txt_totProcesados;
 	private JTextField txtDireccionFuente;
 
 	private CompSeleccionarDireccion btnCambiar;
 	private JCheckBox chckbxUsarInsercionPor;
+	private JLabel lbl_selDisponibles;
+	private JLabel lbl_selProcesados;
+	private JTextField txt_selDisponibles;
+	private JTextField txt_selProcesados;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -109,17 +113,17 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 150, 150, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 50, 0, 36, 200, 0, 20 };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 };
+		gridBagLayout.columnWidths = new int[] { 0, 120, 120, 0, 120, 120, 0 };
+		gridBagLayout.rowHeights = new int[] { 40, 30, 38, 42, 200, 0, 0, 20 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0 };
 		setLayout(gridBagLayout);
 
 		lblDireccionFuente = new JLabel("Direccion fuente:");
 		lblDireccionFuente.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		GridBagConstraints gbc_lblDireccionFuente = new GridBagConstraints();
-		gbc_lblDireccionFuente.anchor = GridBagConstraints.EAST;
+		gbc_lblDireccionFuente.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_lblDireccionFuente.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDireccionFuente.gridx = 1;
 		gbc_lblDireccionFuente.gridy = 0;
@@ -127,11 +131,11 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		txtDireccionFuente = new JTextField();
 		GridBagConstraints gbc_txtDireccionFuente = new GridBagConstraints();
-		gbc_txtDireccionFuente.gridwidth = 2;
-		gbc_txtDireccionFuente.insets = new Insets(0, 0, 5, 5);
 		gbc_txtDireccionFuente.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtDireccionFuente.gridx = 2;
-		gbc_txtDireccionFuente.gridy = 0;
+		gbc_txtDireccionFuente.gridwidth = 4;
+		gbc_txtDireccionFuente.insets = new Insets(0, 0, 5, 5);
+		gbc_txtDireccionFuente.gridx = 1;
+		gbc_txtDireccionFuente.gridy = 1;
 		add(txtDireccionFuente, gbc_txtDireccionFuente);
 		txtDireccionFuente.setColumns(10);
 
@@ -141,25 +145,61 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
 		gbc_btnCambiar.anchor = GridBagConstraints.WEST;
 		gbc_btnCambiar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCambiar.gridx = 4;
-		gbc_btnCambiar.gridy = 0;
+		gbc_btnCambiar.gridx = 5;
+		gbc_btnCambiar.gridy = 1;
 		add(btnCambiar, gbc_btnCambiar);
 
 		chckbxUsarInsercionPor = new JCheckBox("insercion por lotes (mas de 100 archivos)");
 		GridBagConstraints gbc_chckbxUsarInsercionPor = new GridBagConstraints();
+		gbc_chckbxUsarInsercionPor.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_chckbxUsarInsercionPor.gridwidth = 2;
 		gbc_chckbxUsarInsercionPor.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxUsarInsercionPor.gridx = 1;
-		gbc_chckbxUsarInsercionPor.gridy = 1;
+		gbc_chckbxUsarInsercionPor.gridy = 2;
 		add(chckbxUsarInsercionPor, gbc_chckbxUsarInsercionPor);
+
+		// -------------------------------------
+		//
+		// seccion fuente
+		// -------------------------------------
+
+		lbl_totDisponibles = new JLabel("Disponibles");
+
+		lbl_totDisponibles.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_totDisponibles.setHorizontalTextPosition(SwingConstants.LEADING);
+
+		add(lbl_totDisponibles, new GridBagConstraints(1, 3, 1, 1, 0, 0, GridBagConstraints.SOUTHEAST,
+				GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
+
+		txt_totDisponibles = new JTextField();
+		txt_totDisponibles.setEditable(false);
+		GridBagConstraints gbc_txt_totDisponibles = new GridBagConstraints();
+		gbc_txt_totDisponibles.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_totDisponibles.anchor = GridBagConstraints.SOUTH;
+		gbc_txt_totDisponibles.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_totDisponibles.gridx = 2;
+		gbc_txt_totDisponibles.gridy = 3;
+		add(txt_totDisponibles, gbc_txt_totDisponibles);
+		txt_totDisponibles.setColumns(10);
+
+		txt_totProcesados = new JTextField();
+		txt_totProcesados.setEditable(false);
+		txt_totProcesados.setColumns(10);
+		GridBagConstraints gbc_txt_totProcesados = new GridBagConstraints();
+		gbc_txt_totProcesados.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_totProcesados.anchor = GridBagConstraints.SOUTH;
+		gbc_txt_totProcesados.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_totProcesados.gridx = 5;
+		gbc_txt_totProcesados.gridy = 3;
+		add(txt_totProcesados, gbc_txt_totProcesados);
 
 		scrollPane_procesados = new JScrollPane((Component) null);
 		GridBagConstraints gbc_scrollPane_procesados = new GridBagConstraints();
-		gbc_scrollPane_procesados.gridwidth = 3;
-		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_procesados.gridwidth = 2;
+		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_procesados.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_procesados.gridx = 3;
-		gbc_scrollPane_procesados.gridy = 3;
+		gbc_scrollPane_procesados.gridx = 4;
+		gbc_scrollPane_procesados.gridy = 4;
 		add(scrollPane_procesados, gbc_scrollPane_procesados);
 
 		// -------------------------------------
@@ -174,63 +214,62 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		list_procesados = new JList<ArchivoDBF>(model_procesados);
 
 		scrollPane_procesados.setViewportView(list_procesados);
+		lbl_totProcesados = new JLabel("Procesados");
+		lbl_totProcesados.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_totProcesados.setHorizontalTextPosition(SwingConstants.LEADING);
 
-		// -------------------------------------
-		//
-		// seccion fuente
-		// -------------------------------------
+		GridBagConstraints gbc_lbl_totProcesados = new GridBagConstraints();
+		gbc_lbl_totProcesados.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_lbl_totProcesados.insets = new Insets(0, 0, 5, 5);
+		gbc_lbl_totProcesados.gridx = 4;
+		gbc_lbl_totProcesados.gridy = 3;
 
-		lbl_disponibles = new JLabel("Disponibles");
-		lbl_procesados = new JLabel("Procesados");
-
-		lbl_disponibles.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_disponibles.setHorizontalTextPosition(SwingConstants.LEADING);
-		lbl_procesados.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_procesados.setHorizontalTextPosition(SwingConstants.LEADING);
-
-		add(lbl_disponibles, new GridBagConstraints(0, 2, 3, 1, 0, 0, GridBagConstraints.SOUTH,
-				GridBagConstraints.HORIZONTAL, new Insets(0, 0, 5, 5), 0, 0));
-
-		GridBagConstraints gbc_lbl_procesados = new GridBagConstraints();
-		gbc_lbl_procesados.gridwidth = 3;
-		gbc_lbl_procesados.anchor = GridBagConstraints.SOUTH;
-		gbc_lbl_procesados.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lbl_procesados.insets = new Insets(0, 0, 5, 0);
-		gbc_lbl_procesados.gridx = 3;
-		gbc_lbl_procesados.gridy = 2;
-
-		add(lbl_procesados, gbc_lbl_procesados);
-		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 3, 3, 1, .5, 1, GridBagConstraints.CENTER,
+		add(lbl_totProcesados, gbc_lbl_totProcesados);
+		add(new JScrollPane(list_disponibles), new GridBagConstraints(1, 4, 2, 1, .5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
 
-		txt_disponibles = new JTextField();
-		txt_disponibles.setEditable(false);
-		GridBagConstraints gbc_txt_sin_procesar = new GridBagConstraints();
-		gbc_txt_sin_procesar.anchor = GridBagConstraints.NORTH;
-		gbc_txt_sin_procesar.insets = new Insets(0, 0, 5, 5);
-		gbc_txt_sin_procesar.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txt_sin_procesar.gridx = 1;
-		gbc_txt_sin_procesar.gridy = 4;
-		add(txt_disponibles, gbc_txt_sin_procesar);
-		txt_disponibles.setColumns(10);
+		lbl_selDisponibles = new JLabel("Seleccionados:");
+		GridBagConstraints gbc_lbl_selDisponibles = new GridBagConstraints();
+		gbc_lbl_selDisponibles.anchor = GridBagConstraints.EAST;
+		gbc_lbl_selDisponibles.insets = new Insets(0, 0, 5, 5);
+		gbc_lbl_selDisponibles.gridx = 1;
+		gbc_lbl_selDisponibles.gridy = 5;
+		add(lbl_selDisponibles, gbc_lbl_selDisponibles);
 
-		txt_procesados = new JTextField();
-		txt_procesados.setEditable(false);
-		txt_procesados.setColumns(10);
-		GridBagConstraints gbc_txt_procesados = new GridBagConstraints();
-		gbc_txt_procesados.insets = new Insets(0, 0, 5, 5);
-		gbc_txt_procesados.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txt_procesados.gridx = 4;
-		gbc_txt_procesados.gridy = 4;
-		add(txt_procesados, gbc_txt_procesados);
+		txt_selDisponibles = new JTextField();
+		txt_selDisponibles.setEditable(false);
+		GridBagConstraints gbc_txt_selDisponibles = new GridBagConstraints();
+		gbc_txt_selDisponibles.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_selDisponibles.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_selDisponibles.gridx = 2;
+		gbc_txt_selDisponibles.gridy = 5;
+		add(txt_selDisponibles, gbc_txt_selDisponibles);
+		txt_selDisponibles.setColumns(10);
+
+		lbl_selProcesados = new JLabel("Seleccionados:");
+		GridBagConstraints gbc_lbl_selProcesados = new GridBagConstraints();
+		gbc_lbl_selProcesados.anchor = GridBagConstraints.EAST;
+		gbc_lbl_selProcesados.insets = new Insets(0, 0, 5, 5);
+		gbc_lbl_selProcesados.gridx = 4;
+		gbc_lbl_selProcesados.gridy = 5;
+		add(lbl_selProcesados, gbc_lbl_selProcesados);
+
+		txt_selProcesados = new JTextField();
+		txt_selProcesados.setEditable(false);
+		GridBagConstraints gbc_txt_selProcesados = new GridBagConstraints();
+		gbc_txt_selProcesados.insets = new Insets(0, 0, 5, 5);
+		gbc_txt_selProcesados.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txt_selProcesados.gridx = 5;
+		gbc_txt_selProcesados.gridy = 5;
+		add(txt_selProcesados, gbc_txt_selProcesados);
+		txt_selProcesados.setColumns(10);
 
 		pl_botones = new JPanel();
 		GridBagConstraints gbc_pl_botones = new GridBagConstraints();
-		gbc_pl_botones.insets = new Insets(0, 0, 0, 5);
-		gbc_pl_botones.fill = GridBagConstraints.HORIZONTAL;
-		gbc_pl_botones.gridwidth = 2;
+		gbc_pl_botones.anchor = GridBagConstraints.EAST;
+		gbc_pl_botones.gridwidth = 5;
 		gbc_pl_botones.gridx = 2;
-		gbc_pl_botones.gridy = 5;
+		gbc_pl_botones.gridy = 7;
 		add(pl_botones, gbc_pl_botones);
 
 		btn_restablecer = new JButton("Restablecer");
@@ -251,6 +290,9 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		btn_restablecer.addActionListener(eventos);
 		btn_confirmar_cambios.addActionListener(eventos);
 		btn_analisis_datos.addActionListener(eventos);
+
+		list_disponibles.addListSelectionListener(eventos);
+		list_procesados.addListSelectionListener(eventos);
 
 		txtDireccionFuente.getDocument().addDocumentListener(eventos);
 	}
@@ -306,8 +348,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		model_procesados.clear();
 		list_procesados.clearSelection();
 
-		txt_disponibles.setText("0");
-		txt_procesados.setText("0");
+		txt_totDisponibles.setText("0");
+		txt_totProcesados.setText("0");
 	}
 
 	/*
@@ -316,13 +358,13 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	public void agregarDisponible(Object[] objects) {
 
 		model_disponibles.addAll(objects);
-		txt_disponibles.setText(String.valueOf(model_disponibles.getSize()));
+		txt_totDisponibles.setText(String.valueOf(model_disponibles.getSize()));
 	}
 
 	public void agregarProcesado(Object[] objects) {
 
 		model_procesados.addAll(objects);
-		txt_procesados.setText(String.valueOf(model_procesados.getSize()));
+		txt_totProcesados.setText(String.valueOf(model_procesados.getSize()));
 	}
 
 	@Override
@@ -352,6 +394,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public JButton getBtn_reiniciar() {
 		return btn_restablecer;
+	}
+
+	public JTextField getTxt_selDisponibles() {
+		return txt_selDisponibles;
+	}
+
+	public JTextField getTxt_selProcesados() {
+		return txt_selProcesados;
 	}
 
 	/* ............................................. */

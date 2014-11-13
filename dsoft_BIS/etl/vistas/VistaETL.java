@@ -113,7 +113,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 120, 120, 0, 120, 120, 0 };
+		gridBagLayout.columnWidths = new int[] { 30, 120, 120, 0, 120, 120, 30 };
 		gridBagLayout.rowHeights = new int[] { 40, 30, 38, 42, 200, 0, 0, 20 };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0 };

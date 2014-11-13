@@ -7,6 +7,8 @@ package vistas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JList;
 import javax.swing.event.DocumentEvent;
@@ -92,6 +94,22 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 
+		@SuppressWarnings("unchecked")
 		JList<ArchivoDBF> elemento = (JList<ArchivoDBF>) arg0.getSource();
+
+		Class<?> c;
+		try {
+			c = Class.forName("modelo.JListDisponible");
+			Constructor<?> cons = c.getConstructor();
+			Object object = cons.newInstance();
+		}
+		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+				| IllegalAccessException | IllegalArgumentException | InvocationTargetException excepcion) {
+			// TODO Auto-generated catch block
+			excepcion.printStackTrace();
+		}
+
+		String nombre = elemento.getName();
+		vista_etl.getTxt_selDisponibles().setText(String.valueOf(elemento.getSelectedValuesList().size()));
 	}
 }

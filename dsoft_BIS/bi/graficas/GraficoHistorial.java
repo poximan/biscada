@@ -47,7 +47,7 @@ public class GraficoHistorial extends JPanel {
 		chartpanel.setRangeZoomable(true);
 
 		panel = chartpanel;
-		add(panel);
+		add(chartpanel);
 		return panel;
 	}
 
@@ -106,9 +106,9 @@ public class GraficoHistorial extends JPanel {
 	 * Se crea el dataset de datos
 	 */
 	public void cargarDatos(Date[] fechas, float[] datos, float Total, float promedio) {
-
-		GraficoHistorial.Total = Total;
-		GraficoHistorial.promedio = promedio;
+		
+		this.Total = Total;
+		this.promedio = promedio;
 
 		TimeSeries serieFecha = new TimeSeries("coleccion1", Day.class);
 		String dia, mes, anio;

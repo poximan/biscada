@@ -1,6 +1,6 @@
 package control_general;
 
-import org.xBaseJ.*;
+import org.xBaseJ.DBF;
 import org.xBaseJ.fields.CharField;
 import org.xBaseJ.fields.LogicalField;
 import org.xBaseJ.fields.NumField;
@@ -31,7 +31,7 @@ public class example2 {
 
 		try {
 			// Open dbf file
-			DBF classDB = new DBF("class.dbf");
+			DBF classDB = new DBF("D:\\hugo\\proyectos\\uni\\desarrollo_soft\\datos\\Histo_medidas\\GT010107.DAT");
 
 			// Define fields
 			CharField classId = (CharField) classDB.getField("classId");

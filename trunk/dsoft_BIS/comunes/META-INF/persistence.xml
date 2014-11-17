@@ -10,6 +10,7 @@
 		<class>modelo.Familia</class>
 		<class>modelo.Sitio</class>
 		<class>modelo.Suceso</class>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="create" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
@@ -19,6 +20,9 @@
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.password" value="bis" />
 			<property name="eclipselink.jdbc.bind-parameters" value="true" />
+			<property name="eclipselink.target-database" value="MySQL"/>
+			<property name="eclipselink.logging.exceptions" value="true"/>
+			<property name="javax.persistence.schema-generation.scripts.action" value="create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

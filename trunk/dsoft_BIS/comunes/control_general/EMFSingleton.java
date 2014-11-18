@@ -11,7 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 /* ............................................. */
 /* ............................................. */
@@ -64,8 +63,6 @@ public class EMFSingleton {
 	}
 
 	private EMFSingleton() {
-
-		PropertyConfigurator.configure("log4j.properties");
 
 		try {
 			emf = Persistence.createEntityManagerFactory("dsoft_BIS");

@@ -1,5 +1,6 @@
 package control_general;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.xBaseJ.DBF;
 import org.xBaseJ.fields.CharField;
 import org.xBaseJ.fields.LogicalField;
@@ -28,6 +29,8 @@ public class example2 {
 	/* ............................................. */
 
 	public static void main(String args[]) {
+
+		PropertyConfigurator.configure("log4j.properties");
 
 		try {
 			// Open dbf file

@@ -41,6 +41,7 @@ public class CompMenu extends JFrame {
 	private JMenu entrada_menu_propiedades;
 
 	private CompDuracionAlarma componente_ruido_minimo;
+	private CompDuracionAlarma componente_ruido_maximo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -105,11 +106,14 @@ public class CompMenu extends JFrame {
 
 		JMenu submenu_config_ruido = new JMenu("Configurar");
 
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.PISO_RUIDO_ALARMA"));
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
+		componente_ruido_minimo = new CompDuracionAlarma("minima duracion", valor_inicial, true);
 
-		componente_ruido_minimo = new CompDuracionAlarma("minimo para ser aceptada", valor_inicial, true);
+		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MAXIMA_DURACION_ALARMA"));
+		componente_ruido_maximo = new CompDuracionAlarma("maxima duracion", valor_inicial, true);
 
 		submenu_config_ruido.add(componente_ruido_minimo);
+		submenu_config_ruido.add(componente_ruido_maximo);
 
 		// agregar opciones del menu
 		entrada_menu_ruido.add(submenu_config_ruido);
@@ -171,6 +175,10 @@ public class CompMenu extends JFrame {
 
 	public CompDuracionAlarma getComponente_ruido_minimo() {
 		return componente_ruido_minimo;
+	}
+
+	public CompDuracionAlarma getComponente_ruido_maximo() {
+		return componente_ruido_maximo;
 	}
 
 	/* ............................................. */

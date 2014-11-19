@@ -116,7 +116,7 @@ public class ServBusqueda implements ObjetosBorrables {
 	public List<Alarma> buscAlarma(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
 			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
 			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
-			Integer ruido_maximo) {
+			Integer duracion_minima, Integer duracion_maxima) {
 
 		liberarObjetos();
 
@@ -151,8 +151,8 @@ public class ServBusqueda implements ObjetosBorrables {
 		if (suceso != null)
 			agregarPredicadoSuceso("suceso");
 
-		if (ruido_maximo != null)
-			agregarPredicadoRuido("fecha_inicio", "fecha_finalizacion", ruido_maximo);
+		if (duracion_minima != null)
+			agregarPredicadoRuido("fecha_inicio", "fecha_finalizacion", duracion_maxima);
 
 		// -------------------------------------
 		//
@@ -191,20 +191,23 @@ public class ServBusqueda implements ObjetosBorrables {
 			if (rbtnHastaFin.isSelected())
 				typed_query.setParameter("fecha_finalizacion", calendarHasta);
 		}
-		if (familia != null) {
+		if (familia != null)
 			typed_query.setParameter("familia", familia);
-		}
-		if (sitio != null) {
+
+		if (sitio != null)
 			typed_query.setParameter("sitio", sitio);
-		}
-		if (tipo_de_equipo != null) {
+
+		if (tipo_de_equipo != null)
 			typed_query.setParameter("tipo_de_equipo", tipo_de_equipo);
-		}
-		if (suceso != null) {
+
+		if (suceso != null)
 			typed_query.setParameter("suceso", suceso);
-		}
-		if (ruido_maximo != null)
-			typed_query.setParameter("ruido_maximo", ruido_maximo);
+
+		if (duracion_minima != null)
+			typed_query.setParameter("duracion_minima", duracion_minima);
+
+		if (duracion_maxima != null)
+			typed_query.setParameter("duracion_maxima", duracion_maxima);
 
 		mostrarQuery(typed_query);
 
@@ -234,17 +237,25 @@ public class ServBusqueda implements ObjetosBorrables {
 	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
-	 * @param ruido_maximo
+	 * @param duracion_minima
+	 * @param duracion_maxima
 	 */
-	private void agregarPredicadoRuido(String fecha_inicio, String fecha_finalizacion, Integer ruido_maximo) {
+	private void agregarPredicadoRuido(String fecha_inicio, String fecha_finalizacion, Integer duracion_maxima) {
 
-		ParameterExpression<Integer> p = crit_builder.parameter(Integer.class, "ruido_maximo");
+		ParameterExpression<Integer> param_minima = crit_builder.parameter(Integer.class, "duracion_minima");
+		ParameterExpression<Integer> param_maxima = crit_builder.parameter(Integer.class, "duracion_maxima");
 
 		Expression<CalendarNumber> diferencia_fechas = crit_builder.diff(
 				root_alarmas.get(fecha_finalizacion).as(CalendarNumber.class),
 				root_alarmas.get(fecha_inicio).as(CalendarNumber.class));
 
-		criteria.add(crit_builder.ge(diferencia_fechas, p));
+		Predicate predicado_minima = crit_builder.ge(diferencia_fechas, param_minima);
+		criteria.add(predicado_minima);
+
+		if (duracion_maxima == null) {
+			Predicate predicado_maxima = crit_builder.le(diferencia_fechas, param_maxima);
+			criteria.add(predicado_maxima);
+		}
 	}
 
 	/**

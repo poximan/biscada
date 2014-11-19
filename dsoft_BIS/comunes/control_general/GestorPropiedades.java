@@ -57,9 +57,8 @@ public class GestorPropiedades {
 
 	public void mostrarVentana() {
 
+		frame_etl.pack();
 		frame_etl.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame_etl.setBounds(100, 100, 580, 200);
 		frame_etl.setVisible(true);
-		frame_etl.setResizable(false);
 	}
 }

@@ -36,10 +36,29 @@ public class ServDOM {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
+	private Document doc;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
+
+	public ServDOM() {
+
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder;
+
+		try {
+			docBuilder = docFactory.newDocumentBuilder();
+			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Persistencia.DIRECCION_PU"));
+		}
+		catch (ParserConfigurationException excepcion) {
+			excepcion.printStackTrace();
+		}
+		catch (SAXException | IOException excepcion) {
+			excepcion.printStackTrace();
+		}
+	}
 
 	/* ............................................. */
 	/* ............................................. */
@@ -49,19 +68,8 @@ public class ServDOM {
 	public void ModificarXML() {
 
 		try {
-			String filepath = "c:\\file.xml";
-
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(filepath);
-
 			// Get the root element
 			Node company = doc.getFirstChild();
-
-			// Get the staff element , it may not working if tag has spaces, or
-			// whatever weird characters in front...it's better to use
-			// getElementsByTagName() to get it directly.
-			// Node staff = company.getFirstChild();
 
 			// Get the staff element by tag name directly
 			Node staff = doc.getElementsByTagName("staff").item(0);
@@ -99,23 +107,15 @@ public class ServDOM {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(filepath));
+			StreamResult result = new StreamResult(new File(ServPropiedades.getInstancia().getProperty(
+					"Persistencia.DIRECCION_PU")));
 			transformer.transform(source, result);
 
 			System.out.println("Done");
 
 		}
-		catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
-		}
 		catch (TransformerException tfe) {
 			tfe.printStackTrace();
-		}
-		catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
-		catch (SAXException sae) {
-			sae.printStackTrace();
 		}
 	}
 

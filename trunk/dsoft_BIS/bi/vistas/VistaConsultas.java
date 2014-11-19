@@ -763,7 +763,8 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, choosHasta
 				.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, (Familia) cboxFamilia.getSelectedItem(),
 				(Sitio) cboxSitio.getSelectedItem(), (TipoDeEquipo) cboxTipoEquipo.getSelectedItem(),
-				(Suceso) cboxSuceso.getSelectedItem(), frame_bi.getComponente_ruido_minimo().getSegundos(), frame_bi.getComponente_ruido_maximo().getSegundos());
+				(Suceso) cboxSuceso.getSelectedItem(), frame_bi.getComponente_ruido_minimo().getSegundos(), frame_bi
+						.getComponente_ruido_maximo().getSegundos());
 	}
 
 	/* ............................................. */

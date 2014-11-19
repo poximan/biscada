@@ -50,6 +50,7 @@ public class ServDOM {
 
 		try {
 			String filepath = "c:\\file.xml";
+
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
@@ -127,5 +128,4 @@ public class ServDOM {
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
-
 }

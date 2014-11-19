@@ -312,17 +312,33 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
+				/*
+				 * graficos
+				 */
 				ServPropiedades.getInstancia().setProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA",
 						String.valueOf(spinnerAceptacion.getModel().getValue()));
 
+				/*
+				 * datos
+				 */
 				ServPropiedades.getInstancia().setProperty("Datos.DIRECCION_LECTURA_DATOS",
 						txt_direccion_fuente.getText());
 
+				/*
+				 * ruido
+				 */
 				ServPropiedades.getInstancia().setProperty("Ruido.MINIMA_DURACION_ALARMA",
 						String.valueOf(spinnerMinimoRuido.getModel().getValue()));
-
 				ServPropiedades.getInstancia().setProperty("Ruido.MAXIMA_DURACION_ALARMA",
 						String.valueOf(spinnerMinimoRuido.getModel().getValue()));
+
+				/*
+				 * conexion
+				 */
+				ServPropiedades.getInstancia().setProperty("Conexion.IP", txtDireccion.getText());
+				ServPropiedades.getInstancia().setProperty("Conexion.PUERTO", txtPuerto.getText());
+				ServPropiedades.getInstancia().setProperty("Conexion.USUARIO", txtUsuario.getText());
+				ServPropiedades.getInstancia().setProperty("Conexion.CONTRASENIA", txtContrasenia.getText());
 
 				ServPropiedades.guardarCambios();
 

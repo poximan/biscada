@@ -10,11 +10,11 @@ import ru.smartflex.tools.dbf.DbfEngine;
 import ru.smartflex.tools.dbf.DbfIterator;
 import ru.smartflex.tools.dbf.DbfRecord;
 
-public class Fp26Reader {
+public class LeerAnalogicas1 {
 
 	private static void testRead() {
 
-		InputStream entrada = Fp26Reader.class
+		InputStream entrada = LeerAnalogicas1.class
 				.getResourceAsStream("D:\\hugo\\proyectos\\uni\\desarrollo_soft\\datos\\Histo_medidas\\AL010108.DBF");
 
 		DbfIterator dbfIterator = DbfEngine.getReader(entrada, null);
@@ -40,6 +40,6 @@ public class Fp26Reader {
 	public static void main(String[] args) {
 
 		PropertyConfigurator.configure("log4j.properties");
-		Fp26Reader.testRead();
+		LeerAnalogicas1.testRead();
 	}
 }

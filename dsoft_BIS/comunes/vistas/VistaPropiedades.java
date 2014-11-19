@@ -173,7 +173,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
 
 		spinnerMinimoRuido.setModel(new SpinnerNumberModel(valor_inicial, 1, valor_maximo, 1));
-		spinnerMinimoRuido.setModel(new SpinnerNumberModel(valor_maximo, 1, valor_maximo, 1));
+		spinnerMaximoRuido.setModel(new SpinnerNumberModel(valor_maximo, 1, valor_maximo, 1));
 
 		JLabel lblTiempoMinimo = new JLabel("tiempo minimo");
 		GridBagConstraints gbc_lblTiempoMinimo = new GridBagConstraints();
@@ -330,7 +330,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 				ServPropiedades.getInstancia().setProperty("Ruido.MINIMA_DURACION_ALARMA",
 						String.valueOf(spinnerMinimoRuido.getModel().getValue()));
 				ServPropiedades.getInstancia().setProperty("Ruido.MAXIMA_DURACION_ALARMA",
-						String.valueOf(spinnerMinimoRuido.getModel().getValue()));
+						String.valueOf(spinnerMaximoRuido.getModel().getValue()));
 
 				/*
 				 * conexion

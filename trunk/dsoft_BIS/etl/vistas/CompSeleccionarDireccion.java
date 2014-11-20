@@ -5,7 +5,6 @@
 
 package vistas;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.Beans;
@@ -17,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.BorderLayout;
 
 /* ............................................. */
 /* ............................................. */
@@ -43,6 +43,7 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 	/* ............................................. */
 
 	public CompSeleccionarDireccion(JTextField txtDireccionFuente) {
+		setBorder(null);
 
 		this.txtDireccionFuente = txtDireccionFuente;
 		File origen_datos = new File(txtDireccionFuente.getText());
@@ -59,7 +60,7 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 
 		btnCambiar = new JButton("Cambiar...");
 		btnCambiar.addActionListener(this);
-		setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+		setLayout(new BorderLayout(0, 0));
 		add(btnCambiar);
 
 		actualizarDireccion();

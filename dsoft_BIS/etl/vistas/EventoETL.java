@@ -17,6 +17,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modelo.ArchivoDBF;
+import modelo.JListDisponible;
+import modelo.JListProcesado;
 import control_general.GestorBI;
 
 /* ............................................. */
@@ -94,23 +96,33 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	@Override
-	@SuppressWarnings({ "unused", "unchecked" })
 	public void valueChanged(ListSelectionEvent arg0) {
 
+		@SuppressWarnings("unchecked")
 		JList<ArchivoDBF> elemento = (JList<ArchivoDBF>) arg0.getSource();
+		
+		Class<?> clase_propietaria;
+		Constructor<?> cons;
+		Object objeto_resultante = null;
 
-		Class<?> c;
 		try {
-			c = Class.forName("modelo.JListDisponible");
-			Constructor<?> cons = c.getConstructor();
-			Object object = cons.newInstance();
+			clase_propietaria = Class.forName(elemento.getClass().getName());
+			cons = clase_propietaria.getConstructor();
+			objeto_resultante = cons.newInstance();
 		}
 		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException excepcion) {
 			excepcion.printStackTrace();
 		}
 
-		String nombre = elemento.getName();
-		vista_etl.getTxt_selDisponibles().setText(String.valueOf(elemento.getSelectedValuesList().size()));
+		finally {
+			String cantidad = String.valueOf(elemento.getSelectedValuesList().size());
+
+			if (objeto_resultante instanceof JListDisponible)
+				vista_etl.getTxt_selDisponibles().setText(cantidad);
+
+			if (objeto_resultante instanceof JListProcesado)
+				vista_etl.getTxt_selProcesados().setText(cantidad);
+		}
 	}
 }

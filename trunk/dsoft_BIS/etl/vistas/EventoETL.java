@@ -50,15 +50,17 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (evt.getSource() == vista_etl.getBtn_iniciar_bi()) {
+		if (evt.getSource() == vista_etl.getBtn_analisis_datos())
 			GestorBI.getSingleton().mostrarVentana();
-		} else
-			if (evt.getSource() == vista_etl.getBtn_guardar()) {
-				vista_etl.actionConfirmarCambios();
-			} else
-				if (evt.getSource() == vista_etl.getBtn_reiniciar()) {
-					vista_etl.actionRestablecer();
-				}
+		else
+			if (evt.getSource() == vista_etl.getBtn_procesar())
+				vista_etl.actionProcesar();
+			else
+				if (evt.getSource() == vista_etl.getBtn_extraer())
+					vista_etl.actionExtraer();
+				else
+					if (evt.getSource() == vista_etl.getBtn_restablecer())
+						vista_etl.actionRestablecer();
 	}
 
 	@Override
@@ -92,9 +94,9 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	@Override
+	@SuppressWarnings({ "unused", "unchecked" })
 	public void valueChanged(ListSelectionEvent arg0) {
 
-		@SuppressWarnings("unchecked")
 		JList<ArchivoDBF> elemento = (JList<ArchivoDBF>) arg0.getSource();
 
 		Class<?> c;
@@ -105,7 +107,6 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 		}
 		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException excepcion) {
-			// TODO Auto-generated catch block
 			excepcion.printStackTrace();
 		}
 

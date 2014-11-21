@@ -36,6 +36,8 @@ public class ServDOM {
 
 	private Document doc;
 
+	private Node marca_persistence;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -49,7 +51,7 @@ public class ServDOM {
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
 			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Persistencia.DIRECCION_PU"));
-			Node marca_persistence = doc.getFirstChild();
+			marca_persistence = doc.getFirstChild();
 		}
 		catch (ParserConfigurationException excepcion) {
 			excepcion.printStackTrace();
@@ -66,11 +68,11 @@ public class ServDOM {
 
 	public void modificarXML(String nuevo_usuario) {
 
-		// Node marca_clase = marca_persistence.getFirstChild();
+		Node marca_clase = marca_persistence.getFirstChild();
 		Node marca_properties = doc.getElementsByTagName("properties").item(0);
 		NamedNodeMap mapa_propiedades = marca_properties.getAttributes();
 		Node nodo_usuario = mapa_propiedades.getNamedItem("propiedad_usuario");
-		nodo_usuario.setTextContent(nuevo_usuario);
+		// nodo_usuario.setTextContent(nuevo_usuario);
 
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();

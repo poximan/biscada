@@ -66,6 +66,7 @@ public class ServDOM {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@SuppressWarnings("unused")
 	public void modificarXML(String nuevo_usuario) {
 
 		Node marca_clase = marca_persistence.getFirstChild();

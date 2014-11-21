@@ -454,7 +454,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 				ServPropiedades.getInstancia().setProperty("Conexion.CONTRASENIA", txtContrasenia.getText());
 
 				ServDOM serv_dom = new ServDOM();
-				serv_dom.ModificarXML();
+				serv_dom.modificarXML(txtUsuario.getText());
 
 				ServPropiedades.guardarCambios();
 				frame_etl.dispose();

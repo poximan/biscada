@@ -18,6 +18,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 /* ............................................. */
@@ -41,12 +43,13 @@ public class ServDOM {
 
 	public ServDOM() {
 
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 
 		try {
-			File f = new File(ServPropiedades.getInstancia().getProperty("Persistencia.DIRECCION_PU"));
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			doc = builder.parse(f);
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Persistencia.DIRECCION_PU"));
+			Node marca_persistence = doc.getFirstChild();
 		}
 		catch (ParserConfigurationException excepcion) {
 			excepcion.printStackTrace();
@@ -61,20 +64,21 @@ public class ServDOM {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void ModificarXML() {
+	public void modificarXML(String nuevo_usuario) {
+
+		// Node marca_clase = marca_persistence.getFirstChild();
+		Node marca_properties = doc.getElementsByTagName("properties").item(0);
+		NamedNodeMap mapa_propiedades = marca_properties.getAttributes();
+		Node nodo_usuario = mapa_propiedades.getNamedItem("propiedad_usuario");
+		nodo_usuario.setTextContent(nuevo_usuario);
 
 		try {
-
-			// write the content into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(new File(ServPropiedades.getInstancia().getProperty(
 					"Persistencia.DIRECCION_PU")));
 			transformer.transform(source, result);
-
-			System.out.println("Done");
-
 		}
 		catch (TransformerException tfe) {
 			tfe.printStackTrace();

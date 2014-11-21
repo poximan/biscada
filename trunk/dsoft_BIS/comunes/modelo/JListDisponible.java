@@ -7,6 +7,8 @@ package modelo;
 
 import javax.swing.JList;
 
+import vistas.ListModelOrdenada;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -26,7 +28,12 @@ public class JListDisponible extends JList<ArchivoDBF> {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
+	// para uso de reflexion durante el manejo de eventos generados por la lista
 	public JListDisponible() {
+	}
+
+	public JListDisponible(ListModelOrdenada model_disponibles) {
+		super(model_disponibles);
 	}
 
 	/* ............................................. */

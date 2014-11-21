@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import modelo.ArchivoDBF;
+import modelo.JListDisponible;
+import modelo.JListProcesado;
 
 import org.apache.log4j.Logger;
 
@@ -62,8 +64,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	private JList<ArchivoDBF> list_disponibles;
 	private JList<ArchivoDBF> list_procesados;
-
-	private JButton btn_confirmar_cambios;
 	private JButton btn_analisis_datos;
 	private JButton btn_restablecer;
 
@@ -116,8 +116,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 120, 120, 0, 120, 120 };
-		gridBagLayout.rowHeights = new int[] { 40, 30, 38, 42, 70, 70, 0, 0, 20 };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0 };
+		gridBagLayout.rowHeights = new int[] { 40, 30, 38, 42, 70, 70, 0, 20 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, 0.0, 1.0, 1.0 };
 		setLayout(gridBagLayout);
 
@@ -218,10 +218,10 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		// -------------------------------------
 
 		model_disponibles = new ListModelOrdenada();
-		list_disponibles = new JList<ArchivoDBF>(model_disponibles);
+		list_disponibles = new JListDisponible(model_disponibles);
 
 		model_procesados = new ListModelOrdenada();
-		list_procesados = new JList<ArchivoDBF>(model_procesados);
+		list_procesados = new JListProcesado(model_procesados);
 
 		scrollPane_procesados.setViewportView(list_procesados);
 		lbl_totProcesados = new JLabel("Procesados");
@@ -283,17 +283,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		pl_botones = new JPanel();
 		GridBagConstraints gbc_pl_botones = new GridBagConstraints();
-		gbc_pl_botones.anchor = GridBagConstraints.EAST;
-		gbc_pl_botones.gridwidth = 4;
-		gbc_pl_botones.gridx = 1;
-		gbc_pl_botones.gridy = 8;
+		gbc_pl_botones.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_pl_botones.gridwidth = 2;
+		gbc_pl_botones.gridx = 3;
+		gbc_pl_botones.gridy = 7;
 		add(pl_botones, gbc_pl_botones);
 
 		btn_restablecer = new JButton("Restablecer");
 		pl_botones.add(btn_restablecer);
-
-		btn_confirmar_cambios = new JButton("Confirmar cambios");
-		pl_botones.add(btn_confirmar_cambios);
 
 		btn_analisis_datos = new JButton("Analisis Datos (BI) -->");
 		pl_botones.add(btn_analisis_datos);

@@ -100,7 +100,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 
 		@SuppressWarnings("unchecked")
 		JList<ArchivoDBF> elemento = (JList<ArchivoDBF>) arg0.getSource();
-		
+
 		Class<?> clase_propietaria;
 		Constructor<?> cons;
 		Object objeto_resultante = null;

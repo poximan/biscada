@@ -50,7 +50,7 @@ public class ServDOM {
 		try {
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Persistencia.DIRECCION_PU"));
+			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Conexion.DIRECCION_PU"));
 			marca_persistence = doc.getFirstChild();
 		}
 		catch (ParserConfigurationException excepcion) {
@@ -80,7 +80,7 @@ public class ServDOM {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(new File(ServPropiedades.getInstancia().getProperty(
-					"Persistencia.DIRECCION_PU")));
+					"Conexion.DIRECCION_PU")));
 			transformer.transform(source, result);
 		}
 		catch (TransformerException tfe) {

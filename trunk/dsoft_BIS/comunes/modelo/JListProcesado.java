@@ -28,7 +28,7 @@ public class JListProcesado extends JList<ArchivoDBF> {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	// para uso de reflexion durante el manejo de eventos generados por la lista 
+	// para uso de reflexion durante el manejo de eventos generados por la lista
 	public JListProcesado() {
 	}
 

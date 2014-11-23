@@ -5,6 +5,7 @@
 
 package vistas;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.Beans;
@@ -16,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
 
 /* ............................................. */
 /* ............................................. */

@@ -5,6 +5,9 @@
 
 package control_general;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -64,8 +67,16 @@ public class EMFSingleton {
 
 	private EMFSingleton() {
 
+		Map<String, String> persistenceMap = new HashMap<String, String>();
+
+		persistenceMap.put("javax.persistence.jdbc.url", ServPropiedades.getInstancia().getProperty("Conexion.URL"));
+		persistenceMap.put("javax.persistence.jdbc.user", ServPropiedades.getInstancia()
+				.getProperty("Conexion.USUARIO"));
+		persistenceMap.put("javax.persistence.jdbc.password",
+				ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
+
 		try {
-			emf = Persistence.createEntityManagerFactory("dsoft_BIS");
+			emf = Persistence.createEntityManagerFactory("dsoft_BIS", persistenceMap);
 			em = emf.createEntityManager();
 		}
 		catch (Exception excepcion) {

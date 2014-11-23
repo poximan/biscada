@@ -19,6 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -29,6 +30,8 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import control_general.ServPropiedades;
+import excepciones.ReiniciarAplicacionExcepcion;
+
 import java.awt.FlowLayout;
 
 /* ............................................. */
@@ -403,21 +406,49 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 				ServPropiedades.getInstancia().setProperty("Ruido.MAXIMA_DURACION_ALARMA",
 						String.valueOf(spinnerTiempoMinimo.getModel().getValue()));
 
-				/*
-				 * conexion
-				 */
+				try {
+					analizarCambiosPU();
+
+					/*
+					 * TODO quiza esta linea haya que eliminarla
+					 * 
+					 * ServDOM serv_dom = new ServDOM(); serv_dom.modificarXML(txtUsuario.getText());
+					 */
+				}
+				catch (ReiniciarAplicacionExcepcion excepcion) {
+
+				}
+				finally {
+					ServPropiedades.guardarCambios();
+					frame_etl.dispose();
+				}
+			}
+
+			private void analizarCambiosPU() throws ReiniciarAplicacionExcepcion {
+
+				int usuario_acepta = 0;
+
+				if (ServPropiedades.getInstancia().getProperty("Conexion.URL").equals(txtURL.getText())
+						|| ServPropiedades.getInstancia().getProperty("Conexion.USUARIO").equals(txtUsuario.getText())
+						|| ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA")
+								.equals(txtContrasenia.getText()))
+
+					usuario_acepta = JOptionPane.showConfirmDialog((Component) null,
+							"para nuevos parametros de conexion, la aplicacion debe reiniciar", "¿desea reiniciar?",
+							JOptionPane.YES_NO_OPTION);
+
+				if (usuario_acepta != 0) {
+					txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
+					txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
+					txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
+				}
+
 				ServPropiedades.getInstancia().setProperty("Conexion.URL", txtURL.getText());
 				ServPropiedades.getInstancia().setProperty("Conexion.USUARIO", txtUsuario.getText());
 				ServPropiedades.getInstancia().setProperty("Conexion.CONTRASENIA", txtContrasenia.getText());
 
-				/*
-				 * TODO quiza esta linea haya que eliminarla
-				 * 
-				 * ServDOM serv_dom = new ServDOM(); serv_dom.modificarXML(txtUsuario.getText());
-				 */
-
-				ServPropiedades.guardarCambios();
-				frame_etl.dispose();
+				if (usuario_acepta != 0)
+					throw new ReiniciarAplicacionExcepcion();
 			}
 		});
 	}

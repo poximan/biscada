@@ -29,6 +29,7 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import control_general.ServPropiedades;
+import java.awt.FlowLayout;
 
 /* ............................................. */
 /* ............................................. */
@@ -54,18 +55,18 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	private CompSeleccionarDireccion btnCambiar;
 
-	private JButton btnConfirmarCambios;
-	private JButton btnPorDefecto;
+	private JButton btnPorDefecto_1;
+	private JButton btnConfirmar;
 
 	private JSpinner spinnerAceptacion;
 	private JSpinner spinnerTiempoMinimo;
 	private JSpinner spinnerTiempoMaximo;
 
 	private JTextField txt_direccion_fuente;
-	private JTextField txtDireccion;
-	private JTextField txtPuerto;
+	private JTextField txtURL;
 	private JTextField txtContrasenia;
 	private JTextField txtUsuario;
+
 	private GridBagConstraints gbc_btnPorDefecto_1;
 
 	/* ............................................. */
@@ -92,10 +93,10 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		panelPropiedades.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
 		GridBagLayout gbl_panelPropiedades = new GridBagLayout();
-		gbl_panelPropiedades.columnWidths = new int[] { 124, 64, 196, 0, 0 };
-		gbl_panelPropiedades.rowHeights = new int[] { 20, 20, 0, 103, 0, 0 };
+		gbl_panelPropiedades.columnWidths = new int[] { 92, 64, 92, 66, 0 };
+		gbl_panelPropiedades.rowHeights = new int[] { 20, 20, 0, 90, 0 };
 		gbl_panelPropiedades.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panelPropiedades.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panelPropiedades.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panelPropiedades.setLayout(gbl_panelPropiedades);
 
 		JLabel lblDireccionFuente = new JLabel("direccion fuente");
@@ -125,17 +126,46 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		lblTiempoMinimo = new JLabel("tiempo maximo");
 		lblTiempoMinimo.setHorizontalAlignment(SwingConstants.RIGHT);
 
-		JLabel lblDireccion = new JLabel("direccion");
-		lblDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		JLabel lblPuerto = new JLabel("puerto");
-		lblPuerto.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel lblURL = new JLabel("URL");
+		lblURL.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		JLabel lblContrasenia = new JLabel("contrase\u00F1a");
 		lblContrasenia.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		JLabel lblUsuario = new JLabel("usuario");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
+
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
+
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
+				groupLayout
+						.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(
+								groupLayout
+										.createParallelGroup(Alignment.TRAILING)
+										.addComponent(panelPropiedades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+												335, Short.MAX_VALUE)
+										.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 374,
+												Short.MAX_VALUE)).addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
+				Alignment.TRAILING,
+				groupLayout.createSequentialGroup().addContainerGap()
+						.addComponent(panelPropiedades, GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE).addGap(10)));
+
+		btnPorDefecto_1 = new JButton("por defecto");
+		panel.add(btnPorDefecto_1);
+
+		btnConfirmar = new JButton("confirmar");
+		panel.add(btnConfirmar);
+
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
+				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
 
 		btnCambiar = new CompSeleccionarDireccion(txt_direccion_fuente);
 
@@ -145,20 +175,6 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_btnCambiar.gridx = 3;
 		gbc_btnCambiar.gridy = 1;
 		panelPropiedades.add(btnCambiar, gbc_btnCambiar);
-
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(panelPropiedades, GroupLayout.PREFERRED_SIZE, 529, Short.MAX_VALUE).addGap(8)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(panelPropiedades, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE).addContainerGap()));
-
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
-				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
 
 		JLabel lblAceptacion = new JLabel("% aceptacion KPI");
 		GridBagConstraints gbc_lblAceptacion = new GridBagConstraints();
@@ -182,8 +198,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		panelRuidoAlarma.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"rango valido de una alarma", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_panelRuidoAlarma = new GridBagConstraints();
-		gbc_panelRuidoAlarma.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panelRuidoAlarma.gridwidth = 2;
+		gbc_panelRuidoAlarma.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panelRuidoAlarma.insets = new Insets(0, 0, 5, 0);
 		gbc_panelRuidoAlarma.gridx = 2;
 		gbc_panelRuidoAlarma.gridy = 2;
@@ -239,9 +255,9 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 										.addComponent(spinnerTiempoMaximo, GroupLayout.PREFERRED_SIZE,
 												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panelRuidoAlarma.linkSize(SwingConstants.VERTICAL, new Component[] { lblTiempoMaximo, lblTiempoMinimo });
 		gl_panelRuidoAlarma.linkSize(SwingConstants.VERTICAL, new Component[] { spinnerTiempoMinimo,
 				spinnerTiempoMaximo });
-		gl_panelRuidoAlarma.linkSize(SwingConstants.VERTICAL, new Component[] { lblTiempoMaximo, lblTiempoMinimo });
 		gl_panelRuidoAlarma.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblTiempoMaximo, lblTiempoMinimo });
 		panelRuidoAlarma.setLayout(gl_panelRuidoAlarma);
 
@@ -251,16 +267,11 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		GridBagConstraints gbc_panelConexionBD = new GridBagConstraints();
 		gbc_panelConexionBD.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panelConexionBD.gridwidth = 4;
-		gbc_panelConexionBD.insets = new Insets(0, 0, 5, 0);
 		gbc_panelConexionBD.gridx = 0;
 		gbc_panelConexionBD.gridy = 3;
 		panelPropiedades.add(panelConexionBD, gbc_panelConexionBD);
-
-		txtDireccion = new JTextField();
-		txtDireccion.setText(ServPropiedades.getInstancia().getProperty("Conexion.IP"));
-
-		txtPuerto = new JTextField();
-		txtPuerto.setText(ServPropiedades.getInstancia().getProperty("Conexion.PUERTO"));
+		txtURL = new JTextField();
+		txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
 
 		txtContrasenia = new JTextField();
 		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
@@ -272,84 +283,51 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gl_panelConexionBD.setHorizontalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_panelConexionBD
 						.createSequentialGroup()
+						.addContainerGap()
 						.addGroup(
 								gl_panelConexionBD
 										.createParallelGroup(Alignment.LEADING)
 										.addGroup(
 												gl_panelConexionBD
 														.createSequentialGroup()
-														.addGap(10)
-														.addComponent(lblDireccion, GroupLayout.PREFERRED_SIZE, 52,
-																GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txtDireccion, GroupLayout.DEFAULT_SIZE, 187,
-																Short.MAX_VALUE))
-										.addGroup(
-												gl_panelConexionBD
-														.createSequentialGroup()
-														.addContainerGap()
 														.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 35,
 																GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 187,
-																Short.MAX_VALUE)))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(
-								gl_panelConexionBD
-										.createParallelGroup(Alignment.LEADING)
-										.addGroup(
-												gl_panelConexionBD
-														.createSequentialGroup()
+														.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 130,
+																Short.MAX_VALUE)
+														.addGap(4)
 														.addComponent(lblContrasenia, GroupLayout.PREFERRED_SIZE, 66,
 																GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 187,
+														.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 130,
 																Short.MAX_VALUE))
 										.addGroup(
 												gl_panelConexionBD
 														.createSequentialGroup()
-														.addComponent(lblPuerto, GroupLayout.PREFERRED_SIZE, 32,
+														.addComponent(lblURL, GroupLayout.PREFERRED_SIZE, 52,
 																GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txtPuerto, GroupLayout.DEFAULT_SIZE, 187,
-																Short.MAX_VALUE))).addContainerGap()));
+														.addComponent(txtURL, GroupLayout.DEFAULT_SIZE, 286,
+																Short.MAX_VALUE))).addGap(3)));
 		gl_panelConexionBD
 				.setVerticalGroup(gl_panelConexionBD
 						.createParallelGroup(Alignment.LEADING)
 						.addGroup(
 								gl_panelConexionBD
 										.createSequentialGroup()
+										.addContainerGap()
 										.addGroup(
 												gl_panelConexionBD
 														.createParallelGroup(Alignment.LEADING)
-														.addGroup(
-																gl_panelConexionBD.createSequentialGroup().addGap(14)
-																		.addComponent(lblDireccion).addGap(12)
-																		.addComponent(lblUsuario))
+														.addComponent(lblURL)
 														.addGroup(
 																gl_panelConexionBD
 																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addGroup(
-																				gl_panelConexionBD
-																						.createParallelGroup(
-																								Alignment.LEADING)
-																						.addComponent(
-																								txtDireccion,
-																								GroupLayout.PREFERRED_SIZE,
-																								GroupLayout.DEFAULT_SIZE,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addGroup(
-																								gl_panelConexionBD
-																										.createParallelGroup(
-																												Alignment.BASELINE)
-																										.addComponent(
-																												lblPuerto)
-																										.addComponent(
-																												txtPuerto,
-																												GroupLayout.PREFERRED_SIZE,
-																												GroupLayout.DEFAULT_SIZE,
-																												GroupLayout.PREFERRED_SIZE)))
+																		.addComponent(txtURL,
+																				GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(ComponentPlacement.RELATED)
 																		.addGroup(
 																				gl_panelConexionBD
 																						.createParallelGroup(
@@ -357,58 +335,50 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 																						.addGroup(
 																								gl_panelConexionBD
 																										.createSequentialGroup()
-																										.addPreferredGap(
-																												ComponentPlacement.RELATED)
+																										.addGap(7)
 																										.addGroup(
 																												gl_panelConexionBD
 																														.createParallelGroup(
-																																Alignment.LEADING)
+																																Alignment.BASELINE)
 																														.addComponent(
 																																txtUsuario,
 																																GroupLayout.PREFERRED_SIZE,
 																																GroupLayout.DEFAULT_SIZE,
 																																GroupLayout.PREFERRED_SIZE)
 																														.addComponent(
-																																txtContrasenia,
-																																GroupLayout.PREFERRED_SIZE,
-																																GroupLayout.DEFAULT_SIZE,
-																																GroupLayout.PREFERRED_SIZE)))
+																																lblUsuario)))
 																						.addGroup(
 																								gl_panelConexionBD
 																										.createSequentialGroup()
-																										.addGap(9)
+																										.addGap(10)
 																										.addComponent(
-																												lblContrasenia)))))
+																												lblContrasenia))
+																						.addGroup(
+																								gl_panelConexionBD
+																										.createSequentialGroup()
+																										.addGap(7)
+																										.addComponent(
+																												txtContrasenia,
+																												GroupLayout.PREFERRED_SIZE,
+																												GroupLayout.DEFAULT_SIZE,
+																												GroupLayout.PREFERRED_SIZE)))))
 										.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		gl_panelConexionBD.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblPuerto, lblContrasenia });
-		gl_panelConexionBD.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblDireccion, lblUsuario });
+		gl_panelConexionBD.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblURL, lblUsuario });
 		gl_panelConexionBD.setHonorsVisibility(false);
 		panelConexionBD.setLayout(gl_panelConexionBD);
 
-		btnPorDefecto = new JButton("por defecto");
-		GridBagConstraints gbc_btnPorDefecto = new GridBagConstraints();
-		gbc_btnPorDefecto.anchor = GridBagConstraints.SOUTHEAST;
-		gbc_btnPorDefecto.insets = new Insets(0, 0, 0, 5);
-		gbc_btnPorDefecto.gridx = 2;
-		gbc_btnPorDefecto.gridy = 4;
-
-		panelPropiedades.add(btnPorDefecto, gbc_btnPorDefecto);
-
-		btnConfirmarCambios = new JButton("confirmar");
-		btnConfirmarCambios.setHorizontalAlignment(SwingConstants.RIGHT);
 		gbc_btnPorDefecto_1 = new GridBagConstraints();
-		gbc_btnPorDefecto_1.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_btnPorDefecto_1.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_btnPorDefecto_1.gridx = 3;
 		gbc_btnPorDefecto_1.gridy = 4;
 
-		panelPropiedades.add(btnConfirmarCambios, gbc_btnPorDefecto_1);
 		setLayout(groupLayout);
 	}
 
 	@Override
 	public void configEventos() {
 
-		btnConfirmarCambios.addActionListener(new ActionListener() {
+		btnConfirmar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -436,8 +406,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 				/*
 				 * conexion
 				 */
-				ServPropiedades.getInstancia().setProperty("Conexion.IP", txtDireccion.getText());
-				ServPropiedades.getInstancia().setProperty("Conexion.PUERTO", txtPuerto.getText());
+				ServPropiedades.getInstancia().setProperty("Conexion.URL", txtURL.getText());
 				ServPropiedades.getInstancia().setProperty("Conexion.USUARIO", txtUsuario.getText());
 				ServPropiedades.getInstancia().setProperty("Conexion.CONTRASENIA", txtContrasenia.getText());
 

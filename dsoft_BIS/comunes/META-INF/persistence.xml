@@ -19,7 +19,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localHost/bis_bd" />
 			<property name="javax.persistence.jdbc.user" value="bis" />
 			<property name="javax.persistence.jdbc.password" value="bis" />
-			<property name="eclipselink.jdbc.bind-parameters" value="true" />
+			<property name="eclipselink.jdbc.bind-parameters" value="false" />
 			<property name="eclipselink.target-database" value="MySQL" />
 			<property name="eclipselink.logging.exceptions" value="true" />
 			<property name="javax.persistence.schema-generation.scripts.action"

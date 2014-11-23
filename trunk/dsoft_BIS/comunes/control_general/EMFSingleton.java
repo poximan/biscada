@@ -69,7 +69,8 @@ public class EMFSingleton {
 
 		Map<String, String> persistenceMap = new HashMap<String, String>();
 
-		persistenceMap.put("javax.persistence.jdbc.url", ServPropiedades.getInstancia().getProperty("Conexion.URL"));
+		String url = "jdbc:mysql://" + ServPropiedades.getInstancia().getProperty("Conexion.URL") + "/bis_bd";
+		persistenceMap.put("javax.persistence.jdbc.url", url);
 		persistenceMap.put("javax.persistence.jdbc.user", ServPropiedades.getInstancia()
 				.getProperty("Conexion.USUARIO"));
 		persistenceMap.put("javax.persistence.jdbc.password",
@@ -77,6 +78,7 @@ public class EMFSingleton {
 
 		try {
 			emf = Persistence.createEntityManagerFactory("dsoft_BIS", persistenceMap);
+			// emf = Persistence.createEntityManagerFactory("dsoft_BIS");
 			em = emf.createEntityManager();
 		}
 		catch (Exception excepcion) {

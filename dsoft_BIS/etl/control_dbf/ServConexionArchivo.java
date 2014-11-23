@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import modelo.ArchivoDBF;
-import excepciones.AbrirArchivoExcepcion;
+import excepciones.ReiniciarAplicacionExcepcion;
 import excepciones.CerrarArchivoExcepcion;
 import excepciones.LeerArchivoExcepcion;
 
@@ -59,7 +59,7 @@ public class ServConexionArchivo {
 		}
 
 		catch (FileNotFoundException ex) {
-			new AbrirArchivoExcepcion("Error: no se pudo abrir archivo '" + archivo_actual + "'");
+			new ReiniciarAplicacionExcepcion("Error: no se pudo abrir archivo '" + archivo_actual + "'");
 		}
 	}
 

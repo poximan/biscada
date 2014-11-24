@@ -5,7 +5,6 @@
 
 package control_dbf;
 
-import java.beans.Beans;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -15,16 +14,12 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.RollbackException;
-
 import modelo.ArchivoDBF;
 
 import org.apache.log4j.Logger;
 
 import control_CRUDs.ServCRUDArchivoDBF;
 import control_etl.Transaccionable;
-import control_general.EMFSingleton;
 import control_general.ObjetosBorrables;
 
 /* ............................................. */
@@ -45,16 +40,12 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	private ServCRUDArchivoDBF dbf_servicio_crud;
 
-	private EntityManager em;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public ProcesarMultipleArchivo(String directorio) {
-
-		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 
 		obj_direccion = Paths.get(directorio);
 		dbf_servicio_crud = new ServCRUDArchivoDBF();
@@ -130,9 +121,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 			metodo_insercion.limpiarCacheBULK();
 		}
-
 		metodo_insercion.commitBULK();
-
 		mostarInfo();
 	}
 
@@ -146,42 +135,29 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	/**
 	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
 	 * 
-	 * @param llista_candidatos_extraer
+	 * @param metodo_borrado
+	 * 
+	 * @param lista_candidatos_extraer
 	 */
-	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {
+	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer, Transaccionable metodo_borrado) {
 
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
+		metodo_borrado.beginBULK();
+
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 
-			em.getTransaction().begin();
+			metodo_borrado.beginArchivo();
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
+			metodo_borrado.commitArchivo();
 
-			try {
-				terminarTrasaccion();
-				gestor.mostarInfo(archivo_actual);
-			}
-			catch (RollbackException excepcion) {
-			}
+			metodo_borrado.limpiarCacheBULK();
 		}
-	}
-
-	private void terminarTrasaccion() {
-
-		try {
-			em.getTransaction().commit();
-		}
-		catch (RollbackException excepcion) {
-			log.error("comienza rollback");
-
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-			throw excepcion;
-		}
+		metodo_borrado.commitBULK();
 	}
 
 	@Override

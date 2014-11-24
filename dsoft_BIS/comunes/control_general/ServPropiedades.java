@@ -72,7 +72,7 @@ public class ServPropiedades {
 
 		try {
 			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
-			propiedades.store(archivo_salida, "");
+			propiedades.store(archivo_salida, "ddkjfklsdjghfklsdj");
 			archivo_salida.close();
 		}
 		catch (FileNotFoundException e) {

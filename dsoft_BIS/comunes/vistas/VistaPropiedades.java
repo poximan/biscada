@@ -8,6 +8,7 @@ package vistas;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,8 +27,6 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import control_general.ServPropiedades;
-
-import java.awt.FlowLayout;
 
 /* ............................................. */
 /* ............................................. */

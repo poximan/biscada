@@ -17,21 +17,21 @@ import org.apache.log4j.PropertyConfigurator;
 /* CLASE ....................................... */
 /* ............................................. */
 /*  Dh4Gk2Nz4yP9 */
-public class GestorComun {
+public class Main {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(GestorComun.class);
+	private static Logger log = Logger.getLogger(Main.class);
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public GestorComun() {
+	public Main() {
 
 		GestorBI.getSingleton().mostrarVentana();
 	}
@@ -60,14 +60,14 @@ public class GestorComun {
 		}
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
-			log.error(GestorComun.class.getName());
+			log.error(Main.class.getName());
 		}
 
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					new GestorComun();
+					new Main();
 				}
 				catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());

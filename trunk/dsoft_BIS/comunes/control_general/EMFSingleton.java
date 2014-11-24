@@ -78,7 +78,6 @@ public class EMFSingleton {
 
 		try {
 			emf = Persistence.createEntityManagerFactory("dsoft_BIS", persistenceMap);
-			// emf = Persistence.createEntityManagerFactory("dsoft_BIS");
 			em = emf.createEntityManager();
 		}
 		catch (Exception excepcion) {

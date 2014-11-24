@@ -11,15 +11,11 @@ import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -30,7 +26,6 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import control_general.ServPropiedades;
-import excepciones.ReiniciarAplicacionExcepcion;
 
 import java.awt.FlowLayout;
 
@@ -48,17 +43,15 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 	private static final long serialVersionUID = 1L;
 
-	private JFrame frame_etl;
-
 	private JLabel lblTiempoMaximo;
 	private JLabel lblTiempoMinimo;
 
 	private JPanel panelConexionBD;
 	private JPanel panelRuidoAlarma;
 
-	private CompSeleccionarDireccion btnCambiar;
+	private CompSeleccionarDireccion btnCambiarDireccion;
 
-	private JButton btnPorDefecto_1;
+	private JButton btnPorDefecto;
 	private JButton btnConfirmar;
 
 	private JSpinner spinnerAceptacion;
@@ -77,9 +70,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaPropiedades(JFrame frame_etl) {
-
-		this.frame_etl = frame_etl;
+	public VistaPropiedades() {
 
 		iniciarComponentes();
 		configEventos();
@@ -161,8 +152,8 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE).addGap(10)));
 
-		btnPorDefecto_1 = new JButton("por defecto");
-		panel.add(btnPorDefecto_1);
+		btnPorDefecto = new JButton("por defecto");
+		panel.add(btnPorDefecto);
 
 		btnConfirmar = new JButton("confirmar");
 		panel.add(btnConfirmar);
@@ -170,14 +161,14 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
 				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
 
-		btnCambiar = new CompSeleccionarDireccion(txt_direccion_fuente);
+		btnCambiarDireccion = new CompSeleccionarDireccion(txt_direccion_fuente);
 
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
 		gbc_btnCambiar.anchor = GridBagConstraints.WEST;
 		gbc_btnCambiar.insets = new Insets(0, 0, 5, 0);
 		gbc_btnCambiar.gridx = 3;
 		gbc_btnCambiar.gridy = 1;
-		panelPropiedades.add(btnCambiar, gbc_btnCambiar);
+		panelPropiedades.add(btnCambiarDireccion, gbc_btnCambiar);
 
 		JLabel lblAceptacion = new JLabel("% aceptacion KPI");
 		GridBagConstraints gbc_lblAceptacion = new GridBagConstraints();
@@ -381,75 +372,23 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	@Override
 	public void configEventos() {
 
-		btnConfirmar.addActionListener(new ActionListener() {
+		EventoPropiedades eventos = new EventoPropiedades(this, spinnerAceptacion, spinnerTiempoMaximo,
+				spinnerTiempoMinimo, txt_direccion_fuente, txtURL, txtUsuario, txtContrasenia);
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+		btnConfirmar.addActionListener(eventos);
+		btnPorDefecto.addActionListener(eventos);
+	}
 
-				/*
-				 * graficos
-				 */
-				ServPropiedades.getInstancia().setProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA",
-						String.valueOf(spinnerAceptacion.getModel().getValue()));
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
-				/*
-				 * datos
-				 */
-				ServPropiedades.getInstancia().setProperty("Datos.DIRECCION_LECTURA_DATOS",
-						txt_direccion_fuente.getText());
+	public JButton getBtnPorDefecto() {
+		return btnPorDefecto;
+	}
 
-				/*
-				 * ruido
-				 */
-				ServPropiedades.getInstancia().setProperty("Ruido.MINIMA_DURACION_ALARMA",
-						String.valueOf(spinnerTiempoMaximo.getModel().getValue()));
-				ServPropiedades.getInstancia().setProperty("Ruido.MAXIMA_DURACION_ALARMA",
-						String.valueOf(spinnerTiempoMinimo.getModel().getValue()));
-
-				try {
-					analizarCambiosPU();
-
-					/*
-					 * TODO quiza esta linea haya que eliminarla
-					 * 
-					 * ServDOM serv_dom = new ServDOM(); serv_dom.modificarXML(txtUsuario.getText());
-					 */
-				}
-				catch (ReiniciarAplicacionExcepcion excepcion) {
-
-				}
-				finally {
-					ServPropiedades.guardarCambios();
-					frame_etl.dispose();
-				}
-			}
-
-			private void analizarCambiosPU() throws ReiniciarAplicacionExcepcion {
-
-				int usuario_acepta = 0;
-
-				if (ServPropiedades.getInstancia().getProperty("Conexion.URL").equals(txtURL.getText())
-						|| ServPropiedades.getInstancia().getProperty("Conexion.USUARIO").equals(txtUsuario.getText())
-						|| ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA")
-								.equals(txtContrasenia.getText()))
-
-					usuario_acepta = JOptionPane.showConfirmDialog((Component) null,
-							"para nuevos parametros de conexion, la aplicacion debe reiniciar", "¿desea reiniciar?",
-							JOptionPane.YES_NO_OPTION);
-
-				if (usuario_acepta != 0) {
-					txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
-					txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
-					txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
-				}
-
-				ServPropiedades.getInstancia().setProperty("Conexion.URL", txtURL.getText());
-				ServPropiedades.getInstancia().setProperty("Conexion.USUARIO", txtUsuario.getText());
-				ServPropiedades.getInstancia().setProperty("Conexion.CONTRASENIA", txtContrasenia.getText());
-
-				if (usuario_acepta != 0)
-					throw new ReiniciarAplicacionExcepcion();
-			}
-		});
+	public JButton getBtnConfirmar() {
+		return btnConfirmar;
 	}
 }

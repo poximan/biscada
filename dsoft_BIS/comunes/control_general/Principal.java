@@ -17,21 +17,21 @@ import org.apache.log4j.PropertyConfigurator;
 /* CLASE ....................................... */
 /* ............................................. */
 /*  Dh4Gk2Nz4yP9 */
-public class Main {
+public class Principal {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(Main.class);
+	private static Logger log = Logger.getLogger(Principal.class);
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Main() {
+	public Principal() {
 
 		GestorBI.getSingleton().mostrarVentana();
 	}
@@ -60,14 +60,14 @@ public class Main {
 		}
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
-			log.error(Main.class.getName());
+			log.error(Principal.class.getName());
 		}
 
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					new Main();
+					new Principal();
 				}
 				catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());

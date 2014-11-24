@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import control_general.ServPropiedades;
-import control_general.ServReiniciarApp;
+import control_general.ServReiniciarAplicacion;
 import excepciones.ReiniciarAplicacionExcepcion;
 
 /* ............................................. */
@@ -123,7 +123,7 @@ public class EventoPropiedades implements ActionListener {
 			if (reiniciar == null)
 				frame.dispose();
 			else {
-				ServReiniciarApp ejecutar_nuevamente = new ServReiniciarApp();
+				ServReiniciarAplicacion ejecutar_nuevamente = new ServReiniciarAplicacion();
 				ejecutar_nuevamente.reinciarAplicacion();
 			}
 		}

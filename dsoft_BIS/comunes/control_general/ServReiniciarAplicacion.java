@@ -75,8 +75,6 @@ public class ServReiniciarAplicacion {
 					}
 				}
 			});
-
-			// exit
 			System.exit(0);
 		}
 		catch (Exception e) {

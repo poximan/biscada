@@ -78,6 +78,8 @@ public class EventoPropiedades implements ActionListener {
 	}
 
 	private void actualizarArchivoPropiedades() {
+
+		ReiniciarAplicacionExcepcion reiniciar = null;
 		/*
 		 * graficos
 		 */
@@ -99,16 +101,9 @@ public class EventoPropiedades implements ActionListener {
 
 		try {
 			analizarCambiosPU();
-
-			/*
-			 * TODO quiza esta linea haya que eliminarla
-			 * 
-			 * ServDOM serv_dom = new ServDOM(); serv_dom.modificarXML(txtUsuario.getText());
-			 */
 		}
 		catch (ReiniciarAplicacionExcepcion excepcion) {
-
-			excepcion.printStackTrace();
+			reiniciar = excepcion;
 		}
 
 		finally {
@@ -123,7 +118,11 @@ public class EventoPropiedades implements ActionListener {
 			ServPropiedades.guardarCambios();
 
 			JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(vista_propiedades);
-			frame.dispose();
+
+			if (reiniciar == null)
+				frame.dispose();
+			else
+				System.exit(0);
 		}
 	}
 
@@ -133,27 +132,29 @@ public class EventoPropiedades implements ActionListener {
 		 * graficos
 		 */
 		spinnerAceptacion.getModel().setValue(
-				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+				Integer.valueOf(ServPropiedades.getInstancia().getProperty(
+						"Defecto.Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA")));
 
 		/*
 		 * datos
 		 */
-		txt_direccion_fuente.setText(ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS"));
+		txt_direccion_fuente.setText(ServPropiedades.getInstancia()
+				.getProperty("Defecto.Datos.DIRECCION_LECTURA_DATOS"));
 
 		/*
 		 * ruido
 		 */
 		spinnerTiempoMaximo.getModel().setValue(
-				ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
+				Integer.valueOf(ServPropiedades.getInstancia().getProperty("Defecto.Ruido.MINIMA_DURACION_ALARMA")));
 		spinnerTiempoMinimo.getModel().setValue(
-				ServPropiedades.getInstancia().getProperty("Ruido.MAXIMA_DURACION_ALARMA"));
+				Integer.valueOf(ServPropiedades.getInstancia().getProperty("Defecto.Ruido.MAXIMA_DURACION_ALARMA")));
 
 		/*
 		 * conexion
 		 */
-		txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
-		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
-		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
+		txtURL.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.URL"));
+		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.USUARIO"));
+		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.CONTRASENIA"));
 	}
 
 	private void analizarCambiosPU() throws ReiniciarAplicacionExcepcion {

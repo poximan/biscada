@@ -5,6 +5,10 @@
 
 package control_etl;
 
+import javax.persistence.RollbackException;
+
+import org.apache.log4j.Logger;
+
 import control_general.EMFSingleton;
 
 /* ............................................. */
@@ -18,6 +22,8 @@ public class TransaccionBULK implements Transaccionable {
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
+
+	private static Logger log = Logger.getLogger(TransaccionBULK.class);
 
 	/* ............................................. */
 	/* ............................................. */
@@ -39,7 +45,17 @@ public class TransaccionBULK implements Transaccionable {
 
 	@Override
 	public void commitBULK() {
-		EMFSingleton.getInstanciaEM().getTransaction().commit();
+
+		try {
+			EMFSingleton.getInstanciaEM().getTransaction().commit();
+		}
+		catch (RollbackException excepcion) {
+			log.error("comienza rollback");
+
+			if (EMFSingleton.getInstanciaEM().getTransaction().isActive())
+				EMFSingleton.getInstanciaEM().getTransaction().rollback();
+			throw excepcion;
+		}
 	}
 
 	@Override

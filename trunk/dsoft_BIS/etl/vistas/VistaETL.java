@@ -354,8 +354,15 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void actionExtraer() {
 
+		Transaccionable metodo_borrado;
+
+		if (chckbxUsarInsercionPor.isSelected())
+			metodo_borrado = new TransaccionBULK();
+		else
+			metodo_borrado = new TransaccionArchivo();
+
 		if (!list_procesados.isSelectionEmpty())
-			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
+			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList(), metodo_borrado);
 
 		actionRestablecer();
 	}

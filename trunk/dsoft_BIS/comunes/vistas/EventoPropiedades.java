@@ -124,7 +124,7 @@ public class EventoPropiedades implements ActionListener {
 				frame.dispose();
 			else {
 				ServReiniciarApp ejecutar_nuevamente = new ServReiniciarApp();
-				ejecutar_nuevamente.restartApplication();
+				ejecutar_nuevamente.reinciarAplicacion();
 			}
 		}
 	}

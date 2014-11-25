@@ -26,13 +26,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.RowSorterEvent;
-import javax.swing.event.RowSorterListener;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -389,20 +386,20 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		pl_tiempo.setLayout(gl_pl_tiempo);
 		setLayout(gl_contentPane);
 
-		// TODO sorter compartido
-		RowSorterListener l = new RowSorterListener() {
-			@Override
-			public void sorterChanged(RowSorterEvent e) {
-				if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
-
-					@SuppressWarnings("unchecked")
-					RowSorter<Object> sorter = e.getSource();
-					tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
-				}
-			}
-
-		};
-		tbl_medicion.getRowSorter().addRowSorterListener(l);
+		// // TODO sorter compartido
+		// RowSorterListener l = new RowSorterListener() {
+		// @Override
+		// public void sorterChanged(RowSorterEvent e) {
+		// if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
+		//
+		// @SuppressWarnings("unchecked")
+		// RowSorter<Object> sorter = e.getSource();
+		// tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
+		// }
+		// }
+		//
+		// };
+		// tbl_medicion.getRowSorter().addRowSorterListener(l);
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll

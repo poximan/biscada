@@ -98,7 +98,7 @@ public class ComponenteMenuDimension extends JFrame {
 
 		JMenu submenu_config_comparador = new JMenu("Configurar");
 
-		btn_consultar = new JButton();
+		btn_consultar = new JButton("Generar consulta");
 
 		submenu_config_comparador.add(btn_consultar);
 

@@ -65,7 +65,7 @@ public class ComponenteDuracionAlarma extends JPanel implements EventoConfigurab
 	@Override
 	public void configEventos() {
 
-		chckbxSegundos.addActionListener(new ActionListener() {
+		ActionListener cos_check = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (chckbxSegundos.isSelected())
@@ -73,7 +73,9 @@ public class ComponenteDuracionAlarma extends JPanel implements EventoConfigurab
 				else
 					spinner.setEnabled(false);
 			}
-		});
+		};
+		chckbxSegundos.addActionListener(cos_check);
+		cos_check.actionPerformed(null);
 	}
 
 	/* ............................................. */

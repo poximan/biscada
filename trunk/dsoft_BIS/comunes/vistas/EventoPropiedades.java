@@ -78,6 +78,9 @@ public class EventoPropiedades implements ActionListener {
 				actualizarVistaPropiedades();
 	}
 
+	/**
+	 * modifica los valores respaldados en archivo de propiedades, segun configuracion del usuario
+	 */
 	private void actualizarArchivoPropiedades() {
 
 		ReiniciarAplicacionExcepcion reiniciar = null;
@@ -129,6 +132,9 @@ public class EventoPropiedades implements ActionListener {
 		}
 	}
 
+	/**
+	 * modifica los valores visibles segun la configuracion por defecto
+	 */
 	private void actualizarVistaPropiedades() {
 
 		/*
@@ -147,9 +153,9 @@ public class EventoPropiedades implements ActionListener {
 		/*
 		 * ruido
 		 */
-		spinnerTiempoMaximo.getModel().setValue(
-				Integer.valueOf(ServPropiedades.getInstancia().getProperty("Defecto.Ruido.MINIMA_DURACION_ALARMA")));
 		spinnerTiempoMinimo.getModel().setValue(
+				Integer.valueOf(ServPropiedades.getInstancia().getProperty("Defecto.Ruido.MINIMA_DURACION_ALARMA")));
+		spinnerTiempoMaximo.getModel().setValue(
 				Integer.valueOf(ServPropiedades.getInstancia().getProperty("Defecto.Ruido.MAXIMA_DURACION_ALARMA")));
 
 		/*

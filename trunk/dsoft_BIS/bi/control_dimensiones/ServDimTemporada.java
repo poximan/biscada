@@ -53,23 +53,19 @@ public class ServDimTemporada extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas, boolean incluir_alarmas_incompletas) {
+	public void realizarHash(List<Alarma> consultas) {
 
-		if (esNecesarioReconstruirHash(incluir_alarmas_incompletas)) {
+		map = new HashMap<Temporada, List<Alarma>>();
+		FabricaTemporada fabrica_key = new FabricaTemporada();
 
-			map = new HashMap<Temporada, List<Alarma>>();
-			FabricaTemporada fabrica_key = new FabricaTemporada();
+		for (Alarma alarma_actual : consultas) {
 
-			for (Alarma alarma_actual : consultas) {
+			Temporada key = fabrica_key.buscarRango(alarma_actual);
 
-				Temporada key = fabrica_key.buscarRango(alarma_actual);
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
 
-				if (map.get(key) == null)
-					map.put(key, new ArrayList<Alarma>());
-
-				map.get(key).add(alarma_actual);
-			}
-			invertirCheckCalculoAnterior(incluir_alarmas_incompletas);
+			map.get(key).add(alarma_actual);
 		}
 	}
 

@@ -57,7 +57,7 @@ import org.jdesktop.swingbinding.SwingBindings;
 import com.toedter.calendar.JDateChooser;
 
 import control_general.ObjetosBorrables;
-import control_general.ServBusqueda;
+import control_general.ServConsulta;
 
 /* ............................................. */
 /* ............................................. */
@@ -129,6 +129,8 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private JTextField txt_reg_encontrados;
 
+	private ServConsulta serv_consulta;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -168,6 +170,8 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		configEventos();
 		organizarTablas();
+
+		serv_consulta = new ServConsulta();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -598,7 +602,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Familia> familia = ServBusqueda.getListaFamilia();
+		List<Familia> familia = ServConsulta.getListaFamilia();
 		cboxFamilia.removeAllItems();
 
 		cboxFamilia.addItem(null);
@@ -611,7 +615,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<TipoDeEquipo> sucesos = ServBusqueda.getListaEquipos();
+		List<TipoDeEquipo> sucesos = ServConsulta.getListaEquipos();
 		cboxTipoEquipo.removeAllItems();
 
 		cboxTipoEquipo.addItem(null);
@@ -624,7 +628,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Sitio> sitios = ServBusqueda.getListaSitios();
+		List<Sitio> sitios = ServConsulta.getListaSitios();
 		cboxSitio.removeAllItems();
 
 		cboxSitio.addItem(null);
@@ -637,7 +641,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Suceso> sucesos = ServBusqueda.getListaSucesos();
+		List<Suceso> sucesos = ServConsulta.getListaSucesos();
 		cboxSuceso.removeAllItems();
 
 		cboxSuceso.addItem(null);
@@ -758,13 +762,24 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private List<Alarma> getListaAlarmas() {
 
-		ServBusqueda busqueda = new ServBusqueda();
+		Calendar fecha_desde = choosDesde.getCalendar();
+		Calendar fecha_hasta = choosHasta.getCalendar();
 
-		return busqueda.buscAlarma(choosDesde.getCalendar(), rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, choosHasta
-				.getCalendar(), rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, (Familia) cboxFamilia.getSelectedItem(),
-				(Sitio) cboxSitio.getSelectedItem(), (TipoDeEquipo) cboxTipoEquipo.getSelectedItem(),
-				(Suceso) cboxSuceso.getSelectedItem(), frame_bi.getComponente_ruido_minimo().getSegundos(), frame_bi
-						.getComponente_ruido_maximo().getSegundos());
+		Familia familia = (Familia) cboxFamilia.getSelectedItem();
+		Sitio sitio = (Sitio) cboxSitio.getSelectedItem();
+		TipoDeEquipo tipo_de_equipo = (TipoDeEquipo) cboxTipoEquipo.getSelectedItem();
+		Suceso suceso = (Suceso) cboxSuceso.getSelectedItem();
+
+		Integer ruido_minimo = frame_bi.getComponente_ruido_minimo().getSegundos();
+		Integer ruido_maximo = frame_bi.getComponente_ruido_maximo().getSegundos();
+
+		boolean incluir_ini_incompleta = frame_bi.getComponente_ini_incompleta().isSelected();
+		boolean incluir_ack_incompleta = frame_bi.getComponente_ack_incompleta().isSelected();
+		boolean incluir_fin_incompleta = frame_bi.getComponente_fin_incompleta().isSelected();
+
+		return serv_consulta.buscAlarma(fecha_desde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, fecha_hasta,
+				rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, familia, sitio, tipo_de_equipo, suceso, ruido_minimo,
+				ruido_maximo, incluir_ini_incompleta, incluir_ack_incompleta, incluir_fin_incompleta);
 	}
 
 	/* ............................................. */

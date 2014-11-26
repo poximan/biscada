@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -36,9 +37,14 @@ public class CompMenu extends JFrame {
 	private JMenuBar barra_menu;
 
 	private JMenu entrada_menu_archivo;
+	private JMenu entrada_menu_alarma;
 	private JMenu entrada_menu_ruido;
 	private JMenu entrada_menu_etl;
 	private JMenu entrada_menu_propiedades;
+
+	private JCheckBox componente_ini_incompleta;
+	private JCheckBox componente_ack_incompleta;
+	private JCheckBox componente_fin_incompleta;
 
 	private CompDuracionAlarma componente_ruido_minimo;
 	private CompDuracionAlarma componente_ruido_maximo;
@@ -67,6 +73,7 @@ public class CompMenu extends JFrame {
 		barra_menu = new JMenuBar();
 
 		configMenuArchivo();
+		configMenuAlarmaIncompleta();
 		configMenuRuido();
 		configMenuETL();
 		configMenuPropiedades();
@@ -96,6 +103,30 @@ public class CompMenu extends JFrame {
 
 		// agregar menu a la barra
 		barra_menu.add(entrada_menu_archivo);
+	}
+
+	private void configMenuAlarmaIncompleta() {
+
+		// submeun
+		entrada_menu_alarma = new JMenu("Alarma");
+		entrada_menu_alarma.setMinimumSize(getMinimumSize());
+
+		JMenu submenu_fecha_incompleta = new JMenu("incluir incompleta");
+
+		componente_ini_incompleta = new JCheckBox("inicio");
+		componente_ack_incompleta = new JCheckBox("ack");
+		componente_fin_incompleta = new JCheckBox("fin");
+
+		submenu_fecha_incompleta.add(componente_ini_incompleta);
+		submenu_fecha_incompleta.add(componente_ack_incompleta);
+		submenu_fecha_incompleta.add(componente_fin_incompleta);
+
+		// agregar opciones del menu
+		entrada_menu_alarma.add(submenu_fecha_incompleta);
+		entrada_menu_alarma.addSeparator();
+
+		// agregar menu a la barra
+		barra_menu.add(entrada_menu_alarma);
 	}
 
 	private void configMenuRuido() {
@@ -179,6 +210,18 @@ public class CompMenu extends JFrame {
 
 	public CompDuracionAlarma getComponente_ruido_maximo() {
 		return componente_ruido_maximo;
+	}
+
+	public JCheckBox getComponente_ini_incompleta() {
+		return componente_ini_incompleta;
+	}
+
+	public JCheckBox getComponente_ack_incompleta() {
+		return componente_ack_incompleta;
+	}
+
+	public JCheckBox getComponente_fin_incompleta() {
+		return componente_fin_incompleta;
 	}
 
 	/* ............................................. */

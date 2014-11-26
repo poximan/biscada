@@ -48,7 +48,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	private JPanel panelConexionBD;
 	private JPanel panelRuidoAlarma;
 
-	private CompSeleccionarDireccion btnCambiarDireccion;
+	private ComponenteSeleccionarDireccion btnCambiarDireccion;
 
 	private JButton btnPorDefecto;
 	private JButton btnConfirmar;
@@ -159,7 +159,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
 				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
 
-		btnCambiarDireccion = new CompSeleccionarDireccion(txt_direccion_fuente);
+		btnCambiarDireccion = new ComponenteSeleccionarDireccion(txt_direccion_fuente);
 
 		GridBagConstraints gbc_btnCambiar = new GridBagConstraints();
 		gbc_btnCambiar.anchor = GridBagConstraints.WEST;

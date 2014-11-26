@@ -71,16 +71,16 @@ public class EventoPropiedades implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == vista_propiedades.getBtnConfirmar()) {
-			actualizarArchivoPropiedades();
+			modificarArchivoPropiedades();
 		} else
 			if (evt.getSource() == vista_propiedades.getBtnPorDefecto())
-				actualizarVistaPropiedades();
+				modificarVistaPropiedades();
 	}
 
 	/**
 	 * modifica los valores respaldados en archivo de propiedades, segun configuracion del usuario
 	 */
-	private void actualizarArchivoPropiedades() {
+	private void modificarArchivoPropiedades() {
 
 		ReiniciarAplicacionExcepcion reiniciar = null;
 		/*
@@ -97,9 +97,9 @@ public class EventoPropiedades implements ActionListener {
 		/*
 		 * ruido
 		 */
-		ServPropiedades.getInstancia().setProperty("Ruido.MINIMA_DURACION_ALARMA",
-				String.valueOf(spinnerTiempoMaximo.getModel().getValue()));
 		ServPropiedades.getInstancia().setProperty("Ruido.MAXIMA_DURACION_ALARMA",
+				String.valueOf(spinnerTiempoMaximo.getModel().getValue()));
+		ServPropiedades.getInstancia().setProperty("Ruido.MINIMA_DURACION_ALARMA",
 				String.valueOf(spinnerTiempoMinimo.getModel().getValue()));
 
 		try {
@@ -132,7 +132,7 @@ public class EventoPropiedades implements ActionListener {
 	/**
 	 * modifica los valores visibles segun la configuracion por defecto
 	 */
-	private void actualizarVistaPropiedades() {
+	private void modificarVistaPropiedades() {
 
 		/*
 		 * graficos

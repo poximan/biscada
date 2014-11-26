@@ -25,7 +25,7 @@ import control_general.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CompMenu extends JFrame {
+public class ComponenteMenuConsulta extends JFrame {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -46,15 +46,15 @@ public class CompMenu extends JFrame {
 	private JCheckBox componente_ack_incompleta;
 	private JCheckBox componente_fin_incompleta;
 
-	private CompDuracionAlarma componente_ruido_minimo;
-	private CompDuracionAlarma componente_ruido_maximo;
+	private ComponenteDuracionAlarma componente_ruido_minimo;
+	private ComponenteDuracionAlarma componente_ruido_maximo;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CompMenu(String titulo) {
+	public ComponenteMenuConsulta(String titulo) {
 
 		super(titulo);
 
@@ -138,10 +138,10 @@ public class CompMenu extends JFrame {
 		JMenu submenu_config_ruido = new JMenu("Configurar");
 
 		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
-		componente_ruido_minimo = new CompDuracionAlarma("minima duracion", valor_inicial, true);
+		componente_ruido_minimo = new ComponenteDuracionAlarma("minima duracion", valor_inicial, true);
 
 		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MAXIMA_DURACION_ALARMA"));
-		componente_ruido_maximo = new CompDuracionAlarma("maxima duracion", valor_inicial, false);
+		componente_ruido_maximo = new ComponenteDuracionAlarma("maxima duracion", valor_inicial, false);
 
 		submenu_config_ruido.add(componente_ruido_minimo);
 		submenu_config_ruido.add(componente_ruido_maximo);
@@ -204,11 +204,11 @@ public class CompMenu extends JFrame {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public CompDuracionAlarma getComponente_ruido_minimo() {
+	public ComponenteDuracionAlarma getComponente_ruido_minimo() {
 		return componente_ruido_minimo;
 	}
 
-	public CompDuracionAlarma getComponente_ruido_maximo() {
+	public ComponenteDuracionAlarma getComponente_ruido_maximo() {
 		return componente_ruido_maximo;
 	}
 

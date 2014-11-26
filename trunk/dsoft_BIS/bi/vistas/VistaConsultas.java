@@ -86,7 +86,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private List<Alarma> consultas;
 
-	private CompMenu frame_bi;
+	private ComponenteMenuConsulta frame_bi;
 
 	private JPanel panelFiltros;
 	private JPanel panelTabla;
@@ -136,7 +136,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultas(CompMenu frame_bi) {
+	public VistaConsultas(ComponenteMenuConsulta frame_bi) {
 
 		this.frame_bi = frame_bi;
 		iniciarComponentes();

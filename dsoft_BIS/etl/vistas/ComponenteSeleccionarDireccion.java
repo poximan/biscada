@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CompSeleccionarDireccion extends JPanel implements ActionListener {
+public class ComponenteSeleccionarDireccion extends JPanel implements ActionListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -42,7 +42,7 @@ public class CompSeleccionarDireccion extends JPanel implements ActionListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CompSeleccionarDireccion(JTextField txtDireccionFuente) {
+	public ComponenteSeleccionarDireccion(JTextField txtDireccionFuente) {
 		setBorder(null);
 
 		this.txtDireccionFuente = txtDireccionFuente;

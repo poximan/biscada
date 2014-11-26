@@ -78,7 +78,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JTextField txt_selDisponibles;
 	private JTextField txt_selProcesados;
 
-	private CompSeleccionarDireccion btn_cambiar_direccion;
+	private ComponenteSeleccionarDireccion btn_cambiar_direccion;
 	private JCheckBox chckbxInsercionLote;
 
 	/* ............................................. */
@@ -143,7 +143,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		txtDireccionFuente.setColumns(10);
 
 		txtDireccionFuente.setText(ServPropiedades.getInstancia().getProperty("Datos.DIRECCION_LECTURA_DATOS"));
-		btn_cambiar_direccion = new CompSeleccionarDireccion(txtDireccionFuente);
+		btn_cambiar_direccion = new ComponenteSeleccionarDireccion(txtDireccionFuente);
 
 		GridBagConstraints gbc_btn_cambiar_direccion = new GridBagConstraints();
 		gbc_btn_cambiar_direccion.anchor = GridBagConstraints.WEST;

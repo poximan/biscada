@@ -49,22 +49,18 @@ public class ServDimSuceso extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas, boolean incluir_alarmas_incompletas) {
+	public void realizarHash(List<Alarma> consultas) {
 
-		if (esNecesarioReconstruirHash(incluir_alarmas_incompletas)) {
+		map = new HashMap<Suceso, List<Alarma>>();
 
-			map = new HashMap<Suceso, List<Alarma>>();
+		for (Alarma alarma_actual : consultas) {
 
-			for (Alarma alarma_actual : consultas) {
+			Suceso key = alarma_actual.getSuceso();
 
-				Suceso key = alarma_actual.getSuceso();
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
 
-				if (map.get(key) == null)
-					map.put(key, new ArrayList<Alarma>());
-
-				map.get(key).add(alarma_actual);
-			}
-			invertirCheckCalculoAnterior(incluir_alarmas_incompletas);
+			map.get(key).add(alarma_actual);
 		}
 	}
 

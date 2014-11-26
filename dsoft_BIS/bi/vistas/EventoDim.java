@@ -42,11 +42,7 @@ public abstract class EventoDim implements ActionListener, MouseListener {
 
 		if (evt.getSource() == vista_dimension.getBtnEjecutar()) {
 			vista_dimension.ejecutarDimension();
-		} else
-			if (evt.getSource() == vista_dimension.getChckbxAlarmaIncompleta()) {
-				vista_dimension.getServ_intervalo().getIntervalo().setPrimer_alarma(null);
-				vista_dimension.getServ_intervalo().getIntervalo().setUltima_alarma(null);
-			}
+		}
 	}
 
 	/* ............................................. */

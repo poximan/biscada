@@ -49,23 +49,19 @@ public class ServDimSitio extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas, boolean incluir_alarmas_incompletas) {
+	public void realizarHash(List<Alarma> consultas) {
 
-		if (esNecesarioReconstruirHash(incluir_alarmas_incompletas)) {
+		map = new HashMap<Sitio, List<Alarma>>();
 
-			map = new HashMap<Sitio, List<Alarma>>();
+		for (Alarma alarma_actual : consultas) {
 
-			for (Alarma alarma_actual : consultas) {
+			Sitio key = alarma_actual.getSitio();
 
-				Sitio key = alarma_actual.getSitio();
+			// si no existe la clave, se crea
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
 
-				// si no existe la clave, se crea
-				if (map.get(key) == null)
-					map.put(key, new ArrayList<Alarma>());
-
-				map.get(key).add(alarma_actual);
-			}
-			invertirCheckCalculoAnterior(incluir_alarmas_incompletas);
+			map.get(key).add(alarma_actual);
 		}
 	}
 

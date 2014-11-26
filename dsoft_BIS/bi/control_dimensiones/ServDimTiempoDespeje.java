@@ -53,23 +53,19 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas, boolean incluir_alarmas_incompletas) {
+	public void realizarHash(List<Alarma> consultas) {
 
-		if (esNecesarioReconstruirHash(incluir_alarmas_incompletas)) {
+		map = new HashMap<TiempoDespeje, List<Alarma>>();
+		FabricaTiempoDespeje fabrica_key = new FabricaTiempoDespeje();
 
-			map = new HashMap<TiempoDespeje, List<Alarma>>();
-			FabricaTiempoDespeje fabrica_key = new FabricaTiempoDespeje();
+		for (Alarma alarma_actual : consultas) {
 
-			for (Alarma alarma_actual : consultas) {
+			TiempoDespeje key = fabrica_key.buscarRango(alarma_actual);
 
-				TiempoDespeje key = fabrica_key.buscarRango(alarma_actual);
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
 
-				if (map.get(key) == null)
-					map.put(key, new ArrayList<Alarma>());
-
-				map.get(key).add(alarma_actual);
-			}
-			invertirCheckCalculoAnterior(incluir_alarmas_incompletas);
+			map.get(key).add(alarma_actual);
 		}
 	}
 

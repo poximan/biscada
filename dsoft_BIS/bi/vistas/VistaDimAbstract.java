@@ -48,7 +48,6 @@ import control_dimensiones.ServDimUnidadTiempoAnio;
 import control_dimensiones.ServDimUnidadTiempoMes;
 import control_dimensiones.ServDimUnidadTiempoQuincena;
 import control_dimensiones.ServDimUnidadTiempoTrimestre;
-import control_general.ServBusqueda;
 import control_general.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 import control_mediciones.ServMedPromedio;
@@ -108,8 +107,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 	private JButton btnCalidadServicio;
 	private JButton btnEjecutar;
-
-	private JCheckBox chckbxAlarmaIncompleta;
 	private JCheckBox chckbxColumnasNulas;
 
 	private JTextField txtPrimera;
@@ -176,14 +173,50 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		cbox_medicion = new JComboBox<ServMedAbstract>();
 		cbox_dim_tiempo = new JComboBox<ServDimUnidadTiempoAbstract>();
 
-		chckbxAlarmaIncompleta = new JCheckBox("alarmas incompletas");
-		chckbxAlarmaIncompleta
-				.setToolTipText("se incluiran para el procesamiento las alarmas cuyos campos de fecha inicio/fin sean nulos");
-
 		btnEjecutar = new JButton("ejecutar");
 		btnCalidadServicio = new JButton("indicador KPI");
 
 		gl_pl_tiempo = new GroupLayout(pl_tiempo);
+		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 284, Short.MAX_VALUE).addComponent(btnEjecutar)
+						.addContainerGap()));
+		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pl_tiempo
+						.createSequentialGroup()
+						.addGroup(
+								gl_pl_tiempo
+										.createParallelGroup(Alignment.LEADING)
+										.addGroup(
+												gl_pl_tiempo
+														.createSequentialGroup()
+														.addContainerGap()
+														.addGroup(
+																gl_pl_tiempo
+																		.createParallelGroup(Alignment.BASELINE)
+																		.addComponent(cbox_medicion,
+																				GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addComponent(lbl_medicion)
+																		.addComponent(btnEjecutar)))
+										.addGroup(
+												gl_pl_tiempo.createSequentialGroup().addGap(15)
+														.addComponent(lbl_dim_tiempo))
+										.addGroup(
+												gl_pl_tiempo
+														.createSequentialGroup()
+														.addGap(12)
+														.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] { cbox_medicion, cbox_dim_tiempo });
 
 		panel = new JPanel();
 		gl_pl_tabla = new GroupLayout(pl_tabla);
@@ -314,54 +347,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		pl_tabla.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tabla", TitledBorder.LEADING,
 				TitledBorder.TOP, null, null));
 		pl_tabla.setLayout(gl_pl_tabla);
-
-		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-						.addGap(18).addComponent(chckbxAlarmaIncompleta)
-						.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE).addComponent(btnEjecutar)
-						.addContainerGap()));
-		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tiempo
-						.createSequentialGroup()
-						.addGroup(
-								gl_pl_tiempo
-										.createParallelGroup(Alignment.LEADING)
-										.addGroup(
-												gl_pl_tiempo
-														.createSequentialGroup()
-														.addContainerGap()
-														.addGroup(
-																gl_pl_tiempo
-																		.createParallelGroup(Alignment.BASELINE)
-																		.addComponent(cbox_medicion,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addComponent(lbl_medicion)
-																		.addComponent(btnEjecutar)))
-										.addGroup(
-												gl_pl_tiempo.createSequentialGroup().addGap(15)
-														.addComponent(lbl_dim_tiempo))
-										.addGroup(
-												gl_pl_tiempo
-														.createSequentialGroup()
-														.addGap(12)
-														.addGroup(
-																gl_pl_tiempo
-																		.createParallelGroup(Alignment.BASELINE)
-																		.addComponent(cbox_dim_tiempo,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addComponent(chckbxAlarmaIncompleta))))
-						.addContainerGap(12, Short.MAX_VALUE)));
-		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] { cbox_medicion, cbox_dim_tiempo });
 		pl_tiempo.setLayout(gl_pl_tiempo);
 
 		pl_tabla.setLayout(gl_pl_tabla);
@@ -385,21 +370,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		pl_tabla.setLayout(gl_pl_tabla);
 		pl_tiempo.setLayout(gl_pl_tiempo);
 		setLayout(gl_contentPane);
-
-		// // TODO sorter compartido
-		// RowSorterListener l = new RowSorterListener() {
-		// @Override
-		// public void sorterChanged(RowSorterEvent e) {
-		// if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
-		//
-		// @SuppressWarnings("unchecked")
-		// RowSorter<Object> sorter = e.getSource();
-		// tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
-		// }
-		// }
-		//
-		// };
-		// tbl_medicion.getRowSorter().addRowSorterListener(l);
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
@@ -441,7 +411,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 		btnCalidadServicio.addActionListener(eventos);
 		btnEjecutar.addActionListener(eventos);
-		chckbxAlarmaIncompleta.addActionListener(eventos);
 	}
 
 	private void cargarTodasLasMediciones() {
@@ -468,14 +437,8 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 		serv_medicion = getMedicion();
 		serv_unidad_tiempo = getDimensionUnidadTiempo();
-		List<Alarma> consultas_filtradas;
 
-		if (!chckbxAlarmaIncompleta.isSelected())
-			consultas_filtradas = ServBusqueda.descartarFechasIncompletas(consultas);
-		else
-			consultas_filtradas = consultas;
-
-		serv_dim_vista_seleccionada.realizarHash(consultas_filtradas, chckbxAlarmaIncompleta.isSelected());
+		serv_dim_vista_seleccionada.realizarHash(consultas);
 
 		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion, serv_unidad_tiempo,
 				chckbxColumnasNulas.isSelected());
@@ -591,10 +554,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 	public ServDimSitio getServ_dim_sitio() {
 		return serv_dim_sitio;
-	}
-
-	public JCheckBox getChckbxAlarmaIncompleta() {
-		return chckbxAlarmaIncompleta;
 	}
 
 	/* ............................................. */

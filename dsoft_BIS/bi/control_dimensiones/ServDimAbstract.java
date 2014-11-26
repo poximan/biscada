@@ -25,50 +25,23 @@ public abstract class ServDimAbstract {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private boolean check_calculo_anterior;
-	private boolean primera_vez;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
-
-	public ServDimAbstract() {
-		primera_vez = true;
-	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public boolean esNecesarioReconstruirHash(boolean incluir_alarmas_incompletas) {
-
-		if (primera_vez || incluir_alarmas_incompletas != check_calculo_anterior)
-			return true;
-
-		return false;
-	}
-
-	public void invertirCheckCalculoAnterior(boolean incluir_alarmas_incompletas) {
-
-		if (check_calculo_anterior)
-			check_calculo_anterior = false;
-		else
-			check_calculo_anterior = true;
-
-		check_calculo_anterior = incluir_alarmas_incompletas;
-		primera_vez = false;
-	}
-
 	/**
 	 * crea un mapa hash donde la clave es una dimension de las especificadas en el segundo nivel de evaluacion (ver
 	 * documento de vision)
 	 * 
 	 * @param consultas
-	 * @param incluir_alarmas_incompletas
 	 */
-	public abstract void realizarHash(List<Alarma> consultas, boolean incluir_alarmas_incompletas);
+	public abstract void realizarHash(List<Alarma> consultas);
 
 	/**
 	 * una vez que entra a una de las claves del hash, analiza todas las alarmas que coinciden con la clave completa la

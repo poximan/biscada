@@ -47,7 +47,8 @@ public class CompDuracionAlarma extends JPanel implements EventoConfigurable {
 		add(chckbxSegundos);
 
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(valor_inicial, 1, 10800, 1));
+		// valor inicial, min, max, step
+		spinner.setModel(new SpinnerNumberModel(valor_inicial, 1, Integer.MAX_VALUE, 1));
 		add(spinner);
 
 		JLabel lblSeg = new JLabel("seg.");

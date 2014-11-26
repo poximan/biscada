@@ -148,7 +148,7 @@ public class ServConsulta {
 			Integer duracion_minima, Integer duracion_maxima, boolean incluir_ini_incompleta,
 			boolean incluir_ack_incompleta, boolean incluir_fin_incompleta) {
 
-		log.trace("\ncomienza consulta ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
+		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
 		List<Alarma> resultado_fechas = buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
 				calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
@@ -357,12 +357,12 @@ public class ServConsulta {
 
 	private void mostrarQuery(TypedQuery<Alarma> typed_query) {
 
-		Session session1 = EMFSingleton.getInstanciaEM().unwrap(JpaEntityManager.class).getActiveSession();
-		DatabaseQuery databaseQuery1 = ((EJBQueryImpl<Alarma>) typed_query).getDatabaseQuery();
-		databaseQuery1.prepareCall(session1, new DatabaseRecord());
-		String sqlString1 = databaseQuery1.getSQLString();
+		Session sesion = EMFSingleton.getInstanciaEM().unwrap(JpaEntityManager.class).getActiveSession();
+		DatabaseQuery consulta = ((EJBQueryImpl<Alarma>) typed_query).getDatabaseQuery();
+		consulta.prepareCall(sesion, new DatabaseRecord());
+		String sql_string = consulta.getSQLString();
 
-		log.trace(sqlString1);
+		log.trace(sql_string + "\n");
 	}
 
 	/**

@@ -7,8 +7,6 @@ package vistas;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.beans.Beans;
 import java.text.SimpleDateFormat;
@@ -64,14 +62,15 @@ import control_general.ServConsulta;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaConsultas extends JPanel implements PanelIniciable, EventoConfigurable, ObjetosBorrables {
+public class ComponenteConsulta extends JPanel implements PanelIniciable, EventoConfigurable, ObjetosBorrables,
+		EventoManejable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static Logger log = Logger.getLogger(VistaConsultas.class);
+	private static Logger log = Logger.getLogger(ComponenteConsulta.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -90,7 +89,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 	private JPanel panelFiltros;
 	private JPanel panelTabla;
-	private JPanel panelDimensiones;
 	private JPanel panelCampoSimple;
 	private JPanel panelFechas;
 
@@ -103,12 +101,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	private JLabel lblHasta;
 	private JLabel lblDesde;
 	private JLabel lblProcesando;
-
-	private JButton btnTiempoDespeje;
-	private JButton btnSuceso;
-	private JButton btnSitio;
 	private JButton btnBuscar;
-	private JButton btnTemporada;
 
 	private JScrollPane scrPaneTabla;
 
@@ -136,7 +129,7 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultas(ComponenteMenuConsulta frame_bi) {
+	public ComponenteConsulta(ComponenteMenuConsulta frame_bi) {
 
 		this.frame_bi = frame_bi;
 		iniciarComponentes();
@@ -199,45 +192,25 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 		panelTabla = new JPanel();
 		panelTabla.setBorder(new TitledBorder(null, "Resultado consulta", TitledBorder.LEADING, TitledBorder.TOP, null,
 				null));
-		panelDimensiones = new JPanel();
-		panelDimensiones.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
-				Alignment.LEADING,
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
 				groupLayout
 						.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(
 								groupLayout
 										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelDimensiones, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-												794, Short.MAX_VALUE)
-										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-										.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 794,
+										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+										.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430,
 												Short.MAX_VALUE)).addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
 				groupLayout.createSequentialGroup().addContainerGap()
 						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE).addContainerGap()));
 
 		btnBuscar = new JButton("Buscar");
-		btnTiempoDespeje = new JButton("tiempo despeje");
-		btnTiempoDespeje.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnTiempoDespeje.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnTiempoDespeje.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		btnSuceso = new JButton("suceso");
-		btnSuceso.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnSuceso.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnSuceso.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		btnSitio = new JButton("sitio");
-		btnSitio.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnSitio.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnSitio.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrPaneTabla = new JScrollPane();
 		tblConsulta = new JTable();
 		panelFechas = new JPanel();
@@ -424,18 +397,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		panelFiltros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Primer nivel evaluacion",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-				"Segundo nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		panelDimensiones.add(btnSitio);
-		panelDimensiones.add(btnSuceso);
-		panelDimensiones.add(btnTiempoDespeje);
-
-		btnTemporada = new JButton("temporada");
-		btnTemporada.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.add(btnTemporada);
 
 		txt_reg_encontrados = new JTextField();
 		txt_reg_encontrados.setEditable(false);
@@ -724,13 +685,9 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	@Override
 	public void configEventos() {
 
-		EventoConsulta eventos = new EventoConsulta(this);
+		EventoComponenteConsulta eventos = new EventoComponenteConsulta(this);
 
 		btnBuscar.addActionListener(eventos);
-		btnSitio.addActionListener(eventos);
-		btnSuceso.addActionListener(eventos);
-		btnTiempoDespeje.addActionListener(eventos);
-		btnTemporada.addActionListener(eventos);
 
 		try {
 			cargarTodasLasFamilias();
@@ -777,27 +734,16 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public JButton getBtnTiempoDespeje() {
-		return btnTiempoDespeje;
-	}
-
-	public JButton getBtnSuceso() {
-		return btnSuceso;
-	}
-
-	public JButton getBtnSitio() {
-		return btnSitio;
-	}
-
 	public JButton getBtnBuscar() {
 		return btnBuscar;
 	}
 
-	public JButton getBtnTemporada() {
-		return btnTemporada;
-	}
-
 	public List<Alarma> getConsultas() {
 		return consultas;
+	}
+
+	@Override
+	public void resolver() {
+
 	}
 }

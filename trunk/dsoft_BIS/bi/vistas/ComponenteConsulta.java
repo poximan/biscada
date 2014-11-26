@@ -162,7 +162,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		tblConsulta.getColumnModel().getColumn(2).setCellRenderer(tableCellRenderer);
 
 		configEventos();
-		organizarTablas();
+		ordenarTabla();
 
 		serv_consulta = new ServConsulta();
 	}
@@ -510,7 +510,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		setLayout(groupLayout);
 	}
 
-	private void organizarTablas() {
+	private void ordenarTabla() {
 
 		RowSorter<TableModel> ordenador_filas = new TableRowSorter<TableModel>(tblConsulta.getModel());
 		tblConsulta.setRowSorter(ordenador_filas);

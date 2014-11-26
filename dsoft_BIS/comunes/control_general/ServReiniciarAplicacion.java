@@ -41,44 +41,38 @@ public class ServReiniciarAplicacion {
 
 	public void reinciarAplicacion() {
 
-		try {
-			// bytecode java
-			String java = System.getProperty("java.home") + "/bin/java";
+		// bytecode java
+		String java = System.getProperty("java.home") + "/bin/java";
 
-			// vm arguments
-			List<String> vmArguments = ManagementFactory.getRuntimeMXBean().getInputArguments();
-			StringBuffer vmArgsOneLine = new StringBuffer();
+		// vm arguments
+		List<String> vmArguments = ManagementFactory.getRuntimeMXBean().getInputArguments();
+		StringBuffer vmArgsOneLine = new StringBuffer();
 
-			for (String arg : vmArguments) {
-				// if it's the agent argument : we ignore it otherwise the
-				// address of the old application and the new one will be in conflict
-				if (!arg.contains("-agentlib")) {
-					vmArgsOneLine.append(arg);
-					vmArgsOneLine.append(" ");
+		for (String arg : vmArguments) {
+			// if it's the agent argument : we ignore it otherwise the
+			// address of the old application and the new one will be in conflict
+			if (!arg.contains("-agentlib")) {
+				vmArgsOneLine.append(arg);
+				vmArgsOneLine.append(" ");
+			}
+		}
+		// init the command to execute, add the vm args
+		final StringBuffer cmd = new StringBuffer("\"" + java + "\" " + vmArgsOneLine);
+		cmd.append("-cp \"" + System.getProperty("java.class.path") + "\" " + principal);
+
+		// execute the command in a shutdown hook, to be sure that all the resources have been disposed before
+		// restarting the application
+
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				try {
+					Runtime.getRuntime().exec(cmd.toString());
+				}
+				catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
-			// init the command to execute, add the vm args
-			final StringBuffer cmd = new StringBuffer("\"" + java + "\" " + vmArgsOneLine);
-			cmd.append("-cp \"" + System.getProperty("java.class.path") + "\" " + principal);
-
-			// execute the command in a shutdown hook, to be sure that all the resources have been disposed before
-			// restarting the application
-
-			Runtime.getRuntime().addShutdownHook(new Thread() {
-				@Override
-				public void run() {
-					try {
-						Runtime.getRuntime().exec(cmd.toString());
-					}
-					catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-			System.exit(0);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		});
 	}
 }

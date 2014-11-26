@@ -9,14 +9,13 @@ import java.util.List;
 
 import modelo.Alarma;
 import control_dimensiones.ServDimSitio;
-import control_dimensiones.ServDimSuceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimSucesoExtendida extends VistaDimAbstract {
+public class VistaDimSitio extends VistaDimAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,15 +34,16 @@ public class VistaDimSucesoExtendida extends VistaDimAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimSucesoExtendida(List<Alarma> consultas) {
+	public VistaDimSitio(List<Alarma> consultas) {
 
-		super(new ServDimSuceso(), new ServDimSitio(), consultas);
-		configEventos(new EventoDimSuceso(this));
+		super(new ServDimSitio(), consultas);
+		configEventos(new EventoDimSitio(this));
 	}
 
 	@Override
 	public void configEventos(EventoDim eventos) {
 
 		super.configEventos(eventos);
+		getTbl_titulo_filas().addMouseListener(eventos);
 	}
 }

@@ -48,7 +48,7 @@ public class EventoDimTemporada extends EventoDim implements MouseListener {
 		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getValoresTabla()));
 		}
 	}
 

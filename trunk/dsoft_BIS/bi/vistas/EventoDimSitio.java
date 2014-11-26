@@ -32,7 +32,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSitio(VistaDimSitioExtendida vista_dimension) {
+	public EventoDimSitio(VistaDimSitio vista_dimension) {
 		super(vista_dimension);
 	}
 
@@ -49,7 +49,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getValoresTabla()));
 		}
 	}
 
@@ -76,7 +76,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		valores = Arrays.copyOf(valores, maximo_arreglo);
 
 		JFrame frame = new JFrame(sitio_actual.getDescripcion());
-		lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getServ_dim_sitio(),
+		lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
 				getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
 				getVista_dimension().getServ_intervalo(), sitio_actual, valores));
 	}

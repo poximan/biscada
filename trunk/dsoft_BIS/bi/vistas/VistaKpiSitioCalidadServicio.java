@@ -17,7 +17,7 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
+public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -34,13 +34,13 @@ public class VistaKpiSitioCalidadServicioExtendida extends VistaKpiAbstract {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public VistaKpiSitioCalidadServicioExtendida(float datos[][]) {
+	public VistaKpiSitioCalidadServicio(float datos[][]) {
 
 		super.configEventos(new EventoKPI(this));
 		llenarCampoTextos(datos);
 	}
 
-	public VistaKpiSitioCalidadServicioExtendida(ServDimSitio serv_dim_sitio,
+	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo, ServMedAbstract serv_medicion,
 			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual, float[] datosH) {
 

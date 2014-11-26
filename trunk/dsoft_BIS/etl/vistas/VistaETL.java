@@ -58,27 +58,28 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JLabel lbl_totDisponibles;
 	private JLabel lbl_totProcesados;
 	private JLabel lblDireccionFuente;
+	private JLabel lbl_selDisponibles;
+	private JLabel lbl_selProcesados;
 
 	private ListModelOrdenada model_disponibles;
 	private ListModelOrdenada model_procesados;
 
 	private JList<ArchivoDBF> list_disponibles;
 	private JList<ArchivoDBF> list_procesados;
+
 	private JButton btn_analisis_datos;
 	private JButton btn_restablecer;
+	private JButton btn_procesar;
+	private JButton btn_extraer;
 
 	private JTextField txt_totDisponibles;
 	private JTextField txt_totProcesados;
 	private JTextField txtDireccionFuente;
-
-	private CompSeleccionarDireccion btn_cambiar_direccion;
-	private JCheckBox chckbxUsarInsercionPor;
-	private JLabel lbl_selDisponibles;
-	private JLabel lbl_selProcesados;
 	private JTextField txt_selDisponibles;
 	private JTextField txt_selProcesados;
-	private JButton btn_procesar;
-	private JButton btn_extraer;
+
+	private CompSeleccionarDireccion btn_cambiar_direccion;
+	private JCheckBox chckbxInsercionLote;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -151,14 +152,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_btn_cambiar_direccion.gridy = 1;
 		add(btn_cambiar_direccion, gbc_btn_cambiar_direccion);
 
-		chckbxUsarInsercionPor = new JCheckBox("insercion por lotes (mas de 100 archivos)");
-		GridBagConstraints gbc_chckbxUsarInsercionPor = new GridBagConstraints();
-		gbc_chckbxUsarInsercionPor.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_chckbxUsarInsercionPor.gridwidth = 2;
-		gbc_chckbxUsarInsercionPor.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxUsarInsercionPor.gridx = 0;
-		gbc_chckbxUsarInsercionPor.gridy = 2;
-		add(chckbxUsarInsercionPor, gbc_chckbxUsarInsercionPor);
+		chckbxInsercionLote = new JCheckBox("insercion por lotes");
+		GridBagConstraints gbc_chckbxInsercionLote = new GridBagConstraints();
+		gbc_chckbxInsercionLote.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_chckbxInsercionLote.gridwidth = 2;
+		gbc_chckbxInsercionLote.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxInsercionLote.gridx = 0;
+		gbc_chckbxInsercionLote.gridy = 2;
+		add(chckbxInsercionLote, gbc_chckbxInsercionLote);
 
 		// -------------------------------------
 		//
@@ -340,7 +341,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		Transaccionable metodo_insercion;
 
-		if (chckbxUsarInsercionPor.isSelected())
+		if (chckbxInsercionLote.isSelected())
 			metodo_insercion = new TransaccionBULK();
 		else
 			metodo_insercion = new TransaccionArchivo();
@@ -356,7 +357,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		Transaccionable metodo_borrado;
 
-		if (chckbxUsarInsercionPor.isSelected())
+		if (chckbxInsercionLote.isSelected())
 			metodo_borrado = new TransaccionBULK();
 		else
 			metodo_borrado = new TransaccionArchivo();

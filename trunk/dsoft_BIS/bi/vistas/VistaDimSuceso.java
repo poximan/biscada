@@ -5,14 +5,18 @@
 
 package vistas;
 
-import modelo.Suceso;
+import java.util.List;
+
+import modelo.Alarma;
+import control_dimensiones.ServDimSitio;
+import control_dimensiones.ServDimSuceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaKpiSucesoExtendida extends VistaKpiAbstract {
+public class VistaDimSuceso extends VistaDimAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -26,14 +30,20 @@ public class VistaKpiSucesoExtendida extends VistaKpiAbstract {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaKpiSucesoExtendida(Suceso fila_seleccionada) {
-
-		super();
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public VistaDimSuceso(List<Alarma> consultas) {
+
+		super(new ServDimSuceso(), new ServDimSitio(), consultas);
+		configEventos(new EventoDimSuceso(this));
+	}
+
+	@Override
+	public void configEventos(EventoDim eventos) {
+
+		super.configEventos(eventos);
+	}
 }

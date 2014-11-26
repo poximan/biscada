@@ -713,16 +713,6 @@ public class VistaConsultas extends JPanel implements PanelIniciable, EventoConf
 
 		// -------------------------------------
 		//
-		// habilitar boton dimension
-		// -------------------------------------
-
-		// Binding binding = Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, tblConsultas,
-		// ELProperty.create("{rowCount > 0}"), btnDimSitio, BeanProperty.create("enabled"));
-		//
-		// bindingGroup.addBinding(binding);
-
-		// -------------------------------------
-		//
 		// binding listo para empaquetar
 		// -------------------------------------
 

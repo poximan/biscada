@@ -103,7 +103,6 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 
 		txt_direccion_fuente = new JTextField(ServPropiedades.getInstancia().getProperty(
 				"Datos.DIRECCION_LECTURA_DATOS"));
-		txt_direccion_fuente.setEditable(false);
 
 		GridBagConstraints gbc_txt_direccion_fuente = new GridBagConstraints();
 		gbc_txt_direccion_fuente.fill = GridBagConstraints.HORIZONTAL;

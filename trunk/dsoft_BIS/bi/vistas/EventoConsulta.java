@@ -54,18 +54,17 @@ public class EventoConsulta implements ActionListener {
 				if (evt.getSource() == vista_consulta.getBtnSitio()) {
 
 					JFrame frame = new JFrame("Segundo nivel de evaluacion: Sitio");
-					lanzarVentanaDimension(frame, new VistaDimSitioExtendida(vista_consulta.getConsultas()));
+					lanzarVentanaDimension(frame, new VistaDimSitio(vista_consulta.getConsultas()));
 				} else
 					if (evt.getSource() == vista_consulta.getBtnSuceso()) {
 
 						JFrame frame = new JFrame("Segundo nivel de evaluacion: Suceso");
-						lanzarVentanaDimension(frame, new VistaDimSucesoExtendida(vista_consulta.getConsultas()));
+						lanzarVentanaDimension(frame, new VistaDimSuceso(vista_consulta.getConsultas()));
 					} else
 						if (evt.getSource() == vista_consulta.getBtnTiempoDespeje()) {
 
 							JFrame frame = new JFrame("Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
-							lanzarVentanaDimension(frame,
-									new VistaDimTiempoDespejeExtendida(vista_consulta.getConsultas()));
+							lanzarVentanaDimension(frame, new VistaDimTiempoDespeje(vista_consulta.getConsultas()));
 						} else
 							if (evt.getSource() == vista_consulta.getBtnTemporada()) {
 

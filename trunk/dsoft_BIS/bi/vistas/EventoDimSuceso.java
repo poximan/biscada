@@ -31,7 +31,7 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSuceso(VistaDimSucesoExtendida vista_dimension) {
+	public EventoDimSuceso(VistaDimSuceso vista_dimension) {
 		super(vista_dimension);
 	}
 
@@ -48,7 +48,7 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicioExtendida(getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getValoresTabla()));
 		}
 	}
 
@@ -68,7 +68,7 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 		Suceso suceso_actual = (Suceso) tabla.getValueAt(fila, 0);
 
 		JFrame frame = new JFrame();
-		lanzarVentana(frame, new VistaKpiSucesoExtendida(suceso_actual));
+		lanzarVentana(frame, new VistaKpiSuceso(suceso_actual));
 	}
 
 	@Override

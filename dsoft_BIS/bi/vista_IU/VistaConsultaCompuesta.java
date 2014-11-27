@@ -108,7 +108,7 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public JButton getBtnUtilizarConsulta() {
+	public JButton getBtnGenerarComparacion() {
 		return btnGenerarComparacion;
 	}
 

@@ -16,7 +16,7 @@ import control_general.EMFSingleton;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TransaccionBULK implements Transaccionable {
+public class TransaccionBULK extends Transaccion {
 
 	/* ............................................. */
 	/* ............................................. */

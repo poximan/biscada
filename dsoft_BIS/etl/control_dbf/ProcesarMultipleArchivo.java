@@ -19,7 +19,7 @@ import modelo.ArchivoDBF;
 import org.apache.log4j.Logger;
 
 import control_CRUDs.ServCRUDArchivoDBF;
-import control_etl.Transaccionable;
+import control_etl.Transaccion;
 import control_general.ObjetosBorrables;
 
 /* ............................................. */
@@ -99,7 +99,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	 * @param metodo_insercion
 	 */
 	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar,
-			Transaccionable metodo_insercion) {
+			Transaccion metodo_insercion) {
 
 		int totales = lista_candidatos_procesar.size(), actual = 1;
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);
@@ -117,9 +117,8 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 			metodo_insercion.beginArchivo();
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
-			metodo_insercion.commitArchivo();
-
 			metodo_insercion.limpiarCache();
+			metodo_insercion.commitArchivo();
 		}
 		metodo_insercion.commitBULK();
 		mostarInfo();
@@ -139,7 +138,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	 * 
 	 * @param lista_candidatos_extraer
 	 */
-	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer, Transaccionable metodo_borrado) {
+	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer, Transaccion metodo_borrado) {
 
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 

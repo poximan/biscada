@@ -26,6 +26,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import vista_evento.EventoKPI;
+import vista_evento.EventoKPIConfigurable;
 import vistas.PanelIniciable;
 import control_general.ServPropiedades;
 

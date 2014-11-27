@@ -3,32 +3,35 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
+import vista_IU.VistaDimAbstract;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoKPI implements ChangeListener {
+public abstract class EventoDim implements ActionListener, MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaKpiAbstract vista_kpi;
+	private VistaDimAbstract vista_dimension;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoKPI(VistaKpiAbstract vista_kpi) {
-		this.vista_kpi = vista_kpi;
+	public EventoDim(VistaDimAbstract vista_dimension) {
+		this.vista_dimension = vista_dimension;
 	}
 
 	/* ............................................. */
@@ -37,10 +40,11 @@ public class EventoKPI implements ChangeListener {
 	/* ............................................. */
 
 	@Override
-	public void stateChanged(ChangeEvent e) {
+	public void actionPerformed(ActionEvent evt) {
 
-		vista_kpi.getIndicador_kpi().Porcentaje((int) vista_kpi.getSpinner_porcentaje().getValue());
-		vista_kpi.getIndicador_kpi().validate();
+		if (evt.getSource() == vista_dimension.getBtnEjecutar()) {
+			vista_dimension.ejecutarDimension();
+		}
 	}
 
 	/* ............................................. */
@@ -48,4 +52,7 @@ public class EventoKPI implements ChangeListener {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	public VistaDimAbstract getVista_dimension() {
+		return vista_dimension;
+	}
 }

@@ -3,19 +3,26 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 /* ............................................. */
 /* ............................................. */
 /* INTERFASE ................................... */
 /* ............................................. */
 
-public interface EventoManejable {
+/**
+ * normaliza la configuracion de eventos visuales. no se utilizo la interfaz EventoConfigurable porque era necesario
+ * agregar un argumento adicional
+ * 
+ * @author hdonato
+ * 
+ */
+public interface EventoDimensionConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void resolver();
+	public void configEventos(EventoDim eventos);
 }

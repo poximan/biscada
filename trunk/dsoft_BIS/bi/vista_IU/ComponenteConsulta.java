@@ -52,6 +52,8 @@ import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.JTableBinding.ColumnBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 
+import vista_evento.EventoComponenteConsulta;
+import vista_evento.EventoManejable;
 import vistas.EventoConfigurable;
 import vistas.PanelIniciable;
 

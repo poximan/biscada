@@ -3,35 +3,34 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-import javax.swing.JFrame;
+import vista_IU.VistaKpiAbstract;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoComponenteConsulta implements ActionListener {
+public class EventoKPI implements ChangeListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private ComponenteConsulta vista_consulta;
+	private VistaKpiAbstract vista_kpi;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoComponenteConsulta(ComponenteConsulta vista_consulta) {
-
-		this.vista_consulta = vista_consulta;
+	public EventoKPI(VistaKpiAbstract vista_kpi) {
+		this.vista_kpi = vista_kpi;
 	}
 
 	/* ............................................. */
@@ -40,16 +39,15 @@ public class EventoComponenteConsulta implements ActionListener {
 	/* ............................................. */
 
 	@Override
-	public void actionPerformed(ActionEvent evt) {
+	public void stateChanged(ChangeEvent e) {
 
-		if (evt.getSource() == vista_consulta.getBtnBuscar())
-			vista_consulta.buscar(evt);
+		vista_kpi.getIndicador_kpi().Porcentaje((int) vista_kpi.getSpinner_porcentaje().getValue());
+		vista_kpi.getIndicador_kpi().validate();
 	}
 
-	public void lanzarVentanaDimension(JFrame frame, VistaDimAbstract vista_dimension) {
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
-		frame.setContentPane(vista_dimension);
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

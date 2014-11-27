@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -12,6 +12,10 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
+import vista_IU.VistaDimTiempoDespeje;
+import vista_IU.VistaKpiAbstract;
+import vista_IU.VistaKpiSitioCalidadServicio;
+import vista_IU.VistaKpiTiempoDespeje;
 import modelo.TiempoDespeje;
 
 /* ............................................. */

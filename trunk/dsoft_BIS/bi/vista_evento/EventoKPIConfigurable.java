@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 /* ............................................. */
 /* ............................................. */
@@ -17,12 +17,12 @@ package vista_IU;
  * @author hdonato
  * 
  */
-public interface EventoDimensionConfigurable {
+public interface EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void configEventos(EventoDim eventos);
+	public void configEventos(EventoKPI eventos);
 }

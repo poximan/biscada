@@ -3,13 +3,21 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+
+import vista_IU.ComponenteMenuDimension;
+import vista_IU.VistaConsultaSimple;
+import vista_IU.VistaDimAbstract;
+import vista_IU.VistaDimSitio;
+import vista_IU.VistaDimSuceso;
+import vista_IU.VistaDimTemporada;
+import vista_IU.VistaDimTiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */

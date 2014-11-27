@@ -5,6 +5,7 @@
 
 package vista_IU;
 
+import vista_evento.EventoKPI;
 import modelo.Sitio;
 import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;

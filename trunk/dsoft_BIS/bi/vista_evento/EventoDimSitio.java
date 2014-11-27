@@ -3,23 +3,28 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
-import modelo.Suceso;
+import vista_IU.TableModelMedicionTemporal;
+import vista_IU.VistaDimSitio;
+import vista_IU.VistaKpiAbstract;
+import vista_IU.VistaKpiSitioCalidadServicio;
+import modelo.Sitio;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimSuceso extends EventoDim implements MouseListener {
+public class EventoDimSitio extends EventoDim implements MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,7 +36,7 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSuceso(VistaDimSuceso vista_dimension) {
+	public EventoDimSitio(VistaDimSitio vista_dimension) {
 		super(vista_dimension);
 	}
 
@@ -63,12 +68,21 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 	public void mouseClicked(MouseEvent evt) {
 
 		JTable tabla = (JTable) evt.getSource();
-
 		int fila = tabla.getSelectedRow();
-		Suceso suceso_actual = (Suceso) tabla.getValueAt(fila, 0);
+		Sitio sitio_actual = (Sitio) tabla.getValueAt(fila, 0);
 
-		JFrame frame = new JFrame();
-		lanzarVentana(frame, new VistaKpiSuceso(suceso_actual));
+		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getTbl_medicion().getModel())
+				.getDatosFila(fila);
+
+		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
+
+		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo().getEncabezado().length;
+		valores = Arrays.copyOf(valores, maximo_arreglo);
+
+		JFrame frame = new JFrame(sitio_actual.getDescripcion());
+		lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
+				getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
+				getVista_dimension().getServ_intervalo(), sitio_actual, valores));
 	}
 
 	@Override
@@ -86,5 +100,4 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent evt) {
 	}
-
 }

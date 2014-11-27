@@ -41,6 +41,8 @@ import org.jdesktop.beansbinding.BindingGroup;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 
+import vista_evento.EventoDim;
+import vista_evento.EventoDimensionConfigurable;
 import vistas.PanelIniciable;
 import control_dimensiones.ServDimAbstract;
 import control_dimensiones.ServDimSitio;

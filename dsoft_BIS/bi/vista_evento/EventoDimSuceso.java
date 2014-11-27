@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -12,14 +12,18 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
-import modelo.Temporada;
+import vista_IU.VistaDimSuceso;
+import vista_IU.VistaKpiAbstract;
+import vista_IU.VistaKpiSitioCalidadServicio;
+import vista_IU.VistaKpiSuceso;
+import modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimTemporada extends EventoDim implements MouseListener {
+public class EventoDimSuceso extends EventoDim implements MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -31,7 +35,7 @@ public class EventoDimTemporada extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimTemporada(VistaDimTemporada vista_dimension) {
+	public EventoDimSuceso(VistaDimSuceso vista_dimension) {
 		super(vista_dimension);
 	}
 
@@ -63,11 +67,12 @@ public class EventoDimTemporada extends EventoDim implements MouseListener {
 	public void mouseClicked(MouseEvent evt) {
 
 		JTable tabla = (JTable) evt.getSource();
+
 		int fila = tabla.getSelectedRow();
-		Temporada tiempo_despeje_actual = (Temporada) tabla.getValueAt(fila, 0);
+		Suceso suceso_actual = (Suceso) tabla.getValueAt(fila, 0);
 
 		JFrame frame = new JFrame();
-		lanzarVentana(frame, new VistaKpiTemporada(tiempo_despeje_actual));
+		lanzarVentana(frame, new VistaKpiSuceso(suceso_actual));
 	}
 
 	@Override
@@ -85,4 +90,5 @@ public class EventoDimTemporada extends EventoDim implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent evt) {
 	}
+
 }

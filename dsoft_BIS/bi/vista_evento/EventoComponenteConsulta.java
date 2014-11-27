@@ -3,33 +3,38 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+
+import javax.swing.JFrame;
+
+import vista_IU.ComponenteConsulta;
+import vista_IU.VistaDimAbstract;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class EventoDim implements ActionListener, MouseListener {
+public class EventoComponenteConsulta implements ActionListener {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaDimAbstract vista_dimension;
+	private ComponenteConsulta vista_consulta;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDim(VistaDimAbstract vista_dimension) {
-		this.vista_dimension = vista_dimension;
+	public EventoComponenteConsulta(ComponenteConsulta vista_consulta) {
+
+		this.vista_consulta = vista_consulta;
 	}
 
 	/* ............................................. */
@@ -40,17 +45,14 @@ public abstract class EventoDim implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (evt.getSource() == vista_dimension.getBtnEjecutar()) {
-			vista_dimension.ejecutarDimension();
-		}
+		if (evt.getSource() == vista_consulta.getBtnBuscar())
+			vista_consulta.buscar(evt);
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
+	public void lanzarVentanaDimension(JFrame frame, VistaDimAbstract vista_dimension) {
 
-	public VistaDimAbstract getVista_dimension() {
-		return vista_dimension;
+		frame.setContentPane(vista_dimension);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }

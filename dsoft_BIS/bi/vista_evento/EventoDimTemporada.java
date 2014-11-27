@@ -3,24 +3,27 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package vista_evento;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
-import modelo.Sitio;
+import vista_IU.VistaDimTemporada;
+import vista_IU.VistaKpiAbstract;
+import vista_IU.VistaKpiSitioCalidadServicio;
+import vista_IU.VistaKpiTemporada;
+import modelo.Temporada;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimSitio extends EventoDim implements MouseListener {
+public class EventoDimTemporada extends EventoDim implements MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -32,7 +35,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSitio(VistaDimSitio vista_dimension) {
+	public EventoDimTemporada(VistaDimTemporada vista_dimension) {
 		super(vista_dimension);
 	}
 
@@ -65,20 +68,10 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 
 		JTable tabla = (JTable) evt.getSource();
 		int fila = tabla.getSelectedRow();
-		Sitio sitio_actual = (Sitio) tabla.getValueAt(fila, 0);
+		Temporada tiempo_despeje_actual = (Temporada) tabla.getValueAt(fila, 0);
 
-		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getTbl_medicion().getModel())
-				.getDatosFila(fila);
-
-		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
-
-		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo().getEncabezado().length;
-		valores = Arrays.copyOf(valores, maximo_arreglo);
-
-		JFrame frame = new JFrame(sitio_actual.getDescripcion());
-		lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
-				getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
-				getVista_dimension().getServ_intervalo(), sitio_actual, valores));
+		JFrame frame = new JFrame();
+		lanzarVentana(frame, new VistaKpiTemporada(tiempo_despeje_actual));
 	}
 
 	@Override

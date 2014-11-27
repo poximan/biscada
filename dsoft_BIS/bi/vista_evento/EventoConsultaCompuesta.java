@@ -14,10 +14,6 @@ import javax.swing.JOptionPane;
 import modelo.ComponenteMenuDimension;
 import vista_IU.VistaConsultaCompuesta;
 import vista_IU.VistaDimAbstract;
-import vista_IU.VistaDimSitio;
-import vista_IU.VistaDimSuceso;
-import vista_IU.VistaDimTemporada;
-import vista_IU.VistaDimTiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */
@@ -31,7 +27,7 @@ public class EventoConsultaCompuesta implements ActionListener {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaConsultaCompuesta vista_consulta;
+	private VistaConsultaCompuesta vista_compuesta;
 
 	private ComponenteMenuDimension frame_menu_dimension;
 
@@ -40,9 +36,9 @@ public class EventoConsultaCompuesta implements ActionListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoConsultaCompuesta(VistaConsultaCompuesta vista_consulta) {
+	public EventoConsultaCompuesta(VistaConsultaCompuesta vista_compuesta) {
 
-		this.vista_consulta = vista_consulta;
+		this.vista_compuesta = vista_compuesta;
 	}
 
 	/* ............................................. */
@@ -53,33 +49,12 @@ public class EventoConsultaCompuesta implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (!(vista_consulta.getComponenteConsulta().getConsultas() == null || vista_consulta.getComponenteConsulta()
+		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null || vista_compuesta.getComponenteConsulta()
 				.getConsultas().isEmpty())) {
 
-			if (evt.getSource() == vista_consulta.getBtnSitio()) {
-
-				frame_menu_dimension = new ComponenteMenuDimension("Segundo nivel de evaluacion: Sitio");
-				lanzarVentanaDimension(new VistaDimSitio(vista_consulta.getComponenteConsulta().getConsultas()));
-			} else
-				if (evt.getSource() == vista_consulta.getBtnSuceso()) {
-
-					frame_menu_dimension = new ComponenteMenuDimension("Segundo nivel de evaluacion: Suceso");
-					lanzarVentanaDimension(new VistaDimSuceso(vista_consulta.getComponenteConsulta().getConsultas()));
-				} else
-					if (evt.getSource() == vista_consulta.getBtnTiempoDespeje()) {
-
-						frame_menu_dimension = new ComponenteMenuDimension(
-								"Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
-						lanzarVentanaDimension(new VistaDimTiempoDespeje(vista_consulta.getComponenteConsulta()
-								.getConsultas()));
-					} else
-						if (evt.getSource() == vista_consulta.getBtnTemporada()) {
-
-							frame_menu_dimension = new ComponenteMenuDimension(
-									"Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");
-							lanzarVentanaDimension(new VistaDimTemporada(vista_consulta.getComponenteConsulta()
-									.getConsultas()));
-						}
+			if (evt.getSource() == vista_compuesta.getBtnUtilizarConsulta()) {
+				// TODO lanzar ventana doble tabla
+			}
 		} else
 			notificarError("consulta vacia, cargue restricciones (opcional) y presione Buscar para obtener resultados");
 	}

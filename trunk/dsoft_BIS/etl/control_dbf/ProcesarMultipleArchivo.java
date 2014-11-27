@@ -98,8 +98,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	 * @param lista_candidatos_procesar
 	 * @param metodo_insercion
 	 */
-	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar,
-			Transaccion metodo_insercion) {
+	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar, Transaccion metodo_insercion) {
 
 		int totales = lista_candidatos_procesar.size(), actual = 1;
 		ParametrosConexion parametros = new ParametrosConexion(481, 164);

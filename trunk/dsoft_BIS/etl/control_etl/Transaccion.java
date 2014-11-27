@@ -5,31 +5,39 @@
 
 package control_etl;
 
+import control_general.EMFSingleton;
+
 /* ............................................. */
 /* ............................................. */
-/* INTERFASE ................................... */
+/* CLASE ....................................... */
 /* ............................................. */
 
 /**
  * util para optimizar insercion o eliminacion de archivos. los objetos que lo implementen manejaran de forma dinamica
- * el uso o no de tranacciones a nivel de lote o de archivo.
+ * el uso o no de transacciones a nivel de lote o de archivo.
  * 
  * @author hugo
  */
-public interface Transaccionable {
+public abstract class Transaccion {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void beginBULK();
+	public void limpiarCache() {
+		EMFSingleton.getInstanciaEM().clear();
+	}
 
-	public void commitBULK();
+	public void enviarCacheHaciaBD() {
+		EMFSingleton.getInstanciaEM().flush();
+	}
 
-	public void limpiarCache();
+	public abstract void beginBULK();
 
-	public void beginArchivo();
+	public abstract void commitBULK();
 
-	public void commitArchivo();
+	public abstract void beginArchivo();
+
+	public abstract void commitArchivo();
 }

@@ -16,7 +16,7 @@ import control_general.EMFSingleton;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TransaccionArchivo implements Transaccionable {
+public class TransaccionArchivo extends Transaccion {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,26 +38,10 @@ public class TransaccionArchivo implements Transaccionable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public void beginBULK() {
-	}
-
-	@Override
-	public void commitBULK() {
-	}
-
-	@Override
-	public void limpiarCache() {
-		EMFSingleton.getInstanciaEM().flush();
-		EMFSingleton.getInstanciaEM().clear();
-	}
-
-	@Override
 	public void beginArchivo() {
 		EMFSingleton.getInstanciaEM().getTransaction().begin();
 	}
 
-	@Override
 	public void commitArchivo() {
 
 		try {
@@ -70,6 +54,14 @@ public class TransaccionArchivo implements Transaccionable {
 				EMFSingleton.getInstanciaEM().getTransaction().rollback();
 			throw excepcion;
 		}
+	}
+
+	@Override
+	public void beginBULK() {
+	}
+
+	@Override
+	public void commitBULK() {
 	}
 
 	/* ............................................. */

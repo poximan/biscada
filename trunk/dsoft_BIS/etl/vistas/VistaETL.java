@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 import control_dbf.ProcesarMultipleArchivo;
 import control_etl.TransaccionArchivo;
 import control_etl.TransaccionBULK;
-import control_etl.Transaccionable;
+import control_etl.Transaccion;
 import control_general.ObjetosBorrables;
 import control_general.ServPropiedades;
 
@@ -338,7 +338,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void actionProcesar() {
 
-		Transaccionable metodo_insercion;
+		Transaccion metodo_insercion;
 
 		if (chckbxInsercionLote.isSelected())
 			metodo_insercion = new TransaccionBULK();
@@ -354,7 +354,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void actionExtraer() {
 
-		Transaccionable metodo_borrado;
+		Transaccion metodo_borrado;
 
 		if (chckbxInsercionLote.isSelected())
 			metodo_borrado = new TransaccionBULK();

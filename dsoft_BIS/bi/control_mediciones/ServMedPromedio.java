@@ -10,7 +10,7 @@ import java.util.List;
 
 import modelo.Alarma;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
-import control_general.ServIntervaloFechas;
+import control_dimensiones.ServIntervaloFechas;
 
 /* ............................................. */
 /* ............................................. */

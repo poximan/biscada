@@ -9,8 +9,8 @@ import vista_evento.EventoKPI;
 import modelo.Sitio;
 import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
+import control_dimensiones.ServIntervaloFechas;
 import control_dimensiones.ServKpiCalidadServicio;
-import control_general.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 
 /* ............................................. */

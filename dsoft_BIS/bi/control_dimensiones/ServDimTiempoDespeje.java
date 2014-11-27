@@ -14,7 +14,6 @@ import java.util.Set;
 import modelo.Alarma;
 import modelo.TiempoDespeje;
 import tiempos_despeje.FabricaTiempoDespeje;
-import control_general.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 
 /* ............................................. */

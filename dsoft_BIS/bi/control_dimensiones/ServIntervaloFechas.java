@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package control_general;
+package control_dimensiones;
 
 import java.util.Calendar;
 import java.util.List;

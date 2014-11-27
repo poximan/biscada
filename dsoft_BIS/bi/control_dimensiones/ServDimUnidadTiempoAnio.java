@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 import modelo.IntervaloFechas;
-import control_general.ServIntervaloFechas;
 
 /* ............................................. */
 /* ............................................. */

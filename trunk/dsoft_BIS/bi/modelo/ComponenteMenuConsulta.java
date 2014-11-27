@@ -58,7 +58,7 @@ public class ComponenteMenuConsulta extends JFrame {
 
 		super(titulo);
 
-		setBounds(100, 100, 1110, 701);
+		setBounds(100, 100, 714, 585);
 		configMenu();
 	}
 

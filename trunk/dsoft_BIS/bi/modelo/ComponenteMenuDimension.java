@@ -8,6 +8,8 @@ package modelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -113,8 +115,38 @@ public class ComponenteMenuDimension extends JFrame {
 			}
 		});
 
+		JMenu submenu_usar_ultima = new JMenu("Ultima consulta");
+		JMenuItem item_ejecutar = new JMenuItem("Ejecutar");
+		submenu_usar_ultima.add(item_ejecutar);
+
+		entrada_menu_comparar.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+
 		// agregar opciones del menu
 		entrada_menu_comparar.add(item_configurar);
+		entrada_menu_comparar.addSeparator();
+
+		entrada_menu_comparar.add(submenu_usar_ultima);
 		entrada_menu_comparar.addSeparator();
 
 		// agregar menu a la barra

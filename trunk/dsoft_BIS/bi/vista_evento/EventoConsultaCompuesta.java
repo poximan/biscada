@@ -52,7 +52,7 @@ public class EventoConsultaCompuesta implements ActionListener {
 		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null || vista_compuesta.getComponenteConsulta()
 				.getConsultas().isEmpty())) {
 
-			if (evt.getSource() == vista_compuesta.getBtnUtilizarConsulta()) {
+			if (evt.getSource() == vista_compuesta.getBtnGenerarComparacion()) {
 				// TODO lanzar ventana doble tabla
 			}
 		} else

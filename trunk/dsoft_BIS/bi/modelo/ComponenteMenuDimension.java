@@ -16,6 +16,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import vista_IU.VistaConsultaCompuesta;
+import vista_IU.VistaConsultaSimple;
+import vista_IU.VistaDimAbstract;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -98,7 +102,12 @@ public class ComponenteMenuDimension extends JFrame {
 		item_configurar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				Container contenedor = getContentPane();
+
+				ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
+						"BIS - consulta para usar como comparador");
+				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(frame_menu_bi));
+
+				VistaDimAbstract contenedor = (VistaDimAbstract) getContentPane();
 			}
 		});
 

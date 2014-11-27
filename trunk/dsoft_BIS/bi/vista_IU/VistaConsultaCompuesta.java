@@ -17,7 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import modelo.ComponenteConsulta;
 import modelo.ComponenteMenuConsulta;
+import modelo.ComponenteMenuDimension;
 import vista_evento.EventoConsultaCompuesta;
+import vista_evento.EventoManejable;
 import vistas.EventoConfigurable;
 import vistas.PanelIniciable;
 
@@ -26,7 +28,7 @@ import vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, EventoConfigurable {
+public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, EventoConfigurable, EventoManejable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,11 +39,12 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 
 	private GroupLayout groupLayout;
 
-	private ComponenteMenuConsulta frame_menu_bi;
-
 	private JPanel panelComparacion;
 
+	private ComponenteMenuConsulta frame_menu_bi;
 	private ComponenteConsulta componenteConsulta;
+	private ComponenteMenuDimension componenteMenuDimension;
+
 	private JButton btnGenerarComparacion;
 
 	/* ............................................. */
@@ -49,9 +52,11 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultaCompuesta(ComponenteMenuConsulta frame_menu_bi) {
+	public VistaConsultaCompuesta(ComponenteMenuDimension componenteMenuDimension, ComponenteMenuConsulta frame_menu_bi) {
 
 		this.frame_menu_bi = frame_menu_bi;
+		this.componenteMenuDimension = componenteMenuDimension;
+
 		iniciarComponentes();
 		configEventos();
 	}
@@ -114,5 +119,15 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 
 	public ComponenteConsulta getComponenteConsulta() {
 		return componenteConsulta;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	@Override
+	public void resolver() {
+		componenteMenuDimension.setConsulta(componenteConsulta.getConsultas());
 	}
 }

@@ -16,7 +16,6 @@ import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,6 +47,7 @@ import control_dimensiones.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 import control_mediciones.ServMedPromedio;
 import control_mediciones.ServMedTotal;
+import java.awt.FlowLayout;
 
 /* ............................................. */
 /* ............................................. */
@@ -65,16 +65,11 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	private static final long serialVersionUID = 1L;
 
 	private JPanel pl_tiempo;
-	private JPanel pl_grafico;
-	private JPanel pl_tabla;
 	private JPanel pl_kpi;
 	private JPanel pl_priUlt_alarma;
-	private JPanel panel;
 
 	private GroupLayout gl_contentPane;
 	private GroupLayout gl_pl_tiempo;
-	private GroupLayout gl_pl_grafico;
-	private GroupLayout gl_pl_tabla;
 
 	private JSplitPane splitPane;
 	private JTabbedPane tabPane_grafico;
@@ -103,10 +98,10 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 	private JButton btnCalidadServicio;
 	private JButton btnEjecutar;
-	private JCheckBox chckbxColumnasNulas;
 
 	private JTextField txtPrimera;
 	private JTextField txtUltima;
+	private JPanel panel;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -152,36 +147,25 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 
 		lbl_medicion = new JLabel("Medicion");
 		lbl_dim_tiempo = new JLabel("Dimension tiempo");
-		lblPrimera = new JLabel("primera:");
-		lblUltima = new JLabel("ultima:");
 
 		splitPane = new JSplitPane();
-		tabPane_grafico = new JTabbedPane();
-		scrPl_tabla = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		splitPane.setDividerSize(8);
 
 		pl_tiempo = new JPanel();
-		pl_grafico = new JPanel();
-		pl_tabla = new JPanel();
-		pl_kpi = new JPanel();
-		pl_priUlt_alarma = new JPanel();
 
 		cbox_medicion = new JComboBox<ServMedAbstract>();
 		cbox_dim_tiempo = new JComboBox<ServDimUnidadTiempoAbstract>();
 
 		btnEjecutar = new JButton("ejecutar");
-		btnCalidadServicio = new JButton("indicador KPI");
 
 		gl_pl_tiempo = new GroupLayout(pl_tiempo);
 		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
+						.addComponent(cbox_medicion, 0, 110, Short.MAX_VALUE).addGap(18)
 						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 284, Short.MAX_VALUE).addComponent(btnEjecutar)
+						.addComponent(cbox_dim_tiempo, 0, 110, Short.MAX_VALUE).addGap(129).addComponent(btnEjecutar)
 						.addContainerGap()));
 		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_pl_tiempo
@@ -212,142 +196,83 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 														.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE,
 																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] { cbox_medicion, cbox_dim_tiempo });
+		pl_kpi = new JPanel();
+		btnCalidadServicio = new JButton("indicador KPI");
 
-		panel = new JPanel();
-		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tabla
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_pl_tabla
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
-						.addContainerGap()));
-		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tabla.createSequentialGroup()
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE).addContainerGap()));
-		panel.setLayout(null);
+		pl_kpi.setBorder(new TitledBorder(null, "Cuarto nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP,
+				null, null));
 
-		chckbxColumnasNulas = new JCheckBox("columnas nulas");
-		chckbxColumnasNulas.setEnabled(false);
-		chckbxColumnasNulas.setBounds(6, 5, 97, 23);
-		panel.add(chckbxColumnasNulas);
-		gl_pl_grafico = new GroupLayout(pl_grafico);
+		pl_kpi.add(btnCalidadServicio);
 		gl_contentPane = new GroupLayout(this);
-
-		txtPrimera = new JTextField();
-		txtUltima = new JTextField();
-
-		// -------------------------------------
-		//
-		// seccion ordenar componentes visuales
-		// -------------------------------------
-
-		gl_pl_grafico.setHorizontalGroup(gl_pl_grafico.createParallelGroup(Alignment.TRAILING).addGroup(
-				gl_pl_grafico
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(tabPane_grafico, GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addGroup(
-								gl_pl_grafico
-										.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(pl_priUlt_alarma, GroupLayout.PREFERRED_SIZE, 140,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(pl_kpi, GroupLayout.PREFERRED_SIZE, 140,
-												GroupLayout.PREFERRED_SIZE)).addContainerGap()));
-		gl_pl_grafico.setVerticalGroup(gl_pl_grafico.createParallelGroup(Alignment.TRAILING).addGroup(
-				Alignment.LEADING,
-				gl_pl_grafico
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(
+				gl_contentPane
 						.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(
-								gl_pl_grafico
+								gl_contentPane
 										.createParallelGroup(Alignment.LEADING)
 										.addGroup(
-												gl_pl_grafico
+												Alignment.TRAILING,
+												gl_contentPane
 														.createSequentialGroup()
-														.addComponent(pl_kpi, GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addComponent(pl_tiempo, GroupLayout.DEFAULT_SIZE, 593,
+																Short.MAX_VALUE)
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(pl_priUlt_alarma, GroupLayout.DEFAULT_SIZE, 74,
-																Short.MAX_VALUE))
-										.addComponent(tabPane_grafico, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+														.addComponent(pl_kpi, GroupLayout.PREFERRED_SIZE, 130,
+																GroupLayout.PREFERRED_SIZE))
+										.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
 						.addContainerGap()));
-		pl_priUlt_alarma.setLayout(null);
-
-		lblPrimera.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPrimera.setBounds(10, 14, 44, 14);
-		pl_priUlt_alarma.add(lblPrimera);
-
-		txtPrimera.setEditable(false);
-		txtPrimera.setBounds(57, 11, 73, 20);
-		pl_priUlt_alarma.add(txtPrimera);
-		txtPrimera.setColumns(10);
-
-		lblUltima.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUltima.setBounds(10, 35, 44, 14);
-		pl_priUlt_alarma.add(lblUltima);
-
-		txtUltima.setEditable(false);
-		txtUltima.setBounds(57, 32, 73, 20);
-		pl_priUlt_alarma.add(txtUltima);
-		txtUltima.setColumns(10);
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_contentPane
+						.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(
+								gl_contentPane
+										.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(pl_kpi, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(pl_tiempo, GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE).addContainerGap()));
+		gl_contentPane.linkSize(SwingConstants.VERTICAL, new Component[] { pl_tiempo, pl_kpi });
 
 		pl_tiempo.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tercer nivel evaluacion",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
-				Alignment.TRAILING,
-				gl_contentPane
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_contentPane
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(splitPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 913,
-												Short.MAX_VALUE)
-										.addComponent(pl_tiempo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 913,
-												Short.MAX_VALUE)).addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(pl_tiempo, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE).addContainerGap()));
-
-		pl_grafico.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Grafico",
-				TitledBorder.LEADING, TitledBorder.TOP, null, null));
-
-		splitPane.setLeftComponent(pl_grafico);
-		splitPane.setRightComponent(pl_tabla);
-
 		splitPane.setOneTouchExpandable(true);
-		splitPane.setDividerLocation(300);
+		splitPane.setDividerLocation(360);
+		tabPane_grafico = new JTabbedPane();
+		splitPane.setLeftComponent(tabPane_grafico);
 
 		tabPane_grafico.setTabPlacement(SwingConstants.BOTTOM);
 
-		pl_kpi.setBorder(new TitledBorder(null, "Cuarto nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		panel = new JPanel();
+		splitPane.setRightComponent(panel);
+		lblPrimera = new JLabel("primera:");
+		lblUltima = new JLabel("ultima:");
+		pl_priUlt_alarma = new JPanel();
 
-		pl_kpi.add(btnCalidadServicio);
-		pl_grafico.setLayout(gl_pl_grafico);
+		txtPrimera = new JTextField();
+		txtUltima = new JTextField();
+		pl_priUlt_alarma.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		pl_tabla.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tabla", TitledBorder.LEADING,
-				TitledBorder.TOP, null, null));
-		pl_tabla.setLayout(gl_pl_tabla);
-		pl_tiempo.setLayout(gl_pl_tiempo);
+		lblPrimera.setHorizontalAlignment(SwingConstants.RIGHT);
+		pl_priUlt_alarma.add(lblPrimera);
 
-		pl_tabla.setLayout(gl_pl_tabla);
-		pl_tiempo.setLayout(gl_pl_tiempo);
-		setLayout(gl_contentPane);
+		txtPrimera.setEditable(false);
+		pl_priUlt_alarma.add(txtPrimera);
+		txtPrimera.setColumns(10);
+
+		lblUltima.setHorizontalAlignment(SwingConstants.RIGHT);
+		pl_priUlt_alarma.add(lblUltima);
+
+		txtUltima.setEditable(false);
+		pl_priUlt_alarma.add(txtUltima);
+		txtUltima.setColumns(10);
+		scrPl_tabla = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		// -------------------------------------
 		//
@@ -363,10 +288,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		tbl_titulo_filas.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scrPl_tabla.setRowHeaderView(tbl_titulo_filas);
 
-		pl_tabla.setLayout(gl_pl_tabla);
-		pl_tiempo.setLayout(gl_pl_tiempo);
-		setLayout(gl_contentPane);
-
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
 		Dimension d = tbl_titulo_filas.getPreferredScrollableViewportSize();
@@ -380,6 +301,30 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		d = tbl_medicion.getPreferredScrollableViewportSize();
 		tbl_medicion.setPreferredScrollableViewportSize(d);
 		tbl_medicion.setIntercellSpacing(new Dimension(0, 0));
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panel.createSequentialGroup().addContainerGap()
+						.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(pl_priUlt_alarma, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
+		gl_panel.setVerticalGroup(gl_panel
+				.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						Alignment.TRAILING,
+						gl_panel.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_tabla, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+								.addContainerGap())
+				.addGroup(
+						gl_panel.createSequentialGroup().addContainerGap()
+								.addComponent(pl_priUlt_alarma, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+								.addContainerGap()));
+		panel.setLayout(gl_panel);
+		pl_tiempo.setLayout(gl_pl_tiempo);
+		pl_tiempo.setLayout(gl_pl_tiempo);
+		setLayout(gl_contentPane);
+		pl_tiempo.setLayout(gl_pl_tiempo);
+		setLayout(gl_contentPane);
 	}
 
 	@Override
@@ -420,7 +365,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		serv_dim_vista_seleccionada.realizarHash(consultas);
 
 		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion, serv_unidad_tiempo,
-				chckbxColumnasNulas.isSelected());
+				true);
 
 		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
 

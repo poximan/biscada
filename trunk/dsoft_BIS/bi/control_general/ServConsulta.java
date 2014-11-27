@@ -96,7 +96,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_ack() == null)
 				iterator.remove();
 		}
-		log.trace("consulta: extraidas (ack) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
+		log.trace("de lo anterior, se extrajeron " + (total_alarmas - lista_alarmas.size()) + " (ack)");
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_finalizacion() == null)
 				iterator.remove();
 		}
-		log.trace("consulta: extraidas (fin) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
+		log.trace("de lo anterior, se extrajeron " + (total_alarmas - lista_alarmas.size()) + " (fin)");
 	}
 
 	@SuppressWarnings("unchecked")

@@ -7,9 +7,9 @@ package vista_IU;
 
 import java.util.List;
 
+import modelo.Alarma;
 import vista_evento.EventoDim;
 import vista_evento.EventoDimSitio;
-import modelo.Alarma;
 import control_dimensiones.ServDimSitio;
 
 /* ............................................. */

@@ -12,11 +12,11 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
+import modelo.TiempoDespeje;
 import vista_IU.VistaDimTiempoDespeje;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiTiempoDespeje;
-import modelo.TiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */

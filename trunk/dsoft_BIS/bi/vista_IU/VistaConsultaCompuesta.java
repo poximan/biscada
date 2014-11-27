@@ -13,8 +13,6 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import modelo.ComponenteConsulta;
@@ -22,8 +20,6 @@ import modelo.ComponenteMenuConsulta;
 import vista_evento.EventoConsultaCompuesta;
 import vistas.EventoConfigurable;
 import vistas.PanelIniciable;
-
-import java.awt.Dimension;
 
 /* ............................................. */
 /* ............................................. */
@@ -43,14 +39,10 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 
 	private ComponenteMenuConsulta frame_menu_bi;
 
-	private JPanel panelDimensiones;
+	private JPanel panelComparacion;
 
 	private ComponenteConsulta componenteConsulta;
-
-	private JButton btnTiempoDespeje;
-	private JButton btnSuceso;
-	private JButton btnSitio;
-	private JButton btnTemporada;
+	private JButton btnGenerarComparacion;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -67,53 +59,39 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	@Override
 	public void iniciarComponentes() {
 
-		panelDimensiones = new JPanel();
-		panelDimensiones.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelComparacion = new JPanel();
+		panelComparacion.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		componenteConsulta = new ComponenteConsulta(frame_menu_bi);
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				Alignment.TRAILING,
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(
+						groupLayout
+								.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(
+										groupLayout
+												.createParallelGroup(Alignment.LEADING)
+												.addComponent(componenteConsulta, Alignment.TRAILING,
+														GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+												.addComponent(panelComparacion, GroupLayout.DEFAULT_SIZE, 430,
+														Short.MAX_VALUE)).addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
 				groupLayout
 						.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(
-								groupLayout
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(panelDimensiones, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												765, Short.MAX_VALUE)
-										.addComponent(componenteConsulta, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												765, Short.MAX_VALUE)).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
-		btnTiempoDespeje = new JButton("tiempo despeje");
-		btnTiempoDespeje.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnTiempoDespeje.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		btnSuceso = new JButton("suceso");
-		btnSuceso.setPreferredSize(new Dimension(105, 23));
-		btnSuceso.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnSuceso.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		btnSitio = new JButton("sitio");
-		btnSitio.setPreferredSize(new Dimension(105, 23));
-		btnSitio.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnSitio.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-				"Segundo nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		panelDimensiones.add(btnSitio);
-		panelDimensiones.add(btnSuceso);
-		panelDimensiones.add(btnTiempoDespeje);
+						.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelComparacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE).addContainerGap()));
+		panelComparacion.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-		btnTemporada = new JButton("temporada");
-		btnTemporada.setPreferredSize(new Dimension(105, 23));
-		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.add(btnTemporada);
+		btnGenerarComparacion = new JButton("generar comparacion");
+		btnGenerarComparacion.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnGenerarComparacion.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelComparacion.add(btnGenerarComparacion);
 
 		setLayout(groupLayout);
 	}
@@ -122,11 +100,7 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	public void configEventos() {
 
 		EventoConsultaCompuesta eventos = new EventoConsultaCompuesta(this);
-
-		btnSitio.addActionListener(eventos);
-		btnSuceso.addActionListener(eventos);
-		btnTiempoDespeje.addActionListener(eventos);
-		btnTemporada.addActionListener(eventos);
+		btnGenerarComparacion.addActionListener(eventos);
 	}
 
 	/* ............................................. */
@@ -134,20 +108,8 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public JButton getBtnTiempoDespeje() {
-		return btnTiempoDespeje;
-	}
-
-	public JButton getBtnSuceso() {
-		return btnSuceso;
-	}
-
-	public JButton getBtnSitio() {
-		return btnSitio;
-	}
-
-	public JButton getBtnTemporada() {
-		return btnTemporada;
+	public JButton getBtnUtilizarConsulta() {
+		return btnGenerarComparacion;
 	}
 
 	public ComponenteConsulta getComponenteConsulta() {

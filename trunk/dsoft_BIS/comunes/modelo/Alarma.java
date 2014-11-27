@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 
+import org.eclipse.persistence.annotations.Index;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -45,14 +47,17 @@ public class Alarma implements Comparable {
 
 	@Column(name = "FECHA_INICIO", nullable = false)
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Index
 	private Calendar fecha_inicio; // ex inicio_segundo + inicio_milisegundo
 
 	@Column(name = "FECHA_ACK", nullable = true)
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Index
 	private Calendar fecha_ack; // ex ack_segundo
 
 	@Column(name = "FECHA_FIN", nullable = true)
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Index
 	private Calendar fecha_finalizacion; // ex fin_segundo + fin_milisegundo
 
 	@Column(name = "ACK_USUARIO", nullable = true)
@@ -75,18 +80,22 @@ public class Alarma implements Comparable {
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_FAMILIA", referencedColumnName = "ID_FAMILIA", nullable = false)
+	@Index
 	private Familia familia; // ex nombre
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO", nullable = false)
+	@Index
 	private Sitio sitio; // ex primera parte de texto
 
 	@ManyToOne(optional = true /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_EQUIPO_EN_SITIO", referencedColumnName = "ID_EQUIPO_EN_SITIO", nullable = true)
+	@Index
 	private EquipoEnSitio equipo_en_sitio; // ex segunda parte de texto
 
 	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_SUCESO", referencedColumnName = "ID_SUCESO", nullable = false)
+	@Index
 	private Suceso suceso; // ex tercera parte de texto
 
 	@Column(name = "ID_ESTACION", nullable = true)

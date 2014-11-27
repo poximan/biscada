@@ -152,7 +152,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 			metodo_borrado.beginArchivo();
 
-			EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
+			archivo_actual = EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 
 			metodo_borrado.enviarCacheHaciaBD();

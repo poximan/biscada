@@ -5,10 +5,10 @@
 
 package modelo;
 
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -17,8 +17,6 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import vista_IU.VistaConsultaCompuesta;
-import vista_IU.VistaConsultaSimple;
-import vista_IU.VistaDimAbstract;
 
 /* ............................................. */
 /* ............................................. */
@@ -38,6 +36,8 @@ public class ComponenteMenuDimension extends JFrame {
 
 	private JMenu entrada_menu_archivo;
 	private JMenu entrada_menu_comparar;
+
+	private List<Alarma> consulta;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -105,9 +105,7 @@ public class ComponenteMenuDimension extends JFrame {
 
 				ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
 						"BIS - consulta para usar como comparador");
-				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(frame_menu_bi));
-
-				VistaDimAbstract contenedor = (VistaDimAbstract) getContentPane();
+				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(ComponenteMenuDimension.this, frame_menu_bi));
 			}
 		});
 
@@ -124,8 +122,16 @@ public class ComponenteMenuDimension extends JFrame {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	public List<Alarma> getConsulta() {
+		return consulta;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	public void setConsulta(List<Alarma> consulta) {
+		this.consulta = consulta;
+	}
 }

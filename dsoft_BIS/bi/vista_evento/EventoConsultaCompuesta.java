@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import modelo.ComponenteMenuDimension;
 import vista_IU.VistaConsultaCompuesta;
-import vista_IU.VistaDimAbstract;
 
 /* ............................................. */
 /* ............................................. */
@@ -28,8 +26,6 @@ public class EventoConsultaCompuesta implements ActionListener {
 	/* ............................................. */
 
 	private VistaConsultaCompuesta vista_compuesta;
-
-	private ComponenteMenuDimension frame_menu_dimension;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -52,18 +48,11 @@ public class EventoConsultaCompuesta implements ActionListener {
 		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null || vista_compuesta.getComponenteConsulta()
 				.getConsultas().isEmpty())) {
 
-			if (evt.getSource() == vista_compuesta.getBtnGenerarComparacion()) {
-				// TODO lanzar ventana doble tabla
-			}
+			if (evt.getSource() == vista_compuesta.getBtnGenerarComparacion())
+				vista_compuesta.resolver();
+
 		} else
 			notificarError("consulta vacia, cargue restricciones (opcional) y presione Buscar para obtener resultados");
-	}
-
-	public void lanzarVentanaDimension(VistaDimAbstract vista_dimension) {
-
-		frame_menu_dimension.setContentPane(vista_dimension);
-		frame_menu_dimension.pack();
-		frame_menu_dimension.setVisible(true);
 	}
 
 	public void notificarError(String mensaje) {

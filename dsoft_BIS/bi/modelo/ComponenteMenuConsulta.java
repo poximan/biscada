@@ -164,7 +164,6 @@ public class ComponenteMenuConsulta extends JFrame {
 		item_etl.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-
 				GestorETL.getSingleton().mostrarVentana();
 			}
 		});

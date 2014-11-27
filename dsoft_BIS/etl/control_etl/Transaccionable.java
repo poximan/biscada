@@ -27,7 +27,7 @@ public interface Transaccionable {
 
 	public void commitBULK();
 
-	public void limpiarCacheBULK();
+	public void limpiarCache();
 
 	public void beginArchivo();
 

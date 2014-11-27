@@ -17,7 +17,7 @@ package vista_evento;
  * @author hdonato
  * 
  */
-public interface EventoDimensionConfigurable {
+public interface EventoConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */

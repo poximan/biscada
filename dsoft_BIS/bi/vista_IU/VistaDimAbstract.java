@@ -34,7 +34,7 @@ import modelo.Alarma;
 import modelo.IntervaloFechas;
 
 import vista_evento.EventoDim;
-import vista_evento.EventoDimensionConfigurable;
+import vista_evento.EventoConfigurable;
 import vistas.PanelIniciable;
 import control_dimensiones.ServDimAbstract;
 import control_dimensiones.ServDimSitio;
@@ -54,7 +54,7 @@ import java.awt.FlowLayout;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstract extends JPanel implements PanelIniciable, EventoDimensionConfigurable,
+public abstract class VistaDimAbstract extends JPanel implements PanelIniciable, EventoConfigurable,
 		DimensionCalculable {
 
 	/* ............................................. */

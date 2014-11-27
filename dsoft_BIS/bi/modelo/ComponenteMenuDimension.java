@@ -17,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
+import org.apache.log4j.Logger;
+
 import vista_IU.VistaConsultaCompuesta;
 
 /* ............................................. */
@@ -32,6 +34,8 @@ public class ComponenteMenuDimension extends JFrame {
 	/* ............................................. */
 
 	private static final long serialVersionUID = 1L;
+
+	private static Logger log = Logger.getLogger(ComponenteMenuDimension.class);
 
 	private JMenuBar barra_menu;
 
@@ -49,7 +53,7 @@ public class ComponenteMenuDimension extends JFrame {
 
 		super(titulo);
 
-		setBounds(100, 100, 1110, 701);
+		setBounds(100, 100, 723, 605);
 		configMenu();
 	}
 
@@ -104,6 +108,7 @@ public class ComponenteMenuDimension extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 
+				log.trace("comienza consulta para utilizar como comparador");
 				ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
 						"BIS - consulta para usar como comparador");
 				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(ComponenteMenuDimension.this, frame_menu_bi));
@@ -119,6 +124,8 @@ public class ComponenteMenuDimension extends JFrame {
 		item_ejecutar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
+
+				log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
 				System.exit(0);
 			}
 		});

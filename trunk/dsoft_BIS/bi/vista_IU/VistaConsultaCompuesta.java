@@ -136,7 +136,7 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 
 	@Override
 	public void resolver() {
-		componenteMenuDimension.setConsulta(componenteConsulta.getConsultas());
+		componenteMenuDimension.setConsulta_comparador(componenteConsulta.getConsultas());
 		frame_menu_bi.dispose();
 	}
 }

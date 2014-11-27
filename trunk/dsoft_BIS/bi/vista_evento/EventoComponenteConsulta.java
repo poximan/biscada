@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import vista_IU.ComponenteConsulta;
+import modelo.ComponenteConsulta;
 import vista_IU.VistaDimAbstract;
 
 /* ............................................. */

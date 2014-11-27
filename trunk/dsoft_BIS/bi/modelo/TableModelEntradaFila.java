@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package modelo;
 
 import javax.swing.table.AbstractTableModel;
 

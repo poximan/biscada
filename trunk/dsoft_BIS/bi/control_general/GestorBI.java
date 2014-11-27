@@ -7,9 +7,10 @@ package control_general;
 
 import javax.swing.WindowConstants;
 
+import modelo.ComponenteMenuConsulta;
+
 import org.apache.log4j.Logger;
 
-import vista_IU.ComponenteMenuConsulta;
 import vista_IU.VistaConsultaSimple;
 
 /* ............................................. */

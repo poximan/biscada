@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package modelo;
 
 import java.awt.Color;
 import java.awt.Component;

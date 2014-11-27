@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package vista_IU;
+package modelo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

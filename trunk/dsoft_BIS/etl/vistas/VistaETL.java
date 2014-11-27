@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import modelo.ArchivoDBF;
+import modelo.ComponenteSeleccionarDireccion;
 import modelo.JListDisponible;
 import modelo.JListProcesado;
 

@@ -26,6 +26,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
+import modelo.ComponenteSeleccionarDireccion;
 import control_general.ServPropiedades;
 
 /* ............................................. */

@@ -144,7 +144,6 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		Transaccion metodo_borrado = new Transaccion();
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 
-		EMFSingleton.getInstanciaEM().createNamedQuery("ArchivoDBF.buscTodos");
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
 		while (iterador.hasNext()) {
@@ -153,6 +152,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 			metodo_borrado.beginArchivo();
 
+			EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 
 			metodo_borrado.enviarCacheHaciaBD();

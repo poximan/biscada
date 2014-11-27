@@ -7,23 +7,22 @@ package vista_IU;
 
 import java.awt.Component;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import modelo.ComponenteConsulta;
 import modelo.ComponenteMenuConsulta;
 import vista_evento.EventoConsultaSimple;
 import vistas.EventoConfigurable;
 import vistas.PanelIniciable;
-
-import java.awt.Dimension;
 
 /* ............................................. */
 /* ............................................. */

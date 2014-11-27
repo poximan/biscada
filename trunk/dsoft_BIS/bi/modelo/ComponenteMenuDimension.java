@@ -5,11 +5,11 @@
 
 package modelo;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -34,8 +34,6 @@ public class ComponenteMenuDimension extends JFrame {
 
 	private JMenu entrada_menu_archivo;
 	private JMenu entrada_menu_comparar;
-
-	private JButton btn_consultar;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -93,17 +91,19 @@ public class ComponenteMenuDimension extends JFrame {
 	private void configMenuComparar() {
 
 		// submeun
-		entrada_menu_comparar = new JMenu("Comparar");
+		entrada_menu_comparar = new JMenu("Comparar periodos");
 		entrada_menu_comparar.setMinimumSize(getMinimumSize());
 
-		JMenu submenu_config_comparador = new JMenu("Configurar");
-
-		btn_consultar = new JButton("Generar consulta");
-
-		submenu_config_comparador.add(btn_consultar);
+		JMenuItem item_configurar = new JMenuItem("Configurar");
+		item_configurar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				Container contenedor = getContentPane();
+			}
+		});
 
 		// agregar opciones del menu
-		entrada_menu_comparar.add(submenu_config_comparador);
+		entrada_menu_comparar.add(item_configurar);
 		entrada_menu_comparar.addSeparator();
 
 		// agregar menu a la barra

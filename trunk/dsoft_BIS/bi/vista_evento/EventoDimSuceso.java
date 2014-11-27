@@ -12,11 +12,11 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
+import modelo.Suceso;
 import vista_IU.VistaDimSuceso;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiSuceso;
-import modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */

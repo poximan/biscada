@@ -36,13 +36,6 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import modelo.Alarma;
-import modelo.EquipoEnSitio;
-import modelo.Familia;
-import modelo.Sitio;
-import modelo.Suceso;
-import modelo.TipoDeEquipo;
-
 import org.apache.log4j.Logger;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BindingGroup;

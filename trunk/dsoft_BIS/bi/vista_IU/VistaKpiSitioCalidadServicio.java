@@ -5,8 +5,8 @@
 
 package vista_IU;
 
-import vista_evento.EventoKPI;
 import modelo.Sitio;
+import vista_evento.EventoKPI;
 import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
 import control_dimensiones.ServIntervaloFechas;
@@ -41,9 +41,8 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		llenarCampoTextos(datos);
 	}
 
-	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo, ServMedAbstract serv_medicion,
-			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual, float[] datosH) {
+	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual, float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
 

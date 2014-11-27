@@ -53,6 +53,7 @@ public class Transaccion {
 	}
 
 	public void beginArchivo() {
+
 		EMFSingleton.getInstanciaEM().getTransaction().begin();
 	}
 

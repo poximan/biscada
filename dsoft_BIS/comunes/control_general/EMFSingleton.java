@@ -69,7 +69,13 @@ public class EMFSingleton {
 
 		Map<String, String> persistenceMap = new HashMap<String, String>();
 
-		String url = "jdbc:mysql://" + ServPropiedades.getInstancia().getProperty("Conexion.URL") + "/bis_bd";
+		String dir_fija = "jdbc:mysql://";
+		String dir_variable = ServPropiedades.getInstancia().getProperty("Conexion.URL") + "/";
+		String id_bd = "bis_bd";
+		String charset = "?useUnicode=yes&amp;characterEncoding=UTF-8";
+
+		String url = dir_fija + dir_variable + id_bd + charset;
+
 		persistenceMap.put("javax.persistence.jdbc.url", url);
 		persistenceMap.put("javax.persistence.jdbc.user", ServPropiedades.getInstancia()
 				.getProperty("Conexion.USUARIO"));

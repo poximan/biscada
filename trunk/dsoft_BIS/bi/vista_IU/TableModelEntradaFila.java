@@ -3,18 +3,16 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package modelo;
+package vista_IU;
 
-import javax.swing.JList;
-
-import vistas.ListModelOrdenada;
+import javax.swing.table.AbstractTableModel;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class JListDisponible extends JList<ArchivoDBF> {
+public class TableModelEntradaFila extends AbstractTableModel {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -23,17 +21,22 @@ public class JListDisponible extends JList<ArchivoDBF> {
 
 	private static final long serialVersionUID = 1L;
 
+	private String[] columnNames = { "dimension" };
+
+	Object[][] data;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	// para uso de reflexion durante el manejo de eventos generados por la lista
-	public JListDisponible() {
-	}
+	public TableModelEntradaFila(Object[] titulos_entrada_fila) {
 
-	public JListDisponible(ListModelOrdenada model_disponibles) {
-		super(model_disponibles);
+		data = new Object[titulos_entrada_fila.length][columnNames.length];
+
+		for (int indice = 0; indice < titulos_entrada_fila.length; indice++) {
+			data[indice][0] = titulos_entrada_fila[indice];
+		}
 	}
 
 	/* ............................................. */
@@ -41,13 +44,29 @@ public class JListDisponible extends JList<ArchivoDBF> {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
+	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Class getColumnClass(int columna) {
+		return getValueAt(0, columna).getClass();
+	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
+	@Override
+	public int getColumnCount() {
+		return columnNames.length;
+	}
+
+	@Override
+	public String getColumnName(int columna) {
+		return columnNames[columna];
+	}
+
+	@Override
+	public int getRowCount() {
+		return data.length;
+	}
+
+	@Override
+	public Object getValueAt(int fila, int columna) {
+		return data[fila][columna];
+	}
 }

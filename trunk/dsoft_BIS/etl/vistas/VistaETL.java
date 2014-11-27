@@ -23,8 +23,6 @@ import javax.swing.SwingConstants;
 
 import modelo.ArchivoDBF;
 import modelo.ComponenteSeleccionarDireccion;
-import modelo.JListDisponible;
-import modelo.JListProcesado;
 
 import org.apache.log4j.Logger;
 

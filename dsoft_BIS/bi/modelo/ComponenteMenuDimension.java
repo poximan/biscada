@@ -123,6 +123,7 @@ public class ComponenteMenuDimension extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 
+			
 			}
 
 			@Override

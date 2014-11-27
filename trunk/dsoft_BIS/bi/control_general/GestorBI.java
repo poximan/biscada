@@ -9,8 +9,8 @@ import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
-import vistas.ComponenteMenuConsulta;
-import vistas.VistaConsultaSimple;
+import vista_IU.ComponenteMenuConsulta;
+import vista_IU.VistaConsultaSimple;
 
 /* ............................................. */
 /* ............................................. */

@@ -13,11 +13,11 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
-import vista_IU.TableModelMedicionTemporal;
 import vista_IU.VistaDimSitio;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import modelo.Sitio;
+import modelo.TableModelMedicionTemporal;
 
 /* ............................................. */
 /* ............................................. */

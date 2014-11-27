@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import vista_IU.ComponenteMenuDimension;
+import modelo.ComponenteMenuDimension;
 import vista_IU.VistaConsultaSimple;
 import vista_IU.VistaDimAbstract;
 import vista_IU.VistaDimSitio;

@@ -33,6 +33,8 @@ import javax.swing.border.TitledBorder;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
+import modelo.TableModelEntradaFila;
+import modelo.TableModelMedicionTemporal;
 
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;

@@ -17,6 +17,8 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import modelo.ComponenteConsulta;
+import modelo.ComponenteMenuConsulta;
 import vista_evento.EventoConsultaCompuesta;
 import vistas.EventoConfigurable;
 import vistas.PanelIniciable;

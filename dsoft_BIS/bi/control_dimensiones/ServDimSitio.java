@@ -80,6 +80,7 @@ public class ServDimSitio extends ServDimAbstract {
 					serv_medicion, serv_unidad_tiempo);
 		}
 
+		incluir_columnas_nulas = true;// TODO: reviar perro
 		if (!incluir_columnas_nulas) {
 			valor_retorno = filtrarColumnasNulas(valor_retorno, serv_medicion);
 			serv_intervalo.encontrarMinimoMaximo(lista_alarmas_una_clave);

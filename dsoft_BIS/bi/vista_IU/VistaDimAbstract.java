@@ -34,13 +34,6 @@ import javax.swing.border.TitledBorder;
 import modelo.Alarma;
 import modelo.IntervaloFechas;
 
-import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
-import org.jdesktop.beansbinding.BeanProperty;
-import org.jdesktop.beansbinding.Binding;
-import org.jdesktop.beansbinding.BindingGroup;
-import org.jdesktop.beansbinding.Bindings;
-import org.jdesktop.beansbinding.ELProperty;
-
 import vista_evento.EventoDim;
 import vista_evento.EventoDimensionConfigurable;
 import vistas.PanelIniciable;
@@ -387,23 +380,6 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 		d = tbl_medicion.getPreferredScrollableViewportSize();
 		tbl_medicion.setPreferredScrollableViewportSize(d);
 		tbl_medicion.setIntercellSpacing(new Dimension(0, 0));
-	}
-
-	@SuppressWarnings({ "rawtypes" })
-	public void configBinding() {
-
-		BindingGroup bindingGroup = new BindingGroup();
-
-		// -------------------------------------
-		//
-		// habilitar boton dimension
-		// -------------------------------------
-
-		// ${selectedElement != null}
-		Binding binding = Bindings.createAutoBinding(UpdateStrategy.READ, tbl_medicion,
-				ELProperty.create("{rowCount > 0}"), btnCalidadServicio, BeanProperty.create("enabled"));
-
-		bindingGroup.addBinding(binding);
 	}
 
 	@Override

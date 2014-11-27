@@ -8,8 +8,6 @@ package modelo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -73,7 +71,7 @@ public class ComponenteMenuDimension extends JFrame {
 
 	private void configMenuArchivo() {
 
-		// submeun
+		// submenu
 		entrada_menu_archivo = new JMenu("Archivo");
 		entrada_menu_archivo.setMinimumSize(getMinimumSize());
 
@@ -97,7 +95,7 @@ public class ComponenteMenuDimension extends JFrame {
 
 	private void configMenuComparar() {
 
-		// submeun
+		// submenu
 		entrada_menu_comparar = new JMenu("Comparar periodos");
 		entrada_menu_comparar.setMinimumSize(getMinimumSize());
 
@@ -116,32 +114,16 @@ public class ComponenteMenuDimension extends JFrame {
 		});
 
 		JMenu submenu_usar_ultima = new JMenu("Ultima consulta");
+
 		JMenuItem item_ejecutar = new JMenuItem("Ejecutar");
-		submenu_usar_ultima.add(item_ejecutar);
-
-		entrada_menu_comparar.addMouseListener(new MouseListener() {
+		item_ejecutar.addActionListener(new ActionListener() {
 			@Override
-			public void mouseReleased(MouseEvent e) {
-
-			
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
 			}
 		});
+
+		submenu_usar_ultima.add(item_ejecutar);
 
 		// agregar opciones del menu
 		entrada_menu_comparar.add(item_configurar);

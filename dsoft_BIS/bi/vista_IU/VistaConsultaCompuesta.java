@@ -28,6 +28,14 @@ import vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * reutiliza los servicios de consulta a base de datos, pero una vez devuelta la consulta la ventana se cierra,
+ * entregando la lista a la ventana que solicito una consulta adicional para realizar comparacion contra una consulta
+ * origen
+ * 
+ * @author hdonato
+ *
+ */
 public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, EventoConfigurable, EventoManejable {
 
 	/* ............................................. */
@@ -129,5 +137,6 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	@Override
 	public void resolver() {
 		componenteMenuDimension.setConsulta(componenteConsulta.getConsultas());
+		frame_menu_bi.dispose();
 	}
 }

@@ -15,6 +15,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 import vista_IU.VistaConsultaCompuesta;
 
@@ -106,6 +107,9 @@ public class ComponenteMenuDimension extends JFrame {
 				ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
 						"BIS - consulta para usar como comparador");
 				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(ComponenteMenuDimension.this, frame_menu_bi));
+
+				frame_menu_bi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				frame_menu_bi.setVisible(true);
 			}
 		});
 

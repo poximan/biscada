@@ -78,7 +78,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_inicio() == null)
 				iterator.remove();
 		}
-		log.trace("extraidas (ini): " + (total_alarmas - lista_alarmas.size()));
+		log.trace("consulta: extraidas (ini) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_ack() == null)
 				iterator.remove();
 		}
-		log.trace("extraidas (ack): " + (total_alarmas - lista_alarmas.size()));
+		log.trace("consulta: extraidas (ack) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_finalizacion() == null)
 				iterator.remove();
 		}
-		log.trace("extraidas (fin): " + (total_alarmas - lista_alarmas.size()));
+		log.trace("consulta: extraidas (fin) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -179,7 +179,8 @@ public class ServConsulta implements ObjetosBorrables {
 
 		Collection<Alarma> resultado_parcial = CollectionUtils.intersection(resultado_fechas, resultado_tipos);
 		Collection<Alarma> resultado_final = CollectionUtils.intersection(resultado_parcial, resultado_duracion);
-		log.trace("consulta: join subconsultas. Total: " + resultado_final.size());
+
+		log.trace("consulta: join subconsultas -> " + resultado_final.size() + " aciertos");
 		return new ArrayList<Alarma>(resultado_final);
 	}
 
@@ -227,7 +228,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (duracion_maxima != null)
 			typed_query.setParameter("duracion_maxima", duracion_maxima);
 
-		log.trace("consulta: duracion alarma. Total: " + typed_query.getResultList().size());
+		log.trace("consulta: duracion alarma -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
 		return typed_query.getResultList();
 	}
@@ -295,7 +296,7 @@ public class ServConsulta implements ObjetosBorrables {
 				typed_query.setParameter("fecha_finalizacion", calendarHasta);
 		}
 
-		log.trace("consulta: rango de fechas. Total: " + typed_query.getResultList().size());
+		log.trace("consulta: rango de fechas -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
 		return typed_query.getResultList();
 	}
@@ -351,7 +352,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (suceso != null)
 			typed_query.setParameter("suceso", suceso);
 
-		log.trace("consulta: coincidencia de tipos. Total: " + typed_query.getResultList().size());
+		log.trace("consulta: coincidencia de tipos -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
 		return typed_query.getResultList();
 	}

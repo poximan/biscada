@@ -119,7 +119,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
 			metodo_insercion.commitArchivo();
 
-			metodo_insercion.limpiarCacheBULK();
+			metodo_insercion.limpiarCache();
 		}
 		metodo_insercion.commitBULK();
 		mostarInfo();
@@ -155,7 +155,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 			metodo_borrado.commitArchivo();
 
-			metodo_borrado.limpiarCacheBULK();
+			metodo_borrado.limpiarCache();
 		}
 		metodo_borrado.commitBULK();
 	}

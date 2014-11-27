@@ -59,7 +59,7 @@ public class TransaccionBULK implements Transaccionable {
 	}
 
 	@Override
-	public void limpiarCacheBULK() {
+	public void limpiarCache() {
 		EMFSingleton.getInstanciaEM().clear();
 	}
 

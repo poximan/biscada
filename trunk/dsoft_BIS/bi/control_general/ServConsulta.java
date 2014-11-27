@@ -78,7 +78,7 @@ public class ServConsulta implements ObjetosBorrables {
 			if (alarma_actual.getFecha_inicio() == null)
 				iterator.remove();
 		}
-		log.trace("consulta: extraidas (ini) -> " + (total_alarmas - lista_alarmas.size()) + " aciertos");
+		log.trace("de lo anterior, se extrajeron " + (total_alarmas - lista_alarmas.size()) + " (ini)");
 	}
 
 	/**

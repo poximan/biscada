@@ -41,7 +41,7 @@ import org.eclipse.persistence.sessions.Session;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServConsulta {
+public class ServConsulta implements ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -152,8 +152,14 @@ public class ServConsulta {
 
 		List<Alarma> resultado_fechas = buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
 				calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
+		liberarObjetos();
+
 		List<Alarma> resultado_tipos = buscarTipos(familia, sitio, tipo_de_equipo, suceso);
+		liberarObjetos();
+
 		List<Alarma> resultado_duracion = buscarDuracionAlarma(duracion_minima, duracion_maxima);
+		liberarObjetos();
+
 		List<Alarma> resultado_join = Join(resultado_fechas, resultado_tipos, resultado_duracion);
 
 		if (!incluir_ini_incompleta)
@@ -569,5 +575,10 @@ public class ServConsulta {
 
 		Path<Calendar> pathParaInterpretarCalendar = root_alarmas.get(fecha_usada);
 		criteria.add(crit_builder.lessThanOrEqualTo(pathParaInterpretarCalendar, calendarHasta));
+	}
+
+	@Override
+	public void liberarObjetos() {
+		System.gc();
 	}
 }

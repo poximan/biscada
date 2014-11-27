@@ -42,7 +42,7 @@ public class ComponenteMenuDimension extends JFrame {
 	private JMenu entrada_menu_archivo;
 	private JMenu entrada_menu_comparar;
 
-	private List<Alarma> consulta;
+	private List<Alarma> consulta_comparador;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -126,7 +126,14 @@ public class ComponenteMenuDimension extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 
 				log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
-				System.exit(0);
+
+				ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
+						"BIS - consulta para usar como comparador");
+
+				frame_menu_dimension.setContentPane(new VistaConsultaCompuesta(frame_menu_dimension, null));
+
+				frame_menu_dimension.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				frame_menu_dimension.setVisible(true);
 			}
 		});
 
@@ -148,8 +155,8 @@ public class ComponenteMenuDimension extends JFrame {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public List<Alarma> getConsulta() {
-		return consulta;
+	public List<Alarma> getConsulta_comparador() {
+		return consulta_comparador;
 	}
 
 	/* ............................................. */
@@ -157,7 +164,7 @@ public class ComponenteMenuDimension extends JFrame {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setConsulta(List<Alarma> consulta) {
-		this.consulta = consulta;
+	public void setConsulta_comparador(List<Alarma> consulta_comparador) {
+		this.consulta_comparador = consulta_comparador;
 	}
 }

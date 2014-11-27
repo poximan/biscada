@@ -13,7 +13,6 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -27,9 +26,6 @@ import modelo.ComponenteSeleccionarDireccion;
 import org.apache.log4j.Logger;
 
 import control_dbf.ProcesarMultipleArchivo;
-import control_etl.Transaccion;
-import control_etl.TransaccionArchivo;
-import control_etl.TransaccionBULK;
 import control_general.ObjetosBorrables;
 import control_general.ServPropiedades;
 
@@ -78,7 +74,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JTextField txt_selProcesados;
 
 	private ComponenteSeleccionarDireccion btn_cambiar_direccion;
-	private JCheckBox chckbxInsercionLote;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -116,8 +111,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		setBorder(BorderFactory.createEtchedBorder());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 120, 120, 0, 120, 120 };
-		gridBagLayout.rowHeights = new int[] { 40, 30, 38, 42, 70, 70, 0, 20 };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 };
+		gridBagLayout.rowHeights = new int[] { 40, 30, 42, 70, 70, 0, 20 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, 0.0, 1.0, 1.0 };
 		setLayout(gridBagLayout);
 
@@ -151,15 +146,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_btn_cambiar_direccion.gridy = 1;
 		add(btn_cambiar_direccion, gbc_btn_cambiar_direccion);
 
-		chckbxInsercionLote = new JCheckBox("insercion por lotes");
-		GridBagConstraints gbc_chckbxInsercionLote = new GridBagConstraints();
-		gbc_chckbxInsercionLote.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_chckbxInsercionLote.gridwidth = 2;
-		gbc_chckbxInsercionLote.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxInsercionLote.gridx = 0;
-		gbc_chckbxInsercionLote.gridy = 2;
-		add(chckbxInsercionLote, gbc_chckbxInsercionLote);
-
 		// -------------------------------------
 		//
 		// seccion fuente
@@ -170,7 +156,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		lbl_totDisponibles.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_totDisponibles.setHorizontalTextPosition(SwingConstants.LEADING);
 
-		add(lbl_totDisponibles, new GridBagConstraints(0, 3, 1, 1, 0, 0, GridBagConstraints.SOUTHEAST,
+		add(lbl_totDisponibles, new GridBagConstraints(0, 2, 1, 1, 0, 0, GridBagConstraints.SOUTHEAST,
 				GridBagConstraints.NONE, new Insets(0, 0, 5, 5), 0, 0));
 
 		txt_totDisponibles = new JTextField();
@@ -180,7 +166,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_totDisponibles.anchor = GridBagConstraints.SOUTH;
 		gbc_txt_totDisponibles.insets = new Insets(0, 0, 5, 5);
 		gbc_txt_totDisponibles.gridx = 1;
-		gbc_txt_totDisponibles.gridy = 3;
+		gbc_txt_totDisponibles.gridy = 2;
 		add(txt_totDisponibles, gbc_txt_totDisponibles);
 		txt_totDisponibles.setColumns(10);
 
@@ -192,14 +178,14 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_totProcesados.anchor = GridBagConstraints.SOUTH;
 		gbc_txt_totProcesados.insets = new Insets(0, 0, 5, 0);
 		gbc_txt_totProcesados.gridx = 4;
-		gbc_txt_totProcesados.gridy = 3;
+		gbc_txt_totProcesados.gridy = 2;
 		add(txt_totProcesados, gbc_txt_totProcesados);
 
 		btn_procesar = new JButton(">-->");
 		GridBagConstraints gbc_btn_procesar = new GridBagConstraints();
 		gbc_btn_procesar.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_procesar.gridx = 2;
-		gbc_btn_procesar.gridy = 4;
+		gbc_btn_procesar.gridy = 3;
 		add(btn_procesar, gbc_btn_procesar);
 
 		scrollPane_procesados = new JScrollPane((Component) null);
@@ -209,7 +195,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_scrollPane_procesados.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane_procesados.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_procesados.gridx = 3;
-		gbc_scrollPane_procesados.gridy = 4;
+		gbc_scrollPane_procesados.gridy = 3;
 		add(scrollPane_procesados, gbc_scrollPane_procesados);
 
 		// -------------------------------------
@@ -232,17 +218,17 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_lbl_totProcesados.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_lbl_totProcesados.insets = new Insets(0, 0, 5, 5);
 		gbc_lbl_totProcesados.gridx = 3;
-		gbc_lbl_totProcesados.gridy = 3;
+		gbc_lbl_totProcesados.gridy = 2;
 
 		add(lbl_totProcesados, gbc_lbl_totProcesados);
-		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 4, 2, 2, .5, 1, GridBagConstraints.CENTER,
+		add(new JScrollPane(list_disponibles), new GridBagConstraints(0, 3, 2, 2, .5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(0, 0, 5, 5), 0, 0));
 
 		btn_extraer = new JButton("<--<");
 		GridBagConstraints gbc_btn_extraer = new GridBagConstraints();
 		gbc_btn_extraer.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_extraer.gridx = 2;
-		gbc_btn_extraer.gridy = 5;
+		gbc_btn_extraer.gridy = 4;
 		add(btn_extraer, gbc_btn_extraer);
 
 		lbl_selDisponibles = new JLabel("Seleccionados:");
@@ -250,7 +236,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_lbl_selDisponibles.anchor = GridBagConstraints.EAST;
 		gbc_lbl_selDisponibles.insets = new Insets(0, 0, 5, 5);
 		gbc_lbl_selDisponibles.gridx = 0;
-		gbc_lbl_selDisponibles.gridy = 6;
+		gbc_lbl_selDisponibles.gridy = 5;
 		add(lbl_selDisponibles, gbc_lbl_selDisponibles);
 
 		txt_selDisponibles = new JTextField();
@@ -259,7 +245,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_selDisponibles.insets = new Insets(0, 0, 5, 5);
 		gbc_txt_selDisponibles.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txt_selDisponibles.gridx = 1;
-		gbc_txt_selDisponibles.gridy = 6;
+		gbc_txt_selDisponibles.gridy = 5;
 		add(txt_selDisponibles, gbc_txt_selDisponibles);
 		txt_selDisponibles.setColumns(10);
 
@@ -268,7 +254,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_lbl_selProcesados.anchor = GridBagConstraints.EAST;
 		gbc_lbl_selProcesados.insets = new Insets(0, 0, 5, 5);
 		gbc_lbl_selProcesados.gridx = 3;
-		gbc_lbl_selProcesados.gridy = 6;
+		gbc_lbl_selProcesados.gridy = 5;
 		add(lbl_selProcesados, gbc_lbl_selProcesados);
 
 		txt_selProcesados = new JTextField();
@@ -277,7 +263,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_txt_selProcesados.insets = new Insets(0, 0, 5, 0);
 		gbc_txt_selProcesados.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txt_selProcesados.gridx = 4;
-		gbc_txt_selProcesados.gridy = 6;
+		gbc_txt_selProcesados.gridy = 5;
 		add(txt_selProcesados, gbc_txt_selProcesados);
 		txt_selProcesados.setColumns(10);
 
@@ -286,7 +272,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		gbc_pl_botones.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_pl_botones.gridwidth = 2;
 		gbc_pl_botones.gridx = 3;
-		gbc_pl_botones.gridy = 7;
+		gbc_pl_botones.gridy = 6;
 		add(pl_botones, gbc_pl_botones);
 
 		btn_restablecer = new JButton("Restablecer");
@@ -338,31 +324,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void actionProcesar() {
 
-		Transaccion metodo_insercion;
-
-		if (chckbxInsercionLote.isSelected())
-			metodo_insercion = new TransaccionBULK();
-		else
-			metodo_insercion = new TransaccionArchivo();
-
 		if (!list_disponibles.isSelectionEmpty())
-			procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList(),
-					metodo_insercion);
+			procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
 
 		actionRestablecer();
 	}
 
 	public void actionExtraer() {
 
-		Transaccion metodo_borrado;
-
-		if (chckbxInsercionLote.isSelected())
-			metodo_borrado = new TransaccionBULK();
-		else
-			metodo_borrado = new TransaccionArchivo();
-
 		if (!list_procesados.isSelectionEmpty())
-			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList(), metodo_borrado);
+			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
 
 		actionRestablecer();
 	}

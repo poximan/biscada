@@ -5,7 +5,7 @@
 
 package vista_IU;
 
-import graficas.GraficoBarrasPrimero;
+import graficas.GraficoBarras;
 import graficas.GraficoLineas;
 import graficas.GraficoTorta;
 
@@ -383,7 +383,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	@Override
 	public void armarSolapasGraficas() {
 
-		GraficoBarrasPrimero primer_grafico = new GraficoBarrasPrimero(datos_tabla, encabezado_tabla, tbl_titulo_filas);
+		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla, encabezado_tabla, tbl_titulo_filas);
 		GraficoLineas tercer_grafico = new GraficoLineas(datos_tabla, encabezado_tabla, tbl_titulo_filas);
 		GraficoTorta cuarto_grafico = new GraficoTorta(datos_tabla, tbl_titulo_filas);
 

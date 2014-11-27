@@ -25,7 +25,7 @@ import org.jfree.data.general.AbstractDataset;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GraficoBarrasPrimero extends GraficoAbstract {
+public class GraficoBarras extends GraficoAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -34,7 +34,7 @@ public class GraficoBarrasPrimero extends GraficoAbstract {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(GraficoBarrasPrimero.class);
+	private static Logger log = Logger.getLogger(GraficoBarras.class);
 
 	private JTable tbl_titulo_filas;
 	private float[][] datos_tabla;
@@ -45,7 +45,7 @@ public class GraficoBarrasPrimero extends GraficoAbstract {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public GraficoBarrasPrimero(float[][] datos_tabla, String[] encabezado_tabla, JTable tbl_titulo_filas) {
+	public GraficoBarras(float[][] datos_tabla, String[] encabezado_tabla, JTable tbl_titulo_filas) {
 		this.tbl_titulo_filas = tbl_titulo_filas;
 		this.datos_tabla = datos_tabla;
 		this.encabezado_tabla = encabezado_tabla;

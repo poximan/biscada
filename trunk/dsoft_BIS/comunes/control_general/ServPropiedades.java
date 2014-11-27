@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -72,7 +73,7 @@ public class ServPropiedades {
 
 		try {
 			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
-			propiedades.store(archivo_salida, "ddkjfklsdjghfklsdj");
+			propiedades.store(archivo_salida, Calendar.getInstance().getTime().toString());
 			archivo_salida.close();
 		}
 		catch (FileNotFoundException e) {

@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import control_CRUDs.ServCRUDArchivoDBF;
 import control_etl.Transaccion;
+import control_general.EMFSingleton;
 import control_general.ObjetosBorrables;
 
 /* ............................................. */
@@ -96,18 +97,16 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	 * comieza el proceso ETL de todos los archivos validos para ser insertados
 	 * 
 	 * @param lista_candidatos_procesar
-	 * @param metodo_insercion
 	 */
-	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar, Transaccion metodo_insercion) {
+	public void insertarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_procesar) {
 
 		int totales = lista_candidatos_procesar.size(), actual = 1;
-		ParametrosConexion parametros = new ParametrosConexion(481, 164);
 
+		ParametrosConexion parametros = new ParametrosConexion(481, 164);
+		Transaccion metodo_insercion = new Transaccion();
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
-
-		metodo_insercion.beginBULK();
 
 		while (iterador.hasNext()) {
 
@@ -115,11 +114,14 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			metodo_insercion.beginArchivo();
+
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual, parametros);
+
+			metodo_insercion.enviarCacheHaciaBD();
 			metodo_insercion.limpiarCache();
+
 			metodo_insercion.commitArchivo();
 		}
-		metodo_insercion.commitBULK();
 		mostarInfo();
 	}
 
@@ -137,25 +139,27 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	 * 
 	 * @param lista_candidatos_extraer
 	 */
-	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer, Transaccion metodo_borrado) {
+	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {
 
+		Transaccion metodo_borrado = new Transaccion();
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 
+		EMFSingleton.getInstanciaEM().createNamedQuery("ArchivoDBF.buscTodos");
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
-
-		metodo_borrado.beginBULK();
 
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 
 			metodo_borrado.beginArchivo();
-			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
-			metodo_borrado.commitArchivo();
 
+			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
+
+			metodo_borrado.enviarCacheHaciaBD();
 			metodo_borrado.limpiarCache();
+
+			metodo_borrado.commitArchivo();
 		}
-		metodo_borrado.commitBULK();
 	}
 
 	@Override

@@ -5,6 +5,10 @@
 
 package control_etl;
 
+import javax.persistence.RollbackException;
+
+import org.apache.log4j.Logger;
+
 import control_general.EMFSingleton;
 
 /* ............................................. */
@@ -18,7 +22,22 @@ import control_general.EMFSingleton;
  * 
  * @author hugo
  */
-public abstract class Transaccion {
+public class Transaccion {
+
+	/* ............................................. */
+	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private static Logger log = Logger.getLogger(Transaccion.class);
+
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
+	public Transaccion() {
+	}
 
 	/* ............................................. */
 	/* ............................................. */
@@ -33,11 +52,21 @@ public abstract class Transaccion {
 		EMFSingleton.getInstanciaEM().flush();
 	}
 
-	public abstract void beginBULK();
+	public void beginArchivo() {
+		EMFSingleton.getInstanciaEM().getTransaction().begin();
+	}
 
-	public abstract void commitBULK();
+	public void commitArchivo() {
 
-	public abstract void beginArchivo();
+		try {
+			EMFSingleton.getInstanciaEM().getTransaction().commit();
+		}
+		catch (RollbackException excepcion) {
+			log.error("comienza rollback");
 
-	public abstract void commitArchivo();
+			if (EMFSingleton.getInstanciaEM().getTransaction().isActive())
+				EMFSingleton.getInstanciaEM().getTransaction().rollback();
+			throw excepcion;
+		}
+	}
 }

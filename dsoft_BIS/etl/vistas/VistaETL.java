@@ -27,9 +27,9 @@ import modelo.ComponenteSeleccionarDireccion;
 import org.apache.log4j.Logger;
 
 import control_dbf.ProcesarMultipleArchivo;
+import control_etl.Transaccion;
 import control_etl.TransaccionArchivo;
 import control_etl.TransaccionBULK;
-import control_etl.Transaccion;
 import control_general.ObjetosBorrables;
 import control_general.ServPropiedades;
 

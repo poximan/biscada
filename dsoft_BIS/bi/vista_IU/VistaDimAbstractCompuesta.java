@@ -23,17 +23,16 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.TableModel;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
-
 import vistas.PanelIniciable;
 import control_dimensiones.ServDimAbstract;
 import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
 import control_dimensiones.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
-import javax.swing.table.TableModel;
 
 /* ............................................. */
 /* ............................................. */
@@ -222,8 +221,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	@Override
 	public void armarSolapasGraficas() {
 
-		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla, encabezado_tabla,
-				tbl_original_filas);
+		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla, encabezado_tabla, tbl_original_filas);
 		GraficoLineas tercer_grafico = new GraficoLineas(datos_tabla, encabezado_tabla, tbl_original_filas);
 		GraficoTorta cuarto_grafico = new GraficoTorta(datos_tabla, tbl_original_filas);
 

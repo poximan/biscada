@@ -10,11 +10,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.WindowConstants;
 
+import modelo.ComponenteMenuConsulta;
+import modelo.ComponenteMenuDimension;
+
 import org.apache.log4j.Logger;
 
 import vista_IU.VistaConsultaCompuesta;
-import modelo.ComponenteMenuConsulta;
-import modelo.ComponenteMenuDimension;
 
 /* ............................................. */
 /* ............................................. */

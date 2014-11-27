@@ -11,6 +11,7 @@ import graficas.GraficoTorta;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -32,9 +33,8 @@ import javax.swing.border.TitledBorder;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
-
-import vista_evento.EventoDim;
 import vista_evento.EventoConfigurable;
+import vista_evento.EventoDim;
 import vistas.PanelIniciable;
 import control_dimensiones.ServDimAbstract;
 import control_dimensiones.ServDimSitio;
@@ -47,7 +47,6 @@ import control_dimensiones.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 import control_mediciones.ServMedPromedio;
 import control_mediciones.ServMedTotal;
-import java.awt.FlowLayout;
 
 /* ............................................. */
 /* ............................................. */

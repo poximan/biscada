@@ -38,10 +38,12 @@ public class TransaccionArchivo extends Transaccion {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
 	public void beginArchivo() {
 		EMFSingleton.getInstanciaEM().getTransaction().begin();
 	}
 
+	@Override
 	public void commitArchivo() {
 
 		try {

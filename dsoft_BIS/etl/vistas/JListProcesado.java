@@ -3,16 +3,18 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package modelo;
+package vistas;
 
-import javax.swing.table.AbstractTableModel;
+import javax.swing.JList;
+
+import modelo.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TableModelEntradaFila extends AbstractTableModel {
+public class JListProcesado extends JList<ArchivoDBF> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -21,22 +23,17 @@ public class TableModelEntradaFila extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
 
-	private String[] columnNames = { "dimension" };
-
-	Object[][] data;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public TableModelEntradaFila(Object[] titulos_entrada_fila) {
+	// para uso de reflexion durante el manejo de eventos generados por la lista
+	public JListProcesado() {
+	}
 
-		data = new Object[titulos_entrada_fila.length][columnNames.length];
-
-		for (int indice = 0; indice < titulos_entrada_fila.length; indice++) {
-			data[indice][0] = titulos_entrada_fila[indice];
-		}
+	public JListProcesado(ListModelOrdenada model_disponibles) {
+		super(model_disponibles);
 	}
 
 	/* ............................................. */
@@ -44,29 +41,13 @@ public class TableModelEntradaFila extends AbstractTableModel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Class getColumnClass(int columna) {
-		return getValueAt(0, columna).getClass();
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
-	@Override
-	public int getColumnCount() {
-		return columnNames.length;
-	}
-
-	@Override
-	public String getColumnName(int columna) {
-		return columnNames[columna];
-	}
-
-	@Override
-	public int getRowCount() {
-		return data.length;
-	}
-
-	@Override
-	public Object getValueAt(int fila, int columna) {
-		return data[fila][columna];
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
 }

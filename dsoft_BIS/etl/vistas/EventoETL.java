@@ -17,8 +17,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modelo.ArchivoDBF;
-import modelo.JListDisponible;
-import modelo.JListProcesado;
 import control_general.GestorBI;
 
 /* ............................................. */

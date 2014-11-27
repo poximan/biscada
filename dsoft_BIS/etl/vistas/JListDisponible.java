@@ -3,16 +3,18 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package modelo;
+package vistas;
 
-import javax.swing.table.AbstractTableModel;
+import javax.swing.JList;
+
+import modelo.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TableModelMedicionTemporal extends AbstractTableModel {
+public class JListDisponible extends JList<ArchivoDBF> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -21,18 +23,17 @@ public class TableModelMedicionTemporal extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
 
-	private String[] columnNames;
-	private float[][] datos;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public TableModelMedicionTemporal(float[][] datos, String[] encabezado) {
+	// para uso de reflexion durante el manejo de eventos generados por la lista
+	public JListDisponible() {
+	}
 
-		columnNames = encabezado;
-		this.datos = datos;
+	public JListDisponible(ListModelOrdenada model_disponibles) {
+		super(model_disponibles);
 	}
 
 	/* ............................................. */
@@ -40,45 +41,13 @@ public class TableModelMedicionTemporal extends AbstractTableModel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Class getColumnClass(int columna) {
-		return getValueAt(0, columna).getClass();
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
-	@Override
-	public int getColumnCount() {
-		return columnNames.length;
-	}
-
-	@Override
-	public String getColumnName(int columna) {
-		return columnNames[columna];
-	}
-
-	public float[][] getDatos() {
-		return datos;
-	}
-
-	public float[] getDatosFila(int fila) {
-
-		if (datos.length >= fila)
-			return datos[fila];
-		return null;
-	}
-
-	@Override
-	public int getRowCount() {
-		if (datos != null)
-			return datos.length;
-		return 0;
-	}
-
-	@Override
-	public Object getValueAt(int fila, int columna) {
-
-		if (datos[fila].length > columna)
-			return datos[fila][columna];
-		return 0;
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
 }

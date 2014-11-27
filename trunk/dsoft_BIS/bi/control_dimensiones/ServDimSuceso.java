@@ -13,7 +13,6 @@ import java.util.Set;
 
 import modelo.Alarma;
 import modelo.Suceso;
-import control_general.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 
 /* ............................................. */

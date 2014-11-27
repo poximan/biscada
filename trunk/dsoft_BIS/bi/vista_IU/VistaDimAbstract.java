@@ -51,7 +51,7 @@ import control_dimensiones.ServDimUnidadTiempoAnio;
 import control_dimensiones.ServDimUnidadTiempoMes;
 import control_dimensiones.ServDimUnidadTiempoQuincena;
 import control_dimensiones.ServDimUnidadTiempoTrimestre;
-import control_general.ServIntervaloFechas;
+import control_dimensiones.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 import control_mediciones.ServMedPromedio;
 import control_mediciones.ServMedTotal;

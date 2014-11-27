@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.List;
 
 import modelo.Alarma;
-import control_general.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
 
 /* ............................................. */

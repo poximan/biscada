@@ -694,7 +694,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			cargarTodosLosEquipos();
 		}
 		catch (NullPointerException excepcion) {
-			log.error("no esta habilitado el servicio MySQL");
+			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
 		}
 	}
 

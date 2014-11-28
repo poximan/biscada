@@ -107,6 +107,8 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 	private JTextField txtUltima;
 	private JPanel panel;
 
+	private IntervaloFechas intervalo;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -119,7 +121,9 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		if (serv_dim_vista_seleccionada instanceof ServDimSitio)
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
-		serv_intervalo = new ServIntervaloFechas(new IntervaloFechas());
+		intervalo = new IntervaloFechas();
+		serv_intervalo = new ServIntervaloFechas();
+
 		this.consulta = consultas;
 
 		iniciarComponentes();
@@ -372,14 +376,14 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 
 	private void cargarTodasLasUnidadesTiempo() {
 
-		ServDimUnidadTiempoMes serv_mes = new ServDimUnidadTiempoMes(serv_intervalo.getIntervalo());
+		ServDimUnidadTiempoMes serv_mes = new ServDimUnidadTiempoMes(intervalo);
 
 		cbox_dim_tiempo.removeAllItems();
 
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoQuincena(serv_intervalo.getIntervalo(), serv_mes));
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoQuincena(intervalo, serv_mes));
 		cbox_dim_tiempo.addItem(serv_mes);
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoTrimestre(serv_intervalo.getIntervalo()));
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoAnio(serv_intervalo.getIntervalo()));
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoTrimestre(intervalo));
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoAnio(intervalo));
 	}
 
 	@Override
@@ -390,15 +394,13 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 
 		serv_dim_vista_seleccionada.realizarHash(consulta);
 
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion, serv_unidad_tiempo,
-				true);
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
+				serv_unidad_tiempo, true);
 
 		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
 
-		txtPrimera.setText(serv_intervalo.getIntervalo()
-				.getFechaCorta(serv_intervalo.getIntervalo().getPrimer_alarma()));
-		txtUltima
-				.setText(serv_intervalo.getIntervalo().getFechaCorta(serv_intervalo.getIntervalo().getUltima_alarma()));
+		txtPrimera.setText(intervalo.getFechaCorta(intervalo.getPrimer_alarma()));
+		txtUltima.setText(intervalo.getFechaCorta(intervalo.getUltima_alarma()));
 
 		tbl_medicion.setModel(new TableModelMedicionTemporal(datos_tabla, encabezado_tabla));
 		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));

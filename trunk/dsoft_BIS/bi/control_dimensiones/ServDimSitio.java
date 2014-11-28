@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import modelo.Alarma;
+import modelo.IntervaloFechas;
 import modelo.Sitio;
 import control_mediciones.ServMedAbstract;
 
@@ -65,8 +66,9 @@ public class ServDimSitio extends ServDimAbstract {
 	}
 
 	@Override
-	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo, boolean incluir_columnas_nulas) {
+	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
+			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+			boolean incluir_columnas_nulas) {
 
 		int indice = 0;
 		float[][] valor_retorno = new float[map.size()][1];
@@ -76,15 +78,13 @@ public class ServDimSitio extends ServDimAbstract {
 
 			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
 
-			valor_retorno[indice++] = procesamientoComunFila(indice, lista_alarmas_una_clave, serv_intervalo,
+			valor_retorno[indice++] = procesamientoComunFila(intervalo, lista_alarmas_una_clave, serv_intervalo,
 					serv_medicion, serv_unidad_tiempo);
 		}
-
 		if (!incluir_columnas_nulas) {
 			valor_retorno = filtrarColumnasNulas(valor_retorno, serv_medicion);
-			serv_intervalo.encontrarMinimoMaximo(lista_alarmas_una_clave);
+			serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
 		}
-
 		return valor_retorno;
 	}
 

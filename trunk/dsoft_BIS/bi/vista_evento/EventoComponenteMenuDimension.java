@@ -63,7 +63,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == menu_dimension.getItem_salir())
-			System.exit(0);
+			menu_dimension.dispose();
 		else
 			if (evt.getSource() == menu_dimension.getItem_configurar()) {
 

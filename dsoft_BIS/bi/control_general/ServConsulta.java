@@ -117,22 +117,22 @@ public class ServConsulta implements ObjetosBorrables {
 		log.trace("de lo anterior, se extrajeron " + (total_alarmas - lista_alarmas.size()) + " (fin)");
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	public static List<TipoDeEquipo> getListaEquipos() {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("TipoDeEquipo.buscTodos").getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	public static List<Familia> getListaFamilia() {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("Familia.buscTodos").getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	public static List<Sitio> getListaSitios() {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("Sitio.buscTodos").getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	public static List<Suceso> getListaSucesos() {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("Suceso.buscTodos").getResultList();
 	}

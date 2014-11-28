@@ -324,18 +324,34 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public void actionProcesar() {
 
-		if (!list_disponibles.isSelectionEmpty())
-			procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
+		Runnable consulta = new Runnable() {
+			@Override
+			public void run() {
 
-		actionRestablecer();
+				if (!list_disponibles.isSelectionEmpty())
+					procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
+
+				actionRestablecer();
+			}
+		};
+		final Thread hilo_consulta = new Thread(consulta);
+		hilo_consulta.start();
 	}
 
 	public void actionExtraer() {
 
-		if (!list_procesados.isSelectionEmpty())
-			procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
+		Runnable consulta = new Runnable() {
+			@Override
+			public void run() {
 
-		actionRestablecer();
+				if (!list_procesados.isSelectionEmpty())
+					procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
+
+				actionRestablecer();
+			}
+		};
+		final Thread hilo_consulta = new Thread(consulta);
+		hilo_consulta.start();
 	}
 
 	private void borrarTodasLasListas() {

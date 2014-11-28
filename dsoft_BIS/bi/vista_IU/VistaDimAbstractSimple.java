@@ -33,8 +33,6 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -305,6 +303,7 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		d = tbl_medicion.getPreferredScrollableViewportSize();
 		tbl_medicion.setPreferredScrollableViewportSize(d);
 		tbl_medicion.setIntercellSpacing(new Dimension(0, 0));
+
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_panel.createSequentialGroup().addContainerGap()
@@ -333,22 +332,23 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 
 	private void ordenarTabla() {
 
-		RowSorter<TableModel> ordenador_filas = new TableRowSorter<TableModel>(tbl_medicion.getModel());
-		tbl_medicion.setRowSorter(ordenador_filas);
-
+		/*
+		 * RowSorter<TableModel> ordenador_filas1 = new TableRowSorter<TableModel>(tbl_medicion.getModel());
+		 * tbl_medicion.setRowSorter(ordenador_filas1); tbl_titulo_filas.setRowSorter(ordenador_filas1);
+		 */
 		RowSorterListener l = new RowSorterListener() {
 			@Override
 			public void sorterChanged(RowSorterEvent e) {
-				if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
 
+				if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
 					@SuppressWarnings("unchecked")
 					RowSorter<Object> sorter = e.getSource();
+					tbl_medicion.getRowSorter().setSortKeys(sorter.getSortKeys());
 					tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
 				}
 			}
-
 		};
-		tbl_titulo_filas.getRowSorter().addRowSorterListener(l);
+		tbl_medicion.getRowSorter().addRowSorterListener(l);
 	}
 
 	@Override
@@ -402,6 +402,7 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 
 		armarSolapasGraficas();
+		ordenarTabla();
 	}
 
 	@Override

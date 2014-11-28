@@ -77,8 +77,11 @@ public class TableModelMedicionTemporal extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int fila, int columna) {
 
-		if (datos[fila].length > columna)
+		try {
 			return datos[fila][columna];
-		return 0;
+		}
+		catch (ArrayIndexOutOfBoundsException excepcion) {
+			return 0;
+		}
 	}
 }

@@ -9,6 +9,8 @@ import java.util.List;
 
 import modelo.Alarma;
 import control_dimensiones.ServDimSuceso;
+import control_dimensiones.ServDimUnidadTiempoAbstract;
+import control_mediciones.ServMedAbstract;
 
 /* ............................................. */
 /* ............................................. */
@@ -34,8 +36,9 @@ public class VistaDimSucesoCompuesta extends VistaDimAbstractCompuesta {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimSucesoCompuesta(List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
+	public VistaDimSucesoCompuesta(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+			List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
 
-		super(new ServDimSuceso(), consultas_interes, consultas_comparador);
+		super(new ServDimSuceso(), serv_medicion, serv_unidad_tiempo, consultas_interes, consultas_comparador);
 	}
 }

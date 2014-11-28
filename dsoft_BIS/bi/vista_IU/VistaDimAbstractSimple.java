@@ -25,14 +25,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RowSorter;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -332,10 +334,10 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 
 	private void ordenarTabla() {
 
-		/*
-		 * RowSorter<TableModel> ordenador_filas1 = new TableRowSorter<TableModel>(tbl_medicion.getModel());
-		 * tbl_medicion.setRowSorter(ordenador_filas1); tbl_titulo_filas.setRowSorter(ordenador_filas1);
-		 */
+		RowSorter<TableModel> ordenador_filas1 = new TableRowSorter<TableModel>(tbl_medicion.getModel());
+		tbl_medicion.setRowSorter(ordenador_filas1);
+		tbl_titulo_filas.setRowSorter(ordenador_filas1);
+
 		RowSorterListener l = new RowSorterListener() {
 			@Override
 			public void sorterChanged(RowSorterEvent e) {

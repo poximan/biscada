@@ -91,8 +91,8 @@ public class GraficoLineas extends GraficoAbstract {
 
 		DefaultCategoryDataset dataset_cast = (DefaultCategoryDataset) dataset;
 
-		JFreeChart chart = ChartFactory.createLineChart("", // Titulo
-				"Alarmas", "Cantidad", dataset_cast, PlotOrientation.VERTICAL, true, true, false);
+		JFreeChart chart = ChartFactory.createLineChart("", "Alarmas", "Cantidad", dataset_cast,
+				PlotOrientation.VERTICAL, true, true, false);
 
 		// chart.setBackgroundPaint(Color.LIGHT_GRAY);
 		chart.setAntiAlias(true);

@@ -121,20 +121,22 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		JSplitPane splitPane_tablas = new JSplitPane();
 		splitPane_tablas.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla
-				.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-						Alignment.TRAILING,
-						gl_pl_tabla.createSequentialGroup().addContainerGap().addComponent(splitPane_tablas)
-								.addContainerGap()));
+		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.TRAILING).addGroup(
+				Alignment.LEADING,
+				gl_pl_tabla.createSequentialGroup().addContainerGap()
+						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+						.addContainerGap()));
 		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_pl_tabla.createSequentialGroup().addContainerGap()
-						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
 						.addContainerGap()));
+
+		JPanel panelConsultaInteres = new JPanel();
+		panelConsultaInteres.setBorder(new TitledBorder(null, "Consulta interes", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
+		splitPane_tablas.setLeftComponent(panelConsultaInteres);
 		scrPl_interes = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrPl_interes.setViewportBorder(new TitledBorder(null, "Comparando", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
-		splitPane_tablas.setLeftComponent(scrPl_interes);
 
 		// -------------------------------------
 		//
@@ -163,12 +165,26 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		dimension_interes = tbl_medicion_interes.getPreferredScrollableViewportSize();
 		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_interes);
 		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
+		GroupLayout gl_panelConsultaInteres = new GroupLayout(panelConsultaInteres);
+		gl_panelConsultaInteres.setHorizontalGroup(gl_panelConsultaInteres.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaInteres.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_interes, GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+								.addContainerGap()));
+		gl_panelConsultaInteres.setVerticalGroup(gl_panelConsultaInteres.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaInteres.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_interes, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+								.addContainerGap()));
+		panelConsultaInteres.setLayout(gl_panelConsultaInteres);
+
+		JPanel panelConsultaComparador = new JPanel();
+		panelConsultaComparador.setBorder(new TitledBorder(null, "Consulta comparador", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
+		splitPane_tablas.setRightComponent(panelConsultaComparador);
 
 		JScrollPane scrPl_comparador = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrPl_comparador.setViewportBorder(new TitledBorder(null, "Comparador", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
-		splitPane_tablas.setRightComponent(scrPl_comparador);
 
 		tbl_filas_comparador = new JTable(new TableModelEntradaFila(new Object[0]));
 		tbl_medicion_comparador = new JTable(new TableModelMedicionTemporal(new float[0][0], new String[] { "" }));
@@ -192,17 +208,28 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		dimension_comparador = tbl_medicion_comparador.getPreferredScrollableViewportSize();
 		tbl_medicion_comparador.setPreferredScrollableViewportSize(dimension_comparador);
 		tbl_medicion_comparador.setIntercellSpacing(new Dimension(0, 0));
+		GroupLayout gl_panelConsultaComparador = new GroupLayout(panelConsultaComparador);
+		gl_panelConsultaComparador.setHorizontalGroup(gl_panelConsultaComparador.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaComparador.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_comparador, GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+								.addContainerGap()));
+		gl_panelConsultaComparador.setVerticalGroup(gl_panelConsultaComparador.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaComparador.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_comparador, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+								.addContainerGap()));
+		panelConsultaComparador.setLayout(gl_panelConsultaComparador);
 		splitPane_tablas.setDividerLocation(150);
 
 		gl_contentPane = new GroupLayout(this);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(
-				Alignment.LEADING,
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
 						.addContainerGap()));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
 						.addContainerGap()));
 
 		splitPane_graf_tablas.setOrientation(JSplitPane.VERTICAL_SPLIT);

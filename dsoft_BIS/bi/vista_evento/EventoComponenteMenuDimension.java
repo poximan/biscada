@@ -148,7 +148,6 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 
 		frame.setContentPane(vista);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame.pack();
 		frame.setVisible(true);
 	}
 }

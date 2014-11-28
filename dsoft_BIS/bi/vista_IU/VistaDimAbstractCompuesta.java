@@ -23,7 +23,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.TableModel;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -151,33 +150,45 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		Dimension d = tbl_filas_interes.getPreferredScrollableViewportSize();
+		Dimension dimension_interes = tbl_filas_interes.getPreferredScrollableViewportSize();
 		// define el tamaño preferido de la tabla
-		d.width = tbl_filas_interes.getPreferredSize().width + 90;
-		tbl_filas_interes.setPreferredScrollableViewportSize(d);
+		dimension_interes.width = tbl_filas_interes.getPreferredSize().width + 90;
+		tbl_filas_interes.setPreferredScrollableViewportSize(dimension_interes);
 		tbl_filas_interes.setIntercellSpacing(new Dimension(0, 0));
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		d = tbl_medicion_interes.getPreferredScrollableViewportSize();
-		tbl_medicion_interes.setPreferredScrollableViewportSize(d);
+		dimension_interes = tbl_medicion_interes.getPreferredScrollableViewportSize();
+		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_interes);
 		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
 
 		JScrollPane scrPl_comparador = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		splitPane_tablas.setRightComponent(scrPl_comparador);
 
-		tbl_medicion_comparador = new JTable((TableModel) null);
-		tbl_medicion_comparador.setPreferredScrollableViewportSize(new Dimension(450, 400));
-		tbl_medicion_comparador.setIntercellSpacing(new Dimension(0, 0));
+		tbl_filas_comparador = new JTable(new TableModelEntradaFila(new Object[0]));
+		tbl_medicion_comparador = new JTable(new TableModelMedicionTemporal(new float[0][0], new String[] { "" }));
+
 		tbl_medicion_comparador.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrPl_comparador.setViewportView(tbl_medicion_comparador);
 
-		tbl_filas_comparador = new JTable((TableModel) null);
-		tbl_filas_comparador.setPreferredScrollableViewportSize(new Dimension(450, 400));
-		tbl_filas_comparador.setIntercellSpacing(new Dimension(0, 0));
 		tbl_filas_comparador.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scrPl_comparador.setRowHeaderView(tbl_filas_comparador);
+
+		// recuperar el tamaño preferido en caso que la tabla este contenida en
+		// un scroll
+		Dimension dimension_comparador = tbl_filas_interes.getPreferredScrollableViewportSize();
+		// define el tamaño preferido de la tabla
+		dimension_comparador.width = tbl_filas_interes.getPreferredSize().width + 90;
+		tbl_filas_interes.setPreferredScrollableViewportSize(dimension_comparador);
+		tbl_filas_interes.setIntercellSpacing(new Dimension(0, 0));
+
+		// recuperar el tamaño preferido en caso que la tabla este contenida en
+		// un scroll
+		dimension_comparador = tbl_medicion_interes.getPreferredScrollableViewportSize();
+		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_comparador);
+		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
+
 		gl_contentPane = new GroupLayout(this);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(
 				Alignment.LEADING,

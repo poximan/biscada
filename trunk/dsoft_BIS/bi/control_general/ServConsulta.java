@@ -228,9 +228,15 @@ public class ServConsulta implements ObjetosBorrables {
 		if (duracion_maxima != null)
 			typed_query.setParameter("duracion_maxima", duracion_maxima);
 
-		log.trace("consulta: duracion alarma -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
-		return typed_query.getResultList();
+
+		List<Alarma> resultado = typed_query.getResultList();
+		if (resultado == null)
+			resultado = new ArrayList<Alarma>();
+
+		log.trace("consulta: duracion alarma -> " + resultado.size() + " aciertos");
+
+		return resultado;
 	}
 
 	private List<Alarma> buscarRangoFechas(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,
@@ -296,9 +302,15 @@ public class ServConsulta implements ObjetosBorrables {
 				typed_query.setParameter("fecha_finalizacion", calendarHasta);
 		}
 
-		log.trace("consulta: rango de fechas -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
-		return typed_query.getResultList();
+
+		List<Alarma> resultado = typed_query.getResultList();
+		if (resultado == null)
+			resultado = new ArrayList<Alarma>();
+
+		log.trace("consulta: rango de fechas -> " + resultado.size() + " aciertos");
+
+		return resultado;
 	}
 
 	private List<Alarma> buscarTipos(Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso) {
@@ -352,9 +364,15 @@ public class ServConsulta implements ObjetosBorrables {
 		if (suceso != null)
 			typed_query.setParameter("suceso", suceso);
 
-		log.trace("consulta: coincidencia de tipos -> " + typed_query.getResultList().size() + " aciertos");
 		mostrarQuery(typed_query);
-		return typed_query.getResultList();
+
+		List<Alarma> resultado = typed_query.getResultList();
+		if (resultado == null)
+			resultado = new ArrayList<Alarma>();
+
+		log.trace("consulta: coincidencia de tipos -> " + resultado.size() + " aciertos");
+
+		return resultado;
 	}
 
 	/* ............................................. */

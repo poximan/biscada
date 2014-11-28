@@ -11,12 +11,12 @@ import java.awt.event.MouseListener;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import modelo.Sitio;
 import vista_IU.TableModelMedicionTemporal;
 import vista_IU.VistaDimSitioSimple;
-import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 
 /* ............................................. */
@@ -24,7 +24,7 @@ import vista_IU.VistaKpiSitioCalidadServicio;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimSitio extends EventoDim implements MouseListener {
+public class EventoDimSitio extends EventoDim implements MouseListener, VentanaLanzable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -57,9 +57,10 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		}
 	}
 
-	public void lanzarVentana(JFrame frame, VistaKpiAbstract vista_dimension) {
+	@Override
+	public void lanzarVentana(JFrame frame, JPanel vista) {
 
-		frame.setContentPane(vista_dimension);
+		frame.setContentPane(vista);
 		frame.pack();
 		frame.setVisible(true);
 	}

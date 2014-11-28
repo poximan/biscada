@@ -10,11 +10,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import modelo.TiempoDespeje;
 import vista_IU.VistaDimTiempoDespejeSimple;
-import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiTiempoDespeje;
 
@@ -23,7 +23,7 @@ import vista_IU.VistaKpiTiempoDespeje;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimTiempoDespeje extends EventoDim implements MouseListener {
+public class EventoDimTiempoDespeje extends EventoDim implements MouseListener, VentanaLanzable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -56,9 +56,10 @@ public class EventoDimTiempoDespeje extends EventoDim implements MouseListener {
 		}
 	}
 
-	public void lanzarVentana(JFrame frame, VistaKpiAbstract vista_dimension) {
+	@Override
+	public void lanzarVentana(JFrame frame, JPanel vista) {
 
-		frame.setContentPane(vista_dimension);
+		frame.setContentPane(vista);
 		frame.pack();
 		frame.setVisible(true);
 	}

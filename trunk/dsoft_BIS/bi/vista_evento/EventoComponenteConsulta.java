@@ -9,16 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import modelo.ComponenteConsulta;
-import vista_IU.VistaDimAbstractSimple;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoComponenteConsulta implements ActionListener {
+public class EventoComponenteConsulta implements ActionListener, VentanaLanzable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -49,9 +49,10 @@ public class EventoComponenteConsulta implements ActionListener {
 			vista_consulta.buscar(evt);
 	}
 
-	public void lanzarVentanaDimension(JFrame frame, VistaDimAbstractSimple vista_dimension) {
+	@Override
+	public void lanzarVentana(JFrame frame, JPanel vista) {
 
-		frame.setContentPane(vista_dimension);
+		frame.setContentPane(vista);
 		frame.pack();
 		frame.setVisible(true);
 	}

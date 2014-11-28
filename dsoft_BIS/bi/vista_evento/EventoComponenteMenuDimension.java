@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import modelo.ComponenteMenuConsulta;
@@ -32,7 +33,7 @@ import vista_IU.VistaDimTiempoDespejeSimple;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoComponenteMenuDimension implements ActionListener {
+public class EventoComponenteMenuDimension implements ActionListener, VentanaLanzable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -142,9 +143,10 @@ public class EventoComponenteMenuDimension implements ActionListener {
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
 	}
 
-	public void lanzarVentana(JFrame frame, VistaDimAbstractCompuesta vista_compuesta) {
+	@Override
+	public void lanzarVentana(JFrame frame, JPanel vista) {
 
-		frame.setContentPane(vista_compuesta);
+		frame.setContentPane(vista);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);

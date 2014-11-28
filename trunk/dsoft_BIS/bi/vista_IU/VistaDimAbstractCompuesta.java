@@ -39,7 +39,7 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelIniciable, DimensionCalculable {
+public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelIniciable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -71,8 +71,6 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 	private ServDimAbstract serv_dim_vista_seleccionada;
 	private ServDimSitio serv_dim_sitio;
-	private ServDimUnidadTiempoAbstract serv_unidad_tiempo;
-	private ServMedAbstract serv_medicion;
 	private ServIntervaloFechas serv_intervalo;
 
 	/* ............................................. */
@@ -80,7 +78,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, List<Alarma> consulta_interes,
+	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
 			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
@@ -94,6 +93,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		this.consulta_comparador = consulta_comparador;
 
 		iniciarComponentes();
+		ejecutarDimension(serv_medicion, serv_unidad_tiempo);
 	}
 
 	/**
@@ -101,9 +101,10 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	 * @wbp.parser.constructor
 	 */
 	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
+			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
 
-		this(serv_dim_vista_seleccionada, consulta_interes, consulta_comparador);
+		this(serv_dim_vista_seleccionada, serv_medicion, serv_unidad_tiempo, consulta_interes, consulta_comparador);
 		this.serv_dim_sitio = serv_dim_sitio;
 	}
 
@@ -209,16 +210,15 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		setLayout(gl_contentPane);
 	}
 
-	@Override
-	public void ejecutarDimension() {
+	public void ejecutarDimension(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
-		armarTablaInteres();
-		armarTablaComparador();
+		armarTablaInteres(serv_medicion, serv_unidad_tiempo);
+		armarTablaComparador(serv_medicion, serv_unidad_tiempo);
 
 		armarSolapasGraficas();
 	}
 
-	private void armarTablaInteres() {
+	private void armarTablaInteres(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
@@ -231,7 +231,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		tbl_filas_interes.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 	}
 
-	private void armarTablaComparador() {
+	private void armarTablaComparador(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
@@ -245,7 +245,6 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		tbl_filas_comparador.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 	}
 
-	@Override
 	public void armarSolapasGraficas() {
 
 		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla_interes, encabezado_tabla_interes,
@@ -286,26 +285,6 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	public ServIntervaloFechas getServ_intervalo() {
-		return serv_intervalo;
-	}
-
-	public ServMedAbstract getServ_medicion() {
-		return serv_medicion;
-	}
-
-	public ServDimUnidadTiempoAbstract getServ_unidad_tiempo() {
-		return serv_unidad_tiempo;
-	}
-
-	public JTable getTbl_medicion() {
-		return tbl_medicion_interes;
-	}
-
-	public JTable getTbl_titulo_filas() {
-		return tbl_filas_interes;
-	}
 
 	public ServDimSitio getServ_dim_sitio() {
 		return serv_dim_sitio;

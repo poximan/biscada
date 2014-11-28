@@ -8,6 +8,7 @@ package vista_evento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import modelo.ComponenteMenuConsulta;
@@ -19,8 +20,11 @@ import vista_IU.VistaConsultaCompuesta;
 import vista_IU.VistaDimAbstractCompuesta;
 import vista_IU.VistaDimSitioCompuesta;
 import vista_IU.VistaDimSitioSimple;
+import vista_IU.VistaDimSucesoCompuesta;
 import vista_IU.VistaDimSucesoSimple;
+import vista_IU.VistaDimTemporadaCompuesta;
 import vista_IU.VistaDimTemporadaSimple;
+import vista_IU.VistaDimTiempoDespejeCompuesta;
 import vista_IU.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
@@ -70,33 +74,79 @@ public class EventoComponenteMenuDimension implements ActionListener {
 				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(menu_dimension, frame_menu_bi));
 				frame_menu_bi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				frame_menu_bi.setVisible(true);
+
 			} else
 				if (evt.getSource() == menu_dimension.getItem_ejecutar()) {
 
-					VistaDimAbstractCompuesta vista_compuesta = null;
-					
 					log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
 
 					ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
 							"BIS - comparador de periodos");
+					VistaDimAbstractCompuesta vista_compuesta = null;
 
-					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple){
-						VistaDimSitioSimple vista_temporal = (VistaDimSitioSimple)menu_dimension.getContentPane();
-						vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
-					}
+					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple)
+						prepararComparadorSitios(frame_menu_dimension, vista_compuesta);
 
 					if (menu_dimension.getContentPane() instanceof VistaDimSucesoSimple)
-						log.trace("pedido desde dim suceso");
+						prepararComparadorSuceso(frame_menu_dimension, vista_compuesta);
 
 					if (menu_dimension.getContentPane() instanceof VistaDimTemporadaSimple)
-						log.trace("pedido desde dim temporada");
+						prepararComparadorTemporada(frame_menu_dimension, vista_compuesta);
 
 					if (menu_dimension.getContentPane() instanceof VistaDimTiempoDespejeSimple)
-						log.trace("pedido desde dim tiempo despeje");
-
-					frame_menu_dimension.setContentPane(vista_compuesta);
-					frame_menu_dimension.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-					frame_menu_dimension.setVisible(true);
+						prepararComparadorTiempoDespeje(frame_menu_dimension, vista_compuesta);
 				}
+	}
+
+	private void prepararComparadorSitios(ComponenteMenuDimension frame_menu_dimension,
+			VistaDimAbstractCompuesta vista_compuesta) {
+
+		VistaDimSitioSimple vista_temporal = (VistaDimSitioSimple) menu_dimension.getContentPane();
+		vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getServ_medicion(),
+				vista_temporal.getServ_unidad_tiempo(), vista_temporal.getConsulta(),
+				menu_dimension.getConsulta_comparador());
+
+		lanzarVentana(frame_menu_dimension, vista_compuesta);
+	}
+
+	private void prepararComparadorSuceso(ComponenteMenuDimension frame_menu_dimension,
+			VistaDimAbstractCompuesta vista_compuesta) {
+
+		VistaDimSucesoSimple vista_temporal = (VistaDimSucesoSimple) menu_dimension.getContentPane();
+		vista_compuesta = new VistaDimSucesoCompuesta(vista_temporal.getServ_medicion(),
+				vista_temporal.getServ_unidad_tiempo(), vista_temporal.getConsulta(),
+				menu_dimension.getConsulta_comparador());
+
+		lanzarVentana(frame_menu_dimension, vista_compuesta);
+	}
+
+	private void prepararComparadorTemporada(ComponenteMenuDimension frame_menu_dimension,
+			VistaDimAbstractCompuesta vista_compuesta) {
+
+		VistaDimTemporadaSimple vista_temporal = (VistaDimTemporadaSimple) menu_dimension.getContentPane();
+		vista_compuesta = new VistaDimTemporadaCompuesta(vista_temporal.getServ_medicion(),
+				vista_temporal.getServ_unidad_tiempo(), vista_temporal.getConsulta(),
+				menu_dimension.getConsulta_comparador());
+
+		lanzarVentana(frame_menu_dimension, vista_compuesta);
+	}
+
+	private void prepararComparadorTiempoDespeje(ComponenteMenuDimension frame_menu_dimension,
+			VistaDimAbstractCompuesta vista_compuesta) {
+
+		VistaDimTiempoDespejeSimple vista_temporal = (VistaDimTiempoDespejeSimple) menu_dimension.getContentPane();
+		vista_compuesta = new VistaDimTiempoDespejeCompuesta(vista_temporal.getServ_medicion(),
+				vista_temporal.getServ_unidad_tiempo(), vista_temporal.getConsulta(),
+				menu_dimension.getConsulta_comparador());
+
+		lanzarVentana(frame_menu_dimension, vista_compuesta);
+	}
+
+	public void lanzarVentana(JFrame frame, VistaDimAbstractCompuesta vista_compuesta) {
+
+		frame.setContentPane(vista_compuesta);
+		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }

@@ -18,7 +18,7 @@ import control_dimensiones.ServDimSuceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimSuceso extends VistaDimAbstract {
+public class VistaDimSuceso extends VistaDimAbstractSimple {
 
 	/* ............................................. */
 	/* ............................................. */

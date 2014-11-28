@@ -68,6 +68,7 @@ public class ComponenteMenuDimension extends JFrame implements EventoConfigurabl
 
 		configMenuArchivo();
 		configMenuComparar();
+		configEventos();
 
 		setJMenuBar(barra_menu);
 	}

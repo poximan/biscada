@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import vista_IU.VistaDimAbstract;
+import vista_IU.VistaDimAbstractSimple;
 
 /* ............................................. */
 /* ............................................. */
@@ -23,14 +23,14 @@ public abstract class EventoDim implements ActionListener, MouseListener {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private VistaDimAbstract vista_dimension;
+	private VistaDimAbstractSimple vista_dimension;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDim(VistaDimAbstract vista_dimension) {
+	public EventoDim(VistaDimAbstractSimple vista_dimension) {
 		this.vista_dimension = vista_dimension;
 	}
 
@@ -52,7 +52,7 @@ public abstract class EventoDim implements ActionListener, MouseListener {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public VistaDimAbstract getVista_dimension() {
+	public VistaDimAbstractSimple getVista_dimension() {
 		return vista_dimension;
 	}
 }

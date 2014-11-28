@@ -17,7 +17,7 @@ import control_dimensiones.ServDimSitio;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimSitio extends VistaDimAbstract {
+public class VistaDimSitio extends VistaDimAbstractSimple {
 
 	/* ............................................. */
 	/* ............................................. */

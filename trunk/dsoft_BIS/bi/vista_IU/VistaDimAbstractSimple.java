@@ -53,7 +53,7 @@ import control_mediciones.ServMedTotal;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstract extends JPanel implements PanelIniciable, EventoConfigurable,
+public abstract class VistaDimAbstractSimple extends JPanel implements PanelIniciable, EventoConfigurable,
 		DimensionCalculable {
 
 	/* ............................................. */
@@ -107,7 +107,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstract(ServDimAbstract serv_dim_vista_seleccionada, List<Alarma> consultas) {
+	public VistaDimAbstractSimple(ServDimAbstract serv_dim_vista_seleccionada, List<Alarma> consultas) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 
@@ -124,7 +124,7 @@ public abstract class VistaDimAbstract extends JPanel implements PanelIniciable,
 	 * @param consultas
 	 * @wbp.parser.constructor
 	 */
-	public VistaDimAbstract(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
+	public VistaDimAbstractSimple(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
 			List<Alarma> consultas) {
 
 		this(serv_dim_vista_seleccionada, consultas);

@@ -114,7 +114,7 @@ public class ComponenteMenuConsulta extends JFrame {
 		JMenu submenu_fecha_incompleta = new JMenu("incluir incompleta");
 
 		componente_ini_incompleta = new JCheckBox("inicio");
-		componente_ack_incompleta = new JCheckBox("ack");
+		componente_ack_incompleta = new JCheckBox("ack", true);
 		componente_fin_incompleta = new JCheckBox("fin");
 
 		submenu_fecha_incompleta.add(componente_ini_incompleta);

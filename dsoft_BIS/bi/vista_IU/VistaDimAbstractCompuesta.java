@@ -132,6 +132,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 						.addContainerGap()));
 		scrPl_interes = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrPl_interes.setViewportBorder(new TitledBorder(null, "Comparando", TitledBorder.LEADING, TitledBorder.TOP,
+				null, null));
 		splitPane_tablas.setLeftComponent(scrPl_interes);
 
 		// -------------------------------------
@@ -164,6 +166,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		JScrollPane scrPl_comparador = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrPl_comparador.setViewportBorder(new TitledBorder(null, "Comparador", TitledBorder.LEADING, TitledBorder.TOP,
+				null, null));
 		splitPane_tablas.setRightComponent(scrPl_comparador);
 
 		tbl_filas_comparador = new JTable(new TableModelEntradaFila(new Object[0]));
@@ -177,17 +181,18 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		Dimension dimension_comparador = tbl_filas_interes.getPreferredScrollableViewportSize();
+		Dimension dimension_comparador = tbl_filas_comparador.getPreferredScrollableViewportSize();
 		// define el tamaño preferido de la tabla
-		dimension_comparador.width = tbl_filas_interes.getPreferredSize().width + 90;
-		tbl_filas_interes.setPreferredScrollableViewportSize(dimension_comparador);
-		tbl_filas_interes.setIntercellSpacing(new Dimension(0, 0));
+		dimension_comparador.width = tbl_filas_comparador.getPreferredSize().width + 90;
+		tbl_filas_comparador.setPreferredScrollableViewportSize(dimension_comparador);
+		tbl_filas_comparador.setIntercellSpacing(new Dimension(0, 0));
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		dimension_comparador = tbl_medicion_interes.getPreferredScrollableViewportSize();
-		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_comparador);
-		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
+		dimension_comparador = tbl_medicion_comparador.getPreferredScrollableViewportSize();
+		tbl_medicion_comparador.setPreferredScrollableViewportSize(dimension_comparador);
+		tbl_medicion_comparador.setIntercellSpacing(new Dimension(0, 0));
+		splitPane_tablas.setDividerLocation(150);
 
 		gl_contentPane = new GroupLayout(this);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(

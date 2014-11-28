@@ -16,7 +16,7 @@ import modelo.IntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 /**
- * es el servicio de manejo de intervalos de fechas. en particular interesa en intervalo mayor, que es el que incluye a
+ * es el servicio de manejo de intervalos de fechas. en particular interesa el intervalo mayor, que es el que incluye a
  * la alarma mas antigua y a la mas reciente
  * 
  * @author hugo

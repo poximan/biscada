@@ -165,6 +165,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		dimension_interes = tbl_medicion_interes.getPreferredScrollableViewportSize();
 		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_interes);
 		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
+
 		GroupLayout gl_panelConsultaInteres = new GroupLayout(panelConsultaInteres);
 		gl_panelConsultaInteres.setHorizontalGroup(gl_panelConsultaInteres.createParallelGroup(Alignment.LEADING)
 				.addGroup(
@@ -208,6 +209,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		dimension_comparador = tbl_medicion_comparador.getPreferredScrollableViewportSize();
 		tbl_medicion_comparador.setPreferredScrollableViewportSize(dimension_comparador);
 		tbl_medicion_comparador.setIntercellSpacing(new Dimension(0, 0));
+
 		GroupLayout gl_panelConsultaComparador = new GroupLayout(panelConsultaComparador);
 		gl_panelConsultaComparador.setHorizontalGroup(gl_panelConsultaComparador.createParallelGroup(Alignment.LEADING)
 				.addGroup(

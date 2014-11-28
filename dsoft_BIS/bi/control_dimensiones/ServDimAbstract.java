@@ -17,6 +17,12 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * solo provee servicios, de ser necesario reutilizar no es necesario clonar.
+ * 
+ * @author hdonato
+ *
+ */
 public abstract class ServDimAbstract {
 
 	/* ............................................. */

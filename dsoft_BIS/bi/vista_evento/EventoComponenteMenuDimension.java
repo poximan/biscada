@@ -16,6 +16,8 @@ import modelo.ComponenteMenuDimension;
 import org.apache.log4j.Logger;
 
 import vista_IU.VistaConsultaCompuesta;
+import vista_IU.VistaDimAbstractCompuesta;
+import vista_IU.VistaDimSitioCompuesta;
 import vista_IU.VistaDimSitioSimple;
 import vista_IU.VistaDimSucesoSimple;
 import vista_IU.VistaDimTemporadaSimple;
@@ -71,13 +73,17 @@ public class EventoComponenteMenuDimension implements ActionListener {
 			} else
 				if (evt.getSource() == menu_dimension.getItem_ejecutar()) {
 
+					VistaDimAbstractCompuesta vista_compuesta = null;
+					
 					log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
 
 					ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
-							"BIS - consulta para usar como comparador");
+							"BIS - comparador de periodos");
 
-					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple)
-						log.trace("pedido desde dim sitio");
+					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple){
+						VistaDimSitioSimple vista_temporal = (VistaDimSitioSimple)menu_dimension.getContentPane();
+						vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
+					}
 
 					if (menu_dimension.getContentPane() instanceof VistaDimSucesoSimple)
 						log.trace("pedido desde dim suceso");
@@ -88,7 +94,7 @@ public class EventoComponenteMenuDimension implements ActionListener {
 					if (menu_dimension.getContentPane() instanceof VistaDimTiempoDespejeSimple)
 						log.trace("pedido desde dim tiempo despeje");
 
-					frame_menu_dimension.setContentPane(new VistaConsultaCompuesta(frame_menu_dimension, null));
+					frame_menu_dimension.setContentPane(vista_compuesta);
 					frame_menu_dimension.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					frame_menu_dimension.setVisible(true);
 				}

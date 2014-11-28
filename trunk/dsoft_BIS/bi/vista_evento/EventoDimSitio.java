@@ -15,7 +15,7 @@ import javax.swing.JTable;
 
 import modelo.Sitio;
 import vista_IU.TableModelMedicionTemporal;
-import vista_IU.VistaDimSitio;
+import vista_IU.VistaDimSitioSimple;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 
@@ -36,7 +36,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSitio(VistaDimSitio vista_dimension) {
+	public EventoDimSitio(VistaDimSitioSimple vista_dimension) {
 		super(vista_dimension);
 	}
 

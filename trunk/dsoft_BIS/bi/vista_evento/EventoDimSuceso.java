@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import modelo.Suceso;
-import vista_IU.VistaDimSuceso;
+import vista_IU.VistaDimSucesoSimple;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiSuceso;
@@ -35,7 +35,7 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimSuceso(VistaDimSuceso vista_dimension) {
+	public EventoDimSuceso(VistaDimSucesoSimple vista_dimension) {
 		super(vista_dimension);
 	}
 

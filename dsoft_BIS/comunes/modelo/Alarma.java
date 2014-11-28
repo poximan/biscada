@@ -14,9 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.eclipse.persistence.annotations.Index;
 
@@ -28,7 +30,7 @@ import org.eclipse.persistence.annotations.Index;
 @SuppressWarnings("rawtypes")
 @Entity
 @Table(name = "alarma")
-public class Alarma implements Comparable {
+public final class Alarma implements Comparable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -46,17 +48,17 @@ public class Alarma implements Comparable {
 	private ArchivoDBF archivo_propietario;
 
 	@Column(name = "FECHA_INICIO", nullable = false)
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Index
 	private Calendar fecha_inicio; // ex inicio_segundo + inicio_milisegundo
 
 	@Column(name = "FECHA_ACK", nullable = true)
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Index
 	private Calendar fecha_ack; // ex ack_segundo
 
 	@Column(name = "FECHA_FIN", nullable = true)
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Index
 	private Calendar fecha_finalizacion; // ex fin_segundo + fin_milisegundo
 
@@ -114,149 +116,20 @@ public class Alarma implements Comparable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@PostLoad
+	protected void repair() {
+
+		if (ack_usuario != null)
+			ack_usuario = ack_usuario.intern();
+		if (identificacion != null)
+			identificacion = identificacion.intern();
+	}
+
 	@Override
 	public int compareTo(Object entidad) {
 
 		Alarma alarma_actual = (Alarma) entidad;
 		return this.fecha_inicio.compareTo(alarma_actual.getFecha_inicio());
-	}
-
-	public String getAck_usuario() {
-		return ack_usuario;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public ArchivoDBF getArchivo_propietario() {
-		return archivo_propietario;
-	}
-
-	public Integer getAtributo() {
-		return atributo;
-	}
-
-	public Long getClase() {
-		return clase;
-	}
-
-	public EquipoEnSitio getEquipo_en_sitio() {
-		return equipo_en_sitio;
-	}
-
-	public Familia getFamilia() {
-		return familia;
-	}
-
-	public Calendar getFecha_ack() {
-		return fecha_ack;
-	}
-
-	public Calendar getFecha_finalizacion() {
-		return fecha_finalizacion;
-	}
-
-	public Calendar getFecha_inicio() {
-		return fecha_inicio;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public int getId_estacion() {
-		return id_estacion;
-	}
-
-	public String getIdentificacion() {
-		return identificacion;
-	}
-
-	public Integer getSeveridad() {
-		return severidad;
-	}
-
-	public Sitio getSitio() {
-		return sitio;
-	}
-
-	public Suceso getSuceso() {
-		return suceso;
-	}
-
-	public Integer getZona() {
-		return zona;
-	}
-
-	public void setAck_usuario(String ack_usuario) {
-		this.ack_usuario = ack_usuario;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
-	public void setArchivo_propietario(ArchivoDBF archivo_propietario) {
-		this.archivo_propietario = archivo_propietario;
-	}
-
-	public void setAtributo(Integer atributo) {
-		this.atributo = atributo;
-	}
-
-	public void setClase(Long clase) {
-		this.clase = clase;
-	}
-
-	public void setEquipo_en_sitio(EquipoEnSitio equipo_en_sitio) {
-		this.equipo_en_sitio = equipo_en_sitio;
-	}
-
-	public void setFamilia(Familia familia) {
-		this.familia = familia;
-	}
-
-	public void setFecha_ack(Calendar fecha_ack) {
-		this.fecha_ack = fecha_ack;
-	}
-
-	public void setFecha_finalizacion(Calendar fecha_finalizacion) {
-		this.fecha_finalizacion = fecha_finalizacion;
-	}
-
-	public void setFecha_inicio(Calendar fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setId_estacion(int id_estacion) {
-		this.id_estacion = id_estacion;
-	}
-
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
-	}
-
-	public void setSeveridad(Integer severidad) {
-		this.severidad = severidad;
-	}
-
-	public void setSitio(Sitio sitio) {
-		this.sitio = sitio;
-	}
-
-	public void setSuceso(Suceso suceso) {
-		this.suceso = suceso;
-	}
-
-	public void setZona(Integer zona) {
-		this.zona = zona;
 	}
 
 	@Override
@@ -282,5 +155,107 @@ public class Alarma implements Comparable {
 				"Suceso: " + suceso.toString() + "\n" + //
 				"Id estacion: " + id_estacion + "\n" //
 		;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public ArchivoDBF getArchivo_propietario() {
+		return archivo_propietario;
+	}
+
+	public Calendar getFecha_inicio() {
+		return fecha_inicio;
+	}
+
+	public Calendar getFecha_ack() {
+		return fecha_ack;
+	}
+
+	public Calendar getFecha_finalizacion() {
+		return fecha_finalizacion;
+	}
+
+	public Familia getFamilia() {
+		return familia;
+	}
+
+	public Sitio getSitio() {
+		return sitio;
+	}
+
+	public EquipoEnSitio getEquipo_en_sitio() {
+		return equipo_en_sitio;
+	}
+
+	public Suceso getSuceso() {
+		return suceso;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	public void setArchivo_propietario(ArchivoDBF archivo_propietario) {
+		this.archivo_propietario = archivo_propietario;
+	}
+
+	public void setFecha_inicio(Calendar fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+
+	public void setFecha_ack(Calendar fecha_ack) {
+		this.fecha_ack = fecha_ack;
+	}
+
+	public void setFecha_finalizacion(Calendar fecha_finalizacion) {
+		this.fecha_finalizacion = fecha_finalizacion;
+	}
+
+	public void setAck_usuario(String ack_usuario) {
+		this.ack_usuario = ack_usuario;
+	}
+
+	public void setSeveridad(Integer severidad) {
+		this.severidad = severidad;
+	}
+
+	public void setClase(Long clase) {
+		this.clase = clase;
+	}
+
+	public void setZona(Integer zona) {
+		this.zona = zona;
+	}
+
+	public void setAtributo(Integer atributo) {
+		this.atributo = atributo;
+	}
+
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
+	}
+
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
+
+	public void setSitio(Sitio sitio) {
+		this.sitio = sitio;
+	}
+
+	public void setEquipo_en_sitio(EquipoEnSitio equipo_en_sitio) {
+		this.equipo_en_sitio = equipo_en_sitio;
+	}
+
+	public void setSuceso(Suceso suceso) {
+		this.suceso = suceso;
+	}
+
+	public void setId_estacion(int id_estacion) {
+		this.id_estacion = id_estacion;
 	}
 }

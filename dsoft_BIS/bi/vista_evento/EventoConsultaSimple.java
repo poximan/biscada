@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 import modelo.ComponenteMenuDimension;
 import vista_IU.VistaConsultaSimple;
-import vista_IU.VistaDimAbstract;
+import vista_IU.VistaDimAbstractSimple;
 import vista_IU.VistaDimSitio;
 import vista_IU.VistaDimSuceso;
 import vista_IU.VistaDimTemporada;
@@ -84,7 +84,7 @@ public class EventoConsultaSimple implements ActionListener {
 			notificarError("consulta vacia, cargue restricciones (opcional) y presione Buscar para obtener resultados");
 	}
 
-	public void lanzarVentanaDimension(VistaDimAbstract vista_dimension) {
+	public void lanzarVentanaDimension(VistaDimAbstractSimple vista_dimension) {
 
 		frame_menu_dimension.setContentPane(vista_dimension);
 		frame_menu_dimension.pack();

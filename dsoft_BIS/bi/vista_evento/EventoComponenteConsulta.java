@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import modelo.ComponenteConsulta;
-import vista_IU.VistaDimAbstract;
+import vista_IU.VistaDimAbstractSimple;
 
 /* ............................................. */
 /* ............................................. */
@@ -49,7 +49,7 @@ public class EventoComponenteConsulta implements ActionListener {
 			vista_consulta.buscar(evt);
 	}
 
-	public void lanzarVentanaDimension(JFrame frame, VistaDimAbstract vista_dimension) {
+	public void lanzarVentanaDimension(JFrame frame, VistaDimAbstractSimple vista_dimension) {
 
 		frame.setContentPane(vista_dimension);
 		frame.pack();

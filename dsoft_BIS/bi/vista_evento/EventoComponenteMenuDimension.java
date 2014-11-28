@@ -16,6 +16,10 @@ import modelo.ComponenteMenuDimension;
 import org.apache.log4j.Logger;
 
 import vista_IU.VistaConsultaCompuesta;
+import vista_IU.VistaDimSitio;
+import vista_IU.VistaDimSuceso;
+import vista_IU.VistaDimTemporada;
+import vista_IU.VistaDimTiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */
@@ -71,6 +75,18 @@ public class EventoComponenteMenuDimension implements ActionListener {
 
 					ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
 							"BIS - consulta para usar como comparador");
+
+					if (menu_dimension.getContentPane() instanceof VistaDimSitio)
+						log.trace("pedido desde dim sitio");
+
+					if (menu_dimension.getContentPane() instanceof VistaDimSuceso)
+						log.trace("pedido desde dim suceso");
+
+					if (menu_dimension.getContentPane() instanceof VistaDimTemporada)
+						log.trace("pedido desde dim temporada");
+
+					if (menu_dimension.getContentPane() instanceof VistaDimTiempoDespeje)
+						log.trace("pedido desde dim tiempo despeje");
 
 					frame_menu_dimension.setContentPane(new VistaConsultaCompuesta(frame_menu_dimension, null));
 					frame_menu_dimension.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

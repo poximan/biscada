@@ -82,7 +82,7 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 	private JTable tbl_medicion;
 	private JTable tbl_titulo_filas;
 
-	private List<Alarma> consultas;
+	private List<Alarma> consulta;
 	private float[][] datos_tabla;
 	private String[] encabezado_tabla;
 
@@ -115,7 +115,7 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
 		serv_intervalo = new ServIntervaloFechas(new IntervaloFechas());
-		this.consultas = consultas;
+		this.consulta = consultas;
 
 		iniciarComponentes();
 	}
@@ -361,7 +361,7 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		serv_medicion = getMedicion();
 		serv_unidad_tiempo = getDimensionUnidadTiempo();
 
-		serv_dim_vista_seleccionada.realizarHash(consultas);
+		serv_dim_vista_seleccionada.realizarHash(consulta);
 
 		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion, serv_unidad_tiempo,
 				true);
@@ -477,6 +477,10 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 
 	public ServDimSitio getServ_dim_sitio() {
 		return serv_dim_sitio;
+	}
+
+	public List<Alarma> getConsulta() {
+		return consulta;
 	}
 
 	/* ............................................. */

@@ -8,7 +8,6 @@ package vista_IU;
 import java.util.List;
 
 import modelo.Alarma;
-import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimSuceso;
 
 /* ............................................. */
@@ -35,8 +34,8 @@ public class VistaDimSucesoCompuesta extends VistaDimAbstractCompuesta {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimSucesoCompuesta(List<Alarma> consultas) {
+	public VistaDimSucesoCompuesta(List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
 
-		super(new ServDimSuceso(), new ServDimSitio(), consultas);
+		super(new ServDimSuceso(), consultas_interes, consultas_comparador);
 	}
 }

@@ -8,7 +8,6 @@ package vista_IU;
 import java.util.List;
 
 import modelo.Alarma;
-import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimTiempoDespeje;
 
 /* ............................................. */
@@ -35,8 +34,8 @@ public class VistaDimTiempoDespejeCompuesta extends VistaDimAbstractCompuesta {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimTiempoDespejeCompuesta(List<Alarma> consultas) {
+	public VistaDimTiempoDespejeCompuesta(List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
 
-		super(new ServDimTiempoDespeje(), new ServDimSitio(), consultas);
+		super(new ServDimTiempoDespeje(), consultas_interes, consultas_comparador);
 	}
 }

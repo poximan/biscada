@@ -59,7 +59,9 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	private JTable tbl_original_medicion;
 	private JTable tbl_original_filas;
 
-	private List<Alarma> consultas;
+	private List<Alarma> consulta_interes;
+	private List<Alarma> consulta_comparador;
+
 	private float[][] datos_tabla;
 	private String[] encabezado_tabla;
 
@@ -68,6 +70,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	private ServDimUnidadTiempoAbstract serv_unidad_tiempo;
 	private ServMedAbstract serv_medicion;
 	private ServIntervaloFechas serv_intervalo;
+
 	private JTable tbl_referencia_medicion;
 	private JTable tbl_referencia_filas;
 
@@ -76,7 +79,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, List<Alarma> consultas) {
+	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, List<Alarma> consulta_interes,
+			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 
@@ -84,7 +88,9 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
 		serv_intervalo = new ServIntervaloFechas(new IntervaloFechas());
-		this.consultas = consultas;
+
+		this.consulta_interes = consulta_interes;
+		this.consulta_comparador = consulta_comparador;
 
 		iniciarComponentes();
 	}
@@ -94,9 +100,9 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	 * @wbp.parser.constructor
 	 */
 	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
-			List<Alarma> consultas) {
+			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
 
-		this(serv_dim_vista_seleccionada, consultas);
+		this(serv_dim_vista_seleccionada, consulta_interes, consulta_comparador);
 		this.serv_dim_sitio = serv_dim_sitio;
 	}
 
@@ -205,7 +211,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	@Override
 	public void ejecutarDimension() {
 
-		serv_dim_vista_seleccionada.realizarHash(consultas);
+		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
 		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion, serv_unidad_tiempo,
 				true);

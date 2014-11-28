@@ -34,8 +34,8 @@ public class VistaDimSitioCompuesta extends VistaDimAbstractCompuesta {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimSitioCompuesta(List<Alarma> consultas) {
+	public VistaDimSitioCompuesta(List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
 
-		super(new ServDimSitio(), consultas);
+		super(new ServDimSitio(), consultas_interes, consultas_comparador);
 	}
 }

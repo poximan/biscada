@@ -53,7 +53,7 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	private ComponenteConsulta componenteConsulta;
 	private ComponenteMenuDimension componenteMenuDimension;
 
-	private JButton btnGenerarComparacion;
+	private JButton btnUsarConsulta;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -101,10 +101,10 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 								GroupLayout.PREFERRED_SIZE).addContainerGap()));
 		panelComparacion.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-		btnGenerarComparacion = new JButton("generar comparacion");
-		btnGenerarComparacion.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		btnGenerarComparacion.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelComparacion.add(btnGenerarComparacion);
+		btnUsarConsulta = new JButton("usar esta consulta");
+		btnUsarConsulta.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnUsarConsulta.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelComparacion.add(btnUsarConsulta);
 
 		setLayout(groupLayout);
 	}
@@ -113,7 +113,7 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	public void configEventos() {
 
 		EventoConsultaCompuesta eventos = new EventoConsultaCompuesta(this);
-		btnGenerarComparacion.addActionListener(eventos);
+		btnUsarConsulta.addActionListener(eventos);
 	}
 
 	/* ............................................. */
@@ -121,8 +121,8 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public JButton getBtnGenerarComparacion() {
-		return btnGenerarComparacion;
+	public JButton getBtnUsarConsulta() {
+		return btnUsarConsulta;
 	}
 
 	public ComponenteConsulta getComponenteConsulta() {

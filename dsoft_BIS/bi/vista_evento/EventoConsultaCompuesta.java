@@ -48,7 +48,7 @@ public class EventoConsultaCompuesta implements ActionListener {
 		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null || vista_compuesta.getComponenteConsulta()
 				.getConsultas().isEmpty())) {
 
-			if (evt.getSource() == vista_compuesta.getBtnGenerarComparacion())
+			if (evt.getSource() == vista_compuesta.getBtnUsarConsulta())
 				vista_compuesta.resolver();
 
 		} else

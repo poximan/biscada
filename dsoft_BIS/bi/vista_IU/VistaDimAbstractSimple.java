@@ -25,11 +25,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowSorter;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.RowSorterEvent;
+import javax.swing.event.RowSorterListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import modelo.Alarma;
 import modelo.IntervaloFechas;
@@ -324,6 +329,26 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		setLayout(gl_contentPane);
 		pl_tiempo.setLayout(gl_pl_tiempo);
 		setLayout(gl_contentPane);
+	}
+
+	private void ordenarTabla() {
+
+		RowSorter<TableModel> ordenador_filas = new TableRowSorter<TableModel>(tbl_medicion.getModel());
+		tbl_medicion.setRowSorter(ordenador_filas);
+
+		RowSorterListener l = new RowSorterListener() {
+			@Override
+			public void sorterChanged(RowSorterEvent e) {
+				if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
+
+					@SuppressWarnings("unchecked")
+					RowSorter<Object> sorter = e.getSource();
+					tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
+				}
+			}
+
+		};
+		tbl_titulo_filas.getRowSorter().addRowSorterListener(l);
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 import modelo.Alarma;
+import modelo.IntervaloFechas;
 import control_mediciones.ServMedAbstract;
 
 /* ............................................. */
@@ -52,7 +53,6 @@ public abstract class ServDimAbstract {
 	 * una vez que entra a una de las claves del hash, analiza todas las alarmas que coinciden con la clave completa la
 	 * fila correspondiente en la tabla
 	 * 
-	 * @param indice
 	 * @param longitud_arreglo
 	 * @param lista_alarmas_una_clave
 	 * @param serv_intervalo
@@ -61,12 +61,12 @@ public abstract class ServDimAbstract {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public float[] procesamientoComunFila(int indice, List<Alarma> lista_alarmas_una_clave,
+	public float[] procesamientoComunFila(IntervaloFechas intervalo, List<Alarma> lista_alarmas_una_clave,
 			ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		Collections.sort(lista_alarmas_una_clave);
-		serv_intervalo.encontrarMinimoMaximo(lista_alarmas_una_clave);
+		serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
 
 		return serv_medicion.completarFila(lista_alarmas_una_clave, serv_intervalo, serv_unidad_tiempo);
 	}
@@ -87,8 +87,9 @@ public abstract class ServDimAbstract {
 	 *            sus filas. el usuario podrá elegir si visualizar estas columnas o no
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la tabla.
 	 */
-	public abstract float[][] completarTabla(ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo, boolean incluir_columnas_nulas);
+	public abstract float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
+			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+			boolean incluir_columnas_nulas);
 
 	/**
 	 * pide los nombres de los grupos que se obtienen de observar una lista desde una dimension especifica.
@@ -123,7 +124,6 @@ public abstract class ServDimAbstract {
 			if (fila == valor_retorno.length)
 				extraerColumna(valor_retorno, columna, serv_medicion);
 		}
-
 		return valor_retorno;
 	}
 

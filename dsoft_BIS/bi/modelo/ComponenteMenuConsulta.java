@@ -14,8 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import vista_IU.VistaConsultaSimple;
 import control_general.GestorETL;
 import control_general.GestorPropiedades;
 import control_general.ServPropiedades;
@@ -93,7 +95,13 @@ public class ComponenteMenuConsulta extends JFrame {
 		item_salir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				System.exit(0);
+
+				JPanel panel = (JPanel) getContentPane();
+
+				if (panel instanceof VistaConsultaSimple)
+					System.exit(0);
+				else
+					dispose();
 			}
 		});
 

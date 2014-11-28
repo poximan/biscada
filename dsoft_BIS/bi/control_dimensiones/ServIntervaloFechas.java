@@ -29,15 +29,12 @@ public class ServIntervaloFechas {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private IntervaloFechas intervalo;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServIntervaloFechas(IntervaloFechas intervalo) {
-		this.intervalo = intervalo;
+	public ServIntervaloFechas() {
 	}
 
 	/* ............................................. */
@@ -50,14 +47,14 @@ public class ServIntervaloFechas {
 	 * 
 	 * @param alarma_actual
 	 */
-	private void actualizarPrimerAlarma(Calendar alarma_actual) {
+	private void actualizarPrimerAlarma(IntervaloFechas intervalo, Calendar alarma_actual) {
 
 		if (alarma_actual.before(intervalo.getPrimer_alarma()))
 			intervalo.setPrimer_alarma(alarma_actual);
 		else
 			if (intervalo.getPrimer_alarma() == null) {
 				intervalo.setPrimer_alarma(Calendar.getInstance());
-				actualizarPrimerAlarma(alarma_actual);
+				actualizarPrimerAlarma(intervalo, alarma_actual);
 			}
 	}
 
@@ -66,7 +63,7 @@ public class ServIntervaloFechas {
 	 * 
 	 * @param alarma_actual
 	 */
-	private void actualizarUltimaAlarma(Calendar alarma_actual) {
+	private void actualizarUltimaAlarma(IntervaloFechas intervalo, Calendar alarma_actual) {
 
 		if (alarma_actual.after(intervalo.getUltima_alarma()))
 			intervalo.setUltima_alarma(alarma_actual);
@@ -75,19 +72,19 @@ public class ServIntervaloFechas {
 				Calendar nuevo_calendario = Calendar.getInstance();
 				nuevo_calendario.setTimeInMillis(0);
 				intervalo.setUltima_alarma(nuevo_calendario);
-				actualizarUltimaAlarma(alarma_actual);
+				actualizarUltimaAlarma(intervalo, alarma_actual);
 			}
 	}
 
-	public void encontrarMinimoMaximo(List<Alarma> alarmas) {
+	public void encontrarMinimoMaximo(IntervaloFechas intervalo, List<Alarma> alarmas) {
 
 		Calendar fecha_alarma_actual;
 
 		for (Alarma alarma_actual : alarmas) {
 
 			fecha_alarma_actual = alarma_actual.getFecha_inicio();
-			actualizarPrimerAlarma(fecha_alarma_actual);
-			actualizarUltimaAlarma(fecha_alarma_actual);
+			actualizarPrimerAlarma(intervalo, fecha_alarma_actual);
+			actualizarUltimaAlarma(intervalo, fecha_alarma_actual);
 		}
 	}
 
@@ -95,10 +92,6 @@ public class ServIntervaloFechas {
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	public IntervaloFechas getIntervalo() {
-		return intervalo;
-	}
 
 	/* ............................................. */
 	/* ............................................. */

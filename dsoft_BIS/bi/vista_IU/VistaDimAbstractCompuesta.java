@@ -86,7 +86,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		if (serv_dim_vista_seleccionada instanceof ServDimSitio)
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
-		serv_intervalo = new ServIntervaloFechas(new IntervaloFechas());
+		serv_intervalo = new ServIntervaloFechas();
 
 		this.consulta_interes = consulta_interes;
 		this.consulta_comparador = consulta_comparador;
@@ -267,8 +267,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
-		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
+		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
+				serv_medicion, serv_unidad_tiempo, true);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 
@@ -280,8 +280,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
+				serv_medicion, serv_unidad_tiempo, true);
 
 		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
 

@@ -17,7 +17,7 @@ import control_dimensiones.ServDimSitio;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimSitio extends VistaDimAbstractSimple {
+public class VistaDimSitioSimple extends VistaDimAbstractSimple {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class VistaDimSitio extends VistaDimAbstractSimple {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimSitio(List<Alarma> consultas) {
+	public VistaDimSitioSimple(List<Alarma> consultas) {
 
 		super(new ServDimSitio(), consultas);
 		configEventos(new EventoDimSitio(this));

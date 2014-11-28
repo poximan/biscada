@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import modelo.Temporada;
-import vista_IU.VistaDimTemporada;
+import vista_IU.VistaDimTemporadaSimple;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiTemporada;
@@ -35,7 +35,7 @@ public class EventoDimTemporada extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimTemporada(VistaDimTemporada vista_dimension) {
+	public EventoDimTemporada(VistaDimTemporadaSimple vista_dimension) {
 		super(vista_dimension);
 	}
 

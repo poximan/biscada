@@ -9,16 +9,16 @@ import java.util.List;
 
 import modelo.Alarma;
 import vista_evento.EventoDim;
-import vista_evento.EventoDimTemporada;
+import vista_evento.EventoDimSuceso;
 import control_dimensiones.ServDimSitio;
-import control_dimensiones.ServDimTemporada;
+import control_dimensiones.ServDimSuceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTemporada extends VistaDimAbstractSimple {
+public class VistaDimSucesoSimple extends VistaDimAbstractSimple {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,10 +37,10 @@ public class VistaDimTemporada extends VistaDimAbstractSimple {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimTemporada(List<Alarma> consultas) {
+	public VistaDimSucesoSimple(List<Alarma> consultas) {
 
-		super(new ServDimTemporada(), new ServDimSitio(), consultas);
-		configEventos(new EventoDimTemporada(this));
+		super(new ServDimSuceso(), new ServDimSitio(), consultas);
+		configEventos(new EventoDimSuceso(this));
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import modelo.TiempoDespeje;
-import vista_IU.VistaDimTiempoDespeje;
+import vista_IU.VistaDimTiempoDespejeSimple;
 import vista_IU.VistaKpiAbstract;
 import vista_IU.VistaKpiSitioCalidadServicio;
 import vista_IU.VistaKpiTiempoDespeje;
@@ -35,7 +35,7 @@ public class EventoDimTiempoDespeje extends EventoDim implements MouseListener {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public EventoDimTiempoDespeje(VistaDimTiempoDespeje vista_dimension) {
+	public EventoDimTiempoDespeje(VistaDimTiempoDespejeSimple vista_dimension) {
 		super(vista_dimension);
 	}
 

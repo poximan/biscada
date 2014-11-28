@@ -18,7 +18,7 @@ import control_dimensiones.ServDimTiempoDespeje;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTiempoDespeje extends VistaDimAbstractSimple {
+public class VistaDimTiempoDespejeSimple extends VistaDimAbstractSimple {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +37,7 @@ public class VistaDimTiempoDespeje extends VistaDimAbstractSimple {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimTiempoDespeje(List<Alarma> consultas) {
+	public VistaDimTiempoDespejeSimple(List<Alarma> consultas) {
 
 		super(new ServDimTiempoDespeje(), new ServDimSitio(), consultas);
 		configEventos(new EventoDimTiempoDespeje(this));

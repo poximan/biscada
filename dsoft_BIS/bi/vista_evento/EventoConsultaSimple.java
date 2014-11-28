@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 import modelo.ComponenteMenuDimension;
 import vista_IU.VistaConsultaSimple;
 import vista_IU.VistaDimAbstractSimple;
-import vista_IU.VistaDimSitio;
-import vista_IU.VistaDimSuceso;
-import vista_IU.VistaDimTemporada;
-import vista_IU.VistaDimTiempoDespeje;
+import vista_IU.VistaDimSitioSimple;
+import vista_IU.VistaDimSucesoSimple;
+import vista_IU.VistaDimTemporadaSimple;
+import vista_IU.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
 /* ............................................. */
@@ -59,25 +59,25 @@ public class EventoConsultaSimple implements ActionListener {
 			if (evt.getSource() == vista_simple.getBtnSitio()) {
 
 				frame_menu_dimension = new ComponenteMenuDimension("Segundo nivel de evaluacion: Sitio");
-				lanzarVentanaDimension(new VistaDimSitio(vista_simple.getComponenteConsulta().getConsultas()));
+				lanzarVentanaDimension(new VistaDimSitioSimple(vista_simple.getComponenteConsulta().getConsultas()));
 			} else
 				if (evt.getSource() == vista_simple.getBtnSuceso()) {
 
 					frame_menu_dimension = new ComponenteMenuDimension("Segundo nivel de evaluacion: Suceso");
-					lanzarVentanaDimension(new VistaDimSuceso(vista_simple.getComponenteConsulta().getConsultas()));
+					lanzarVentanaDimension(new VistaDimSucesoSimple(vista_simple.getComponenteConsulta().getConsultas()));
 				} else
 					if (evt.getSource() == vista_simple.getBtnTiempoDespeje()) {
 
 						frame_menu_dimension = new ComponenteMenuDimension(
 								"Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
-						lanzarVentanaDimension(new VistaDimTiempoDespeje(vista_simple.getComponenteConsulta()
+						lanzarVentanaDimension(new VistaDimTiempoDespejeSimple(vista_simple.getComponenteConsulta()
 								.getConsultas()));
 					} else
 						if (evt.getSource() == vista_simple.getBtnTemporada()) {
 
 							frame_menu_dimension = new ComponenteMenuDimension(
 									"Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");
-							lanzarVentanaDimension(new VistaDimTemporada(vista_simple.getComponenteConsulta()
+							lanzarVentanaDimension(new VistaDimTemporadaSimple(vista_simple.getComponenteConsulta()
 									.getConsultas()));
 						}
 		} else

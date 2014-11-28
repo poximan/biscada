@@ -442,6 +442,14 @@ public abstract class VistaDimAbstractSimple extends JPanel implements PanelInic
 		return ((TableModelMedicionTemporal) tbl_medicion.getModel()).getDatos();
 	}
 
+	public ServMedAbstract getMedicionSeleccionada() {
+		return getMedicion();
+	}
+
+	public ServDimUnidadTiempoAbstract getUnidadTiempoSeleccionada() {
+		return getDimensionUnidadTiempo();
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

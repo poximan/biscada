@@ -50,6 +50,10 @@ public class ServConsulta implements ObjetosBorrables {
 
 	private static Logger log = Logger.getLogger(ServConsulta.class);
 
+	private List<Alarma> resultado_fechas;
+	private List<Alarma> resultado_tipos;
+	private List<Alarma> resultado_duracion;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -150,15 +154,16 @@ public class ServConsulta implements ObjetosBorrables {
 
 		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
-		List<Alarma> resultado_fechas = buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
-				calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
-		liberarObjetos();
+		try {
+			resultado_fechas = buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
+					calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
 
-		List<Alarma> resultado_tipos = buscarTipos(familia, sitio, tipo_de_equipo, suceso);
-		liberarObjetos();
+			resultado_tipos = buscarTipos(familia, sitio, tipo_de_equipo, suceso);
 
-		List<Alarma> resultado_duracion = buscarDuracionAlarma(duracion_minima, duracion_maxima);
-		liberarObjetos();
+			resultado_duracion = buscarDuracionAlarma(duracion_minima, duracion_maxima);
+		}
+		catch (OutOfMemoryError excepcion) {
+		}
 
 		List<Alarma> resultado_join = Join(resultado_fechas, resultado_tipos, resultado_duracion);
 
@@ -171,6 +176,8 @@ public class ServConsulta implements ObjetosBorrables {
 
 		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
 
+		liberarObjetos();
+
 		return resultado_join;
 	}
 
@@ -180,7 +187,10 @@ public class ServConsulta implements ObjetosBorrables {
 		Collection<Alarma> resultado_parcial = CollectionUtils.intersection(resultado_fechas, resultado_tipos);
 		Collection<Alarma> resultado_final = CollectionUtils.intersection(resultado_parcial, resultado_duracion);
 
-		log.trace("consulta: join subconsultas -> " + resultado_final.size() + " aciertos");
+		if (resultado_final == null)
+			resultado_final = new ArrayList<Alarma>();
+
+		log.trace("consulta: join subconsultas -> " + resultado_final.size() + " aciertos\n");
 		return new ArrayList<Alarma>(resultado_final);
 	}
 
@@ -234,7 +244,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (resultado == null)
 			resultado = new ArrayList<Alarma>();
 
-		log.trace("consulta: duracion alarma -> " + resultado.size() + " aciertos");
+		log.trace("consulta: duracion alarma -> " + resultado.size() + " aciertos\n");
 
 		return resultado;
 	}
@@ -308,7 +318,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (resultado == null)
 			resultado = new ArrayList<Alarma>();
 
-		log.trace("consulta: rango de fechas -> " + resultado.size() + " aciertos");
+		log.trace("consulta: rango de fechas -> " + resultado.size() + " aciertos\n");
 
 		return resultado;
 	}
@@ -370,7 +380,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (resultado == null)
 			resultado = new ArrayList<Alarma>();
 
-		log.trace("consulta: coincidencia de tipos -> " + resultado.size() + " aciertos");
+		log.trace("consulta: coincidencia de tipos -> " + resultado.size() + " aciertos\n");
 
 		return resultado;
 	}
@@ -387,7 +397,7 @@ public class ServConsulta implements ObjetosBorrables {
 		consulta.prepareCall(sesion, new DatabaseRecord());
 		String sql_string = consulta.getSQLString();
 
-		log.trace(sql_string + "\n");
+		log.trace(sql_string);
 	}
 
 	/**
@@ -598,6 +608,11 @@ public class ServConsulta implements ObjetosBorrables {
 
 	@Override
 	public void liberarObjetos() {
+
+		resultado_fechas.clear();
+		resultado_tipos.clear();
+		resultado_duracion.clear();
+
 		System.gc();
 	}
 }

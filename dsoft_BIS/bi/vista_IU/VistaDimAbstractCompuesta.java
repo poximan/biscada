@@ -5,7 +5,6 @@
 
 package vista_IU;
 
-import graficas.GraficoLineas;
 import graficas.graficoComparable;
 
 import java.awt.Dimension;
@@ -18,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -31,15 +31,13 @@ import control_dimensiones.ServDimSitio;
 import control_dimensiones.ServDimUnidadTiempoAbstract;
 import control_dimensiones.ServIntervaloFechas;
 import control_mediciones.ServMedAbstract;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstractCompuesta extends JPanel implements
-		PanelIniciable {
+public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelIniciable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -78,11 +76,9 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstractCompuesta(
-			ServDimAbstract serv_dim_vista_seleccionada,
-			ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
+	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
+			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 
@@ -102,14 +98,11 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 	 * @param consultas
 	 * @wbp.parser.constructor
 	 */
-	public VistaDimAbstractCompuesta(
-			ServDimAbstract serv_dim_vista_seleccionada,
-			ServDimSitio serv_dim_sitio, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
+			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
 
-		this(serv_dim_vista_seleccionada, serv_medicion, serv_unidad_tiempo,
-				consulta_interes, consulta_comparador);
+		this(serv_dim_vista_seleccionada, serv_medicion, serv_unidad_tiempo, consulta_interes, consulta_comparador);
 		this.serv_dim_sitio = serv_dim_sitio;
 	}
 
@@ -127,31 +120,21 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 		JSplitPane splitPane_tablas = new JSplitPane();
 		splitPane_tablas.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(
-				Alignment.TRAILING).addGroup(
+		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.TRAILING).addGroup(
 				Alignment.LEADING,
-				gl_pl_tabla
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(splitPane_tablas,
-								GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+				gl_pl_tabla.createSequentialGroup().addContainerGap()
+						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
 						.addContainerGap()));
-		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_pl_tabla
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(splitPane_tablas,
-								GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pl_tabla.createSequentialGroup().addContainerGap()
+						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
 						.addContainerGap()));
 
 		JPanel panelConsultaInteres = new JPanel();
-		panelConsultaInteres.setBorder(new TitledBorder(null,
-				"Consulta interes", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		panelConsultaInteres.setBorder(new TitledBorder(null, "Consulta interes", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		splitPane_tablas.setLeftComponent(panelConsultaInteres);
-		scrPl_interes = new JScrollPane(
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+		scrPl_interes = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		// -------------------------------------
@@ -160,8 +143,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 		// -------------------------------------
 
 		tbl_filas_interes = new JTable(new TableModelEntradaFila(new Object[0]));
-		tbl_medicion_interes = new JTable(new TableModelMedicionTemporal(
-				new float[0][0], new String[] { "" }));
+		tbl_medicion_interes = new JTable(new TableModelMedicionTemporal(new float[0][0], new String[] { "" }));
 
 		tbl_medicion_interes.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrPl_interes.setViewportView(tbl_medicion_interes);
@@ -171,8 +153,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		Dimension dimension_interes = tbl_filas_interes
-				.getPreferredScrollableViewportSize();
+		Dimension dimension_interes = tbl_filas_interes.getPreferredScrollableViewportSize();
 		// define el tamaño preferido de la tabla
 		dimension_interes.width = tbl_filas_interes.getPreferredSize().width + 90;
 		tbl_filas_interes.setPreferredScrollableViewportSize(dimension_interes);
@@ -180,46 +161,33 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		dimension_interes = tbl_medicion_interes
-				.getPreferredScrollableViewportSize();
-		tbl_medicion_interes
-				.setPreferredScrollableViewportSize(dimension_interes);
+		dimension_interes = tbl_medicion_interes.getPreferredScrollableViewportSize();
+		tbl_medicion_interes.setPreferredScrollableViewportSize(dimension_interes);
 		tbl_medicion_interes.setIntercellSpacing(new Dimension(0, 0));
 
-		GroupLayout gl_panelConsultaInteres = new GroupLayout(
-				panelConsultaInteres);
-		gl_panelConsultaInteres.setHorizontalGroup(gl_panelConsultaInteres
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panelConsultaInteres
-								.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(scrPl_interes,
-										GroupLayout.DEFAULT_SIZE, 824,
-										Short.MAX_VALUE).addContainerGap()));
-		gl_panelConsultaInteres.setVerticalGroup(gl_panelConsultaInteres
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panelConsultaInteres
-								.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(scrPl_interes,
-										GroupLayout.DEFAULT_SIZE, 144,
-										Short.MAX_VALUE).addContainerGap()));
+		GroupLayout gl_panelConsultaInteres = new GroupLayout(panelConsultaInteres);
+		gl_panelConsultaInteres.setHorizontalGroup(gl_panelConsultaInteres.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaInteres.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_interes, GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+								.addContainerGap()));
+		gl_panelConsultaInteres.setVerticalGroup(gl_panelConsultaInteres.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaInteres.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_interes, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+								.addContainerGap()));
 		panelConsultaInteres.setLayout(gl_panelConsultaInteres);
 
 		JPanel panelConsultaComparador = new JPanel();
-		panelConsultaComparador.setBorder(new TitledBorder(null,
-				"Consulta comparador", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		panelConsultaComparador.setBorder(new TitledBorder(null, "Consulta comparador", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		splitPane_tablas.setRightComponent(panelConsultaComparador);
 
-		JScrollPane scrPl_comparador = new JScrollPane(
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+		JScrollPane scrPl_comparador = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-		tbl_filas_comparador = new JTable(new TableModelEntradaFila(
-				new Object[0]));
-		tbl_medicion_comparador = new JTable(new TableModelMedicionTemporal(
-				new float[0][0], new String[] { "" }));
+		tbl_filas_comparador = new JTable(new TableModelEntradaFila(new Object[0]));
+		tbl_medicion_comparador = new JTable(new TableModelMedicionTemporal(new float[0][0], new String[] { "" }));
 
 		tbl_medicion_comparador.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrPl_comparador.setViewportView(tbl_medicion_comparador);
@@ -229,88 +197,62 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		Dimension dimension_comparador = tbl_filas_comparador
-				.getPreferredScrollableViewportSize();
+		Dimension dimension_comparador = tbl_filas_comparador.getPreferredScrollableViewportSize();
 		// define el tamaño preferido de la tabla
 		dimension_comparador.width = tbl_filas_comparador.getPreferredSize().width + 90;
-		tbl_filas_comparador
-				.setPreferredScrollableViewportSize(dimension_comparador);
+		tbl_filas_comparador.setPreferredScrollableViewportSize(dimension_comparador);
 		tbl_filas_comparador.setIntercellSpacing(new Dimension(0, 0));
 
 		// recuperar el tamaño preferido en caso que la tabla este contenida en
 		// un scroll
-		dimension_comparador = tbl_medicion_comparador
-				.getPreferredScrollableViewportSize();
-		tbl_medicion_comparador
-				.setPreferredScrollableViewportSize(dimension_comparador);
+		dimension_comparador = tbl_medicion_comparador.getPreferredScrollableViewportSize();
+		tbl_medicion_comparador.setPreferredScrollableViewportSize(dimension_comparador);
 		tbl_medicion_comparador.setIntercellSpacing(new Dimension(0, 0));
 
-		GroupLayout gl_panelConsultaComparador = new GroupLayout(
-				panelConsultaComparador);
-		gl_panelConsultaComparador
-				.setHorizontalGroup(gl_panelConsultaComparador
-						.createParallelGroup(Alignment.LEADING).addGroup(
-								gl_panelConsultaComparador
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(scrPl_comparador,
-												GroupLayout.DEFAULT_SIZE, 819,
-												Short.MAX_VALUE)
-										.addContainerGap()));
-		gl_panelConsultaComparador.setVerticalGroup(gl_panelConsultaComparador
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panelConsultaComparador
-								.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(scrPl_comparador,
-										GroupLayout.DEFAULT_SIZE, 128,
-										Short.MAX_VALUE).addContainerGap()));
+		GroupLayout gl_panelConsultaComparador = new GroupLayout(panelConsultaComparador);
+		gl_panelConsultaComparador.setHorizontalGroup(gl_panelConsultaComparador.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaComparador.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_comparador, GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+								.addContainerGap()));
+		gl_panelConsultaComparador.setVerticalGroup(gl_panelConsultaComparador.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_panelConsultaComparador.createSequentialGroup().addContainerGap()
+								.addComponent(scrPl_comparador, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+								.addContainerGap()));
 		panelConsultaComparador.setLayout(gl_panelConsultaComparador);
 		splitPane_tablas.setDividerLocation(150);
 
 		JScrollPane scrollPane = new JScrollPane();
 
 		gl_contentPane = new GroupLayout(this);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(
-				Alignment.LEADING).addGroup(
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_contentPane
 						.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(splitPane_graf_tablas,
-								GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE,
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE).addGap(2)));
-		gl_contentPane
-				.setVerticalGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_contentPane
+						.createSequentialGroup()
 						.addGroup(
 								gl_contentPane
-										.createSequentialGroup()
+										.createParallelGroup(Alignment.LEADING)
 										.addGroup(
 												gl_contentPane
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addComponent(
-																				splitPane_graf_tablas,
-																				GroupLayout.DEFAULT_SIZE,
-																				278,
-																				Short.MAX_VALUE))
-														.addGroup(
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addGap(122)
-																		.addComponent(
-																				scrollPane,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addContainerGap()));
+														.createSequentialGroup()
+														.addContainerGap()
+														.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE,
+																278, Short.MAX_VALUE))
+										.addGroup(
+												gl_contentPane
+														.createSequentialGroup()
+														.addGap(122)
+														.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap()));
 
 		splitPane_graf_tablas.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		splitPane_graf_tablas.setRightComponent(pl_tabla);
@@ -318,9 +260,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 		splitPane_graf_tablas.setOneTouchExpandable(true);
 		splitPane_graf_tablas.setDividerLocation(300);
 
-		pl_tabla.setBorder(new TitledBorder(UIManager
-				.getBorder("TitledBorder.border"), "Tabla",
-				TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pl_tabla.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tabla", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		pl_tabla.setLayout(gl_pl_tabla);
 
 		pl_tabla.setLayout(gl_pl_tabla);
@@ -334,8 +275,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 		setLayout(gl_contentPane);
 	}
 
-	public void ejecutarDimension(ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	public void ejecutarDimension(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		armarTablaInteres(serv_medicion, serv_unidad_tiempo);
 		armarTablaComparador(serv_medicion, serv_unidad_tiempo);
@@ -343,47 +283,39 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 		armarSolapasGraficas();
 	}
 
-	private void armarTablaInteres(ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	private void armarTablaInteres(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
-		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(
-				serv_intervalo, new IntervaloFechas(), serv_medicion,
-				serv_unidad_tiempo, true);
+		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
+				serv_medicion, serv_unidad_tiempo, true);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 
-		tbl_medicion_interes.setModel(new TableModelMedicionTemporal(
-				datos_tabla_interes, encabezado_tabla_interes));
-		tbl_filas_interes.setModel(new TableModelEntradaFila(
-				serv_dim_vista_seleccionada.getGrupos()));
+		tbl_medicion_interes.setModel(new TableModelMedicionTemporal(datos_tabla_interes, encabezado_tabla_interes));
+		tbl_filas_interes.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 	}
 
-	private void armarTablaComparador(ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	private void armarTablaComparador(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(
-				serv_intervalo, new IntervaloFechas(), serv_medicion,
-				serv_unidad_tiempo, true);
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
+				serv_medicion, serv_unidad_tiempo, true);
 
 		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
 
-		tbl_medicion_comparador.setModel(new TableModelMedicionTemporal(
-				datos_tabla_comparador, encabezado_tabla_comparador));
-		tbl_filas_comparador.setModel(new TableModelEntradaFila(
-				serv_dim_vista_seleccionada.getGrupos()));
+		tbl_medicion_comparador.setModel(new TableModelMedicionTemporal(datos_tabla_comparador,
+				encabezado_tabla_comparador));
+		tbl_filas_comparador.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 	}
 
 	public void armarSolapasGraficas() {
 
-		graficoComparable tercer_grafico = new graficoComparable(
-				datos_tabla_interes, encabezado_tabla_interes,
+		graficoComparable tercer_grafico = new graficoComparable(datos_tabla_interes, encabezado_tabla_interes,
 				tbl_filas_interes);
 
-		JPanel scroll_segundo_grafico = tercer_grafico.createDemoPanel();
+		JPanel scroll_segundo_grafico = graficoComparable.createDemoPanel();
 
 		if (tabPane_grafico.getTabCount() == 0) {
 			tabPane_grafico.addTab("..lineas", scroll_segundo_grafico);
@@ -395,16 +327,14 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements
 	}
 
 	/**
-	 * atraves de la vista se entrega el contenido de toda la tabla, propiedad
-	 * del modelo de la tabla, que debe ser casteado al tipo exclusivo creado
-	 * para este dato, al que se le agrego un metodo adicional para devolver su
+	 * atraves de la vista se entrega el contenido de toda la tabla, propiedad del modelo de la tabla, que debe ser
+	 * casteado al tipo exclusivo creado para este dato, al que se le agrego un metodo adicional para devolver su
 	 * contenido.
 	 * 
 	 * @return
 	 */
 	public float[][] getValoresTabla() {
-		return ((TableModelMedicionTemporal) tbl_medicion_interes.getModel())
-				.getDatos();
+		return ((TableModelMedicionTemporal) tbl_medicion_interes.getModel()).getDatos();
 	}
 
 	/* ............................................. */

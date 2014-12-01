@@ -28,7 +28,7 @@ public class graficoComparable extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(GraficoLineas.class);
+	private static Logger log = Logger.getLogger(graficoComparable.class);
 
 	private static JTable tbl_titulo_filas;
 	private static float[][] datos_tabla;
@@ -153,7 +153,6 @@ public class graficoComparable extends JPanel {
 
 		JFreeChart result = new JFreeChart(plot);
 		return result;
-
 	}
 
 	/**

@@ -1,13 +1,12 @@
 package modelo;
 
 import java.util.Calendar;
-
 import javax.annotation.Generated;
 import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "Dali", date = "2014-11-28T12:24:38.706-0300")
+@Generated(value="Dali", date="2014-11-30T22:28:03.456-0300")
 @StaticMetamodel(ArchivoDBF.class)
 public class ArchivoDBF_ {
 	public static volatile SingularAttribute<ArchivoDBF, Integer> id;

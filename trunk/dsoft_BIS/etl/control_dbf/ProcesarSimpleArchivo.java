@@ -71,10 +71,11 @@ public class ProcesarSimpleArchivo {
 		alarmas_transformadas = transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
 		transformadas = alarmas_transformadas.size();
 
-		if (!alarmas_transformadas.isEmpty()) {
-			cargador = new ETL2Cargar(alarmas_transformadas, dbf_servicio_crud);
+		cargador = new ETL2Cargar(alarmas_transformadas, dbf_servicio_crud);
+		
+		if (!alarmas_transformadas.isEmpty())
 			cargador.cargarAlarmas(archivo_actual);
-		} else
+		else
 			cargador.rechazarArchivo(archivo_actual);
 
 		reportar(extraidas, transformadas, alarmas_defectuosas);

@@ -18,7 +18,7 @@ import control_dimensiones.ServDimTiempoDespeje;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTiempoDespejeSimple extends VistaDimAbstractSimple {
+public class VistaDimTiempoDespejeSimple extends VistaDimAbstractSimpleModificada {
 
 	/* ............................................. */
 	/* ............................................. */

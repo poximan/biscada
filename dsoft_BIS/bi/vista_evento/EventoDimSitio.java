@@ -72,8 +72,8 @@ public class EventoDimSitio extends EventoDim implements MouseListener, VentanaL
 		int fila = tabla.getSelectedRow();
 		Sitio sitio_actual = (Sitio) tabla.getValueAt(fila, 0);
 
-		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getTbl_medicion().getModel())
-				.getDatosFila(fila);
+		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getComponenteTabla().getTbl_medicion()
+				.getModel()).getDatosFila(fila);
 
 		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
 

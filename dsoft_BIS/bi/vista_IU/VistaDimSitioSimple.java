@@ -17,7 +17,7 @@ import control_dimensiones.ServDimSitio;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimSitioSimple extends VistaDimAbstractSimple {
+public class VistaDimSitioSimple extends VistaDimAbstractSimpleModificada {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -46,6 +46,6 @@ public class VistaDimSitioSimple extends VistaDimAbstractSimple {
 	public void configEventos(EventoDim eventos) {
 
 		super.configEventos(eventos);
-		getTbl_titulo_filas().addMouseListener(eventos);
+		getComponenteTabla().getTbl_titulo_filas().addMouseListener(eventos);
 	}
 }

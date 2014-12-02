@@ -72,7 +72,7 @@ public class ProcesarSimpleArchivo {
 		transformadas = alarmas_transformadas.size();
 
 		cargador = new ETL2Cargar(alarmas_transformadas, dbf_servicio_crud);
-		
+
 		if (!alarmas_transformadas.isEmpty())
 			cargador.cargarAlarmas(archivo_actual);
 		else

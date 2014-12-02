@@ -19,7 +19,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class graficoComparable extends JPanel {
+public class GraficoComparable extends JPanel {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -28,12 +28,14 @@ public class graficoComparable extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger log = Logger.getLogger(graficoComparable.class);
+	private static Logger log = Logger.getLogger(GraficoComparable.class);
 
 	private static JTable tbl_titulo_filas;
 	private static JTable tbl_titulo_filas_comparar;
+
 	private static float[][] datos_tabla;
 	private static float[][] datos_tabla_comparar;
+
 	private static String[] encabezado_tabla;
 	private static String[] encabezado_tabla_comparar;
 
@@ -42,29 +44,25 @@ public class graficoComparable extends JPanel {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public graficoComparable(float[][] datos_tabla, String[] encabezado_tabla,
-			JTable tbl_titulo_filas) {
+	public GraficoComparable(float[][] datos_tabla, String[] encabezado_tabla, JTable tbl_titulo_filas) {
 
-		this.tbl_titulo_filas = tbl_titulo_filas;
-		this.datos_tabla = datos_tabla;
-		this.encabezado_tabla = encabezado_tabla;
-
+		GraficoComparable.tbl_titulo_filas = tbl_titulo_filas;
+		GraficoComparable.datos_tabla = datos_tabla;
+		GraficoComparable.encabezado_tabla = encabezado_tabla;
 	}
 
 	/*
 	 * Datos para comparar armando 2do dataset
 	 */
 
-	public void datosParaComparar(float[][] datos_tabla_comparacion,
-			String[] encabezado_tabla_comparacion,
+	public void datosParaComparar(float[][] datos_tabla_comparacion, String[] encabezado_tabla_comparacion,
 			JTable tbl_titulo_filas_comparacion) {
-		
+
 		tbl_titulo_filas_comparar = tbl_titulo_filas_comparacion;
 		datos_tabla_comparar = datos_tabla_comparacion;
 		encabezado_tabla_comparar = encabezado_tabla_comparacion;
-		System.out.println("esto es "+ tbl_titulo_filas_comparacion.getRowCount());
+		System.out.println("esto es " + tbl_titulo_filas_comparacion.getRowCount());
 		System.out.println("porque se queja? " + tbl_titulo_filas_comparar.getRowCount());
-
 	}
 
 	/**
@@ -85,11 +83,12 @@ public class graficoComparable extends JPanel {
 		try {
 			for (int i = 0; i < datos_tabla.length; i++)
 				for (int j = 0; j < datos_tabla[i].length; j++)
-					dataset.setValue(datos_tabla[i][j], fila[i],
-							encabezado_tabla[j]);
-		} catch (ArrayIndexOutOfBoundsException excepcion) {
+					dataset.setValue(datos_tabla[i][j], fila[i], encabezado_tabla[j]);
+		}
+		catch (ArrayIndexOutOfBoundsException excepcion) {
 			log.error("arreglo fuera de rango");
-		} catch (IllegalArgumentException excepcion) {
+		}
+		catch (IllegalArgumentException excepcion) {
 			log.error("faltan argumentos");
 		}
 
@@ -115,11 +114,12 @@ public class graficoComparable extends JPanel {
 		try {
 			for (int i = 0; i < datos_tabla_comparar.length; i++)
 				for (int j = 0; j < datos_tabla_comparar[i].length; j++)
-					dataset.setValue(datos_tabla_comparar[i][j], filaComparacion[i],
-							encabezado_tabla_comparar[j]);
-		} catch (ArrayIndexOutOfBoundsException excepcion) {
+					dataset.setValue(datos_tabla_comparar[i][j], filaComparacion[i], encabezado_tabla_comparar[j]);
+		}
+		catch (ArrayIndexOutOfBoundsException excepcion) {
 			log.error("arreglo fuera de rango");
-		} catch (IllegalArgumentException excepcion) {
+		}
+		catch (IllegalArgumentException excepcion) {
 			log.error("faltan argumentos");
 		}
 
@@ -138,25 +138,20 @@ public class graficoComparable extends JPanel {
 		NumberAxis rangeAxis1 = new NumberAxis("Value");
 		rangeAxis1.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		LineAndShapeRenderer renderer1 = new LineAndShapeRenderer();
-		renderer1
-				.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
-		CategoryPlot subplot1 = new CategoryPlot(dataset1, null, rangeAxis1,
-				renderer1);
+		renderer1.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
+		CategoryPlot subplot1 = new CategoryPlot(dataset1, null, rangeAxis1, renderer1);
 		subplot1.setDomainGridlinesVisible(true);
 
 		CategoryDataset dataset2 = createDataset2();
 		NumberAxis rangeAxis2 = new NumberAxis("Value");
 		rangeAxis2.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
-		renderer2
-				.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
-		CategoryPlot subplot2 = new CategoryPlot(dataset2, null, rangeAxis2,
-				renderer2);
+		renderer2.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
+		CategoryPlot subplot2 = new CategoryPlot(dataset2, null, rangeAxis2, renderer2);
 		subplot2.setDomainGridlinesVisible(true);
 
 		CategoryAxis domainAxis = new CategoryAxis("Category");
-		CombinedCategoryPlot plot = new CombinedCategoryPlot(domainAxis,
-				new NumberAxis("Range"));
+		CombinedCategoryPlot plot = new CombinedCategoryPlot(domainAxis, new NumberAxis("Range"));
 		plot.add(subplot1, 2);
 		plot.add(subplot2, 1);
 

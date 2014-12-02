@@ -57,6 +57,7 @@ public class CombinedCategoryPlot extends CombinedDomainCategoryPlot {
 	 * @param subplot
 	 *            the subplot.
 	 */
+	@Override
 	public void add(CategoryPlot subplot) {
 		this.add(subplot, 1);
 	}
@@ -69,6 +70,7 @@ public class CombinedCategoryPlot extends CombinedDomainCategoryPlot {
 	 * @param weight
 	 *            the weight for the subplot.
 	 */
+	@Override
 	public void add(CategoryPlot subplot, int weight) {
 		super.add(subplot, weight);
 
@@ -91,6 +93,7 @@ public class CombinedCategoryPlot extends CombinedDomainCategoryPlot {
 	 *
 	 * @return The bounds.
 	 */
+	@Override
 	public Range getDataRange(ValueAxis axis) {
 
 		Range l_result = null;
@@ -112,6 +115,7 @@ public class CombinedCategoryPlot extends CombinedDomainCategoryPlot {
 	 * @param axis
 	 *            the axis.
 	 */
+	@Override
 	public void setRangeAxis(ValueAxis axis) {
 
 		@SuppressWarnings("unchecked")

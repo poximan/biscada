@@ -54,8 +54,8 @@ public class GraficoKPI extends JPanel {
 
 	public GraficoKPI() {
 
-		setSize(115, 103);
-		setVisible(true);
+	//	setSize(115, 103);
+	//	setVisible(true);
 	}
 
 	/* ............................................. */
@@ -104,7 +104,7 @@ public class GraficoKPI extends JPanel {
 		meterplot.setMeterAngle(240);
 
 		meterplot.setTickLabelsVisible(true);
-		// meterplot.setTickLabelFont(new Font("Arial", 1, 12));
+		meterplot.setTickLabelFont(new Font("Arial", 1, 12));
 		meterplot.setTickLabelPaint(Color.black);
 		meterplot.setTickSize(5D);
 		meterplot.setTickPaint(Color.gray);

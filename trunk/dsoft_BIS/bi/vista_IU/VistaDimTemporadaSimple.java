@@ -18,7 +18,7 @@ import control_dimensiones.ServDimTemporada;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTemporadaSimple extends VistaDimAbstractSimple {
+public class VistaDimTemporadaSimple extends VistaDimAbstractSimpleModificada {
 
 	/* ............................................. */
 	/* ............................................. */

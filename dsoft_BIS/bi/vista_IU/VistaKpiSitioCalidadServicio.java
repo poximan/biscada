@@ -26,7 +26,6 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	/* ............................................. */
 
 	private static final long serialVersionUID = 1L;
-	private VistaKpiAbstract vista_kpi;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -76,7 +75,7 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
 
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
-		
+
 		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
 		getTxtPromedio().setText(
 				String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio, serv_unidad_tiempo,
@@ -86,7 +85,7 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 						serv_medicion, sitio_actual)));
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
 		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
-		
+
 		getTextFieldMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_maximo()));
 		getTextFieldMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_minimo()));
 

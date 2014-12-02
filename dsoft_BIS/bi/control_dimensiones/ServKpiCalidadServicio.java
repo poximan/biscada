@@ -31,8 +31,6 @@ public class ServKpiCalidadServicio implements ServKpi {
 	private int columna_mayor;
 	private float arregloVarianza[];
 	private float varianza;
-	private float max;
-	private float min;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -48,22 +46,19 @@ public class ServKpiCalidadServicio implements ServKpi {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public float actualFilaSimple(ServDimSitio serv_dim_sitio,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
 
 		// iterar el set de alarmas de la consulta, pero agrupadas por Sitio
-		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio
-				.getMap().entrySet())
+		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio.getMap().entrySet())
 
 			// aceptar solo la clase que coincide con el sitio referenciado
 			// mediante drill down
 			if (hash_alarmas_sitio_interes.getKey().equals(sitio_actual)) {
 
-				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes
-						.getValue();
+				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes.getValue();
 
 				for (Alarma alarmas_nivel : alarmas_sitio_interes)
 					if (esDeInteres(alarmas_nivel))
@@ -77,24 +72,20 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return 0;
 	}
 
-	public float promedioFilaSimple(ServDimSitio serv_dim_sitio,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			ServMedAbstract serv_medicion,
-			ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
+	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
 
 		float[] arreglo_valores;
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
 
 		// iterar el set de alarmas de la consulta, pero agrupadas por Sitio
-		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio
-				.getMap().entrySet())
+		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio.getMap().entrySet())
 
 			// aceptar solo la clase que coincide con el sitio referenciado
 			// mediante drill down
 			if (hash_alarmas_sitio_interes.getKey().equals(sitio_actual)) {
 
-				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes
-						.getValue();
+				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes.getValue();
 
 				for (Alarma alarmas_nivel : alarmas_sitio_interes)
 					if (esDeInteres(alarmas_nivel))
@@ -102,9 +93,9 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 		try {
-			arreglo_valores = serv_medicion.completarFila(lista_interes,
-					servIntervaloFechas, serv_unidad_tiempo);
-		} catch (IndexOutOfBoundsException excepcion) {
+			arreglo_valores = serv_medicion.completarFila(lista_interes, servIntervaloFechas, serv_unidad_tiempo);
+		}
+		catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}
 
@@ -154,8 +145,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 			System.out.println(" es " + varianza);
 		}
 
-		System.out.println("la varianza al cuadrado es: " + varianza
-				+ " divisor " + divisor);
+		System.out.println("la varianza al cuadrado es: " + varianza + " divisor " + divisor);
 
 		promedioCuadrado = (float) Math.pow(promediar(arregloVarianza), 2);
 		System.out.println("el promedio al 2 es " + promedioCuadrado);
@@ -192,15 +182,13 @@ public class ServKpiCalidadServicio implements ServKpi {
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
 
 		// iterar el set de alarmas de la consulta, pero agrupadas por Sitio
-		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio
-				.getMap().entrySet())
+		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_sitio_interes : serv_dim_sitio.getMap().entrySet())
 
 			// aceptar solo la clase que coincide con el sitio referenciado
 			// mediante drill down
 			if (hash_alarmas_sitio_interes.getKey().equals(sitio_actual)) {
 
-				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes
-						.getValue();
+				List<Alarma> alarmas_sitio_interes = hash_alarmas_sitio_interes.getValue();
 
 				for (Alarma alarmas_nivel : alarmas_sitio_interes)
 					if (esDeInteres(alarmas_nivel))
@@ -218,14 +206,11 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 	private boolean esDeInteres(Alarma alarmas_nivel) {
 
-		if (alarmas_nivel.getFamilia().getDescripcion()
-				.equals((new Potable()).toString()))
+		if (alarmas_nivel.getFamilia().getDescripcion().equals((new Potable()).toString()))
 			return true;
 
-		if (alarmas_nivel.getFamilia().getDescripcion()
-				.equals((new Cloacal()).toString())
-				|| alarmas_nivel.getFamilia().getDescripcion()
-						.equals((new Reuso()).toString()))
+		if (alarmas_nivel.getFamilia().getDescripcion().equals((new Cloacal()).toString())
+				|| alarmas_nivel.getFamilia().getDescripcion().equals((new Reuso()).toString()))
 			return true;
 
 		return false;
@@ -244,7 +229,8 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 			return columna_con_filas_sumadas;
-		} catch (NegativeArraySizeException excepcion) {
+		}
+		catch (NegativeArraySizeException excepcion) {
 			return new float[1];
 		}
 	}

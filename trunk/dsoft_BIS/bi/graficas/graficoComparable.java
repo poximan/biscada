@@ -133,7 +133,7 @@ public class graficoComparable extends JPanel {
 	private static JFreeChart createChart() {
 
 		CategoryDataset dataset1 = createDataset1();
-		NumberAxis rangeAxis1 = new NumberAxis("Value");
+		NumberAxis rangeAxis1 = new NumberAxis("Consulta Interes");
 		rangeAxis1.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		LineAndShapeRenderer renderer1 = new LineAndShapeRenderer();
 		renderer1
@@ -143,7 +143,7 @@ public class graficoComparable extends JPanel {
 		subplot1.setDomainGridlinesVisible(true);
 
 		CategoryDataset dataset2 = createDataset2();
-		NumberAxis rangeAxis2 = new NumberAxis("Value");
+		NumberAxis rangeAxis2 = new NumberAxis("Consulta Comparador");
 		rangeAxis2.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
 		renderer2
@@ -152,9 +152,9 @@ public class graficoComparable extends JPanel {
 				renderer2);
 		subplot2.setDomainGridlinesVisible(true);
 
-		CategoryAxis domainAxis = new CategoryAxis("Category");
+		CategoryAxis domainAxis = new CategoryAxis("Alarmas");
 		CombinedCategoryPlot plot = new CombinedCategoryPlot(domainAxis,
-				new NumberAxis("Range"));
+				new NumberAxis("Cantidades"));
 		plot.add(subplot1, 2);
 		plot.add(subplot2, 1);
 

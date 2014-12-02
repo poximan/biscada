@@ -154,11 +154,14 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
-		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
-				serv_medicion, serv_unidad_tiempo, true);
+		IntervaloFechas intervalo = new IntervaloFechas();
+
+		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
+				serv_unidad_tiempo, true);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 
+		compTblInteres.setIntervalo(intervalo);
 		compTblInteres.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
 		compTblInteres.contruirModeloEntradaColumnas(datos_tabla_interes, encabezado_tabla_interes);
 	}
@@ -167,11 +170,14 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, new IntervaloFechas(),
-				serv_medicion, serv_unidad_tiempo, true);
+		IntervaloFechas intervalo = new IntervaloFechas();
+
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
+				serv_unidad_tiempo, true);
 
 		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
 
+		compTblComparador.setIntervalo(intervalo);
 		compTblComparador.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
 		compTblComparador.contruirModeloEntradaColumnas(datos_tabla_comparador, encabezado_tabla_comparador);
 	}

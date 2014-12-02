@@ -71,7 +71,7 @@ public class ListModelOrdenada extends AbstractListModel<ArchivoDBF> {
 	}
 
 	@Override
-	public ArchivoDBF getElementAt(int index) {
+	public synchronized ArchivoDBF getElementAt(int index) {
 		return (ArchivoDBF) model.toArray()[index];
 	}
 

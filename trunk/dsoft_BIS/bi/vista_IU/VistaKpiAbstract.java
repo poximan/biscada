@@ -36,7 +36,8 @@ import control_general.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
+public abstract class VistaKpiAbstract extends JPanel implements
+		PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -50,6 +51,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	private JPanel panelIndicador;
 	private JPanel panelResumen;
 
+	private JLabel labelMaximo;
+	private JLabel labelMinimo;
 	private JLabel lblTotal;
 	private JLabel lblPromedio;
 	private JLabel lblActual;
@@ -68,6 +71,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	private JTextField textFieldVarianza;
 	private JTextField textFieldDesvEstandar;
 	private JLabel lblMedidasDeDispersin;
+	private JTextField textFieldMinimo;
+	private JTextField textFieldMaximo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -104,12 +109,13 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		JLabel label = new JLabel("%");
+		JLabel lblPromedio_1 = new JLabel("% Promedio");
 		spinner_porcentaje = new JSpinner();
 
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
-				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
-		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia()
+				.getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1,
+				100, 1));
 
 		lblTotal = new JLabel("Total");
 		lblPromedio = new JLabel("Promedio");
@@ -131,6 +137,24 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		lblMedidasDeDispersin.setFont(new Font("Tahoma", Font.BOLD, 18));
 		panelResumen.add(lblMedidasDeDispersin);
 
+		labelMaximo = new JLabel("M\u00E1ximo");
+		panelResumen.add(labelMaximo);
+
+		textFieldMaximo = new JTextField();
+		textFieldMaximo.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldMaximo.setEditable(false);
+		textFieldMaximo.setColumns(10);
+		panelResumen.add(textFieldMaximo);
+
+		labelMinimo = new JLabel("M\u00EDnimo");
+		panelResumen.add(labelMinimo);
+
+		textFieldMinimo = new JTextField();
+		textFieldMinimo.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldMinimo.setEditable(false);
+		textFieldMinimo.setColumns(10);
+		panelResumen.add(textFieldMinimo);
+
 		lblTotal.setBounds(10, 12, 57, 20);
 		panelResumen.add(lblTotal);
 
@@ -149,44 +173,72 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelHistograma.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelGeneral
-						.createSequentialGroup()
-						.addGap(21)
+		gl_panelGeneral
+				.setHorizontalGroup(gl_panelGeneral
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(
 								gl_panelGeneral
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-												613, Short.MAX_VALUE)
+										.createSequentialGroup()
+										.addGap(21)
 										.addGroup(
 												gl_panelGeneral
-														.createSequentialGroup()
-														.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 272,
-																GroupLayout.PREFERRED_SIZE)
-														.addGap(18)
-														.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 323,
-																Short.MAX_VALUE))).addGap(23)));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelGeneral
-						.createSequentialGroup()
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addComponent(
+																panelHistograma,
+																Alignment.TRAILING,
+																GroupLayout.DEFAULT_SIZE,
+																451,
+																Short.MAX_VALUE)
+														.addGroup(
+																gl_panelGeneral
+																		.createSequentialGroup()
+																		.addComponent(
+																				panelResumen,
+																				GroupLayout.PREFERRED_SIZE,
+																				272,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addGap(18)
+																		.addComponent(
+																				panelIndicador,
+																				GroupLayout.DEFAULT_SIZE,
+																				161,
+																				Short.MAX_VALUE)))
+										.addGap(23)));
+		gl_panelGeneral
+				.setVerticalGroup(gl_panelGeneral
+						.createParallelGroup(Alignment.LEADING)
 						.addGroup(
 								gl_panelGeneral
-										.createParallelGroup(Alignment.LEADING)
+										.createSequentialGroup()
 										.addGroup(
 												gl_panelGeneral
-														.createSequentialGroup()
-														.addContainerGap()
-														.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 250,
-																GroupLayout.PREFERRED_SIZE))
-										.addGroup(
-												gl_panelGeneral
-														.createSequentialGroup()
-														.addGap(27)
-														.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 146,
-																GroupLayout.PREFERRED_SIZE)))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-						.addContainerGap()));
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addGroup(
+																gl_panelGeneral
+																		.createSequentialGroup()
+																		.addContainerGap()
+																		.addComponent(
+																				panelIndicador,
+																				GroupLayout.PREFERRED_SIZE,
+																				250,
+																				GroupLayout.PREFERRED_SIZE))
+														.addGroup(
+																gl_panelGeneral
+																		.createSequentialGroup()
+																		.addGap(27)
+																		.addComponent(
+																				panelResumen,
+																				GroupLayout.PREFERRED_SIZE,
+																				166,
+																				GroupLayout.PREFERRED_SIZE)))
+										.addPreferredGap(
+												ComponentPlacement.UNRELATED)
+										.addComponent(panelHistograma,
+												GroupLayout.DEFAULT_SIZE, 114,
+												Short.MAX_VALUE)
+										.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -205,7 +257,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		textFieldVarianza.setColumns(10);
 		panelResumen.add(textFieldVarianza);
 
-		labelDesvEstandar = new JLabel("Desviaci\u00F3n Estandar");
+		labelDesvEstandar = new JLabel("Desv. Estandar");
 		panelResumen.add(labelDesvEstandar);
 
 		textFieldDesvEstandar = new JTextField();
@@ -214,7 +266,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		textFieldDesvEstandar.setColumns(10);
 		panelResumen.add(textFieldDesvEstandar);
 
-		panelResumen.add(label);
+		panelResumen.add(lblPromedio_1);
 
 		panelResumen.add(spinner_porcentaje);
 
@@ -223,7 +275,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public void notificarError(String mensaje) {
 
-		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
+		JOptionPane optionPane = new JOptionPane(mensaje,
+				JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
@@ -242,8 +295,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
-	 * relacionados con la dimension concreta que esta realizando la solicitud
+	 * se solicita el grafico instanciado en la superclase y que hasta este
+	 * momento no posee datos especificos relacionados con la dimension concreta
+	 * que esta realizando la solicitud
 	 * 
 	 * @return
 	 */
@@ -257,6 +311,14 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public JTextField getTxtActual() {
 		return txtActual;
+	}
+
+	public JTextField getTextFieldMinimo() {
+		return textFieldMinimo;
+	}
+
+	public JTextField getTextFieldMaximo() {
+		return textFieldMaximo;
 	}
 
 	public JTextField getTxtPromedio() {

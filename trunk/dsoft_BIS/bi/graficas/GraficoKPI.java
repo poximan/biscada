@@ -43,7 +43,6 @@ public class GraficoKPI extends JPanel {
 
 	private double rangoMin;
 	private double rangoMax;
-	private int valor_inicial;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -51,9 +50,6 @@ public class GraficoKPI extends JPanel {
 	/* ............................................. */
 
 	public GraficoKPI() {
-
-		// setSize(115, 103);
-		// setVisible(true);
 	}
 
 	/* ............................................. */
@@ -133,17 +129,10 @@ public class GraficoKPI extends JPanel {
 	 * Se cargan los datos para ser reflejados en el semáforo
 	 */
 	public void cargarDatos(float cantTotal, float promH, float cantAct) {
+
 		dataset = new DefaultValueDataset(cantAct);
 		promHist = promH;
 		canTotal = cantTotal;
-
-		/*
-		 * valor_inicial = Integer.valueOf(ServPropiedades.getInstancia()
-		 * .getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
-		 * 
-		 * porcentajeF = (promHist * valor_inicial) / 100;
-		 */
-
 	}
 
 	/**

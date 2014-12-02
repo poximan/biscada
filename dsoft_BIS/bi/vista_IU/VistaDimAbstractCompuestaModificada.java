@@ -110,6 +110,7 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 
 		compTblComparador = new ComponenteTabla();
 		splitPane_tablas.setRightComponent(compTblComparador);
+
 		splitPane_tablas.setDividerLocation(130);
 
 		gl_contentPane = new GroupLayout(this);
@@ -158,11 +159,8 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 
-		compTblInteres.getTbl_medicion().setModel(
-				new TableModelMedicionTemporal(datos_tabla_interes, encabezado_tabla_interes));
-
-		compTblInteres.getTbl_titulo_filas().setModel(
-				new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
+		compTblInteres.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
+		compTblInteres.contruirModeloEntradaColumnas(datos_tabla_interes, encabezado_tabla_interes);
 	}
 
 	private void armarTablaComparador(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
@@ -174,11 +172,8 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 
 		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
 
-		compTblComparador.getTbl_medicion().setModel(
-				new TableModelMedicionTemporal(datos_tabla_comparador, encabezado_tabla_comparador));
-
-		compTblComparador.getTbl_titulo_filas().setModel(
-				new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
+		compTblComparador.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
+		compTblComparador.contruirModeloEntradaColumnas(datos_tabla_comparador, encabezado_tabla_comparador);
 	}
 
 	public void armarSolapasGraficas() {

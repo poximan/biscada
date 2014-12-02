@@ -16,6 +16,8 @@ import org.jfree.chart.plot.MeterPlot;
 import org.jfree.data.Range;
 import org.jfree.data.general.DefaultValueDataset;
 
+import control_general.ServPropiedades;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -43,6 +45,7 @@ public class GraficoKPI extends JPanel {
 
 	private double rangoMin;
 	private double rangoMax;
+	private int valor_inicial;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -108,7 +111,7 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValuePaint(Color.black);
 		meterplot.setValueFont(new Font("Arial", 1, 14));
 
-		JFreeChart jfreechart = new JFreeChart("KPI", JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
+		JFreeChart jfreechart = new JFreeChart("KPI Indicador de rendimiento", JFreeChart.DEFAULT_TITLE_FONT, meterplot, true);
 		return jfreechart;
 	}
 
@@ -117,10 +120,10 @@ public class GraficoKPI extends JPanel {
 	 */
 	public void actualizarIntervalos() {
 
-		intervaloNormal = new MeterInterval("Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
+		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
 				new Color(255, 255, 0, 64));
 
-		intervaloAdvertencia = new MeterInterval("Advertencia", new Range(rangoMin, rangoMax), Color.black,
+		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(rangoMin, rangoMax), Color.black,
 				new BasicStroke(2.0F), Color.yellow.brighter());
 
 		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black, new BasicStroke(
@@ -134,6 +137,11 @@ public class GraficoKPI extends JPanel {
 		dataset = new DefaultValueDataset(cantAct);
 		promHist = promH;
 		canTotal = cantTotal;
+		
+		/*valor_inicial = Integer.valueOf(ServPropiedades.getInstancia()
+				.getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		
+		porcentajeF = (promHist * valor_inicial) / 100;*/
 
 	}
 
@@ -141,6 +149,7 @@ public class GraficoKPI extends JPanel {
 	 * Método para calcular el porcentaje y facilitar el cálculo del rango!!!
 	 */
 	public void Porcentaje(int porcentaje) {
+		
 		porcentajeF = (promHist * porcentaje) / 100;
 		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
 

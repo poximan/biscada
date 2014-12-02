@@ -17,7 +17,7 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTiempoDespejeCompuesta extends VistaDimAbstractCompuesta {
+public class VistaDimTiempoDespejeCompuesta extends VistaDimAbstractCompuestaModificada {
 
 	/* ............................................. */
 	/* ............................................. */

@@ -293,6 +293,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 
 		tbl_medicion_interes.setModel(new TableModelMedicionTemporal(datos_tabla_interes, encabezado_tabla_interes));
+		
 		tbl_filas_interes.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
 	}
 
@@ -307,7 +308,9 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		tbl_medicion_comparador.setModel(new TableModelMedicionTemporal(datos_tabla_comparador,
 				encabezado_tabla_comparador));
+		
 		tbl_filas_comparador.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
+		
 		System.out.println("imprimo " + tbl_filas_comparador.getRowCount());
 	}
 

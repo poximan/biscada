@@ -37,7 +37,7 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelIniciable {
+public abstract class VistaDimAbstractCompuestaModificada extends JPanel implements PanelIniciable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -76,7 +76,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
+	public VistaDimAbstractCompuestaModificada(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
 			ServDimUnidadTiempoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
 			List<Alarma> consulta_comparador) {
 
@@ -98,7 +98,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	 * @param consultas
 	 * @wbp.parser.constructor
 	 */
-	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
+	public VistaDimAbstractCompuestaModificada(ServDimAbstract serv_dim_vista_seleccionada, ServDimSitio serv_dim_sitio,
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
 

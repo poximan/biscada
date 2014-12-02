@@ -26,6 +26,7 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	/* ............................................. */
 
 	private static final long serialVersionUID = 1L;
+	private VistaKpiAbstract vista_kpi;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -88,7 +89,6 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		
 		getTextFieldMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_maximo()));
 		getTextFieldMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_minimo()));
-
 
 	}
 

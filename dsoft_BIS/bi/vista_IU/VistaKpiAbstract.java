@@ -36,8 +36,7 @@ import control_general.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaKpiAbstract extends JPanel implements
-		PanelIniciable, EventoKPIConfigurable {
+public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -73,7 +72,6 @@ public abstract class VistaKpiAbstract extends JPanel implements
 	private JLabel lblMedidasDeDispersin;
 	private JTextField textFieldMinimo;
 	private JTextField textFieldMaximo;
-
 
 	/* ............................................. */
 	/* ............................................. */
@@ -113,11 +111,10 @@ public abstract class VistaKpiAbstract extends JPanel implements
 		JLabel lblPromedio_1 = new JLabel("% Promedio");
 		spinner_porcentaje = new JSpinner();
 
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia()
-				.getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
-		
-		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1,
-				100, 1));
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty(
+				"Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+
+		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
 
 		lblTotal = new JLabel("Total");
 		lblPromedio = new JLabel("Promedio");
@@ -175,32 +172,44 @@ public abstract class VistaKpiAbstract extends JPanel implements
 		panelHistograma.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addGap(21)
-					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
-						.addGroup(gl_panelGeneral.createSequentialGroup()
-							.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))
-					.addGap(23))
-		);
-		gl_panelGeneral.setVerticalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelGeneral.createSequentialGroup()
-							.addGap(27)
-							.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelGeneral.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 315, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panelGeneral
+						.createSequentialGroup()
+						.addGap(21)
+						.addGroup(
+								gl_panelGeneral
+										.createParallelGroup(Alignment.LEADING)
+										.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
+												702, Short.MAX_VALUE)
+										.addGroup(
+												gl_panelGeneral
+														.createSequentialGroup()
+														.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 272,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(18)
+														.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 412,
+																Short.MAX_VALUE))).addGap(23)));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_panelGeneral
+						.createSequentialGroup()
+						.addGroup(
+								gl_panelGeneral
+										.createParallelGroup(Alignment.LEADING)
+										.addGroup(
+												gl_panelGeneral
+														.createSequentialGroup()
+														.addGap(27)
+														.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 166,
+																GroupLayout.PREFERRED_SIZE))
+										.addGroup(
+												gl_panelGeneral
+														.createSequentialGroup()
+														.addContainerGap()
+														.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 315,
+																GroupLayout.PREFERRED_SIZE)))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+						.addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -231,7 +240,7 @@ public abstract class VistaKpiAbstract extends JPanel implements
 		panelResumen.add(lblPromedio_1);
 
 		panelResumen.add(spinner_porcentaje);
-		
+
 		// indicador_kpi.Porcentaje(valor_inicial);
 
 		setLayout(gl_panelGeneral);
@@ -239,8 +248,7 @@ public abstract class VistaKpiAbstract extends JPanel implements
 
 	public void notificarError(String mensaje) {
 
-		JOptionPane optionPane = new JOptionPane(mensaje,
-				JOptionPane.ERROR_MESSAGE);
+		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
@@ -259,9 +267,8 @@ public abstract class VistaKpiAbstract extends JPanel implements
 	/* ............................................. */
 
 	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este
-	 * momento no posee datos especificos relacionados con la dimension concreta
-	 * que esta realizando la solicitud
+	 * se solicita el grafico instanciado en la superclase y que hasta este momento no posee datos especificos
+	 * relacionados con la dimension concreta que esta realizando la solicitud
 	 * 
 	 * @return
 	 */

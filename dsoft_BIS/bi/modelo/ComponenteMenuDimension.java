@@ -98,17 +98,11 @@ public class ComponenteMenuDimension extends JFrame implements EventoConfigurabl
 
 		item_configurar = new JMenuItem("Configurar");
 
-		JMenu submenu_usar_ultima = new JMenu("Ultima consulta");
-
 		item_ejecutar = new JMenuItem("Ejecutar");
-
-		submenu_usar_ultima.add(item_ejecutar);
 
 		// agregar opciones del menu
 		entrada_menu_comparar.add(item_configurar);
-		entrada_menu_comparar.addSeparator();
-
-		entrada_menu_comparar.add(submenu_usar_ultima);
+		entrada_menu_comparar.add(item_ejecutar);
 		entrada_menu_comparar.addSeparator();
 
 		// agregar menu a la barra

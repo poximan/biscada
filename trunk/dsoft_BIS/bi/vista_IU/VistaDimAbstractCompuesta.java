@@ -30,7 +30,7 @@ import control_mediciones.ServMedAbstract;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public abstract class VistaDimAbstractCompuestaModificada extends JPanel implements PanelIniciable {
+public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelIniciable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -66,9 +66,9 @@ public abstract class VistaDimAbstractCompuestaModificada extends JPanel impleme
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaDimAbstractCompuestaModificada(ServDimAbstract serv_dim_vista_seleccionada,
-			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
+	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
+			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 

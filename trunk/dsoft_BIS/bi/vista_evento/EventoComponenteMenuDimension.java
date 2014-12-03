@@ -18,7 +18,7 @@ import modelo.ComponenteMenuDimension;
 import org.apache.log4j.Logger;
 
 import vista_IU.VistaConsultaCompuesta;
-import vista_IU.VistaDimAbstractCompuestaModificada;
+import vista_IU.VistaDimAbstractCompuesta;
 import vista_IU.VistaDimSitioCompuesta;
 import vista_IU.VistaDimSitioSimple;
 import vista_IU.VistaDimSucesoCompuesta;
@@ -83,7 +83,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 
 					ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
 							"BIS - comparador de periodos");
-					VistaDimAbstractCompuestaModificada vista_compuesta = null;
+					VistaDimAbstractCompuesta vista_compuesta = null;
 
 					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple)
 						prepararComparadorSitios(frame_menu_dimension, vista_compuesta);
@@ -100,7 +100,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 	}
 
 	private void prepararComparadorSitios(ComponenteMenuDimension frame_menu_dimension,
-			VistaDimAbstractCompuestaModificada vista_compuesta) {
+			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimSitioSimple vista_temporal = (VistaDimSitioSimple) menu_dimension.getContentPane();
 		vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getMedicionSeleccionada(),
@@ -111,7 +111,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 	}
 
 	private void prepararComparadorSuceso(ComponenteMenuDimension frame_menu_dimension,
-			VistaDimAbstractCompuestaModificada vista_compuesta) {
+			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimSucesoSimple vista_temporal = (VistaDimSucesoSimple) menu_dimension.getContentPane();
 		vista_compuesta = new VistaDimSucesoCompuesta(vista_temporal.getMedicionSeleccionada(),
@@ -122,7 +122,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 	}
 
 	private void prepararComparadorTemporada(ComponenteMenuDimension frame_menu_dimension,
-			VistaDimAbstractCompuestaModificada vista_compuesta) {
+			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimTemporadaSimple vista_temporal = (VistaDimTemporadaSimple) menu_dimension.getContentPane();
 		vista_compuesta = new VistaDimTemporadaCompuesta(vista_temporal.getMedicionSeleccionada(),
@@ -133,7 +133,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 	}
 
 	private void prepararComparadorTiempoDespeje(ComponenteMenuDimension frame_menu_dimension,
-			VistaDimAbstractCompuestaModificada vista_compuesta) {
+			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimTiempoDespejeSimple vista_temporal = (VistaDimTiempoDespejeSimple) menu_dimension.getContentPane();
 		vista_compuesta = new VistaDimTiempoDespejeCompuesta(vista_temporal.getMedicionSeleccionada(),

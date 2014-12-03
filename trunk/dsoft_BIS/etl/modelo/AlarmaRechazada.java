@@ -35,6 +35,8 @@ public final class AlarmaRechazada {
 
 	private String descripcion;
 
+	private Integer repeticiones;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */

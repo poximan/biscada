@@ -55,9 +55,9 @@ public final class AlarmaRechazada {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof AlarmaRechazada)) {
+		if (!(object instanceof AlarmaRechazada))
 			return false;
-		}
+
 		AlarmaRechazada alarma_actual = (AlarmaRechazada) object;
 		if (this.descripcion.compareTo(alarma_actual.getDescripcion()) == 0)
 			return true;

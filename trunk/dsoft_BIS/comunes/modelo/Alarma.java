@@ -126,6 +126,19 @@ public final class Alarma implements Comparable {
 	}
 
 	@Override
+	public boolean equals(Object object) {
+
+		if (!(object instanceof Alarma)) {
+			return false;
+		}
+		Alarma alarma_actual = (Alarma) object;
+		if (this.id.compareTo(alarma_actual.id) == 0)
+			return true;
+
+		return false;
+	}
+
+	@Override
 	public int compareTo(Object entidad) {
 
 		Alarma alarma_actual = (Alarma) entidad;

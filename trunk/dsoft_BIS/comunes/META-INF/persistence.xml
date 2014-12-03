@@ -11,6 +11,7 @@
 		<class>modelo.Familia</class>
 		<class>modelo.Sitio</class>
 		<class>modelo.Suceso</class>
+		<class>modelo.AlarmaRechazada</class>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action"
 				value="create" />

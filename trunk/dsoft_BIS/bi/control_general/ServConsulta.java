@@ -152,7 +152,7 @@ public class ServConsulta implements ObjetosBorrables {
 			Integer duracion_minima, Integer duracion_maxima, boolean incluir_ini_incompleta,
 			boolean incluir_ack_incompleta, boolean incluir_fin_incompleta) {
 
-		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
+		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
 		try {
 			resultado_fechas = buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin,
@@ -174,7 +174,7 @@ public class ServConsulta implements ObjetosBorrables {
 		if (!incluir_fin_incompleta)
 			descartarFinIncompleta(resultado_join);
 
-		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
+		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
 
 		liberarObjetos();
 

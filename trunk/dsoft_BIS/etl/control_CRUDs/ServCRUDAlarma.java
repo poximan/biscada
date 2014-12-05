@@ -10,7 +10,7 @@ import java.beans.Beans;
 import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;
 
-import modelo.AlarmaRechazada;
+import modelo.Alarma;
 
 import org.apache.log4j.Logger;
 import org.eclipse.persistence.exceptions.DatabaseException;
@@ -62,7 +62,7 @@ public class ServCRUDAlarma implements InterfazCRUD {
 	@Override
 	public void crear(Object entidad) {
 
-		AlarmaRechazada alarma_actual = (AlarmaRechazada) entidad;
+		Alarma alarma_actual = (Alarma) entidad;
 
 		try {
 			em.persist(alarma_actual);

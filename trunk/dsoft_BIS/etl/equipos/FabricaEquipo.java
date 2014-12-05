@@ -36,7 +36,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 	private ExpRegEquipo expresion_regular;
 
 	private EquipoEnSitio equipo_en_sitio;
-	private int numero_equipo;
+	private String id_equipo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -66,9 +66,9 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 
 			matcher.reset();
 
-			numero_equipo = 0;
+			id_equipo = "0";
 			crearPropietario(campo_texto, matcher);
-			equipo_en_sitio = new EquipoEnSitio(texto_propietario, numero_equipo);
+			equipo_en_sitio = new EquipoEnSitio(texto_propietario, id_equipo);
 		}
 		catch (CampoTextoNoEncontradoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaEquipo.class.getSimpleName(), excepcion.getMessage(),
@@ -89,7 +89,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			if (matcher.group(1) != null)
 				if (texto_propietario == null || texto_propietario instanceof Bomba) {
 					texto_propietario = new Bomba();
-					numero_equipo = obtenerIdEquipo(matcher.group(1));
+					id_equipo = obtenerIdEquipo(matcher.group(1));
 				} else
 					throw new CampoTextoAmbiguoExcepcion(campo_texto);
 
@@ -108,7 +108,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			if (matcher.group(6) != null)
 				if (texto_propietario == null || texto_propietario instanceof Forzador) {
 					texto_propietario = new Forzador();
-					numero_equipo = obtenerIdEquipo(matcher.group(6));
+					id_equipo = obtenerIdEquipo(matcher.group(6));
 				} else
 					throw new CampoTextoAmbiguoExcepcion(campo_texto);
 
@@ -139,7 +139,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			if (matcher.group(14) != null)
 				if (texto_propietario == null || texto_propietario instanceof Tamiz) {
 					texto_propietario = new Tamiz();
-					numero_equipo = obtenerIdEquipo(matcher.group(14));
+					id_equipo = obtenerIdEquipo(matcher.group(14));
 				} else
 					throw new CampoTextoAmbiguoExcepcion(campo_texto);
 
@@ -152,7 +152,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			if (matcher.group(16) != null)
 				if (texto_propietario == null || texto_propietario instanceof Valvula) {
 					texto_propietario = new Valvula();
-					numero_equipo = obtenerIdEquipo(matcher.group(16));
+					id_equipo = obtenerIdEquipo(matcher.group(16));
 				} else
 					throw new CampoTextoAmbiguoExcepcion(campo_texto);
 		}
@@ -163,7 +163,7 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 		return equipo_en_sitio;
 	}
 
-	private int obtenerIdEquipo(String group) {
+	private String obtenerIdEquipo(String group) {
 
 		String[] split = group.split(" ");
 
@@ -171,7 +171,6 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			split[0] = new StringBuilder(split[0]).insert(split[0].length() - 1, " ").toString();
 			split = split[0].split(" ");
 		}
-
-		return Integer.parseInt(split[1]);
+		return split[split.length - 1];
 	}
 }

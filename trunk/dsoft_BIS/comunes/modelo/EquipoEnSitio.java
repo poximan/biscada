@@ -25,7 +25,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "equipo_en_sitio", uniqueConstraints = @UniqueConstraint(columnNames = { "ID_SITIO", "ID_TIPO_DE_EQUIPO",
-		"NUMERO_EQUIPO" }))
+		"ID_EQUIPO" }))
 @NamedQueries({ @NamedQuery(name = "EquipoEnSitio.buscTodos", query = "SELECT tabla FROM EquipoEnSitio tabla"), })
 public class EquipoEnSitio {
 
@@ -48,8 +48,8 @@ public class EquipoEnSitio {
 	@JoinColumn(name = "ID_TIPO_DE_EQUIPO", referencedColumnName = "ID_TIPO_DE_EQUIPO", nullable = true)
 	private TipoDeEquipo tipo_de_equipo;
 
-	@Column(name = "NUMERO_EQUIPO", nullable = true)
-	private int numero_equipo;
+	@Column(name = "ID_EQUIPO", nullable = true)
+	private String id_equipo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -59,53 +59,16 @@ public class EquipoEnSitio {
 	public EquipoEnSitio() {
 	}
 
-	public EquipoEnSitio(TipoDeEquipo texto_propietario, int numero_equipo) {
+	public EquipoEnSitio(TipoDeEquipo texto_propietario, String id_equipo) {
 
 		this.tipo_de_equipo = texto_propietario;
-		this.numero_equipo = numero_equipo;
+		this.id_equipo = id_equipo;
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@Override
-	public boolean equals(Object object) {
-
-		if (!(object instanceof EquipoEnSitio))
-			return false;
-
-		EquipoEnSitio equipo_a_comparar = (EquipoEnSitio) object;
-
-		if (this.sitio.equals(equipo_a_comparar.getSitio())
-				&& this.tipo_de_equipo.equals(equipo_a_comparar.getTipo_de_equipo())
-				&& this.numero_equipo == equipo_a_comparar.getNumero_equipo())
-			return true;
-
-		return false;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public int getNumero_equipo() {
-		return numero_equipo;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public Sitio getSitio() {
-		return sitio;
-	}
-
-	public TipoDeEquipo getTipo_de_equipo() {
-		return tipo_de_equipo;
-	}
 
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no implica Objetos desiguales tengan diferente
@@ -125,8 +88,41 @@ public class EquipoEnSitio {
 		return hash;
 	}
 
-	public void setSitio(Sitio sitio) {
-		this.sitio = sitio;
+	@Override
+	public boolean equals(Object object) {
+
+		if (!(object instanceof EquipoEnSitio))
+			return false;
+
+		EquipoEnSitio equipo_a_comparar = (EquipoEnSitio) object;
+
+		if (this.sitio.equals(equipo_a_comparar.getSitio())
+				&& this.tipo_de_equipo.equals(equipo_a_comparar.getTipo_de_equipo())
+				&& this.id_equipo.equals(equipo_a_comparar.getId_equipo()))
+			return true;
+
+		return false;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getId_equipo() {
+		return id_equipo;
+	}
+
+	public Sitio getSitio() {
+		return sitio;
+	}
+
+	public TipoDeEquipo getTipo_de_equipo() {
+		return tipo_de_equipo;
 	}
 
 	/* ............................................. */
@@ -134,12 +130,16 @@ public class EquipoEnSitio {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	public void setSitio(Sitio sitio) {
+		this.sitio = sitio;
+	}
+
 	public void setTipo_de_equipo(TipoDeEquipo tipo_de_equipo) {
 		this.tipo_de_equipo = tipo_de_equipo;
 	}
 
 	@Override
 	public String toString() {
-		return tipo_de_equipo.getDescripcion() + " " + numero_equipo;
+		return tipo_de_equipo.getDescripcion() + " " + id_equipo;
 	}
 }

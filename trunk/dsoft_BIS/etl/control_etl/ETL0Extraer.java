@@ -85,8 +85,6 @@ public class ETL0Extraer implements ObjetosBorrables {
 		extraerTodasLasFilas();
 		convertirTodasLasFila();
 
-		liberarObjetos();
-
 		return alarmas_extraidas_convertidas;
 	}
 
@@ -108,8 +106,12 @@ public class ETL0Extraer implements ObjetosBorrables {
 	public void liberarObjetos() {
 
 		stream_archivo_dbf.cerrarArchivo();
+
 		alarmas_extraidas_no_convertidas.clear();
+		alarmas_extraidas_convertidas.clear();
+
 		conversion_archivo_dbf.liberarLista();
+
 		System.gc();
 	}
 

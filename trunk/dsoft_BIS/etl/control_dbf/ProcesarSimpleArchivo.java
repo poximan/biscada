@@ -7,7 +7,6 @@ package control_dbf;
 
 import java.util.List;
 
-import modelo.Alarma;
 import modelo.ArchivoDBF;
 
 import org.apache.log4j.Logger;
@@ -17,13 +16,14 @@ import control_etl.CampoTextoDefectuoso;
 import control_etl.ETL0Extraer;
 import control_etl.ETL1Transformar;
 import control_etl.ETL2Cargar;
+import control_general.ObjetosBorrables;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ProcesarSimpleArchivo {
+public class ProcesarSimpleArchivo implements ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,7 +40,6 @@ public class ProcesarSimpleArchivo {
 	private ETL2Cargar cargador;
 
 	private List<ArchAlarma> alarmas_extraidas;
-	private List<Alarma> alarmas_transformadas;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -58,7 +57,7 @@ public class ProcesarSimpleArchivo {
 	public void insertarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual,
 			ParametrosConexion parametros) {
 
-		int extraidas, transformadas;
+		int extraidas;
 		CampoTextoDefectuoso alarmas_defectuosas = new CampoTextoDefectuoso();
 
 		dbf_servicio_crud.actualizar(archivo_actual);
@@ -68,18 +67,18 @@ public class ProcesarSimpleArchivo {
 		extraidas = alarmas_extraidas.size();
 
 		transformador = new ETL1Transformar(alarmas_extraidas);
-		alarmas_transformadas = transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
-		transformadas = alarmas_transformadas.size();
+		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
 
-		cargador = new ETL2Cargar(alarmas_transformadas, dbf_servicio_crud);
+		cargador = new ETL2Cargar(transformador.getAlarmas_transformadas(), transformador.getAlarmas_rechazadas(),
+				dbf_servicio_crud);
 
-		if (!alarmas_transformadas.isEmpty())
-			cargador.cargarAlarmas(archivo_actual);
+		if (!transformador.getAlarmas_transformadas().isEmpty())
+			cargador.cargarAlarmasAceptadas(archivo_actual);
 		else
 			cargador.rechazarArchivo(archivo_actual);
 
-		reportar(extraidas, transformadas, alarmas_defectuosas);
-		actualizarTotalizadores(extraidas, transformadas);
+		reportar(extraidas, transformador.getAlarmas_transformadas().size(), alarmas_defectuosas);
+		actualizarTotalizadores(extraidas, transformador.getAlarmas_transformadas().size());
 
 		dbf_servicio_crud.actualizar(archivo_actual);
 	}
@@ -128,6 +127,14 @@ public class ProcesarSimpleArchivo {
 	public void mostarInfo(ArchivoDBF archivo_actual) {
 		log.info("Se elimino archivo "
 				+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
+	}
+
+	@Override
+	public void liberarObjetos() {
+
+		extractor.liberarObjetos();
+		transformador.liberarObjetos();
+		cargador.liberarObjetos();
 	}
 
 	/* ............................................. */

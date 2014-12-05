@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.eclipse.persistence.annotations.PrivateOwned;
 
@@ -50,11 +51,11 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	private String ruta;
 
 	@Column(name = "COMIENZO", nullable = false)
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar comienzo; // instante en que comenzo el tratamiento del archivo
 
 	@Column(name = "FIN", nullable = true)
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fin; // instante en que finalizo el tratamiento del archivo
 
 	@Column(name = "VALIDO")

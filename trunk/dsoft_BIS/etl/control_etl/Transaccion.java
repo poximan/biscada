@@ -5,6 +5,7 @@
 
 package control_etl;
 
+import javax.persistence.EntityTransaction;
 import javax.persistence.RollbackException;
 
 import org.apache.log4j.Logger;
@@ -54,7 +55,12 @@ public class Transaccion {
 
 	public void beginArchivo() {
 
-		EMFSingleton.getInstanciaEM().getTransaction().begin();
+		EntityTransaction transaccion = EMFSingleton.getInstanciaEM().getTransaction();
+
+		if (transaccion.isActive())
+			commitArchivo();
+
+		transaccion.begin();
 	}
 
 	public void commitArchivo() {

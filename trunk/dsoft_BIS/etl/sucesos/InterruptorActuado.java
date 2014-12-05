@@ -19,7 +19,7 @@ public class InterruptorActuado extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp][Tt][Oo][Rr])";
+	private static String expresion_regular = "([Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp][Tt][Oo][Rr]|GUARDAMOTOR)";
 
 	/* ............................................. */
 	/* ............................................. */

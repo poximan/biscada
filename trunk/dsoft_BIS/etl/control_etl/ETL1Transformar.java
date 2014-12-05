@@ -49,6 +49,7 @@ public class ETL1Transformar implements ObjetosBorrables {
 
 	private List<ArchAlarma> alarmas_extraidas;
 	private List<Alarma> alarmas_transformadas;
+	private List<ArchAlarma> alarmas_rechazadas;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -65,10 +66,11 @@ public class ETL1Transformar implements ObjetosBorrables {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public List<Alarma> transformarAlarmas(ArchivoDBF archivo_propietario, CampoTextoDefectuoso alarma_rechazada) {
+	public void transformarAlarmas(ArchivoDBF archivo_propietario, CampoTextoDefectuoso alarma_rechazada) {
 
 		int fila = 0;
 		alarmas_transformadas = new LinkedList<Alarma>();
+		alarmas_rechazadas = new LinkedList<ArchAlarma>();
 
 		for (ArchAlarma alarma_no_transformada : alarmas_extraidas) {
 
@@ -98,16 +100,15 @@ public class ETL1Transformar implements ObjetosBorrables {
 
 				if (esAlarmaValida(alarma_transformada))
 					alarmas_transformadas.add(alarma_transformada);
+				else
+					alarmas_rechazadas.add(alarma_no_transformada);
+
 			}
 			catch (NullPointerException excepcion) {
 				log.error("error leyendo fila " + (fila + 1) + ": " + alarma_no_transformada.getTexto());
 			}
 			fila++;
 		}
-
-		liberarObjetos();
-
-		return alarmas_transformadas;
 	}
 
 	private void agregarPropietario(Alarma alarma_transformada, ArchivoDBF archivo_propietario) {
@@ -176,6 +177,9 @@ public class ETL1Transformar implements ObjetosBorrables {
 	public void liberarObjetos() {
 
 		alarmas_extraidas.clear();
+		alarmas_transformadas.clear();
+		alarmas_rechazadas.clear();
+
 		System.gc();
 	}
 
@@ -239,4 +243,12 @@ public class ETL1Transformar implements ObjetosBorrables {
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	public List<Alarma> getAlarmas_transformadas() {
+		return alarmas_transformadas;
+	}
+
+	public List<ArchAlarma> getAlarmas_rechazadas() {
+		return alarmas_rechazadas;
+	}
 }

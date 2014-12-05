@@ -19,7 +19,7 @@ public class Valvula extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Vv][Aa][Ll][Vv][Uu][Ll][Aa]\\s?\\d{1,2})";
+	private static String expresion_regular = "([Vv][Aa][Ll][Vv][Uu][Ll][Aa]\\s?\\d{1,2}|V lvula)";
 	private static String descripcion = "valvula";
 
 	/* ............................................. */

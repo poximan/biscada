@@ -16,6 +16,7 @@ import control_CRUDs.ServCRUDFamilia;
 import control_CRUDs.ServCRUDSitio;
 import control_CRUDs.ServCRUDSuceso;
 import control_CRUDs.ServCRUDTipoDeEquipo;
+import control_dbf.ArchAlarma;
 import control_general.ObjetosBorrables;
 
 /* ............................................. */
@@ -39,6 +40,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* ............................................. */
 
 	private List<Alarma> alarmas_transformadas;
+	private List<ArchAlarma> alarmas_rechazadas;
 
 	private ServCRUDArchivoDBF dbf_servicio_crud;
 
@@ -55,17 +57,19 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ETL2Cargar(List<Alarma> alarmas_transformadas, ServCRUDArchivoDBF dbf_servicio_crud) {
+	public ETL2Cargar(List<Alarma> alarmas_transformadas, List<ArchAlarma> alarmas_rechazadas,
+			ServCRUDArchivoDBF dbf_servicio_crud) {
 
 		this.alarmas_transformadas = alarmas_transformadas;
+		this.alarmas_rechazadas = alarmas_rechazadas;
 
 		this.dbf_servicio_crud = dbf_servicio_crud;
+
 		familia_servicios_crud = new ServCRUDFamilia();
 		sitio_servicios_crud = new ServCRUDSitio();
 		equipo_en_sitio_servicios_crud = new ServCRUDEquipoEnSitio();
 		tipo_de_equipo_servicios_crud = new ServCRUDTipoDeEquipo();
 		suceso_servicios_crud = new ServCRUDSuceso();
-
 		alarma_servicios_crud = new ServCRUDAlarma();
 	}
 
@@ -74,7 +78,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void cargarAlarmas(ArchivoDBF archivo_propietario) {
+	public void cargarAlarmasAceptadas(ArchivoDBF archivo_propietario) {
 
 		for (Alarma alarma_actual : alarmas_transformadas) {
 
@@ -90,7 +94,10 @@ public class ETL2Cargar implements ObjetosBorrables {
 
 			alarma_servicios_crud.crear(alarma_actual);
 		}
-		liberarObjetos();
+
+		for (ArchAlarma alarma_rechazada : alarmas_rechazadas) {
+			// TODO aca hay que insertar alarmas rechazadas
+		}
 	}
 
 	@Override
@@ -101,6 +108,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 	}
 
 	public void rechazarArchivo(ArchivoDBF archivo_actual) {
+
 		archivo_actual.setValido(false);
 		dbf_servicio_crud.crear(archivo_actual);
 	}

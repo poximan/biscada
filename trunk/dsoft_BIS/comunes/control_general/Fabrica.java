@@ -12,6 +12,12 @@ import control_etl.CampoTextoDefectuoso;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * clase abstracta para determinar los objetivos comunes que tendrán todas las fabricas de objetos.
+ * 
+ * @author hugo
+ *
+ */
 public abstract class Fabrica {
 
 	/* ............................................. */

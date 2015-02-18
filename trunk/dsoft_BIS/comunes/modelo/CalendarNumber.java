@@ -10,6 +10,17 @@ package modelo;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Tipo particular a la necesidad de resolver el problema del tiempo transcurrido entre la generacion y la finalizacion
+ * de la alarma.
+ * 
+ * Esto se resuelve mediante comparacion de clases Predicado, y como solo aceptan clases Number se creó esta envoltura
+ * para manipular la informacion de interes, pero oculta en un tipo compatible con los predicados utilizados en querys
+ * dinamicas.
+ * 
+ * @author hugo
+ *
+ */
 public class CalendarNumber extends Number {
 
 	/* ............................................. */

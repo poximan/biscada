@@ -31,7 +31,7 @@ public class EMFSingleton {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static EMFSingleton instanciaEMFSingleton = null;
+	private static EMFSingleton instancia_unica = null;
 
 	@PersistenceUnit
 	private static EntityManagerFactory emf;
@@ -57,10 +57,10 @@ public class EMFSingleton {
 
 	public synchronized static EntityManagerFactory getInstanciaEMF() {
 
-		if (instanciaEMFSingleton == null) {
+		if (instancia_unica == null) {
 
 			log.trace("se crea EMF por primera vez");
-			instanciaEMFSingleton = new EMFSingleton();
+			instancia_unica = new EMFSingleton();
 		}
 		return emf;
 	}

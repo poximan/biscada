@@ -29,6 +29,14 @@ import org.eclipse.persistence.annotations.PrivateOwned;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * representacion en la BD de un archivo dbf cuyo contenido son una serie indeterminada de alarmas (de 0 a n). es de
+ * utilidad para tener conocimiento sobre los archivos que ya fueron procesados y en particular cómo resultó ese
+ * procesamiento, es decir, ¿se pudo realizar con exito o el archivo está vacío, dañado, etc.?.
+ * 
+ * @author hugo
+ *
+ */
 @Entity
 @Table(name = "archivo_dbf")
 @NamedQueries({

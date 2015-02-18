@@ -19,6 +19,14 @@ import org.apache.log4j.Logger;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * recupera y de ser necesario actualiza el archivo de propiedades de arranque de la aplicacion.
+ * 
+ * mediante singleton asegura una unica via unidireccional de acceso al archivo.
+ * 
+ * @author hugo
+ *
+ */
 public class ServPropiedades {
 
 	/* ............................................. */
@@ -31,7 +39,7 @@ public class ServPropiedades {
 	private static String NOMBRE_ARCHIVO_PROPIEDADES = "cfg.properties";
 
 	private static Properties propiedades = null;
-	private static ServPropiedades instancia = null;
+	private static ServPropiedades instancia_unica = null;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -59,8 +67,8 @@ public class ServPropiedades {
 
 	public static Properties getInstancia() {
 
-		if (instancia == null)
-			instancia = new ServPropiedades();
+		if (instancia_unica == null)
+			instancia_unica = new ServPropiedades();
 
 		return propiedades;
 	}

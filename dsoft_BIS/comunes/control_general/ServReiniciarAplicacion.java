@@ -15,6 +15,14 @@ import java.util.List;
 /* ............................................. */
 
 /**
+ * -------------------- clase en desuso --------------------
+ * 
+ * no se pudo implementar correctamente, pero se pretendía que la aplicacion reiniciase por su sola. Esto es de utilidad
+ * cuando se realizan cambios de fondo, como por ejemplo una edicion en el PU.
+ * 
+ * en cambio en la version actual la aplicacion se cierra automaticamente ante estas ediciones, pero el usuario debe
+ * volver a ejecutar manualmente.
+ * 
  * extraido de http://java.dzone.com/articles/programmatically-restart-java ... ... ... ... ... ... ... ... ... ... ...
  * otra aproximacion en http://stackoverflow.com/questions/4159802/how-can-i-restart-a-java-application
  * 

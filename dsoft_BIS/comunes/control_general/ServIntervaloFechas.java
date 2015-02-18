@@ -16,6 +16,13 @@ import modelo.IntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 /**
+ * 
+ * -------------------- clase en desuso --------------------
+ * 
+ * antiguamente tenia la responsabilidad de manipular los intervalos de fechas dados por una consulta. por ejemplo si se
+ * traian todas las alarmas de ene'14, esta clase otorgaba servicios adicionales para minupular ese intervalo, como por
+ * ejemplo la alarma mas antigua y las mas reciente, o cuantas alarmas habia en ese período.
+ * 
  * es el servicio de manejo de intervalos de fechas. en particular interesa en intervalo mayor, que es el que incluye a
  * la alarma mas antigua y a la mas reciente
  * 

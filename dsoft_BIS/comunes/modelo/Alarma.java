@@ -27,6 +27,12 @@ import org.eclipse.persistence.annotations.Index;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * instancia de una alarma generada por el scada
+ * 
+ * @author hugo
+ *
+ */
 @SuppressWarnings("rawtypes")
 @Entity
 @Table(name = "alarma")

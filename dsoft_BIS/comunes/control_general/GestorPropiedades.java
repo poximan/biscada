@@ -19,6 +19,15 @@ import vistas.VistaPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * responsable de contruir un marco y agregar allí el panel de edicion y consulta para las propiedades de arranque de la
+ * aplicacion.
+ * 
+ * implementa singleton para asegurar que la interfaz visual de edicion sea siempre la misma.
+ * 
+ * @author hugo
+ *
+ */
 public class GestorPropiedades {
 
 	/* ............................................. */

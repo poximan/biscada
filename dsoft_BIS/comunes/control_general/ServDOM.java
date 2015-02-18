@@ -26,7 +26,15 @@ import org.xml.sax.SAXException;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
-
+/**
+ * -------------------- clase en desuso --------------------
+ * 
+ * se pensaba utilizar para la edicion online del xml que representa la unidad de persistencia de JPA. finalmente se
+ * optó por crear una unidad de persistencia y contexto de persistencia nuevos por cada edicion.
+ * 
+ * @author hugo
+ *
+ */
 public class ServDOM {
 
 	/* ............................................. */

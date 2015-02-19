@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="equipos.FabricaEquipo" project="dsoft_BIS" 
     file="/dsoft_BIS/etl/equipos/FabricaEquipo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="800" y="818"/>    
+    <position height="207" width="217" x="1124" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="equipos.Bomba" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Bomba.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="112" y="260"/>    
+    <position height="153" width="168" x="666" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="equipos.GrupoElectrogeno" project="dsoft_BIS" 
     file="/dsoft_BIS/etl/equipos/GrupoElectrogeno.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="353" y="361"/>    
+    <position height="153" width="168" x="1914" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="equipos.Valvula" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Valvula.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="366" y="853"/>    
+    <position height="153" width="168" x="42" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="equipos.Forzador" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Forzador.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="593" y="508"/>    
+    <position height="153" width="168" x="1290" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="equipos.Pozo" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Pozo.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="123" y="646"/>    
+    <position height="153" width="168" x="250" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="equipos.SCADA" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/SCADA.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1247" y="146"/>    
+    <position height="153" width="168" x="1082" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="equipos.Cisterna" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Cisterna.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1601" y="659"/>    
+    <position height="153" width="168" x="458" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="equipos.TornilloCompactador" project="dsoft_BIS" 
     file="/dsoft_BIS/etl/equipos/TornilloCompactador.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1111" y="489"/>    
+    <position height="153" width="168" x="2122" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="equipos.Tamiz" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Tamiz.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1451" y="352"/>    
+    <position height="153" width="168" x="1706" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="equipos.CamaraAspiracion" project="dsoft_BIS" 
     file="/dsoft_BIS/etl/equipos/CamaraAspiracion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1303" y="844"/>    
+    <position height="153" width="168" x="874" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="equipos.Plc" project="dsoft_BIS" file="/dsoft_BIS/etl/equipos/Plc.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1336" y="578"/>    
+    <position height="153" width="168" x="1498" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="equipos.ExpRegEquipo" project="dsoft_BIS" 
     file="/dsoft_BIS/etl/equipos/ExpRegEquipo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="787" y="72"/>    
+    <position height="-1" width="-1" x="1281" y="778"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -119,6 +119,7 @@
     </display>  
   </class>  
   <dependency id="14">    
+    <bendpoint x="789" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
@@ -127,22 +128,27 @@
     <end type="TARGET" refId="3"/>  
   </dependency>  
   <dependency id="16">    
+    <bendpoint x="841" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <dependency id="17">    
+    <bendpoint x="581" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
   <dependency id="18">    
+    <bendpoint x="685" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
   <dependency id="19">    
+    <bendpoint x="883" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="11"/>  
   </dependency>  
   <dependency id="20">    
+    <bendpoint x="1133" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
@@ -155,6 +161,7 @@
     <end type="TARGET" refId="7"/>  
   </dependency>  
   <dependency id="23">    
+    <bendpoint x="1310" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="12"/>  
   </dependency>  
@@ -167,10 +174,12 @@
     <end type="TARGET" refId="9"/>  
   </dependency>  
   <dependency id="26">    
+    <bendpoint x="706" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
   <dependency id="27">    
+    <bendpoint x="904" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="11"/>  
   </dependency>  
@@ -183,10 +192,12 @@
     <end type="TARGET" refId="10"/>  
   </dependency>  
   <dependency id="30">    
+    <bendpoint x="1206" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
   <dependency id="31">    
+    <bendpoint x="862" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
@@ -195,6 +206,7 @@
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <dependency id="33">    
+    <bendpoint x="1413" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
@@ -207,6 +219,7 @@
     <end type="TARGET" refId="11"/>  
   </dependency>  
   <dependency id="36">    
+    <bendpoint x="1621" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="9"/>  
   </dependency>  
@@ -231,18 +244,22 @@
     <end type="TARGET" refId="6"/>  
   </dependency>  
   <dependency id="43">    
+    <bendpoint x="1434" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
   <dependency id="44">    
+    <bendpoint x="810" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
   <dependency id="45">    
+    <bendpoint x="602" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
   <dependency id="46">    
+    <bendpoint x="1642" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="9"/>  
   </dependency>  
@@ -251,14 +268,17 @@
     <end type="TARGET" refId="12"/>  
   </dependency>  
   <dependency id="48">    
+    <bendpoint x="1154" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
   <dependency id="49">    
+    <bendpoint x="1517" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
   <dependency id="50">    
+    <bendpoint x="1331" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="12"/>  
   </dependency>  
@@ -275,6 +295,7 @@
     <end type="TARGET" refId="8"/>  
   </dependency>  
   <dependency id="54">    
+    <bendpoint x="1227" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
@@ -291,6 +312,7 @@
     <end type="TARGET" refId="11"/>  
   </dependency>  
   <dependency id="58">    
+    <bendpoint x="1538" y="284"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  

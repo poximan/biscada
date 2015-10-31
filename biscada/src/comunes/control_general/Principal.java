@@ -58,8 +58,6 @@ public class Principal {
 	 */
 	public Principal() {
 
-		/* clave sincro svn Dh4Gk2Nz4yP9 */
-
 		long heap_bytes_reservado = Runtime.getRuntime().totalMemory();
 		double heap_mbytes_reservado = heap_bytes_reservado / (Math.pow(1024, 2));
 

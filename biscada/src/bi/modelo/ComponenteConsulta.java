@@ -8,7 +8,6 @@ package bi.modelo;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.beans.Beans;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,6 +40,7 @@ import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BindingGroup;
 import org.jdesktop.beansbinding.ELProperty;
 import org.jdesktop.observablecollections.ObservableCollections;
+import org.jdesktop.observablecollections.ObservableList;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.JTableBinding.ColumnBinding;
 import org.jdesktop.swingbinding.SwingBindings;
@@ -51,7 +51,6 @@ import bi.control_general.ServConsultaDinamica;
 import bi.control_general.ServConsultaEstatica;
 import bi.vista_evento.EventoComponenteConsulta;
 import bi.vista_evento.EventoManejable;
-import comunes.control_general.ObjetosBorrables;
 import comunes.modelo.Alarma;
 import comunes.modelo.EquipoEnSitio;
 import comunes.modelo.Familia;
@@ -66,8 +65,7 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ComponenteConsulta extends JPanel
-		implements PanelIniciable, EventoConfigurable, ObjetosBorrables, EventoManejable {
+public class ComponenteConsulta extends JPanel implements PanelIniciable, EventoConfigurable, EventoManejable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -87,7 +85,9 @@ public class ComponenteConsulta extends JPanel
 	private GroupLayout gl_panelFechas;
 	private GroupLayout gl_panelCampoSimple;
 
-	private List<Alarma> consultas;
+	private ObservableList<Alarma> consultas;
+
+	private JTableBinding<Alarma, ?, JTable> jTableBinding;
 
 	private ComponenteMenuConsulta frame_bi;
 
@@ -136,6 +136,13 @@ public class ComponenteConsulta extends JPanel
 	public ComponenteConsulta(ComponenteMenuConsulta frame_bi) {
 
 		this.frame_bi = frame_bi;
+		recargar(new ArrayList<>(0));
+	}
+
+	private void recargar(List<Alarma> consultas) {
+
+		this.consultas = ObservableCollections.observableList(consultas);
+
 		iniciarComponentes();
 		configBinding();
 
@@ -167,25 +174,38 @@ public class ComponenteConsulta extends JPanel
 
 		configEventos();
 		ordenarTabla();
-
-		serv_consulta = new ServConsultaDinamica();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void iniciarComponentes() {
 
+		serv_consulta = new ServConsultaDinamica();
+
+		panelCampoSimple = new JPanel();
+		gl_panelCampoSimple = new GroupLayout(panelCampoSimple);
+
+		btnBuscar = new JButton("Buscar");
+		scrPaneTabla = new JScrollPane();
+		tblConsulta = new JTable();
+		panelFechas = new JPanel();
+		lblSitio = new JLabel("Sitio:");
+		cboxSitio = new JComboBox<Sitio>();
+		lblFamilia = new JLabel("Familia:");
+		cboxFamilia = new JComboBox<Familia>();
+		lblTipoEquipo = new JLabel("Tipo equipo:");
+		cboxTipoEquipo = new JComboBox<TipoDeEquipo>();
+		lblSuceso = new JLabel("Suceso:");
+		cboxSuceso = new JComboBox<Suceso>();
+		rbtnDesdeInicio = new JRadioButton("inicio");
+		rbtnDesdeAck = new JRadioButton("ack");
+		rbtnDesdeFin = new JRadioButton("fin");
+		lblHasta = new JLabel("hasta:");
+		lblDesde = new JLabel("desde:");
+		rbtnHastaInicio = new JRadioButton("inicio");
+		rbtnHastaAck = new JRadioButton("ack");
+		rbtnHastaFin = new JRadioButton("fin");
 		choosHasta = new JDateChooser();
 		choosDesde = new JDateChooser();
-
-		// -------------------------------------
-		//
-		// seccion binding
-		// -------------------------------------
-
-		bindingGroup = new BindingGroup();
-		consultas = (List<Alarma>) (Beans.isDesignTime() ? Collections.emptyList()
-				: ObservableCollections.observableList(new ArrayList<Alarma>()));
 
 		// -------------------------------------
 		//
@@ -217,29 +237,6 @@ public class ComponenteConsulta extends JPanel
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
 										.addContainerGap()));
-
-		btnBuscar = new JButton("Buscar");
-		scrPaneTabla = new JScrollPane();
-		tblConsulta = new JTable();
-		panelFechas = new JPanel();
-		panelCampoSimple = new JPanel();
-		lblSitio = new JLabel("Sitio:");
-		cboxSitio = new JComboBox<Sitio>();
-		lblFamilia = new JLabel("Familia:");
-		cboxFamilia = new JComboBox<Familia>();
-		lblTipoEquipo = new JLabel("Tipo equipo:");
-		cboxTipoEquipo = new JComboBox<TipoDeEquipo>();
-		lblSuceso = new JLabel("Suceso:");
-		cboxSuceso = new JComboBox<Suceso>();
-		gl_panelCampoSimple = new GroupLayout(panelCampoSimple);
-		rbtnDesdeInicio = new JRadioButton("inicio");
-		rbtnDesdeAck = new JRadioButton("ack");
-		rbtnDesdeFin = new JRadioButton("fin");
-		lblHasta = new JLabel("hasta:");
-		lblDesde = new JLabel("desde:");
-		rbtnHastaInicio = new JRadioButton("inicio");
-		rbtnHastaAck = new JRadioButton("ack");
-		rbtnHastaFin = new JRadioButton("fin");
 
 		buttonGroupHasta.add(rbtnHastaInicio);
 		buttonGroupHasta.add(rbtnHastaAck);
@@ -420,6 +417,99 @@ public class ComponenteConsulta extends JPanel
 		panelFiltros.setLayout(gl_panelFiltros);
 
 		setLayout(groupLayout);
+
+		bindingGroup = new BindingGroup();
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void configBinding() {
+
+		// -------------------------------------
+		//
+		// binding master
+		// -------------------------------------
+
+		jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, consultas, tblConsulta);
+
+		// -------------------------------------
+		//
+		// atributos master
+		// -------------------------------------
+
+		ColumnBinding columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_inicio}"));
+		columnBinding.setColumnName("Inicio");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_ack}"));
+		columnBinding.setColumnName("Ack");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_finalizacion}"));
+		columnBinding.setColumnName("Fin");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${ack_usuario}"));
+		columnBinding.setColumnName("Usuario");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${familia.descripcion}"));
+		columnBinding.setColumnName("Familia");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${sitio.descripcion}"));
+		columnBinding.setColumnName("Sitio");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${equipo_en_sitio}"));
+		columnBinding.setColumnName("Tipo de Equipo");
+		columnBinding.setColumnClass(EquipoEnSitio.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${suceso.descripcion}"));
+		columnBinding.setColumnName("Suceso");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		/*
+		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible
+		 * (cosa que sucede cuando no se ha elegido un master) no es posible
+		 * definir un detalle
+		 */
+		jTableBinding.setSourceUnreadableValue(Collections.emptyList());
+
+		// -------------------------------------
+		//
+		// binding listo para empaquetar
+		// -------------------------------------
+
+		jTableBinding.bind();
+		bindingGroup.addBinding(jTableBinding);
+		bindingGroup.bind();
+	}
+
+	@Override
+	public void configEventos() {
+
+		EventoComponenteConsulta eventos = new EventoComponenteConsulta(this);
+
+		btnBuscar.addActionListener(eventos);
+
+		try {
+			cargarTodasLasFamilias();
+			cargarTodosLosSitios();
+			cargarTodosLosSucesos();
+			cargarTodosLosEquipos();
+		} catch (NullPointerException excepcion) {
+			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
+		}
+
+		txt_reg_encontrados.setText(Integer.toString(consultas.size()));
 	}
 
 	private void ordenarTabla() {
@@ -437,12 +527,9 @@ public class ComponenteConsulta extends JPanel
 			@Override
 			public void run() {
 
-				log.trace("liberando lista antigua");
-				liberarObjetos();
-
 				log.trace("agregando lista nueva");
-				consultas.addAll(getListaAlarmas());
-				txt_reg_encontrados.setText(Integer.toString(consultas.size()));
+				ComponenteConsulta.this.removeAll();
+				recargar(getListaAlarmas());
 			}
 		};
 		final Thread hilo_consulta = new Thread(consulta);
@@ -522,102 +609,6 @@ public class ComponenteConsulta extends JPanel
 
 		for (Suceso suceso_actual : sucesos)
 			cboxSuceso.addItem(suceso_actual); // cargar la lista
-	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void configBinding() {
-
-		// -------------------------------------
-		//
-		// binding master
-		// -------------------------------------
-
-		JTableBinding jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, consultas, tblConsulta);
-
-		// -------------------------------------
-		//
-		// atributos master
-		// -------------------------------------
-
-		ColumnBinding columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_inicio}"));
-		columnBinding.setColumnName("Inicio");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_ack}"));
-		columnBinding.setColumnName("Ack");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_finalizacion}"));
-		columnBinding.setColumnName("Fin");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${ack_usuario}"));
-		columnBinding.setColumnName("Usuario");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${familia.descripcion}"));
-		columnBinding.setColumnName("Familia");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${sitio.descripcion}"));
-		columnBinding.setColumnName("Sitio");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${equipo_en_sitio}"));
-		columnBinding.setColumnName("Tipo de Equipo");
-		columnBinding.setColumnClass(EquipoEnSitio.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${suceso.descripcion}"));
-		columnBinding.setColumnName("Suceso");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		/*
-		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible
-		 * (cosa que sucede cuando no se ha elegido un master) no es posible
-		 * definir un detalle
-		 */
-		jTableBinding.setSourceUnreadableValue(Collections.emptyList());
-
-		// -------------------------------------
-		//
-		// binding listo para empaquetar
-		// -------------------------------------
-
-		jTableBinding.bind();
-		bindingGroup.addBinding(jTableBinding);
-		bindingGroup.bind();
-	}
-
-	@Override
-	public void configEventos() {
-
-		EventoComponenteConsulta eventos = new EventoComponenteConsulta(this);
-
-		btnBuscar.addActionListener(eventos);
-
-		try {
-			cargarTodasLasFamilias();
-			cargarTodosLosSitios();
-			cargarTodosLosSucesos();
-			cargarTodosLosEquipos();
-		} catch (NullPointerException excepcion) {
-			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
-		}
-	}
-
-	@Override
-	public void liberarObjetos() {
-
-		consultas.clear();
-		System.gc();
 	}
 
 	private List<Alarma> getListaAlarmas() {

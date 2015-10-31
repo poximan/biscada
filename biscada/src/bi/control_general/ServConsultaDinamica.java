@@ -69,7 +69,7 @@ public class ServConsultaDinamica {
 		crit_query = crit_builder.createQuery(Alarma.class);
 
 		typed_query = EMFSingleton.getInstanciaEM().createQuery(crit_query);
-		typed_query.setHint("javax.persistence.query.timeout", 5000);
+		typed_query.setHint("javax.persistence.query.timeout", 5);
 
 		root_alarmas = crit_query.from(Alarma.class);
 
@@ -91,16 +91,12 @@ public class ServConsultaDinamica {
 
 		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
-		try {
-			buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, calendarHasta,
-					rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
+		buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, calendarHasta, rbtnHastaInicio,
+				rbtnHastaAck, rbtnHastaFin);
 
-			buscarTipos(familia, sitio, tipo_de_equipo, suceso);
+		buscarTipos(familia, sitio, tipo_de_equipo, suceso);
 
-			buscarDuracionAlarma(duracion_minima, duracion_maxima);
-
-		} catch (OutOfMemoryError excepcion) {
-		}
+		buscarDuracionAlarma(duracion_minima, duracion_maxima);
 
 		List<Alarma> resultado;
 
@@ -365,13 +361,13 @@ public class ServConsultaDinamica {
 			JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck, JRadioButton rbtnDesdeFin) {
 
 		if (rbtnDesdeInicio.isSelected())
-			criteria.add(agregarParametroDesde(crit_builder, root_alarmas, "fecha_inicio", calendarDesde));
+			criteria.add(agregarParametroDesde("fecha_inicio", calendarDesde));
 
 		if (rbtnDesdeAck.isSelected())
-			criteria.add(agregarParametroDesde(crit_builder, root_alarmas, "fecha_ack", calendarDesde));
+			criteria.add(agregarParametroDesde("fecha_ack", calendarDesde));
 
 		if (rbtnDesdeFin.isSelected())
-			criteria.add(agregarParametroDesde(crit_builder, root_alarmas, "fecha_finalizacion", calendarDesde));
+			criteria.add(agregarParametroDesde("fecha_finalizacion", calendarDesde));
 	}
 
 	/**
@@ -391,13 +387,13 @@ public class ServConsultaDinamica {
 			JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck, JRadioButton rbtnHastaFin) {
 
 		if (rbtnHastaInicio.isSelected())
-			criteria.add(agregarParametroHasta(crit_builder, root_alarmas, "fecha_inicio", calendarHasta));
+			criteria.add(agregarParametroHasta("fecha_inicio", calendarHasta));
 
 		if (rbtnHastaAck.isSelected())
-			criteria.add(agregarParametroHasta(crit_builder, root_alarmas, "fecha_ack", calendarHasta));
+			criteria.add(agregarParametroHasta("fecha_ack", calendarHasta));
 
 		if (rbtnHastaFin.isSelected())
-			criteria.add(agregarParametroHasta(crit_builder, root_alarmas, "fecha_finalizacion", calendarHasta));
+			criteria.add(agregarParametroHasta("fecha_finalizacion", calendarHasta));
 	}
 
 	/**
@@ -465,14 +461,11 @@ public class ServConsultaDinamica {
 	 * utilizado por agregarPredicadoFechaDesde cuando encuentra una seleccion
 	 * para el tipo desde (que debe ser del enumerado [inicio, ack, fin])
 	 * 
-	 * @param crit_builder
-	 * @param root_alarmas
 	 * @param fecha_usada
 	 * @param calendarDesde
 	 * @return
 	 */
-	private Predicate agregarParametroDesde(CriteriaBuilder crit_builder, Root<Alarma> root_alarmas, String fecha_usada,
-			Calendar calendarDesde) {
+	private Predicate agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {
 
 		Path<Calendar> pathParaInterpretarCalendar = root_alarmas.get(fecha_usada);
 		return crit_builder.greaterThanOrEqualTo(pathParaInterpretarCalendar, calendarDesde);
@@ -484,14 +477,11 @@ public class ServConsultaDinamica {
 	 * utilizado por agregarPredicadoFechaHasta cuando encuentra una seleccion
 	 * para el tipo hasta (que debe ser del enumerado [inicio, ack, fin])
 	 * 
-	 * @param crit_builder
-	 * @param root_alarmas
 	 * @param fecha_usada
 	 * @param calendarHasta
 	 * @return
 	 */
-	private Predicate agregarParametroHasta(CriteriaBuilder crit_builder, Root<Alarma> root_alarmas, String fecha_usada,
-			Calendar calendarHasta) {
+	private Predicate agregarParametroHasta(String fecha_usada, Calendar calendarHasta) {
 
 		Path<Calendar> pathParaInterpretarCalendar = root_alarmas.get(fecha_usada);
 		return crit_builder.lessThanOrEqualTo(pathParaInterpretarCalendar, calendarHasta);

@@ -29,9 +29,9 @@ import comunes.vistas.PanelIniciable;
 /* ............................................. */
 
 /**
- * reutiliza los servicios de consulta a base de datos, pero una vez devuelta la consulta la ventana se cierra,
- * entregando la lista a la ventana que solicito una consulta adicional para realizar comparacion contra una consulta
- * origen
+ * reutiliza los servicios de consulta a base de datos, pero una vez devuelta la
+ * consulta la ventana se cierra, entregando la lista a la ventana que solicito
+ * una consulta adicional para realizar comparacion contra una consulta origen
  * 
  * @author hdonato
  *
@@ -60,7 +60,8 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaConsultaCompuesta(ComponenteMenuDimension componenteMenuDimension, ComponenteMenuConsulta frame_menu_bi) {
+	public VistaConsultaCompuesta(ComponenteMenuDimension componenteMenuDimension,
+			ComponenteMenuConsulta frame_menu_bi) {
 
 		this.frame_menu_bi = frame_menu_bi;
 		this.componenteMenuDimension = componenteMenuDimension;
@@ -79,26 +80,22 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 
 		groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(
-						groupLayout
-								.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										groupLayout
-												.createParallelGroup(Alignment.LEADING)
-												.addComponent(componenteConsulta, Alignment.TRAILING,
-														GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-												.addComponent(panelComparacion, GroupLayout.DEFAULT_SIZE, 430,
-														Short.MAX_VALUE)).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelComparacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE).addContainerGap()));
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(componenteConsulta, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430,
+										Short.MAX_VALUE)
+						.addComponent(panelComparacion, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+				.addContainerGap()));
+		groupLayout
+				.setVerticalGroup(
+						groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+										.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panelComparacion, GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
 		panelComparacion.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
 		btnUsarConsulta = new JButton("usar esta consulta");

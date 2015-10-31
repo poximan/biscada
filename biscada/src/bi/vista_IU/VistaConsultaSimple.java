@@ -72,20 +72,16 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		componenteConsulta = new ComponenteConsulta(frame_menu_bi);
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				Alignment.TRAILING,
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								groupLayout
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(panelDimensiones, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												765, Short.MAX_VALUE)
-										.addComponent(componenteConsulta, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												765, Short.MAX_VALUE)).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
 				groupLayout.createSequentialGroup().addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panelDimensiones, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 765,
+										Short.MAX_VALUE)
+								.addComponent(componenteConsulta, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 765,
+										Short.MAX_VALUE))
+						.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 						.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(panelDimensiones, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)

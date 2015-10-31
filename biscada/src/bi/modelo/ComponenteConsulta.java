@@ -47,7 +47,8 @@ import org.jdesktop.swingbinding.SwingBindings;
 
 import com.toedter.calendar.JDateChooser;
 
-import bi.control_general.ServConsulta;
+import bi.control_general.ServConsultaDinamica;
+import bi.control_general.ServConsultaEstatica;
 import bi.vista_evento.EventoComponenteConsulta;
 import bi.vista_evento.EventoManejable;
 import comunes.control_general.ObjetosBorrables;
@@ -65,8 +66,8 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ComponenteConsulta extends JPanel implements PanelIniciable, EventoConfigurable, ObjetosBorrables,
-		EventoManejable {
+public class ComponenteConsulta extends JPanel
+		implements PanelIniciable, EventoConfigurable, ObjetosBorrables, EventoManejable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -125,7 +126,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 	private JTextField txt_reg_encontrados;
 
-	private ServConsulta serv_consulta;
+	private ServConsultaDinamica serv_consulta;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -167,7 +168,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		configEventos();
 		ordenarTabla();
 
-		serv_consulta = new ServConsulta();
+		serv_consulta = new ServConsultaDinamica();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -183,8 +184,8 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		// -------------------------------------
 
 		bindingGroup = new BindingGroup();
-		consultas = (List<Alarma>) (Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections
-				.observableList(new ArrayList<Alarma>()));
+		consultas = (List<Alarma>) (Beans.isDesignTime() ? Collections.emptyList()
+				: ObservableCollections.observableList(new ArrayList<Alarma>()));
 
 		// -------------------------------------
 		//
@@ -193,25 +194,29 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		panelFiltros = new JPanel();
 		panelTabla = new JPanel();
-		panelTabla.setBorder(new TitledBorder(null, "Resultado consulta", TitledBorder.LEADING, TitledBorder.TOP, null,
-				null));
+		panelTabla.setBorder(
+				new TitledBorder(null, "Resultado consulta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								groupLayout
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-										.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430,
-												Short.MAX_VALUE)).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE).addContainerGap()));
+		groupLayout
+				.setHorizontalGroup(
+						groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 430,
+														Short.MAX_VALUE)
+												.addComponent(panelFiltros, Alignment.TRAILING,
+														GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+				.addContainerGap()));
+		groupLayout
+				.setVerticalGroup(
+						groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+										.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+										.addContainerGap()));
 
 		btnBuscar = new JButton("Buscar");
 		scrPaneTabla = new JScrollPane();
@@ -241,162 +246,96 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		buttonGroupHasta.add(rbtnHastaFin);
 
 		gl_panelFechas = new GroupLayout(panelFechas);
-		gl_panelFechas.setHorizontalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelFechas
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panelFechas
-										.createParallelGroup(Alignment.LEADING)
-										.addGroup(
-												gl_panelFechas
-														.createParallelGroup(Alignment.TRAILING, false)
-														.addGroup(
-																gl_panelFechas
-																		.createSequentialGroup()
-																		.addComponent(lblDesde,
-																				GroupLayout.PREFERRED_SIZE, 43,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(ComponentPlacement.RELATED,
-																				GroupLayout.DEFAULT_SIZE,
-																				Short.MAX_VALUE)
-																		.addComponent(choosDesde,
-																				GroupLayout.PREFERRED_SIZE, 100,
-																				GroupLayout.PREFERRED_SIZE))
-														.addGroup(
-																gl_panelFechas.createSequentialGroup()
-																		.addComponent(rbtnDesdeInicio)
-																		.addPreferredGap(ComponentPlacement.RELATED)
-																		.addComponent(rbtnDesdeAck)
-																		.addPreferredGap(ComponentPlacement.RELATED)
-																		.addComponent(rbtnDesdeFin)))
-										.addGroup(
-												gl_panelFechas
-														.createParallelGroup(Alignment.LEADING, false)
-														.addGroup(
-																gl_panelFechas
-																		.createSequentialGroup()
-																		.addComponent(lblHasta,
-																				GroupLayout.PREFERRED_SIZE, 42,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(ComponentPlacement.RELATED)
-																		.addComponent(choosHasta,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				Short.MAX_VALUE))
-														.addGroup(
-																gl_panelFechas
-																		.createSequentialGroup()
-																		.addComponent(rbtnHastaInicio,
-																				GroupLayout.PREFERRED_SIZE, 49,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addComponent(rbtnHastaAck,
-																				GroupLayout.PREFERRED_SIZE, 49,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addComponent(rbtnHastaFin,
-																				GroupLayout.PREFERRED_SIZE, 49,
-																				GroupLayout.PREFERRED_SIZE))))
-						.addContainerGap(74, Short.MAX_VALUE)));
+		gl_panelFechas.setHorizontalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addGroup(gl_panelFechas
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addGroup(gl_panelFechas
+						.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(gl_panelFechas.createSequentialGroup()
+								.addComponent(lblDesde, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panelFechas.createSequentialGroup().addComponent(rbtnDesdeInicio)
+								.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeAck)
+								.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeFin)))
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_panelFechas.createSequentialGroup()
+										.addComponent(lblHasta, GroupLayout.PREFERRED_SIZE, 42,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(choosHasta,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(gl_panelFechas.createSequentialGroup()
+										.addComponent(rbtnHastaInicio, GroupLayout.PREFERRED_SIZE, 49,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(rbtnHastaAck, GroupLayout.PREFERRED_SIZE, 49,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(rbtnHastaFin, GroupLayout.PREFERRED_SIZE, 49,
+												GroupLayout.PREFERRED_SIZE))))
+				.addContainerGap(74, Short.MAX_VALUE)));
 		gl_panelFechas.setVerticalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panelFechas
-								.createSequentialGroup()
-								.addGroup(
-										gl_panelFechas
-												.createParallelGroup(Alignment.LEADING)
-												.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGroup(
-														gl_panelFechas.createSequentialGroup().addGap(3)
-																.addComponent(lblDesde)))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(
-										gl_panelFechas.createParallelGroup(Alignment.BASELINE)
-												.addComponent(rbtnDesdeInicio).addComponent(rbtnDesdeAck)
-												.addComponent(rbtnDesdeFin))
-								.addGap(18)
-								.addGroup(
-										gl_panelFechas
-												.createParallelGroup(Alignment.LEADING)
-												.addGroup(
-														gl_panelFechas.createSequentialGroup().addGap(3)
-																.addComponent(lblHasta))
-												.addComponent(choosHasta, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(
-										gl_panelFechas.createParallelGroup(Alignment.LEADING)
-												.addComponent(rbtnHastaInicio).addComponent(rbtnHastaAck)
-												.addComponent(rbtnHastaFin)).addContainerGap(19, Short.MAX_VALUE)));
+				.addGroup(gl_panelFechas.createSequentialGroup()
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
+								.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblDesde)))
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_panelFechas.createParallelGroup(Alignment.BASELINE).addComponent(rbtnDesdeInicio)
+						.addComponent(rbtnDesdeAck).addComponent(rbtnDesdeFin))
+				.addGap(18)
+				.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblHasta))
+						.addComponent(choosHasta, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addComponent(rbtnHastaInicio)
+								.addComponent(rbtnHastaAck).addComponent(rbtnHastaFin))
+				.addContainerGap(19, Short.MAX_VALUE)));
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { choosHasta, choosDesde });
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblHasta, lblDesde });
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { rbtnDesdeInicio, rbtnDesdeAck,
 				rbtnDesdeFin, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin });
 
 		gl_panelCampoSimple.setHorizontalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panelCampoSimple
-								.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										gl_panelCampoSimple
-												.createParallelGroup(Alignment.LEADING)
-												.addGroup(
-														gl_panelCampoSimple
-																.createSequentialGroup()
-																.addComponent(lblSitio, GroupLayout.PREFERRED_SIZE, 67,
-																		GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(cboxSitio, 0, 174, Short.MAX_VALUE)
-																.addPreferredGap(ComponentPlacement.UNRELATED)
-																.addComponent(lblFamilia, GroupLayout.PREFERRED_SIZE,
-																		67, GroupLayout.PREFERRED_SIZE).addGap(4)
-																.addComponent(cboxFamilia, 0, 173, Short.MAX_VALUE))
-												.addGroup(
-														gl_panelCampoSimple
-																.createSequentialGroup()
-																.addComponent(lblTipoEquipo,
-																		GroupLayout.PREFERRED_SIZE, 67,
-																		GroupLayout.PREFERRED_SIZE)
-																.addGap(4)
-																.addComponent(cboxTipoEquipo, 0, 174, Short.MAX_VALUE)
-																.addPreferredGap(ComponentPlacement.UNRELATED)
-																.addComponent(lblSuceso, GroupLayout.PREFERRED_SIZE,
-																		67, GroupLayout.PREFERRED_SIZE).addGap(4)
-																.addComponent(cboxSuceso, 0, 173, Short.MAX_VALUE)))
-								.addGap(14)));
-		gl_panelCampoSimple.setVerticalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelCampoSimple
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panelCampoSimple
-										.createParallelGroup(Alignment.LEADING)
-										.addGroup(
-												gl_panelCampoSimple.createSequentialGroup().addGap(3)
-														.addComponent(lblFamilia))
-										.addComponent(cboxFamilia, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGroup(
-												gl_panelCampoSimple
-														.createParallelGroup(Alignment.BASELINE)
-														.addComponent(lblSitio)
-														.addComponent(cboxSitio, GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelCampoSimple.createSequentialGroup()
+										.addComponent(lblSitio, GroupLayout.PREFERRED_SIZE, 67,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(cboxSitio, 0, 174, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(lblFamilia, GroupLayout.PREFERRED_SIZE, 67,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(4).addComponent(cboxFamilia, 0, 173, Short.MAX_VALUE))
+								.addGroup(gl_panelCampoSimple.createSequentialGroup()
+										.addComponent(lblTipoEquipo, GroupLayout.PREFERRED_SIZE, 67,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(4).addComponent(cboxTipoEquipo, 0, 174, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(lblSuceso, GroupLayout.PREFERRED_SIZE, 67,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(4).addComponent(cboxSuceso, 0, 173, Short.MAX_VALUE)))
+						.addGap(14)));
+		gl_panelCampoSimple
+				.setVerticalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap()
+								.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3)
+												.addComponent(lblFamilia))
+						.addComponent(cboxFamilia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.BASELINE).addComponent(lblSitio)
+								.addComponent(cboxSitio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)))
 						.addGap(18)
-						.addGroup(
-								gl_panelCampoSimple
-										.createParallelGroup(Alignment.LEADING)
-										.addGroup(
-												gl_panelCampoSimple.createSequentialGroup().addGap(3)
-														.addComponent(lblTipoEquipo))
-										.addComponent(cboxTipoEquipo, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGroup(
-												gl_panelCampoSimple.createSequentialGroup().addGap(3)
-														.addComponent(lblSuceso))
-										.addComponent(cboxSuceso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.PREFERRED_SIZE)).addContainerGap(25, Short.MAX_VALUE)));
+						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3)
+										.addComponent(lblTipoEquipo))
+								.addComponent(cboxTipoEquipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3).addComponent(lblSuceso))
+								.addComponent(cboxSuceso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(25, Short.MAX_VALUE)));
 
 		panelFiltros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Primer nivel evaluacion",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -408,42 +347,32 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		JLabel lbl_reg_encontrados = new JLabel("Registros encontrados:");
 
 		GroupLayout gl_panelTabla = new GroupLayout(panelTabla);
-		gl_panelTabla.setHorizontalGroup(gl_panelTabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelTabla
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panelTabla
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
-										.addGroup(
-												gl_panelTabla
-														.createSequentialGroup()
-														.addComponent(lbl_reg_encontrados)
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txt_reg_encontrados, GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+		gl_panelTabla.setHorizontalGroup(gl_panelTabla.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelTabla.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panelTabla.createParallelGroup(Alignment.TRAILING)
+								.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+								.addGroup(gl_panelTabla.createSequentialGroup().addComponent(lbl_reg_encontrados)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(txt_reg_encontrados,
+												GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)))
 						.addContainerGap()));
-		gl_panelTabla.setVerticalGroup(gl_panelTabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelTabla
-						.createSequentialGroup()
-						.addGap(5)
-						.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(
-								gl_panelTabla
-										.createParallelGroup(Alignment.BASELINE)
+		gl_panelTabla
+				.setVerticalGroup(gl_panelTabla.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelTabla.createSequentialGroup().addGap(5)
+								.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_panelTabla.createParallelGroup(Alignment.BASELINE)
 										.addComponent(txt_reg_encontrados, GroupLayout.PREFERRED_SIZE,
 												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lbl_reg_encontrados)).addGap(6)));
+								.addComponent(lbl_reg_encontrados)).addGap(6)));
 		panelTabla.setLayout(gl_panelTabla);
 
 		scrPaneTabla.setViewportView(tblConsulta);
 
 		panelFechas.setBorder(new TitledBorder(null, "Fecha", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		panelCampoSimple.setBorder(new TitledBorder(null, "Campos simples", TitledBorder.LEADING, TitledBorder.TOP,
-				null, null));
+		panelCampoSimple.setBorder(
+				new TitledBorder(null, "Campos simples", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		lblProcesando = new JLabel("procesando...");
 		lblProcesando.setVisible(false);
@@ -451,48 +380,28 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		GroupLayout gl_panelFiltros = new GroupLayout(panelFiltros);
 		gl_panelFiltros.setHorizontalGroup(gl_panelFiltros.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panelFiltros
-								.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(
-										gl_panelFiltros
-												.createParallelGroup(Alignment.TRAILING)
-												.addGroup(
-														gl_panelFiltros
-																.createSequentialGroup()
-																.addComponent(lblProcesando)
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE,
-																		118, GroupLayout.PREFERRED_SIZE))
-												.addComponent(panelCampoSimple, GroupLayout.DEFAULT_SIZE, 828,
-														Short.MAX_VALUE)).addContainerGap()));
-		gl_panelFiltros.setVerticalGroup(gl_panelFiltros.createParallelGroup(Alignment.TRAILING).addGroup(
-				gl_panelFiltros
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panelFiltros
-										.createParallelGroup(Alignment.BASELINE)
-										.addGroup(
-												gl_panelFiltros
-														.createSequentialGroup()
-														.addComponent(panelCampoSimple, GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(ComponentPlacement.RELATED,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addGroup(
-																gl_panelFiltros.createParallelGroup(Alignment.BASELINE)
-																		.addComponent(btnBuscar)
-																		.addComponent(lblProcesando)))
-										.addGroup(
-												gl_panelFiltros
-														.createSequentialGroup()
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 134,
-																GroupLayout.PREFERRED_SIZE))).addContainerGap()));
+				.addGroup(gl_panelFiltros.createSequentialGroup().addContainerGap()
+						.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_panelFiltros.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panelFiltros.createSequentialGroup().addComponent(lblProcesando)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnBuscar,
+												GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE))
+								.addComponent(panelCampoSimple, GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE))
+						.addContainerGap()));
+		gl_panelFiltros.setVerticalGroup(gl_panelFiltros.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelFiltros.createSequentialGroup().addContainerGap().addGroup(gl_panelFiltros
+						.createParallelGroup(Alignment.BASELINE)
+						.addGroup(gl_panelFiltros.createSequentialGroup()
+								.addComponent(panelCampoSimple, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(gl_panelFiltros.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnBuscar).addComponent(lblProcesando)))
+						.addGroup(gl_panelFiltros.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(panelFechas, GroupLayout.PREFERRED_SIZE, 134,
+										GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap()));
 
 		lblSitio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFamilia.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -528,9 +437,11 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			@Override
 			public void run() {
 
+				log.trace("liberando lista antigua");
 				liberarObjetos();
-				List<Alarma> nueva_lista = getListaAlarmas();
-				consultas.addAll(nueva_lista);
+
+				log.trace("agregando lista nueva");
+				consultas.addAll(getListaAlarmas());
 				txt_reg_encontrados.setText(Integer.toString(consultas.size()));
 			}
 		};
@@ -551,8 +462,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 						lblProcesando.setVisible(false);
 						Thread.sleep(40);
-					}
-					catch (InterruptedException excepcion) {
+					} catch (InterruptedException excepcion) {
 						lblProcesando.setVisible(false);
 					}
 				}
@@ -566,7 +476,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Familia> familia = ServConsulta.getListaFamilia();
+		List<Familia> familia = ServConsultaEstatica.getListaFamilia();
 		cboxFamilia.removeAllItems();
 
 		cboxFamilia.addItem(null);
@@ -579,7 +489,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<TipoDeEquipo> sucesos = ServConsulta.getListaEquipos();
+		List<TipoDeEquipo> sucesos = ServConsultaEstatica.getListaEquipos();
 		cboxTipoEquipo.removeAllItems();
 
 		cboxTipoEquipo.addItem(null);
@@ -592,7 +502,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Sitio> sitios = ServConsulta.getListaSitios();
+		List<Sitio> sitios = ServConsultaEstatica.getListaSitios();
 		cboxSitio.removeAllItems();
 
 		cboxSitio.addItem(null);
@@ -605,7 +515,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		// construir lista con objetos actuales en bd que deberan estar en la
 		// lista
-		List<Suceso> sucesos = ServConsulta.getListaSucesos();
+		List<Suceso> sucesos = ServConsultaEstatica.getListaSucesos();
 		cboxSuceso.removeAllItems();
 
 		cboxSuceso.addItem(null);
@@ -670,8 +580,9 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		columnBinding.setEditable(false);
 
 		/*
-		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible (cosa que sucede cuando no se ha elegido
-		 * un master) no es posible definir un detalle
+		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible
+		 * (cosa que sucede cuando no se ha elegido un master) no es posible
+		 * definir un detalle
 		 */
 		jTableBinding.setSourceUnreadableValue(Collections.emptyList());
 
@@ -697,8 +608,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			cargarTodosLosSitios();
 			cargarTodosLosSucesos();
 			cargarTodosLosEquipos();
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
 		}
 	}

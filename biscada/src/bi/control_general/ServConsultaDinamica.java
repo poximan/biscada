@@ -1,3 +1,4 @@
+
 /* ............................................. */
 /* ............................................. */
 /* PRELIMINAR .................................. */
@@ -51,12 +52,12 @@ public class ServConsultaDinamica {
 	private static Logger log = Logger.getLogger(ServConsultaDinamica.class);
 
 	private CriteriaBuilder crit_builder;
+
 	private CriteriaQuery<Alarma> crit_query;
+	private Root<Alarma> root_alarmas;
+	private List<Predicate> predicados;
 
 	private TypedQuery<Alarma> typed_query;
-	private Root<Alarma> root_alarmas;
-
-	private List<Predicate> criteria;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -68,14 +69,8 @@ public class ServConsultaDinamica {
 		crit_builder = EMFSingleton.getInstanciaEM().getCriteriaBuilder();
 		crit_query = crit_builder.createQuery(Alarma.class);
 
-		typed_query = EMFSingleton.getInstanciaEM().createQuery(crit_query);
-		typed_query.setHint("javax.persistence.query.timeout", 5);
-
 		root_alarmas = crit_query.from(Alarma.class);
-
 		crit_query.select(root_alarmas);
-
-		criteria = new ArrayList<Predicate>();
 	}
 
 	/* ............................................. */
@@ -91,12 +86,18 @@ public class ServConsultaDinamica {
 
 		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
-		buscarRangoFechas(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, calendarHasta, rbtnHastaInicio,
-				rbtnHastaAck, rbtnHastaFin);
+		log.trace("agregando predicados...");
+		agregarPredicados(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, calendarHasta, rbtnHastaInicio,
+				rbtnHastaAck, rbtnHastaFin, familia, sitio, tipo_de_equipo, suceso, duracion_maxima, duracion_maxima);
 
-		buscarTipos(familia, sitio, tipo_de_equipo, suceso);
+		log.trace("agregando condiciones consulta...");
+		construirCondicionesConsulta();
 
-		buscarDuracionAlarma(duracion_minima, duracion_maxima);
+		log.trace("estableciendo valores de parametros...");
+		establecerParametros(calendarHasta, rbtnHastaFin, rbtnHastaFin, rbtnHastaFin, calendarHasta, rbtnHastaFin,
+				rbtnHastaFin, rbtnHastaFin, familia, sitio, tipo_de_equipo, suceso, duracion_maxima, duracion_maxima);
+
+		mostrarQuery();
 
 		List<Alarma> resultado;
 
@@ -110,13 +111,102 @@ public class ServConsultaDinamica {
 		if (resultado == null)
 			resultado = new ArrayList<Alarma>();
 
-		log.trace("consulta a bd -> " + resultado.size() + " aciertos\n");
+		log.trace("consulta finalizada. se trajeron " + resultado.size() + " resultados\n");
 
 		descartarIncompletas(resultado, incluir_ini_incompleta, incluir_fin_incompleta, incluir_ack_incompleta);
 
 		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
 
 		return resultado;
+	}
+
+	private void establecerParametros(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
+			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
+			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
+			Integer duracion_minima, Integer duracion_maxima) {
+
+		if (calendarDesde != null) {
+			if (rbtnDesdeInicio.isSelected())
+				typed_query.setParameter("fecha_inicio", calendarDesde);
+
+			if (rbtnDesdeAck.isSelected())
+				typed_query.setParameter("fecha_ack", calendarDesde);
+
+			if (rbtnDesdeFin.isSelected())
+				typed_query.setParameter("fecha_finalizacion", calendarDesde);
+		}
+
+		if (calendarHasta != null) {
+			if (rbtnHastaInicio.isSelected())
+				typed_query.setParameter("fecha_inicio", calendarHasta);
+
+			if (rbtnHastaAck.isSelected())
+				typed_query.setParameter("fecha_ack", calendarHasta);
+
+			if (rbtnHastaFin.isSelected())
+				typed_query.setParameter("fecha_finalizacion", calendarHasta);
+		}
+
+		if (familia != null)
+			typed_query.setParameter("familia", familia);
+
+		if (sitio != null)
+			typed_query.setParameter("sitio", sitio);
+
+		if (tipo_de_equipo != null)
+			typed_query.setParameter("tipo_de_equipo", tipo_de_equipo);
+
+		if (suceso != null)
+			typed_query.setParameter("suceso", suceso);
+
+		if (duracion_minima != null)
+			typed_query.setParameter("duracion_minima", duracion_minima);
+
+		if (duracion_maxima != null)
+			typed_query.setParameter("duracion_maxima", duracion_maxima);
+	}
+
+	private void construirCondicionesConsulta() {
+
+		if (predicados.size() == 1)
+			crit_query.where(predicados.get(0));
+		else
+			crit_query.where(crit_builder.and(predicados.toArray(new Predicate[0])));
+
+		typed_query = EMFSingleton.getInstanciaEM().createQuery(crit_query);
+		typed_query.setHint("javax.persistence.query.timeout", 5);
+	}
+
+	private void agregarPredicados(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
+			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
+			JRadioButton rbtnHastaFin, Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso,
+			Integer duracion_minima, Integer duracion_maxima) {
+
+		predicados = new ArrayList<Predicate>();
+
+		if (calendarDesde != null)
+			predicados.addAll(agregarPredicadoFechaDesde(calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin));
+
+		if (calendarHasta != null)
+			predicados.addAll(agregarPredicadoFechaHasta(calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin));
+
+		if (familia != null)
+			predicados.add(agregarPredicadoFamilia("familia"));
+
+		if (sitio != null)
+			predicados.add(agregarPredicadoSitio("sitio"));
+
+		if (tipo_de_equipo != null)
+			predicados.add(agregarPredicadoTipoDeEquipo("tipo_de_equipo"));
+
+		if (suceso != null)
+			predicados.add(agregarPredicadoSuceso("suceso"));
+
+		if (duracion_minima != null)
+			predicados.add(agregarPredicadoRuidoMinimo("fecha_inicio", "fecha_finalizacion"));
+
+		if (duracion_maxima != null)
+			predicados.add(agregarPredicadoRuidoMaximo("fecha_inicio", "fecha_finalizacion"));
 	}
 
 	/**
@@ -145,147 +235,12 @@ public class ServConsultaDinamica {
 				+ " alarmas que les faltaba alguna fecha solicitada");
 	}
 
-	private void buscarDuracionAlarma(Integer duracion_minima, Integer duracion_maxima) {
-
-		// -------------------------------------
-		//
-		// llegada dinamica de parametros
-		// -------------------------------------
-
-		if (duracion_minima != null)
-			criteria.add(agregarPredicadoRuidoMinimo("fecha_inicio", "fecha_finalizacion"));
-
-		if (duracion_maxima != null)
-			criteria.add(agregarPredicadoRuidoMaximo("fecha_inicio", "fecha_finalizacion"));
-
-		// -------------------------------------
-		//
-		// construir consulta
-		// -------------------------------------
-
-		if (criteria.size() == 1)
-			crit_query.where(criteria.get(0));
-		else
-			crit_query.where(crit_builder.and(criteria.toArray(new Predicate[0])));
-
-		// -------------------------------------
-		//
-		// pasar parametros
-		// -------------------------------------
-
-		if (duracion_minima != null)
-			typed_query.setParameter("duracion_minima", duracion_minima);
-
-		if (duracion_maxima != null)
-			typed_query.setParameter("duracion_maxima", duracion_maxima);
-
-		mostrarQuery(typed_query);
-	}
-
-	private void buscarRangoFechas(Calendar calendarDesde, JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck,
-			JRadioButton rbtnDesdeFin, Calendar calendarHasta, JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck,
-			JRadioButton rbtnHastaFin) {
-
-		// -------------------------------------
-		//
-		// llegada dinamica de parametros
-		// -------------------------------------
-
-		if (calendarDesde != null)
-			agregarPredicadoFechaDesde(criteria, calendarDesde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin);
-
-		if (calendarHasta != null)
-			agregarPredicadoFechaHasta(criteria, calendarHasta, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin);
-
-		// -------------------------------------
-		//
-		// construir consulta
-		// -------------------------------------
-
-		if (criteria.size() == 1)
-			crit_query.where(criteria.get(0));
-		else
-			crit_query.where(crit_builder.and(criteria.toArray(new Predicate[0])));
-
-		// -------------------------------------
-		//
-		// pasar parametros
-		// -------------------------------------
-
-		if (calendarDesde != null) {
-			if (rbtnDesdeInicio.isSelected())
-				typed_query.setParameter("fecha_inicio", calendarDesde);
-
-			if (rbtnDesdeAck.isSelected())
-				typed_query.setParameter("fecha_ack", calendarDesde);
-
-			if (rbtnDesdeFin.isSelected())
-				typed_query.setParameter("fecha_finalizacion", calendarDesde);
-		}
-		if (calendarHasta != null) {
-			if (rbtnHastaInicio.isSelected())
-				typed_query.setParameter("fecha_inicio", calendarHasta);
-
-			if (rbtnHastaAck.isSelected())
-				typed_query.setParameter("fecha_ack", calendarHasta);
-
-			if (rbtnHastaFin.isSelected())
-				typed_query.setParameter("fecha_finalizacion", calendarHasta);
-		}
-
-		mostrarQuery(typed_query);
-	}
-
-	private void buscarTipos(Familia familia, Sitio sitio, TipoDeEquipo tipo_de_equipo, Suceso suceso) {
-
-		if (familia != null)
-			criteria.add(agregarPredicadoFamilia("familia"));
-
-		if (sitio != null)
-			criteria.add(agregarPredicadoSitio("sitio"));
-
-		if (tipo_de_equipo != null)
-			criteria.add(agregarPredicadoTipoDeEquipo("tipo_de_equipo"));
-
-		if (suceso != null)
-			criteria.add(agregarPredicadoSuceso("suceso"));
-
-		// -------------------------------------
-		//
-		// construir consulta
-		// -------------------------------------
-
-		if (criteria.size() == 1)
-			crit_query.where(criteria.get(0));
-		else
-			crit_query.where(crit_builder.and(criteria.toArray(new Predicate[0])));
-
-		// -------------------------------------
-		//
-		// pasar parametros
-		// -------------------------------------
-
-		if (familia != null)
-			typed_query.setParameter("familia", familia);
-
-		if (sitio != null)
-			typed_query.setParameter("sitio", sitio);
-
-		if (tipo_de_equipo != null)
-			typed_query.setParameter("tipo_de_equipo", tipo_de_equipo);
-
-		if (suceso != null)
-			typed_query.setParameter("suceso", suceso);
-
-		mostrarQuery(typed_query);
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* ....... AUXILIARES CONSULTA FILTRADA ........ */
 	/* ............................................. */
 
-	private void mostrarQuery(TypedQuery<Alarma> typed_query) {
+	private void mostrarQuery() {
 
 		Session sesion = EMFSingleton.getInstanciaEM().unwrap(JpaEntityManager.class).getActiveSession();
 		DatabaseQuery consulta = ((EJBQueryImpl<Alarma>) typed_query).getDatabaseQuery();
@@ -298,9 +253,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo minimo
-	 * de vida, para descartar de esta manera alarmas que duren menos que un
-	 * periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
+	 * minimo de vida, para descartar de esta manera alarmas que duren menos que
+	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param criteria
 	 * 
@@ -324,9 +279,9 @@ public class ServConsultaDinamica {
 	 * 
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo maximo
-	 * de vida, para descartar de esta manera alarmas que duren mas que un
-	 * periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
+	 * maximo de vida, para descartar de esta manera alarmas que duren mas que
+	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
@@ -347,53 +302,59 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha desde" en particular, se traeran solo
-	 * alarmas con fecha >= para el campo especificado [fecha inicio, ack, fin]
-	 * 
-	 * @param criteria
+	 * si el usuario especific� una "fecha desde" en particular, se traeran
+	 * solo alarmas con fecha >= para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarDesde
 	 * @param rbtnDesdeInicio
 	 * @param rbtnDesdeAck
 	 * @param rbtnDesdeFin
 	 */
-	private void agregarPredicadoFechaDesde(List<Predicate> criteria, Calendar calendarDesde,
-			JRadioButton rbtnDesdeInicio, JRadioButton rbtnDesdeAck, JRadioButton rbtnDesdeFin) {
+	private List<Predicate> agregarPredicadoFechaDesde(Calendar calendarDesde, JRadioButton rbtnDesdeInicio,
+			JRadioButton rbtnDesdeAck, JRadioButton rbtnDesdeFin) {
+
+		List<Predicate> predicados = new ArrayList<>();
 
 		if (rbtnDesdeInicio.isSelected())
-			criteria.add(agregarParametroDesde("fecha_inicio", calendarDesde));
+			predicados.add(agregarParametroDesde("fecha_inicio", calendarDesde));
 
 		if (rbtnDesdeAck.isSelected())
-			criteria.add(agregarParametroDesde("fecha_ack", calendarDesde));
+			predicados.add(agregarParametroDesde("fecha_ack", calendarDesde));
 
 		if (rbtnDesdeFin.isSelected())
-			criteria.add(agregarParametroDesde("fecha_finalizacion", calendarDesde));
+			predicados.add(agregarParametroDesde("fecha_finalizacion", calendarDesde));
+
+		return predicados;
 	}
 
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha hasta" en particular, se traeran solo
-	 * alarmas con fecha <= para el campo especificado [fecha inicio, ack, fin]
-	 * 
-	 * @param criteria
+	 * si el usuario especific� una "fecha hasta" en particular, se traeran
+	 * solo alarmas con fecha <= para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarHasta
 	 * @param rbtnHastaInicio
 	 * @param rbtnHastaAck
 	 * @param rbtnHastaFin
 	 */
-	private void agregarPredicadoFechaHasta(List<Predicate> criteria, Calendar calendarHasta,
-			JRadioButton rbtnHastaInicio, JRadioButton rbtnHastaAck, JRadioButton rbtnHastaFin) {
+	private List<Predicate> agregarPredicadoFechaHasta(Calendar calendarHasta, JRadioButton rbtnHastaInicio,
+			JRadioButton rbtnHastaAck, JRadioButton rbtnHastaFin) {
+
+		List<Predicate> predicados = new ArrayList<>();
 
 		if (rbtnHastaInicio.isSelected())
-			criteria.add(agregarParametroHasta("fecha_inicio", calendarHasta));
+			predicados.add(agregarParametroHasta("fecha_inicio", calendarHasta));
 
 		if (rbtnHastaAck.isSelected())
-			criteria.add(agregarParametroHasta("fecha_ack", calendarHasta));
+			predicados.add(agregarParametroHasta("fecha_ack", calendarHasta));
 
 		if (rbtnHastaFin.isSelected())
-			criteria.add(agregarParametroHasta("fecha_finalizacion", calendarHasta));
+			predicados.add(agregarParametroHasta("fecha_finalizacion", calendarHasta));
+
+		return predicados;
 	}
 
 	/**

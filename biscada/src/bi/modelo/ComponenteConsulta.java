@@ -136,10 +136,10 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 	public ComponenteConsulta(ComponenteMenuConsulta frame_bi) {
 
 		this.frame_bi = frame_bi;
-		recargar(new ArrayList<>(0));
+		recargar(new ArrayList<>(0), null); // null -> no existe consulta previa
 	}
 
-	private void recargar(List<Alarma> consultas) {
+	private void recargar(List<Alarma> consultas, DatosConsulta datos_consulta) {
 
 		this.consultas = ObservableCollections.observableList(consultas);
 
@@ -174,6 +174,9 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 
 		configEventos();
 		ordenarTabla();
+
+		if (datos_consulta != null)
+			cargarConfiguracionConsultaPrevia(datos_consulta);
 	}
 
 	@Override
@@ -527,9 +530,25 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			@Override
 			public void run() {
 
-				log.trace("agregando lista nueva");
+				log.trace("colectando datos desde IU");
+				DatosConsulta datos_consulta = new DatosConsulta(//
+						choosDesde.getCalendar(), //
+						rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, //
+						choosHasta.getCalendar(), //
+						rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, //
+
+						(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
+						(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(),
+
+						frame_bi.getComponente_ruido_minimo().getSegundos(),
+						frame_bi.getComponente_ruido_maximo().getSegundos(),
+
+						frame_bi.getComponente_ini_incompleta().isSelected(),
+						frame_bi.getComponente_ack_incompleta().isSelected(),
+						frame_bi.getComponente_fin_incompleta().isSelected());
+
 				ComponenteConsulta.this.removeAll();
-				recargar(getListaAlarmas());
+				recargar(serv_consulta.buscAlarma(datos_consulta), datos_consulta);
 			}
 		};
 		final Thread hilo_consulta = new Thread(consulta);
@@ -611,26 +630,29 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			cboxSuceso.addItem(suceso_actual); // cargar la lista
 	}
 
-	private List<Alarma> getListaAlarmas() {
+	private void cargarConfiguracionConsultaPrevia(DatosConsulta datos_consulta) {
 
-		Calendar fecha_desde = choosDesde.getCalendar();
-		Calendar fecha_hasta = choosHasta.getCalendar();
+		choosDesde.setCalendar(datos_consulta.getCalendar_desde());
+		rbtnDesdeInicio.setSelected(datos_consulta.getDesde_inicio());
+		rbtnDesdeAck.setSelected(datos_consulta.getDesde_ack());
+		rbtnDesdeFin.setSelected(datos_consulta.getDesde_fin());
 
-		Familia familia = (Familia) cboxFamilia.getSelectedItem();
-		Sitio sitio = (Sitio) cboxSitio.getSelectedItem();
-		TipoDeEquipo tipo_de_equipo = (TipoDeEquipo) cboxTipoEquipo.getSelectedItem();
-		Suceso suceso = (Suceso) cboxSuceso.getSelectedItem();
+		choosHasta.setCalendar(datos_consulta.getCalendar_hasta());
+		rbtnHastaInicio.setSelected(datos_consulta.getHasta_inicio());
+		rbtnHastaAck.setSelected(datos_consulta.getHasta_ack());
+		rbtnHastaFin.setSelected(datos_consulta.getHasta_fin());
 
-		Integer ruido_minimo = frame_bi.getComponente_ruido_minimo().getSegundos();
-		Integer ruido_maximo = frame_bi.getComponente_ruido_maximo().getSegundos();
+		cboxFamilia.getModel().setSelectedItem(datos_consulta.getFamilia_elegida());
+		cboxSitio.getModel().setSelectedItem(datos_consulta.getSitio_elegido());
+		cboxTipoEquipo.getModel().setSelectedItem(datos_consulta.getTipo_de_equipo_elegido());
+		cboxSuceso.getModel().setSelectedItem(datos_consulta.getSuceso_elegido());
 
-		boolean incluir_ini_incompleta = frame_bi.getComponente_ini_incompleta().isSelected();
-		boolean incluir_ack_incompleta = frame_bi.getComponente_ack_incompleta().isSelected();
-		boolean incluir_fin_incompleta = frame_bi.getComponente_fin_incompleta().isSelected();
+		frame_bi.getComponente_ruido_minimo().setSegundos(datos_consulta.getDuracion_minima());
+		frame_bi.getComponente_ruido_maximo().setSegundos(datos_consulta.getDuracion_maxima());
 
-		return serv_consulta.buscAlarma(fecha_desde, rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, fecha_hasta,
-				rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, familia, sitio, tipo_de_equipo, suceso, ruido_minimo,
-				ruido_maximo, incluir_ini_incompleta, incluir_ack_incompleta, incluir_fin_incompleta);
+		frame_bi.getComponente_ini_incompleta().setSelected(datos_consulta.isIncluir_ini_incompleta());
+		frame_bi.getComponente_ack_incompleta().setSelected(datos_consulta.isIncluir_ack_incompleta());
+		frame_bi.getComponente_fin_incompleta().setSelected(datos_consulta.isIncluir_fin_incompleta());
 	}
 
 	/* ............................................. */

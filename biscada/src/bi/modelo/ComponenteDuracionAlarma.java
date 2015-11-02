@@ -96,4 +96,10 @@ public class ComponenteDuracionAlarma extends JPanel implements EventoConfigurab
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
+
+	public void setSegundos(Integer segundos) {
+
+		if (spinner.isEnabled())
+			spinner.setValue(segundos);
+	}
 }

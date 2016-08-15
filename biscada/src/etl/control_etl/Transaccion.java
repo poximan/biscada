@@ -18,8 +18,9 @@ import comunes.control_general.EMFSingleton;
 /* ............................................. */
 
 /**
- * util para optimizar insercion o eliminacion de archivos. los objetos que lo implementen manejaran de forma dinamica
- * el uso o no de transacciones a nivel de lote o de archivo.
+ * util para optimizar insercion o eliminacion de archivos. los objetos que lo
+ * implementen manejaran de forma dinamica el uso o no de transacciones a nivel
+ * de lote o de archivo.
  * 
  * @author hugo
  */
@@ -67,8 +68,7 @@ public class Transaccion {
 
 		try {
 			EMFSingleton.getInstanciaEM().getTransaction().commit();
-		}
-		catch (RollbackException excepcion) {
+		} catch (RollbackException excepcion) {
 			log.error("comienza rollback");
 
 			if (EMFSingleton.getInstanciaEM().getTransaction().isActive())

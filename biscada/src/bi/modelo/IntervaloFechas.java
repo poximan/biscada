@@ -14,8 +14,9 @@ import java.util.Calendar;
 /* ............................................. */
 
 /**
- * registra primer y ultima alarma en un intervalod de fecha. se puede pensar como una entidad, ya que si bien no se
- * persiste, tampoco posee ningun tipo de logica asociada, es decir no presta servicios de ningun tipo
+ * registra primer y ultima alarma en un intervalod de fecha. se puede pensar
+ * como una entidad, ya que si bien no se persiste, tampoco posee ningun tipo de
+ * logica asociada, es decir no presta servicios de ningun tipo
  * 
  * @author hugo
  * 

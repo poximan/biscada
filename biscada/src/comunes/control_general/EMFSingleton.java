@@ -21,8 +21,8 @@ import org.apache.log4j.Logger;
 /* ............................................. */
 
 /**
- * instancia unica de esta clase. entre sus atributos contiene la unica instancia de entity manager factory que debe
- * manejar la aplicacion
+ * instancia unica de esta clase. entre sus atributos contiene la unica
+ * instancia de entity manager factory que debe manejar la aplicacion
  */
 public class EMFSingleton {
 
@@ -77,16 +77,15 @@ public class EMFSingleton {
 		String url = dir_fija + dir_variable + id_bd + charset;
 
 		persistenceMap.put("javax.persistence.jdbc.url", url);
-		persistenceMap.put("javax.persistence.jdbc.user", ServPropiedades.getInstancia()
-				.getProperty("Conexion.USUARIO"));
+		persistenceMap.put("javax.persistence.jdbc.user",
+				ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
 		persistenceMap.put("javax.persistence.jdbc.password",
 				ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
 
 		try {
 			emf = Persistence.createEntityManagerFactory("dsoft_BIS", persistenceMap);
 			em = emf.createEntityManager();
-		}
-		catch (Exception excepcion) {
+		} catch (Exception excepcion) {
 			log.error("no se pudo crear EMF, revisar modelo");
 			log.error(excepcion.getMessage());
 		}

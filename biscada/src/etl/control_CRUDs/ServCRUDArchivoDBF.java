@@ -79,13 +79,16 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	}
 
 	/**
-	 * cuando se lanza la ventana de operacion ETL completa los contadores y las listas con valores iniciales relativo
-	 * al contexto (archivos para procesador, archivos insertados en BD). en la medida que el usuario usa la pantalla
-	 * este contexto comienza a cambiar. para mantaner los contadores y listas de valores en orden se utilizan metodos
-	 * de soporte, uno de ellos es este.
+	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
+	 * listas con valores iniciales relativo al contexto (archivos para
+	 * procesador, archivos insertados en BD). en la medida que el usuario usa
+	 * la pantalla este contexto comienza a cambiar. para mantaner los
+	 * contadores y listas de valores en orden se utilizan metodos de soporte,
+	 * uno de ellos es este.
 	 * 
-	 * PRE: archivo fue borrado de BD ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
-	 * agrega un nuevo archivo a la lista de disponibles, no debe existir en la BD.
+	 * PRE: archivo fue borrado de BD ... ... ... ... ... ... ... ... ... ...
+	 * ... ... ... ... ... ... ... ... ... ... agrega un nuevo archivo a la
+	 * lista de disponibles, no debe existir en la BD.
 	 * 
 	 * @param archivo_actual
 	 */
@@ -95,13 +98,16 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	}
 
 	/**
-	 * cuando se lanza la ventana de operacion ETL completa los contadores y las listas con valores iniciales relativo
-	 * al contexto (archivos para procesador, archivos insertados en BD). en la medida que el usuario usa la pantalla
-	 * este contexto comienza a cambiar. para mantaner los contadores y listas de valores en orden se utilizan metodos
-	 * de soporte, uno de ellos es este.
+	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
+	 * listas con valores iniciales relativo al contexto (archivos para
+	 * procesador, archivos insertados en BD). en la medida que el usuario usa
+	 * la pantalla este contexto comienza a cambiar. para mantaner los
+	 * contadores y listas de valores en orden se utilizan metodos de soporte,
+	 * uno de ellos es este.
 	 * 
-	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
-	 * quita un archivo a la lista de disponibles si es que se pudo ingresar satisfactoriamente a la BD.
+	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ...
+	 * ... ... ... ... ... ... ... ... ... quita un archivo a la lista de
+	 * disponibles si es que se pudo ingresar satisfactoriamente a la BD.
 	 * 
 	 * @param archivo_actual
 	 */
@@ -147,9 +153,8 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 
 		if (archivo_actual.getComienzo() == null)
 			archivo_actual.setComienzo(Calendar.getInstance());
-		else
-			if (archivo_actual.getFin() == null)
-				archivo_actual.setFin(Calendar.getInstance());
+		else if (archivo_actual.getFin() == null)
+			archivo_actual.setFin(Calendar.getInstance());
 	}
 
 	@Override

@@ -81,9 +81,10 @@ public class EventoDimSitio extends EventoDim implements MouseListener, VentanaL
 		valores = Arrays.copyOf(valores, maximo_arreglo);
 
 		JFrame frame = new JFrame(sitio_actual.getDescripcion());
-		lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
-				getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
-				getVista_dimension().getServ_intervalo(), sitio_actual, valores));
+		lanzarVentana(frame,
+				new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
+						getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
+						getVista_dimension().getServ_intervalo(), sitio_actual, valores));
 	}
 
 	@Override

@@ -21,8 +21,8 @@ import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 /* ............................................. */
 
 /**
- * implementa el patron Factory Method. en este caso se trata de una fabrica parametrizada. Es el modulo creador
- * abstracto y concreto.
+ * implementa el patron Factory Method. en este caso se trata de una fabrica
+ * parametrizada. Es el modulo creador abstracto y concreto.
  */
 public class FabricaSuceso extends Fabrica implements TextoDiferenciable {
 
@@ -63,20 +63,18 @@ public class FabricaSuceso extends Fabrica implements TextoDiferenciable {
 			matcher.reset();
 
 			crearPropietario(campo_texto, matcher);
-		}
-		catch (CampoTextoNoEncontradoExcepcion excepcion) {
+		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaSuceso.class.getSimpleName(), excepcion.getMessage(),
 					campo_texto);
-		}
-		catch (CampoTextoAmbiguoExcepcion excepcion) {
+		} catch (CampoTextoAmbiguoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaSuceso.class.getSimpleName(), excepcion.getMessage(),
 					campo_texto);
 		}
 	}
 
 	@Override
-	public void crearPropietario(String campo_texto, Matcher matcher) throws CampoTextoNoEncontradoExcepcion,
-			CampoTextoAmbiguoExcepcion {
+	public void crearPropietario(String campo_texto, Matcher matcher)
+			throws CampoTextoNoEncontradoExcepcion, CampoTextoAmbiguoExcepcion {
 
 		while (matcher.find()) {
 

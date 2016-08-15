@@ -29,8 +29,9 @@ import org.xml.sax.SAXException;
 /**
  * -------------------- clase en desuso --------------------
  * 
- * se pensaba utilizar para la edicion online del xml que representa la unidad de persistencia de JPA. finalmente se
- * opt� por crear una unidad de persistencia y contexto de persistencia nuevos por cada edicion.
+ * se pensaba utilizar para la edicion online del xml que representa la unidad
+ * de persistencia de JPA. finalmente se opt� por crear una unidad de
+ * persistencia y contexto de persistencia nuevos por cada edicion.
  * 
  * @author hugo
  *
@@ -60,11 +61,9 @@ public class ServDOM {
 
 			doc = docBuilder.parse(ServPropiedades.getInstancia().getProperty("Conexion.DIRECCION_PU"));
 			marca_persistence = doc.getFirstChild();
-		}
-		catch (ParserConfigurationException excepcion) {
+		} catch (ParserConfigurationException excepcion) {
 			excepcion.printStackTrace();
-		}
-		catch (SAXException | IOException excepcion) {
+		} catch (SAXException | IOException excepcion) {
 			excepcion.printStackTrace();
 		}
 	}
@@ -87,11 +86,10 @@ public class ServDOM {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(ServPropiedades.getInstancia().getProperty(
-					"Conexion.DIRECCION_PU")));
+			StreamResult result = new StreamResult(
+					new File(ServPropiedades.getInstancia().getProperty("Conexion.DIRECCION_PU")));
 			transformer.transform(source, result);
-		}
-		catch (TransformerException tfe) {
+		} catch (TransformerException tfe) {
 			tfe.printStackTrace();
 		}
 	}

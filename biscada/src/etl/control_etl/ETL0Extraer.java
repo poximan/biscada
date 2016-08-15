@@ -21,9 +21,11 @@ import etl.control_dbf.ServConvertirArchivo;
 /* ............................................. */
 
 /**
- * La primera parte del proceso ETL consiste en extraer los datos desde el origen, en este caso un archivo de texto. La
- * extracci�n convierte los datos a un formato preparado para iniciar el proceso de transformaci�n. Previo a ello se
- * verifica si los datos cumplen la pauta o estructura que se esperaba. De no ser as� los datos son rechazados.
+ * La primera parte del proceso ETL consiste en extraer los datos desde el
+ * origen, en este caso un archivo de texto. La extracci�n convierte los datos
+ * a un formato preparado para iniciar el proceso de transformaci�n. Previo a
+ * ello se verifica si los datos cumplen la pauta o estructura que se esperaba.
+ * De no ser as� los datos son rechazados.
  * 
  * @author hugo
  * 

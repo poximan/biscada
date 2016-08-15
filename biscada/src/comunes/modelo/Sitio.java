@@ -22,8 +22,7 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "sitio")
-@NamedQueries({
-		@NamedQuery(name = "Sitio.buscTodos", query = "SELECT tabla FROM Sitio tabla"),
+@NamedQueries({ @NamedQuery(name = "Sitio.buscTodos", query = "SELECT tabla FROM Sitio tabla"),
 		@NamedQuery(name = "Sitio.buscDescripcion", query = "SELECT tabla FROM Sitio tabla WHERE tabla.descripcion = :descripcion"), })
 public class Sitio {
 
@@ -75,13 +74,16 @@ public class Sitio {
 	}
 
 	/**
-	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no implica Objetos desiguales tengan diferente
-	 * hash, como asi tampoco que dos ojetos con el mismo codigo hash deben ser iguales.
+	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
+	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que
+	 * dos ojetos con el mismo codigo hash deben ser iguales.
 	 * 
-	 * +) Siempre que se implemente equals, se debe implementar hashCode. +) �hashcode no es clave!, pueden suceder
-	 * colisiones. +) No usar en aplicaciones distribuidas.
+	 * +) Siempre que se implemente equals, se debe implementar hashCode. +)
+	 * �hashcode no es clave!, pueden suceder colisiones. +) No usar en
+	 * aplicaciones distribuidas.
 	 * 
-	 * En general, para un uso correcto de colecciones, los objetos que iteractuen con ellas deben implementar hascode.
+	 * En general, para un uso correcto de colecciones, los objetos que
+	 * iteractuen con ellas deben implementar hascode.
 	 * 
 	 * @return el numero hash asociado al objeto.
 	 */

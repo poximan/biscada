@@ -72,13 +72,13 @@ public class EventoPropiedades implements ActionListener {
 
 		if (evt.getSource() == vista_propiedades.getBtnConfirmar()) {
 			modificarArchivoPropiedades();
-		} else
-			if (evt.getSource() == vista_propiedades.getBtnPorDefecto())
-				modificarVistaPropiedades();
+		} else if (evt.getSource() == vista_propiedades.getBtnPorDefecto())
+			modificarVistaPropiedades();
 	}
 
 	/**
-	 * modifica los valores respaldados en archivo de propiedades, segun configuracion del usuario
+	 * modifica los valores respaldados en archivo de propiedades, segun
+	 * configuracion del usuario
 	 */
 	private void modificarArchivoPropiedades() {
 
@@ -104,8 +104,7 @@ public class EventoPropiedades implements ActionListener {
 
 		try {
 			analizarCambiosPU();
-		}
-		catch (ReiniciarAplicacionExcepcion excepcion) {
+		} catch (ReiniciarAplicacionExcepcion excepcion) {
 			reiniciar = excepcion;
 		}
 
@@ -137,15 +136,14 @@ public class EventoPropiedades implements ActionListener {
 		/*
 		 * graficos
 		 */
-		spinnerAceptacion.getModel().setValue(
-				Integer.valueOf(ServPropiedades.getInstancia().getProperty(
-						"Defecto.Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA")));
+		spinnerAceptacion.getModel().setValue(Integer.valueOf(
+				ServPropiedades.getInstancia().getProperty("Defecto.Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA")));
 
 		/*
 		 * datos
 		 */
-		txt_direccion_fuente.setText(ServPropiedades.getInstancia()
-				.getProperty("Defecto.Datos.DIRECCION_LECTURA_DATOS"));
+		txt_direccion_fuente
+				.setText(ServPropiedades.getInstancia().getProperty("Defecto.Datos.DIRECCION_LECTURA_DATOS"));
 
 		/*
 		 * ruido

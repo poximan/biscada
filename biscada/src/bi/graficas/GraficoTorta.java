@@ -62,11 +62,9 @@ public class GraficoTorta extends GraficoAbstract {
 					dataset.setValue(fila[i], cantTotal);
 				}
 			}
-		}
-		catch (ArrayIndexOutOfBoundsException excepcion) {
+		} catch (ArrayIndexOutOfBoundsException excepcion) {
 			log.error("arreglo fuera de rango");
-		}
-		catch (IllegalArgumentException excepcion) {
+		} catch (IllegalArgumentException excepcion) {
 			log.error("faltan argumentos");
 		}
 

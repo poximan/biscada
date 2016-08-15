@@ -25,9 +25,11 @@ import etl.control_dbf.ArchAlarma;
 /* ............................................. */
 
 /**
- * Es la ultima fase del proceso ETL, e implica cargar los datos en el sistema de destino. Al realizar esta operaci�n se
- * aplicar�n todas las restricciones y triggers que se hayan definido (valores �nicos, integridad referencial, campos
- * obligatorios, rangos de valores). Estas restricciones y triggers contribuyen a garantizar la calidad de los datos.
+ * Es la ultima fase del proceso ETL, e implica cargar los datos en el sistema
+ * de destino. Al realizar esta operaci�n se aplicar�n todas las
+ * restricciones y triggers que se hayan definido (valores �nicos, integridad
+ * referencial, campos obligatorios, rangos de valores). Estas restricciones y
+ * triggers contribuyen a garantizar la calidad de los datos.
  * 
  * @author hugo
  * 

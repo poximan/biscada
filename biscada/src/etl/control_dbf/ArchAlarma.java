@@ -10,10 +10,11 @@ package etl.control_dbf;
 /* CLASE ....................................... */
 /* ............................................. */
 /**
- * Participa en la etapa mas primitiva de recuperacion de alarmas. cuando el ETL comienza a leer un archivo, cada fila
- * es levantada como un strem de texto; ese strem es dividido en secciones (seccion 1 entre indice [0-3], seccion 2
- * [2-5] .... seccion n [m-ultimo indice]). Luego, una instancia de esta clase recepciona cada seccion en un atributo
- * diferente.
+ * Participa en la etapa mas primitiva de recuperacion de alarmas. cuando el ETL
+ * comienza a leer un archivo, cada fila es levantada como un strem de texto;
+ * ese strem es dividido en secciones (seccion 1 entre indice [0-3], seccion 2
+ * [2-5] .... seccion n [m-ultimo indice]). Luego, una instancia de esta clase
+ * recepciona cada seccion en un atributo diferente.
  * 
  * @author hugo
  * 
@@ -190,6 +191,6 @@ public class ArchAlarma {
 				"Nombre: " + nombre + "\n" + //
 				"Texto: " + texto + "\n" + //
 				"Id estacion: " + id_estacion + "\n"//
-		;
+				;
 	}
 }

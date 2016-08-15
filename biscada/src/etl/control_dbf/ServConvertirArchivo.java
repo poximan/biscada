@@ -47,7 +47,11 @@ public class ServConvertirArchivo {
 
 		ArchAlarma nueva_alarma = new ArchAlarma();
 
-		nueva_alarma.setInicio_segundo(texto_extraido.substring(1, 11)); // 10, filtra 1er blanco adicional
+		nueva_alarma.setInicio_segundo(texto_extraido.substring(1, 11)); // 10,
+																			// filtra
+																			// 1er
+																			// blanco
+																			// adicional
 		nueva_alarma.setInicio_milisegundo(texto_extraido.substring(11, 14)); // 3
 		nueva_alarma.setFin_segundo(texto_extraido.substring(14, 24)); // 10
 		nueva_alarma.setFin_milisegundo(texto_extraido.substring(24, 27)); // 3

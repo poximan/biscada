@@ -41,8 +41,7 @@ public abstract class TiempoDespeje {
 
 			if (tiempo_transcurrido >= inicio && tiempo_transcurrido < fin)
 				return true;
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			return false;
 		}
 		return false;
@@ -56,8 +55,7 @@ public abstract class TiempoDespeje {
 		try {
 			inicio = alarma_actual.getFecha_inicio().getTimeInMillis();
 			fin = alarma_actual.getFecha_finalizacion().getTimeInMillis();
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			throw excepcion;
 		}
 

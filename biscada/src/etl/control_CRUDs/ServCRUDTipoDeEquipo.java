@@ -57,8 +57,8 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
-		lista = Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections.observableList(getQueryTodos()
-				.getResultList());
+		lista = Beans.isDesignTime() ? Collections.emptyList()
+				: ObservableCollections.observableList(getQueryTodos().getResultList());
 	}
 
 	@Override
@@ -69,8 +69,8 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
 		int indice;
-		TipoDeEquipo tipo_de_equipo_actual = new TipoDeEquipo(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo()
-				.getDescripcion());
+		TipoDeEquipo tipo_de_equipo_actual = new TipoDeEquipo(
+				alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion());
 
 		if ((indice = lista.lastIndexOf(tipo_de_equipo_actual)) != -1)
 			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo((TipoDeEquipo) lista.get(indice));

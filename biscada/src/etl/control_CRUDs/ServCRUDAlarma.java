@@ -65,26 +65,24 @@ public class ServCRUDAlarma implements InterfazCRUD {
 
 		try {
 			em.persist(alarma_actual);
-		}
-		catch (RollbackException excepcion) {
+		} catch (RollbackException excepcion) {
 
 			if (excepcion.getCause() instanceof NullPointerException) {
 				log.error("puntero a null");
-			} else
-				if (excepcion.getCause() instanceof DatabaseException) {
+			} else if (excepcion.getCause() instanceof DatabaseException) {
 
-					log.error("excepcion en BD");
-					DatabaseException excepcion_bd = (DatabaseException) excepcion.getCause();
+				log.error("excepcion en BD");
+				DatabaseException excepcion_bd = (DatabaseException) excepcion.getCause();
 
-					if (excepcion_bd.getInternalException() instanceof MySQLIntegrityConstraintViolationException) {
+				if (excepcion_bd.getInternalException() instanceof MySQLIntegrityConstraintViolationException) {
 
-						MySQLIntegrityConstraintViolationException integridad = (MySQLIntegrityConstraintViolationException) excepcion_bd
-								.getInternalException();
+					MySQLIntegrityConstraintViolationException integridad = (MySQLIntegrityConstraintViolationException) excepcion_bd
+							.getInternalException();
 
-						if (integridad.getMessage().contains("suceso"))
-							log.error("suceso repetido, se intenta salvar");
-					}
+					if (integridad.getMessage().contains("suceso"))
+						log.error("suceso repetido, se intenta salvar");
 				}
+			}
 		}
 	}
 

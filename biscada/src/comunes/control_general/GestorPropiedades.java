@@ -20,10 +20,11 @@ import comunes.vistas.VistaPropiedades;
 /* ............................................. */
 
 /**
- * responsable de contruir un marco y agregar all� el panel de edicion y consulta para las propiedades de arranque de la
- * aplicacion.
+ * responsable de contruir un marco y agregar all� el panel de edicion y
+ * consulta para las propiedades de arranque de la aplicacion.
  * 
- * implementa singleton para asegurar que la interfaz visual de edicion sea siempre la misma.
+ * implementa singleton para asegurar que la interfaz visual de edicion sea
+ * siempre la misma.
  * 
  * @author hugo
  *

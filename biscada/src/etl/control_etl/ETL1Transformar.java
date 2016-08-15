@@ -30,9 +30,11 @@ import etl.sucesos.FabricaSuceso;
 /* ............................................. */
 
 /**
- * La segunda fase es de transformaci�n, y aplica una serie de reglas de negocio o funciones sobre los datos extra�dos
- * para convertirlos en datos que ser�n cargados. Puede ser necesario aplicar algunas de las siguientes
- * transformaciones: 1) Seleccionar s�lo ciertas columnas para su carga. 2) Dividir una columna en varias.
+ * La segunda fase es de transformaci�n, y aplica una serie de reglas de
+ * negocio o funciones sobre los datos extra�dos para convertirlos en datos
+ * que ser�n cargados. Puede ser necesario aplicar algunas de las siguientes
+ * transformaciones: 1) Seleccionar s�lo ciertas columnas para su carga. 2)
+ * Dividir una columna en varias.
  * 
  * @author hugo
  * 
@@ -88,7 +90,8 @@ public class ETL1Transformar implements ObjetosBorrables {
 				convertirTextoAObjeto(alarma_transformada, alarma_no_transformada.getNombre(), nueva_familia);
 
 				/*
-				 * caso especial descubrir sitio, equipo y suceso a partir de campo unico
+				 * caso especial descubrir sitio, equipo y suceso a partir de
+				 * campo unico
 				 */
 				TextoDiferenciable elementos_separados[] = { new FabricaSitio(alarma_rechazada),
 						new FabricaEquipo(alarma_rechazada), new FabricaSuceso(alarma_rechazada) };
@@ -102,8 +105,7 @@ public class ETL1Transformar implements ObjetosBorrables {
 				else
 					alarmas_rechazadas.add(alarma_no_transformada);
 
-			}
-			catch (NullPointerException excepcion) {
+			} catch (NullPointerException excepcion) {
 				log.error("error leyendo fila " + (fila + 1) + ": " + alarma_no_transformada.getTexto());
 			}
 			fila++;
@@ -122,12 +124,12 @@ public class ETL1Transformar implements ObjetosBorrables {
 		alarma_transformada.setAtributo(insertarInt(alarma_no_transformada.getAtributo()));
 	}
 
-	private void convertirTextoAObjeto(Alarma alarma_transformada, String campo_nombre, TextoDiferenciable nueva_familia) {
+	private void convertirTextoAObjeto(Alarma alarma_transformada, String campo_nombre,
+			TextoDiferenciable nueva_familia) {
 
 		try {
 			nueva_familia.prepararExpresionRegular(campo_nombre);
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			throw excepcion;
 		}
 		alarma_transformada.setFamilia((Familia) nueva_familia.getPropietario());
@@ -139,8 +141,7 @@ public class ETL1Transformar implements ObjetosBorrables {
 		try {
 			for (int indice = 0; indice < elementos_separados.length; indice++)
 				elementos_separados[indice].prepararExpresionRegular(campo_texto);
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			throw excepcion;
 		}
 

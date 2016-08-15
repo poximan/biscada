@@ -16,8 +16,9 @@ import comunes.modelo.Alarma;
 /* CLASE ....................................... */
 /* ............................................. */
 /**
- * es el servicio de manejo de intervalos de fechas. en particular interesa el intervalo mayor, que es el que incluye a
- * la alarma mas antigua y a la mas reciente
+ * es el servicio de manejo de intervalos de fechas. en particular interesa el
+ * intervalo mayor, que es el que incluye a la alarma mas antigua y a la mas
+ * reciente
  * 
  * @author hugo
  * 
@@ -52,11 +53,10 @@ public class ServIntervaloFechas {
 
 		if (alarma_actual.before(intervalo.getPrimer_alarma()))
 			intervalo.setPrimer_alarma(alarma_actual);
-		else
-			if (intervalo.getPrimer_alarma() == null) {
-				intervalo.setPrimer_alarma(Calendar.getInstance());
-				actualizarPrimerAlarma(intervalo, alarma_actual);
-			}
+		else if (intervalo.getPrimer_alarma() == null) {
+			intervalo.setPrimer_alarma(Calendar.getInstance());
+			actualizarPrimerAlarma(intervalo, alarma_actual);
+		}
 	}
 
 	/**
@@ -68,13 +68,12 @@ public class ServIntervaloFechas {
 
 		if (alarma_actual.after(intervalo.getUltima_alarma()))
 			intervalo.setUltima_alarma(alarma_actual);
-		else
-			if (intervalo.getUltima_alarma() == null) {
-				Calendar nuevo_calendario = Calendar.getInstance();
-				nuevo_calendario.setTimeInMillis(0);
-				intervalo.setUltima_alarma(nuevo_calendario);
-				actualizarUltimaAlarma(intervalo, alarma_actual);
-			}
+		else if (intervalo.getUltima_alarma() == null) {
+			Calendar nuevo_calendario = Calendar.getInstance();
+			nuevo_calendario.setTimeInMillis(0);
+			intervalo.setUltima_alarma(nuevo_calendario);
+			actualizarUltimaAlarma(intervalo, alarma_actual);
+		}
 	}
 
 	public void encontrarMinimoMaximo(IntervaloFechas intervalo, List<Alarma> alarmas) {

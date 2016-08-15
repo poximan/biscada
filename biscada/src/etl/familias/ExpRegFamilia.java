@@ -26,7 +26,8 @@ public class ExpRegFamilia {
 
 	public ExpRegFamilia() {
 
-		expresion_regular = "" // expresion regular para identificar el tipo de suceso
+		expresion_regular = "" // expresion regular para identificar el tipo de
+								// suceso
 				+ "" + // 1 grupo = gpo 1 a gpo 1
 				BackupActivo.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 2 a gpo 2
@@ -39,7 +40,7 @@ public class ExpRegFamilia {
 				Potable.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 6 a gpo 6
 				Reuso.getExpresion_regular()//
-		;
+				;
 	}
 
 	/* ............................................. */

@@ -105,24 +105,25 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValuePaint(Color.black);
 		meterplot.setValueFont(new Font("Arial", 1, 14));
 
-		JFreeChart jfreechart = new JFreeChart("KPI Indicador de rendimiento", JFreeChart.DEFAULT_TITLE_FONT,
-				meterplot, true);
+		JFreeChart jfreechart = new JFreeChart("KPI Indicador de rendimiento", JFreeChart.DEFAULT_TITLE_FONT, meterplot,
+				true);
 		return jfreechart;
 	}
 
 	/**
-	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio o seteo de porcentaje).
+	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
+	 * o seteo de porcentaje).
 	 */
 	public void actualizarIntervalos() {
 
-		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black,
-				new BasicStroke(3.0F), new Color(255, 255, 0, 64));
+		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
+				new Color(255, 255, 0, 64));
 
 		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(rangoMin, rangoMax), Color.black,
 				new BasicStroke(2.0F), Color.yellow.brighter());
 
-		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black, new BasicStroke(
-				3.0F), Color.RED);
+		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black,
+				new BasicStroke(3.0F), Color.RED);
 	}
 
 	/**
@@ -136,7 +137,8 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * M�todo para calcular el porcentaje y facilitar el c�lculo del rango!!!
+	 * M�todo para calcular el porcentaje y facilitar el c�lculo del
+	 * rango!!!
 	 */
 	public void Porcentaje(int porcentaje) {
 
@@ -148,7 +150,8 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * Actualizaci�n del gr�fico cada ves que se agrande el rango del promedio
+	 * Actualizaci�n del gr�fico cada ves que se agrande el rango del
+	 * promedio
 	 */
 	private void refreshChart() {
 

@@ -71,7 +71,7 @@ public class ExpRegSitio {
 				ReusoEE6.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 24 a gpo 24
 				ReusoPTN.getExpresion_regular()//
-		;
+				;
 	}
 
 	/* ............................................. */

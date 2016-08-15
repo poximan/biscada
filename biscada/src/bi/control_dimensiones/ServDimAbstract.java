@@ -42,16 +42,16 @@ public abstract class ServDimAbstract {
 	/* ............................................. */
 
 	/**
-	 * crea un mapa hash donde la clave es una dimension de las especificadas en el segundo nivel de evaluacion (ver
-	 * documento de vision)
+	 * crea un mapa hash donde la clave es una dimension de las especificadas en
+	 * el segundo nivel de evaluacion (ver documento de vision)
 	 * 
 	 * @param consultas
 	 */
 	public abstract void realizarHash(List<Alarma> consultas);
 
 	/**
-	 * una vez que entra a una de las claves del hash, analiza todas las alarmas que coinciden con la clave completa la
-	 * fila correspondiente en la tabla
+	 * una vez que entra a una de las claves del hash, analiza todas las alarmas
+	 * que coinciden con la clave completa la fila correspondiente en la tabla
 	 * 
 	 * @param longitud_arreglo
 	 * @param lista_alarmas_una_clave
@@ -72,37 +72,47 @@ public abstract class ServDimAbstract {
 	}
 
 	/**
-	 * con toda la informacion recopilada en cuanto al contexto de lo que solicita el usuario, se completa una tabla de
-	 * doble entrada que luego se presentara en la vista
+	 * con toda la informacion recopilada en cuanto al contexto de lo que
+	 * solicita el usuario, se completa una tabla de doble entrada que luego se
+	 * presentara en la vista
 	 * 
 	 * @param serv_intervalo
-	 *            intervalo de fechas [mas antigua-mas reciente] del set de resultados devuelto por la consulta a la BD
+	 *            intervalo de fechas [mas antigua-mas reciente] del set de
+	 *            resultados devuelto por la consulta a la BD
 	 * @param serv_medicion
-	 *            medicion que se realizar� sobre el set de datos desde el punto de vista de una dimension determinada.
+	 *            medicion que se realizar� sobre el set de datos desde el
+	 *            punto de vista de una dimension determinada.
 	 * @param serv_unidad_tiempo
-	 *            unidad de tiempo en que fraccionar� el set de datos. por ejemplo un set que incluye todo el a�o 2012
-	 *            puede presentarse en 12 unidades de tiempo mes, en 24 unidades de tiempo quincena, etc.
+	 *            unidad de tiempo en que fraccionar� el set de datos. por
+	 *            ejemplo un set que incluye todo el a�o 2012 puede
+	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
+	 *            tiempo quincena, etc.
 	 * @param incluir_columnas_nulas
-	 *            al terminar de completar la tabla podr�a suceder que existan columnas con valor 0 a lo largo de todas
-	 *            sus filas. el usuario podr� elegir si visualizar estas columnas o no
-	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la tabla.
+	 *            al terminar de completar la tabla podr�a suceder que existan
+	 *            columnas con valor 0 a lo largo de todas sus filas. el usuario
+	 *            podr� elegir si visualizar estas columnas o no
+	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
+	 *         tabla.
 	 */
 	public abstract float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			boolean incluir_columnas_nulas);
 
 	/**
-	 * pide los nombres de los grupos que se obtienen de observar una lista desde una dimension especifica.
+	 * pide los nombres de los grupos que se obtienen de observar una lista
+	 * desde una dimension especifica.
 	 * 
-	 * @return con estos nombres se llenara una tabla de simple columna que simula la seguda entrada de la que posee los
-	 *         datos.
+	 * @return con estos nombres se llenara una tabla de simple columna que
+	 *         simula la seguda entrada de la que posee los datos.
 	 */
 	public abstract Object[] getGrupos();
 
 	/**
-	 * el usuario podr� decidir si las columnas sin valores deben tenerse en cuenta para los calculos estadisticos.
-	 * supongamos tres columnas de las cuales una de ellas esta vacia, al promediarlas por unidad de tiempo el
-	 * denominador ser� 3; sin embargo si se utiliza filtro para columnas nulas el denominador bajar� a 2.
+	 * el usuario podr� decidir si las columnas sin valores deben tenerse en
+	 * cuenta para los calculos estadisticos. supongamos tres columnas de las
+	 * cuales una de ellas esta vacia, al promediarlas por unidad de tiempo el
+	 * denominador ser� 3; sin embargo si se utiliza filtro para columnas
+	 * nulas el denominador bajar� a 2.
 	 * 
 	 * @param valor_retorno
 	 * @param serv_medicion
@@ -117,7 +127,8 @@ public abstract class ServDimAbstract {
 			// mientras resten filas para la columna que se esta analizando
 			while (fila < valor_retorno.length) {
 
-				if (valor_retorno[fila][columna] != 0) // si true -> se descarta columna
+				if (valor_retorno[fila][columna] != 0) // si true -> se descarta
+														// columna
 					break;
 				fila++;
 			}
@@ -128,8 +139,8 @@ public abstract class ServDimAbstract {
 	}
 
 	/**
-	 * una vez elegida la columna a eliminar de la matriz fila-columna, este metodo resuelve el desplazamiento de las
-	 * columnas siguiente
+	 * una vez elegida la columna a eliminar de la matriz fila-columna, este
+	 * metodo resuelve el desplazamiento de las columnas siguiente
 	 * 
 	 * @param valor_retorno
 	 *            arreglo de 2 dimensiones leido como fila-columna

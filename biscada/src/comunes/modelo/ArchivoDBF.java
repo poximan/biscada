@@ -30,17 +30,18 @@ import org.eclipse.persistence.annotations.PrivateOwned;
 /* ............................................. */
 
 /**
- * representacion en la BD de un archivo dbf cuyo contenido son una serie indeterminada de alarmas (de 0 a n). es de
- * utilidad para tener conocimiento sobre los archivos que ya fueron procesados y en particular c�mo result� ese
- * procesamiento, es decir, �se pudo realizar con exito o el archivo est� vac�o, da�ado, etc.?.
+ * representacion en la BD de un archivo dbf cuyo contenido son una serie
+ * indeterminada de alarmas (de 0 a n). es de utilidad para tener conocimiento
+ * sobre los archivos que ya fueron procesados y en particular c�mo result�
+ * ese procesamiento, es decir, �se pudo realizar con exito o el archivo
+ * est� vac�o, da�ado, etc.?.
  * 
  * @author hugo
  *
  */
 @Entity
 @Table(name = "archivo_dbf")
-@NamedQueries({
-		@NamedQuery(name = "ArchivoDBF.buscTodos", query = "SELECT tabla FROM ArchivoDBF tabla"),
+@NamedQueries({ @NamedQuery(name = "ArchivoDBF.buscTodos", query = "SELECT tabla FROM ArchivoDBF tabla"),
 		@NamedQuery(name = "ArchivoDBF.buscRuta", query = "SELECT tabla FROM ArchivoDBF tabla WHERE tabla.ruta = :ruta"), })
 public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
@@ -60,7 +61,8 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	@Column(name = "COMIENZO", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar comienzo; // instante en que comenzo el tratamiento del archivo
+	private Calendar comienzo; // instante en que comenzo el tratamiento del
+								// archivo
 
 	@Column(name = "FIN", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -106,13 +108,16 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	}
 
 	/**
-	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no implica Objetos desiguales tengan diferente
-	 * hash, como asi tampoco que dos ojetos con el mismo codigo hash deben ser iguales.
+	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
+	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que
+	 * dos ojetos con el mismo codigo hash deben ser iguales.
 	 * 
-	 * +) Siempre que se implemente equals, se debe implementar hashCode. +) �hashcode no es clave!, pueden suceder
-	 * colisiones. +) No usar en aplicaciones distribuidas.
+	 * +) Siempre que se implemente equals, se debe implementar hashCode. +)
+	 * �hashcode no es clave!, pueden suceder colisiones. +) No usar en
+	 * aplicaciones distribuidas.
 	 * 
-	 * En general, para un uso correcto de colecciones, los objetos que iteractuen con ellas deben implementar hascode.
+	 * En general, para un uso correcto de colecciones, los objetos que
+	 * iteractuen con ellas deben implementar hascode.
 	 * 
 	 * @return el numero hash asociado al objeto.
 	 */

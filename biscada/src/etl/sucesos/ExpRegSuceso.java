@@ -26,7 +26,8 @@ public class ExpRegSuceso {
 
 	public ExpRegSuceso() {
 
-		expresion_regular = "" // expresion regular para identificar el tipo de suceso
+		expresion_regular = "" // expresion regular para identificar el tipo de
+								// suceso
 				+ "" + // 1 grupo = gpo 1 a gpo 1
 				AguaEnEstator.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 2 a gpo 2
@@ -37,8 +38,8 @@ public class ExpRegSuceso {
 				GrupoElectrogenoFalla.getExpresion_regular()//
 				+ "|" + // 11 grupos = gpo 15 a gpo 25
 				GrupoElectrogenoMarcha.getExpresion_regular()//
-				// + "|" + // 0 grupo = gpo - a gpo -
-				// IncongruenciaEstado.getExpresion_regular()//
+		// + "|" + // 0 grupo = gpo - a gpo -
+		// IncongruenciaEstado.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 26 a gpo 26
 				IniciaSesion.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 27 a gpo 27
@@ -61,7 +62,7 @@ public class ExpRegSuceso {
 				TermicoActuado.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 41 a gpo 41
 				VibracionMotor.getExpresion_regular()//
-		;
+				;
 	}
 
 	/* ............................................. */

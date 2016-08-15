@@ -42,7 +42,8 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	}
 
 	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual, float[] datosH) {
+			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual,
+			float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
 
@@ -57,11 +58,9 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 					Float.parseFloat(getTxtTotal().getText()), Float.parseFloat(getTxtPromedio().getText()));
 			getHisto_kpi().createPanel();
 
-		}
-		catch (NumberFormatException excepcion) {
+		} catch (NumberFormatException excepcion) {
 			getIndicador_kpi().cargarDatos(0, 0, 0);
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			notificarError("tabla vacia, presione Ejecutar para llenar la tabla");
 		}
 	}
@@ -77,12 +76,10 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
 
 		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
-		getTxtPromedio().setText(
-				String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio, serv_unidad_tiempo,
-						serv_medicion, servIntervaloFechas, sitio_actual)));
-		getTxtActual().setText(
-				String.valueOf(serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio, serv_unidad_tiempo,
-						serv_medicion, sitio_actual)));
+		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio,
+				serv_unidad_tiempo, serv_medicion, servIntervaloFechas, sitio_actual)));
+		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio,
+				serv_unidad_tiempo, serv_medicion, sitio_actual)));
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
 		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
 

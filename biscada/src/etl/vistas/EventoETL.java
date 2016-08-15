@@ -52,15 +52,12 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 
 		if (evt.getSource() == vista_etl.getBtn_analisis_datos())
 			GestorBI.getSingleton().mostrarVentana();
-		else
-			if (evt.getSource() == vista_etl.getBtn_procesar())
-				vista_etl.actionProcesar();
-			else
-				if (evt.getSource() == vista_etl.getBtn_extraer())
-					vista_etl.actionExtraer();
-				else
-					if (evt.getSource() == vista_etl.getBtn_restablecer())
-						vista_etl.actionRestablecer();
+		else if (evt.getSource() == vista_etl.getBtn_procesar())
+			vista_etl.actionProcesar();
+		else if (evt.getSource() == vista_etl.getBtn_extraer())
+			vista_etl.actionExtraer();
+		else if (evt.getSource() == vista_etl.getBtn_restablecer())
+			vista_etl.actionRestablecer();
 	}
 
 	@Override
@@ -73,8 +70,10 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	/**
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
-	 * para que permitir� lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
+	 * nuevamente la logica de negocio responsable de llenar las listas de la
+	 * vista ETL.
 	 * 
 	 * @param evt
 	 */
@@ -84,8 +83,10 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	/**
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los archivos .dbf tiene asociado un evento
-	 * para que permitir� lanzar nuevamente la logica de negocio responsable de llenar las listas de la vista ETL.
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
+	 * nuevamente la logica de negocio responsable de llenar las listas de la
+	 * vista ETL.
 	 * 
 	 * @param evt
 	 */
@@ -107,8 +108,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 			clase_propietaria = Class.forName(elemento.getClass().getName());
 			cons = clase_propietaria.getConstructor();
 			objeto_resultante = cons.newInstance();
-		}
-		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException excepcion) {
 			excepcion.printStackTrace();
 		}

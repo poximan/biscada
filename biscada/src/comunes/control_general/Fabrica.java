@@ -13,7 +13,8 @@ import etl.control_etl.CampoTextoDefectuoso;
 /* ............................................. */
 
 /**
- * clase abstracta para determinar los objetivos comunes que tendr�n todas las fabricas de objetos.
+ * clase abstracta para determinar los objetivos comunes que tendr�n todas las
+ * fabricas de objetos.
  * 
  * @author hugo
  *

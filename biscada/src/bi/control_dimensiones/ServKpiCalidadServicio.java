@@ -94,8 +94,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 		try {
 			arreglo_valores = serv_medicion.completarFila(lista_interes, servIntervaloFechas, serv_unidad_tiempo);
-		}
-		catch (IndexOutOfBoundsException excepcion) {
+		} catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}
 
@@ -229,8 +228,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 			return columna_con_filas_sumadas;
-		}
-		catch (NegativeArraySizeException excepcion) {
+		} catch (NegativeArraySizeException excepcion) {
 			return new float[1];
 		}
 	}

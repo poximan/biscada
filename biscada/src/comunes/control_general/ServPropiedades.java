@@ -20,7 +20,8 @@ import org.apache.log4j.Logger;
 /* ............................................. */
 
 /**
- * recupera y de ser necesario actualiza el archivo de propiedades de arranque de la aplicacion.
+ * recupera y de ser necesario actualiza el archivo de propiedades de arranque
+ * de la aplicacion.
  * 
  * mediante singleton asegura una unica via unidireccional de acceso al archivo.
  * 
@@ -54,8 +55,7 @@ public class ServPropiedades {
 			FileInputStream archivo_entrada = new FileInputStream(NOMBRE_ARCHIVO_PROPIEDADES);
 			propiedades.load(archivo_entrada);
 			archivo_entrada.close();
-		}
-		catch (IllegalArgumentException | IOException excepcion) {
+		} catch (IllegalArgumentException | IOException excepcion) {
 			log.error("leyendo archivo de propiedades");
 		}
 	}
@@ -83,11 +83,9 @@ public class ServPropiedades {
 			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
 			propiedades.store(archivo_salida, Calendar.getInstance().getTime().toString());
 			archivo_salida.close();
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

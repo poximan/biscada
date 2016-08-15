@@ -66,8 +66,8 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new String[1];
 
-		String[] encabezado = new String[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
-				.getUltima_alarma())];
+		String[] encabezado = new String[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
+				getIntervalo().getUltima_alarma())];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
@@ -84,7 +84,9 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 	/*
 	 * Genero el m�todo para pasar el arreglo de fechas (non-Javadoc)
 	 * 
-	 * @see control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(java.util.Calendar)
+	 * @see
+	 * control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(
+	 * java.util.Calendar)
 	 */
 
 	@Override
@@ -95,8 +97,8 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new Date[1];
 
-		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
-				.getUltima_alarma())];
+		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
+				getIntervalo().getUltima_alarma())];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());

@@ -79,8 +79,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new String[1];
 
-		String[] encabezado = new String[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
-				.getUltima_alarma())];
+		String[] encabezado = new String[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
+				getIntervalo().getUltima_alarma())];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
@@ -96,7 +96,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	}
 
 	/*
-	 * Genero un nuevo m�todo para devolver el encabezado pero en formato "Date"
+	 * Genero un nuevo m�todo para devolver el encabezado pero en formato
+	 * "Date"
 	 */
 	@Override
 	public Date[] getEncabezadoFecha() {
@@ -106,8 +107,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new Date[1];
 
-		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(), getIntervalo()
-				.getUltima_alarma())];
+		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
+				getIntervalo().getUltima_alarma())];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
@@ -122,7 +123,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	}
 
 	/**
-	 * devuelve el numero de quincena pensada como un entero entre 1-24 para representar todas las quincenas del a�o
+	 * devuelve el numero de quincena pensada como un entero entre 1-24 para
+	 * representar todas las quincenas del a�o
 	 * 
 	 * @param fecha_actual
 	 * @return

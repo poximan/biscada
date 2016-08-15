@@ -52,36 +52,32 @@ public class EventoConsultaSimple implements ActionListener, VentanaLanzable {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (!(vista_simple.getComponenteConsulta().getConsultas() == null || vista_simple.getComponenteConsulta()
-				.getConsultas().isEmpty())) {
+		if (!(vista_simple.getComponenteConsulta().getConsultas() == null
+				|| vista_simple.getComponenteConsulta().getConsultas().isEmpty())) {
 
 			ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension("");
 
 			if (evt.getSource() == vista_simple.getBtnSitio()) {
 
 				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Sitio");
-				lanzarVentana(frame_menu_dimension, new VistaDimSitioSimple(vista_simple.getComponenteConsulta()
-						.getConsultas()));
-			} else
-				if (evt.getSource() == vista_simple.getBtnSuceso()) {
+				lanzarVentana(frame_menu_dimension,
+						new VistaDimSitioSimple(vista_simple.getComponenteConsulta().getConsultas()));
+			} else if (evt.getSource() == vista_simple.getBtnSuceso()) {
 
-					frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Suceso");
-					lanzarVentana(frame_menu_dimension, new VistaDimSucesoSimple(vista_simple.getComponenteConsulta()
-							.getConsultas()));
-				} else
-					if (evt.getSource() == vista_simple.getBtnTiempoDespeje()) {
+				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Suceso");
+				lanzarVentana(frame_menu_dimension,
+						new VistaDimSucesoSimple(vista_simple.getComponenteConsulta().getConsultas()));
+			} else if (evt.getSource() == vista_simple.getBtnTiempoDespeje()) {
 
-						frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
-						lanzarVentana(frame_menu_dimension, new VistaDimTiempoDespejeSimple(vista_simple
-								.getComponenteConsulta().getConsultas()));
-					} else
-						if (evt.getSource() == vista_simple.getBtnTemporada()) {
+				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
+				lanzarVentana(frame_menu_dimension,
+						new VistaDimTiempoDespejeSimple(vista_simple.getComponenteConsulta().getConsultas()));
+			} else if (evt.getSource() == vista_simple.getBtnTemporada()) {
 
-							frame_menu_dimension
-									.setTitle("Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");
-							lanzarVentana(frame_menu_dimension, new VistaDimTemporadaSimple(vista_simple
-									.getComponenteConsulta().getConsultas()));
-						}
+				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");
+				lanzarVentana(frame_menu_dimension,
+						new VistaDimTemporadaSimple(vista_simple.getComponenteConsulta().getConsultas()));
+			}
 		} else
 			notificarError("consulta vacia, cargue restricciones (opcional) y presione Buscar para obtener resultados");
 	}

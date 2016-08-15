@@ -20,7 +20,8 @@ import etl.excepciones.LeerArchivoExcepcion;
 /* ............................................. */
 
 /**
- * establece la comunicacion con el archivo fuente extrae encabezado y filas de alarmas. todo sin formato
+ * establece la comunicacion con el archivo fuente extrae encabezado y filas de
+ * alarmas. todo sin formato
  * 
  * @author hugo
  * 
@@ -72,8 +73,7 @@ public class ServConexionArchivo {
 
 		try {
 			inputStream.close();
-		}
-		catch (IOException excepcion) {
+		} catch (IOException excepcion) {
 			new CerrarArchivoExcepcion("Error: no se pudo cerrar archivo '" + str_archivo_actual + "'");
 		}
 	}
@@ -89,12 +89,12 @@ public class ServConexionArchivo {
 
 		try {
 			/*
-			 * se lee del stream hasta a lo sumo llenar el buffer, retorna numero de bytes leidos.
+			 * se lee del stream hasta a lo sumo llenar el buffer, retorna
+			 * numero de bytes leidos.
 			 */
 			if ((bytes_leidos = inputStream.read(buffer_encabezado)) != -1)
 				encabezado_convertido = new String(buffer_encabezado);
-		}
-		catch (IOException excepcion) {
+		} catch (IOException excepcion) {
 			new LeerArchivoExcepcion("Error: no se pudo leer archivo '" + str_archivo_actual + "'");
 		}
 
@@ -111,14 +111,14 @@ public class ServConexionArchivo {
 
 		try {
 			/*
-			 * se lee del stream hasta a lo sumo llenar el buffer, retorna numero de bytes leidos.
+			 * se lee del stream hasta a lo sumo llenar el buffer, retorna
+			 * numero de bytes leidos.
 			 */
 			if ((bytes_leidos = inputStream.read(buffer_fila_alarma)) == tamano_fila_alarma)
 				if (!esFilaNula(buffer_fila_alarma))
 					fila_alarma_convertida = new String(buffer_fila_alarma);
 
-		}
-		catch (IOException excepcion) {
+		} catch (IOException excepcion) {
 			new LeerArchivoExcepcion("Error: no se pudo leer archivo '" + str_archivo_actual + "'");
 		}
 		return fila_alarma_convertida;

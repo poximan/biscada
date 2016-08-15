@@ -79,8 +79,7 @@ public class TableModelMedicionTemporal extends AbstractTableModel {
 
 		try {
 			return datos[fila][columna];
-		}
-		catch (ArrayIndexOutOfBoundsException excepcion) {
+		} catch (ArrayIndexOutOfBoundsException excepcion) {
 			return 0;
 		}
 	}

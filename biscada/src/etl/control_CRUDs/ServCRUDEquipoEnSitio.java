@@ -57,8 +57,8 @@ public class ServCRUDEquipoEnSitio implements InterfazCRUD, ClaveIdentificable {
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
-		lista = Beans.isDesignTime() ? Collections.emptyList() : ObservableCollections.observableList(getQueryTodos()
-				.getResultList());
+		lista = Beans.isDesignTime() ? Collections.emptyList()
+				: ObservableCollections.observableList(getQueryTodos().getResultList());
 	}
 
 	@Override

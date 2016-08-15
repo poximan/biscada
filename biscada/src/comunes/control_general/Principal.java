@@ -19,8 +19,9 @@ import bi.control_general.GestorBI;
 /* CLASE ....................................... */
 /* ............................................. */
 /**
- * la primer instancia de un objeto es de esta clase. su responsabilidad es llamar al gestorBI que da comienza a la
- * interaccion del programa con el usuario
+ * la primer instancia de un objeto es de esta clase. su responsabilidad es
+ * llamar al gestorBI que da comienza a la interaccion del programa con el
+ * usuario
  * 
  * @author hugo
  *
@@ -43,15 +44,20 @@ public class Principal {
 	 * 
 	 * se utilizo gc (garbage collector) concurrente (-XX:+UseConcMarkSweepGC)
 	 * 
-	 * The concurrent collector is designed for applications that prefer shorter garbage collection pauses and that can
-	 * afford to share processor resources with the garbage collector while the application is running. Typically
-	 * applications which have a relatively large set of long-lived data (a large tenured generation), and run on
-	 * machines with two or more processors tend to benefit from the use of this collector. However, this collector
-	 * should be considered for any application with a low pause time requirement; for example, good results have been
-	 * observed for interactive applications with tenured generations of a modest size on a single processor, especially
-	 * if using incremental mode. The concurrent collector is enabled with the command line option
-	 * -XX:+UseConcMarkSweepGC. para mas informacion ver
-	 * http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#par_gc.oom ..............
+	 * The concurrent collector is designed for applications that prefer shorter
+	 * garbage collection pauses and that can afford to share processor
+	 * resources with the garbage collector while the application is running.
+	 * Typically applications which have a relatively large set of long-lived
+	 * data (a large tenured generation), and run on machines with two or more
+	 * processors tend to benefit from the use of this collector. However, this
+	 * collector should be considered for any application with a low pause time
+	 * requirement; for example, good results have been observed for interactive
+	 * applications with tenured generations of a modest size on a single
+	 * processor, especially if using incremental mode. The concurrent collector
+	 * is enabled with the command line option -XX:+UseConcMarkSweepGC. para mas
+	 * informacion ver
+	 * http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#
+	 * par_gc.oom ..............
 	 * 
 	 * se incremento el heap a 1024m para resolver consultas grandes (-Xmx1024m)
 	 *
@@ -85,11 +91,12 @@ public class Principal {
 	/* ............................................. */
 
 	/**
-	 * aqui es donde comienza la aplicacion. el metodo estatico lanza la clase que lo contiene, es decir aqui se crea la
-	 * primer instancia de un objeto.
+	 * aqui es donde comienza la aplicacion. el metodo estatico lanza la clase
+	 * que lo contiene, es decir aqui se crea la primer instancia de un objeto.
 	 * 
 	 * @param args
-	 *            queda por convencion, no se utilizan parametros de inicio de aplicacion.
+	 *            queda por convencion, no se utilizan parametros de inicio de
+	 *            aplicacion.
 	 */
 	public static void main(final String[] args) {
 
@@ -102,8 +109,7 @@ public class Principal {
 					break;
 				}
 			}
-		}
-		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex) {
 			log.error(Principal.class.getName());
 		}
@@ -113,8 +119,7 @@ public class Principal {
 			public void run() {
 				try {
 					new Principal();
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());
 					e.printStackTrace();
 				}

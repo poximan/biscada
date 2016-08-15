@@ -63,39 +63,36 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 
 		if (evt.getSource() == menu_dimension.getItem_salir())
 			menu_dimension.dispose();
-		else
-			if (evt.getSource() == menu_dimension.getItem_configurar()) {
+		else if (evt.getSource() == menu_dimension.getItem_configurar()) {
 
-				log.trace("comienza consulta para utilizar como comparador");
+			log.trace("comienza consulta para utilizar como comparador");
 
-				ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
-						"BIS - consulta para usar como comparador");
+			ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
+					"BIS - consulta para usar como comparador");
 
-				frame_menu_bi.setContentPane(new VistaConsultaCompuesta(menu_dimension, frame_menu_bi));
-				frame_menu_bi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				frame_menu_bi.setVisible(true);
+			frame_menu_bi.setContentPane(new VistaConsultaCompuesta(menu_dimension, frame_menu_bi));
+			frame_menu_bi.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			frame_menu_bi.setVisible(true);
 
-			} else
-				if (evt.getSource() == menu_dimension.getItem_ejecutar()) {
+		} else if (evt.getSource() == menu_dimension.getItem_ejecutar()) {
 
-					log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
+			log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
 
-					ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension(
-							"BIS - comparador de periodos");
-					VistaDimAbstractCompuesta vista_compuesta = null;
+			ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension("BIS - comparador de periodos");
+			VistaDimAbstractCompuesta vista_compuesta = null;
 
-					if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple)
-						prepararComparadorSitios(frame_menu_dimension, vista_compuesta);
+			if (menu_dimension.getContentPane() instanceof VistaDimSitioSimple)
+				prepararComparadorSitios(frame_menu_dimension, vista_compuesta);
 
-					if (menu_dimension.getContentPane() instanceof VistaDimSucesoSimple)
-						prepararComparadorSuceso(frame_menu_dimension, vista_compuesta);
+			if (menu_dimension.getContentPane() instanceof VistaDimSucesoSimple)
+				prepararComparadorSuceso(frame_menu_dimension, vista_compuesta);
 
-					if (menu_dimension.getContentPane() instanceof VistaDimTemporadaSimple)
-						prepararComparadorTemporada(frame_menu_dimension, vista_compuesta);
+			if (menu_dimension.getContentPane() instanceof VistaDimTemporadaSimple)
+				prepararComparadorTemporada(frame_menu_dimension, vista_compuesta);
 
-					if (menu_dimension.getContentPane() instanceof VistaDimTiempoDespejeSimple)
-						prepararComparadorTiempoDespeje(frame_menu_dimension, vista_compuesta);
-				}
+			if (menu_dimension.getContentPane() instanceof VistaDimTiempoDespejeSimple)
+				prepararComparadorTiempoDespeje(frame_menu_dimension, vista_compuesta);
+		}
 	}
 
 	private void prepararComparadorSitios(ComponenteMenuDimension frame_menu_dimension,

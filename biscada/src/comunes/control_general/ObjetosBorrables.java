@@ -11,8 +11,9 @@ package comunes.control_general;
 /* ............................................. */
 
 /**
- * ciertas etapas de la adquisicion de informacion desde archivos dbf implican gran cantidad de datos en memoria, que
- * una vez procesados son innecesarios. este interfaz debe ser implementada por toda clase que tenga objetos de gran
+ * ciertas etapas de la adquisicion de informacion desde archivos dbf implican
+ * gran cantidad de datos en memoria, que una vez procesados son innecesarios.
+ * este interfaz debe ser implementada por toda clase que tenga objetos de gran
  * volumen y corta vida.
  * 
  * @author hugo

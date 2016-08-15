@@ -46,8 +46,7 @@ public class ServMedTotal extends ServMedAbstract {
 
 		try {
 			fecha_referencia.setTimeInMillis(alarmas.get(0).getFecha_inicio().getTimeInMillis());
-		}
-		catch (IndexOutOfBoundsException excepcion) {
+		} catch (IndexOutOfBoundsException excepcion) {
 			throw excepcion;
 		}
 

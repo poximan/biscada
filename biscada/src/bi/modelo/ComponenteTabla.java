@@ -108,23 +108,22 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 		pl_priUlt_alarma.add(txtUltima);
 
 		groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(pl_priUlt_alarma, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+		groupLayout
+				.setHorizontalGroup(
+						groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+										.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(pl_priUlt_alarma,
+												GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(
-				groupLayout
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								groupLayout
-										.createParallelGroup(Alignment.TRAILING)
-										.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 93,
-												Short.MAX_VALUE)
-										.addComponent(pl_priUlt_alarma, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												96, Short.MAX_VALUE)).addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 93,
+										Short.MAX_VALUE)
+								.addComponent(pl_priUlt_alarma, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 96,
+										Short.MAX_VALUE))
+						.addContainerGap()));
 
 		// -------------------------------------
 		//
@@ -140,7 +139,8 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 		tbl_titulo_filas.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scrollPane.setRowHeaderView(tbl_titulo_filas);
 
-		// recuperar el tama�o preferido en caso que la tabla este contenida en
+		// recuperar el tama�o preferido en caso que la tabla este contenida
+		// en
 		// un scroll
 		Dimension nueva_dimension = tbl_titulo_filas.getPreferredScrollableViewportSize();
 		// define el tama�o preferido de la tabla
@@ -148,7 +148,8 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 		tbl_titulo_filas.setPreferredScrollableViewportSize(nueva_dimension);
 		tbl_titulo_filas.setIntercellSpacing(new Dimension(0, 0));
 
-		// recuperar el tama�o preferido en caso que la tabla este contenida en
+		// recuperar el tama�o preferido en caso que la tabla este contenida
+		// en
 		// un scroll
 		nueva_dimension = tbl_medicion.getPreferredScrollableViewportSize();
 		tbl_medicion.setPreferredScrollableViewportSize(nueva_dimension);

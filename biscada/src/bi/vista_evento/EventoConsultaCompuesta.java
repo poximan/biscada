@@ -45,8 +45,8 @@ public class EventoConsultaCompuesta implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 
-		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null || vista_compuesta.getComponenteConsulta()
-				.getConsultas().isEmpty())) {
+		if (!(vista_compuesta.getComponenteConsulta().getConsultas() == null
+				|| vista_compuesta.getComponenteConsulta().getConsultas().isEmpty())) {
 
 			if (evt.getSource() == vista_compuesta.getBtnUsarConsulta())
 				vista_compuesta.resolver();

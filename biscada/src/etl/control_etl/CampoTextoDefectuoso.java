@@ -14,8 +14,9 @@ import java.util.List;
 /* ............................................. */
 
 /**
- * gestiona las alarmas rechazadas por el proceso etl. una unica instancia de este objeto es compartida por las tres
- * fabricas que obtienen sus objetos analizando el campo "texto" del archivo dbf
+ * gestiona las alarmas rechazadas por el proceso etl. una unica instancia de
+ * este objeto es compartida por las tres fabricas que obtienen sus objetos
+ * analizando el campo "texto" del archivo dbf
  * 
  * @author hugo
  * 

@@ -240,9 +240,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo minimo
-	 * de vida, para descartar de esta manera alarmas que duren menos que un
-	 * periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
+	 * minimo de vida, para descartar de esta manera alarmas que duren menos que
+	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param criteria
 	 * 
@@ -266,9 +266,9 @@ public class ServConsultaDinamica {
 	 * 
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo maximo
-	 * de vida, para descartar de esta manera alarmas que duren mas que un
-	 * periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
+	 * maximo de vida, para descartar de esta manera alarmas que duren mas que
+	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
@@ -289,8 +289,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha desde" en particular, se traeran solo
-	 * alarmas con fecha >= para el campo especificado [fecha inicio, ack, fin]
+	 * si el usuario especific� una "fecha desde" en particular, se traeran
+	 * solo alarmas con fecha >= para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarDesde
 	 * @param rbtnDesdeInicio
@@ -318,8 +319,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha hasta" en particular, se traeran solo
-	 * alarmas con fecha <= para el campo especificado [fecha inicio, ack, fin]
+	 * si el usuario especific� una "fecha hasta" en particular, se traeran
+	 * solo alarmas con fecha <= para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarHasta
 	 * @param rbtnHastaInicio

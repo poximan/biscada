@@ -72,8 +72,9 @@ public class ComponenteSeleccionarDireccion extends JPanel implements ActionList
 	/* ............................................. */
 
 	/**
-	 * cuando el usuario presiona el boton cambiar se despliega una ventana de navegacion para seleccionar la nueva
-	 * carpeta origen de los datos para procesar por el ETL
+	 * cuando el usuario presiona el boton cambiar se despliega una ventana de
+	 * navegacion para seleccionar la nueva carpeta origen de los datos para
+	 * procesar por el ETL
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -83,8 +84,8 @@ public class ComponenteSeleccionarDireccion extends JPanel implements ActionList
 	}
 
 	/**
-	 * carga en la barra de texto solo direcciones validades por el navegador de carpetas (en esta implementacion
-	 * jfilechooser)
+	 * carga en la barra de texto solo direcciones validades por el navegador de
+	 * carpetas (en esta implementacion jfilechooser)
 	 */
 	private void actualizarDireccion() {
 
@@ -94,8 +95,7 @@ public class ComponenteSeleccionarDireccion extends JPanel implements ActionList
 			directorio_actual = chooser.getCurrentDirectory().getPath();
 			archivo_seleccionado = chooser.getSelectedFile().getPath();
 			archivo_seleccionado = archivo_seleccionado.substring(archivo_seleccionado.lastIndexOf("\\"));
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			archivo_seleccionado = "";
 		}
 		txtDireccionFuente.setText(directorio_actual + archivo_seleccionado);

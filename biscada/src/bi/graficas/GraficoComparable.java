@@ -84,11 +84,9 @@ public class GraficoComparable extends JPanel {
 			for (int i = 0; i < datos_tabla.length; i++)
 				for (int j = 0; j < datos_tabla[i].length; j++)
 					dataset.setValue(datos_tabla[i][j], fila[i], encabezado_tabla[j]);
-		}
-		catch (ArrayIndexOutOfBoundsException excepcion) {
+		} catch (ArrayIndexOutOfBoundsException excepcion) {
 			log.error("arreglo fuera de rango");
-		}
-		catch (IllegalArgumentException excepcion) {
+		} catch (IllegalArgumentException excepcion) {
 			log.error("faltan argumentos");
 		}
 
@@ -115,11 +113,9 @@ public class GraficoComparable extends JPanel {
 			for (int i = 0; i < datos_tabla_comparar.length; i++)
 				for (int j = 0; j < datos_tabla_comparar[i].length; j++)
 					dataset.setValue(datos_tabla_comparar[i][j], filaComparacion[i], encabezado_tabla_comparar[j]);
-		}
-		catch (ArrayIndexOutOfBoundsException excepcion) {
+		} catch (ArrayIndexOutOfBoundsException excepcion) {
 			log.error("arreglo fuera de rango");
-		}
-		catch (IllegalArgumentException excepcion) {
+		} catch (IllegalArgumentException excepcion) {
 			log.error("faltan argumentos");
 		}
 

@@ -94,13 +94,12 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		splitPane_tablas = new JSplitPane();
 		splitPane_tablas.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		gl_pl_tabla = new GroupLayout(pl_tabla);
-		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.TRAILING).addGroup(
-				Alignment.LEADING,
+		gl_pl_tabla.setHorizontalGroup(gl_pl_tabla.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
 				gl_pl_tabla.createSequentialGroup().addContainerGap()
 						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
 						.addContainerGap()));
-		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_pl_tabla.createSequentialGroup().addContainerGap()
+		gl_pl_tabla.setVerticalGroup(gl_pl_tabla.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pl_tabla.createSequentialGroup().addContainerGap()
 						.addComponent(splitPane_tablas, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
 						.addContainerGap()));
 
@@ -114,12 +113,11 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		gl_contentPane = new GroupLayout(this);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_contentPane.createSequentialGroup().addContainerGap()
-								.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-								.addGap(10)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_contentPane.createSequentialGroup().addContainerGap()
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addGap(10)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
 						.addComponent(splitPane_graf_tablas, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
 						.addContainerGap()));
 

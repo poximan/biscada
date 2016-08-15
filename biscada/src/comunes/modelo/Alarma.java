@@ -155,10 +155,8 @@ public final class Alarma implements Comparable {
 	public String toString() {
 
 		return "\n" + //
-				"Id BD: " + id + "\n"
-				+ //
-				"Ini: " + ((fecha_inicio != null) ? fecha_inicio.getTime().toString() : "desconocida") + "\n"
-				+ //
+				"Id BD: " + id + "\n" + //
+				"Ini: " + ((fecha_inicio != null) ? fecha_inicio.getTime().toString() : "desconocida") + "\n" + //
 				"Fin: " + ((fecha_finalizacion != null) ? fecha_finalizacion.getTime().toString() : "desconocida")
 				+ "\n" + //
 				"Ack: " + ((fecha_ack != null) ? fecha_ack.getTime().toString() : "desconocida") + "\n" + //
@@ -173,7 +171,7 @@ public final class Alarma implements Comparable {
 				"Equipo: " + ((equipo_en_sitio != null) ? equipo_en_sitio.toString() : "sin equipo") + "\n" + //
 				"Suceso: " + suceso.toString() + "\n" + //
 				"Id estacion: " + id_estacion + "\n" //
-		;
+				;
 	}
 
 	/* ............................................. */

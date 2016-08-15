@@ -29,12 +29,15 @@ public class ServDimSitio extends ServDimAbstract {
 	/* ............................................. */
 
 	/*
-	 * An instance of HashMap has two parameters that affect its performance: initial capacity and load factor. The
-	 * capacity is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time
-	 * the hash table is created. The load factor is a measure of how full the hash table is allowed to get before its
-	 * capacity is automatically increased. When the number of entries in the hash table exceeds the product of the load
-	 * factor and the current capacity, the hash table is rehashed (that is, internal data structures are rebuilt) so
-	 * that the hash table has approximately twice the number of buckets.
+	 * An instance of HashMap has two parameters that affect its performance:
+	 * initial capacity and load factor. The capacity is the number of buckets
+	 * in the hash table, and the initial capacity is simply the capacity at the
+	 * time the hash table is created. The load factor is a measure of how full
+	 * the hash table is allowed to get before its capacity is automatically
+	 * increased. When the number of entries in the hash table exceeds the
+	 * product of the load factor and the current capacity, the hash table is
+	 * rehashed (that is, internal data structures are rebuilt) so that the hash
+	 * table has approximately twice the number of buckets.
 	 */
 	private Map<Sitio, List<Alarma>> map;
 
@@ -89,10 +92,11 @@ public class ServDimSitio extends ServDimAbstract {
 	}
 
 	/**
-	 * pide los nombres de los grupos que se obtienen de observar una lista desde una dimension espec�fica.
+	 * pide los nombres de los grupos que se obtienen de observar una lista
+	 * desde una dimension espec�fica.
 	 * 
-	 * @return con estos nombres se llenara una tabla de simple columna que simula la seguda entrada de la que posee los
-	 *         datos.
+	 * @return con estos nombres se llenara una tabla de simple columna que
+	 *         simula la seguda entrada de la que posee los datos.
 	 */
 	@Override
 	public Object[] getGrupos() {

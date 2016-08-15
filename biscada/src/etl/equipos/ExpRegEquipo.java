@@ -26,7 +26,8 @@ public class ExpRegEquipo {
 
 	public ExpRegEquipo() {
 
-		expresion_regular = "" // expresion regular para identificar el equipo involucrado
+		expresion_regular = "" // expresion regular para identificar el equipo
+								// involucrado
 				+ "" + // 1 grupo = gpo 1 a gpo 1
 				Bomba.getExpresion_regular()//
 				+ "|" + // 3 grupo = gpo 2 a gpo 4
@@ -49,7 +50,7 @@ public class ExpRegEquipo {
 				TornilloCompactador.getExpresion_regular()//
 				+ "|" + // 1 grupo = gpo 16 a gpo 16
 				Valvula.getExpresion_regular()//
-		;
+				;
 	}
 
 	/* ............................................. */

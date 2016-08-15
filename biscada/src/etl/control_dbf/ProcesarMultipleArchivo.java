@@ -57,8 +57,10 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	/* ............................................. */
 
 	/**
-	 * usando la carpeta origen como unico punto para recoleccion de archivos, comienza la lectura de todos ellos.
-	 * algunos posiblemente hayan sido insertados en una ejecucion previa, en ese caso no se insertara nuevamente
+	 * usando la carpeta origen como unico punto para recoleccion de archivos,
+	 * comienza la lectura de todos ellos. algunos posiblemente hayan sido
+	 * insertados en una ejecucion previa, en ese caso no se insertara
+	 * nuevamente
 	 */
 	public void buscarNuevosArchivos() {
 
@@ -76,8 +78,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		catch (NoSuchFileException excepcion) {
 			log.error("no se encontro directorio");
-		}
-		catch (IOException excepcion) {
+		} catch (IOException excepcion) {
 			excepcion.printStackTrace();
 		}
 		log.info("\n... ... ... ... ... ... ... ... ... ... ... ... ... ... ...");

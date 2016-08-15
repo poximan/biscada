@@ -86,7 +86,8 @@ public class CombinedCategoryPlot extends CombinedDomainCategoryPlot {
 	}
 
 	/**
-	 * Returns the bounds of the data values that will be plotted against the specified axis.
+	 * Returns the bounds of the data values that will be plotted against the
+	 * specified axis.
 	 *
 	 * @param axis
 	 *            the axis.

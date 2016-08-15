@@ -44,8 +44,7 @@ public class Despeje__05 extends TiempoDespeje {
 
 			if (tiempo_transcurrido < getFin())
 				return true;
-		}
-		catch (NullPointerException excepcion) {
+		} catch (NullPointerException excepcion) {
 			return false;
 		}
 		return false;

@@ -213,7 +213,16 @@ public class ETL1Transformar implements ObjetosBorrables {
 			return null;
 
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(Long.parseLong(segundo) * 1000 + Long.parseLong(milisegundo));
+
+		try {
+			calendar.setTimeInMillis(Long.parseLong(segundo) * 1000 + Long.parseLong(milisegundo));
+
+			/*
+			 * en caso que no haya caracteres para los milisegundos
+			 */
+		} catch (NumberFormatException excepcion) {
+			calendar.setTimeInMillis(Long.parseLong(segundo) * 1000);
+		}
 		return calendar;
 	}
 

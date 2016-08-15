@@ -42,7 +42,8 @@ public class ServConexionArchivo {
 	private int bytes_leidos;
 
 	private byte[] buffer_encabezado;
-	private String encabezado_convertido;
+
+	private int puntero_fd;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -53,6 +54,8 @@ public class ServConexionArchivo {
 
 		str_archivo_actual = archivo_actual.getRuta();
 		this.tamano_fila_alarma = parametros.getTamano_fila_alarma();
+
+		puntero_fd = 0;
 
 		try {
 			inputStream = new FileInputStream(str_archivo_actual);
@@ -78,27 +81,10 @@ public class ServConexionArchivo {
 		}
 	}
 
-	private boolean esFilaNula(byte[] buffer_fila_alarma) {
+	public void saltarEncabezado() throws IOException {
 
-		if (Byte.compare(buffer_fila_alarma[1], (byte) '\0') == 0)
-			return true;
-		return false;
-	}
-
-	public String getEncabezado() {
-
-		try {
-			/*
-			 * se lee del stream hasta a lo sumo llenar el buffer, retorna
-			 * numero de bytes leidos.
-			 */
-			if ((bytes_leidos = inputStream.read(buffer_encabezado)) != -1)
-				encabezado_convertido = new String(buffer_encabezado);
-		} catch (IOException excepcion) {
-			new LeerArchivoExcepcion("Error: no se pudo leer archivo '" + str_archivo_actual + "'");
-		}
-
-		return encabezado_convertido;
+		inputStream.skip(buffer_encabezado.length);
+		incPuntero(buffer_encabezado.length);
 	}
 
 	public String getProximaAlarma() {
@@ -106,21 +92,21 @@ public class ServConexionArchivo {
 		byte[] buffer_fila_alarma = new byte[tamano_fila_alarma];
 		String fila_alarma_convertida = null;
 
-		if (encabezado_convertido == null)
-			getEncabezado();
-
 		try {
 			/*
 			 * se lee del stream hasta a lo sumo llenar el buffer, retorna
 			 * numero de bytes leidos.
 			 */
-			if ((bytes_leidos = inputStream.read(buffer_fila_alarma)) == tamano_fila_alarma)
-				if (!esFilaNula(buffer_fila_alarma))
-					fila_alarma_convertida = new String(buffer_fila_alarma);
+			inputStream.read(buffer_fila_alarma);
+			fila_alarma_convertida = new String(buffer_fila_alarma);
 
 		} catch (IOException excepcion) {
 			new LeerArchivoExcepcion("Error: no se pudo leer archivo '" + str_archivo_actual + "'");
 		}
 		return fila_alarma_convertida;
+	}
+
+	public void incPuntero(int offset) {
+		puntero_fd += offset;
 	}
 }

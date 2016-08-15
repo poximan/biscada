@@ -102,7 +102,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		int totales = lista_candidatos_procesar.size(), actual = 1;
 
-		ParametrosConexion parametros = new ParametrosConexion(481, 164);
+		ParametrosConexion parametros = new ParametrosConexion(482, 164);
 		Transaccion metodo_insercion = new Transaccion();
 		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
 

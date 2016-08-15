@@ -5,6 +5,7 @@
 
 package etl.control_etl;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ETL0Extraer implements ObjetosBorrables {
 	private ArchivoDBF archivo_actual;
 	private ParametrosConexion parametros;
 
-	private ServConexionArchivo stream_archivo_dbf;
+	private ServConexionArchivo serv_conexion_archivo;
 
 	private List<String> alarmas_extraidas_no_convertidas;
 	private List<ArchAlarma> alarmas_extraidas_convertidas;
@@ -64,7 +65,7 @@ public class ETL0Extraer implements ObjetosBorrables {
 	/* ............................................. */
 
 	private void accederArchivo() {
-		stream_archivo_dbf = new ServConexionArchivo(archivo_actual, parametros);
+		serv_conexion_archivo = new ServConexionArchivo(archivo_actual, parametros);
 	}
 
 	private void convertirTodasLasFila() {
@@ -92,22 +93,62 @@ public class ETL0Extraer implements ObjetosBorrables {
 
 	private String extraerFila() {
 
-		return stream_archivo_dbf.getProximaAlarma();
+		String fila_alarma_convertida = serv_conexion_archivo.getProximaAlarma();
+
+		if (!tieneAnchoValido(fila_alarma_convertida))
+			corregirLectura(fila_alarma_convertida);
+
+		serv_conexion_archivo.incPuntero(fila_alarma_convertida.length());
+
+		return fila_alarma_convertida;
+	}
+
+	/**
+	 * en caso que la lectura de la fila haya superado la longitud para esa
+	 * fila. esto es importante porque el ancho de fila es variable.
+	 * 
+	 * @param fila_alarma_convertida
+	 */
+	private void corregirLectura(String fila_alarma_convertida) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * si se ha podido comprobar que solo se trajo informacion de una fila, sin
+	 * faltantes ni sobrantes.
+	 *
+	 * esto es importante para las filas siguientes, que podrían falsear sus
+	 * propios datos por desplazamientos en lecturas anteriores.
+	 * 
+	 * @param fila_alarma_convertida
+	 * @return
+	 */
+	private boolean tieneAnchoValido(String fila_alarma_convertida) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private void extraerTodasLasFilas() {
 
-		String ultima_alarma_extraida_no_convertida;
+		String ultima_alarma;
 		alarmas_extraidas_no_convertidas = new LinkedList<>();
 
-		while ((ultima_alarma_extraida_no_convertida = extraerFila()) != null)
-			alarmas_extraidas_no_convertidas.add(ultima_alarma_extraida_no_convertida);
+		try {
+			serv_conexion_archivo.saltarEncabezado();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		while ((ultima_alarma = extraerFila()) != null)
+			alarmas_extraidas_no_convertidas.add(ultima_alarma);
 	}
 
 	@Override
 	public void liberarObjetos() {
 
-		stream_archivo_dbf.cerrarArchivo();
+		serv_conexion_archivo.cerrarArchivo();
 
 		alarmas_extraidas_no_convertidas.clear();
 		alarmas_extraidas_convertidas.clear();

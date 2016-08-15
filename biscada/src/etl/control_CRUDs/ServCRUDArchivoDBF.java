@@ -50,7 +50,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 
 		list_disponibles = new ArrayList<ArchivoDBF>();
-
 		actualizarLista();
 	}
 

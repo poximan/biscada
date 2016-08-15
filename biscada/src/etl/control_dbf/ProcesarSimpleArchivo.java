@@ -68,11 +68,10 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		transformador = new ETL1Transformar(alarmas_extraidas);
 		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
 
-		cargador = new ETL2Cargar(transformador.getAlarmas_transformadas(), transformador.getAlarmas_rechazadas(),
-				dbf_servicio_crud);
+		cargador = new ETL2Cargar(transformador.getAlarmas_transformadas(), dbf_servicio_crud);
 
 		if (!transformador.getAlarmas_transformadas().isEmpty())
-			cargador.cargarAlarmasAceptadas(archivo_actual);
+			cargador.cargarAlarmasAceptadas();
 		else
 			cargador.rechazarArchivo(archivo_actual);
 

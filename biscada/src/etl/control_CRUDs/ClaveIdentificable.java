@@ -14,6 +14,13 @@ import comunes.modelo.Alarma;
 /* INTERFASE ................................... */
 /* ............................................. */
 
+/**
+ * interfaz de uso en el ambito del paquete etl.control_CRUDs
+ * 
+ * 
+ * @author hugo
+ *
+ */
 public interface ClaveIdentificable {
 
 	/* ............................................. */

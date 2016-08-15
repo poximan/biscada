@@ -17,7 +17,6 @@ import etl.control_CRUDs.ServCRUDFamilia;
 import etl.control_CRUDs.ServCRUDSitio;
 import etl.control_CRUDs.ServCRUDSuceso;
 import etl.control_CRUDs.ServCRUDTipoDeEquipo;
-import etl.control_dbf.ArchAlarma;
 
 /* ............................................. */
 /* ............................................. */
@@ -42,7 +41,6 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* ............................................. */
 
 	private List<Alarma> alarmas_transformadas;
-	private List<ArchAlarma> alarmas_rechazadas;
 
 	private ServCRUDArchivoDBF dbf_servicio_crud;
 
@@ -59,11 +57,9 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ETL2Cargar(List<Alarma> alarmas_transformadas, List<ArchAlarma> alarmas_rechazadas,
-			ServCRUDArchivoDBF dbf_servicio_crud) {
+	public ETL2Cargar(List<Alarma> alarmas_transformadas, ServCRUDArchivoDBF dbf_servicio_crud) {
 
 		this.alarmas_transformadas = alarmas_transformadas;
-		this.alarmas_rechazadas = alarmas_rechazadas;
 
 		this.dbf_servicio_crud = dbf_servicio_crud;
 
@@ -80,7 +76,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void cargarAlarmasAceptadas(ArchivoDBF archivo_propietario) {
+	public void cargarAlarmasAceptadas() {
 
 		for (Alarma alarma_actual : alarmas_transformadas) {
 
@@ -95,10 +91,6 @@ public class ETL2Cargar implements ObjetosBorrables {
 			}
 
 			alarma_servicios_crud.crear(alarma_actual);
-		}
-
-		for (ArchAlarma alarma_rechazada : alarmas_rechazadas) {
-			// TODO aca hay que insertar alarmas rechazadas
 		}
 	}
 

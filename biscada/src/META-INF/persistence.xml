@@ -7,7 +7,6 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
 		<class>comunes.modelo.Alarma</class>
-		<class>comunes.modelo.AlarmaRechazada</class>
 		<class>comunes.modelo.ArchivoDBF</class>
 		<class>comunes.modelo.EquipoEnSitio</class>
 		<class>comunes.modelo.Familia</class>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="bi/control_general/ServConsulta.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
@@ -9,8 +8,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jFreeChart"/>
-	<classpathentry kind="lib" path="C:/eclipse_java/plugins/biblios/beansbinding-1.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/eclipse_java/plugins/biblios/log4j/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="C:/eclipse_java/plugins/biblios/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse_java/jee-neon/eclipse/plugins/biblios/beansbinding-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse_java/jee-neon/eclipse/plugins/biblios/log4j/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse_java/jee-neon/eclipse/plugins/biblios/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -13,6 +13,7 @@
 		<class>comunes.modelo.Sitio</class>
 		<class>comunes.modelo.Suceso</class>
 		<class>comunes.modelo.TipoDeEquipo</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action"

@@ -47,8 +47,8 @@ import org.jdesktop.swingbinding.SwingBindings;
 
 import com.toedter.calendar.JDateChooser;
 
-import bi.control_general.ServConsultaDinamica;
-import bi.control_general.ServConsultaEstatica;
+import bi.controles.ServConsultaDinamica;
+import bi.controles.ServConsultaEstatica;
 import bi.vista_evento.EventoComponenteConsulta;
 import bi.vista_evento.EventoManejable;
 import comunes.modelo.Alarma;

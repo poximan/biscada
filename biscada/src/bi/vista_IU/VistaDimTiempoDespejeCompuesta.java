@@ -7,9 +7,9 @@ package bi.vista_IU;
 
 import java.util.List;
 
-import bi.control_dimensiones.ServDimTiempoDespeje;
-import bi.control_dimensiones.ServDimUnidadTiempoAbstract;
-import bi.control_mediciones.ServMedAbstract;
+import bi.controles.dimensiones.ServDimTiempoDespeje;
+import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.mediciones.ServMedAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */

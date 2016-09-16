@@ -5,11 +5,11 @@
 
 package bi.vista_IU;
 
-import bi.control_dimensiones.ServDimSitio;
-import bi.control_dimensiones.ServDimUnidadTiempoAbstract;
-import bi.control_dimensiones.ServIntervaloFechas;
-import bi.control_dimensiones.ServKpiCalidadServicio;
-import bi.control_mediciones.ServMedAbstract;
+import bi.controles.dimensiones.ServDimSitio;
+import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.dimensiones.ServIntervaloFechas;
+import bi.controles.dimensiones.ServKpiCalidadServicio;
+import bi.controles.mediciones.ServMedAbstract;
 import bi.vista_evento.EventoKPI;
 import comunes.modelo.Sitio;
 

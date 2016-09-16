@@ -7,8 +7,8 @@ package bi.vista_IU;
 
 import java.util.List;
 
-import bi.control_dimensiones.ServDimSitio;
-import bi.control_dimensiones.ServDimSuceso;
+import bi.controles.dimensiones.ServDimSitio;
+import bi.controles.dimensiones.ServDimSuceso;
 import bi.vista_evento.EventoDim;
 import bi.vista_evento.EventoDimSuceso;
 import comunes.modelo.Alarma;

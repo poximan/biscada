@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import bi.vista_IU.VistaConsultaSimple;
-import comunes.control_general.GestorPropiedades;
-import comunes.control_general.ServPropiedades;
-import etl.control_general.GestorETL;
+import comunes.controles.GestorPropiedades;
+import comunes.controles.ServPropiedades;
+import etl.controles.GestorETL;
 
 /* ............................................. */
 /* ............................................. */

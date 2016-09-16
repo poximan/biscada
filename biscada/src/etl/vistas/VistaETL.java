@@ -22,12 +22,12 @@ import javax.swing.SwingConstants;
 
 import org.apache.log4j.Logger;
 
-import comunes.control_general.ObjetosBorrables;
-import comunes.control_general.ServPropiedades;
+import comunes.controles.ObjetosBorrables;
+import comunes.controles.ServPropiedades;
 import comunes.modelo.ArchivoDBF;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
-import etl.control_dbf.ProcesarMultipleArchivo;
+import etl.controles.dbf.ProcesarMultipleArchivo;
 import etl.modelo.ComponenteSeleccionarDireccion;
 
 /* ............................................. */

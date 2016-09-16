@@ -15,7 +15,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import comunes.control_general.ServPropiedades;
+import comunes.controles.ServPropiedades;
 import comunes.excepciones.ReiniciarAplicacionExcepcion;
 
 /* ............................................. */

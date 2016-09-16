@@ -15,6 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import comunes.fabrica.TipoDatoFabricable;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -24,7 +26,7 @@ import javax.persistence.TableGenerator;
 @Table(name = "familia")
 @NamedQueries({ @NamedQuery(name = "Familia.buscTodos", query = "SELECT tabla FROM Familia tabla"),
 		@NamedQuery(name = "Familia.buscDescripcion", query = "SELECT tabla FROM Familia tabla WHERE tabla.descripcion = :descripcion"), })
-public class Familia {
+public class Familia implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */

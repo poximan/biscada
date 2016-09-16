@@ -14,10 +14,10 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
-import bi.control_dimensiones.ServDimAbstract;
-import bi.control_dimensiones.ServDimUnidadTiempoAbstract;
-import bi.control_dimensiones.ServIntervaloFechas;
-import bi.control_mediciones.ServMedAbstract;
+import bi.controles.dimensiones.ServDimAbstract;
+import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.dimensiones.ServIntervaloFechas;
+import bi.controles.mediciones.ServMedAbstract;
 import bi.graficas.GraficoComparable;
 import bi.modelo.ComponenteTabla;
 import bi.modelo.IntervaloFechas;

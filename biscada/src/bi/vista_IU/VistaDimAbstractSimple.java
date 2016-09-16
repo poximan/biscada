@@ -22,17 +22,17 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import bi.control_dimensiones.ServDimAbstract;
-import bi.control_dimensiones.ServDimSitio;
-import bi.control_dimensiones.ServDimUnidadTiempoAbstract;
-import bi.control_dimensiones.ServDimUnidadTiempoAnio;
-import bi.control_dimensiones.ServDimUnidadTiempoMes;
-import bi.control_dimensiones.ServDimUnidadTiempoQuincena;
-import bi.control_dimensiones.ServDimUnidadTiempoTrimestre;
-import bi.control_dimensiones.ServIntervaloFechas;
-import bi.control_mediciones.ServMedAbstract;
-import bi.control_mediciones.ServMedPromedio;
-import bi.control_mediciones.ServMedTotal;
+import bi.controles.dimensiones.ServDimAbstract;
+import bi.controles.dimensiones.ServDimSitio;
+import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.dimensiones.ServDimUnidadTiempoAnio;
+import bi.controles.dimensiones.ServDimUnidadTiempoMes;
+import bi.controles.dimensiones.ServDimUnidadTiempoQuincena;
+import bi.controles.dimensiones.ServDimUnidadTiempoTrimestre;
+import bi.controles.dimensiones.ServIntervaloFechas;
+import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.mediciones.ServMedPromedio;
+import bi.controles.mediciones.ServMedTotal;
 import bi.graficas.GraficoBarras;
 import bi.graficas.GraficoLineas;
 import bi.graficas.GraficoTorta;
@@ -147,20 +147,16 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		btnEjecutar = new JButton("ejecutar");
 
 		gl_pl_tiempo = new GroupLayout(pl_tiempo);
-		gl_pl_tiempo
-				.setHorizontalGroup(
-						gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
-								.addGroup(
-										gl_pl_tiempo.createSequentialGroup().addContainerGap()
-												.addComponent(lbl_medicion).addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84,
-														GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88,
-										GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED, 129, Short.MAX_VALUE).addComponent(btnEjecutar)
-				.addContainerGap()));
+		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 129, Short.MAX_VALUE).addComponent(btnEjecutar)
+						.addContainerGap()));
 		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pl_tiempo.createSequentialGroup()
 						.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
@@ -168,11 +164,11 @@ public abstract class VistaDimAbstractSimple extends JPanel
 										.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.BASELINE)
 												.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lbl_medicion).addComponent(btnEjecutar)))
-						.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(15).addComponent(lbl_dim_tiempo))
-						.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(12).addComponent(cbox_dim_tiempo,
-								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+												.addComponent(lbl_medicion).addComponent(btnEjecutar)))
+								.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(15).addComponent(lbl_dim_tiempo))
+								.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(12).addComponent(cbox_dim_tiempo,
+										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] { cbox_medicion, cbox_dim_tiempo });
 		pl_kpi = new JPanel();
 		btnCalidadServicio = new JButton("indicador KPI");
@@ -182,20 +178,20 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		pl_kpi.add(btnCalidadServicio);
 		gl_contentPane = new GroupLayout(this);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup()
+		gl_contentPane
+				.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 												.addComponent(pl_tiempo, GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
 												.addPreferredGap(ComponentPlacement.RELATED).addComponent(pl_kpi,
 														GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-						.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)).addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(pl_kpi, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
+										.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
+								.addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(pl_kpi, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(pl_tiempo, GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE).addContainerGap()));

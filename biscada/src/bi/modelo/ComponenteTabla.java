@@ -26,10 +26,10 @@ import javax.swing.table.TableRowSorter;
 
 import org.apache.log4j.Logger;
 
-import bi.control_dimensiones.ServDimAbstract;
+import bi.controles.dimensiones.ServDimAbstract;
 import bi.vista_IU.TableModelEntradaFila;
 import bi.vista_IU.TableModelMedicionTemporal;
-import comunes.control_general.ObjetosBorrables;
+import comunes.controles.ObjetosBorrables;
 import comunes.vistas.PanelIniciable;
 
 /* ............................................. */
@@ -115,7 +115,7 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 										.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
 										.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(pl_priUlt_alarma,
 												GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+										.addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)

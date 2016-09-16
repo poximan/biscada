@@ -16,7 +16,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import bi.control_general.GestorBI;
+import bi.controles.GestorBI;
 import comunes.modelo.ArchivoDBF;
 
 /* ............................................. */

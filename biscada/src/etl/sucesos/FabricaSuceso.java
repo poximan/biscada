@@ -8,10 +8,10 @@ package etl.sucesos;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import comunes.control_general.Fabrica;
+import comunes.controles.Fabrica;
 import comunes.modelo.Suceso;
-import etl.control_etl.CampoTextoDefectuoso;
-import etl.control_etl.TextoDiferenciable;
+import etl.controles.etl.CampoTextoDefectuoso;
+import etl.controles.etl.TextoDiferenciable;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 

@@ -15,6 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import comunes.fabrica.TipoDatoFabricable;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -24,7 +26,7 @@ import javax.persistence.TableGenerator;
 @Table(name = "tipo_de_equipo")
 @NamedQueries({ @NamedQuery(name = "TipoDeEquipo.buscTodos", query = "SELECT tabla FROM TipoDeEquipo tabla"),
 		@NamedQuery(name = "TipoDeEquipo.buscDescripcion", query = "SELECT tabla FROM TipoDeEquipo tabla WHERE tabla.descripcion = :descripcion"), })
-public class TipoDeEquipo {
+public class TipoDeEquipo implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */

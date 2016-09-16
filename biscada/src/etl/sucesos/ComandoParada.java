@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
+public class ComandoParada extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Bb][Oo][Mm][Bb][Aa]\\s?\\d{1,2})";
-	private static String descripcion = "bomba";
+	private static String expresion_regular = "PARADA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Bomba() {
-		super(descripcion);
+	public ComandoParada() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -47,13 +46,7 @@ public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	@Override
 	public String toString() {
-		return descripcion;
-	}
-
-	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-		
+		return "inicia sesion SCADA";
 	}
 
 	/* ............................................. */

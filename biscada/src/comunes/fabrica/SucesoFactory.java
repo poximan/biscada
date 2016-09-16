@@ -9,6 +9,7 @@ import etl.controles.etl.CampoTextoDefectuoso;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sucesos.AguaEnEstator;
 import etl.sucesos.AltaTemperaturaBobinado;
+import etl.sucesos.ComandoParada;
 import etl.sucesos.EvolucionLecturaAnalogica;
 import etl.sucesos.GrupoElectrogenoFalla;
 import etl.sucesos.GrupoElectrogenoMarcha;
@@ -83,6 +84,9 @@ public class SucesoFactory extends FabricaAbstracta {
 
 			if (discriminante.matches(".*" + AltaTemperaturaBobinado.getExpresion_regular() + ".*"))
 				return new AltaTemperaturaBobinado();
+
+			if (discriminante.matches(".*" + ComandoParada.getExpresion_regular() + ".*"))
+				return new ComandoParada();
 
 			if (discriminante.matches(".*" + EvolucionLecturaAnalogica.getExpresion_regular() + ".*"))
 				return new EvolucionLecturaAnalogica();

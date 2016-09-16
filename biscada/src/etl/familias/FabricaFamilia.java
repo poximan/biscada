@@ -50,29 +50,6 @@ public class FabricaFamilia extends Fabrica implements TextoDiferenciable {
 	/* ............................................. */
 
 	@Override
-	public void prepararExpresionRegular(String campo_texto) {
-
-		try {
-			Pattern patron = Pattern.compile(expresion_regular.getExpresion_regular());
-			Matcher matcher = patron.matcher(campo_texto);
-
-			// verificar que coincida con algun grupo
-			if (!matcher.find())
-				throw new CampoTextoNoEncontradoExcepcion(campo_texto);
-
-			matcher.reset();
-
-			crearPropietario(campo_texto, matcher);
-		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaFamilia.class.getSimpleName(), excepcion.getMessage(),
-					campo_texto);
-		} catch (CampoTextoAmbiguoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaFamilia.class.getSimpleName(), excepcion.getMessage(),
-					campo_texto);
-		}
-	}
-
-	@Override
 	public void crearPropietario(String campo_texto, Matcher matcher)
 			throws CampoTextoNoEncontradoExcepcion, CampoTextoAmbiguoExcepcion {
 
@@ -118,5 +95,28 @@ public class FabricaFamilia extends Fabrica implements TextoDiferenciable {
 	@Override
 	public Object getPropietario() {
 		return texto_propietario;
+	}
+
+	@Override
+	public void prepararExpresionRegular(String campo_texto) {
+
+		try {
+			Pattern patron = Pattern.compile(expresion_regular.getExpresion_regular());
+			Matcher matcher = patron.matcher(campo_texto);
+
+			// verificar que coincida con algun grupo
+			if (!matcher.find())
+				throw new CampoTextoNoEncontradoExcepcion(campo_texto);
+
+			matcher.reset();
+
+			crearPropietario(campo_texto, matcher);
+		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaFamilia.class.getSimpleName(), excepcion.getMessage(),
+					campo_texto);
+		} catch (CampoTextoAmbiguoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaFamilia.class.getSimpleName(), excepcion.getMessage(),
+					campo_texto);
+		}
 	}
 }

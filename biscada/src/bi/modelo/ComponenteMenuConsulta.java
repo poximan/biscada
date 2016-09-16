@@ -83,6 +83,30 @@ public class ComponenteMenuConsulta extends JFrame {
 		setJMenuBar(barra_menu);
 	}
 
+	private void configMenuAlarmaIncompleta() {
+
+		// submeun
+		entrada_menu_alarma = new JMenu("Alarma");
+		entrada_menu_alarma.setMinimumSize(getMinimumSize());
+
+		JMenu submenu_fecha_incompleta = new JMenu("incluir incompleta");
+
+		componente_ini_incompleta = new JCheckBox("inicio");
+		componente_ack_incompleta = new JCheckBox("ack", true);
+		componente_fin_incompleta = new JCheckBox("fin");
+
+		submenu_fecha_incompleta.add(componente_ini_incompleta);
+		submenu_fecha_incompleta.add(componente_ack_incompleta);
+		submenu_fecha_incompleta.add(componente_fin_incompleta);
+
+		// agregar opciones del menu
+		entrada_menu_alarma.add(submenu_fecha_incompleta);
+		entrada_menu_alarma.addSeparator();
+
+		// agregar menu a la barra
+		barra_menu.add(entrada_menu_alarma);
+	}
+
 	private void configMenuArchivo() {
 
 		// submeun
@@ -111,55 +135,6 @@ public class ComponenteMenuConsulta extends JFrame {
 
 		// agregar menu a la barra
 		barra_menu.add(entrada_menu_archivo);
-	}
-
-	private void configMenuAlarmaIncompleta() {
-
-		// submeun
-		entrada_menu_alarma = new JMenu("Alarma");
-		entrada_menu_alarma.setMinimumSize(getMinimumSize());
-
-		JMenu submenu_fecha_incompleta = new JMenu("incluir incompleta");
-
-		componente_ini_incompleta = new JCheckBox("inicio");
-		componente_ack_incompleta = new JCheckBox("ack", true);
-		componente_fin_incompleta = new JCheckBox("fin");
-
-		submenu_fecha_incompleta.add(componente_ini_incompleta);
-		submenu_fecha_incompleta.add(componente_ack_incompleta);
-		submenu_fecha_incompleta.add(componente_fin_incompleta);
-
-		// agregar opciones del menu
-		entrada_menu_alarma.add(submenu_fecha_incompleta);
-		entrada_menu_alarma.addSeparator();
-
-		// agregar menu a la barra
-		barra_menu.add(entrada_menu_alarma);
-	}
-
-	private void configMenuRuido() {
-
-		// submeun
-		entrada_menu_ruido = new JMenu("Ruido");
-		entrada_menu_ruido.setMinimumSize(getMinimumSize());
-
-		JMenu submenu_config_ruido = new JMenu("Configurar");
-
-		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
-		componente_ruido_minimo = new ComponenteDuracionAlarma("minima duracion", valor_inicial, true);
-
-		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MAXIMA_DURACION_ALARMA"));
-		componente_ruido_maximo = new ComponenteDuracionAlarma("maxima duracion", valor_inicial, false);
-
-		submenu_config_ruido.add(componente_ruido_minimo);
-		submenu_config_ruido.add(componente_ruido_maximo);
-
-		// agregar opciones del menu
-		entrada_menu_ruido.add(submenu_config_ruido);
-		entrada_menu_ruido.addSeparator();
-
-		// agregar menu a la barra
-		barra_menu.add(entrada_menu_ruido);
 	}
 
 	private void configMenuETL() {
@@ -206,22 +181,35 @@ public class ComponenteMenuConsulta extends JFrame {
 		barra_menu.add(entrada_menu_propiedades);
 	}
 
+	private void configMenuRuido() {
+
+		// submeun
+		entrada_menu_ruido = new JMenu("Ruido");
+		entrada_menu_ruido.setMinimumSize(getMinimumSize());
+
+		JMenu submenu_config_ruido = new JMenu("Configurar");
+
+		int valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MINIMA_DURACION_ALARMA"));
+		componente_ruido_minimo = new ComponenteDuracionAlarma("minima duracion", valor_inicial, true);
+
+		valor_inicial = Integer.valueOf(ServPropiedades.getInstancia().getProperty("Ruido.MAXIMA_DURACION_ALARMA"));
+		componente_ruido_maximo = new ComponenteDuracionAlarma("maxima duracion", valor_inicial, false);
+
+		submenu_config_ruido.add(componente_ruido_minimo);
+		submenu_config_ruido.add(componente_ruido_maximo);
+
+		// agregar opciones del menu
+		entrada_menu_ruido.add(submenu_config_ruido);
+		entrada_menu_ruido.addSeparator();
+
+		// agregar menu a la barra
+		barra_menu.add(entrada_menu_ruido);
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	public ComponenteDuracionAlarma getComponente_ruido_minimo() {
-		return componente_ruido_minimo;
-	}
-
-	public ComponenteDuracionAlarma getComponente_ruido_maximo() {
-		return componente_ruido_maximo;
-	}
-
-	public JCheckBox getComponente_ini_incompleta() {
-		return componente_ini_incompleta;
-	}
 
 	public JCheckBox getComponente_ack_incompleta() {
 		return componente_ack_incompleta;
@@ -229,6 +217,18 @@ public class ComponenteMenuConsulta extends JFrame {
 
 	public JCheckBox getComponente_fin_incompleta() {
 		return componente_fin_incompleta;
+	}
+
+	public JCheckBox getComponente_ini_incompleta() {
+		return componente_ini_incompleta;
+	}
+
+	public ComponenteDuracionAlarma getComponente_ruido_maximo() {
+		return componente_ruido_maximo;
+	}
+
+	public ComponenteDuracionAlarma getComponente_ruido_minimo() {
+		return componente_ruido_minimo;
 	}
 
 	/* ............................................. */

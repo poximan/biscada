@@ -106,6 +106,137 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public void actionExtraer() {
+
+		Runnable consulta = new Runnable() {
+			@Override
+			public void run() {
+
+				if (!list_procesados.isSelectionEmpty())
+					procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
+
+				actionRestablecer();
+			}
+		};
+		final Thread hilo_consulta = new Thread(consulta);
+		hilo_consulta.start();
+	}
+
+	public void actionProcesar() {
+
+		Runnable consulta = new Runnable() {
+			@Override
+			public void run() {
+
+				if (!list_disponibles.isSelectionEmpty())
+					procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
+
+				actionRestablecer();
+			}
+		};
+		final Thread hilo_consulta = new Thread(consulta);
+		hilo_consulta.start();
+	}
+
+	/**
+	 * accion ejecutada al presionar el boton restablecer y el evento de cambiar
+	 * el contenido del texto.
+	 * 
+	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
+	 * nuevamente la logica de negocio responsable de llenar las listas de la
+	 * vista ETL.
+	 * 
+	 * pide las listas del servicio CRUD de archivos dbf y completa en los
+	 * componentes graficos que corresponden
+	 */
+	public void actionRestablecer() {
+
+		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
+		procesador_archivos.buscarNuevosArchivos();
+
+		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getListaDisponibles();
+		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getListaProcesados();
+
+		borrarTodasLasListas();
+
+		agregarDisponible(lista_diponible.toArray());
+		agregarProcesado(lista_procesado.toArray());
+	}
+
+	/*
+	 * agregado y extraccion en lista
+	 */
+	public void agregarDisponible(Object[] objects) {
+
+		model_disponibles.addAll(objects);
+		txt_totDisponibles.setText(String.valueOf(model_disponibles.getSize()));
+	}
+
+	public void agregarProcesado(Object[] objects) {
+
+		model_procesados.addAll(objects);
+		txt_totProcesados.setText(String.valueOf(model_procesados.getSize()));
+	}
+
+	private void borrarTodasLasListas() {
+
+		model_disponibles.clear();
+		list_disponibles.clearSelection();
+		model_procesados.clear();
+		list_procesados.clearSelection();
+
+		txt_totDisponibles.setText("0");
+		txt_totProcesados.setText("0");
+	}
+
+	@Override
+	public void configEventos() {
+
+		EventoETL eventos = new EventoETL(this);
+
+		btn_restablecer.addActionListener(eventos);
+
+		btn_procesar.addActionListener(eventos);
+		btn_extraer.addActionListener(eventos);
+
+		btn_analisis_datos.addActionListener(eventos);
+
+		list_disponibles.addListSelectionListener(eventos);
+		list_procesados.addListSelectionListener(eventos);
+
+		txtDireccionFuente.getDocument().addDocumentListener(eventos);
+	}
+
+	public JButton getBtn_analisis_datos() {
+		return btn_analisis_datos;
+	}
+
+	public JButton getBtn_extraer() {
+		return btn_extraer;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public JButton getBtn_procesar() {
+		return btn_procesar;
+	}
+
+	public JButton getBtn_restablecer() {
+		return btn_restablecer;
+	}
+
+	public JTextField getTxt_selDisponibles() {
+		return txt_selDisponibles;
+	}
+
+	public JTextField getTxt_selProcesados() {
+		return txt_selProcesados;
+	}
+
 	@Override
 	public void iniciarComponentes() {
 
@@ -284,108 +415,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	}
 
 	@Override
-	public void configEventos() {
-
-		EventoETL eventos = new EventoETL(this);
-
-		btn_restablecer.addActionListener(eventos);
-
-		btn_procesar.addActionListener(eventos);
-		btn_extraer.addActionListener(eventos);
-
-		btn_analisis_datos.addActionListener(eventos);
-
-		list_disponibles.addListSelectionListener(eventos);
-		list_procesados.addListSelectionListener(eventos);
-
-		txtDireccionFuente.getDocument().addDocumentListener(eventos);
-	}
-
-	/**
-	 * accion ejecutada al presionar el boton restablecer y el evento de cambiar
-	 * el contenido del texto.
-	 * 
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los
-	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
-	 * nuevamente la logica de negocio responsable de llenar las listas de la
-	 * vista ETL.
-	 * 
-	 * pide las listas del servicio CRUD de archivos dbf y completa en los
-	 * componentes graficos que corresponden
-	 */
-	public void actionRestablecer() {
-
-		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
-		procesador_archivos.buscarNuevosArchivos();
-
-		List<ArchivoDBF> lista_diponible = procesador_archivos.getDbf_servicio_crud().getListaDisponibles();
-		List<ArchivoDBF> lista_procesado = procesador_archivos.getDbf_servicio_crud().getListaProcesados();
-
-		borrarTodasLasListas();
-
-		agregarDisponible(lista_diponible.toArray());
-		agregarProcesado(lista_procesado.toArray());
-	}
-
-	public void actionProcesar() {
-
-		Runnable consulta = new Runnable() {
-			@Override
-			public void run() {
-
-				if (!list_disponibles.isSelectionEmpty())
-					procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
-
-				actionRestablecer();
-			}
-		};
-		final Thread hilo_consulta = new Thread(consulta);
-		hilo_consulta.start();
-	}
-
-	public void actionExtraer() {
-
-		Runnable consulta = new Runnable() {
-			@Override
-			public void run() {
-
-				if (!list_procesados.isSelectionEmpty())
-					procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
-
-				actionRestablecer();
-			}
-		};
-		final Thread hilo_consulta = new Thread(consulta);
-		hilo_consulta.start();
-	}
-
-	private void borrarTodasLasListas() {
-
-		model_disponibles.clear();
-		list_disponibles.clearSelection();
-		model_procesados.clear();
-		list_procesados.clearSelection();
-
-		txt_totDisponibles.setText("0");
-		txt_totProcesados.setText("0");
-	}
-
-	/*
-	 * agregado y extraccion en lista
-	 */
-	public void agregarDisponible(Object[] objects) {
-
-		model_disponibles.addAll(objects);
-		txt_totDisponibles.setText(String.valueOf(model_disponibles.getSize()));
-	}
-
-	public void agregarProcesado(Object[] objects) {
-
-		model_procesados.addAll(objects);
-		txt_totProcesados.setText(String.valueOf(model_procesados.getSize()));
-	}
-
-	@Override
 	public void liberarObjetos() {
 
 		list_disponibles.removeAll();
@@ -395,35 +424,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		model_procesados.clear();
 
 		procesador_archivos.liberarObjetos();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JButton getBtn_procesar() {
-		return btn_procesar;
-	}
-
-	public JButton getBtn_extraer() {
-		return btn_extraer;
-	}
-
-	public JButton getBtn_analisis_datos() {
-		return btn_analisis_datos;
-	}
-
-	public JButton getBtn_restablecer() {
-		return btn_restablecer;
-	}
-
-	public JTextField getTxt_selDisponibles() {
-		return txt_selDisponibles;
-	}
-
-	public JTextField getTxt_selProcesados() {
-		return txt_selProcesados;
 	}
 
 	/* ............................................. */

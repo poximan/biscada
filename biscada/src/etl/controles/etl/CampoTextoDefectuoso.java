@@ -52,6 +52,10 @@ public class CampoTextoDefectuoso {
 			textos_rechazados.add(mensaje);
 	}
 
+	public boolean estaVacia() {
+		return textos_rechazados.isEmpty();
+	}
+
 	@Override
 	public String toString() {
 
@@ -65,10 +69,6 @@ public class CampoTextoDefectuoso {
 	private boolean yaExiste(String campo_texto) {
 
 		return textos_rechazados.contains(campo_texto);
-	}
-
-	public boolean estaVacia() {
-		return textos_rechazados.isEmpty();
 	}
 
 	/* ............................................. */

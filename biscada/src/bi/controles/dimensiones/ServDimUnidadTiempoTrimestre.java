@@ -68,6 +68,18 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
+	}
+
+	/*
+	 * Genero un nuevo m�todo para devolver el encabezado pero en formato
+	 * "Date" (non-Javadoc)
+	 * 
+	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
+	 */
+
+	@Override
 	public String[] getEncabezado() {
 
 		int indice = 0;
@@ -90,13 +102,6 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 		}
 		return encabezado;
 	}
-
-	/*
-	 * Genero un nuevo m�todo para devolver el encabezado pero en formato
-	 * "Date" (non-Javadoc)
-	 * 
-	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
-	 */
 
 	@Override
 	public Date[] getEncabezadoFecha() {
@@ -131,13 +136,6 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
-	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
-
-		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return ((dif_anios * 4) + getNumeroTrimestre(ultima_alarma) - getNumeroTrimestre(primer_alarma)) + 1;
-	}
-
-	@Override
 	public String toString() {
 		return desripcion;
 	}
@@ -148,8 +146,10 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 	/* ............................................. */
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
+
+		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
+		return ((dif_anios * 4) + getNumeroTrimestre(ultima_alarma) - getNumeroTrimestre(primer_alarma)) + 1;
 	}
 
 	/* ............................................. */

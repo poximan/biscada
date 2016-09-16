@@ -13,22 +13,33 @@
 		<class>comunes.modelo.Sitio</class>
 		<class>comunes.modelo.Suceso</class>
 		<class>comunes.modelo.TipoDeEquipo</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
+
 			<property name="javax.persistence.schema-generation.database.action"
 				value="create" />
+			<property
+				name="javax.persistence.schema-generation.create-database-schemas"
+				value="false" />
+
 			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC" />
+
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localHost/bis_bd?useUnicode=yes&amp;characterEncoding=UTF-8" />
 			<property name="javax.persistence.jdbc.user" value="bis" />
 			<property name="javax.persistence.jdbc.password" value="bis" />
+
 			<property name="eclipselink.target-database" value="MySQL" />
 			<property name="eclipselink.cache.size.default" value="200" />
-			<property name="eclipselink.ddl-generation.output-mode"
-				value="database" />
+
+			<property name="eclipselink.exclude-eclipselink-orm" value="true" />
+			<property name="eclipselink.orm.validate.schema" value="false" />
+
 		</properties>
 	</persistence-unit>
 </persistence>

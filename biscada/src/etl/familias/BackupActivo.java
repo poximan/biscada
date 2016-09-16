@@ -27,8 +27,8 @@ public class BackupActivo extends Familia {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public BackupActivo() {
-		super(descripcion);
+	public static String getExpresion_regular() {
+		return expresion_regular;
 	}
 
 	/* ............................................. */
@@ -36,9 +36,8 @@ public class BackupActivo extends Familia {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public String toString() {
-		return descripcion;
+	public BackupActivo() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -46,8 +45,9 @@ public class BackupActivo extends Familia {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public static String getExpresion_regular() {
-		return expresion_regular;
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

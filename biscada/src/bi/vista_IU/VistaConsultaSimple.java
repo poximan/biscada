@@ -64,6 +64,42 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 	}
 
 	@Override
+	public void configEventos() {
+
+		EventoConsultaSimple eventos = new EventoConsultaSimple(this);
+
+		btnSitio.addActionListener(eventos);
+		btnSuceso.addActionListener(eventos);
+		btnTiempoDespeje.addActionListener(eventos);
+		btnTemporada.addActionListener(eventos);
+	}
+
+	public JButton getBtnSitio() {
+		return btnSitio;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public JButton getBtnSuceso() {
+		return btnSuceso;
+	}
+
+	public JButton getBtnTemporada() {
+		return btnTemporada;
+	}
+
+	public JButton getBtnTiempoDespeje() {
+		return btnTiempoDespeje;
+	}
+
+	public ComponenteConsulta getComponenteConsulta() {
+		return componenteConsulta;
+	}
+
+	@Override
 	public void iniciarComponentes() {
 
 		panelDimensiones = new JPanel();
@@ -111,41 +147,5 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		panelDimensiones.add(btnTemporada);
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	public void configEventos() {
-
-		EventoConsultaSimple eventos = new EventoConsultaSimple(this);
-
-		btnSitio.addActionListener(eventos);
-		btnSuceso.addActionListener(eventos);
-		btnTiempoDespeje.addActionListener(eventos);
-		btnTemporada.addActionListener(eventos);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JButton getBtnTiempoDespeje() {
-		return btnTiempoDespeje;
-	}
-
-	public JButton getBtnSuceso() {
-		return btnSuceso;
-	}
-
-	public JButton getBtnSitio() {
-		return btnSitio;
-	}
-
-	public JButton getBtnTemporada() {
-		return btnTemporada;
-	}
-
-	public ComponenteConsulta getComponenteConsulta() {
-		return componenteConsulta;
 	}
 }

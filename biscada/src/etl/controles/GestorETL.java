@@ -28,12 +28,25 @@ public class GestorETL {
 
 	private static Logger log = Logger.getLogger(GestorETL.class);
 
-	private JFrame frame_etl;
 	private static VistaETL vista_etl;
+	public static GestorETL getSingleton() {
+
+		if (vista_etl != null)
+			vista_etl.liberarObjetos();
+
+		return new GestorETL();
+	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
+	private JFrame frame_etl;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	private GestorETL() {
@@ -45,19 +58,6 @@ public class GestorETL {
 
 		frame_etl.getContentPane().add(vista_etl, BorderLayout.CENTER);
 		log.trace("se lanza pantalla etl");
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	public static GestorETL getSingleton() {
-
-		if (vista_etl != null)
-			vista_etl.liberarObjetos();
-
-		return new GestorETL();
 	}
 
 	public void mostrarVentana() {

@@ -49,24 +49,17 @@ public abstract class Temporada {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	/**
-	 * factor de correccion. todos los rangos de fechas se miden igual salvo el
-	 * de temporada verano. alli, por como esta implementada la logica, la
-	 * comparacion de fecha inicio se hace por una fecha cuyo a�o adelantado
-	 * una unidad, por lo tanto es necesario corregir esta diferencia
-	 * 
-	 * @param fecha_actual
-	 *            se toma como referencia para saber si se debe aplicar la
-	 *            correccion. Incluso para la temporada verano, si la alarma es
-	 *            de la parte de la temporada que cae despues de diciembre se
-	 *            debe aplicar correccion.
-	 * 
-	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el
-	 *         resto de las temporadas
-	 * 
-	 */
-	public int correccionInicio(Calendar fecha_actual) {
-		return 0;
+	public boolean contiene(Alarma alarma_actual) {
+
+		Calendar fecha_actual = alarma_actual.getFecha_inicio();
+
+		fecha_limite_inicio.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) - correccionInicio(fecha_actual));
+		fecha_limite_inicio.get(Calendar.YEAR);
+
+		fecha_limite_fin.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) + correccionFin(fecha_actual));
+		fecha_limite_fin.get(Calendar.YEAR);
+
+		return (!fecha_limite_inicio.after(fecha_actual) && !fecha_limite_fin.before(fecha_actual));
 	}
 
 	/**
@@ -88,15 +81,24 @@ public abstract class Temporada {
 		return 0;
 	}
 
-	private void establecerRangosInicio(int dia, int mes) {
-
-		fecha_limite_inicio.set(Calendar.HOUR_OF_DAY, 0);
-		fecha_limite_inicio.set(Calendar.MINUTE, 0);
-		fecha_limite_inicio.set(Calendar.SECOND, 0);
-		fecha_limite_inicio.set(Calendar.MILLISECOND, 0);
-
-		fecha_limite_inicio.set(Calendar.DAY_OF_MONTH, dia);
-		fecha_limite_inicio.set(Calendar.MONTH, mes);
+	/**
+	 * factor de correccion. todos los rangos de fechas se miden igual salvo el
+	 * de temporada verano. alli, por como esta implementada la logica, la
+	 * comparacion de fecha inicio se hace por una fecha cuyo a�o adelantado
+	 * una unidad, por lo tanto es necesario corregir esta diferencia
+	 * 
+	 * @param fecha_actual
+	 *            se toma como referencia para saber si se debe aplicar la
+	 *            correccion. Incluso para la temporada verano, si la alarma es
+	 *            de la parte de la temporada que cae despues de diciembre se
+	 *            debe aplicar correccion.
+	 * 
+	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el
+	 *         resto de las temporadas
+	 * 
+	 */
+	public int correccionInicio(Calendar fecha_actual) {
+		return 0;
 	}
 
 	private void establecerRangosFin(int dia, int mes) {
@@ -110,17 +112,15 @@ public abstract class Temporada {
 		fecha_limite_fin.set(Calendar.MONTH, mes);
 	}
 
-	public boolean contiene(Alarma alarma_actual) {
+	private void establecerRangosInicio(int dia, int mes) {
 
-		Calendar fecha_actual = alarma_actual.getFecha_inicio();
+		fecha_limite_inicio.set(Calendar.HOUR_OF_DAY, 0);
+		fecha_limite_inicio.set(Calendar.MINUTE, 0);
+		fecha_limite_inicio.set(Calendar.SECOND, 0);
+		fecha_limite_inicio.set(Calendar.MILLISECOND, 0);
 
-		fecha_limite_inicio.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) - correccionInicio(fecha_actual));
-		fecha_limite_inicio.get(Calendar.YEAR);
-
-		fecha_limite_fin.set(Calendar.YEAR, fecha_actual.get(Calendar.YEAR) + correccionFin(fecha_actual));
-		fecha_limite_fin.get(Calendar.YEAR);
-
-		return (!fecha_limite_inicio.after(fecha_actual) && !fecha_limite_fin.before(fecha_actual));
+		fecha_limite_inicio.set(Calendar.DAY_OF_MONTH, dia);
+		fecha_limite_inicio.set(Calendar.MONTH, mes);
 	}
 
 	/* ............................................. */

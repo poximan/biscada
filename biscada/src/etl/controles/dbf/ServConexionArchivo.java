@@ -61,6 +61,15 @@ public class ServConexionArchivo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public void cerrarArchivo() {
+
+		try {
+			table.close();
+		} catch (IOException ex) {
+			log.error("ERROR: no se puede cerrar la tabla asociada al archivo");
+		}
+	}
+
 	public List<ArchAlarma> getAlarmas() {
 
 		table = new Table(new File(archivo_actual.getRuta()));
@@ -92,14 +101,5 @@ public class ServConexionArchivo {
 		}
 
 		return alarmas_extraidas;
-	}
-
-	public void cerrarArchivo() {
-
-		try {
-			table.close();
-		} catch (IOException ex) {
-			log.error("ERROR: no se puede cerrar la tabla asociada al archivo");
-		}
 	}
 }

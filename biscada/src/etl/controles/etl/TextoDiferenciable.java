@@ -32,6 +32,11 @@ public interface TextoDiferenciable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public void crearPropietario(String campo_texto, Matcher matcher)
+			throws CampoTextoNoEncontradoExcepcion, CampoTextoAmbiguoExcepcion;
+
+	public Object getPropietario();
+
 	/**
 	 * cada clase interesada en este campo pretende una informacion diferente.
 	 * visto que todo esta contenido en el mismo campo texto, es necesario
@@ -43,9 +48,4 @@ public interface TextoDiferenciable {
 	 *            asociado
 	 */
 	public void prepararExpresionRegular(String campo_texto);
-
-	public void crearPropietario(String campo_texto, Matcher matcher)
-			throws CampoTextoNoEncontradoExcepcion, CampoTextoAmbiguoExcepcion;
-
-	public Object getPropietario();
 }

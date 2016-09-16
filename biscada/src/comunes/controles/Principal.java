@@ -41,6 +41,53 @@ public class Principal {
 	/* ............................................. */
 
 	/**
+	 * aqui es donde comienza la aplicacion. el metodo estatico lanza la clase
+	 * que lo contiene, es decir aqui se crea la primer instancia de un objeto.
+	 * 
+	 * @param args
+	 *            queda por convencion, no se utilizan parametros de inicio de
+	 *            aplicacion.
+	 */
+	public static void main(final String[] args) {
+
+		PropertyConfigurator.configure("log4j.properties");
+
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Windows".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException ex) {
+			log.error(Principal.class.getName());
+		}
+
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					new Principal();
+				} catch (Exception e) {
+					log.error("problema en implementacion runnable: " + e.getMessage());
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
+
+	/* ............................................. */
+	/* ............................................. */
+	/* MAIN ........................................ */
+	/* ............................................. */
+
+	/**
 	 * 
 	 * se utilizo gc (garbage collector) concurrente (-XX:+UseConcMarkSweepGC)
 	 * 
@@ -78,52 +125,5 @@ public class Principal {
 		log.trace("heap maximo = " + heap_mbytes_maximo + " MB\n");
 
 		GestorBI.getSingleton().mostrarVentana();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	/* ............................................. */
-	/* ............................................. */
-	/* MAIN ........................................ */
-	/* ............................................. */
-
-	/**
-	 * aqui es donde comienza la aplicacion. el metodo estatico lanza la clase
-	 * que lo contiene, es decir aqui se crea la primer instancia de un objeto.
-	 * 
-	 * @param args
-	 *            queda por convencion, no se utilizan parametros de inicio de
-	 *            aplicacion.
-	 */
-	public static void main(final String[] args) {
-
-		PropertyConfigurator.configure("log4j.properties");
-
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Windows".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException ex) {
-			log.error(Principal.class.getName());
-		}
-
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					new Principal();
-				} catch (Exception e) {
-					log.error("problema en implementacion runnable: " + e.getMessage());
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 }

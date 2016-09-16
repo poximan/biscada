@@ -70,6 +70,15 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	private void llenarCampoTextos(float[][] datos) {
+
+		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
+
+		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaMultiple(datos)));
+		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaMultiple(datos)));
+		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaMultiple(datos)));
+	}
+
 	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
 
@@ -86,14 +95,5 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		getTextFieldMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_maximo()));
 		getTextFieldMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_minimo()));
 
-	}
-
-	private void llenarCampoTextos(float[][] datos) {
-
-		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
-
-		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaMultiple(datos)));
-		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaMultiple(datos)));
-		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaMultiple(datos)));
 	}
 }

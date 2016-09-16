@@ -76,6 +76,37 @@ public class EventoPropiedades implements ActionListener {
 			modificarVistaPropiedades();
 	}
 
+	private void analizarCambiosPU() throws ReiniciarAplicacionExcepcion {
+
+		int respuesta_usuario = JOptionPane.NO_OPTION;
+
+		if (!ServPropiedades.getInstancia().getProperty("Conexion.URL").equals(txtURL.getText())
+				|| !ServPropiedades.getInstancia().getProperty("Conexion.USUARIO").equals(txtUsuario.getText())
+				|| !ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA").equals(txtContrasenia.getText()))
+
+			respuesta_usuario = JOptionPane.showConfirmDialog((Component) null,
+					"para nuevos parametros de conexion, la aplicacion debe reiniciar", "�desea reiniciar?",
+					JOptionPane.YES_NO_OPTION);
+
+		if (!deseaReiniciar(respuesta_usuario))
+			cambiarPU();
+
+		if (deseaReiniciar(respuesta_usuario))
+			throw new ReiniciarAplicacionExcepcion();
+	}
+
+	private void cambiarPU() {
+
+		txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
+		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
+		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
+	}
+
+	private boolean deseaReiniciar(int usuario_acepta) {
+
+		return (usuario_acepta == 0) ? true : false;
+	}
+
 	/**
 	 * modifica los valores respaldados en archivo de propiedades, segun
 	 * configuracion del usuario
@@ -159,36 +190,5 @@ public class EventoPropiedades implements ActionListener {
 		txtURL.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.URL"));
 		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.USUARIO"));
 		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Defecto.Conexion.CONTRASENIA"));
-	}
-
-	private void analizarCambiosPU() throws ReiniciarAplicacionExcepcion {
-
-		int respuesta_usuario = JOptionPane.NO_OPTION;
-
-		if (!ServPropiedades.getInstancia().getProperty("Conexion.URL").equals(txtURL.getText())
-				|| !ServPropiedades.getInstancia().getProperty("Conexion.USUARIO").equals(txtUsuario.getText())
-				|| !ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA").equals(txtContrasenia.getText()))
-
-			respuesta_usuario = JOptionPane.showConfirmDialog((Component) null,
-					"para nuevos parametros de conexion, la aplicacion debe reiniciar", "�desea reiniciar?",
-					JOptionPane.YES_NO_OPTION);
-
-		if (!deseaReiniciar(respuesta_usuario))
-			cambiarPU();
-
-		if (deseaReiniciar(respuesta_usuario))
-			throw new ReiniciarAplicacionExcepcion();
-	}
-
-	private void cambiarPU() {
-
-		txtURL.setText(ServPropiedades.getInstancia().getProperty("Conexion.URL"));
-		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
-		txtContrasenia.setText(ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA"));
-	}
-
-	private boolean deseaReiniciar(int usuario_acepta) {
-
-		return (usuario_acepta == 0) ? true : false;
 	}
 }

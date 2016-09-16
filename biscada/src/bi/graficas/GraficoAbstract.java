@@ -49,8 +49,6 @@ public abstract class GraficoAbstract extends JFrame {
 
 	public abstract ChartPanel fijarDataSet();
 
-	public abstract JFreeChart inicializar(AbstractDataset dataset);
-
 	public ChartPanel graficar(JFreeChart chart) {
 
 		ChartPanel chartPanel = new ChartPanel(chart);
@@ -60,6 +58,8 @@ public abstract class GraficoAbstract extends JFrame {
 
 		return chartPanel;
 	}
+
+	public abstract JFreeChart inicializar(AbstractDataset dataset);
 
 	/* ............................................. */
 	/* ............................................. */

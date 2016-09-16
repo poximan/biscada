@@ -62,6 +62,16 @@ public class ComponenteMenuDimension extends JFrame implements EventoConfigurabl
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public void configEventos() {
+
+		EventoComponenteMenuDimension evento = new EventoComponenteMenuDimension(this);
+
+		item_salir.addActionListener(evento);
+		item_configurar.addActionListener(evento);
+		item_ejecutar.addActionListener(evento);
+	}
+
 	private void configMenu() {
 
 		// barra menu
@@ -110,16 +120,6 @@ public class ComponenteMenuDimension extends JFrame implements EventoConfigurabl
 		barra_menu.add(entrada_menu_comparar);
 	}
 
-	@Override
-	public void configEventos() {
-
-		EventoComponenteMenuDimension evento = new EventoComponenteMenuDimension(this);
-
-		item_salir.addActionListener(evento);
-		item_configurar.addActionListener(evento);
-		item_ejecutar.addActionListener(evento);
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -129,16 +129,16 @@ public class ComponenteMenuDimension extends JFrame implements EventoConfigurabl
 		return consulta_comparador;
 	}
 
-	public JMenuItem getItem_salir() {
-		return item_salir;
-	}
-
 	public JMenuItem getItem_configurar() {
 		return item_configurar;
 	}
 
 	public JMenuItem getItem_ejecutar() {
 		return item_ejecutar;
+	}
+
+	public JMenuItem getItem_salir() {
+		return item_salir;
 	}
 
 	/* ............................................. */

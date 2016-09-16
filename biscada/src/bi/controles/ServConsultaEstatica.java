@@ -30,18 +30,15 @@ public class ServConsultaEstatica {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServConsultaEstatica() {
+	@SuppressWarnings({ "unchecked" })
+	public static List<TipoDeEquipo> getListaEquipos() {
+		return EMFSingleton.getInstanciaEM().createNamedQuery("TipoDeEquipo.buscTodos").getResultList();
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@SuppressWarnings({ "unchecked" })
-	public static List<TipoDeEquipo> getListaEquipos() {
-		return EMFSingleton.getInstanciaEM().createNamedQuery("TipoDeEquipo.buscTodos").getResultList();
-	}
 
 	@SuppressWarnings({ "unchecked" })
 	public static List<Familia> getListaFamilia() {
@@ -56,5 +53,8 @@ public class ServConsultaEstatica {
 	@SuppressWarnings({ "unchecked" })
 	public static List<Suceso> getListaSucesos() {
 		return EMFSingleton.getInstanciaEM().createNamedQuery("Suceso.buscTodos").getResultList();
+	}
+
+	public ServConsultaEstatica() {
 	}
 }

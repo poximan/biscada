@@ -27,8 +27,8 @@ public class GrupoElectrogeno extends TipoDeEquipo {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public GrupoElectrogeno() {
-		super(descripcion);
+	public static String getExpresion_regular() {
+		return expresion_regular;
 	}
 
 	/* ............................................. */
@@ -36,9 +36,8 @@ public class GrupoElectrogeno extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public String toString() {
-		return descripcion;
+	public GrupoElectrogeno() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -46,8 +45,9 @@ public class GrupoElectrogeno extends TipoDeEquipo {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public static String getExpresion_regular() {
-		return expresion_regular;
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

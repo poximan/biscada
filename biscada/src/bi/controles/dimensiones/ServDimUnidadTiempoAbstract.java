@@ -78,6 +78,15 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 
 	public abstract Date[] getEncabezadoFecha();
 
+	public IntervaloFechas getIntervalo() {
+		return intervalo;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como
 	 * quincena, mes, etc se busca la ultima, es decir la ultima quincena,
@@ -89,7 +98,6 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	 * @param lista_interes
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public float ultimaFraccion(List<Alarma> lista_interes) {
 
 		float valor_retorno = 0;
@@ -113,15 +121,6 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 		}
 
 		return valor_retorno;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public IntervaloFechas getIntervalo() {
-		return intervalo;
 	}
 
 	/* ............................................. */

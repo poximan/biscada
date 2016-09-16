@@ -139,44 +139,237 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		recargar(new ArrayList<>(0), null); // null -> no existe consulta previa
 	}
 
-	private void recargar(List<Alarma> consultas, DatosConsulta datos_consulta) {
+	public void buscar(ActionEvent avt) {
 
-		this.consultas = ObservableCollections.observableList(consultas);
+		/*
+		 * hilo consulta -------------------
+		 */
+		Runnable consulta = new Runnable() {
+			@Override
+			public void run() {
 
-		iniciarComponentes();
-		configBinding();
+				log.trace("colectando datos desde IU");
+				DatosConsulta datos_consulta = new DatosConsulta(//
+						choosDesde.getCalendar(), //
+						rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, //
+						choosHasta.getCalendar(), //
+						rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, //
+
+						(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
+						(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(),
+
+						frame_bi.getComponente_ruido_minimo().getSegundos(),
+						frame_bi.getComponente_ruido_maximo().getSegundos(),
+
+						frame_bi.getComponente_ini_incompleta().isSelected(),
+						frame_bi.getComponente_ack_incompleta().isSelected(),
+						frame_bi.getComponente_fin_incompleta().isSelected());
+
+				ComponenteConsulta.this.removeAll();
+				recargar(serv_consulta.buscAlarma(datos_consulta), datos_consulta);
+			}
+		};
+		final Thread hilo_consulta = new Thread(consulta);
+		hilo_consulta.start();
+
+		/*
+		 * hilo indicador
+		 */
+		Runnable indicador = new Runnable() {
+			@Override
+			public void run() {
+
+				while (hilo_consulta.isAlive()) {
+					try {
+						lblProcesando.setVisible(true);
+						Thread.sleep(200);
+
+						lblProcesando.setVisible(false);
+						Thread.sleep(40);
+					} catch (InterruptedException excepcion) {
+						lblProcesando.setVisible(false);
+					}
+				}
+			}
+		};
+		Thread hilo_indicador = new Thread(indicador);
+		hilo_indicador.start();
+	}
+
+	private void cargarConfiguracionConsultaPrevia(DatosConsulta datos_consulta) {
+
+		choosDesde.setCalendar(datos_consulta.getCalendar_desde());
+		rbtnDesdeInicio.setSelected(datos_consulta.getDesde_inicio());
+		rbtnDesdeAck.setSelected(datos_consulta.getDesde_ack());
+		rbtnDesdeFin.setSelected(datos_consulta.getDesde_fin());
+
+		choosHasta.setCalendar(datos_consulta.getCalendar_hasta());
+		rbtnHastaInicio.setSelected(datos_consulta.getHasta_inicio());
+		rbtnHastaAck.setSelected(datos_consulta.getHasta_ack());
+		rbtnHastaFin.setSelected(datos_consulta.getHasta_fin());
+
+		cboxFamilia.getModel().setSelectedItem(datos_consulta.getFamilia_elegida());
+		cboxSitio.getModel().setSelectedItem(datos_consulta.getSitio_elegido());
+		cboxTipoEquipo.getModel().setSelectedItem(datos_consulta.getTipo_de_equipo_elegido());
+		cboxSuceso.getModel().setSelectedItem(datos_consulta.getSuceso_elegido());
+
+		frame_bi.getComponente_ruido_minimo().setSegundos(datos_consulta.getDuracion_minima());
+		frame_bi.getComponente_ruido_maximo().setSegundos(datos_consulta.getDuracion_maxima());
+
+		frame_bi.getComponente_ini_incompleta().setSelected(datos_consulta.isIncluir_ini_incompleta());
+		frame_bi.getComponente_ack_incompleta().setSelected(datos_consulta.isIncluir_ack_incompleta());
+		frame_bi.getComponente_fin_incompleta().setSelected(datos_consulta.isIncluir_fin_incompleta());
+	}
+
+	public void cargarTodasLasFamilias() {
+
+		// construir lista con objetos actuales en bd que deberan estar en la
+		// lista
+		List<Familia> familia = ServConsultaEstatica.getListaFamilia();
+		cboxFamilia.removeAllItems();
+
+		cboxFamilia.addItem(null);
+
+		for (Familia familia_actual : familia)
+			cboxFamilia.addItem(familia_actual); // cargar la list
+	}
+
+	public void cargarTodosLosEquipos() {
+
+		// construir lista con objetos actuales en bd que deberan estar en la
+		// lista
+		List<TipoDeEquipo> sucesos = ServConsultaEstatica.getListaEquipos();
+		cboxTipoEquipo.removeAllItems();
+
+		cboxTipoEquipo.addItem(null);
+
+		for (TipoDeEquipo equipo_actual : sucesos)
+			cboxTipoEquipo.addItem(equipo_actual); // cargar la lista
+	}
+
+	public void cargarTodosLosSitios() {
+
+		// construir lista con objetos actuales en bd que deberan estar en la
+		// lista
+		List<Sitio> sitios = ServConsultaEstatica.getListaSitios();
+		cboxSitio.removeAllItems();
+
+		cboxSitio.addItem(null);
+
+		for (Sitio sitio_actual : sitios)
+			cboxSitio.addItem(sitio_actual); // cargar la lista
+	}
+
+	public void cargarTodosLosSucesos() {
+
+		// construir lista con objetos actuales en bd que deberan estar en la
+		// lista
+		List<Suceso> sucesos = ServConsultaEstatica.getListaSucesos();
+		cboxSuceso.removeAllItems();
+
+		cboxSuceso.addItem(null);
+
+		for (Suceso suceso_actual : sucesos)
+			cboxSuceso.addItem(suceso_actual); // cargar la lista
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void configBinding() {
 
 		// -------------------------------------
 		//
-		// editar visualizacion calendar
+		// binding master
 		// -------------------------------------
 
-		TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
+		jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, consultas, tblConsulta);
 
-			private static final long serialVersionUID = 1L;
+		// -------------------------------------
+		//
+		// atributos master
+		// -------------------------------------
 
-			SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ms");
+		ColumnBinding columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_inicio}"));
+		columnBinding.setColumnName("Inicio");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
 
-			@Override
-			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-					boolean hasFocus, int row, int column) {
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_ack}"));
+		columnBinding.setColumnName("Ack");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
 
-				if (value instanceof Calendar) {
-					value = f.format(((Calendar) value).getTime());
-				}
-				return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			}
-		};
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_finalizacion}"));
+		columnBinding.setColumnName("Fin");
+		columnBinding.setColumnClass(Calendar.class);
+		columnBinding.setEditable(false);
 
-		tblConsulta.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
-		tblConsulta.getColumnModel().getColumn(1).setCellRenderer(tableCellRenderer);
-		tblConsulta.getColumnModel().getColumn(2).setCellRenderer(tableCellRenderer);
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${ack_usuario}"));
+		columnBinding.setColumnName("Usuario");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
 
-		configEventos();
-		ordenarTabla();
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${familia.descripcion}"));
+		columnBinding.setColumnName("Familia");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
 
-		if (datos_consulta != null)
-			cargarConfiguracionConsultaPrevia(datos_consulta);
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${sitio.descripcion}"));
+		columnBinding.setColumnName("Sitio");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${equipo_en_sitio}"));
+		columnBinding.setColumnName("Tipo de Equipo");
+		columnBinding.setColumnClass(EquipoEnSitio.class);
+		columnBinding.setEditable(false);
+
+		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${suceso.descripcion}"));
+		columnBinding.setColumnName("Suceso");
+		columnBinding.setColumnClass(String.class);
+		columnBinding.setEditable(false);
+
+		/*
+		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible
+		 * (cosa que sucede cuando no se ha elegido un master) no es posible
+		 * definir un detalle
+		 */
+		jTableBinding.setSourceUnreadableValue(Collections.emptyList());
+
+		// -------------------------------------
+		//
+		// binding listo para empaquetar
+		// -------------------------------------
+
+		jTableBinding.bind();
+		bindingGroup.addBinding(jTableBinding);
+		bindingGroup.bind();
+	}
+
+	@Override
+	public void configEventos() {
+
+		EventoComponenteConsulta eventos = new EventoComponenteConsulta(this);
+
+		btnBuscar.addActionListener(eventos);
+
+		try {
+			cargarTodasLasFamilias();
+			cargarTodosLosSitios();
+			cargarTodosLosSucesos();
+			cargarTodosLosEquipos();
+		} catch (NullPointerException excepcion) {
+			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
+		}
+
+		txt_reg_encontrados.setText(Integer.toString(consultas.size()));
+	}
+
+	public JButton getBtnBuscar() {
+		return btnBuscar;
+	}
+
+	public List<Alarma> getConsultas() {
+		return consultas;
 	}
 
 	@Override
@@ -424,96 +617,10 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		bindingGroup = new BindingGroup();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void configBinding() {
-
-		// -------------------------------------
-		//
-		// binding master
-		// -------------------------------------
-
-		jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, consultas, tblConsulta);
-
-		// -------------------------------------
-		//
-		// atributos master
-		// -------------------------------------
-
-		ColumnBinding columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_inicio}"));
-		columnBinding.setColumnName("Inicio");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_ack}"));
-		columnBinding.setColumnName("Ack");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${fecha_finalizacion}"));
-		columnBinding.setColumnName("Fin");
-		columnBinding.setColumnClass(Calendar.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${ack_usuario}"));
-		columnBinding.setColumnName("Usuario");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${familia.descripcion}"));
-		columnBinding.setColumnName("Familia");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${sitio.descripcion}"));
-		columnBinding.setColumnName("Sitio");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${equipo_en_sitio}"));
-		columnBinding.setColumnName("Tipo de Equipo");
-		columnBinding.setColumnClass(EquipoEnSitio.class);
-		columnBinding.setEditable(false);
-
-		columnBinding = jTableBinding.addColumnBinding(ELProperty.create("${suceso.descripcion}"));
-		columnBinding.setColumnName("Suceso");
-		columnBinding.setColumnClass(String.class);
-		columnBinding.setEditable(false);
-
-		/*
-		 * obligatorio dejarlo asi!, cuando el origen de los datos es ilegible
-		 * (cosa que sucede cuando no se ha elegido un master) no es posible
-		 * definir un detalle
-		 */
-		jTableBinding.setSourceUnreadableValue(Collections.emptyList());
-
-		// -------------------------------------
-		//
-		// binding listo para empaquetar
-		// -------------------------------------
-
-		jTableBinding.bind();
-		bindingGroup.addBinding(jTableBinding);
-		bindingGroup.bind();
-	}
-
-	@Override
-	public void configEventos() {
-
-		EventoComponenteConsulta eventos = new EventoComponenteConsulta(this);
-
-		btnBuscar.addActionListener(eventos);
-
-		try {
-			cargarTodasLasFamilias();
-			cargarTodosLosSitios();
-			cargarTodosLosSucesos();
-			cargarTodosLosEquipos();
-		} catch (NullPointerException excepcion) {
-			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
-		}
-
-		txt_reg_encontrados.setText(Integer.toString(consultas.size()));
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	private void ordenarTabla() {
 
@@ -521,151 +628,44 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		tblConsulta.setRowSorter(ordenador_filas);
 	}
 
-	public void buscar(ActionEvent avt) {
+	private void recargar(List<Alarma> consultas, DatosConsulta datos_consulta) {
 
-		/*
-		 * hilo consulta -------------------
-		 */
-		Runnable consulta = new Runnable() {
+		this.consultas = ObservableCollections.observableList(consultas);
+
+		iniciarComponentes();
+		configBinding();
+
+		// -------------------------------------
+		//
+		// editar visualizacion calendar
+		// -------------------------------------
+
+		TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
+
+			private static final long serialVersionUID = 1L;
+
+			SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ms");
+
 			@Override
-			public void run() {
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+					boolean hasFocus, int row, int column) {
 
-				log.trace("colectando datos desde IU");
-				DatosConsulta datos_consulta = new DatosConsulta(//
-						choosDesde.getCalendar(), //
-						rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, //
-						choosHasta.getCalendar(), //
-						rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin, //
-
-						(Familia) cboxFamilia.getSelectedItem(), (Sitio) cboxSitio.getSelectedItem(),
-						(TipoDeEquipo) cboxTipoEquipo.getSelectedItem(), (Suceso) cboxSuceso.getSelectedItem(),
-
-						frame_bi.getComponente_ruido_minimo().getSegundos(),
-						frame_bi.getComponente_ruido_maximo().getSegundos(),
-
-						frame_bi.getComponente_ini_incompleta().isSelected(),
-						frame_bi.getComponente_ack_incompleta().isSelected(),
-						frame_bi.getComponente_fin_incompleta().isSelected());
-
-				ComponenteConsulta.this.removeAll();
-				recargar(serv_consulta.buscAlarma(datos_consulta), datos_consulta);
-			}
-		};
-		final Thread hilo_consulta = new Thread(consulta);
-		hilo_consulta.start();
-
-		/*
-		 * hilo indicador
-		 */
-		Runnable indicador = new Runnable() {
-			@Override
-			public void run() {
-
-				while (hilo_consulta.isAlive()) {
-					try {
-						lblProcesando.setVisible(true);
-						Thread.sleep(200);
-
-						lblProcesando.setVisible(false);
-						Thread.sleep(40);
-					} catch (InterruptedException excepcion) {
-						lblProcesando.setVisible(false);
-					}
+				if (value instanceof Calendar) {
+					value = f.format(((Calendar) value).getTime());
 				}
+				return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			}
 		};
-		Thread hilo_indicador = new Thread(indicador);
-		hilo_indicador.start();
-	}
 
-	public void cargarTodasLasFamilias() {
+		tblConsulta.getColumnModel().getColumn(0).setCellRenderer(tableCellRenderer);
+		tblConsulta.getColumnModel().getColumn(1).setCellRenderer(tableCellRenderer);
+		tblConsulta.getColumnModel().getColumn(2).setCellRenderer(tableCellRenderer);
 
-		// construir lista con objetos actuales en bd que deberan estar en la
-		// lista
-		List<Familia> familia = ServConsultaEstatica.getListaFamilia();
-		cboxFamilia.removeAllItems();
+		configEventos();
+		ordenarTabla();
 
-		cboxFamilia.addItem(null);
-
-		for (Familia familia_actual : familia)
-			cboxFamilia.addItem(familia_actual); // cargar la list
-	}
-
-	public void cargarTodosLosEquipos() {
-
-		// construir lista con objetos actuales en bd que deberan estar en la
-		// lista
-		List<TipoDeEquipo> sucesos = ServConsultaEstatica.getListaEquipos();
-		cboxTipoEquipo.removeAllItems();
-
-		cboxTipoEquipo.addItem(null);
-
-		for (TipoDeEquipo equipo_actual : sucesos)
-			cboxTipoEquipo.addItem(equipo_actual); // cargar la lista
-	}
-
-	public void cargarTodosLosSitios() {
-
-		// construir lista con objetos actuales en bd que deberan estar en la
-		// lista
-		List<Sitio> sitios = ServConsultaEstatica.getListaSitios();
-		cboxSitio.removeAllItems();
-
-		cboxSitio.addItem(null);
-
-		for (Sitio sitio_actual : sitios)
-			cboxSitio.addItem(sitio_actual); // cargar la lista
-	}
-
-	public void cargarTodosLosSucesos() {
-
-		// construir lista con objetos actuales en bd que deberan estar en la
-		// lista
-		List<Suceso> sucesos = ServConsultaEstatica.getListaSucesos();
-		cboxSuceso.removeAllItems();
-
-		cboxSuceso.addItem(null);
-
-		for (Suceso suceso_actual : sucesos)
-			cboxSuceso.addItem(suceso_actual); // cargar la lista
-	}
-
-	private void cargarConfiguracionConsultaPrevia(DatosConsulta datos_consulta) {
-
-		choosDesde.setCalendar(datos_consulta.getCalendar_desde());
-		rbtnDesdeInicio.setSelected(datos_consulta.getDesde_inicio());
-		rbtnDesdeAck.setSelected(datos_consulta.getDesde_ack());
-		rbtnDesdeFin.setSelected(datos_consulta.getDesde_fin());
-
-		choosHasta.setCalendar(datos_consulta.getCalendar_hasta());
-		rbtnHastaInicio.setSelected(datos_consulta.getHasta_inicio());
-		rbtnHastaAck.setSelected(datos_consulta.getHasta_ack());
-		rbtnHastaFin.setSelected(datos_consulta.getHasta_fin());
-
-		cboxFamilia.getModel().setSelectedItem(datos_consulta.getFamilia_elegida());
-		cboxSitio.getModel().setSelectedItem(datos_consulta.getSitio_elegido());
-		cboxTipoEquipo.getModel().setSelectedItem(datos_consulta.getTipo_de_equipo_elegido());
-		cboxSuceso.getModel().setSelectedItem(datos_consulta.getSuceso_elegido());
-
-		frame_bi.getComponente_ruido_minimo().setSegundos(datos_consulta.getDuracion_minima());
-		frame_bi.getComponente_ruido_maximo().setSegundos(datos_consulta.getDuracion_maxima());
-
-		frame_bi.getComponente_ini_incompleta().setSelected(datos_consulta.isIncluir_ini_incompleta());
-		frame_bi.getComponente_ack_incompleta().setSelected(datos_consulta.isIncluir_ack_incompleta());
-		frame_bi.getComponente_fin_incompleta().setSelected(datos_consulta.isIncluir_fin_incompleta());
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JButton getBtnBuscar() {
-		return btnBuscar;
-	}
-
-	public List<Alarma> getConsultas() {
-		return consultas;
+		if (datos_consulta != null)
+			cargarConfiguracionConsultaPrevia(datos_consulta);
 	}
 
 	@Override

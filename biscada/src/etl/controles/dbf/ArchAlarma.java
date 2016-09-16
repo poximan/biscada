@@ -53,6 +53,128 @@ public class ArchAlarma {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public String getACK_NAME() {
+		return ACK_NAME;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public String getACK_TIME() {
+		return ACK_TIME;
+	}
+
+	public String getATTR() {
+		return ATTR;
+	}
+
+	public String getCLASS() {
+		return CLASS;
+	}
+
+	public String getEND_MILI() {
+		return END_MILI;
+	}
+
+	public String getEND_TIME() {
+		return END_TIME;
+	}
+
+	public String getIDENT() {
+		return IDENT;
+	}
+
+	public String getNAME() {
+		return NAME;
+	}
+
+	public String getSEVERITY() {
+		return SEVERITY;
+	}
+
+	public String getSTART_MILI() {
+		return START_MILI;
+	}
+
+	public String getSTART_SEC() {
+		return START_SEC;
+	}
+
+	public String getSTATION_ID() {
+		return STATION_ID;
+	}
+
+	public String getTEXT() {
+		return TEXT;
+	}
+
+	public String getZONE() {
+		return ZONE;
+	}
+
+	public void setACK_NAME(String aCK_NAME) {
+		ACK_NAME = aCK_NAME;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	public void setACK_TIME(String aCK_TIME) {
+		ACK_TIME = aCK_TIME;
+	}
+
+	public void setATTR(String aTTR) {
+		ATTR = aTTR;
+	}
+
+	public void setCLASS(String cLASS) {
+		CLASS = cLASS;
+	}
+
+	public void setEND_MILI(String eND_MILI) {
+		END_MILI = eND_MILI;
+	}
+
+	public void setEND_TIME(String eND_TIME) {
+		END_TIME = eND_TIME;
+	}
+
+	public void setIDENT(String iDENT) {
+		IDENT = iDENT;
+	}
+
+	public void setNAME(String nAME) {
+		NAME = nAME;
+	}
+
+	public void setSEVERITY(String sEVERITY) {
+		SEVERITY = sEVERITY;
+	}
+
+	public void setSTART_MILI(String sTART_MILI) {
+		START_MILI = sTART_MILI;
+	}
+
+	public void setSTART_SEC(String sTART_SEC) {
+		START_SEC = sTART_SEC;
+	}
+
+	public void setSTATION_ID(String sTATION_ID) {
+		STATION_ID = sTATION_ID;
+	}
+
+	public void setTEXT(String tEXT) {
+		TEXT = tEXT;
+	}
+
+	public void setZONE(String zONE) {
+		ZONE = zONE;
+	}
+
 	@Override
 	public String toString() {
 
@@ -69,127 +191,5 @@ public class ArchAlarma {
 				"Texto: " + TEXT + "\n" + //
 				"Id estacion: " + STATION_ID + "\n"//
 		;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public String getSTART_SEC() {
-		return START_SEC;
-	}
-
-	public String getSTART_MILI() {
-		return START_MILI;
-	}
-
-	public String getEND_TIME() {
-		return END_TIME;
-	}
-
-	public String getEND_MILI() {
-		return END_MILI;
-	}
-
-	public String getACK_TIME() {
-		return ACK_TIME;
-	}
-
-	public String getACK_NAME() {
-		return ACK_NAME;
-	}
-
-	public String getSEVERITY() {
-		return SEVERITY;
-	}
-
-	public String getCLASS() {
-		return CLASS;
-	}
-
-	public String getZONE() {
-		return ZONE;
-	}
-
-	public String getATTR() {
-		return ATTR;
-	}
-
-	public String getIDENT() {
-		return IDENT;
-	}
-
-	public String getNAME() {
-		return NAME;
-	}
-
-	public String getTEXT() {
-		return TEXT;
-	}
-
-	public String getSTATION_ID() {
-		return STATION_ID;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
-	public void setSTART_SEC(String sTART_SEC) {
-		START_SEC = sTART_SEC;
-	}
-
-	public void setSTART_MILI(String sTART_MILI) {
-		START_MILI = sTART_MILI;
-	}
-
-	public void setEND_TIME(String eND_TIME) {
-		END_TIME = eND_TIME;
-	}
-
-	public void setEND_MILI(String eND_MILI) {
-		END_MILI = eND_MILI;
-	}
-
-	public void setACK_TIME(String aCK_TIME) {
-		ACK_TIME = aCK_TIME;
-	}
-
-	public void setACK_NAME(String aCK_NAME) {
-		ACK_NAME = aCK_NAME;
-	}
-
-	public void setSEVERITY(String sEVERITY) {
-		SEVERITY = sEVERITY;
-	}
-
-	public void setCLASS(String cLASS) {
-		CLASS = cLASS;
-	}
-
-	public void setZONE(String zONE) {
-		ZONE = zONE;
-	}
-
-	public void setATTR(String aTTR) {
-		ATTR = aTTR;
-	}
-
-	public void setIDENT(String iDENT) {
-		IDENT = iDENT;
-	}
-
-	public void setNAME(String nAME) {
-		NAME = nAME;
-	}
-
-	public void setTEXT(String tEXT) {
-		TEXT = tEXT;
-	}
-
-	public void setSTATION_ID(String sTATION_ID) {
-		STATION_ID = sTATION_ID;
 	}
 }

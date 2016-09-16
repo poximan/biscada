@@ -8,7 +8,7 @@
 	<classpathentry kind="con"
 		path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2">
 		<attributes>
-			<attribute name="owner.project.facets" value="jpt.jpa;#system#" />
+			<attribute name="owner.project.facets" value="#system#;jpt.jpa" />
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con"

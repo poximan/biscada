@@ -99,8 +99,8 @@ public class DatosConsulta {
 		return calendar_desde;
 	}
 
-	public Boolean getDesde_inicio() {
-		return desde_inicio;
+	public Calendar getCalendar_hasta() {
+		return calendar_hasta;
 	}
 
 	public Boolean getDesde_ack() {
@@ -111,12 +111,20 @@ public class DatosConsulta {
 		return desde_fin;
 	}
 
-	public Calendar getCalendar_hasta() {
-		return calendar_hasta;
+	public Boolean getDesde_inicio() {
+		return desde_inicio;
 	}
 
-	public Boolean getHasta_inicio() {
-		return hasta_inicio;
+	public Integer getDuracion_maxima() {
+		return duracion_maxima;
+	}
+
+	public Integer getDuracion_minima() {
+		return duracion_minima;
+	}
+
+	public Familia getFamilia_elegida() {
+		return familia_elegida;
 	}
 
 	public Boolean getHasta_ack() {
@@ -127,32 +135,20 @@ public class DatosConsulta {
 		return hasta_fin;
 	}
 
-	public Familia getFamilia_elegida() {
-		return familia_elegida;
+	public Boolean getHasta_inicio() {
+		return hasta_inicio;
 	}
 
 	public Sitio getSitio_elegido() {
 		return sitio_elegido;
 	}
 
-	public TipoDeEquipo getTipo_de_equipo_elegido() {
-		return tipo_de_equipo_elegido;
-	}
-
 	public Suceso getSuceso_elegido() {
 		return suceso_elegido;
 	}
 
-	public Integer getDuracion_minima() {
-		return duracion_minima;
-	}
-
-	public Integer getDuracion_maxima() {
-		return duracion_maxima;
-	}
-
-	public boolean isIncluir_ini_incompleta() {
-		return incluir_ini_incompleta;
+	public TipoDeEquipo getTipo_de_equipo_elegido() {
+		return tipo_de_equipo_elegido;
 	}
 
 	public boolean isIncluir_ack_incompleta() {
@@ -161,5 +157,9 @@ public class DatosConsulta {
 
 	public boolean isIncluir_fin_incompleta() {
 		return incluir_fin_incompleta;
+	}
+
+	public boolean isIncluir_ini_incompleta() {
+		return incluir_ini_incompleta;
 	}
 }

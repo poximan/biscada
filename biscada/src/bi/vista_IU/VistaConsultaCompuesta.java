@@ -71,6 +71,26 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 	}
 
 	@Override
+	public void configEventos() {
+
+		EventoConsultaCompuesta eventos = new EventoConsultaCompuesta(this);
+		btnUsarConsulta.addActionListener(eventos);
+	}
+
+	public JButton getBtnUsarConsulta() {
+		return btnUsarConsulta;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public ComponenteConsulta getComponenteConsulta() {
+		return componenteConsulta;
+	}
+
+	@Override
 	public void iniciarComponentes() {
 
 		panelComparacion = new JPanel();
@@ -104,26 +124,6 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 		panelComparacion.add(btnUsarConsulta);
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	public void configEventos() {
-
-		EventoConsultaCompuesta eventos = new EventoConsultaCompuesta(this);
-		btnUsarConsulta.addActionListener(eventos);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JButton getBtnUsarConsulta() {
-		return btnUsarConsulta;
-	}
-
-	public ComponenteConsulta getComponenteConsulta() {
-		return componenteConsulta;
 	}
 
 	/* ............................................. */

@@ -27,8 +27,8 @@ public class Cloacal extends Familia implements CalidadServicioDiferenciable {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Cloacal() {
-		super(descripcion);
+	public static String getExpresion_regular() {
+		return expresion_regular;
 	}
 
 	/* ............................................. */
@@ -36,9 +36,8 @@ public class Cloacal extends Familia implements CalidadServicioDiferenciable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public String toString() {
-		return descripcion;
+	public Cloacal() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -46,8 +45,9 @@ public class Cloacal extends Familia implements CalidadServicioDiferenciable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public static String getExpresion_regular() {
-		return expresion_regular;
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

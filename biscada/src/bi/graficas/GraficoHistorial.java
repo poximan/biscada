@@ -29,28 +29,9 @@ import org.jfree.ui.TextAnchor;
 public class GraficoHistorial extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
-
-	private TimeSeriesCollection coleccion;
 	private static double Total;
+
 	private static double promedio;
-
-	public GraficoHistorial() {
-	}
-
-	public JPanel createPanel() {
-		// XYDataset xydataset = createDataset();
-		JFreeChart jfreechart = createChart(coleccion);
-		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		// chartpanel.setPreferredSize(new Dimension(900, 300));
-		chartpanel.setDomainZoomable(true);
-		chartpanel.setRangeZoomable(true);
-
-		panel = chartpanel;
-		add(chartpanel);
-		return panel;
-	}
-
 	private static JFreeChart createChart(XYDataset xydataset) {
 		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas", "Cantidad", xydataset,
 				PlotOrientation.VERTICAL, false, true, false);
@@ -107,6 +88,12 @@ public class GraficoHistorial extends JPanel {
 		 */
 		return jfreechart;
 	}
+	private JPanel panel;
+
+	private TimeSeriesCollection coleccion;
+
+	public GraficoHistorial() {
+	}
 
 	/*
 	 * Se crea el dataset de datos
@@ -135,5 +122,18 @@ public class GraficoHistorial extends JPanel {
 		}
 
 		coleccion.addSeries(serieFecha);
+	}
+
+	public JPanel createPanel() {
+		// XYDataset xydataset = createDataset();
+		JFreeChart jfreechart = createChart(coleccion);
+		ChartPanel chartpanel = new ChartPanel(jfreechart);
+		// chartpanel.setPreferredSize(new Dimension(900, 300));
+		chartpanel.setDomainZoomable(true);
+		chartpanel.setRangeZoomable(true);
+
+		panel = chartpanel;
+		add(chartpanel);
+		return panel;
 	}
 }

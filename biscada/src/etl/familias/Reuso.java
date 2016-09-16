@@ -27,8 +27,8 @@ public class Reuso extends Familia implements CalidadServicioDiferenciable {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Reuso() {
-		super(descripcion);
+	public static String getExpresion_regular() {
+		return expresion_regular;
 	}
 
 	/* ............................................. */
@@ -36,9 +36,8 @@ public class Reuso extends Familia implements CalidadServicioDiferenciable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public String toString() {
-		return descripcion;
+	public Reuso() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -46,8 +45,9 @@ public class Reuso extends Familia implements CalidadServicioDiferenciable {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public static String getExpresion_regular() {
-		return expresion_regular;
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

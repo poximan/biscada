@@ -95,6 +95,14 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 		}
 	}
 
+	@Override
+	public void lanzarVentana(JFrame frame, JPanel vista) {
+
+		frame.setContentPane(vista);
+		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
 	private void prepararComparadorSitios(ComponenteMenuDimension frame_menu_dimension,
 			VistaDimAbstractCompuesta vista_compuesta) {
 
@@ -137,13 +145,5 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 				menu_dimension.getConsulta_comparador());
 
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
-	}
-
-	@Override
-	public void lanzarVentana(JFrame frame, JPanel vista) {
-
-		frame.setContentPane(vista);
-		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame.setVisible(true);
 	}
 }

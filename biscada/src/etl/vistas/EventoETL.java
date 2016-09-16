@@ -65,10 +65,6 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 		resolverCambioTextoDireccion(evt);
 	}
 
-	@Override
-	public void removeUpdate(DocumentEvent evt) {
-	}
-
 	/**
 	 * el campo de texto asignado para la direccion {origen <-> destino} de los
 	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
@@ -80,6 +76,10 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	@Override
 	public void insertUpdate(DocumentEvent evt) {
 		resolverCambioTextoDireccion(evt);
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent evt) {
 	}
 
 	/**

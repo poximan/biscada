@@ -77,6 +77,29 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 	}
 
 	@Override
+	public void configEventos() {
+
+		EventoPropiedades eventos = new EventoPropiedades(this, spinnerAceptacion, spinnerTiempoMaximo,
+				spinnerTiempoMinimo, txt_direccion_fuente, txtURL, txtUsuario, txtContrasenia);
+
+		btnConfirmar.addActionListener(eventos);
+		btnPorDefecto.addActionListener(eventos);
+	}
+
+	public JButton getBtnConfirmar() {
+		return btnConfirmar;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public JButton getBtnPorDefecto() {
+		return btnPorDefecto;
+	}
+
+	@Override
 	public void iniciarComponentes() {
 
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Valores actuales", TitledBorder.LEADING,
@@ -307,28 +330,5 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		gbc_btnPorDefecto_1.gridy = 4;
 
 		setLayout(groupLayout);
-	}
-
-	@Override
-	public void configEventos() {
-
-		EventoPropiedades eventos = new EventoPropiedades(this, spinnerAceptacion, spinnerTiempoMaximo,
-				spinnerTiempoMinimo, txt_direccion_fuente, txtURL, txtUsuario, txtContrasenia);
-
-		btnConfirmar.addActionListener(eventos);
-		btnPorDefecto.addActionListener(eventos);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JButton getBtnPorDefecto() {
-		return btnPorDefecto;
-	}
-
-	public JButton getBtnConfirmar() {
-		return btnConfirmar;
 	}
 }

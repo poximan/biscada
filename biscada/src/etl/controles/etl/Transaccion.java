@@ -46,14 +46,6 @@ public class Transaccion {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void limpiarCache() {
-		EMFSingleton.getInstanciaEM().clear();
-	}
-
-	public void enviarCacheHaciaBD() {
-		EMFSingleton.getInstanciaEM().flush();
-	}
-
 	public void beginArchivo() {
 
 		EntityTransaction transaccion = EMFSingleton.getInstanciaEM().getTransaction();
@@ -75,5 +67,13 @@ public class Transaccion {
 				EMFSingleton.getInstanciaEM().getTransaction().rollback();
 			throw excepcion;
 		}
+	}
+
+	public void enviarCacheHaciaBD() {
+		EMFSingleton.getInstanciaEM().flush();
+	}
+
+	public void limpiarCache() {
+		EMFSingleton.getInstanciaEM().clear();
 	}
 }

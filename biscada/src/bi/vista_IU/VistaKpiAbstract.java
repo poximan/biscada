@@ -96,6 +96,65 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	@Override
+	public void configEventos(EventoKPI eventos) {
+
+		spinner_porcentaje.getModel().addChangeListener(eventos);
+
+	}
+
+	public GraficoHistorial getHisto_kpi() {
+		return histo_kpi;
+	}
+
+	/**
+	 * se solicita el grafico instanciado en la superclase y que hasta este
+	 * momento no posee datos especificos relacionados con la dimension concreta
+	 * que esta realizando la solicitud
+	 * 
+	 * @return
+	 */
+	public GraficoKPI getIndicador_kpi() {
+		return indicador_kpi;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public JSpinner getSpinner_porcentaje() {
+		return spinner_porcentaje;
+	}
+
+	public JTextField getTextFieldDesvEstandar() {
+		return textFieldDesvEstandar;
+	}
+
+	public JTextField getTextFieldMaximo() {
+		return textFieldMaximo;
+	}
+
+	public JTextField getTextFieldMinimo() {
+		return textFieldMinimo;
+	}
+
+	public JTextField getTextFieldVarianza() {
+		return textFieldVarianza;
+	}
+
+	public JTextField getTxtActual() {
+		return txtActual;
+	}
+
+	public JTextField getTxtPromedio() {
+		return txtPromedio;
+	}
+
+	public JTextField getTxtTotal() {
+		return txtTotal;
+	}
+
+	@Override
 	public void iniciarComponentes() {
 
 		// -------------------------------------
@@ -233,64 +292,5 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		JDialog dialog = optionPane.createDialog("error");
 		dialog.setAlwaysOnTop(true);
 		dialog.setVisible(true);
-	}
-
-	@Override
-	public void configEventos(EventoKPI eventos) {
-
-		spinner_porcentaje.getModel().addChangeListener(eventos);
-
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este
-	 * momento no posee datos especificos relacionados con la dimension concreta
-	 * que esta realizando la solicitud
-	 * 
-	 * @return
-	 */
-	public GraficoKPI getIndicador_kpi() {
-		return indicador_kpi;
-	}
-
-	public GraficoHistorial getHisto_kpi() {
-		return histo_kpi;
-	}
-
-	public JTextField getTxtActual() {
-		return txtActual;
-	}
-
-	public JTextField getTextFieldMinimo() {
-		return textFieldMinimo;
-	}
-
-	public JTextField getTextFieldMaximo() {
-		return textFieldMaximo;
-	}
-
-	public JTextField getTxtPromedio() {
-		return txtPromedio;
-	}
-
-	public JTextField getTxtTotal() {
-		return txtTotal;
-	}
-
-	public JTextField getTextFieldVarianza() {
-		return textFieldVarianza;
-	}
-
-	public JTextField getTextFieldDesvEstandar() {
-		return textFieldDesvEstandar;
-	}
-
-	public JSpinner getSpinner_porcentaje() {
-		return spinner_porcentaje;
 	}
 }

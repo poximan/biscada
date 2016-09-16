@@ -27,11 +27,23 @@ public class GestorBI {
 	private static Logger log = Logger.getLogger(GestorBI.class);
 
 	private static GestorBI main_bi;
-	private ComponenteMenuConsulta frame_menu_bi;
+	public static GestorBI getSingleton() {
+
+		if (main_bi == null)
+			main_bi = new GestorBI();
+		return main_bi;
+	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
+	private ComponenteMenuConsulta frame_menu_bi;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	private GestorBI() {
@@ -41,18 +53,6 @@ public class GestorBI {
 
 		frame_menu_bi.setContentPane(new VistaConsultaSimple(frame_menu_bi));
 		log.trace("se lanza pantalla de consultas");
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	public static GestorBI getSingleton() {
-
-		if (main_bi == null)
-			main_bi = new GestorBI();
-		return main_bi;
 	}
 
 	public void mostrarVentana() {

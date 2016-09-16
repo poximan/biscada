@@ -47,6 +47,32 @@ public class ServPropiedades {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
+	public static Properties getInstancia() {
+
+		if (instancia_unica == null)
+			instancia_unica = new ServPropiedades();
+
+		return propiedades;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
+
+	public static void guardarCambios() {
+
+		try {
+			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
+			propiedades.store(archivo_salida, Calendar.getInstance().getTime().toString());
+			archivo_salida.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private ServPropiedades() {
 
 		propiedades = new Properties();
@@ -60,33 +86,7 @@ public class ServPropiedades {
 		}
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	public static Properties getInstancia() {
-
-		if (instancia_unica == null)
-			instancia_unica = new ServPropiedades();
-
-		return propiedades;
-	}
-
 	public Properties getPropiedades() {
 		return propiedades;
-	}
-
-	public static void guardarCambios() {
-
-		try {
-			FileOutputStream archivo_salida = new FileOutputStream(NOMBRE_ARCHIVO_PROPIEDADES);
-			propiedades.store(archivo_salida, Calendar.getInstance().getTime().toString());
-			archivo_salida.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

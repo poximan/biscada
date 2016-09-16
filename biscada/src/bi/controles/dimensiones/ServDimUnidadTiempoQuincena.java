@@ -72,6 +72,11 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
+	}
+
+	@Override
 	public String[] getEncabezado() {
 
 		int indice = 0;
@@ -161,21 +166,16 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 		return desripcion;
 	}
 
-	@Override
-	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
-
-		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return (dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma) + 1;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
+
+		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
+		return (dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma) + 1;
 	}
 
 	/* ............................................. */

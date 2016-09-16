@@ -44,26 +44,41 @@ public class GraficoComparable extends JPanel {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public GraficoComparable(float[][] datos_tabla, String[] encabezado_tabla, JTable tbl_titulo_filas) {
+	/**
+	 * Creates a chart.
+	 *
+	 * @return A chart.
+	 */
+	private static JFreeChart createChart() {
 
-		GraficoComparable.tbl_titulo_filas = tbl_titulo_filas;
-		GraficoComparable.datos_tabla = datos_tabla;
-		GraficoComparable.encabezado_tabla = encabezado_tabla;
+		CategoryDataset dataset1 = createDataset1();
+		NumberAxis rangeAxis1 = new NumberAxis("Value");
+		rangeAxis1.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+		LineAndShapeRenderer renderer1 = new LineAndShapeRenderer();
+		renderer1.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
+		CategoryPlot subplot1 = new CategoryPlot(dataset1, null, rangeAxis1, renderer1);
+		subplot1.setDomainGridlinesVisible(true);
+
+		CategoryDataset dataset2 = createDataset2();
+		NumberAxis rangeAxis2 = new NumberAxis("Value");
+		rangeAxis2.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+		LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
+		renderer2.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
+		CategoryPlot subplot2 = new CategoryPlot(dataset2, null, rangeAxis2, renderer2);
+		subplot2.setDomainGridlinesVisible(true);
+
+		CategoryAxis domainAxis = new CategoryAxis("Category");
+		CombinedCategoryPlot plot = new CombinedCategoryPlot(domainAxis, new NumberAxis("Range"));
+		plot.add(subplot1, 2);
+		plot.add(subplot2, 1);
+
+		JFreeChart result = new JFreeChart(plot);
+		return result;
 	}
 
 	/*
 	 * Datos para comparar armando 2do dataset
 	 */
-
-	public void datosParaComparar(float[][] datos_tabla_comparacion, String[] encabezado_tabla_comparacion,
-			JTable tbl_titulo_filas_comparacion) {
-
-		tbl_titulo_filas_comparar = tbl_titulo_filas_comparacion;
-		datos_tabla_comparar = datos_tabla_comparacion;
-		encabezado_tabla_comparar = encabezado_tabla_comparacion;
-		System.out.println("esto es " + tbl_titulo_filas_comparacion.getRowCount());
-		System.out.println("porque se queja? " + tbl_titulo_filas_comparar.getRowCount());
-	}
 
 	/**
 	 * Creates a dataset.
@@ -124,38 +139,6 @@ public class GraficoComparable extends JPanel {
 	}
 
 	/**
-	 * Creates a chart.
-	 *
-	 * @return A chart.
-	 */
-	private static JFreeChart createChart() {
-
-		CategoryDataset dataset1 = createDataset1();
-		NumberAxis rangeAxis1 = new NumberAxis("Value");
-		rangeAxis1.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-		LineAndShapeRenderer renderer1 = new LineAndShapeRenderer();
-		renderer1.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
-		CategoryPlot subplot1 = new CategoryPlot(dataset1, null, rangeAxis1, renderer1);
-		subplot1.setDomainGridlinesVisible(true);
-
-		CategoryDataset dataset2 = createDataset2();
-		NumberAxis rangeAxis2 = new NumberAxis("Value");
-		rangeAxis2.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-		LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
-		renderer2.setBaseToolTipGenerator(new StandardCategoryToolTipGenerator());
-		CategoryPlot subplot2 = new CategoryPlot(dataset2, null, rangeAxis2, renderer2);
-		subplot2.setDomainGridlinesVisible(true);
-
-		CategoryAxis domainAxis = new CategoryAxis("Category");
-		CombinedCategoryPlot plot = new CombinedCategoryPlot(domainAxis, new NumberAxis("Range"));
-		plot.add(subplot1, 2);
-		plot.add(subplot2, 1);
-
-		JFreeChart result = new JFreeChart(plot);
-		return result;
-	}
-
-	/**
 	 * Creates a panel for the demo (used by SuperDemo.java).
 	 *
 	 * @return A panel.
@@ -163,6 +146,23 @@ public class GraficoComparable extends JPanel {
 	public static JPanel createDemoPanel() {
 		JFreeChart chart = createChart();
 		return new ChartPanel(chart);
+	}
+
+	public GraficoComparable(float[][] datos_tabla, String[] encabezado_tabla, JTable tbl_titulo_filas) {
+
+		GraficoComparable.tbl_titulo_filas = tbl_titulo_filas;
+		GraficoComparable.datos_tabla = datos_tabla;
+		GraficoComparable.encabezado_tabla = encabezado_tabla;
+	}
+
+	public void datosParaComparar(float[][] datos_tabla_comparacion, String[] encabezado_tabla_comparacion,
+			JTable tbl_titulo_filas_comparacion) {
+
+		tbl_titulo_filas_comparar = tbl_titulo_filas_comparacion;
+		datos_tabla_comparar = datos_tabla_comparacion;
+		encabezado_tabla_comparar = encabezado_tabla_comparacion;
+		System.out.println("esto es " + tbl_titulo_filas_comparacion.getRowCount());
+		System.out.println("porque se queja? " + tbl_titulo_filas_comparar.getRowCount());
 	}
 
 }

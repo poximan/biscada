@@ -17,6 +17,8 @@ public interface DimensionCalculable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public void armarSolapasGraficas();
+
 	/**
 	 * si el usuario selecciono algo para el segundo y tercer nivel de
 	 * evaluacion (ver documento de vision
@@ -29,6 +31,4 @@ public interface DimensionCalculable {
 	 * 
 	 */
 	public void ejecutarDimension();
-
-	public void armarSolapasGraficas();
 }

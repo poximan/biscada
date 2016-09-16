@@ -80,6 +80,24 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 		log.trace("se liberaron objetos en desuso");
 	}
 
+	public void contruirModeloEntradaColumnas(float[][] datos_tabla, String[] encabezado_tabla) {
+
+		tbl_medicion.setModel(new TableModelMedicionTemporal(datos_tabla, encabezado_tabla));
+		ordenarTabla();
+	}
+
+	public void contruirModeloEntradaFila(ServDimAbstract serv_dim_vista_seleccionada) {
+		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
+	}
+
+	public JTable getTbl_medicion() {
+		return tbl_medicion;
+	}
+
+	public JTable getTbl_titulo_filas() {
+		return tbl_titulo_filas;
+	}
+
 	@Override
 	public void iniciarComponentes() {
 
@@ -158,6 +176,16 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 		setLayout(groupLayout);
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	@Override
+	public void liberarObjetos() {
+
+	}
+
 	private void ordenarTabla() {
 
 		RowSorter<TableModel> ordenador_filas1 = new TableRowSorter<TableModel>(tbl_medicion.getModel());
@@ -177,34 +205,6 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 			}
 		};
 		tbl_medicion.getRowSorter().addRowSorterListener(l);
-	}
-
-	@Override
-	public void liberarObjetos() {
-
-	}
-
-	public void contruirModeloEntradaFila(ServDimAbstract serv_dim_vista_seleccionada) {
-		tbl_titulo_filas.setModel(new TableModelEntradaFila(serv_dim_vista_seleccionada.getGrupos()));
-	}
-
-	public void contruirModeloEntradaColumnas(float[][] datos_tabla, String[] encabezado_tabla) {
-
-		tbl_medicion.setModel(new TableModelMedicionTemporal(datos_tabla, encabezado_tabla));
-		ordenarTabla();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JTable getTbl_medicion() {
-		return tbl_medicion;
-	}
-
-	public JTable getTbl_titulo_filas() {
-		return tbl_titulo_filas;
 	}
 
 	/* ............................................. */

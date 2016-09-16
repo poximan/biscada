@@ -20,7 +20,7 @@ public class Constantes {
 	/**
 	 * de utilidad para indicarle a la fabrica abstracta que fabrica desea
 	 */
-	public static final String FABRICA_TIPO_DE_EQUIPO = "tipo de equipo";
+	public static final String FABRICA_EQUIPO_EN_SITIO = "equipo en sitio";
 
 	/**
 	 * de utilidad para indicarle a la fabrica abstracta que fabrica desea
@@ -36,4 +36,9 @@ public class Constantes {
 	 * de utilidad para indicarle a la fabrica abstracta que fabrica desea
 	 */
 	public static final String FABRICA_SUCESO = "suceso";
+
+	/**
+	 * de utilidad para indicarle a la fabrica abstracta que fabrica desea
+	 */
+	public static final String FABRICA_TIPO_DE_EQUIPO = "tipo de equipo";
 }

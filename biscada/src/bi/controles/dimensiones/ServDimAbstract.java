@@ -42,36 +42,6 @@ public abstract class ServDimAbstract {
 	/* ............................................. */
 
 	/**
-	 * crea un mapa hash donde la clave es una dimension de las especificadas en
-	 * el segundo nivel de evaluacion (ver documento de vision)
-	 * 
-	 * @param consultas
-	 */
-	public abstract void realizarHash(List<Alarma> consultas);
-
-	/**
-	 * una vez que entra a una de las claves del hash, analiza todas las alarmas
-	 * que coinciden con la clave completa la fila correspondiente en la tabla
-	 * 
-	 * @param longitud_arreglo
-	 * @param lista_alarmas_una_clave
-	 * @param serv_intervalo
-	 * @param serv_medicion
-	 * @param serv_unidad_tiempo
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public float[] procesamientoComunFila(IntervaloFechas intervalo, List<Alarma> lista_alarmas_una_clave,
-			ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
-
-		Collections.sort(lista_alarmas_una_clave);
-		serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
-
-		return serv_medicion.completarFila(lista_alarmas_una_clave, serv_intervalo, serv_unidad_tiempo);
-	}
-
-	/**
 	 * con toda la informacion recopilada en cuanto al contexto de lo que
 	 * solicita el usuario, se completa una tabla de doble entrada que luego se
 	 * presentara en la vista
@@ -98,14 +68,32 @@ public abstract class ServDimAbstract {
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			boolean incluir_columnas_nulas);
 
+	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
+
+		for (int columna_actual = 0; columna_actual < valor_retorno[fila_actual].length; columna_actual++)
+			if (columna_actual != columna_nula)
+				lista.add(valor_retorno[fila_actual][columna_actual]);
+	}
+
 	/**
-	 * pide los nombres de los grupos que se obtienen de observar una lista
-	 * desde una dimension especifica.
+	 * una vez elegida la columna a eliminar de la matriz fila-columna, este
+	 * metodo resuelve el desplazamiento de las columnas siguiente
 	 * 
-	 * @return con estos nombres se llenara una tabla de simple columna que
-	 *         simula la seguda entrada de la que posee los datos.
+	 * @param valor_retorno
+	 *            arreglo de 2 dimensiones leido como fila-columna
+	 * @param columna_nula
+	 * @param serv_medicion
 	 */
-	public abstract Object[] getGrupos();
+	private void extraerColumna(float[][] valor_retorno, int columna_nula, ServMedAbstract serv_medicion) {
+
+		List<Float> lista = new ArrayList<Float>();
+
+		for (int fila_actual = 0; fila_actual < valor_retorno.length; fila_actual++) {
+
+			extraerCelda(valor_retorno, columna_nula, lista, fila_actual);
+			valor_retorno[fila_actual] = serv_medicion.envolturaFloatHaciaFloat(lista.toArray(new Float[lista.size()]));
+		}
+	}
 
 	/**
 	 * el usuario podr� decidir si las columnas sin valores deben tenerse en
@@ -139,29 +127,40 @@ public abstract class ServDimAbstract {
 	}
 
 	/**
-	 * una vez elegida la columna a eliminar de la matriz fila-columna, este
-	 * metodo resuelve el desplazamiento de las columnas siguiente
+	 * pide los nombres de los grupos que se obtienen de observar una lista
+	 * desde una dimension especifica.
 	 * 
-	 * @param valor_retorno
-	 *            arreglo de 2 dimensiones leido como fila-columna
-	 * @param columna_nula
-	 * @param serv_medicion
+	 * @return con estos nombres se llenara una tabla de simple columna que
+	 *         simula la seguda entrada de la que posee los datos.
 	 */
-	private void extraerColumna(float[][] valor_retorno, int columna_nula, ServMedAbstract serv_medicion) {
+	public abstract Object[] getGrupos();
 
-		List<Float> lista = new ArrayList<Float>();
+	/**
+	 * una vez que entra a una de las claves del hash, analiza todas las alarmas
+	 * que coinciden con la clave completa la fila correspondiente en la tabla
+	 * 
+	 * @param longitud_arreglo
+	 * @param lista_alarmas_una_clave
+	 * @param serv_intervalo
+	 * @param serv_medicion
+	 * @param serv_unidad_tiempo
+	 * @return
+	 */
+	public float[] procesamientoComunFila(IntervaloFechas intervalo, List<Alarma> lista_alarmas_una_clave,
+			ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
-		for (int fila_actual = 0; fila_actual < valor_retorno.length; fila_actual++) {
+		Collections.sort(lista_alarmas_una_clave);
+		serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
 
-			extraerCelda(valor_retorno, columna_nula, lista, fila_actual);
-			valor_retorno[fila_actual] = serv_medicion.envolturaFloatHaciaFloat(lista.toArray(new Float[lista.size()]));
-		}
+		return serv_medicion.completarFila(lista_alarmas_una_clave, serv_intervalo, serv_unidad_tiempo);
 	}
 
-	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
-
-		for (int columna_actual = 0; columna_actual < valor_retorno[fila_actual].length; columna_actual++)
-			if (columna_actual != columna_nula)
-				lista.add(valor_retorno[fila_actual][columna_actual]);
-	}
+	/**
+	 * crea un mapa hash donde la clave es una dimension de las especificadas en
+	 * el segundo nivel de evaluacion (ver documento de vision)
+	 * 
+	 * @param consultas
+	 */
+	public abstract void realizarHash(List<Alarma> consultas);
 }

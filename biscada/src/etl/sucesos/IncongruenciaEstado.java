@@ -35,7 +35,7 @@ public class IncongruenciaEstado extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public IncongruenciaEstado(String group) {
+	public IncongruenciaEstado() {
 		super.setDescripcion(this.toString());
 	}
 

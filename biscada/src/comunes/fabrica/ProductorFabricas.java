@@ -5,6 +5,8 @@
 
 package comunes.fabrica;
 
+import etl.controles.etl.CampoTextoDefectuoso;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -24,35 +26,41 @@ public class ProductorFabricas {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	/* ............................................. */
-	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
-	/* ............................................. */
+	private static CampoTextoDefectuoso alarma_rechazada;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public static FabricaAbstracta getFactory(String eleccion) {
-
-		if (eleccion.equals(Constantes.FABRICA_TIPO_DE_EQUIPO))
-			return new TipoDeEquipoFactory();
-
-		if (eleccion.equals(Constantes.FABRICA_FAMILIA))
-			return new FamiliaFactory();
-
-		if (eleccion.equals(Constantes.FABRICA_SITIO))
-			return new SitioFactory();
-
-		if (eleccion.equals(Constantes.FABRICA_SUCESO))
-			return new SucesoFactory();
-
-		return null;
+	public static CampoTextoDefectuoso getAlarma_rechazada() {
+		return alarma_rechazada;
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	public static FabricaAbstracta getFactory(String eleccion, CampoTextoDefectuoso alarma_rechazada) {
+
+		ProductorFabricas.alarma_rechazada = alarma_rechazada;
+
+		if (eleccion.equals(Constantes.FABRICA_EQUIPO_EN_SITIO))
+			return new EquipoEnSitioFactory(alarma_rechazada);
+
+		if (eleccion.equals(Constantes.FABRICA_TIPO_DE_EQUIPO))
+			return new TipoDeEquipoFactory(alarma_rechazada);
+
+		if (eleccion.equals(Constantes.FABRICA_FAMILIA))
+			return new FamiliaFactory(alarma_rechazada);
+
+		if (eleccion.equals(Constantes.FABRICA_SITIO))
+			return new SitioFactory(alarma_rechazada);
+
+		if (eleccion.equals(Constantes.FABRICA_SUCESO))
+			return new SucesoFactory(alarma_rechazada);
+
+		return null;
+	}
 }

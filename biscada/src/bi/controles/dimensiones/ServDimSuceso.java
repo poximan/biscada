@@ -52,22 +52,6 @@ public class ServDimSuceso extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas) {
-
-		map = new HashMap<Suceso, List<Alarma>>();
-
-		for (Alarma alarma_actual : consultas) {
-
-			Suceso key = alarma_actual.getSuceso();
-
-			if (map.get(key) == null)
-				map.put(key, new ArrayList<Alarma>());
-
-			map.get(key).add(alarma_actual);
-		}
-	}
-
-	@Override
 	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			boolean incluir_columnas_nulas) {
@@ -113,6 +97,22 @@ public class ServDimSuceso extends ServDimAbstract {
 		lista_de_suceso.clear();
 
 		return arreglo_suceso;
+	}
+
+	@Override
+	public void realizarHash(List<Alarma> consultas) {
+
+		map = new HashMap<Suceso, List<Alarma>>();
+
+		for (Alarma alarma_actual : consultas) {
+
+			Suceso key = alarma_actual.getSuceso();
+
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
+
+			map.get(key).add(alarma_actual);
+		}
 	}
 
 	/* ............................................. */

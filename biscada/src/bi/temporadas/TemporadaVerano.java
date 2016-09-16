@@ -40,8 +40,11 @@ public class TemporadaVerano extends Temporada {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "verano";
+	public int correccionFin(Calendar fecha_actual) {
+
+		if (fecha_actual.get(Calendar.MONTH) == Calendar.DECEMBER)
+			return 1;
+		return 0;
 	}
 
 	@Override
@@ -53,11 +56,8 @@ public class TemporadaVerano extends Temporada {
 	}
 
 	@Override
-	public int correccionFin(Calendar fecha_actual) {
-
-		if (fecha_actual.get(Calendar.MONTH) == Calendar.DECEMBER)
-			return 1;
-		return 0;
+	public String toString() {
+		return "verano";
 	}
 
 	/* ............................................. */

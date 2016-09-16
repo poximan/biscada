@@ -39,11 +39,23 @@ public class GestorPropiedades {
 	private static Logger log = Logger.getLogger(GestorPropiedades.class);
 
 	private static GestorPropiedades main_propiedades;
-	private JFrame frame_propiedades;
+	public static GestorPropiedades getSingleton() {
+
+		if (main_propiedades == null)
+			main_propiedades = new GestorPropiedades();
+		return main_propiedades;
+	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
+	private JFrame frame_propiedades;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	private GestorPropiedades() {
@@ -51,18 +63,6 @@ public class GestorPropiedades {
 		frame_propiedades = new JFrame("Parametros arranque");
 		frame_propiedades.getContentPane().add(new VistaPropiedades(), BorderLayout.CENTER);
 		log.trace("se crea panel de propiedades");
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	public static GestorPropiedades getSingleton() {
-
-		if (main_propiedades == null)
-			main_propiedades = new GestorPropiedades();
-		return main_propiedades;
 	}
 
 	public void mostrarVentana() {

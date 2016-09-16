@@ -7,12 +7,6 @@ package comunes.fabrica;
 
 import etl.controles.etl.CampoTextoDefectuoso;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
-import etl.familias.BackupActivo;
-import etl.familias.Cloacal;
-import etl.familias.ErrorComunicacion;
-import etl.familias.Login;
-import etl.familias.Potable;
-import etl.familias.Reuso;
 
 /* ............................................. */
 /* ............................................. */
@@ -46,14 +40,14 @@ import etl.familias.Reuso;
  * @author hdonato
  *
  */
-public class FamiliaFactory extends FabricaAbstracta {
+public class EquipoEnSitioFactory extends FabricaAbstracta {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public FamiliaFactory(CampoTextoDefectuoso alarma_rechazada) {
+	public EquipoEnSitioFactory(CampoTextoDefectuoso alarma_rechazada) {
 		super(alarma_rechazada);
 	}
 
@@ -66,31 +60,30 @@ public class FamiliaFactory extends FabricaAbstracta {
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
 		try {
-			if (discriminante.matches(".*" + BackupActivo.getExpresion_regular() + ".*"))
-				return new BackupActivo();
 
-			if (discriminante.matches(".*" + Cloacal.getExpresion_regular() + ".*"))
-				return new Cloacal();
-
-			if (discriminante.matches(".*" + ErrorComunicacion.getExpresion_regular() + ".*"))
-				return new ErrorComunicacion();
-
-			if (discriminante.matches(".*" + Login.getExpresion_regular() + ".*"))
-				return new Login();
-
-			if (discriminante.matches(".*" + Potable.getExpresion_regular() + ".*"))
-				return new Potable();
-
-			if (discriminante.matches(".*" + Reuso.getExpresion_regular() + ".*"))
-				return new Reuso();
+			FabricaAbstracta fabrica_tipo_de_equipo = ProductorFabricas.getFactory(Constantes.FABRICA_TIPO_DE_EQUIPO,
+					ProductorFabricas.getAlarma_rechazada());
+			TipoDatoFabricable tipo_de_equipo = fabrica_tipo_de_equipo.getInstancia(discriminante);
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),
-					discriminante);
+			super.getAlarma_rechazada().agregarNuevaAlarma(EquipoEnSitioFactory.class.getSimpleName(),
+					excepcion.getMessage(), discriminante);
 		}
 
 		return null;
+	}
+
+	private String obtenerIdEquipo(String group) {
+
+		String[] split = group.split(" ");
+
+		if (split.length == 1) { // si el numero de equipo viene pegado a la
+									// descripcion del equipo
+			split[0] = new StringBuilder(split[0]).insert(split[0].length() - 1, " ").toString();
+			split = split[0].split(" ");
+		}
+		return split[split.length - 1];
 	}
 }

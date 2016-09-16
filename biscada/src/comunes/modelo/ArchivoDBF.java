@@ -38,7 +38,7 @@ import javax.persistence.TemporalType;
 @Table(name = "archivo_dbf")
 @NamedQueries({ @NamedQuery(name = "ArchivoDBF.buscTodos", query = "SELECT tabla FROM ArchivoDBF tabla"),
 		@NamedQuery(name = "ArchivoDBF.buscRuta", query = "SELECT tabla FROM ArchivoDBF tabla WHERE tabla.ruta = :ruta"), })
-public class ArchivoDBF implements Comparable<ArchivoDBF> {
+public final class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -98,6 +98,31 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 		return false;
 	}
 
+	public Calendar getComienzo() {
+		return comienzo;
+	}
+
+	public Calendar getFin() {
+		return fin;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public Boolean getValido() {
+		return valido;
+	}
+
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
 	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que
@@ -119,34 +144,8 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 		return hash;
 	}
 
-	@Override
-	public String toString() {
-		return ruta.substring(ruta.lastIndexOf("\\") + 1);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public Calendar getComienzo() {
-		return comienzo;
-	}
-
-	public Calendar getFin() {
-		return fin;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getRuta() {
-		return ruta;
-	}
-
-	public Boolean getValido() {
-		return valido;
+	public void setComienzo(Calendar comienzo) {
+		this.comienzo = comienzo;
 	}
 
 	/* ............................................. */
@@ -154,16 +153,12 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setComienzo(Calendar comienzo) {
-		this.comienzo = comienzo;
-	}
-
 	public void setFin(Calendar fin) {
 		this.fin = fin;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setRuta(String ruta) {
@@ -172,5 +167,10 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	public void setValido(Boolean valido) {
 		this.valido = valido;
+	}
+
+	@Override
+	public String toString() {
+		return ruta.substring(ruta.lastIndexOf("\\") + 1);
 	}
 }

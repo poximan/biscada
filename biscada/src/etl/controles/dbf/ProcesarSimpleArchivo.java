@@ -34,24 +34,43 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	private static int totalizador_extraidas = 0;
 	private static int totalizador_transformadas = 0;
 
+	public static int getTotalizador_extraidas() {
+		return totalizador_extraidas;
+	}
+	public static int getTotalizador_transformadas() {
+		return totalizador_transformadas;
+	}
 	private ETL0Extraer extractor;
-	private ETL1Transformar transformador;
-	private ETL2Cargar cargador;
 
-	private List<ArchAlarma> alarmas_extraidas;
+	private ETL1Transformar transformador;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ProcesarSimpleArchivo() {
-	}
+	private ETL2Cargar cargador;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	private List<ArchAlarma> alarmas_extraidas;
+
+	public ProcesarSimpleArchivo() {
+	}
+
+	private void actualizarTotalizadores(int extraidas, int transformadas) {
+
+		totalizador_extraidas += extraidas;
+		totalizador_transformadas += transformadas;
+	}
+
+	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
+
+		dbf_servicio_crud.borrar(archivo_actual);
+	}
 
 	public void insertarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
 
@@ -80,28 +99,28 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		dbf_servicio_crud.actualizar(archivo_actual);
 	}
 
-	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
+	@Override
+	public void liberarObjetos() {
 
-		dbf_servicio_crud.borrar(archivo_actual);
+		extractor.liberarObjetos();
+		transformador.liberarObjetos();
+		cargador.liberarObjetos();
 	}
 
-	private void actualizarTotalizadores(int extraidas, int transformadas) {
-
-		totalizador_extraidas += extraidas;
-		totalizador_transformadas += transformadas;
+	/**
+	 * muestra resultados eliminacion de un archivo
+	 * 
+	 * @param archivo_actual
+	 */
+	public void mostarInfo(ArchivoDBF archivo_actual) {
+		log.info("Se elimino archivo "
+				+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 	}
 
-	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {
-
-		log.info("se extrajeron " + extraidas + " filas del archivo DBF");
-		log.info("se transformaron " + transformadas + " filas de las extraidas");
-
-		if (!alarmas_defectuosas.estaVacia()) {
-			log.info("se encontraron defectos en...");
-			log.trace(alarmas_defectuosas.toString());
-			log.info("de las defectuosas se aceptaron aquellas con sitio y suceso");
-		}
-	}
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	/**
 	 * muestra resultados creacion de un archivo
@@ -116,34 +135,15 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 				+ " [" + actual + "-" + totales + "]");
 	}
 
-	/**
-	 * muestra resultados eliminacion de un archivo
-	 * 
-	 * @param archivo_actual
-	 */
-	public void mostarInfo(ArchivoDBF archivo_actual) {
-		log.info("Se elimino archivo "
-				+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
-	}
+	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {
 
-	@Override
-	public void liberarObjetos() {
+		log.info("se extrajeron " + extraidas + " filas del archivo DBF");
+		log.info("se transformaron " + transformadas + " filas de las extraidas");
 
-		extractor.liberarObjetos();
-		transformador.liberarObjetos();
-		cargador.liberarObjetos();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public static int getTotalizador_extraidas() {
-		return totalizador_extraidas;
-	}
-
-	public static int getTotalizador_transformadas() {
-		return totalizador_transformadas;
+		if (!alarmas_defectuosas.estaVacia()) {
+			log.info("se encontraron defectos en...");
+			log.trace(alarmas_defectuosas.toString());
+			log.info("de las defectuosas se aceptaron aquellas con sitio y suceso");
+		}
 	}
 }

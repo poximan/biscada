@@ -57,6 +57,36 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	/* ............................................. */
 
 	/**
+	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
+	 * 
+	 * @param metodo_borrado
+	 * 
+	 * @param lista_candidatos_extraer
+	 */
+	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {
+
+		Transaccion metodo_borrado = new Transaccion();
+		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
+
+		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
+
+		while (iterador.hasNext()) {
+
+			ArchivoDBF archivo_actual = iterador.next();
+
+			metodo_borrado.beginArchivo();
+
+			archivo_actual = EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
+			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
+
+			metodo_borrado.enviarCacheHaciaBD();
+			metodo_borrado.limpiarCache();
+
+			metodo_borrado.commitArchivo();
+		}
+	}
+
+	/**
 	 * usando la carpeta origen como unico punto para recoleccion de archivos,
 	 * comienza la lectura de todos ellos. algunos posiblemente hayan sido
 	 * insertados en una ejecucion previa, en ese caso no se insertara
@@ -93,6 +123,10 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		return false;
 	}
 
+	public ServCRUDArchivoDBF getDbf_servicio_crud() {
+		return dbf_servicio_crud;
+	}
+
 	/**
 	 * comieza el proceso ETL de todos los archivos validos para ser insertados
 	 * 
@@ -124,43 +158,6 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		mostarInfo();
 	}
 
-	private void mostarInfo() {
-
-		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
-		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
-				+ " filas del total extraidas");
-	}
-
-	/**
-	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
-	 * 
-	 * @param metodo_borrado
-	 * 
-	 * @param lista_candidatos_extraer
-	 */
-	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {
-
-		Transaccion metodo_borrado = new Transaccion();
-		ProcesarSimpleArchivo gestor = new ProcesarSimpleArchivo();
-
-		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
-
-		while (iterador.hasNext()) {
-
-			ArchivoDBF archivo_actual = iterador.next();
-
-			metodo_borrado.beginArchivo();
-
-			archivo_actual = EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
-			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
-
-			metodo_borrado.enviarCacheHaciaBD();
-			metodo_borrado.limpiarCache();
-
-			metodo_borrado.commitArchivo();
-		}
-	}
-
 	@Override
 	public void liberarObjetos() {
 		dbf_servicio_crud.liberarObjetos();
@@ -171,8 +168,11 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public ServCRUDArchivoDBF getDbf_servicio_crud() {
-		return dbf_servicio_crud;
+	private void mostarInfo() {
+
+		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
+		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
+				+ " filas del total extraidas");
 	}
 
 	/* ............................................. */

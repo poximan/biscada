@@ -32,12 +32,12 @@ public class GraficoKPI extends JPanel {
 
 	private static DefaultValueDataset dataset;
 
+	private static double canTotal;
 	private MeterInterval intervaloNormal;
 	private MeterInterval intervaloAdvertencia;
-	private MeterInterval intervaloPeligro;
 
+	private MeterInterval intervaloPeligro;
 	private JPanel panel;
-	private static double canTotal;
 	private double promHist;
 	private double porcentajeF;
 
@@ -57,15 +57,30 @@ public class GraficoKPI extends JPanel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public JPanel createPanel() {
+	/**
+	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
+	 * o seteo de porcentaje).
+	 */
+	public void actualizarIntervalos() {
 
-		JFreeChart chart = createChart();
-		ChartPanel chartpanel = new ChartPanel(chart);
-		chartpanel.setPreferredSize(new Dimension(300, 300));
-		panel = chartpanel;
-		add(panel);
-		panel.setPreferredSize(new Dimension(300, 300));
-		return panel;
+		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
+				new Color(255, 255, 0, 64));
+
+		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(rangoMin, rangoMax), Color.black,
+				new BasicStroke(2.0F), Color.yellow.brighter());
+
+		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black,
+				new BasicStroke(3.0F), Color.RED);
+	}
+
+	/**
+	 * Se cargan los datos para ser reflejados en el sem�foro
+	 */
+	public void cargarDatos(float cantTotal, float promH, float cantAct) {
+
+		dataset = new DefaultValueDataset(cantAct);
+		promHist = promH;
+		canTotal = cantTotal;
 	}
 
 	/**
@@ -110,30 +125,15 @@ public class GraficoKPI extends JPanel {
 		return jfreechart;
 	}
 
-	/**
-	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
-	 * o seteo de porcentaje).
-	 */
-	public void actualizarIntervalos() {
+	public JPanel createPanel() {
 
-		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
-				new Color(255, 255, 0, 64));
-
-		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(rangoMin, rangoMax), Color.black,
-				new BasicStroke(2.0F), Color.yellow.brighter());
-
-		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black,
-				new BasicStroke(3.0F), Color.RED);
-	}
-
-	/**
-	 * Se cargan los datos para ser reflejados en el sem�foro
-	 */
-	public void cargarDatos(float cantTotal, float promH, float cantAct) {
-
-		dataset = new DefaultValueDataset(cantAct);
-		promHist = promH;
-		canTotal = cantTotal;
+		JFreeChart chart = createChart();
+		ChartPanel chartpanel = new ChartPanel(chart);
+		chartpanel.setPreferredSize(new Dimension(300, 300));
+		panel = chartpanel;
+		add(panel);
+		panel.setPreferredSize(new Dimension(300, 300));
+		return panel;
 	}
 
 	/**

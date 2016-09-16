@@ -52,23 +52,6 @@ public class ServDimSitio extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas) {
-
-		map = new HashMap<Sitio, List<Alarma>>();
-
-		for (Alarma alarma_actual : consultas) {
-
-			Sitio key = alarma_actual.getSitio();
-
-			// si no existe la clave, se crea
-			if (map.get(key) == null)
-				map.put(key, new ArrayList<Alarma>());
-
-			map.get(key).add(alarma_actual);
-		}
-	}
-
-	@Override
 	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			boolean incluir_columnas_nulas) {
@@ -115,13 +98,30 @@ public class ServDimSitio extends ServDimAbstract {
 		return arreglo_sitio;
 	}
 
+	public Map<Sitio, List<Alarma>> getMap() {
+		return map;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public Map<Sitio, List<Alarma>> getMap() {
-		return map;
+	@Override
+	public void realizarHash(List<Alarma> consultas) {
+
+		map = new HashMap<Sitio, List<Alarma>>();
+
+		for (Alarma alarma_actual : consultas) {
+
+			Sitio key = alarma_actual.getSitio();
+
+			// si no existe la clave, se crea
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
+
+			map.get(key).add(alarma_actual);
+		}
 	}
 
 	/* ............................................. */

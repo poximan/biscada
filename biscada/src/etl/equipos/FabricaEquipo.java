@@ -54,31 +54,6 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 	/* ............................................. */
 
 	@Override
-	public void prepararExpresionRegular(String campo_texto) {
-
-		try {
-			Pattern patron = Pattern.compile(expresion_regular.getExpresion_regular());
-			Matcher matcher = patron.matcher(campo_texto);
-
-			// verificar que coincida con algun grupo
-			if (!matcher.find())
-				throw new CampoTextoNoEncontradoExcepcion(campo_texto);
-
-			matcher.reset();
-
-			id_equipo = 0;
-			crearPropietario(campo_texto, matcher);
-			equipo_en_sitio = new EquipoEnSitio(texto_propietario, id_equipo);
-		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaEquipo.class.getSimpleName(), excepcion.getMessage(),
-					campo_texto);
-		} catch (CampoTextoAmbiguoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaEquipo.class.getSimpleName(), excepcion.getMessage(),
-					campo_texto);
-		}
-	}
-
-	@Override
 	public void crearPropietario(String campo_texto, Matcher matcher)
 			throws CampoTextoNoEncontradoExcepcion, CampoTextoAmbiguoExcepcion {
 
@@ -171,5 +146,30 @@ public class FabricaEquipo extends Fabrica implements TextoDiferenciable {
 			split = split[0].split(" ");
 		}
 		return split[split.length - 1];
+	}
+
+	@Override
+	public void prepararExpresionRegular(String campo_texto) {
+
+		try {
+			Pattern patron = Pattern.compile(expresion_regular.getExpresion_regular());
+			Matcher matcher = patron.matcher(campo_texto);
+
+			// verificar que coincida con algun grupo
+			if (!matcher.find())
+				throw new CampoTextoNoEncontradoExcepcion(campo_texto);
+
+			matcher.reset();
+
+			id_equipo = 0;
+			crearPropietario(campo_texto, matcher);
+			equipo_en_sitio = new EquipoEnSitio(texto_propietario, id_equipo);
+		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaEquipo.class.getSimpleName(), excepcion.getMessage(),
+					campo_texto);
+		} catch (CampoTextoAmbiguoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FabricaEquipo.class.getSimpleName(), excepcion.getMessage(),
+					campo_texto);
+		}
 	}
 }

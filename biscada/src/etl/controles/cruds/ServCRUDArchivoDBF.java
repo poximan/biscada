@@ -58,23 +58,22 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void agregarDisponibles(Path entrada_archivo) {
+	@Override
+	public void actualizar(Object entidad) {
 
-		ArchivoDBF archivo_propietario = crearDBF(entrada_archivo);
-		list_disponibles.add(archivo_propietario);
+		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+
+		if (archivo_actual.getComienzo() == null)
+			archivo_actual.setComienzo(Calendar.getInstance());
+		else if (archivo_actual.getFin() == null)
+			archivo_actual.setFin(Calendar.getInstance());
 	}
 
-	private ArchivoDBF crearDBF(Path entrada_archivo) {
+	@Override
+	@SuppressWarnings("unchecked")
+	public void actualizarLista() {
 
-		ArchivoDBF archivo_propietario = new ArchivoDBF();
-		archivo_propietario.setRuta(entrada_archivo.toString());
-		return archivo_propietario;
-	}
-
-	public boolean existeEnBD(Path entrada_archivo) {
-
-		archivo_propietario.setRuta(entrada_archivo.toString());
-		return list_procesados.contains(archivo_propietario);
+		list_procesados = getQueryTodos().getResultList();
 	}
 
 	/**
@@ -96,33 +95,15 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		list_disponibles.add(archivo_actual);
 	}
 
-	/**
-	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
-	 * listas con valores iniciales relativo al contexto (archivos para
-	 * procesador, archivos insertados en BD). en la medida que el usuario usa
-	 * la pantalla este contexto comienza a cambiar. para mantaner los
-	 * contadores y listas de valores en orden se utilizan metodos de soporte,
-	 * uno de ellos es este.
-	 * 
-	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ...
-	 * ... ... ... ... ... ... ... ... ... quita un archivo a la lista de
-	 * disponibles si es que se pudo ingresar satisfactoriamente a la BD.
-	 * 
-	 * @param archivo_actual
-	 */
-	public void quitarDisponible(ArchivoDBF archivo_actual) {
-		list_disponibles.remove(archivo_actual);
-	}
+	public void agregarDisponibles(Path entrada_archivo) {
 
-	private int getIndiceCacheBD(Alarma alarma_actual) {
-		return list_procesados.lastIndexOf(alarma_actual.getArchivo_propietario());
+		ArchivoDBF archivo_propietario = crearDBF(entrada_archivo);
+		list_disponibles.add(archivo_propietario);
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public void actualizarLista() {
-
-		list_procesados = getQueryTodos().getResultList();
+	public void borrar(Object entidad) {
+		em.remove(entidad);
 	}
 
 	@Override
@@ -140,36 +121,51 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	}
 
 	@Override
+	public void crear(Object entidad) {
+		em.persist(entidad);
+	}
+
+	private ArchivoDBF crearDBF(Path entrada_archivo) {
+
+		ArchivoDBF archivo_propietario = new ArchivoDBF();
+		archivo_propietario.setRuta(entrada_archivo.toString());
+		return archivo_propietario;
+	}
+
+	public boolean existeEnBD(Path entrada_archivo) {
+
+		archivo_propietario.setRuta(entrada_archivo.toString());
+		return list_procesados.contains(archivo_propietario);
+	}
+
+	private int getIndiceCacheBD(Alarma alarma_actual) {
+		return list_procesados.lastIndexOf(alarma_actual.getArchivo_propietario());
+	}
+
+	public List<ArchivoDBF> getListaDisponibles() {
+		return list_disponibles;
+	}
+
+	public List<ArchivoDBF> getListaProcesados() {
+		actualizarLista();
+		return list_procesados;
+	}
+
+	@Override
 	public Query getQueryTodos() {
 
 		return Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM().createNamedQuery("ArchivoDBF.buscTodos");
 	}
 
 	@Override
-	public void actualizar(Object entidad) {
-
-		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
-
-		if (archivo_actual.getComienzo() == null)
-			archivo_actual.setComienzo(Calendar.getInstance());
-		else if (archivo_actual.getFin() == null)
-			archivo_actual.setFin(Calendar.getInstance());
-	}
-
-	@Override
-	public void borrar(Object entidad) {
-		em.remove(entidad);
-	}
-
-	@Override
-	public void crear(Object entidad) {
-		em.persist(entidad);
-	}
-
-	@Override
 	public Object leer(Object entidad) {
 		return null;
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	@Override
 	public void liberarObjetos() {
@@ -178,18 +174,22 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		list_procesados.clear();
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public List<ArchivoDBF> getListaProcesados() {
-		actualizarLista();
-		return list_procesados;
-	}
-
-	public List<ArchivoDBF> getListaDisponibles() {
-		return list_disponibles;
+	/**
+	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
+	 * listas con valores iniciales relativo al contexto (archivos para
+	 * procesador, archivos insertados en BD). en la medida que el usuario usa
+	 * la pantalla este contexto comienza a cambiar. para mantaner los
+	 * contadores y listas de valores en orden se utilizan metodos de soporte,
+	 * uno de ellos es este.
+	 * 
+	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ...
+	 * ... ... ... ... ... ... ... ... ... quita un archivo a la lista de
+	 * disponibles si es que se pudo ingresar satisfactoriamente a la BD.
+	 * 
+	 * @param archivo_actual
+	 */
+	public void quitarDisponible(ArchivoDBF archivo_actual) {
+		list_disponibles.remove(archivo_actual);
 	}
 
 	/* ............................................. */

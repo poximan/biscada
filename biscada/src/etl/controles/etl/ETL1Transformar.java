@@ -12,6 +12,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import comunes.controles.ObjetosBorrables;
+import comunes.fabrica.Constantes;
+import comunes.fabrica.FabricaAbstracta;
+import comunes.fabrica.ProductorFabricas;
+import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.Alarma;
 import comunes.modelo.ArchivoDBF;
 import comunes.modelo.EquipoEnSitio;
@@ -19,10 +23,6 @@ import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
 import comunes.modelo.Suceso;
 import etl.controles.dbf.ArchAlarma;
-import etl.equipos.FabricaEquipo;
-import etl.familias.FabricaFamilia;
-import etl.sitios.FabricaSitio;
-import etl.sucesos.FabricaSuceso;
 
 /* ............................................. */
 /* ............................................. */
@@ -66,51 +66,6 @@ public class ETL1Transformar implements ObjetosBorrables {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void transformarAlarmas(ArchivoDBF archivo_propietario, CampoTextoDefectuoso alarma_rechazada) {
-
-		int fila = 0;
-		alarmas_transformadas = new LinkedList<Alarma>();
-
-		for (ArchAlarma alarma_no_transformada : alarmas_extraidas) {
-
-			try {
-				Alarma alarma_transformada = new Alarma();
-
-				pasarPrimitivosDirecto(alarma_transformada, alarma_no_transformada);
-				convertirTextoANumero(alarma_transformada, alarma_no_transformada);
-				unificarColumnasFecha(alarma_transformada, alarma_no_transformada);
-
-				/*
-				 * caso especial descubrir familia
-				 */
-				TextoDiferenciable nueva_familia = new FabricaFamilia(alarma_rechazada);
-				convertirTextoAObjeto(alarma_transformada, alarma_no_transformada.getNAME(), nueva_familia);
-
-				/*
-				 * caso especial descubrir sitio, equipo y suceso a partir de
-				 * campo unico
-				 */
-				TextoDiferenciable elementos_separados[] = { new FabricaSitio(alarma_rechazada),
-						new FabricaEquipo(alarma_rechazada), new FabricaSuceso(alarma_rechazada) };
-
-				dividirCampoTexto(alarma_transformada, alarma_no_transformada.getTEXT(), elementos_separados, fila);
-
-				agregarPropietario(alarma_transformada, archivo_propietario);
-
-				if (esAlarmaValida(alarma_transformada))
-					alarmas_transformadas.add(alarma_transformada);
-
-			} catch (NullPointerException excepcion) {
-				log.error("error leyendo fila " + (fila + 1) + ": " + alarma_no_transformada.getTEXT());
-			}
-			fila++;
-		}
-	}
-
-	private void agregarPropietario(Alarma alarma_transformada, ArchivoDBF archivo_propietario) {
-		alarma_transformada.setArchivo_propietario(archivo_propietario);
-	}
-
 	private void convertirTextoANumero(Alarma alarma_transformada, ArchAlarma alarma_no_transformada) {
 
 		alarma_transformada.setSeveridad(insertarInt(alarma_no_transformada.getSEVERITY()));
@@ -119,37 +74,21 @@ public class ETL1Transformar implements ObjetosBorrables {
 		alarma_transformada.setAtributo(insertarInt(alarma_no_transformada.getATTR()));
 	}
 
-	private void convertirTextoAObjeto(Alarma alarma_transformada, String campo_nombre,
-			TextoDiferenciable nueva_familia) {
-
-		try {
-			nueva_familia.prepararExpresionRegular(campo_nombre);
-		} catch (NullPointerException excepcion) {
-			throw excepcion;
-		}
-		alarma_transformada.setFamilia((Familia) nueva_familia.getPropietario());
-	}
-
-	private void dividirCampoTexto(Alarma alarma_transformada, String campo_texto,
-			TextoDiferenciable[] elementos_separados, int fila) {
-
-		try {
-			for (int indice = 0; indice < elementos_separados.length; indice++)
-				elementos_separados[indice].prepararExpresionRegular(campo_texto);
-		} catch (NullPointerException excepcion) {
-			throw excepcion;
-		}
-
-		alarma_transformada.setSitio((Sitio) elementos_separados[0].getPropietario());
-		alarma_transformada.setEquipo_en_sitio((EquipoEnSitio) elementos_separados[1].getPropietario());
-		alarma_transformada.setSuceso((Suceso) elementos_separados[2].getPropietario());
-	}
-
 	private boolean esAlarmaValida(Alarma alarma_transformada) {
 
-		if (alarma_transformada.getSitio() != null && alarma_transformada.getSuceso() != null)
+		if (//
+		alarma_transformada.getFecha_inicio() != null && //
+				alarma_transformada.getFamilia() != null && //
+				alarma_transformada.getSitio() != null && //
+				alarma_transformada.getSuceso() != null//
+		)
 			return true;
+
 		return false;
+	}
+
+	public List<Alarma> getAlarmas_transformadas() {
+		return alarmas_transformadas;
 	}
 
 	private Integer insertarInt(String texto) {
@@ -179,8 +118,8 @@ public class ETL1Transformar implements ObjetosBorrables {
 
 	private void pasarPrimitivosDirecto(Alarma alarma_transformada, ArchAlarma alarma_no_transformada) {
 
-		alarma_transformada.setAck_usuario(alarma_no_transformada.getACK_NAME());
-		alarma_transformada.setIdentificacion(alarma_no_transformada.getIDENT());
+		alarma_transformada.setAck_usuario(alarma_no_transformada.getACK_NAME().trim());
+		alarma_transformada.setIdentificacion(alarma_no_transformada.getIDENT().trim());
 	}
 
 	@Override
@@ -188,7 +127,38 @@ public class ETL1Transformar implements ObjetosBorrables {
 		return alarmas_transformadas.toString();
 	}
 
-	private Calendar transformarTiempos(String segundo, String milisegundo) {
+	public void transformarAlarmas(ArchivoDBF archivo_propietario, CampoTextoDefectuoso alarma_rechazada) {
+
+		int fila = 0;
+		alarmas_transformadas = new LinkedList<Alarma>();
+
+		for (ArchAlarma alarma_no_transformada : alarmas_extraidas) {
+
+			try {
+				Alarma alarma_transformada = new Alarma();
+
+				pasarPrimitivosDirecto(alarma_transformada, alarma_no_transformada);
+				convertirTextoANumero(alarma_transformada, alarma_no_transformada);
+				unificarColumnasFecha(alarma_transformada, alarma_no_transformada);
+
+				usarAbstractFactory(alarma_transformada, alarma_no_transformada, alarma_rechazada);
+
+				alarma_transformada.setArchivo_propietario(archivo_propietario);
+
+				if (esAlarmaValida(alarma_transformada))
+					alarmas_transformadas.add(alarma_transformada);
+
+			} catch (NullPointerException excepcion) {
+				log.error("error leyendo fila " + (fila + 1) + ": " + alarma_no_transformada.getTEXT());
+			}
+			fila++;
+		}
+	}
+
+	private Calendar transformarTiempos(String _segundo, String _milisegundo) {
+
+		String segundo = _segundo.trim();
+		String milisegundo = _milisegundo.trim();
 
 		if (segundo.equals(new String("0")))
 			return null;
@@ -229,7 +199,38 @@ public class ETL1Transformar implements ObjetosBorrables {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public List<Alarma> getAlarmas_transformadas() {
-		return alarmas_transformadas;
+	private void usarAbstractFactory(Alarma alarma_transformada, ArchAlarma alarma_no_transformada,
+			CampoTextoDefectuoso alarma_rechazada) {
+
+		/*
+		 * caso especial descubrir familia
+		 */
+		FabricaAbstracta fabrica_familia = ProductorFabricas.getFactory(Constantes.FABRICA_FAMILIA, alarma_rechazada);
+		TipoDatoFabricable familia = fabrica_familia.getInstancia(alarma_no_transformada.getNAME().trim());
+		alarma_transformada.setFamilia((Familia) familia);
+
+		String texto_compuesto = alarma_no_transformada.getTEXT().trim();
+
+		/*
+		 * caso especial descubrir sitio desde campo de texto compartido
+		 */
+		FabricaAbstracta fabrica_sitio = ProductorFabricas.getFactory(Constantes.FABRICA_SITIO, alarma_rechazada);
+		TipoDatoFabricable sitio = fabrica_sitio.getInstancia(texto_compuesto);
+		alarma_transformada.setSitio((Sitio) sitio);
+
+		/*
+		 * caso especial descubrir sitio desde campo de texto compartido
+		 */
+		FabricaAbstracta fabrica_suceso = ProductorFabricas.getFactory(Constantes.FABRICA_SUCESO, alarma_rechazada);
+		TipoDatoFabricable suceso = fabrica_suceso.getInstancia(texto_compuesto);
+		alarma_transformada.setSuceso((Suceso) suceso);
+
+		/*
+		 * caso especial descubrir sitio desde campo de texto compartido
+		 */
+		FabricaAbstracta fabrica_equipo_en_sitio = ProductorFabricas.getFactory(Constantes.FABRICA_EQUIPO_EN_SITIO,
+				alarma_rechazada);
+		TipoDatoFabricable equipo_en_sitio = fabrica_equipo_en_sitio.getInstancia(texto_compuesto);
+		alarma_transformada.setEquipo_en_sitio((EquipoEnSitio) equipo_en_sitio);
 	}
 }

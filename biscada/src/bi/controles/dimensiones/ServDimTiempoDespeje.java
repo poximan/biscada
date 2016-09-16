@@ -56,23 +56,6 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public void realizarHash(List<Alarma> consultas) {
-
-		map = new HashMap<TiempoDespeje, List<Alarma>>();
-		FabricaTiempoDespeje fabrica_key = new FabricaTiempoDespeje();
-
-		for (Alarma alarma_actual : consultas) {
-
-			TiempoDespeje key = fabrica_key.buscarRango(alarma_actual);
-
-			if (map.get(key) == null)
-				map.put(key, new ArrayList<Alarma>());
-
-			map.get(key).add(alarma_actual);
-		}
-	}
-
-	@Override
 	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
 			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
 			boolean incluir_columnas_nulas) {
@@ -117,6 +100,23 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 		lista_segun_despeje.clear();
 
 		return arreglo_tiempos;
+	}
+
+	@Override
+	public void realizarHash(List<Alarma> consultas) {
+
+		map = new HashMap<TiempoDespeje, List<Alarma>>();
+		FabricaTiempoDespeje fabrica_key = new FabricaTiempoDespeje();
+
+		for (Alarma alarma_actual : consultas) {
+
+			TiempoDespeje key = fabrica_key.buscarRango(alarma_actual);
+
+			if (map.get(key) == null)
+				map.put(key, new ArrayList<Alarma>());
+
+			map.get(key).add(alarma_actual);
+		}
 	}
 
 	/* ............................................. */

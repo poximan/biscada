@@ -59,6 +59,19 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
+	}
+
+	/*
+	 * Genero el m�todo para pasar el arreglo de fechas (non-Javadoc)
+	 * 
+	 * @see
+	 * control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(
+	 * java.util.Calendar)
+	 */
+
+	@Override
 	public String[] getEncabezado() {
 
 		int indice = 0;
@@ -80,14 +93,6 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		}
 		return encabezado;
 	}
-
-	/*
-	 * Genero el m�todo para pasar el arreglo de fechas (non-Javadoc)
-	 * 
-	 * @see
-	 * control_dimensiones.FraccionTiempoCalculable#getTextoColumnaUnidadTiempo(
-	 * java.util.Calendar)
-	 */
 
 	@Override
 	public Date[] getEncabezadoFecha() {
@@ -122,21 +127,16 @@ public class ServDimUnidadTiempoAnio extends ServDimUnidadTiempoAbstract {
 		return desripcion;
 	}
 
-	@Override
-	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
-
-		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return dif_anios + 1;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
+
+		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
+		return dif_anios + 1;
 	}
 
 	/* ............................................. */

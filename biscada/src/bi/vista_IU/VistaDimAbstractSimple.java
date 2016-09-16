@@ -126,6 +126,172 @@ public abstract class VistaDimAbstractSimple extends JPanel
 	/* ............................................. */
 
 	@Override
+	public void armarSolapasGraficas() {
+
+		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla, encabezado_tabla,
+				componenteTabla.getTbl_titulo_filas());
+		GraficoLineas tercer_grafico = new GraficoLineas(datos_tabla, encabezado_tabla,
+				componenteTabla.getTbl_titulo_filas());
+		GraficoTorta cuarto_grafico = new GraficoTorta(datos_tabla, componenteTabla.getTbl_titulo_filas());
+
+		JScrollPane scroll_primer_grafico = primer_grafico.construirPanel();
+		JScrollPane scroll_segundo_grafico = tercer_grafico.construirPanel();
+		JScrollPane scroll_tercer_grafico = cuarto_grafico.construirPanel();
+
+		if (tabPane_grafico.getTabCount() == 0) {
+			tabPane_grafico.addTab("..barras", scroll_primer_grafico);
+			tabPane_grafico.addTab("..lineas", scroll_segundo_grafico);
+			tabPane_grafico.addTab("..torta", scroll_tercer_grafico);
+		} else {
+			tabPane_grafico.setComponentAt(0, scroll_primer_grafico);
+			tabPane_grafico.setComponentAt(1, scroll_segundo_grafico);
+			tabPane_grafico.setComponentAt(2, scroll_tercer_grafico);
+		}
+
+		tabPane_grafico.validate();
+	}
+
+	private void cargarTodasLasMediciones() {
+
+		cbox_medicion.removeAllItems();
+		cbox_medicion.addItem(new ServMedTotal());
+		cbox_medicion.addItem(new ServMedPromedio());
+	}
+
+	private void cargarTodasLasUnidadesTiempo() {
+
+		ServDimUnidadTiempoMes serv_mes = new ServDimUnidadTiempoMes(intervalo);
+
+		cbox_dim_tiempo.removeAllItems();
+
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoQuincena(intervalo, serv_mes));
+		cbox_dim_tiempo.addItem(serv_mes);
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoTrimestre(intervalo));
+		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoAnio(intervalo));
+	}
+
+	@Override
+	public void configEventos(EventoDim eventos) {
+
+		cargarTodasLasMediciones();
+		cargarTodasLasUnidadesTiempo();
+
+		btnCalidadServicio.addActionListener(eventos);
+		btnEjecutar.addActionListener(eventos);
+	}
+
+	@Override
+	public void ejecutarDimension() {
+
+		serv_medicion = getMedicion();
+		serv_unidad_tiempo = getDimensionUnidadTiempo();
+
+		serv_dim_vista_seleccionada.realizarHash(consulta);
+
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
+				serv_unidad_tiempo, true);
+
+		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
+
+		componenteTabla.setIntervalo(intervalo);
+
+		componenteTabla.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
+		componenteTabla.contruirModeloEntradaColumnas(datos_tabla, encabezado_tabla);
+
+		armarSolapasGraficas();
+	}
+
+	public JButton getBtnCalidadServicio() {
+		return btnCalidadServicio;
+	}
+
+	public JButton getBtnEjecutar() {
+		return btnEjecutar;
+	}
+
+	public ComponenteTabla getComponenteTabla() {
+		return componenteTabla;
+	}
+
+	public List<Alarma> getConsulta() {
+		return consulta;
+	}
+
+	private ServDimUnidadTiempoAbstract getDimensionUnidadTiempo() {
+
+		Object entidad = cbox_dim_tiempo.getSelectedItem();
+
+		if (entidad instanceof ServDimUnidadTiempoQuincena)
+			return (ServDimUnidadTiempoQuincena) entidad;
+		if (entidad instanceof ServDimUnidadTiempoMes)
+			return (ServDimUnidadTiempoMes) entidad;
+		if (entidad instanceof ServDimUnidadTiempoAnio)
+			return (ServDimUnidadTiempoAnio) entidad;
+		if (entidad instanceof ServDimUnidadTiempoTrimestre)
+			return (ServDimUnidadTiempoTrimestre) entidad;
+
+		return null;
+	}
+
+	private ServMedAbstract getMedicion() {
+
+		Object entidad = cbox_medicion.getSelectedItem();
+
+		if (entidad instanceof ServMedTotal)
+			return (ServMedTotal) entidad;
+		if (entidad instanceof ServMedPromedio)
+			return (ServMedPromedio) entidad;
+
+		return null;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
+	public ServMedAbstract getMedicionSeleccionada() {
+		return getMedicion();
+	}
+
+	public ServDimSitio getServ_dim_sitio() {
+		return serv_dim_sitio;
+	}
+
+	public ServIntervaloFechas getServ_intervalo() {
+		return serv_intervalo;
+	}
+
+	public ServMedAbstract getServ_medicion() {
+		return serv_medicion;
+	}
+
+	public ServDimUnidadTiempoAbstract getServ_unidad_tiempo() {
+		return serv_unidad_tiempo;
+	}
+
+	public ServDimUnidadTiempoAbstract getUnidadTiempoSeleccionada() {
+		return getDimensionUnidadTiempo();
+	}
+
+	/**
+	 * atraves de la vista se entrega el contenido de toda la tabla, propiedad
+	 * del modelo de la tabla, que debe ser casteado al tipo exclusivo creado
+	 * para este dato, al que se le agrego un metodo adicional para devolver su
+	 * contenido.
+	 * 
+	 * @return
+	 */
+	public float[][] getValoresTabla() {
+		return ((TableModelMedicionTemporal) componenteTabla.getTbl_medicion().getModel()).getDatos();
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
+
+	@Override
 	public void iniciarComponentes() {
 
 		// -------------------------------------
@@ -216,173 +382,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		setLayout(gl_contentPane);
 	}
 
-	@Override
-	public void configEventos(EventoDim eventos) {
-
-		cargarTodasLasMediciones();
-		cargarTodasLasUnidadesTiempo();
-
-		btnCalidadServicio.addActionListener(eventos);
-		btnEjecutar.addActionListener(eventos);
-	}
-
-	private void cargarTodasLasMediciones() {
-
-		cbox_medicion.removeAllItems();
-		cbox_medicion.addItem(new ServMedTotal());
-		cbox_medicion.addItem(new ServMedPromedio());
-	}
-
-	private void cargarTodasLasUnidadesTiempo() {
-
-		ServDimUnidadTiempoMes serv_mes = new ServDimUnidadTiempoMes(intervalo);
-
-		cbox_dim_tiempo.removeAllItems();
-
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoQuincena(intervalo, serv_mes));
-		cbox_dim_tiempo.addItem(serv_mes);
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoTrimestre(intervalo));
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoAnio(intervalo));
-	}
-
-	@Override
-	public void ejecutarDimension() {
-
-		serv_medicion = getMedicion();
-		serv_unidad_tiempo = getDimensionUnidadTiempo();
-
-		serv_dim_vista_seleccionada.realizarHash(consulta);
-
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
-
-		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
-
-		componenteTabla.setIntervalo(intervalo);
-
-		componenteTabla.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
-		componenteTabla.contruirModeloEntradaColumnas(datos_tabla, encabezado_tabla);
-
-		armarSolapasGraficas();
-	}
-
-	@Override
-	public void armarSolapasGraficas() {
-
-		GraficoBarras primer_grafico = new GraficoBarras(datos_tabla, encabezado_tabla,
-				componenteTabla.getTbl_titulo_filas());
-		GraficoLineas tercer_grafico = new GraficoLineas(datos_tabla, encabezado_tabla,
-				componenteTabla.getTbl_titulo_filas());
-		GraficoTorta cuarto_grafico = new GraficoTorta(datos_tabla, componenteTabla.getTbl_titulo_filas());
-
-		JScrollPane scroll_primer_grafico = primer_grafico.construirPanel();
-		JScrollPane scroll_segundo_grafico = tercer_grafico.construirPanel();
-		JScrollPane scroll_tercer_grafico = cuarto_grafico.construirPanel();
-
-		if (tabPane_grafico.getTabCount() == 0) {
-			tabPane_grafico.addTab("..barras", scroll_primer_grafico);
-			tabPane_grafico.addTab("..lineas", scroll_segundo_grafico);
-			tabPane_grafico.addTab("..torta", scroll_tercer_grafico);
-		} else {
-			tabPane_grafico.setComponentAt(0, scroll_primer_grafico);
-			tabPane_grafico.setComponentAt(1, scroll_segundo_grafico);
-			tabPane_grafico.setComponentAt(2, scroll_tercer_grafico);
-		}
-
-		tabPane_grafico.validate();
-	}
-
-	private ServDimUnidadTiempoAbstract getDimensionUnidadTiempo() {
-
-		Object entidad = cbox_dim_tiempo.getSelectedItem();
-
-		if (entidad instanceof ServDimUnidadTiempoQuincena)
-			return (ServDimUnidadTiempoQuincena) entidad;
-		if (entidad instanceof ServDimUnidadTiempoMes)
-			return (ServDimUnidadTiempoMes) entidad;
-		if (entidad instanceof ServDimUnidadTiempoAnio)
-			return (ServDimUnidadTiempoAnio) entidad;
-		if (entidad instanceof ServDimUnidadTiempoTrimestre)
-			return (ServDimUnidadTiempoTrimestre) entidad;
-
-		return null;
-	}
-
-	private ServMedAbstract getMedicion() {
-
-		Object entidad = cbox_medicion.getSelectedItem();
-
-		if (entidad instanceof ServMedTotal)
-			return (ServMedTotal) entidad;
-		if (entidad instanceof ServMedPromedio)
-			return (ServMedPromedio) entidad;
-
-		return null;
-	}
-
-	/**
-	 * atraves de la vista se entrega el contenido de toda la tabla, propiedad
-	 * del modelo de la tabla, que debe ser casteado al tipo exclusivo creado
-	 * para este dato, al que se le agrego un metodo adicional para devolver su
-	 * contenido.
-	 * 
-	 * @return
-	 */
-	public float[][] getValoresTabla() {
-		return ((TableModelMedicionTemporal) componenteTabla.getTbl_medicion().getModel()).getDatos();
-	}
-
-	public ServMedAbstract getMedicionSeleccionada() {
-		return getMedicion();
-	}
-
-	public ServDimUnidadTiempoAbstract getUnidadTiempoSeleccionada() {
-		return getDimensionUnidadTiempo();
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public ServIntervaloFechas getServ_intervalo() {
-		return serv_intervalo;
-	}
-
-	public ServMedAbstract getServ_medicion() {
-		return serv_medicion;
-	}
-
-	public ServDimUnidadTiempoAbstract getServ_unidad_tiempo() {
-		return serv_unidad_tiempo;
-	}
-
-	public JButton getBtnCalidadServicio() {
-		return btnCalidadServicio;
-	}
-
-	public JButton getBtnEjecutar() {
-		return btnEjecutar;
-	}
-
-	public ServDimSitio getServ_dim_sitio() {
-		return serv_dim_sitio;
-	}
-
-	public List<Alarma> getConsulta() {
-		return consulta;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 	public void setServ_intervalo(ServIntervaloFechas serv_intervalo) {
 		this.serv_intervalo = serv_intervalo;
-	}
-
-	public ComponenteTabla getComponenteTabla() {
-		return componenteTabla;
 	}
 }

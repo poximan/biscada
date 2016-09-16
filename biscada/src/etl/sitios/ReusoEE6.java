@@ -19,7 +19,7 @@ public class ReusoEE6 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Ee]6|station\\s406)";
+	private static String expresion_regular = "EE6|station\\s406";
 
 	/* ............................................. */
 	/* ............................................. */

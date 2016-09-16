@@ -19,7 +19,7 @@ public class AguaEnEstator extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Ss][Tt][Aa][Tt][Oo][Rr])";
+	private static String expresion_regular = "ESTATOR";
 
 	/* ............................................. */
 	/* ............................................. */

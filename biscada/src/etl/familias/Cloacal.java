@@ -19,7 +19,7 @@ public class Cloacal extends Familia implements CalidadServicioDiferenciable {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(CLOACAL)";
+	private static String expresion_regular = "CLOACAL";
 	private static String descripcion = "cloacal";
 
 	/* ............................................. */

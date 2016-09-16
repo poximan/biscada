@@ -19,7 +19,7 @@ public class GrupoElectrogenoFalla extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(((([Ee][Ll][Ee][Cc][Tt][Rr][Oo][Gg][Ee][Nn][Oo])|([Gg][Ee][Nn][Ee][Rr][Aa][Dd][Oo][Rr])|([Rr][Uu][Tt][Ii][Nn][Aa]))(?![Ff][Aa][Ll][Ll][Aa]))|((?![Ff][Aa][Ll][Ll][Aa])(([Ee][Ll][Ee][Cc][Tt][Rr][Oo][Gg][Ee][Nn][Oo])|([Gg][Ee][Nn][Ee][Rr][Aa][Dd][Oo][Rr])|([Rr][Uu][Tt][Ii][Nn][Aa]))))";
+	private static String expresion_regular = "(ELECTROGENO|GENERADOR|RUTINA)(?=FALLA)|(?<=FALLA)(ELECTROGENO|GENERADOR|RUTINA)";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class NivelAlto extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(MAXIMO|[Aa][Ll][Tt][Oo]\\s[Nn][Ii][Vv][Ee][Ll]|[Nn][Ii][Vv][Ee][Ll]\\s[Dd][Ee]\\s[Pp][Oo][Zz][Oo])";
+	private static String expresion_regular = "MAXIMO|ALTO NIVEL|NIVEL DE POZO";
 
 	/* ............................................. */
 	/* ............................................. */

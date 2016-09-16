@@ -19,7 +19,7 @@ public class AltaTemperaturaBobinado extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Tt][Ee][Mm][Pp][Ee][Rr][Aa][Tt][Uu][Rr][Aa])";
+	private static String expresion_regular = "TEMPERATURA";
 
 	/* ............................................. */
 	/* ............................................. */

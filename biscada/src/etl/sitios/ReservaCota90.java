@@ -19,7 +19,7 @@ public class ReservaCota90 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc]\\s?90|station\\s0)";
+	private static String expresion_regular = "[Cc]\\s?90|station\\s90";
 
 	/* ............................................. */
 	/* ............................................. */

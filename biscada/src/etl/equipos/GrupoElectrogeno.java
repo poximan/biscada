@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GrupoElectrogeno extends TipoDeEquipo {
+public class GrupoElectrogeno extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(([Ee][Ll][Ee][Cc][Tt][Rr][Oo][Gg][Ee][Nn][Oo])|([Gg][Ee][Nn][Ee][Rr][Aa][Dd][Oo][Rr])|([Rr][Uu][Tt][Ii][Nn][Aa]))";
+	private static String expresion_regular = "ELECTROGENO|GENERADOR|RUTINA";
 	private static String descripcion = "gpo. electrogeno";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class GrupoElectrogeno extends TipoDeEquipo {
 
 	public GrupoElectrogeno() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

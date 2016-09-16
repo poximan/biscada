@@ -19,7 +19,7 @@ public class NivelBajo extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Bb][Aa][Jj][Oo]\\s[Nn][Ii][Vv][Ee][Ll])";
+	private static String expresion_regular = "BAJO NIVEL";
 
 	/* ............................................. */
 	/* ............................................. */

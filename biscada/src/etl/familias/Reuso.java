@@ -19,7 +19,7 @@ public class Reuso extends Familia implements CalidadServicioDiferenciable {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(REUSO)";
+	private static String expresion_regular = "REUSO";
 	private static String descripcion = "reuso";
 
 	/* ............................................. */

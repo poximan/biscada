@@ -19,7 +19,7 @@ public class ReusoCamaraCarga extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc][\\s\\.]+[Cc][Aa][Rr][Gg][Aa]|station\\s152)";
+	private static String expresion_regular = "C[\\s\\.]+CARGA|station\\s152";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class NivelRebalse extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Mm][Uu][Yy]\\s[Aa][Ll][Tt][Oo]\\s[Nn][Ii][Vv][Ee][Ll]|[Rr][Ee][Bb][Aa][Ll][Ss][Ee])";
+	private static String expresion_regular = "MUY ALTO NIVEL|REBALSE";
 
 	/* ............................................. */
 	/* ............................................. */

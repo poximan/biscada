@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Tamiz extends TipoDeEquipo {
+public class Tamiz extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Tt][Aa][Mm][Ii][Zz]\\s?\\d{1,2})";
+	private static String expresion_regular = "TAMIZ";
 	private static String descripcion = "tamiz";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Tamiz extends TipoDeEquipo {
 
 	public Tamiz() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

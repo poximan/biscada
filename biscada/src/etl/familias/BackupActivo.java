@@ -19,7 +19,7 @@ public class BackupActivo extends Familia {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(HOTBACKUP)";
+	private static String expresion_regular = "HOTBACKUP";
 	private static String descripcion = "scada bkp";
 
 	/* ............................................. */

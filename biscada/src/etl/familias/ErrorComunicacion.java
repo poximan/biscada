@@ -19,7 +19,7 @@ public class ErrorComunicacion extends Familia {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(COMMERR)";
+	private static String expresion_regular = "COMMERR";
 	private static String descripcion = "err. comunic.";
 
 	/* ............................................. */

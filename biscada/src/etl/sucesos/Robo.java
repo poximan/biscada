@@ -19,7 +19,7 @@ public class Robo extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Rr][Oo][Bb][Oo])";
+	private static String expresion_regular = "ROBO";
 
 	/* ............................................. */
 	/* ............................................. */

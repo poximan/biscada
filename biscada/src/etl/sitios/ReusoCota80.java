@@ -19,7 +19,7 @@ public class ReusoCota80 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc][Oo][Tt][Aa]\\s?80|station\\s153)";
+	private static String expresion_regular = "COTA\\s?80|station\\s153";
 
 	/* ............................................. */
 	/* ............................................. */

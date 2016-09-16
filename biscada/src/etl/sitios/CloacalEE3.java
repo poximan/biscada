@@ -19,7 +19,7 @@ public class CloacalEE3 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Ee]3|station\\s403)";
+	private static String expresion_regular = "EE3|station\\s403";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class Potable extends Familia implements CalidadServicioDiferenciable {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(ACUEDUCTO)";
+	private static String expresion_regular = "ACUEDUCTO";
 	private static String descripcion = "potable";
 
 	/* ............................................. */

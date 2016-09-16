@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Forzador extends TipoDeEquipo {
+public class Forzador extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ff][Oo][Rr][Zz][Aa][Dd][Oo][Rr]\\s?\\d{1,2})";
+	private static String expresion_regular = "FORZADOR";
 	private static String descripcion = "forzador";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Forzador extends TipoDeEquipo {
 
 	public Forzador() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

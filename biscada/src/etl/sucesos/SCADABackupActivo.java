@@ -19,7 +19,7 @@ public class SCADABackupActivo extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(Backup of)";
+	private static String expresion_regular = "Backup of";
 
 	/* ............................................. */
 	/* ............................................. */

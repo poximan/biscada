@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Pozo extends TipoDeEquipo {
+public class Pozo extends TipoDeEquipo  implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Pp][Oo][Zz][Oo]|[Cc][Uu][Ee][Nn][Cc][Oo])";
+	private static String expresion_regular = "POZO|CUENCO";
 	private static String descripcion = "pozo";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Pozo extends TipoDeEquipo {
 
 	public Pozo() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

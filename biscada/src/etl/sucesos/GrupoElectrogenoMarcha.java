@@ -19,7 +19,7 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(GENO EN MARCHA|((([Ee][Ll][Ee][Cc][Tt][Rr][Oo][Gg][Ee][Nn][Oo])|([Gg][Ee][Nn][Ee][Rr][Aa][Dd][Oo][Rr])|([Rr][Uu][Tt][Ii][Nn][Aa]))(?=[Ff][Aa][Ll][Ll][Aa]))|((?=[Ff][Aa][Ll][Ll][Aa])(([Ee][Ll][Ee][Cc][Tt][Rr][Oo][Gg][Ee][Nn][Oo])|([Gg][Ee][Nn][Ee][Rr][Aa][Dd][Oo][Rr])|([Rr][Uu][Tt][Ii][Nn][Aa]))))";
+	private static String expresion_regular = "GENO EN MARCHA|(ELETROGENO|GENERADOR|RUTNA)(?!FALLA)|(?<!FALLA)(ELECTROGENO|GENERADOR|RUTIA)";
 
 	/* ............................................. */
 	/* ............................................. */

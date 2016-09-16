@@ -19,7 +19,7 @@ public class RFFActuado extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ff][Aa][Ll][Tt][Aa]\\s{1,2}(([Dd][Ee]\\s)?([Ff][Aa][Ss][Ee]|[Rr][Ee][Dd]|220))|BARRA SIN TENSION)";
+	private static String expresion_regular = "FALTA\\s{1,2}(DE)?\\s?(FASE|RED|220)|BARRA SIN TENSION";
 
 	/* ............................................. */
 	/* ............................................. */

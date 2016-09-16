@@ -19,7 +19,7 @@ public class ReservaPlantaPotabilizadora extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Pp][\\.\\s][Pp][Oo][Tt]|POTABILIZADORA|station\\s20)";
+	private static String expresion_regular = "P[\\.\\s]POT|POTABILIZADORA|station\\s20";
 
 	/* ............................................. */
 	/* ............................................. */

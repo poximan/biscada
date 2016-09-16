@@ -19,7 +19,7 @@ public class CentralSCADA extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(SCADA|station 65520|station 65522)";
+	private static String expresion_regular = "SCADA|station 65520|station 65522";
 
 	/* ............................................. */
 	/* ............................................. */

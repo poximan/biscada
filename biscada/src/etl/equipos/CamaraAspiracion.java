@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CamaraAspiracion extends TipoDeEquipo {
+public class CamaraAspiracion extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc][Aa][Mm][Aa][Rr][Aa]\\s((de)\\s|)[Aa][Ss][Pp][Ii][Rr][Aa][Cc][Ii][Oo][Nn])";
+	private static String expresion_regular = "CAMARA\\s(DE\\s)?ASPIRACION";
 	private static String descripcion = "camara aspiracion";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class CamaraAspiracion extends TipoDeEquipo {
 
 	public CamaraAspiracion() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

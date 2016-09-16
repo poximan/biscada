@@ -19,7 +19,7 @@ public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Bb][Oo][Mm][Bb][Aa]\\s?\\d{1,2})";
+	private static String expresion_regular = "BOMBA";
 	private static String descripcion = "bomba";
 
 	/* ............................................. */
@@ -46,14 +46,14 @@ public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return descripcion;
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-		
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

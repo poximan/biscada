@@ -19,7 +19,7 @@ public class Login extends Familia {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(LOGIN)";
+	private static String expresion_regular = "LOGIN";
 	private static String descripcion = "login";
 
 	/* ............................................. */

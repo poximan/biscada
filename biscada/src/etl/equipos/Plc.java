@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Plc extends TipoDeEquipo {
+public class Plc extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Pp][Ll][Cc]|(?<!SELECTORA ESTADO)\\sRTU|Communication Error)";
+	private static String expresion_regular = "PLC|(?<!SELECTORA ESTADO)\\sRTU";
 	private static String descripcion = "plc";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Plc extends TipoDeEquipo {
 
 	public Plc() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

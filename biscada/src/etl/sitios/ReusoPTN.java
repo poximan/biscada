@@ -19,7 +19,7 @@ public class ReusoPTN extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Pp][Tt][Nn]|P\\.T\\.N\\.?|station\\s151)";
+	private static String expresion_regular = "PTN|P\\.T\\.N\\.?|station\\s151";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class CloacalEE1 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Ee]1|station\\s401)";
+	private static String expresion_regular = "EE1|station\\s401";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Cisterna extends TipoDeEquipo {
+public class Cisterna extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Cc][Ii][Ss][Tt][Ee][Rr][Nn][Aa]|TANQUE|RESERVA)";
+	private static String expresion_regular = "CISTERNA|TANQUE|RESERVA)";
 	private static String descripcion = "cisterna";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Cisterna extends TipoDeEquipo {
 
 	public Cisterna() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

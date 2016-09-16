@@ -19,7 +19,7 @@ public class CloacalEPS extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Pp][Ss]|station\\s400)";
+	private static String expresion_regular = "EPS|station\\s400";
 
 	/* ............................................. */
 	/* ............................................. */

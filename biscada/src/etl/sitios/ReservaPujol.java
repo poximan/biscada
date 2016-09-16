@@ -19,7 +19,7 @@ public class ReservaPujol extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Bb][\\.\\s]{1,2}[Pp][Uu][Jj][Oo][Ll]|station\\s70)";
+	private static String expresion_regular = "B[\\.\\s]{1,2}PUJOL|station\\s70";
 
 	/* ............................................. */
 	/* ............................................. */

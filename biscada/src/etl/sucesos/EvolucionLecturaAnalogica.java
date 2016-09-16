@@ -19,7 +19,7 @@ public class EvolucionLecturaAnalogica extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(FALLA EVO)";
+	private static String expresion_regular = "FALLA EVO";
 
 	/* ............................................. */
 	/* ............................................. */

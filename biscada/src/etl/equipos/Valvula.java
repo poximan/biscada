@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Valvula extends TipoDeEquipo {
+public class Valvula extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Vv][Aa][Ll][Vv][Uu][Ll][Aa]\\s?\\d{1,2}|V�lvula)";
+	private static String expresion_regular = "VALVULA|Valvula";
 	private static String descripcion = "valvula";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class Valvula extends TipoDeEquipo {
 
 	public Valvula() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

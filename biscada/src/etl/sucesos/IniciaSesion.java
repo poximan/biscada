@@ -19,7 +19,7 @@ public class IniciaSesion extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(Inicia Sesi)";
+	private static String expresion_regular = "Inicia Sesi";
 
 	/* ............................................. */
 	/* ............................................. */

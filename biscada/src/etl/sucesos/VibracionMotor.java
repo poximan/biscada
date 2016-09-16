@@ -19,7 +19,7 @@ public class VibracionMotor extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Vv][Ii][Bb][Rr][Aa][Cc][Ii][Oo][Nn])";
+	private static String expresion_regular = "VIBRACION";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -12,14 +12,14 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class SCADA extends TipoDeEquipo {
+public class SCADA extends TipoDeEquipo implements EquipoEnSitioAsignable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(SCADA)";
+	private static String expresion_regular = "SCADA";
 	private static String descripcion = "scada";
 
 	/* ............................................. */
@@ -38,6 +38,12 @@ public class SCADA extends TipoDeEquipo {
 
 	public SCADA() {
 		super(descripcion);
+	}
+
+	@Override
+	public void asignarNumeroDeEquipo() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class CloacalEPN extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Ee][Pp][Nn]|station\\s200)";
+	private static String expresion_regular = "EPN|station\\s200";
 
 	/* ............................................. */
 	/* ............................................. */

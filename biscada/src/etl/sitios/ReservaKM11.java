@@ -19,7 +19,7 @@ public class ReservaKM11 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "([Rr]\\s?15000|[Kk][Mm][\\.\\s]+11|station\\s40)";
+	private static String expresion_regular = "R\\s?15000|KM[\\.\\s]11|station\\s40";
 
 	/* ............................................. */
 	/* ............................................. */

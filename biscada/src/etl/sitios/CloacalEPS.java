@@ -5,7 +5,9 @@
 
 package etl.sitios;
 
+import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
+import etl.familias.Cloacal;
 
 /* ............................................. */
 /* ............................................. */
@@ -47,6 +49,11 @@ public class CloacalEPS extends Sitio {
 	@Override
 	public String toString() {
 		return "cloacal EPS";
+	}
+
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new Cloacal();
 	}
 
 	/* ............................................. */

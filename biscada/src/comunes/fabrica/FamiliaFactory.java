@@ -7,7 +7,7 @@ package comunes.fabrica;
 
 import etl.controles.CampoTextoDefectuoso;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
-import etl.familias.BackupActivo;
+import etl.familias.BackupSCADA;
 import etl.familias.Cloacal;
 import etl.familias.ErrorComunicacion;
 import etl.familias.Login;
@@ -66,22 +66,28 @@ public class FamiliaFactory extends FabricaAbstracta {
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
 		try {
-			if (discriminante.matches(".*" + BackupActivo.getExpresion_regular() + ".*"))
-				return new BackupActivo();
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + BackupSCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
+				return new BackupSCADA();
 
-			if (discriminante.matches(".*" + Cloacal.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Cloacal.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Cloacal();
 
-			if (discriminante.matches(".*" + ErrorComunicacion.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ErrorComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ErrorComunicacion();
 
-			if (discriminante.matches(".*" + Login.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Login.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Login();
 
-			if (discriminante.matches(".*" + Potable.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Potable.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Potable();
 
-			if (discriminante.matches(".*" + Reuso.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Reuso.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Reuso();
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);

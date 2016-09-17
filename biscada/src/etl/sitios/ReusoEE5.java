@@ -5,7 +5,9 @@
 
 package etl.sitios;
 
+import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
+import etl.familias.Reuso;
 
 /* ............................................. */
 /* ............................................. */
@@ -47,6 +49,11 @@ public class ReusoEE5 extends Sitio {
 	@Override
 	public String toString() {
 		return "reuso EE5";
+	}
+
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new Reuso();
 	}
 
 	/* ............................................. */

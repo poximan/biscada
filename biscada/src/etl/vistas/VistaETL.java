@@ -64,7 +64,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	private JList<ArchivoDBF> list_procesados;
 
 	private JButton btn_analisis_datos;
-	private JButton btn_restablecer;
 	private JButton btn_procesar;
 	private JButton btn_extraer;
 
@@ -195,8 +194,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		EventoETL eventos = new EventoETL(this);
 
-		btn_restablecer.addActionListener(eventos);
-
 		btn_procesar.addActionListener(eventos);
 		btn_extraer.addActionListener(eventos);
 
@@ -223,10 +220,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 	public JButton getBtn_procesar() {
 		return btn_procesar;
-	}
-
-	public JButton getBtn_restablecer() {
-		return btn_restablecer;
 	}
 
 	public JTextField getTxt_selDisponibles() {
@@ -401,14 +394,11 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 
 		pl_botones = new JPanel();
 		GridBagConstraints gbc_pl_botones = new GridBagConstraints();
-		gbc_pl_botones.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_pl_botones.gridwidth = 2;
+		gbc_pl_botones.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_pl_botones.gridx = 3;
 		gbc_pl_botones.gridy = 6;
 		add(pl_botones, gbc_pl_botones);
-
-		btn_restablecer = new JButton("Restablecer");
-		pl_botones.add(btn_restablecer);
 
 		btn_analisis_datos = new JButton("Analisis Datos (BI) -->");
 		pl_botones.add(btn_analisis_datos);

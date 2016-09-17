@@ -79,58 +79,76 @@ public class SucesoFactory extends FabricaAbstracta {
 
 		try {
 
-			if (discriminante.matches(".*" + AguaEnEstator.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + AguaEnEstator.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new AguaEnEstator();
 
-			if (discriminante.matches(".*" + AltaTemperaturaBobinado.getExpresion_regular() + ".*"))
+			if (discriminante.matches(Constantes.ABRE_EXP_REG + AltaTemperaturaBobinado.getExpresion_regular()
+					+ Constantes.CIERRA_EXP_REG))
 				return new AltaTemperaturaBobinado();
 
-			if (discriminante.matches(".*" + ComandoParada.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ComandoParada.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ComandoParada();
 
-			if (discriminante.matches(".*" + EvolucionLecturaAnalogica.getExpresion_regular() + ".*"))
+			if (discriminante.matches(Constantes.ABRE_EXP_REG + EvolucionLecturaAnalogica.getExpresion_regular()
+					+ Constantes.CIERRA_EXP_REG))
 				return new EvolucionLecturaAnalogica();
 
-			if (discriminante.matches(".*" + GrupoElectrogenoFalla.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + GrupoElectrogenoFalla.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new GrupoElectrogenoFalla();
 
-			if (discriminante.matches(".*" + GrupoElectrogenoMarcha.getExpresion_regular() + ".*"))
+			if (discriminante.matches(Constantes.ABRE_EXP_REG + GrupoElectrogenoMarcha.getExpresion_regular()
+					+ Constantes.CIERRA_EXP_REG))
 				return new GrupoElectrogenoMarcha();
 
-			if (discriminante.matches(".*" + IncongruenciaEstado.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + IncongruenciaEstado.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new IncongruenciaEstado();
 
-			if (discriminante.matches(".*" + IniciaSesion.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + IniciaSesion.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new IniciaSesion();
 
-			if (discriminante.matches(".*" + InterruptorActuado.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + InterruptorActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new InterruptorActuado();
 
-			if (discriminante.matches(".*" + NivelAlto.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + NivelAlto.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new NivelAlto();
 
-			if (discriminante.matches(".*" + NivelBajo.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + NivelBajo.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new NivelBajo();
 
-			if (discriminante.matches(".*" + NivelRebalse.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + NivelRebalse.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new NivelRebalse();
 
-			if (discriminante.matches(".*" + PerdidaComunicacion.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + PerdidaComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new PerdidaComunicacion();
 
-			if (discriminante.matches(".*" + RFFActuado.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + RFFActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new RFFActuado();
 
-			if (discriminante.matches(".*" + Robo.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Robo.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Robo();
 
-			if (discriminante.matches(".*" + SCADABackupActivo.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + SCADABackupActivo.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new SCADABackupActivo();
 
-			if (discriminante.matches(".*" + TermicoActuado.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + TermicoActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new TermicoActuado();
 
-			if (discriminante.matches(".*" + VibracionMotor.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + VibracionMotor.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new VibracionMotor();
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);

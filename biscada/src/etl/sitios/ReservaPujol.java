@@ -5,7 +5,9 @@
 
 package etl.sitios;
 
+import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
+import etl.familias.Potable;
 
 /* ............................................. */
 /* ............................................. */
@@ -47,6 +49,11 @@ public class ReservaPujol extends Sitio {
 	@Override
 	public String toString() {
 		return "reserva pujol 1";
+	}
+
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	/* ............................................. */

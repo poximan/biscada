@@ -19,7 +19,7 @@ public class Bomba extends TipoDeEquipo implements EquipoEnSitioAsignable {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "BOMBA";
+	private static String expresion_regular = "BOMBA|Bomba";
 	private static String descripcion = "bomba";
 
 	/* ............................................. */

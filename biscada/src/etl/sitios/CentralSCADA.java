@@ -5,7 +5,9 @@
 
 package etl.sitios;
 
+import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
+import etl.familias.BackupSCADA;
 
 /* ............................................. */
 /* ............................................. */
@@ -47,6 +49,11 @@ public class CentralSCADA extends Sitio {
 	@Override
 	public String toString() {
 		return "central SCADA";
+	}
+
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new BackupSCADA();
 	}
 
 	/* ............................................. */

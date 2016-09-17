@@ -72,37 +72,47 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 
 		try {
 
-			if (discriminante.matches(".*" + Bomba.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Bomba.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Bomba();
 
-			if (discriminante.matches(".*" + CamaraAspiracion.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + CamaraAspiracion.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CamaraAspiracion();
 
-			if (discriminante.matches(".*" + Cisterna.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Cisterna.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Cisterna();
 
-			if (discriminante.matches(".*" + Forzador.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Forzador.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Forzador();
 
-			if (discriminante.matches(".*" + GrupoElectrogeno.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + GrupoElectrogeno.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new GrupoElectrogeno();
 
-			if (discriminante.matches(".*" + Plc.getExpresion_regular() + ".*"))
+			if (discriminante.matches(Constantes.ABRE_EXP_REG + Plc.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Plc();
 
-			if (discriminante.matches(".*" + Pozo.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Pozo.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Pozo();
 
-			if (discriminante.matches(".*" + SCADA.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + SCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new SCADA();
 
-			if (discriminante.matches(".*" + Tamiz.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Tamiz.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Tamiz();
 
-			if (discriminante.matches(".*" + TornilloCompactador.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + TornilloCompactador.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new TornilloCompactador();
 
-			if (discriminante.matches(".*" + Valvula.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Valvula.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Valvula();
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);

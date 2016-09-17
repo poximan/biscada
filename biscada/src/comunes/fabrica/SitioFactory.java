@@ -83,70 +83,92 @@ public class SitioFactory extends FabricaAbstracta {
 
 		try {
 
-			if (discriminante.matches(".*" + CentralSCADA.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CentralSCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CentralSCADA();
 
-			if (discriminante.matches(".*" + CloacalEE1.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEE1.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEE1();
 
-			if (discriminante.matches(".*" + CloacalEE2.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEE2.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEE2();
 
-			if (discriminante.matches(".*" + CloacalEE3.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEE3.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEE3();
 
-			if (discriminante.matches(".*" + CloacalEE4.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEE4.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEE4();
 
-			if (discriminante.matches(".*" + CloacalEPN.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEPN.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEPN();
 
-			if (discriminante.matches(".*" + CloacalEPS.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + CloacalEPS.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new CloacalEPS();
 
-			if (discriminante.matches(".*" + Reserva6000.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + Reserva6000.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new Reserva6000();
 
-			if (discriminante.matches(".*" + ReservaCota90.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ReservaCota90.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaCota90();
 
-			if (discriminante.matches(".*" + ReservaKM11.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReservaKM11.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaKM11();
 
-			if (discriminante.matches(".*" + ReservaLomaMariaEST.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ReservaLomaMariaEST.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaLomaMariaEST();
 
-			if (discriminante.matches(".*" + ReservaLomaMariaREP.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ReservaLomaMariaREP.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaLomaMariaREP();
 
-			if (discriminante.matches(".*" + ReservaOeste.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReservaOeste.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaOeste();
 
-			if (discriminante.matches(".*" + ReservaPlantaPotabilizadora.getExpresion_regular() + ".*"))
+			if (discriminante.matches(Constantes.ABRE_EXP_REG + ReservaPlantaPotabilizadora.getExpresion_regular()
+					+ Constantes.CIERRA_EXP_REG))
 				return new ReservaPlantaPotabilizadora();
 
-			if (discriminante.matches(".*" + ReservaPujol.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReservaPujol.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaPujol();
 
-			if (discriminante.matches(".*" + ReservaTomaRio.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ReservaTomaRio.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReservaTomaRio();
 
-			if (discriminante.matches(".*" + ReusoCamaraCarga.getExpresion_regular() + ".*"))
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ReusoCamaraCarga.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoCamaraCarga();
 
-			if (discriminante.matches(".*" + ReusoCota50.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReusoCota50.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoCota50();
 
-			if (discriminante.matches(".*" + ReusoCota80.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReusoCota80.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoCota80();
 
-			if (discriminante.matches(".*" + ReusoEE5.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReusoEE5.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoEE5();
 
-			if (discriminante.matches(".*" + ReusoEE6.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReusoEE6.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoEE6();
 
-			if (discriminante.matches(".*" + ReusoPTN.getExpresion_regular() + ".*"))
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ReusoPTN.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
 				return new ReusoPTN();
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);

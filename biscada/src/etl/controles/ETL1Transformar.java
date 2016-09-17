@@ -202,13 +202,6 @@ public class ETL1Transformar implements ObjetosBorrables {
 	private void usarAbstractFactory(Alarma alarma_transformada, ArchAlarma alarma_no_transformada,
 			CampoTextoDefectuoso alarma_rechazada) {
 
-		/*
-		 * caso especial descubrir familia
-		 */
-		FabricaAbstracta fabrica_familia = ProductorFabricas.getFactory(Constantes.FABRICA_FAMILIA, alarma_rechazada);
-		TipoDatoFabricable familia = fabrica_familia.getInstancia(alarma_no_transformada.getNAME().trim());
-		alarma_transformada.setFamilia((Familia) familia);
-
 		String texto_compuesto = alarma_no_transformada.getTEXT().trim();
 
 		/*
@@ -217,6 +210,16 @@ public class ETL1Transformar implements ObjetosBorrables {
 		FabricaAbstracta fabrica_sitio = ProductorFabricas.getFactory(Constantes.FABRICA_SITIO, alarma_rechazada);
 		TipoDatoFabricable sitio = fabrica_sitio.getInstancia(texto_compuesto);
 		alarma_transformada.setSitio((Sitio) sitio);
+
+		/*
+		 * caso especial descubrir familia
+		 */
+		FabricaAbstracta fabrica_familia = ProductorFabricas.getFactory(Constantes.FABRICA_FAMILIA, alarma_rechazada);
+		TipoDatoFabricable familia = fabrica_familia.getInstancia(alarma_no_transformada.getNAME().trim());
+		if (familia != null)
+			alarma_transformada.setFamilia((Familia) familia);
+		else
+			alarma_transformada.setFamilia(((Sitio) sitio).getFamiliaPorDefecto());
 
 		/*
 		 * caso especial descubrir sitio desde campo de texto compartido

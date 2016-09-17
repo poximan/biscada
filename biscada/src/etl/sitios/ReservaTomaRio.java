@@ -5,7 +5,9 @@
 
 package etl.sitios;
 
+import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
+import etl.familias.Potable;
 
 /* ............................................. */
 /* ............................................. */
@@ -19,7 +21,7 @@ public class ReservaTomaRio extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TOMA|station\\s10";
+	private static String expresion_regular = "TOMA|station\\s10|Muelle";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -47,6 +49,11 @@ public class ReservaTomaRio extends Sitio {
 	@Override
 	public String toString() {
 		return "reserva toma rio";
+	}
+
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	/* ............................................. */

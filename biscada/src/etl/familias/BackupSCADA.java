@@ -12,7 +12,7 @@ import comunes.modelo.Familia;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class BackupActivo extends Familia {
+public class BackupSCADA extends Familia {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class BackupActivo extends Familia {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public BackupActivo() {
+	public BackupSCADA() {
 		super(descripcion);
 	}
 

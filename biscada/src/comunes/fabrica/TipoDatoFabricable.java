@@ -10,5 +10,5 @@ package comunes.fabrica;
 /* INTERFAZ .................................... */
 /* ............................................. */
 
-public interface TipoDatoFabricable {
+public interface TipoDatoFabricable {	
 }

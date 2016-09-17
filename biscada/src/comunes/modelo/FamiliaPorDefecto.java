@@ -1,6 +1,4 @@
-package etl.sitios;
-
-import comunes.modelo.Familia;
+package comunes.modelo;
 
 public interface FamiliaPorDefecto {
 

@@ -61,9 +61,9 @@ public final class EquipoEnSitio implements TipoDatoFabricable {
 	public EquipoEnSitio() {
 	}
 
-	public EquipoEnSitio(TipoDeEquipo texto_propietario, Integer id_equipo) {
+	public EquipoEnSitio(TipoDeEquipo tipo_de_equipo, Integer id_equipo) {
 
-		this.tipo_de_equipo = texto_propietario;
+		this.tipo_de_equipo = tipo_de_equipo;
 		this.id_equipo = id_equipo;
 	}
 

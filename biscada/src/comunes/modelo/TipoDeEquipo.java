@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
+import etl.equipos.NumberoEquipoIdentificable;
 
 /* ............................................. */
 /* ............................................. */
@@ -26,7 +27,7 @@ import comunes.fabrica.TipoDatoFabricable;
 @Table(name = "tipo_de_equipo")
 @NamedQueries({ @NamedQuery(name = "TipoDeEquipo.buscTodos", query = "SELECT tabla FROM TipoDeEquipo tabla"),
 		@NamedQuery(name = "TipoDeEquipo.buscDescripcion", query = "SELECT tabla FROM TipoDeEquipo tabla WHERE tabla.descripcion = :descripcion"), })
-public class TipoDeEquipo implements TipoDatoFabricable {
+public class TipoDeEquipo implements TipoDatoFabricable, NumberoEquipoIdentificable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -113,5 +114,10 @@ public class TipoDeEquipo implements TipoDatoFabricable {
 	@Override
 	public String toString() {
 		return descripcion;
+	}
+
+	@Override
+	public Integer getNumero(String discriminante) {
+		return null;
 	}
 }

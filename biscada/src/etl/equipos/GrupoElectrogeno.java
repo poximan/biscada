@@ -12,7 +12,7 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GrupoElectrogeno extends TipoDeEquipo implements EquipoEnSitioAsignable {
+public class GrupoElectrogeno extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -20,7 +20,7 @@ public class GrupoElectrogeno extends TipoDeEquipo implements EquipoEnSitioAsign
 	/* ............................................. */
 
 	private static String expresion_regular = "ELECTROGENO|GENERADOR|RUTINA";
-	private static String descripcion = "gpo. electrogeno";
+	private static String descripcion = "generador electrico";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,12 +40,6 @@ public class GrupoElectrogeno extends TipoDeEquipo implements EquipoEnSitioAsign
 		super(descripcion);
 	}
 
-	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -54,6 +48,11 @@ public class GrupoElectrogeno extends TipoDeEquipo implements EquipoEnSitioAsign
 	@Override
 	public String toString() {
 		return descripcion;
+	}
+	
+	@Override
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
 	}
 
 	/* ............................................. */

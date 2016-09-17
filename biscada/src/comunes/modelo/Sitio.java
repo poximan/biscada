@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
-import etl.sitios.FamiliaPorDefecto;
 
 /* ............................................. */
 /* ............................................. */

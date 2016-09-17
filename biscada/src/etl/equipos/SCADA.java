@@ -12,7 +12,7 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class SCADA extends TipoDeEquipo implements EquipoEnSitioAsignable {
+public class SCADA extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,12 +40,6 @@ public class SCADA extends TipoDeEquipo implements EquipoEnSitioAsignable {
 		super(descripcion);
 	}
 
-	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -54,6 +48,11 @@ public class SCADA extends TipoDeEquipo implements EquipoEnSitioAsignable {
 	@Override
 	public String toString() {
 		return descripcion;
+	}
+
+	@Override
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
 	}
 
 	/* ............................................. */

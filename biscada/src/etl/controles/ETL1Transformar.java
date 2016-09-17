@@ -216,10 +216,11 @@ public class ETL1Transformar implements ObjetosBorrables {
 		 */
 		FabricaAbstracta fabrica_familia = ProductorFabricas.getFactory(Constantes.FABRICA_FAMILIA, alarma_rechazada);
 		TipoDatoFabricable familia = fabrica_familia.getInstancia(alarma_no_transformada.getNAME().trim());
-		if (familia != null)
-			alarma_transformada.setFamilia((Familia) familia);
-		else
-			alarma_transformada.setFamilia(((Sitio) sitio).getFamiliaPorDefecto());
+		
+		if (familia == null)
+			familia = ((Sitio) sitio).getFamiliaPorDefecto();
+		
+		alarma_transformada.setFamilia((Familia) familia);
 
 		/*
 		 * caso especial descubrir sitio desde campo de texto compartido

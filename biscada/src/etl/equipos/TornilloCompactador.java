@@ -12,7 +12,7 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TornilloCompactador extends TipoDeEquipo implements EquipoEnSitioAsignable {
+public class TornilloCompactador extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -20,7 +20,7 @@ public class TornilloCompactador extends TipoDeEquipo implements EquipoEnSitioAs
 	/* ............................................. */
 
 	private static String expresion_regular = "TORNILLO";
-	private static String descripcion = "torn. compactador";
+	private static String descripcion = "tornillo compactador";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,12 +38,6 @@ public class TornilloCompactador extends TipoDeEquipo implements EquipoEnSitioAs
 
 	public TornilloCompactador() {
 		super(descripcion);
-	}
-
-	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-
 	}
 
 	/* ............................................. */

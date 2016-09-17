@@ -5,6 +5,9 @@
 
 package etl.equipos;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import comunes.modelo.TipoDeEquipo;
 
 /* ............................................. */
@@ -12,7 +15,7 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Valvula extends TipoDeEquipo implements EquipoEnSitioAsignable {
+public class Valvula extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,12 +43,6 @@ public class Valvula extends TipoDeEquipo implements EquipoEnSitioAsignable {
 		super(descripcion);
 	}
 
-	@Override
-	public void asignarNumeroDeEquipo() {
-		// TODO Auto-generated method stub
-
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
@@ -56,6 +53,17 @@ public class Valvula extends TipoDeEquipo implements EquipoEnSitioAsignable {
 		return descripcion;
 	}
 
+	@Override
+	public Integer getNumero(String discriminante) {
+
+		Pattern p = Pattern.compile("-?\\d+");
+
+		Matcher m = p.matcher(discriminante);
+		m.find();
+
+		return new Integer(m.group());
+	}
+	
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

@@ -109,8 +109,9 @@ public class FamiliaFactory extends FabricaAbstracta {
 					throw new CampoTextoAmbiguoExcepcion(discriminante);
 				valor = new Reuso();
 			}
-
-			throw new CampoTextoNoEncontradoExcepcion(discriminante);
+			
+			if (valor == null)
+				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),

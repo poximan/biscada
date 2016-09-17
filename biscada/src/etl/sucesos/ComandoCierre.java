@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EstadoTablero extends Suceso {
+public class ComandoCierre extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CONTROL TABLERO|SELECTORA ESTADO TABLERO|SELECTORA TAB.-RTU A POSICION TABLERO|SELECTORA ESTADO MANUAL";
+	private static String expresion_regular = "COMANDO CIERRE";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class EstadoTablero extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public EstadoTablero() {
+	public ComandoCierre() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class EstadoTablero extends Suceso {
 
 	@Override
 	public String toString() {
-		return "estado Tablero seleccionado";
+		return "comando cierre";
 	}
 
 	/* ............................................. */

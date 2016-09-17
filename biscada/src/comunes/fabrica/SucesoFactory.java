@@ -12,6 +12,8 @@ import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sucesos.AguaEnEstator;
 import etl.sucesos.AltaTemperaturaBobinado;
+import etl.sucesos.ComandoApertura;
+import etl.sucesos.ComandoCierre;
 import etl.sucesos.ComandoParada;
 import etl.sucesos.ComandoSimultaneo;
 import etl.sucesos.EstadoRTU;
@@ -238,8 +240,24 @@ public class SucesoFactory extends FabricaAbstracta {
 					throw new CampoTextoAmbiguoExcepcion(discriminante);
 				valor = new EstadoTablero();
 			}
+			
+			if (discriminante
+					.matches(Constantes.ABRE_EXP_REG + ComandoApertura.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new ComandoApertura();
+			}
 
-			throw new CampoTextoNoEncontradoExcepcion(discriminante);
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + ComandoCierre.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new ComandoCierre();
+			}
+
+
+			if (valor == null)
+				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(SucesoFactory.class.getSimpleName(), excepcion.getMessage(),

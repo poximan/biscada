@@ -11,6 +11,7 @@ import etl.controles.CampoTextoDefectuoso;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
 import etl.equipos.Cisterna;
+import etl.equipos.Edificio;
 import etl.equipos.Forzador;
 import etl.equipos.GrupoElectrogeno;
 import etl.equipos.Plc;
@@ -158,8 +159,16 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 					throw new CampoTextoAmbiguoExcepcion(discriminante);
 				valor = new TableroSitio();
 			}
+			
+			if (discriminante.matches(
+					Constantes.ABRE_EXP_REG + Edificio.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new Edificio();
+			}
 
-			throw new CampoTextoNoEncontradoExcepcion(discriminante);
+			if (valor == null)
+				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),

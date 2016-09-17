@@ -3,23 +3,24 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sucesos;
+package etl.equipos;
 
-import comunes.modelo.Suceso;
+import comunes.modelo.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EstadoTablero extends Suceso {
+public class Edificio extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CONTROL TABLERO|SELECTORA ESTADO TABLERO|SELECTORA TAB.-RTU A POSICION TABLERO|SELECTORA ESTADO MANUAL";
+	private static String expresion_regular = "ALARMA ROBO";
+	private static String descripcion = "edificio";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,8 +36,8 @@ public class EstadoTablero extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public EstadoTablero() {
-		super.setDescripcion(this.toString());
+	public Edificio() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -46,7 +47,12 @@ public class EstadoTablero extends Suceso {
 
 	@Override
 	public String toString() {
-		return "estado Tablero seleccionado";
+		return descripcion;
+	}
+
+	@Override
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
 	}
 
 	/* ............................................. */

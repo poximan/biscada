@@ -255,7 +255,8 @@ public class SitioFactory extends FabricaAbstracta {
 				valor = new ReservaDoradilloPresurizacion();
 			}
 
-			throw new CampoTextoNoEncontradoExcepcion(discriminante);
+			if (valor == null)
+				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(SitioFactory.class.getSimpleName(), excepcion.getMessage(),

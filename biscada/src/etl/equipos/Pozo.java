@@ -5,7 +5,10 @@
 
 package etl.equipos;
 
+import comunes.fabrica.Constantes;
+import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.TipoDeEquipo;
+import etl.excepciones.CampoTextoAmbiguoExcepcion;
 
 /* ............................................. */
 /* ............................................. */
@@ -53,6 +56,19 @@ public class Pozo extends TipoDeEquipo {
 	@Override
 	public Integer getNumero(String discriminante) {
 		return new Integer(1);
+	}
+
+	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
+
+		if (discriminante
+				.matches(Constantes.ABRE_EXP_REG + Pozo.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+
+			if (valor != null)
+				throw new CampoTextoAmbiguoExcepcion(discriminante + " [ " + Pozo.class.getSimpleName() + " - "
+						+ valor.getClass().getSimpleName() + " ]");
+
+			valor = new Pozo();
+		}
 	}
 
 	/* ............................................. */

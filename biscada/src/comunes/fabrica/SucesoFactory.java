@@ -90,171 +90,34 @@ public class SucesoFactory extends FabricaAbstracta {
 
 		try {
 
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + AguaEnEstator.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				valor = new AguaEnEstator();
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + AltaTemperaturaBobinado.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new AltaTemperaturaBobinado();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ComandoParada.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ComandoParada();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + EvolucionLecturaAnalogica.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new EvolucionLecturaAnalogica();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + GrupoElectrogenoFalla.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new GrupoElectrogenoFalla();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + GrupoElectrogenoMarcha.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new GrupoElectrogenoMarcha();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + IncongruenciaEstado.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new IncongruenciaEstado();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + IniciaSesion.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new IniciaSesion();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + InterruptorActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new InterruptorActuado();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + NivelRebalse.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new NivelRebalse();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + NivelAlto.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new NivelAlto();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + NivelBajo.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new NivelBajo();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + PerdidaComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new PerdidaComunicacion();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + RFFActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new RFFActuado();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Robo.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Robo();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + SCADABackupActivo.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new SCADABackupActivo();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + TermicoActuado.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new TermicoActuado();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + VibracionMotor.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new VibracionMotor();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + ParadaEmergenciaActuada.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ParadaEmergenciaActuada();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ComandoSimultaneo.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ComandoSimultaneo();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + EstadoRTU.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new EstadoRTU();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + EstadoTablero.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new EstadoTablero();
-			}
+			AguaEnEstator.asociar(valor, discriminante);
+			AltaTemperaturaBobinado.asociar(valor, discriminante);
+			ComandoParada.asociar(valor, discriminante);
+			EvolucionLecturaAnalogica.asociar(valor, discriminante);
+			GrupoElectrogenoFalla.asociar(valor, discriminante);
 			
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + ComandoApertura.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ComandoApertura();
-			}
+			GrupoElectrogenoMarcha.asociar(valor, discriminante);
+			IncongruenciaEstado.asociar(valor, discriminante);
+			IniciaSesion.asociar(valor, discriminante);
+			InterruptorActuado.asociar(valor, discriminante);
+			NivelRebalse.asociar(valor, discriminante);
 
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ComandoCierre.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ComandoCierre();
-			}
+			NivelAlto.asociar(valor, discriminante);
+			NivelBajo.asociar(valor, discriminante);
+			PerdidaComunicacion.asociar(valor, discriminante);
+			RFFActuado.asociar(valor, discriminante);
+			Robo.asociar(valor, discriminante);
 
+			SCADABackupActivo.asociar(valor, discriminante);
+			TermicoActuado.asociar(valor, discriminante);
+			VibracionMotor.asociar(valor, discriminante);
+			ParadaEmergenciaActuada.asociar(valor, discriminante);
+			ComandoSimultaneo.asociar(valor, discriminante);
+
+			EstadoRTU.asociar(valor, discriminante);
+			EstadoTablero.asociar(valor, discriminante);
+			ComandoApertura.asociar(valor, discriminante);
+			ComandoCierre.asociar(valor, discriminante);
 
 			if (valor == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

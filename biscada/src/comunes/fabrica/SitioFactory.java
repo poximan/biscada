@@ -90,170 +90,34 @@ public class SitioFactory extends FabricaAbstracta {
 
 		try {
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CentralSCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				valor = new CentralSCADA();
+			CentralSCADA.asociar(valor, discriminante);
+			CloacalEE1.asociar(valor, discriminante);
+			CloacalEE2.asociar(valor, discriminante);
+			CloacalEE3.asociar(valor, discriminante);
+			CloacalEE4.asociar(valor, discriminante);
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEE1.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEE1();
-			}
+			CloacalEPN.asociar(valor, discriminante);
+			CloacalEPS.asociar(valor, discriminante);
+			Reserva6000.asociar(valor, discriminante);
+			ReservaCota90.asociar(valor, discriminante);
+			ReservaKM11.asociar(valor, discriminante);
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEE2.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEE2();
-			}
+			ReservaLomaMariaEST.asociar(valor, discriminante);
+			ReservaLomaMariaREP.asociar(valor, discriminante);
+			ReservaOeste.asociar(valor, discriminante);
+			ReservaPlantaPotabilizadora.asociar(valor, discriminante);
+			ReservaPujol.asociar(valor, discriminante);
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEE3.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEE3();
-			}
+			ReservaTomaRio.asociar(valor, discriminante);
+			ReusoCamaraCarga.asociar(valor, discriminante);
+			ReusoCota50.asociar(valor, discriminante);
+			ReusoCota80.asociar(valor, discriminante);
+			ReusoEE5.asociar(valor, discriminante);
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEE4.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEE4();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEPN.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEPN();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + CloacalEPS.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new CloacalEPS();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + Reserva6000.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Reserva6000();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaCota90.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaCota90();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaKM11.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaKM11();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaLomaMariaEST.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaLomaMariaEST();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaLomaMariaREP.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaLomaMariaREP();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaOeste.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaOeste();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + ReservaPlantaPotabilizadora.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaPlantaPotabilizadora();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaPujol.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaPujol();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReservaTomaRio.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaTomaRio();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReusoCamaraCarga.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoCamaraCarga();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReusoCota50.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoCota50();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ReusoCota80.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoCota80();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + ReusoEE5.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoEE5();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + ReusoEE6.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoEE6();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + ReusoPTN.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReusoPTN();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + ReservaParquePesquero.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaParquePesquero();
-			}
-
-			if (discriminante.matches(Constantes.ABRE_EXP_REG + ReservaDoradilloPresurizacion.getExpresion_regular()
-					+ Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ReservaDoradilloPresurizacion();
-			}
+			ReusoEE6.asociar(valor, discriminante);
+			ReusoPTN.asociar(valor, discriminante);
+			ReservaParquePesquero.asociar(valor, discriminante);
+			ReservaDoradilloPresurizacion.asociar(valor, discriminante);
 
 			if (valor == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

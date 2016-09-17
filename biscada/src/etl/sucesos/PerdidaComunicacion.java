@@ -46,7 +46,7 @@ public class PerdidaComunicacion extends Suceso {
 
 	@Override
 	public String toString() {
-		return "perdida comunicacion";
+		return "error comunicacion";
 	}
 
 	/* ............................................. */

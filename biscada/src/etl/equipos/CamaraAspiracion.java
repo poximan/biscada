@@ -19,7 +19,7 @@ public class CamaraAspiracion extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CAMARA\\s(DE\\s)?ASPIRACION";
+	private static String expresion_regular = "CAMARA\\s(DE\\s)?ASPIRACION|C. CARGA: ALARMA MAXIMO NIVEL";
 	private static String descripcion = "camara aspiracion";
 
 	/* ............................................. */

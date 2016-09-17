@@ -3,32 +3,33 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
-
-import comunes.modelo.TipoDeEquipo;
+package etl.excepciones;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Cisterna extends TipoDeEquipo {
+public class CampoTextoAmbiguoExcepcion extends Exception {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CISTERNA|TANQUE|RESERVA";
-	private static String descripcion = "cisterna";
+	static final long serialVersionUID = 1;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public static String getExpresion_regular() {
-		return expresion_regular;
+	public CampoTextoAmbiguoExcepcion() {
+		super();
+	}
+
+	public CampoTextoAmbiguoExcepcion(String descripcion_excepcion) {
+		super(descripcion_excepcion);
 	}
 
 	/* ............................................. */
@@ -36,28 +37,8 @@ public class Cisterna extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Cisterna() {
-		super(descripcion);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
 	@Override
-	public String toString() {
-		return descripcion;
+	public String getMessage() {
+		return "ambiguo";
 	}
-
-	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 }

@@ -19,7 +19,7 @@ public class Plc extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "PLC|(?<!SELECTORA ESTADO)\\sRTU";
+	private static String expresion_regular = "FALLA COMUNC.|PLC|(?<!SELECTORA ESTADO)\\sRTU|Communication Error";
 	private static String descripcion = "plc";
 
 	/* ............................................. */

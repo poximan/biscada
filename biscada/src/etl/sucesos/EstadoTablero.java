@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Cisterna extends TipoDeEquipo {
+public class EstadoTablero extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CISTERNA|TANQUE|RESERVA";
-	private static String descripcion = "cisterna";
+	private static String expresion_regular = "SELECTORA ESTADO TABLERO";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class Cisterna extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Cisterna() {
-		super(descripcion);
+	public EstadoTablero() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -47,12 +46,7 @@ public class Cisterna extends TipoDeEquipo {
 
 	@Override
 	public String toString() {
-		return descripcion;
-	}
-
-	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
+		return "estado Tablero seleccionado";
 	}
 
 	/* ............................................. */

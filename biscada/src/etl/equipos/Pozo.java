@@ -19,7 +19,7 @@ public class Pozo extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "POZO|CUENCO";
+	private static String expresion_regular = "POZO|CUENCO|EE\\d.+ALARMA NIVEL";
 	private static String descripcion = "pozo";
 
 	/* ............................................. */

@@ -12,15 +12,15 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Cisterna extends TipoDeEquipo {
+public class TableroSitio extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CISTERNA|TANQUE|RESERVA";
-	private static String descripcion = "cisterna";
+	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA (DE)?EMERGENCIA";
+	private static String descripcion = "tablero del control sitio";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class Cisterna extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Cisterna() {
+	public TableroSitio() {
 		super(descripcion);
 	}
 

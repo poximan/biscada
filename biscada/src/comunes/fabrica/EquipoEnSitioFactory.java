@@ -64,7 +64,15 @@ public class EquipoEnSitioFactory extends FabricaAbstracta {
 				ProductorFabricas.getAlarma_rechazada());
 		TipoDatoFabricable tipo_de_equipo = fabrica_tipo_de_equipo.getInstancia(discriminante);
 
-		Integer id_equipo = ((TipoDeEquipo) tipo_de_equipo).getNumero(discriminante);
+		Integer id_equipo = null;
+
+		try {
+			id_equipo = ((TipoDeEquipo) tipo_de_equipo).getNumero(discriminante);
+		} catch (IllegalStateException excepcion) {
+
+			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),
+					excepcion.getMessage(), discriminante);
+		}
 
 		return new EquipoEnSitio((TipoDeEquipo) tipo_de_equipo, id_equipo);
 	}

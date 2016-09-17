@@ -22,7 +22,7 @@ public class Valvula extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "VALVULA|Valvula";
+	private static String expresion_regular = "VR\\d|VALVULA|Valvula";
 	private static String descripcion = "valvula";
 
 	/* ............................................. */
@@ -63,7 +63,7 @@ public class Valvula extends TipoDeEquipo {
 
 		return new Integer(m.group());
 	}
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

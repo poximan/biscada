@@ -5,7 +5,10 @@
 
 package comunes.fabrica;
 
+import java.util.regex.PatternSyntaxException;
+
 import etl.controles.CampoTextoDefectuoso;
+import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.familias.BackupSCADA;
 import etl.familias.Cloacal;
@@ -65,38 +68,55 @@ public class FamiliaFactory extends FabricaAbstracta {
 	@Override
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
+		TipoDatoFabricable valor = null;
+
 		try {
 			if (discriminante
 					.matches(Constantes.ABRE_EXP_REG + BackupSCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new BackupSCADA();
+				valor = new BackupSCADA();
 
 			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Cloacal.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new Cloacal();
+					.matches(Constantes.ABRE_EXP_REG + Cloacal.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new Cloacal();
+			}
 
 			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ErrorComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new ErrorComunicacion();
+					Constantes.ABRE_EXP_REG + ErrorComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new ErrorComunicacion();
+			}
 
 			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Login.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new Login();
+					.matches(Constantes.ABRE_EXP_REG + Login.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new Login();
+			}
 
 			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Potable.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new Potable();
+					.matches(Constantes.ABRE_EXP_REG + Potable.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new Potable();
+			}
 
 			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Reuso.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				return new Reuso();
+					.matches(Constantes.ABRE_EXP_REG + Reuso.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
+				if (valor != null)
+					throw new CampoTextoAmbiguoExcepcion(discriminante);
+				valor = new Reuso();
+			}
 
 			throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
-		} catch (CampoTextoNoEncontradoExcepcion excepcion) {
+		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),
 					discriminante);
 		}
 
-		return null;
+		return valor;
 	}
 }

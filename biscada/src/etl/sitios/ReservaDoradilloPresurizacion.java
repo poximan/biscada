@@ -3,24 +3,25 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sitios;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Familia;
+import comunes.modelo.Sitio;
+import etl.familias.Potable;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Cisterna extends TipoDeEquipo {
+public class ReservaDoradilloPresurizacion extends Sitio {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CISTERNA|TANQUE|RESERVA";
-	private static String descripcion = "cisterna";
+	private static String expresion_regular = "DORADILLO SALA PRE";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +37,8 @@ public class Cisterna extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Cisterna() {
-		super(descripcion);
+	public ReservaDoradilloPresurizacion() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -47,12 +48,12 @@ public class Cisterna extends TipoDeEquipo {
 
 	@Override
 	public String toString() {
-		return descripcion;
+		return "reserva interna doradillo, presurizacion|station\\s22";
 	}
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	/* ............................................. */

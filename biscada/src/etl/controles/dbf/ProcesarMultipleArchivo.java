@@ -19,8 +19,8 @@ import org.apache.log4j.Logger;
 import comunes.controles.EMFSingleton;
 import comunes.controles.ObjetosBorrables;
 import comunes.modelo.ArchivoDBF;
+import etl.controles.Transaccion;
 import etl.controles.cruds.ServCRUDArchivoDBF;
-import etl.controles.etl.Transaccion;
 
 /* ............................................. */
 /* ............................................. */

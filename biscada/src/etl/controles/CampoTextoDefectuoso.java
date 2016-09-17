@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.controles.etl;
+package etl.controles;
 
 import java.util.ArrayList;
 import java.util.List;

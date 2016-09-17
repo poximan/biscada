@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.controles.etl;
+package etl.controles;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.RollbackException;

@@ -5,7 +5,7 @@
 
 package comunes.fabrica;
 
-import etl.controles.etl.CampoTextoDefectuoso;
+import etl.controles.CampoTextoDefectuoso;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sucesos.AguaEnEstator;
 import etl.sucesos.AltaTemperaturaBobinado;

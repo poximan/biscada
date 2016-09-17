@@ -11,11 +11,11 @@ import org.apache.log4j.Logger;
 
 import comunes.controles.ObjetosBorrables;
 import comunes.modelo.ArchivoDBF;
+import etl.controles.CampoTextoDefectuoso;
+import etl.controles.ETL0Extraer;
+import etl.controles.ETL1Transformar;
+import etl.controles.ETL2Cargar;
 import etl.controles.cruds.ServCRUDArchivoDBF;
-import etl.controles.etl.CampoTextoDefectuoso;
-import etl.controles.etl.ETL0Extraer;
-import etl.controles.etl.ETL1Transformar;
-import etl.controles.etl.ETL2Cargar;
 
 /* ............................................. */
 /* ............................................. */

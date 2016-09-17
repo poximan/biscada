@@ -5,7 +5,7 @@
 
 package comunes.fabrica;
 
-import etl.controles.etl.CampoTextoDefectuoso;
+import etl.controles.CampoTextoDefectuoso;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
 import etl.equipos.Cisterna;

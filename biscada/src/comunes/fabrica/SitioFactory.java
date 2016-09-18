@@ -18,6 +18,7 @@ import etl.sitios.CloacalEE3;
 import etl.sitios.CloacalEE4;
 import etl.sitios.CloacalEPN;
 import etl.sitios.CloacalEPS;
+import etl.sitios.ExemysEsclavoModbus;
 import etl.sitios.Reserva6000;
 import etl.sitios.ReservaCota90;
 import etl.sitios.ReservaDoradilloPresurizacion;
@@ -27,7 +28,8 @@ import etl.sitios.ReservaLomaMariaREP;
 import etl.sitios.ReservaOeste;
 import etl.sitios.ReservaParquePesquero;
 import etl.sitios.ReservaPlantaPotabilizadora;
-import etl.sitios.ReservaPujol;
+import etl.sitios.ReservaPujolBombeo;
+import etl.sitios.ReservaPujolPresurizacion;
 import etl.sitios.ReservaTomaRio;
 import etl.sitios.ReusoCamaraCarga;
 import etl.sitios.ReusoCota50;
@@ -107,33 +109,39 @@ public class SitioFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ExemysEsclavoModbus.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaCota90.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaDoradilloPresurizacion.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaLomaMariaEST.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaLomaMariaREP.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaParquePesquero.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaParquePesquero.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaPlantaPotabilizadora.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaPujol.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaPujolBombeo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaPujolPresurizacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaTomaRio.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReusoCamaraCarga.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota80.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE5.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE6.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoPTN.class.getCanonicalName());
 
 			if (dato_fabricado == null)

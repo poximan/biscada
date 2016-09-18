@@ -14,7 +14,7 @@ import etl.familias.Potable;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ReservaPujol extends Sitio {
+public class ReservaPujolBombeo extends Sitio {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +37,7 @@ public class ReservaPujol extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaPujol() {
+	public ReservaPujolBombeo() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -53,7 +53,7 @@ public class ReservaPujol extends Sitio {
 
 	@Override
 	public String toString() {
-		return "reserva pujol 1";
+		return "reserva pujol 1 bombeo";
 	}
 
 	/* ............................................. */

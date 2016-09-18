@@ -12,6 +12,7 @@ import etl.equipos.CamaraAspiracion;
 import etl.equipos.Plc;
 import etl.equipos.CentroControlMotores;
 import etl.equipos.Cisterna;
+import etl.equipos.Edificio;
 import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.UsarPrimerOcurrenciaExcepcion;
@@ -82,7 +83,7 @@ public class ServExpresionesRegulares {
 			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
 				throw new UsarSegundaOcurrenciaExcepcion();
 			
-			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
+			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Edificio)
 				throw new UsarSegundaOcurrenciaExcepcion();
 		
 			if (pri_ocurrencia instanceof Bomba && seg_ocurrencia instanceof CentroControlMotores)

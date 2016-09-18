@@ -3,23 +3,25 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sucesos;
+package etl.sitios;
 
-import comunes.modelo.Suceso;
+import comunes.modelo.Familia;
+import comunes.modelo.Sitio;
+import etl.familias.Potable;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class IncongruenciaEstado extends Suceso {
+public class ExemysEsclavoModbus extends Sitio {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "INCONGRUENCIA|INCONG.DE ESTADO";
+	private static String expresion_regular = "VPI MODBUSRTU station 22\\.";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +37,7 @@ public class IncongruenciaEstado extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public IncongruenciaEstado() {
+	public ExemysEsclavoModbus() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -45,8 +47,13 @@ public class IncongruenciaEstado extends Suceso {
 	/* ............................................. */
 
 	@Override
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
+	}
+
+	@Override
 	public String toString() {
-		return "incongruencia de estado";
+		return "MW Exemys esclavo modbus";
 	}
 
 	/* ............................................. */

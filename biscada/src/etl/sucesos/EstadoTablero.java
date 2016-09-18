@@ -19,7 +19,11 @@ public class EstadoTablero extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CONTROL TABLERO|SELECTORA ESTADO TABLERO|SELECTORA TAB.-RTU A POSICION TABLERO|SELECTORA ESTADO MANUAL";
+	private static String expresion_regular = "CONTROL TABLERO"
+			+ "|SELECTORA ESTADO TABLERO"
+			+ "|SELECTORA TAB.-RTU A POSICION TABLERO"
+			+ "|SELECTORA ESTADO MANUAL"
+			+ "|MODO TABLERO";
 
 	/* ............................................. */
 	/* ............................................. */

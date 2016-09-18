@@ -12,15 +12,15 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Pozo extends TipoDeEquipo {
+public class CargadorBateria extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "POZO|CUENCO";
-	private static String descripcion = "pozo";
+	private static String expresion_regular = "Cargador Bater.a";
+	private static String descripcion = "cargador baterias";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class Pozo extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Pozo() {
+	public CargadorBateria() {
 		super(descripcion);
 	}
 

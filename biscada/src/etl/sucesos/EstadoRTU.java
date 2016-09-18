@@ -19,7 +19,7 @@ public class EstadoRTU extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(ESTADO DE RTU)|(SELECTORA ESTADO RTU)|(SELECTORA ESTADO AUTOM.TICO)|(Selecci.n CONTROL AUTOM.TICO)";
+	private static String expresion_regular = "ESTADO DE RTU|SELECTORA ESTADO RTU|SELECTORA ESTADO AUTOM.TICO|Selecci.n CONTROL AUTOM.TICO";
 
 	/* ............................................. */
 	/* ............................................. */

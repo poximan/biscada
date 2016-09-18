@@ -19,7 +19,7 @@ public class ComandoMarcha extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "COMANDO DE ARRANQUE|COMANDO BOMBA.*(MARCHA)$";
+	private static String expresion_regular = "COMANDO (D?E\\s)?ARRANQUE|COMANDO BOMBA.*(MARCHA)$";
 
 	/* ............................................. */
 	/* ............................................. */

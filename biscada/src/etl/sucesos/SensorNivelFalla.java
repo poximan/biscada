@@ -19,7 +19,7 @@ public class SensorNivelFalla extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALLA SENSOR DE NIVEL";
+	private static String expresion_regular = "FALLA SENSOR DE NIVEL|FUERA DE RANGO";
 
 	/* ............................................. */
 	/* ............................................. */

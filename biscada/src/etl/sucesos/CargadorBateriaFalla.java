@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Pozo extends TipoDeEquipo {
+public class CargadorBateriaFalla extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "POZO|CUENCO";
-	private static String descripcion = "pozo";
+	private static String expresion_regular = "Cargador Bater.a";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class Pozo extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Pozo() {
-		super(descripcion);
+	public CargadorBateriaFalla() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -46,13 +45,8 @@ public class Pozo extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "falla cargador baterias";
 	}
 
 	/* ............................................. */

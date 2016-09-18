@@ -19,7 +19,7 @@ public class PuertaAbierta extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(APERTURA DE PORTON)|PUERTA";
+	private static String expresion_regular = "APERTURA DE PORTON|PUERTA";
 
 	/* ............................................. */
 	/* ............................................. */

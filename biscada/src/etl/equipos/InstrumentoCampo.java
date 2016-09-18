@@ -19,7 +19,12 @@ public class InstrumentoCampo extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(MEDIDA DE CAUDAL)|(ALARMA NIVEL)|PERA";
+	private static String expresion_regular = "MEDIDA DE CAUDAL"
+			+ "|ALARMA NIVEL"
+			+ "|\\sPERA\\s"
+			+ "|ALARMA DE ALTO NIVEL"
+			+ "|SENSOR DE NIVEL";
+	
 	private static String descripcion = "instrumento de campo";
 
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class Edificio extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "ALARMA ROBO";
+	private static String expresion_regular = "ALARMA ROBO|PUERTA ABIERTA";
 	private static String descripcion = "edificio";
 
 	/* ............................................. */

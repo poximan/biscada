@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TableroSitio extends TipoDeEquipo {
+public class SensorNivelFalla extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA\\s(DE\\s)?EMERGENCIA|SELECTORA ESTADO TABLERO EN BOMBAS";
-	private static String descripcion = "tablero del control sitio";
+	private static String expresion_regular = "FALLA SENSOR DE NIVEL";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class TableroSitio extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public TableroSitio() {
-		super(descripcion);
+	public SensorNivelFalla() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -46,13 +45,8 @@ public class TableroSitio extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "falla sensor de nivel";
 	}
 
 	/* ............................................. */

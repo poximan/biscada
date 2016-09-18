@@ -19,7 +19,7 @@ public class PerdidaComunicacion extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "Communication Error|CONEX.*CON RTU|RDIDA DE COMUNICACI";
+	private static String expresion_regular = "Communication Error|CONEX.*CON RTU|FALLA COMUNC\\.|RDIDA DE COMUNICACI";
 
 	/* ............................................. */
 	/* ............................................. */

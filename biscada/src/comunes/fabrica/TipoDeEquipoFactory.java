@@ -15,10 +15,11 @@ import etl.equipos.Cisterna;
 import etl.equipos.Edificio;
 import etl.equipos.Forzador;
 import etl.equipos.GrupoElectrogeno;
+import etl.equipos.InstrumentoCampo;
 import etl.equipos.Plc;
 import etl.equipos.Pozo;
 import etl.equipos.SCADA;
-import etl.equipos.TableroSitio;
+import etl.equipos.CentroControlMotores;
 import etl.equipos.Tamiz;
 import etl.equipos.TornilloCompactador;
 import etl.equipos.Valvula;
@@ -97,11 +98,14 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogeno.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					InstrumentoCampo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, TableroSitio.class.getCanonicalName());
-
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					CentroControlMotores.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TornilloCompactador.class.getCanonicalName());
@@ -111,7 +115,8 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage());
+			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),
+					excepcion.getMessage());
 		}
 
 		return dato_fabricado;

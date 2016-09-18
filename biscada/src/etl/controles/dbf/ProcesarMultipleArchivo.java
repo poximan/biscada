@@ -70,20 +70,20 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
+		metodo_borrado.beginArchivo();
+
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 
-			metodo_borrado.beginArchivo();
-
 			archivo_actual = EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
-
-			metodo_borrado.enviarCacheHaciaBD();
-			metodo_borrado.limpiarCache();
-
-			metodo_borrado.commitArchivo();
 		}
+
+		metodo_borrado.enviarCacheHaciaBD();
+		metodo_borrado.limpiarCache();
+
+		metodo_borrado.commitArchivo();
 	}
 
 	/**
@@ -141,20 +141,20 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
+		metodo_insercion.beginArchivo();
+
 		while (iterador.hasNext()) {
 
 			ArchivoDBF archivo_actual = iterador.next();
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
-			metodo_insercion.beginArchivo();
-
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual);
-
-			metodo_insercion.enviarCacheHaciaBD();
-			metodo_insercion.limpiarCache();
-
-			metodo_insercion.commitArchivo();
 		}
+		metodo_insercion.enviarCacheHaciaBD();
+		metodo_insercion.limpiarCache();
+
+		metodo_insercion.commitArchivo();
+
 		mostarInfo();
 	}
 

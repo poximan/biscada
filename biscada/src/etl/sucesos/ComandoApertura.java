@@ -19,7 +19,7 @@ public class ComandoApertura extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "COMANDO APERTURA";
+	private static String expresion_regular = "COMANDO (DE\\s)?APERTURA";
 
 	/* ............................................. */
 	/* ............................................. */

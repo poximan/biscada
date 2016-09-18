@@ -12,15 +12,15 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CamaraAspiracion extends TipoDeEquipo {
+public class InstrumentoCampo extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CAMARA\\s(DE\\s)?ASPIRACION|C. CARGA: ALARMA MAXIMO NIVEL|EN CAMARA DE CARGA";
-	private static String descripcion = "camara aspiracion";
+	private static String expresion_regular = "MEDIDA DE CAUDAL|ALARMA NIVEL|PERA";
+	private static String descripcion = "instrumento de campo";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,7 +36,7 @@ public class CamaraAspiracion extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public CamaraAspiracion() {
+	public InstrumentoCampo() {
 		super(descripcion);
 	}
 

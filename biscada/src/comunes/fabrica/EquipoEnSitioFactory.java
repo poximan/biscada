@@ -70,7 +70,7 @@ public class EquipoEnSitioFactory extends FabricaAbstracta {
 			id_equipo = ((TipoDeEquipo) tipo_de_equipo).getNumero(discriminante);
 		} catch (IllegalStateException excepcion) {
 
-			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),
+			super.getAlarma_rechazada().agregarNuevaAlarma(EquipoEnSitioFactory.class.getSimpleName(),
 					excepcion.getMessage());
 		}
 

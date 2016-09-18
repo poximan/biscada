@@ -7,7 +7,17 @@ import org.apache.log4j.Logger;
 
 import comunes.fabrica.Constantes;
 import comunes.fabrica.TipoDatoFabricable;
+import etl.equipos.Bomba;
+import etl.equipos.CamaraAspiracion;
+import etl.equipos.Plc;
+import etl.equipos.CentroControlMotores;
+import etl.equipos.Cisterna;
+import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
+import etl.excepciones.UsarPrimerOcurrenciaExcepcion;
+import etl.excepciones.UsarSegundaOcurrenciaExcepcion;
+import etl.sucesos.NivelAlto;
+import etl.sucesos.NivelRebalse;
 
 public class ServExpresionesRegulares {
 
@@ -33,17 +43,57 @@ public class ServExpresionesRegulares {
 
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + expresion_regular + Constantes.CIERRA_EXP_REG)) {
 
-			if (dato_fabricado != null)
-				throw new CampoTextoAmbiguoExcepcion(discriminante + " [ " + nueva_clase.getSimpleName() + " - "
-						+ dato_fabricado.getClass().getSimpleName() + " ]");
-
 			try {
-				nuevo_valor = (TipoDatoFabricable) nueva_clase.newInstance();
-			} catch (InstantiationException | IllegalAccessException e) {
-				log.error("ERROR: no se pudo pedir nueva instancia de clase " + nueva_clase.getSimpleName());
+				if (dato_fabricado != null) {
+
+					salvarAmbiguedad(dato_fabricado, nueva_clase);
+
+					throw new CampoTextoAmbiguoExcepcion(discriminante + " [1er ocurrencia: " + dato_fabricado.getClass().getSimpleName() + " - "
+							+ "2da ocurrencia " + nueva_clase.getSimpleName() + " ]");
+				} else
+					throw new UsarSegundaOcurrenciaExcepcion();
+
+			} catch (UsarPrimerOcurrenciaExcepcion e) {
+			}
+
+			catch (UsarSegundaOcurrenciaExcepcion e1) {
+
+				try {
+					nuevo_valor = (TipoDatoFabricable) nueva_clase.newInstance();
+				} catch (InstantiationException | IllegalAccessException e2) {
+					log.error("ERROR: no se pudo pedir nueva instancia de clase " + nueva_clase.getSimpleName());
+				}
 			}
 		}
 		return nuevo_valor;
+	}
+
+	private void salvarAmbiguedad(TipoDatoFabricable pri_ocurrencia, Class<?> seg_ocurr)
+			throws UsarPrimerOcurrenciaExcepcion, UsarSegundaOcurrenciaExcepcion {
+
+		TipoDatoFabricable seg_ocurrencia = null;
+
+		try {
+			seg_ocurrencia = (TipoDatoFabricable) seg_ocurr.newInstance();
+
+			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Plc)
+				throw new UsarSegundaOcurrenciaExcepcion();
+			
+			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
+				throw new UsarSegundaOcurrenciaExcepcion();
+			
+			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
+				throw new UsarSegundaOcurrenciaExcepcion();
+		
+			if (pri_ocurrencia instanceof Bomba && seg_ocurrencia instanceof CentroControlMotores)
+				throw new UsarSegundaOcurrenciaExcepcion();
+
+			if ((pri_ocurrencia instanceof Plc || pri_ocurrencia instanceof CamaraAspiracion) && seg_ocurrencia instanceof Valvula)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+		} catch (InstantiationException | IllegalAccessException e) {
+			log.error("ERROR: no se pudo pedir nueva instancia de clase " + seg_ocurr.getSimpleName());
+		}
 	}
 
 	private String getExpresion_regular(String nombre_canonico_clase) {

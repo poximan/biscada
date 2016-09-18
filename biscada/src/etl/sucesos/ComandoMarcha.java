@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CamaraAspiracion extends TipoDeEquipo {
+public class ComandoMarcha extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CAMARA\\s(DE\\s)?ASPIRACION|C. CARGA: ALARMA MAXIMO NIVEL|EN CAMARA DE CARGA";
-	private static String descripcion = "camara aspiracion";
+	private static String expresion_regular = "COMANDO DE ARRANQUE|COMANDO BOMBA.*(MARCHA)$";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class CamaraAspiracion extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public CamaraAspiracion() {
-		super(descripcion);
+	public ComandoMarcha() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -46,13 +45,8 @@ public class CamaraAspiracion extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "inicia sesion SCADA";
 	}
 
 	/* ............................................. */

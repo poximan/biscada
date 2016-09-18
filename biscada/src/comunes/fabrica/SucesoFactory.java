@@ -13,9 +13,11 @@ import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sucesos.AguaEnEstator;
 import etl.sucesos.AltaTemperaturaBobinado;
+import etl.sucesos.CaudalimetroFalla;
 import etl.sucesos.ComandoApertura;
 import etl.sucesos.ComandoCierre;
 import etl.sucesos.ComandoIndefinido;
+import etl.sucesos.ComandoMarcha;
 import etl.sucesos.ComandoParada;
 import etl.sucesos.ComandoSimultaneo;
 import etl.sucesos.EstadoRTU;
@@ -34,6 +36,7 @@ import etl.sucesos.PerdidaComunicacion;
 import etl.sucesos.RFFActuado;
 import etl.sucesos.Robo;
 import etl.sucesos.SCADABackupActivo;
+import etl.sucesos.SensorNivelFalla;
 import etl.sucesos.TermicoActuado;
 import etl.sucesos.VibracionMotor;
 
@@ -105,55 +108,61 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					AltaTemperaturaBobinado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					CaudalimetroFalla.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ComandoApertura.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ComandoCierre.class.getCanonicalName());
+
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ComandoIndefinido.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ComandoMarcha.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ComandoParada.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ComandoSimultaneo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, EstadoRTU.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EstadoTablero.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EvolucionLecturaAnalogica.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogenoFalla.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogenoMarcha.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+
 					IncongruenciaEstado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, IniciaSesion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InterruptorActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelAlto.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelBajo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelRebalse.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ParadaEmergenciaActuada.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PerdidaComunicacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, RFFActuado.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SCADABackupActivo.class.getCanonicalName());
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					SensorNivelFalla.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TermicoActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					VibracionMotor.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ComandoIndefinido.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(),
-					excepcion.getMessage());
+			super.getAlarma_rechazada().agregarNuevaAlarma(SucesoFactory.class.getSimpleName(), excepcion.getMessage());
 		}
 
 		return dato_fabricado;

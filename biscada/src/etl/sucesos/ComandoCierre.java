@@ -19,7 +19,7 @@ public class ComandoCierre extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "COMANDO (D?E\\s)?CIERRE";
+	private static String expresion_regular = "COMANDOD? (D?E\\s)?CIERRE";
 
 	/* ............................................. */
 	/* ............................................. */

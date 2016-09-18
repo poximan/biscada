@@ -3,27 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Bomba extends TipoDeEquipo {
+public class EstadoCerrado extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "B\\d|BOMBA\\W|Bomba\\W";
-	private static String descripcion = "bomba";
+	private static String expresion_regular = "DIAFRAGMA CERRADA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -39,8 +35,8 @@ public class Bomba extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Bomba() {
-		super(descripcion);
+	public EstadoCerrado() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -49,19 +45,8 @@ public class Bomba extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-
-		Pattern p = Pattern.compile("-?\\d+");
-
-		Matcher m = p.matcher(discriminante);
-		m.find();
-
-		return new Integer(m.group());
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "estado cerrado";
 	}
 
 	/* ............................................. */

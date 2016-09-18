@@ -22,6 +22,7 @@ import etl.sucesos.ComandoMarcha;
 import etl.sucesos.ComandoParada;
 import etl.sucesos.ComandoReposicionAlarmas;
 import etl.sucesos.ComandoSimultaneo;
+import etl.sucesos.EstadoCerrado;
 import etl.sucesos.EstadoRTU;
 import etl.sucesos.EstadoTablero;
 import etl.sucesos.EvolucionLecturaAnalogica;
@@ -41,6 +42,7 @@ import etl.sucesos.Robo;
 import etl.sucesos.SCADABackupActivo;
 import etl.sucesos.SensorNivelFalla;
 import etl.sucesos.TermicoActuado;
+import etl.sucesos.TimeOutIndefinido;
 import etl.sucesos.VibracionMotor;
 
 /* ............................................. */
@@ -130,14 +132,16 @@ public class SucesoFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ComandoSimultaneo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					EstadoCerrado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, EstadoRTU.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EstadoTablero.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EvolucionLecturaAnalogica.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogenoFalla.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogenoMarcha.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
@@ -145,26 +149,28 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, IniciaSesion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InterruptorActuado.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelAlto.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelAlto.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelBajo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelRebalse.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ParadaEmergenciaActuada.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PerdidaComunicacion.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PuertaAbierta.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, RFFActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SCADABackupActivo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SensorNivelFalla.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TermicoActuado.class.getCanonicalName());
-
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					TimeOutIndefinido.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					VibracionMotor.class.getCanonicalName());
 

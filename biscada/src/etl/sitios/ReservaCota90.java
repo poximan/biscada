@@ -59,20 +59,6 @@ public class ReservaCota90 extends Sitio {
 		return new Potable();
 	}
 
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante.matches(Constantes.ABRE_EXP_REG + ReservaCota90.getExpresion_regular()
-				+ Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(
-						discriminante + " [ " + ReservaCota90.class.getSimpleName() + " - "
-								+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new ReservaCota90();
-		}
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

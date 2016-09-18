@@ -59,20 +59,6 @@ public class CloacalEPN extends Sitio {
 		return new Cloacal();
 	}
 
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante.matches(Constantes.ABRE_EXP_REG + CloacalEPN.getExpresion_regular()
-				+ Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(
-						discriminante + " [ " + CloacalEPN.class.getSimpleName() + " - "
-								+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new CloacalEPN();
-		}
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

@@ -59,20 +59,6 @@ public class CentralSCADA extends Sitio {
 		return new BackupSCADA();
 	}
 
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante.matches(Constantes.ABRE_EXP_REG + CentralSCADA.getExpresion_regular()
-				+ Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(
-						discriminante + " [ " + CentralSCADA.class.getSimpleName() + " - "
-								+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new CentralSCADA();
-		}
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

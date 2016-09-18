@@ -59,20 +59,6 @@ public class CloacalEE3 extends Sitio {
 		return new Cloacal();
 	}
 
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante.matches(Constantes.ABRE_EXP_REG + CloacalEE3.getExpresion_regular()
-				+ Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(
-						discriminante + " [ " + CloacalEE3.class.getSimpleName() + " - "
-								+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new CloacalEE3();
-		}
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

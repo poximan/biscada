@@ -26,7 +26,7 @@ import comunes.fabrica.TipoDatoFabricable;
 @Table(name = "familia")
 @NamedQueries({ @NamedQuery(name = "Familia.buscTodos", query = "SELECT tabla FROM Familia tabla"),
 		@NamedQuery(name = "Familia.buscDescripcion", query = "SELECT tabla FROM Familia tabla WHERE tabla.descripcion = :descripcion"), })
-public class Familia implements TipoDatoFabricable {
+public class Familia extends TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */

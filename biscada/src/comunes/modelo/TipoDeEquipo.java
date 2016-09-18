@@ -27,7 +27,7 @@ import etl.equipos.NumberoEquipoIdentificable;
 @Table(name = "tipo_de_equipo")
 @NamedQueries({ @NamedQuery(name = "TipoDeEquipo.buscTodos", query = "SELECT tabla FROM TipoDeEquipo tabla"),
 		@NamedQuery(name = "TipoDeEquipo.buscDescripcion", query = "SELECT tabla FROM TipoDeEquipo tabla WHERE tabla.descripcion = :descripcion"), })
-public class TipoDeEquipo implements TipoDatoFabricable, NumberoEquipoIdentificable {
+public class TipoDeEquipo extends TipoDatoFabricable implements NumberoEquipoIdentificable {
 
 	/* ............................................. */
 	/* ............................................. */

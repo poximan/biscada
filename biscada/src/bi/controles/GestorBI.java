@@ -27,6 +27,7 @@ public class GestorBI {
 	private static Logger log = Logger.getLogger(GestorBI.class);
 
 	private static GestorBI main_bi;
+
 	public static GestorBI getSingleton() {
 
 		if (main_bi == null)

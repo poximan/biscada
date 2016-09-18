@@ -32,6 +32,7 @@ public class GraficoHistorial extends JPanel {
 	private static double Total;
 
 	private static double promedio;
+
 	private static JFreeChart createChart(XYDataset xydataset) {
 		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas", "Cantidad", xydataset,
 				PlotOrientation.VERTICAL, false, true, false);
@@ -88,6 +89,7 @@ public class GraficoHistorial extends JPanel {
 		 */
 		return jfreechart;
 	}
+
 	private JPanel panel;
 
 	private TimeSeriesCollection coleccion;

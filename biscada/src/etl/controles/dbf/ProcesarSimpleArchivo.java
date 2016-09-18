@@ -37,9 +37,11 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	public static int getTotalizador_extraidas() {
 		return totalizador_extraidas;
 	}
+
 	public static int getTotalizador_transformadas() {
 		return totalizador_transformadas;
 	}
+
 	private ETL0Extraer extractor;
 
 	private ETL1Transformar transformador;

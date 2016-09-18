@@ -39,6 +39,7 @@ public class GestorPropiedades {
 	private static Logger log = Logger.getLogger(GestorPropiedades.class);
 
 	private static GestorPropiedades main_propiedades;
+
 	public static GestorPropiedades getSingleton() {
 
 		if (main_propiedades == null)

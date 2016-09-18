@@ -5,11 +5,8 @@
 
 package etl.sitios;
 
-import comunes.fabrica.Constantes;
-import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
-import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.familias.Potable;
 
 /* ............................................. */
@@ -58,7 +55,7 @@ public class ReservaDoradilloPresurizacion extends Sitio {
 	public Familia getFamiliaPorDefecto() {
 		return new Potable();
 	}
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

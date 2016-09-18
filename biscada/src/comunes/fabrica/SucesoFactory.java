@@ -8,6 +8,7 @@ package comunes.fabrica;
 import java.util.regex.PatternSyntaxException;
 
 import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.ServExpresionesRegulares;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sucesos.AguaEnEstator;
@@ -71,11 +72,19 @@ public class SucesoFactory extends FabricaAbstracta {
 
 	/* ............................................. */
 	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private ServExpresionesRegulares serv_exp_reg;
+
+	/* ............................................. */
+	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public SucesoFactory(CampoTextoDefectuoso alarma_rechazada) {
 		super(alarma_rechazada);
+		serv_exp_reg = new ServExpresionesRegulares();
 	}
 
 	/* ............................................. */
@@ -86,47 +95,57 @@ public class SucesoFactory extends FabricaAbstracta {
 	@Override
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
-		TipoDatoFabricable valor = null;
+		TipoDatoFabricable dato_fabricado = null;
 
 		try {
 
-			AguaEnEstator.asociar(valor, discriminante);
-			AltaTemperaturaBobinado.asociar(valor, discriminante);
-			ComandoParada.asociar(valor, discriminante);
-			EvolucionLecturaAnalogica.asociar(valor, discriminante);
-			GrupoElectrogenoFalla.asociar(valor, discriminante);
-			
-			GrupoElectrogenoMarcha.asociar(valor, discriminante);
-			IncongruenciaEstado.asociar(valor, discriminante);
-			IniciaSesion.asociar(valor, discriminante);
-			InterruptorActuado.asociar(valor, discriminante);
-			NivelRebalse.asociar(valor, discriminante);
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, AguaEnEstator.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					AltaTemperaturaBobinado.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ComandoApertura.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ComandoCierre.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ComandoParada.class.getSimpleName());
 
-			NivelAlto.asociar(valor, discriminante);
-			NivelBajo.asociar(valor, discriminante);
-			PerdidaComunicacion.asociar(valor, discriminante);
-			RFFActuado.asociar(valor, discriminante);
-			Robo.asociar(valor, discriminante);
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ComandoSimultaneo.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, EstadoRTU.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, EstadoTablero.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					EvolucionLecturaAnalogica.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					GrupoElectrogenoFalla.class.getSimpleName());
 
-			SCADABackupActivo.asociar(valor, discriminante);
-			TermicoActuado.asociar(valor, discriminante);
-			VibracionMotor.asociar(valor, discriminante);
-			ParadaEmergenciaActuada.asociar(valor, discriminante);
-			ComandoSimultaneo.asociar(valor, discriminante);
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					GrupoElectrogenoMarcha.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					IncongruenciaEstado.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, IniciaSesion.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					InterruptorActuado.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelAlto.class.getSimpleName());
 
-			EstadoRTU.asociar(valor, discriminante);
-			EstadoTablero.asociar(valor, discriminante);
-			ComandoApertura.asociar(valor, discriminante);
-			ComandoCierre.asociar(valor, discriminante);
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelBajo.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelRebalse.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ParadaEmergenciaActuada.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					PerdidaComunicacion.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, RFFActuado.class.getSimpleName());
 
-			if (valor == null)
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					SCADABackupActivo.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, TermicoActuado.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, VibracionMotor.class.getSimpleName());
+
+			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
-		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(SucesoFactory.class.getSimpleName(), excepcion.getMessage(),
+		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),
 					discriminante);
 		}
 
-		return valor;
+		return dato_fabricado;
 	}
 }

@@ -26,7 +26,7 @@ import comunes.fabrica.TipoDatoFabricable;
 @Table(name = "familia")
 @NamedQueries({ @NamedQuery(name = "Familia.buscTodos", query = "SELECT tabla FROM Familia tabla"),
 		@NamedQuery(name = "Familia.buscDescripcion", query = "SELECT tabla FROM Familia tabla WHERE tabla.descripcion = :descripcion"), })
-public class Familia extends TipoDatoFabricable {
+public class Familia implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -74,7 +74,7 @@ public class Familia extends TipoDatoFabricable {
 	public String getDescripcion() {
 		return descripcion;
 	}
-	
+
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
 	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que

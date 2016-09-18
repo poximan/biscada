@@ -8,10 +8,7 @@ package etl.equipos;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import comunes.fabrica.Constantes;
-import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.TipoDeEquipo;
-import etl.excepciones.CampoTextoAmbiguoExcepcion;
 
 /* ............................................. */
 /* ............................................. */
@@ -65,19 +62,6 @@ public class Tamiz extends TipoDeEquipo {
 		m.find();
 
 		return new Integer(m.group());
-	}
-
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante
-				.matches(Constantes.ABRE_EXP_REG + Tamiz.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(discriminante + " [ " + Tamiz.class.getSimpleName() + " - "
-						+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new Tamiz();
-		}
 	}
 
 	/* ............................................. */

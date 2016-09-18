@@ -26,8 +26,8 @@ import comunes.fabrica.TipoDatoFabricable;
 @Table(name = "suceso")
 @NamedQueries({ @NamedQuery(name = "Suceso.buscTodos", query = "SELECT tabla FROM Suceso tabla"),
 		@NamedQuery(name = "Suceso.buscDescripcion", query = "SELECT tabla FROM Suceso tabla WHERE tabla.descripcion = :descripcion"), })
-public class Suceso extends TipoDatoFabricable {
-	
+public class Suceso implements TipoDatoFabricable {
+
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */

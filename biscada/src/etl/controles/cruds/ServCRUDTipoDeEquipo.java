@@ -40,7 +40,7 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	public ServCRUDTipoDeEquipo() {
-		
+
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 		actualizarLista();
 	}

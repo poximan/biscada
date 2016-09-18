@@ -40,7 +40,7 @@ public class ServCRUDSuceso implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	public ServCRUDSuceso() {
-		
+
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 		actualizarLista();
 	}

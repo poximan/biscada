@@ -87,7 +87,7 @@ public class ServConexionArchivo {
 			log.error("ERROR: tabla no encontrada");
 			e.printStackTrace();
 		}
-		
+
 		List<Field> fields = table.getFields();
 
 		Iterator<Record> recordIterator = table.recordIterator();
@@ -96,7 +96,7 @@ public class ServConexionArchivo {
 
 			final Record record = recordIterator.next();
 
-			ServParser serv_parser = new ServParser(record, fields);			
+			ServParser serv_parser = new ServParser(record, fields);
 			alarmas_extraidas.add(serv_parser.separarCampos());
 		}
 

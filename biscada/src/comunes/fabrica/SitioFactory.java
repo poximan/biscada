@@ -8,6 +8,7 @@ package comunes.fabrica;
 import java.util.regex.PatternSyntaxException;
 
 import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.ServExpresionesRegulares;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.sitios.CentralSCADA;
@@ -71,11 +72,19 @@ public class SitioFactory extends FabricaAbstracta {
 
 	/* ............................................. */
 	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private ServExpresionesRegulares serv_exp_reg;
+
+	/* ............................................. */
+	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public SitioFactory(CampoTextoDefectuoso alarma_rechazada) {
 		super(alarma_rechazada);
+		serv_exp_reg = new ServExpresionesRegulares();
 	}
 
 	/* ............................................. */
@@ -86,47 +95,52 @@ public class SitioFactory extends FabricaAbstracta {
 	@Override
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
-		TipoDatoFabricable valor = null;
+		TipoDatoFabricable dato_fabricado = null;
 
 		try {
 
-			CentralSCADA.asociar(valor, discriminante);
-			CloacalEE1.asociar(valor, discriminante);
-			CloacalEE2.asociar(valor, discriminante);
-			CloacalEE3.asociar(valor, discriminante);
-			CloacalEE4.asociar(valor, discriminante);
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE1.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE4.class.getSimpleName());
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaCota90.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaDoradilloPresurizacion.class.getSimpleName());
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaLomaMariaEST.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaLomaMariaREP.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaParquePesquero.class.getSimpleName());
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaPlantaPotabilizadora.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaPujol.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaTomaRio.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReusoCamaraCarga.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getSimpleName());
+			
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota80.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE5.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE6.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoPTN.class.getSimpleName());
 
-			CloacalEPN.asociar(valor, discriminante);
-			CloacalEPS.asociar(valor, discriminante);
-			Reserva6000.asociar(valor, discriminante);
-			ReservaCota90.asociar(valor, discriminante);
-			ReservaKM11.asociar(valor, discriminante);
-
-			ReservaLomaMariaEST.asociar(valor, discriminante);
-			ReservaLomaMariaREP.asociar(valor, discriminante);
-			ReservaOeste.asociar(valor, discriminante);
-			ReservaPlantaPotabilizadora.asociar(valor, discriminante);
-			ReservaPujol.asociar(valor, discriminante);
-
-			ReservaTomaRio.asociar(valor, discriminante);
-			ReusoCamaraCarga.asociar(valor, discriminante);
-			ReusoCota50.asociar(valor, discriminante);
-			ReusoCota80.asociar(valor, discriminante);
-			ReusoEE5.asociar(valor, discriminante);
-
-			ReusoEE6.asociar(valor, discriminante);
-			ReusoPTN.asociar(valor, discriminante);
-			ReservaParquePesquero.asociar(valor, discriminante);
-			ReservaDoradilloPresurizacion.asociar(valor, discriminante);
-
-			if (valor == null)
+			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
 			super.getAlarma_rechazada().agregarNuevaAlarma(SitioFactory.class.getSimpleName(), excepcion.getMessage(),
 					discriminante);
 		}
-
-		return valor;
+		return dato_fabricado;
 	}
 }

@@ -36,7 +36,7 @@ public abstract class FabricaAbstracta {
 	public FabricaAbstracta(CampoTextoDefectuoso alarma_rechazada) {
 		this.alarma_rechazada = alarma_rechazada;
 	}
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
@@ -45,7 +45,7 @@ public abstract class FabricaAbstracta {
 	public CampoTextoDefectuoso getAlarma_rechazada() {
 		return alarma_rechazada;
 	}
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

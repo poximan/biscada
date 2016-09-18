@@ -8,6 +8,7 @@ package comunes.fabrica;
 import java.util.regex.PatternSyntaxException;
 
 import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.ServExpresionesRegulares;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
 import etl.familias.BackupSCADA;
@@ -53,11 +54,19 @@ public class FamiliaFactory extends FabricaAbstracta {
 
 	/* ............................................. */
 	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private ServExpresionesRegulares serv_exp_reg;
+
+	/* ............................................. */
+	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public FamiliaFactory(CampoTextoDefectuoso alarma_rechazada) {
 		super(alarma_rechazada);
+		serv_exp_reg = new ServExpresionesRegulares();
 	}
 
 	/* ............................................. */
@@ -68,49 +77,20 @@ public class FamiliaFactory extends FabricaAbstracta {
 	@Override
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
-		TipoDatoFabricable valor = null;
+		TipoDatoFabricable dato_fabricado = null;
 
 		try {
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + BackupSCADA.getExpresion_regular() + Constantes.CIERRA_EXP_REG))
-				valor = new BackupSCADA();
 
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Cloacal.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Cloacal();
-			}
-
-			if (discriminante.matches(
-					Constantes.ABRE_EXP_REG + ErrorComunicacion.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new ErrorComunicacion();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Login.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Login();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Potable.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Potable();
-			}
-
-			if (discriminante
-					.matches(Constantes.ABRE_EXP_REG + Reuso.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-				if (valor != null)
-					throw new CampoTextoAmbiguoExcepcion(discriminante);
-				valor = new Reuso();
-			}
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, BackupSCADA.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cloacal.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ErrorComunicacion.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Login.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getSimpleName());
 			
-			if (valor == null)
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getSimpleName());
+
+			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
@@ -118,6 +98,6 @@ public class FamiliaFactory extends FabricaAbstracta {
 					discriminante);
 		}
 
-		return valor;
+		return dato_fabricado;
 	}
 }

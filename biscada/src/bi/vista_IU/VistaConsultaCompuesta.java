@@ -104,18 +104,14 @@ public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, Ev
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(componenteConsulta, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430,
 										Short.MAX_VALUE)
-						.addComponent(panelComparacion, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
-				.addContainerGap()));
-		groupLayout
-				.setVerticalGroup(
-						groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
-										.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panelComparacion, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panelComparacion, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
 						.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addComponent(componenteConsulta, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addPreferredGap(ComponentPlacement.RELATED).addComponent(panelComparacion, GroupLayout.PREFERRED_SIZE,
+						GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap()));
 		panelComparacion.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
 		btnUsarConsulta = new JButton("usar esta consulta");

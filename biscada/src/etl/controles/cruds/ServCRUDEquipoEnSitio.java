@@ -40,7 +40,7 @@ public class ServCRUDEquipoEnSitio implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	public ServCRUDEquipoEnSitio() {
-		
+
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 		actualizarLista();
 	}

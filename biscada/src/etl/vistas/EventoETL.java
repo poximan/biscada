@@ -55,7 +55,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 		else if (evt.getSource() == vista_etl.getBtn_procesar())
 			vista_etl.actionProcesar();
 		else if (evt.getSource() == vista_etl.getBtn_extraer())
-			vista_etl.actionExtraer();		
+			vista_etl.actionExtraer();
 	}
 
 	@Override

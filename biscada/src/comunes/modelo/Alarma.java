@@ -122,7 +122,7 @@ public final class Alarma implements Comparable<Alarma> {
 	/* ............................................. */
 
 	@Override
-	public int compareTo(Alarma entidad) {		
+	public int compareTo(Alarma entidad) {
 		return this.fecha_inicio.compareTo(entidad.getFecha_inicio());
 	}
 

@@ -29,7 +29,7 @@ import comunes.fabrica.TipoDatoFabricable;
 @Table(name = "equipo_en_sitio", uniqueConstraints = @UniqueConstraint(columnNames = { "ID_SITIO", "ID_TIPO_DE_EQUIPO",
 		"NUMERO_EQUIPO" }))
 @NamedQueries({ @NamedQuery(name = "EquipoEnSitio.buscTodos", query = "SELECT tabla FROM EquipoEnSitio tabla"), })
-public final class EquipoEnSitio extends TipoDatoFabricable {
+public final class EquipoEnSitio implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */

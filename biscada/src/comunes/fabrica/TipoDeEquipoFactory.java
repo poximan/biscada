@@ -8,6 +8,7 @@ package comunes.fabrica;
 import java.util.regex.PatternSyntaxException;
 
 import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.ServExpresionesRegulares;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
 import etl.equipos.Cisterna;
@@ -60,11 +61,19 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 
 	/* ............................................. */
 	/* ............................................. */
+	/* ATRIBUTOS ................................... */
+	/* ............................................. */
+
+	private ServExpresionesRegulares serv_exp_reg;
+
+	/* ............................................. */
+	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public TipoDeEquipoFactory(CampoTextoDefectuoso alarma_rechazada) {
 		super(alarma_rechazada);
+		serv_exp_reg = new ServExpresionesRegulares();
 	}
 
 	/* ............................................. */
@@ -75,34 +84,37 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 	@Override
 	public TipoDatoFabricable getInstancia(String discriminante) {
 
-		TipoDatoFabricable valor = null;
+		TipoDatoFabricable dato_fabricado = null;
 
 		try {
-			
-			Bomba.asociar(valor, discriminante);
-			CamaraAspiracion.asociar(valor, discriminante);
-			Cisterna.asociar(valor, discriminante);
-			Forzador.asociar(valor, discriminante);			
-			GrupoElectrogeno.asociar(valor, discriminante);
-			
-			Plc.asociar(valor, discriminante);
-			Pozo.asociar(valor, discriminante);
-			SCADA.asociar(valor, discriminante);			
-			Tamiz.asociar(valor, discriminante);
-			TornilloCompactador.asociar(valor, discriminante);
-			
-			Valvula.asociar(valor, discriminante);
-			TableroSitio.asociar(valor, discriminante);			
-			Edificio.asociar(valor, discriminante);
 
-			if (valor == null)
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Bomba.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					CamaraAspiracion.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Edificio.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getSimpleName());
+
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					GrupoElectrogeno.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, TableroSitio.class.getSimpleName());
+
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					TornilloCompactador.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Valvula.class.getSimpleName());
+
+			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
-		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),
-					excepcion.getMessage(), discriminante);
+		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
+			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),
+					discriminante);
 		}
 
-		return valor;
+		return dato_fabricado;
 	}
 }

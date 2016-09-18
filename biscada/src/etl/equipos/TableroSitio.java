@@ -5,10 +5,7 @@
 
 package etl.equipos;
 
-import comunes.fabrica.Constantes;
-import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.TipoDeEquipo;
-import etl.excepciones.CampoTextoAmbiguoExcepcion;
 
 /* ............................................. */
 /* ............................................. */
@@ -56,19 +53,6 @@ public class TableroSitio extends TipoDeEquipo {
 	@Override
 	public Integer getNumero(String discriminante) {
 		return new Integer(1);
-	}
-
-	public static void asociar(TipoDatoFabricable valor, String discriminante) throws CampoTextoAmbiguoExcepcion {
-
-		if (discriminante
-				.matches(Constantes.ABRE_EXP_REG + TableroSitio.getExpresion_regular() + Constantes.CIERRA_EXP_REG)) {
-
-			if (valor != null)
-				throw new CampoTextoAmbiguoExcepcion(discriminante + " [ " + TableroSitio.class.getSimpleName() + " - "
-						+ valor.getClass().getSimpleName() + " ]");
-
-			valor = new TableroSitio();
-		}
 	}
 
 	/* ............................................. */

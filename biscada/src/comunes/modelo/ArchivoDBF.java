@@ -65,7 +65,7 @@ public final class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	@Column(name = "VALIDO")
 	private Boolean valido;
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */

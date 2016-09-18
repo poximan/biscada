@@ -20,8 +20,8 @@ import comunes.modelo.TipoDeEquipo;
 /* ............................................. */
 
 /**
- * envuelve todos los datos de una nueva consulta en un unico objeto de intercambio.
- * facilita el pasaje de parametros.
+ * envuelve todos los datos de una nueva consulta en un unico objeto de
+ * intercambio. facilita el pasaje de parametros.
  * 
  * @author donat
  *

@@ -5,11 +5,8 @@
 
 package etl.sitios;
 
-import comunes.fabrica.Constantes;
-import comunes.fabrica.TipoDatoFabricable;
 import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
-import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.familias.Cloacal;
 
 /* ............................................. */

@@ -414,42 +414,35 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 				new TitledBorder(null, "Resultado consulta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		groupLayout = new GroupLayout(this);
-		groupLayout
-				.setHorizontalGroup(
-						groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 430,
-														Short.MAX_VALUE)
-												.addComponent(panelFiltros, Alignment.TRAILING,
-														GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(panelFiltros, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
 				.addContainerGap()));
-		groupLayout
-				.setVerticalGroup(
-						groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addContainerGap()
-										.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-										.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+						.addComponent(panelFiltros, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelTabla, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE).addContainerGap()));
 
 		buttonGroupHasta.add(rbtnHastaInicio);
 		buttonGroupHasta.add(rbtnHastaAck);
 		buttonGroupHasta.add(rbtnHastaFin);
 
 		gl_panelFechas = new GroupLayout(panelFechas);
-		gl_panelFechas.setHorizontalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addGroup(gl_panelFechas
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addGroup(gl_panelFechas
-						.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_panelFechas.createSequentialGroup()
+		gl_panelFechas.setHorizontalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelFechas.createSequentialGroup().addContainerGap().addGroup(gl_panelFechas
+						.createParallelGroup(
+								Alignment.LEADING)
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.TRAILING, false).addGroup(gl_panelFechas
+								.createSequentialGroup()
 								.addComponent(lblDesde, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelFechas.createSequentialGroup().addComponent(rbtnDesdeInicio)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeAck)
-								.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeFin)))
+								.addGroup(gl_panelFechas.createSequentialGroup().addComponent(rbtnDesdeInicio)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeAck)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(rbtnDesdeFin)))
 						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panelFechas.createSequentialGroup()
 										.addComponent(lblHasta, GroupLayout.PREFERRED_SIZE, 42,
@@ -463,72 +456,67 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 												GroupLayout.PREFERRED_SIZE)
 										.addComponent(rbtnHastaFin, GroupLayout.PREFERRED_SIZE, 49,
 												GroupLayout.PREFERRED_SIZE))))
-				.addContainerGap(74, Short.MAX_VALUE)));
+						.addContainerGap(74, Short.MAX_VALUE)));
 		gl_panelFechas.setVerticalGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelFechas.createSequentialGroup()
 						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
-								.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblDesde)))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_panelFechas.createParallelGroup(Alignment.BASELINE).addComponent(rbtnDesdeInicio)
-						.addComponent(rbtnDesdeAck).addComponent(rbtnDesdeFin))
-				.addGap(18)
-				.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblHasta))
-						.addComponent(choosHasta, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
+								.addComponent(choosDesde, GroupLayout.PREFERRED_SIZE,
+										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblDesde)))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.BASELINE).addComponent(rbtnDesdeInicio)
+								.addComponent(rbtnDesdeAck).addComponent(rbtnDesdeFin))
+						.addGap(18)
+						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelFechas.createSequentialGroup().addGap(3).addComponent(lblHasta))
+								.addComponent(choosHasta, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panelFechas.createParallelGroup(Alignment.LEADING).addComponent(rbtnHastaInicio)
 								.addComponent(rbtnHastaAck).addComponent(rbtnHastaFin))
-				.addContainerGap(19, Short.MAX_VALUE)));
+						.addContainerGap(19, Short.MAX_VALUE)));
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { choosHasta, choosDesde });
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { lblHasta, lblDesde });
 		gl_panelFechas.linkSize(SwingConstants.HORIZONTAL, new Component[] { rbtnDesdeInicio, rbtnDesdeAck,
 				rbtnDesdeFin, rbtnHastaInicio, rbtnHastaAck, rbtnHastaFin });
 
 		gl_panelCampoSimple.setHorizontalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelCampoSimple.createSequentialGroup()
-										.addComponent(lblSitio, GroupLayout.PREFERRED_SIZE, 67,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(cboxSitio, 0, 174, Short.MAX_VALUE)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(lblFamilia, GroupLayout.PREFERRED_SIZE, 67,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(4).addComponent(cboxFamilia, 0, 173, Short.MAX_VALUE))
-								.addGroup(gl_panelCampoSimple.createSequentialGroup()
-										.addComponent(lblTipoEquipo, GroupLayout.PREFERRED_SIZE, 67,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(4).addComponent(cboxTipoEquipo, 0, 174, Short.MAX_VALUE)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(lblSuceso, GroupLayout.PREFERRED_SIZE, 67,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(4).addComponent(cboxSuceso, 0, 173, Short.MAX_VALUE)))
+				.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap().addGroup(gl_panelCampoSimple
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCampoSimple.createSequentialGroup()
+								.addComponent(lblSitio, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(cboxSitio, 0, 174, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(lblFamilia, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+								.addGap(4).addComponent(cboxFamilia, 0, 173, Short.MAX_VALUE))
+						.addGroup(gl_panelCampoSimple.createSequentialGroup()
+								.addComponent(lblTipoEquipo, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+								.addGap(4).addComponent(cboxTipoEquipo, 0, 174, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(lblSuceso, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+								.addGap(4).addComponent(cboxSuceso, 0, 173, Short.MAX_VALUE)))
 						.addGap(14)));
-		gl_panelCampoSimple
-				.setVerticalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap()
-								.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3)
-												.addComponent(lblFamilia))
+		gl_panelCampoSimple.setVerticalGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelCampoSimple.createSequentialGroup().addContainerGap().addGroup(gl_panelCampoSimple
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3).addComponent(lblFamilia))
 						.addComponent(cboxFamilia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.BASELINE).addComponent(lblSitio)
 								.addComponent(cboxSitio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)))
 						.addGap(18)
-						.addGroup(gl_panelCampoSimple.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3)
-										.addComponent(lblTipoEquipo))
+						.addGroup(gl_panelCampoSimple
+								.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3).addComponent(
+										lblTipoEquipo))
 								.addComponent(cboxTipoEquipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addGroup(gl_panelCampoSimple.createSequentialGroup().addGap(3).addComponent(lblSuceso))
 								.addComponent(cboxSuceso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE))
-								.addContainerGap(25, Short.MAX_VALUE)));
+						.addContainerGap(25, Short.MAX_VALUE)));
 
 		panelFiltros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Primer nivel evaluacion",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -552,12 +540,14 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		gl_panelTabla
 				.setVerticalGroup(gl_panelTabla.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelTabla.createSequentialGroup().addGap(5)
-								.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+								.addComponent(scrPaneTabla, GroupLayout.DEFAULT_SIZE, 194,
+										Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addGroup(gl_panelTabla.createParallelGroup(Alignment.BASELINE)
 										.addComponent(txt_reg_encontrados, GroupLayout.PREFERRED_SIZE,
 												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lbl_reg_encontrados)).addGap(6)));
+										.addComponent(lbl_reg_encontrados))
+								.addGap(6)));
 		panelTabla.setLayout(gl_panelTabla);
 
 		scrPaneTabla.setViewportView(tblConsulta);

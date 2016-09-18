@@ -80,15 +80,14 @@ public class FamiliaFactory extends FabricaAbstracta {
 		TipoDatoFabricable dato_fabricado = null;
 
 		try {
-
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, BackupSCADA.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cloacal.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, BackupSCADA.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cloacal.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ErrorComunicacion.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Login.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getSimpleName());
+					ErrorComunicacion.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Login.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getCanonicalName());
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

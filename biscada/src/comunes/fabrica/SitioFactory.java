@@ -99,40 +99,42 @@ public class SitioFactory extends FabricaAbstracta {
 
 		try {
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE1.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE4.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE1.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE4.class.getCanonicalName());
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaCota90.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaDoradilloPresurizacion.class.getSimpleName());
+					ReservaCota90.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaDoradilloPresurizacion.class.getCanonicalName());
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaLomaMariaEST.class.getSimpleName());
+					ReservaLomaMariaEST.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaLomaMariaREP.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getSimpleName());
+					ReservaLomaMariaREP.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaParquePesquero.class.getSimpleName());
+					ReservaParquePesquero.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReservaPlantaPotabilizadora.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaPujol.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaTomaRio.class.getSimpleName());
+					ReservaPlantaPotabilizadora.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaPujol.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					ReusoCamaraCarga.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getSimpleName());
+					ReservaTomaRio.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReusoCamaraCarga.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getCanonicalName());
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota80.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE5.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE6.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoPTN.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota80.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE5.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE6.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoPTN.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

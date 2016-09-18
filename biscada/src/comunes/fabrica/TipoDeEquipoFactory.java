@@ -88,24 +88,24 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 
 		try {
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Bomba.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Bomba.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					CamaraAspiracion.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Edificio.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getSimpleName());
+					CamaraAspiracion.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Edificio.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					GrupoElectrogeno.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, TableroSitio.class.getSimpleName());
+					GrupoElectrogeno.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, TableroSitio.class.getCanonicalName());
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getSimpleName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					TornilloCompactador.class.getSimpleName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Valvula.class.getSimpleName());
+					TornilloCompactador.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Valvula.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

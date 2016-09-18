@@ -44,9 +44,9 @@ public class CampoTextoDefectuoso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public synchronized void agregarNuevaAlarma(String clase_propietaria, String motivo, String campo_texto) {
+	public synchronized void agregarNuevaAlarma(String clase_propietaria, String motivo) {
 
-		String mensaje = clase_propietaria + ", " + motivo + " -> " + campo_texto;
+		String mensaje = clase_propietaria + ", " + motivo;
 
 		if (!yaExiste(mensaje))
 			textos_rechazados.add(mensaje);
@@ -70,15 +70,4 @@ public class CampoTextoDefectuoso {
 
 		return textos_rechazados.contains(campo_texto);
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 }

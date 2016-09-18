@@ -24,21 +24,7 @@ public class CampoTextoAmbiguoExcepcion extends Exception {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CampoTextoAmbiguoExcepcion() {
-		super();
-	}
-
 	public CampoTextoAmbiguoExcepcion(String descripcion_excepcion) {
-		super(descripcion_excepcion);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	@Override
-	public String getMessage() {
-		return "ambiguo";
+		super("ambiguo -> " + descripcion_excepcion);
 	}
 }

@@ -140,8 +140,7 @@ public class SitioFactory extends FabricaAbstracta {
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoNoEncontradoExcepcion | CampoTextoAmbiguoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(SitioFactory.class.getSimpleName(), excepcion.getMessage(),
-					discriminante);
+			super.getAlarma_rechazada().agregarNuevaAlarma(SitioFactory.class.getSimpleName(), excepcion.getMessage());
 		}
 		return dato_fabricado;
 	}

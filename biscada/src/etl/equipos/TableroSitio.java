@@ -19,7 +19,7 @@ public class TableroSitio extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA (DE)?EMERGENCIA|SELECTORA ESTADO TABLERO EN BOMBAS";
+	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA\\s(DE\\s)?EMERGENCIA|SELECTORA ESTADO TABLERO EN BOMBAS";
 	private static String descripcion = "tablero del control sitio";
 
 	/* ............................................. */

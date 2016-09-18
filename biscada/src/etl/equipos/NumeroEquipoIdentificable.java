@@ -1,6 +1,6 @@
 package etl.equipos;
 
-public interface NumberoEquipoIdentificable {
+public interface NumeroEquipoIdentificable {
 
 	public Integer getNumero(String discriminante);
 }

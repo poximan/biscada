@@ -24,21 +24,7 @@ public class CampoTextoNoEncontradoExcepcion extends Exception {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public CampoTextoNoEncontradoExcepcion() {
-		super();
-	}
-
 	public CampoTextoNoEncontradoExcepcion(String descripcion_excepcion) {
-		super(descripcion_excepcion);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
-	@Override
-	public String getMessage() {
-		return "no encontrado";
+		super("no encontrado -> " + descripcion_excepcion);
 	}
 }

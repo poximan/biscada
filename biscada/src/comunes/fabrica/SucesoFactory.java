@@ -15,6 +15,7 @@ import etl.sucesos.AguaEnEstator;
 import etl.sucesos.AltaTemperaturaBobinado;
 import etl.sucesos.ComandoApertura;
 import etl.sucesos.ComandoCierre;
+import etl.sucesos.ComandoIndefinido;
 import etl.sucesos.ComandoParada;
 import etl.sucesos.ComandoSimultaneo;
 import etl.sucesos.EstadoRTU;
@@ -144,13 +145,15 @@ public class SucesoFactory extends FabricaAbstracta {
 					TermicoActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					VibracionMotor.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ComandoIndefinido.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);
 
 		} catch (PatternSyntaxException | CampoTextoAmbiguoExcepcion | CampoTextoNoEncontradoExcepcion excepcion) {
-			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(), excepcion.getMessage(),
-					discriminante);
+			super.getAlarma_rechazada().agregarNuevaAlarma(FamiliaFactory.class.getSimpleName(),
+					excepcion.getMessage());
 		}
 
 		return dato_fabricado;

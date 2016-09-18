@@ -3,25 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sitios;
+package etl.sucesos;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import etl.familias.Potable;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ReservaKM11 extends Sitio {
+public class ComandoIndefinido extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "R\\s?15000|KM11|KM 11|KM.11|KM. 11|station\\s40\\.";
+	private static String expresion_regular = "Codigo de Retorno COMANDO";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +35,7 @@ public class ReservaKM11 extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaKM11() {
+	public ComandoIndefinido() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -47,13 +45,8 @@ public class ReservaKM11 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
-	}
-
-	@Override
 	public String toString() {
-		return "reserva km11";
+		return "comando indefinido";
 	}
 
 	/* ............................................. */

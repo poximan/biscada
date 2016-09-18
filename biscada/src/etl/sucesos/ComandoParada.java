@@ -19,7 +19,7 @@ public class ComandoParada extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "PARADA|COMANDO BOMBA\\s?\\d\\sPARAR";
+	private static String expresion_regular = "APAGADA|PARADA|COMANDO BOMBA\\s?\\d\\sPARAR";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -19,7 +19,7 @@ public class TermicoActuado extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TERMIC[AO]|ARRANCADOR|(Falla|FALLA)(?!EVO)";
+	private static String expresion_regular = "TERMIC[AO]|ARRANCADOR";
 
 	/* ............................................. */
 	/* ............................................. */

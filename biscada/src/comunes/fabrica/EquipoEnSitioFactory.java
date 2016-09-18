@@ -71,7 +71,7 @@ public class EquipoEnSitioFactory extends FabricaAbstracta {
 		} catch (IllegalStateException excepcion) {
 
 			super.getAlarma_rechazada().agregarNuevaAlarma(TipoDeEquipoFactory.class.getSimpleName(),
-					excepcion.getMessage(), discriminante);
+					excepcion.getMessage());
 		}
 
 		return new EquipoEnSitio((TipoDeEquipo) tipo_de_equipo, id_equipo);

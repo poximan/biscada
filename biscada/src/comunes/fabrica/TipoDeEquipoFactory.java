@@ -12,6 +12,7 @@ import etl.controles.servicios.ServExpresionesRegulares;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
 import etl.equipos.Cisterna;
+import etl.equipos.Desarenador;
 import etl.equipos.Edificio;
 import etl.equipos.Forzador;
 import etl.equipos.GrupoElectrogeno;
@@ -92,20 +93,21 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Bomba.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					CamaraAspiracion.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					CentroControlMotores.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Desarenador.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Edificio.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogeno.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InstrumentoCampo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getCanonicalName());
-			
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					CentroControlMotores.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TornilloCompactador.class.getCanonicalName());

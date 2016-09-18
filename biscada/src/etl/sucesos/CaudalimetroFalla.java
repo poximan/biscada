@@ -46,7 +46,7 @@ public class CaudalimetroFalla extends Suceso {
 
 	@Override
 	public String toString() {
-		return "falla sensor de nivel";
+		return "falla caudalimetro";
 	}
 
 	/* ............................................. */

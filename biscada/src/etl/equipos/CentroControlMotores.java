@@ -19,7 +19,7 @@ public class CentroControlMotores extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA\\s(DE\\s)?EMERGENCIA|SELECTORA ESTADO TABLERO EN BOMBAS|INTERRUPTOR PPAL";
+	private static String expresion_regular = "FALTA DE FASE|RFF|PARADA\\s(DE\\s)?EMERGENCIA|SELECTORA ESTADO TABLERO EN BOMBAS|INTERRUPTOR PPAL|Selecci.n CONTROL AUTOM.TICO";
 	private static String descripcion = "CCM del sitio";
 
 	/* ............................................. */

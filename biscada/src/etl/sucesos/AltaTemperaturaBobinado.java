@@ -46,7 +46,7 @@ public class AltaTemperaturaBobinado extends Suceso {
 
 	@Override
 	public String toString() {
-		return "alta temperatura en bobinado";
+		return "alta temperatura bobinado";
 	}
 
 	/* ............................................. */

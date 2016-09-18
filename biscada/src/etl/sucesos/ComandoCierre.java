@@ -46,7 +46,7 @@ public class ComandoCierre extends Suceso {
 
 	@Override
 	public String toString() {
-		return "comando cierre";
+		return "cierre";
 	}
 
 	/* ............................................. */

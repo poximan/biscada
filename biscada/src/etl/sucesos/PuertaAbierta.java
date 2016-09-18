@@ -3,25 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sitios;
+package etl.sucesos;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import etl.familias.Potable;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ReservaDoradilloPresurizacion extends Sitio {
+public class PuertaAbierta extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "DORADILLO SALA PRE";
+	private static String expresion_regular = "(APERTURA DE PORTON)|PUERTA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +35,7 @@ public class ReservaDoradilloPresurizacion extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaDoradilloPresurizacion() {
+	public PuertaAbierta() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -47,13 +45,8 @@ public class ReservaDoradilloPresurizacion extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
-	}
-
-	@Override
 	public String toString() {
-		return "reserva interna doradillo, presurizacion";
+		return "puerta abierta";
 	}
 
 	/* ............................................. */

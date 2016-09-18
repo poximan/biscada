@@ -46,7 +46,7 @@ public class ComandoParada extends Suceso {
 
 	@Override
 	public String toString() {
-		return "inicia sesion SCADA";
+		return "parada";
 	}
 
 	/* ............................................. */

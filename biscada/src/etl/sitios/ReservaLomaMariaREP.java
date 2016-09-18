@@ -47,13 +47,13 @@ public class ReservaLomaMariaREP extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reserva l.maria s&f";
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
+	public String toString() {
+		return "reserva l.maria s&f";
 	}
 
 	/* ............................................. */

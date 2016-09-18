@@ -104,14 +104,14 @@ public class SitioFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE4.class.getSimpleName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaCota90.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaDoradilloPresurizacion.class.getSimpleName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaLomaMariaEST.class.getSimpleName());
@@ -120,7 +120,7 @@ public class SitioFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaParquePesquero.class.getSimpleName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaPlantaPotabilizadora.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaPujol.class.getSimpleName());
@@ -128,7 +128,7 @@ public class SitioFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReusoCamaraCarga.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getSimpleName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota80.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE5.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoEE6.class.getSimpleName());

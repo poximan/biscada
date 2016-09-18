@@ -46,13 +46,13 @@ public class Pozo extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return descripcion;
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
 	}
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

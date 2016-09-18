@@ -47,13 +47,13 @@ public class CloacalEPN extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "cloacal EPN";
+	public Familia getFamiliaPorDefecto() {
+		return new Cloacal();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Cloacal();
+	public String toString() {
+		return "cloacal EPN";
 	}
 
 	/* ............................................. */

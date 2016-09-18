@@ -47,13 +47,13 @@ public class ReusoPTN extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reuso PTN";
+	public Familia getFamiliaPorDefecto() {
+		return new Reuso();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Reuso();
+	public String toString() {
+		return "reuso PTN";
 	}
 
 	/* ............................................. */

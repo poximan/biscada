@@ -76,6 +76,16 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumberoEquipoIdentifica
 		return descripcion;
 	}
 
+	@Override
+	public Integer getNumero(String discriminante) {
+		return null;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
 	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que
@@ -99,25 +109,15 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumberoEquipoIdentifica
 
 	/* ............................................. */
 	/* ............................................. */
-	/* GET'S ....................................... */
+	/* SET'S ....................................... */
 	/* ............................................. */
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 	@Override
 	public String toString() {
 		return descripcion;
-	}
-
-	@Override
-	public Integer getNumero(String discriminante) {
-		return null;
 	}
 }

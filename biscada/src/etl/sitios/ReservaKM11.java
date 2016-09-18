@@ -47,13 +47,13 @@ public class ReservaKM11 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reserva km11";
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
+	public String toString() {
+		return "reserva km11";
 	}
 
 	/* ............................................. */

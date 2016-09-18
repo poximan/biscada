@@ -47,13 +47,13 @@ public class ReservaDoradilloPresurizacion extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reserva interna doradillo, presurizacion|station\\s22";
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
+	public String toString() {
+		return "reserva interna doradillo, presurizacion|station\\s22";
 	}
 
 	/* ............................................. */

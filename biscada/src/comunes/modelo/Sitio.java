@@ -75,6 +75,16 @@ public class Sitio implements TipoDatoFabricable, FamiliaPorDefecto {
 		return descripcion;
 	}
 
+	@Override
+	public Familia getFamiliaPorDefecto() {
+		return null;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
+
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
 	 * implica Objetos desiguales tengan diferente hash, como asi tampoco que
@@ -98,26 +108,16 @@ public class Sitio implements TipoDatoFabricable, FamiliaPorDefecto {
 
 	/* ............................................. */
 	/* ............................................. */
-	/* GET'S ....................................... */
+	/* SET'S ....................................... */
 	/* ............................................. */
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 	@Override
 	public String toString() {
 
 		return descripcion;
-	}
-
-	@Override
-	public Familia getFamiliaPorDefecto() {
-		return null;
 	}
 }

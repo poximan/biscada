@@ -47,13 +47,13 @@ public class ReusoCamaraCarga extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reuso c.carga";
+	public Familia getFamiliaPorDefecto() {
+		return new Reuso();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Reuso();
+	public String toString() {
+		return "reuso c.carga";
 	}
 
 	/* ............................................. */

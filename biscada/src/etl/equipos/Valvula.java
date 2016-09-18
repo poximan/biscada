@@ -49,11 +49,6 @@ public class Valvula extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return descripcion;
-	}
-
-	@Override
 	public Integer getNumero(String discriminante) {
 
 		Pattern p = Pattern.compile("-?\\d+");
@@ -62,6 +57,11 @@ public class Valvula extends TipoDeEquipo {
 		m.find();
 
 		return new Integer(m.group());
+	}
+
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	/* ............................................. */

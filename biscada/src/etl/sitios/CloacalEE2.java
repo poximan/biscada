@@ -47,13 +47,13 @@ public class CloacalEE2 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "cloacal EE2";
+	public Familia getFamiliaPorDefecto() {
+		return new Cloacal();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Cloacal();
+	public String toString() {
+		return "cloacal EE2";
 	}
 
 	/* ............................................. */

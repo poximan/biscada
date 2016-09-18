@@ -47,13 +47,13 @@ public class ReservaOeste extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reserva b.oeste";
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
+	public String toString() {
+		return "reserva b.oeste";
 	}
 
 	/* ............................................. */

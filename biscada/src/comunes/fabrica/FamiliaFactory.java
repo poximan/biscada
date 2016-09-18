@@ -87,7 +87,7 @@ public class FamiliaFactory extends FabricaAbstracta {
 					ErrorComunicacion.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Login.class.getSimpleName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getSimpleName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getSimpleName());
 
 			if (dato_fabricado == null)

@@ -47,13 +47,13 @@ public class ReservaPujol extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reserva pujol 1";
+	public Familia getFamiliaPorDefecto() {
+		return new Potable();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
+	public String toString() {
+		return "reserva pujol 1";
 	}
 
 	/* ............................................. */

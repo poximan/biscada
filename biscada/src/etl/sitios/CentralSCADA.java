@@ -47,13 +47,13 @@ public class CentralSCADA extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "central SCADA";
+	public Familia getFamiliaPorDefecto() {
+		return new BackupSCADA();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new BackupSCADA();
+	public String toString() {
+		return "central SCADA";
 	}
 
 	/* ............................................. */

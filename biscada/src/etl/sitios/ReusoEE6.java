@@ -47,13 +47,13 @@ public class ReusoEE6 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public String toString() {
-		return "reuso EE6";
+	public Familia getFamiliaPorDefecto() {
+		return new Reuso();
 	}
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Reuso();
+	public String toString() {
+		return "reuso EE6";
 	}
 
 	/* ............................................. */

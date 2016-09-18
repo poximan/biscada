@@ -19,7 +19,7 @@ public class CentroControlMotores extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALTA (DE)?FASE"//
+	private static String expresion_regular = "FALTA (DE )?FASE"//
 			+ "|FALTA  ?220V"//
 			+ "|RFF"//
 			+ "|PARADA\\s(DE\\s)?EMERGENCIA"//

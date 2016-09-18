@@ -170,6 +170,8 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	private void mostarInfo() {
 
+		System.out.println();
+
 		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
 		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
 				+ " filas del total extraidas");

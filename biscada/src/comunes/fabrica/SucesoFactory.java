@@ -36,8 +36,10 @@ import etl.sucesos.NivelBajo;
 import etl.sucesos.NivelRebalse;
 import etl.sucesos.ParadaEmergenciaActuada;
 import etl.sucesos.PerdidaComunicacion;
+import etl.sucesos.PlcErrorLog;
 import etl.sucesos.PuertaAbierta;
 import etl.sucesos.RFFActuado;
+import etl.sucesos.RectificadorFalla;
 import etl.sucesos.Robo;
 import etl.sucesos.SCADABackupActivo;
 import etl.sucesos.SensorNivelFalla;
@@ -158,15 +160,18 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PerdidaComunicacion.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorLog.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PuertaAbierta.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					RectificadorFalla.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, RFFActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SCADABackupActivo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SensorNivelFalla.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TermicoActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,

@@ -25,7 +25,9 @@ public class InstrumentoCampo extends TipoDeEquipo {
 			+ "|ALARMA DE ALTO NIVEL"//
 			+ "|SENSOR DE NIVEL"//
 			+ "|ALTO NIVEL SALA BOMBAS"//
-			+ "|ALARMA MAXIMO NIVEL";
+			+ "|ALARMA MAXIMO NIVEL"//
+			+ "|BAJO NIVEL"//
+			+ "|ALTO NIVEL";
 
 	private static String descripcion = "instrumento de campo";
 

@@ -50,7 +50,7 @@ public class ServExpresionesRegulares {
 					salvarAmbiguedad(dato_fabricado, nueva_clase);
 
 					throw new CampoTextoAmbiguoExcepcion(discriminante + " [1er ocurrencia: " + dato_fabricado.getClass().getSimpleName() + " - "
-							+ "2da ocurrencia " + nueva_clase.getSimpleName() + " ]");
+							+ "2da ocurrencia: " + nueva_clase.getSimpleName() + " ]");
 				} else
 					throw new UsarSegundaOcurrenciaExcepcion();
 

@@ -27,7 +27,10 @@ public class CentroControlMotores extends TipoDeEquipo {
 			+ "|SELECTORA TAB.-RTU"//
 			+ "|INTERRUPTOR PPAL"//
 			+ "|Selecci.n CONTROL AUTOM.TICO"//
-			+ "|REPOSICION DE ALARMAS";
+			+ "|REPOSICION DE ALARMAS"//
+			+ "|RECTIFICADOR"//
+			+ "|Selecci.n CONTROL MANUAL";
+
 	private static String descripcion = "CCM del sitio";
 
 	/* ............................................. */

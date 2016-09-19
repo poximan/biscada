@@ -12,19 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EstadoTablero extends Suceso {
+public class RectificadorFalla extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "CONTROL TABLERO"//
-			+ "|SELECTORA ESTADO TABLERO"//
-			+ "|SELECTORA TAB.-RTU A POSICION TABLERO"//
-			+ "|SELECTORA ESTADO MANUAL"//
-			+ "|Selecci.n CONTROL MANUAL"//
-			+ "|MODO TABLERO";
+	private static String expresion_regular = "ALARMA RECTIFICADOR";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -40,7 +35,7 @@ public class EstadoTablero extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public EstadoTablero() {
+	public RectificadorFalla() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -51,7 +46,7 @@ public class EstadoTablero extends Suceso {
 
 	@Override
 	public String toString() {
-		return "estado Tablero seleccionado";
+		return "falla rectificador tension";
 	}
 
 	/* ............................................. */

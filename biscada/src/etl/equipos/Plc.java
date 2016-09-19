@@ -24,7 +24,7 @@ public class Plc extends TipoDeEquipo {
 			+ "|(?<!SELECTORA ESTADO)\\sRTU"//
 			+ "|Communication Error"//
 			+ "|FALLA EVO (ENT|ANA)"//
-			+ "LOG (DE )?ERRORES";
+			+ "|LOG (DE )?ERRORES";
 
 	private static String descripcion = "plc";
 

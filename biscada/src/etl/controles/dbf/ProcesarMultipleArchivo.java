@@ -180,7 +180,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		System.out.println();
 
-		log.info("la operacion demoro: " + reloj.getTiempoEnSegundos() + " segundos");
+		log.info("la operacion demoro " + reloj.getTiempoEnSegundos() + " segundos");
 		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
 		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
 				+ " filas del total extraidas");

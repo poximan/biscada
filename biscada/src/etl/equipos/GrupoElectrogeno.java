@@ -22,7 +22,7 @@ public class GrupoElectrogeno extends TipoDeEquipo {
 	private static String expresion_regular = "ELECTR.GENO"//
 			+ "|GENERADOR"//
 			+ "|RUTINA"//
-			+ "|G.E.";
+			+ "|G\\.E\\.";
 
 	private static String descripcion = "generador electrico";
 

@@ -21,6 +21,7 @@ import comunes.controles.ObjetosBorrables;
 import comunes.modelo.ArchivoDBF;
 import etl.controles.Transaccion;
 import etl.controles.cruds.ServCRUDArchivoDBF;
+import etl.controles.servicios.Reloj;
 
 /* ............................................. */
 /* ............................................. */
@@ -40,6 +41,8 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	private ServCRUDArchivoDBF dbf_servicio_crud;
 
+	private Reloj reloj;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -47,6 +50,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	public ProcesarMultipleArchivo(String directorio) {
 
+		reloj = new Reloj();
 		obj_direccion = Paths.get(directorio);
 		dbf_servicio_crud = new ServCRUDArchivoDBF();
 	}
@@ -70,6 +74,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
+		reloj.comenzarContar();
 		metodo_borrado.beginArchivo();
 
 		while (iterador.hasNext()) {
@@ -84,6 +89,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		metodo_borrado.limpiarCache();
 
 		metodo_borrado.commitArchivo();
+		reloj.terminarContar();
 	}
 
 	/**
@@ -141,6 +147,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
+		reloj.comenzarContar();
 		metodo_insercion.beginArchivo();
 
 		while (iterador.hasNext()) {
@@ -154,6 +161,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		metodo_insercion.limpiarCache();
 
 		metodo_insercion.commitArchivo();
+		reloj.terminarContar();
 
 		mostarInfo();
 	}
@@ -172,6 +180,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 		System.out.println();
 
+		log.info("la operacion demoro: " + reloj.getTiempoEnSegundos() + " segundos");
 		log.info("se extrajeron " + ProcesarSimpleArchivo.getTotalizador_extraidas() + " filas de potenciales alarmas");
 		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
 				+ " filas del total extraidas");

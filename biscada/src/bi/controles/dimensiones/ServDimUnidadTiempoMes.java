@@ -47,8 +47,8 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
-	public void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo, Calendar fecha_alarma_actual,
-			Calendar proxima_fraccion, List<Float> fracciones_tiempo) {
+	public void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar proxima_fraccion,
+			List<Float> fracciones_tiempo) {
 
 		int meses_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, proxima_fraccion);
 

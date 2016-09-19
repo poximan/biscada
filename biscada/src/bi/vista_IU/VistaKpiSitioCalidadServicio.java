@@ -7,7 +7,6 @@ package bi.vista_IU;
 
 import bi.controles.dimensiones.ServDimSitio;
 import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
-import bi.controles.dimensiones.ServIntervaloFechas;
 import bi.controles.dimensiones.ServKpiCalidadServicio;
 import bi.controles.mediciones.ServMedAbstract;
 import bi.vista_evento.EventoKPI;
@@ -42,13 +41,12 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	}
 
 	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual,
-			float[] datosH) {
+			ServMedAbstract serv_medicion, Sitio sitio_actual, float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
 
 		try {
-			llenarCampoTextos(serv_dim_sitio, serv_unidad_tiempo, serv_medicion, servIntervaloFechas, sitio_actual);
+			llenarCampoTextos(serv_dim_sitio, serv_unidad_tiempo, serv_medicion, sitio_actual);
 
 			getIndicador_kpi().cargarDatos(Float.parseFloat(getTxtTotal().getText()),
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
@@ -80,13 +78,13 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	}
 
 	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
+			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
 
 		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
 		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio,
-				serv_unidad_tiempo, serv_medicion, servIntervaloFechas, sitio_actual)));
+				serv_unidad_tiempo, serv_medicion, sitio_actual)));
 		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio,
 				serv_unidad_tiempo, serv_medicion, sitio_actual)));
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));

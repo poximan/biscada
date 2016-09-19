@@ -59,8 +59,8 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
-	public void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo, Calendar fecha_alarma_actual,
-			Calendar fecha_referencia, List<Float> fracciones_tiempo) {
+	public void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar fecha_referencia,
+			List<Float> fracciones_tiempo) {
 
 		int quincenas_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, fecha_referencia);
 

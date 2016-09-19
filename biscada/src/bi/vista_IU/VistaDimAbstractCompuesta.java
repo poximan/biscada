@@ -5,6 +5,7 @@
 
 package bi.vista_IU;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -16,7 +17,6 @@ import javax.swing.SwingConstants;
 
 import bi.controles.dimensiones.ServDimAbstract;
 import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
-import bi.controles.dimensiones.ServIntervaloFechas;
 import bi.controles.mediciones.ServMedAbstract;
 import bi.graficas.GraficoComparable;
 import bi.modelo.ComponenteTabla;
@@ -53,7 +53,6 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	private ComponenteTabla compTblComparador;
 
 	private ServDimAbstract serv_dim_vista_seleccionada;
-	private ServIntervaloFechas serv_intervalo;
 
 	private float[][] datos_tabla_interes;
 	private float[][] datos_tabla_comparador;
@@ -70,8 +69,6 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
-
-		serv_intervalo = new ServIntervaloFechas();
 
 		this.consulta_interes = consulta_interes;
 		this.consulta_comparador = consulta_comparador;
@@ -110,8 +107,12 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		IntervaloFechas intervalo = new IntervaloFechas();
 
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
+		Collections.sort(consulta_comparador);
+		intervalo.setPrimer_alarma(consulta_comparador.get(0).getFecha_inicio());
+		intervalo.setUltima_alarma(consulta_comparador.get(consulta_comparador.size() - 1).getFecha_inicio());
+		
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion,
+				serv_unidad_tiempo);
 
 		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
 
@@ -126,8 +127,11 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		IntervaloFechas intervalo = new IntervaloFechas();
 
-		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
+		Collections.sort(consulta_interes);
+		intervalo.setPrimer_alarma(consulta_interes.get(0).getFecha_inicio());
+		intervalo.setUltima_alarma(consulta_interes.get(consulta_interes.size() - 1).getFecha_inicio());
+		
+		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_unidad_tiempo);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
 

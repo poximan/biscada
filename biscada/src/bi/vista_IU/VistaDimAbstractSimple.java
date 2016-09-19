@@ -6,6 +6,7 @@
 package bi.vista_IU;
 
 import java.awt.Component;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -29,7 +30,6 @@ import bi.controles.dimensiones.ServDimUnidadTiempoAnio;
 import bi.controles.dimensiones.ServDimUnidadTiempoMes;
 import bi.controles.dimensiones.ServDimUnidadTiempoQuincena;
 import bi.controles.dimensiones.ServDimUnidadTiempoTrimestre;
-import bi.controles.dimensiones.ServIntervaloFechas;
 import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.mediciones.ServMedPromedio;
 import bi.controles.mediciones.ServMedTotal;
@@ -78,7 +78,6 @@ public abstract class VistaDimAbstractSimple extends JPanel
 	private ServDimSitio serv_dim_sitio;
 	private ServDimUnidadTiempoAbstract serv_unidad_tiempo;
 	private ServMedAbstract serv_medicion;
-	private ServIntervaloFechas serv_intervalo;
 
 	private JComboBox<ServMedAbstract> cbox_medicion;
 	private JComboBox<ServDimUnidadTiempoAbstract> cbox_dim_tiempo;
@@ -102,7 +101,6 @@ public abstract class VistaDimAbstractSimple extends JPanel
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
 		intervalo = new IntervaloFechas();
-		serv_intervalo = new ServIntervaloFechas();
 
 		this.consulta = consultas;
 
@@ -188,8 +186,10 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		serv_dim_vista_seleccionada.realizarHash(consulta);
 
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_intervalo, intervalo, serv_medicion,
-				serv_unidad_tiempo, true);
+		intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
+		intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
+
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_unidad_tiempo);
 
 		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
 
@@ -256,10 +256,6 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	public ServDimSitio getServ_dim_sitio() {
 		return serv_dim_sitio;
-	}
-
-	public ServIntervaloFechas getServ_intervalo() {
-		return serv_intervalo;
 	}
 
 	public ServMedAbstract getServ_medicion() {
@@ -380,9 +376,5 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		pl_tiempo.setLayout(gl_pl_tiempo);
 		setLayout(gl_contentPane);
-	}
-
-	public void setServ_intervalo(ServIntervaloFechas serv_intervalo) {
-		this.serv_intervalo = serv_intervalo;
 	}
 }

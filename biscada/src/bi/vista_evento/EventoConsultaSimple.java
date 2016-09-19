@@ -62,16 +62,19 @@ public class EventoConsultaSimple implements ActionListener, VentanaLanzable {
 				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Sitio");
 				lanzarVentana(frame_menu_dimension,
 						new VistaDimSitioSimple(vista_simple.getComponenteConsulta().getConsultas()));
+
 			} else if (evt.getSource() == vista_simple.getBtnSuceso()) {
 
 				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Suceso");
 				lanzarVentana(frame_menu_dimension,
 						new VistaDimSucesoSimple(vista_simple.getComponenteConsulta().getConsultas()));
+
 			} else if (evt.getSource() == vista_simple.getBtnTiempoDespeje()) {
 
 				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Tiempo de despeje de las alarmas");
 				lanzarVentana(frame_menu_dimension,
 						new VistaDimTiempoDespejeSimple(vista_simple.getComponenteConsulta().getConsultas()));
+
 			} else if (evt.getSource() == vista_simple.getBtnTemporada()) {
 
 				frame_menu_dimension.setTitle("Segundo nivel de evaluacion: Temporada de aparicion de las alarmas");

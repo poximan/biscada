@@ -55,8 +55,8 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 	}
 
 	@Override
-	public void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo, Calendar fecha_alarma_actual,
-			Calendar proxima_fraccion, List<Float> fracciones_tiempo) {
+	public void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar proxima_fraccion,
+			List<Float> fracciones_tiempo) {
 
 		int trimestres_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, proxima_fraccion);
 
@@ -72,13 +72,9 @@ public class ServDimUnidadTiempoTrimestre extends ServDimUnidadTiempoAbstract {
 		return divisor_en_dias;
 	}
 
-	/*
-	 * Genero un nuevo m�todo para devolver el encabezado pero en formato
-	 * "Date" (non-Javadoc)
-	 * 
-	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
+	/**
+	 * devuelve el encabezado pero en formato "Date"
 	 */
-
 	@Override
 	public String[] getEncabezado() {
 

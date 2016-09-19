@@ -19,7 +19,9 @@ public class NivelBajo extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "BAJO NIVEL|NIVEL BAJO";
+	private static String expresion_regular = "BAJO NIVEL"//
+			+ "|NIVEL BAJO"//
+			+ "|MINIMO NIVEL CANAL";
 
 	/* ............................................. */
 	/* ............................................. */

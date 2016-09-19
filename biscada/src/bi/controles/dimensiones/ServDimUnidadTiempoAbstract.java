@@ -62,8 +62,8 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 		return true;
 	}
 
-	public abstract void contrarNuevasFraccionesTiempo(ServIntervaloFechas serv_intervalo, Calendar fecha_alarma_actual,
-			Calendar fecha_referencia, List<Float> fracciones_tiempo);
+	public abstract void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar fecha_referencia,
+			List<Float> fracciones_tiempo);
 
 	public abstract int getDivisor_en_dias();
 

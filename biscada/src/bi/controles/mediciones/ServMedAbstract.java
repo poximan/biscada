@@ -8,7 +8,6 @@ package bi.controles.mediciones;
 import java.util.List;
 
 import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
-import bi.controles.dimensiones.ServIntervaloFechas;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -39,7 +38,7 @@ public abstract class ServMedAbstract {
 	/**
 	 * por cada llamado completa una fila de la matriz de dos dimensiones que
 	 * luego se usara como parametro para crear el modelo de la tabla
-	 * 
+	 * @param tiempo_ini TODO
 	 * @param serv_intervalo
 	 *            es el servicio de manejo de intervalos de fechas. en
 	 *            particular interesa en intervalo mayor, que es el que incluye
@@ -48,8 +47,8 @@ public abstract class ServMedAbstract {
 	 * @throws IndexOutOfBoundsException
 	 * 
 	 */
-	public abstract float[] completarFila(List<Alarma> alarmas, ServIntervaloFechas serv_intervalo,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) throws IndexOutOfBoundsException;
+	public abstract float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServDimUnidadTiempoAbstract serv_unidad_tiempo)
+			throws IndexOutOfBoundsException;
 
 	/**
 	 * para ciertos tratamientos de serie de valores, ha sido mas comodo

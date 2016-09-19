@@ -23,7 +23,8 @@ public class NivelAlto extends Suceso {
 			+ "|ALTO NIVEL"//
 			+ "|NIVEL DE POZO"//
 			+ "|ALARMA ACT PERA"//
-			+ "|NIVEL ALTO";
+			+ "|NIVEL ALTO"//
+			+ "|NIVEL CRITICO";
 
 	/* ............................................. */
 	/* ............................................. */

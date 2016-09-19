@@ -6,7 +6,6 @@
 package bi.controles.dimensiones;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import bi.controles.mediciones.ServMedAbstract;
@@ -42,11 +41,8 @@ public abstract class ServDimAbstract {
 	/* ............................................. */
 
 	/**
-	 * con toda la informacion recopilada en cuanto al contexto de lo que
-	 * solicita el usuario, se completa una tabla de doble entrada que luego se
-	 * presentara en la vista
 	 * 
-	 * @param serv_intervalo
+	 * @param intervalo
 	 *            intervalo de fechas [mas antigua-mas reciente] del set de
 	 *            resultados devuelto por la consulta a la BD
 	 * @param serv_medicion
@@ -57,16 +53,11 @@ public abstract class ServDimAbstract {
 	 *            ejemplo un set que incluye todo el a�o 2012 puede
 	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
 	 *            tiempo quincena, etc.
-	 * @param incluir_columnas_nulas
-	 *            al terminar de completar la tabla podr�a suceder que existan
-	 *            columnas con valor 0 a lo largo de todas sus filas. el usuario
-	 *            podr� elegir si visualizar estas columnas o no
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
 	 *         tabla.
 	 */
-	public abstract float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
-			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			boolean incluir_columnas_nulas);
+	public abstract float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo);
 
 	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
 
@@ -134,27 +125,6 @@ public abstract class ServDimAbstract {
 	 *         simula la seguda entrada de la que posee los datos.
 	 */
 	public abstract Object[] getGrupos();
-
-	/**
-	 * una vez que entra a una de las claves del hash, analiza todas las alarmas
-	 * que coinciden con la clave completa la fila correspondiente en la tabla
-	 * 
-	 * @param longitud_arreglo
-	 * @param lista_alarmas_una_clave
-	 * @param serv_intervalo
-	 * @param serv_medicion
-	 * @param serv_unidad_tiempo
-	 * @return
-	 */
-	public float[] procesamientoComunFila(IntervaloFechas intervalo, List<Alarma> lista_alarmas_una_clave,
-			ServIntervaloFechas serv_intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
-
-		Collections.sort(lista_alarmas_una_clave);
-		serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
-
-		return serv_medicion.completarFila(lista_alarmas_una_clave, serv_intervalo, serv_unidad_tiempo);
-	}
 
 	/**
 	 * crea un mapa hash donde la clave es una dimension de las especificadas en

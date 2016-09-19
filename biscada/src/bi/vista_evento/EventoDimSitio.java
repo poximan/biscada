@@ -84,7 +84,7 @@ public class EventoDimSitio extends EventoDim implements MouseListener, VentanaL
 		lanzarVentana(frame,
 				new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
 						getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
-						getVista_dimension().getServ_intervalo(), sitio_actual, valores));
+						sitio_actual, valores));
 	}
 
 	@Override

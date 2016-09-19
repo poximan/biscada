@@ -23,6 +23,7 @@ public class Plc extends TipoDeEquipo {
 			+ "|PLC"//
 			+ "|(?<!SELECTORA ESTADO)\\sRTU"//
 			+ "|Communication Error"//
+			+ "|PERDIDA DE COMUNIC"//
 			+ "|FALLA EVO (ENT|ANA)"//
 			+ "|LOG (DE )?ERRORES";
 

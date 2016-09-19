@@ -66,11 +66,15 @@ public class ServConsultaDinamica {
 
 	public ServConsultaDinamica() {
 
-		crit_builder = EMFSingleton.getInstanciaEM().getCriteriaBuilder();
-		crit_query = crit_builder.createQuery(Alarma.class);
+		try {
+			crit_builder = EMFSingleton.getInstanciaEM().getCriteriaBuilder();
+			crit_query = crit_builder.createQuery(Alarma.class);
 
-		root_alarmas = crit_query.from(Alarma.class);
-		crit_query.select(root_alarmas);
+			root_alarmas = crit_query.from(Alarma.class);
+			crit_query.select(root_alarmas);
+
+		} catch (NullPointerException e) {
+		}
 	}
 
 	/* ............................................. */

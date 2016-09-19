@@ -136,7 +136,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 	}
 
 	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			ServMedAbstract serv_medicion, ServIntervaloFechas servIntervaloFechas, Sitio sitio_actual) {
+			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		float[] arreglo_valores;
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
@@ -156,7 +156,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 		try {
-			arreglo_valores = serv_medicion.completarFila(lista_interes, servIntervaloFechas, serv_unidad_tiempo);
+			arreglo_valores = serv_medicion.completarFila(1, lista_interes, serv_unidad_tiempo);
 		} catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}

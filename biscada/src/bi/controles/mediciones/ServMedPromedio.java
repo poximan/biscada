@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
-import bi.controles.dimensiones.ServIntervaloFechas;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -46,13 +45,13 @@ public class ServMedPromedio extends ServMedAbstract {
 	}
 
 	@Override
-	public float[] completarFila(List<Alarma> alarmas, ServIntervaloFechas serv_intervalo,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) throws IndexOutOfBoundsException {
+	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServDimUnidadTiempoAbstract serv_unidad_tiempo)
+			throws IndexOutOfBoundsException {
 
 		List<Float> fracciones_tiempo = new ArrayList<Float>();
 
 		ServMedTotal serv_med_total = new ServMedTotal();
-		float totales[] = serv_med_total.completarFila(alarmas, serv_intervalo, serv_unidad_tiempo);
+		float totales[] = serv_med_total.completarFila(tiempo_ini, alarmas, serv_unidad_tiempo);
 
 		calcularPromedio(fracciones_tiempo, totales, serv_unidad_tiempo);
 

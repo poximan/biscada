@@ -56,9 +56,8 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[][] completarTabla(ServIntervaloFechas serv_intervalo, IntervaloFechas intervalo,
-			ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
-			boolean incluir_columnas_nulas) {
+	public float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
+			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
 
 		int indice = 0;
 		float[][] valor_retorno = new float[map.size()][1];
@@ -68,12 +67,9 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 
 			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
 
-			valor_retorno[indice++] = procesamientoComunFila(intervalo, lista_alarmas_una_clave, serv_intervalo,
-					serv_medicion, serv_unidad_tiempo);
-		}
-		if (!incluir_columnas_nulas) {
-			valor_retorno = filtrarColumnasNulas(valor_retorno, serv_medicion);
-			serv_intervalo.encontrarMinimoMaximo(intervalo, lista_alarmas_una_clave);
+			valor_retorno[indice] = serv_medicion.completarFila(intervalo.getPrimer_alarma().getTimeInMillis(),
+					lista_alarmas_una_clave, serv_unidad_tiempo);
+			indice++;
 		}
 		return valor_retorno;
 	}

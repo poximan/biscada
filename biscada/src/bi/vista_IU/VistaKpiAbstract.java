@@ -169,8 +169,12 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		JLabel lblPromedio_1 = new JLabel("% Promedio");
 		spinner_porcentaje = new JSpinner();
 
-		int valor_inicial = Integer
-				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		int valor_inicial = 1;
+		try {
+			valor_inicial = Integer.valueOf(
+					ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		} catch (NumberFormatException e) {
+		}
 
 		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
 

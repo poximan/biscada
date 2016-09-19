@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class RectificadorFalla extends Suceso {
+public class ActuadoInterruptor extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "ALARMA RECTIFICADOR";
+	private static String expresion_regular = "INTERRUPTOR|GUARDAMOTOR";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class RectificadorFalla extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public RectificadorFalla() {
+	public ActuadoInterruptor() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class RectificadorFalla extends Suceso {
 
 	@Override
 	public String toString() {
-		return "falla rectificador tension";
+		return "interruptor actuado";
 	}
 
 	/* ............................................. */

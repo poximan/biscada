@@ -12,7 +12,7 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ParadaEmergenciaActuada extends Suceso {
+public class ActuadoParadaEmergencia extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class ParadaEmergenciaActuada extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ParadaEmergenciaActuada() {
+	public ActuadoParadaEmergencia() {
 		super.setDescripcion(this.toString());
 	}
 

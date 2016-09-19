@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class TermicoActuado extends Suceso {
+public class FallaCargadorBateria extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TERMIC[AO]|ARRANCADOR|T.RMICO ACTUADO|FALLA  VALVULA";
+	private static String expresion_regular = "Cargador Bater.a";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class TermicoActuado extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public TermicoActuado() {
+	public FallaCargadorBateria() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class TermicoActuado extends Suceso {
 
 	@Override
 	public String toString() {
-		return "termico actuado";
+		return "falla cargador baterias";
 	}
 
 	/* ............................................. */

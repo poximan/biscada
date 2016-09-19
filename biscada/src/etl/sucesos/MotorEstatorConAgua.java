@@ -3,24 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Desarenador extends TipoDeEquipo {
+public class MotorEstatorConAgua extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "DESARENADOR[^\\(]";
-	private static String descripcion = "desarenador";
+	private static String expresion_regular = "ESTATOR";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,8 +35,8 @@ public class Desarenador extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Desarenador() {
-		super(descripcion);
+	public MotorEstatorConAgua() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -46,13 +45,8 @@ public class Desarenador extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "agua en estator";
 	}
 
 	/* ............................................. */

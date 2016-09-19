@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class CaudalimetroFalla extends Suceso {
+public class MotorVibracion extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "MEDIDA DE CAUDAL DE SALIDA";
+	private static String expresion_regular = "VIBRACION";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class CaudalimetroFalla extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public CaudalimetroFalla() {
+	public MotorVibracion() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class CaudalimetroFalla extends Suceso {
 
 	@Override
 	public String toString() {
-		return "falla caudalimetro";
+		return "vibracion motor";
 	}
 
 	/* ............................................. */

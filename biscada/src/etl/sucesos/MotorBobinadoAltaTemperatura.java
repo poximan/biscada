@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VibracionMotor extends Suceso {
+public class MotorBobinadoAltaTemperatura extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "VIBRACION";
+	private static String expresion_regular = "TEMPERATURA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class VibracionMotor extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VibracionMotor() {
+	public MotorBobinadoAltaTemperatura() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class VibracionMotor extends Suceso {
 
 	@Override
 	public String toString() {
-		return "vibracion motor";
+		return "alta temperatura bobinado";
 	}
 
 	/* ............................................. */

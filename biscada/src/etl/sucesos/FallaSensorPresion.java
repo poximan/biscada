@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class SensorNivelFalla extends Suceso {
+public class FallaSensorPresion extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "FALLA SENSOR DE NIVEL|FUERA DE RANGO";
+	private static String expresion_regular = "MEDICION DE PRESION";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class SensorNivelFalla extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public SensorNivelFalla() {
+	public FallaSensorPresion() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class SensorNivelFalla extends Suceso {
 
 	@Override
 	public String toString() {
-		return "falla sensor de nivel";
+		return "falla sensor presion";
 	}
 
 	/* ............................................. */

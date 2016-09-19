@@ -12,14 +12,16 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class RejaAutomaticaFalla extends Suceso {
+public class ActuadoRFF extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "ALARMA REJA AUTOMATICA";
+	private static String expresion_regular = "FALTA\\s{1,2}(DE)?\\s?(FASE|RED|220)"//
+			+ "|BARRA SIN TENSION"//
+			+ "|ALIMENTACI.N DE RED";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +37,7 @@ public class RejaAutomaticaFalla extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public RejaAutomaticaFalla() {
+	public ActuadoRFF() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +48,7 @@ public class RejaAutomaticaFalla extends Suceso {
 
 	@Override
 	public String toString() {
-		return "falla reja automatica";
+		return "rff actuado";
 	}
 
 	/* ............................................. */

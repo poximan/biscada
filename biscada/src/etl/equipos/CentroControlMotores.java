@@ -25,7 +25,7 @@ public class CentroControlMotores extends TipoDeEquipo {
 			+ "|PARADA\\s(DE\\s)?EMERGENCIA"//
 			+ "|SELECTORA ESTADO"//
 			+ "|SELECTORA TAB.-RTU"//
-			+ "|INTERRUPTOR PPAL"//
+			+ "|INTERRUPTOR (PPAL|GENERAL)"//
 			+ "|Selecci.n CONTROL AUTOM.TICO"//
 			+ "|REPOSICION DE ALARMAS"//
 			+ "|RECTIFICADOR"//

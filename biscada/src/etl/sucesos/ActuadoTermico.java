@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class PerdidaComunicacion extends Suceso {
+public class ActuadoTermico extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "Communication Error|CONEX.*CON (RTU|PLC)|FALLA COMUNC\\.|RDIDA DE COMUNICACI";
+	private static String expresion_regular = "TERMIC[AO]|ARRANCADOR|T.RMICO ACTUADO|FALLA  VALVULA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class PerdidaComunicacion extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public PerdidaComunicacion() {
+	public ActuadoTermico() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class PerdidaComunicacion extends Suceso {
 
 	@Override
 	public String toString() {
-		return "error comunicacion";
+		return "termico actuado";
 	}
 
 	/* ............................................. */

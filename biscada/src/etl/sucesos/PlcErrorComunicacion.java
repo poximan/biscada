@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class InterruptorActuado extends Suceso {
+public class PlcErrorComunicacion extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "INTERRUPTOR|GUARDAMOTOR";
+	private static String expresion_regular = "Communication Error|CONEX.*CON (RTU|PLC)|FALLA COMUNC\\.|RDIDA DE COMUNICACI";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class InterruptorActuado extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public InterruptorActuado() {
+	public PlcErrorComunicacion() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class InterruptorActuado extends Suceso {
 
 	@Override
 	public String toString() {
-		return "interruptor actuado";
+		return "error comunicacion";
 	}
 
 	/* ............................................. */

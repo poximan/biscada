@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class AguaEnEstator extends Suceso {
+public class FallaRejaAutomatica extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "ESTATOR";
+	private static String expresion_regular = "ALARMA REJA AUTOMATICA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class AguaEnEstator extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public AguaEnEstator() {
+	public FallaRejaAutomatica() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class AguaEnEstator extends Suceso {
 
 	@Override
 	public String toString() {
-		return "agua en estator";
+		return "falla reja automatica";
 	}
 
 	/* ............................................. */

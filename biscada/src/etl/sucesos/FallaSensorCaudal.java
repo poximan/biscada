@@ -12,14 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class AltaTemperaturaBobinado extends Suceso {
+public class FallaSensorCaudal extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TEMPERATURA";
+	private static String expresion_regular = "MEDIDA DE CAUDAL DE SALIDA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class AltaTemperaturaBobinado extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public AltaTemperaturaBobinado() {
+	public FallaSensorCaudal() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -46,7 +46,7 @@ public class AltaTemperaturaBobinado extends Suceso {
 
 	@Override
 	public String toString() {
-		return "alta temperatura bobinado";
+		return "falla sensor caudal";
 	}
 
 	/* ............................................. */

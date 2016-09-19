@@ -3,26 +3,24 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sucesos;
+package etl.equipos;
 
-import comunes.modelo.Suceso;
+import comunes.modelo.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GrupoElectrogenoMarcha extends Suceso {
+public class RejaAutomatica extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "GENO EN MARCHA"//
-			+ "|(ELETROGENO|GENERADOR|RUTNA)(?!FALLA)"//
-			+ "|(?<!FALLA)(ELECTROGENO|GENERADOR|RUTIA)"//
-			+ "|ACTIVACION RUTINA EMERGENCIA";
+	private static String expresion_regular = "REJA AUTOMATICA";
+	private static String descripcion = "reja automatica";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,8 +36,8 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public GrupoElectrogenoMarcha() {
-		super.setDescripcion(this.toString());
+	public RejaAutomatica() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -49,7 +47,7 @@ public class GrupoElectrogenoMarcha extends Suceso {
 
 	@Override
 	public String toString() {
-		return "G.E. en marcha";
+		return descripcion;
 	}
 
 	/* ............................................. */

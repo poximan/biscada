@@ -12,17 +12,14 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GrupoElectrogenoMarcha extends Suceso {
+public class RejaAutomaticaFalla extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "GENO EN MARCHA"//
-			+ "|(ELETROGENO|GENERADOR|RUTNA)(?!FALLA)"//
-			+ "|(?<!FALLA)(ELECTROGENO|GENERADOR|RUTIA)"//
-			+ "|ACTIVACION RUTINA EMERGENCIA";
+	private static String expresion_regular = "ALARMA REJA AUTOMATICA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,7 +35,7 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public GrupoElectrogenoMarcha() {
+	public RejaAutomaticaFalla() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -49,7 +46,7 @@ public class GrupoElectrogenoMarcha extends Suceso {
 
 	@Override
 	public String toString() {
-		return "G.E. en marcha";
+		return "falla reja automatica";
 	}
 
 	/* ............................................. */

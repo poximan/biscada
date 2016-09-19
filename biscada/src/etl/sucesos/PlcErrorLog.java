@@ -19,7 +19,7 @@ public class PlcErrorLog extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "LOG ERRORES";
+	private static String expresion_regular = "LOG (DE )?ERRORES";
 
 	/* ............................................. */
 	/* ............................................. */

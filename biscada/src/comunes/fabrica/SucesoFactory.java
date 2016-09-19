@@ -40,6 +40,7 @@ import etl.sucesos.PlcErrorLog;
 import etl.sucesos.PuertaAbierta;
 import etl.sucesos.RFFActuado;
 import etl.sucesos.RectificadorFalla;
+import etl.sucesos.RejaAutomaticaFalla;
 import etl.sucesos.Robo;
 import etl.sucesos.SCADABackupActivo;
 import etl.sucesos.SensorNivelFalla;
@@ -165,9 +166,11 @@ public class SucesoFactory extends FabricaAbstracta {
 					PuertaAbierta.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					RectificadorFalla.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					RejaAutomaticaFalla.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, RFFActuado.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					SCADABackupActivo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
@@ -176,6 +179,7 @@ public class SucesoFactory extends FabricaAbstracta {
 					TermicoActuado.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TimeOutIndefinido.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					VibracionMotor.class.getCanonicalName());
 

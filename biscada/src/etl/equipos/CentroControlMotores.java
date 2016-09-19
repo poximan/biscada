@@ -29,7 +29,8 @@ public class CentroControlMotores extends TipoDeEquipo {
 			+ "|Selecci.n CONTROL AUTOM.TICO"//
 			+ "|REPOSICION DE ALARMAS"//
 			+ "|RECTIFICADOR"//
-			+ "|Selecci.n CONTROL MANUAL";
+			+ "|Selecci.n CONTROL MANUAL"//
+			+ "|FALLA ALIMENTACI.N DE RED";
 
 	private static String descripcion = "CCM del sitio";
 

@@ -22,7 +22,7 @@ public class Bomba extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "B\\d|BOMBA\\W|Bomba\\W";
+	private static String expresion_regular = "B\\d|BOMBA\\W|Bomba\\W|TERMICO ACTUADO - BA";
 	private static String descripcion = "bomba";
 
 	/* ............................................. */

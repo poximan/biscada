@@ -3,26 +3,28 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sucesos;
+package etl.equipos;
 
-import comunes.modelo.Suceso;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import comunes.modelo.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class GrupoElectrogenoMarcha extends Suceso {
+public class Transformador extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "GENO EN MARCHA"//
-			+ "|(ELETROGENO|GENERADOR|RUTNA)(?!FALLA)"//
-			+ "|(?<!FALLA)(ELECTROGENO|GENERADOR|RUTIA)"//
-			+ "|ACTIVACION RUTINA EMERGENCIA";
+	private static String expresion_regular = "TRANSFORMADOR";
+
+	private static String descripcion = "transformador";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -38,8 +40,8 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public GrupoElectrogenoMarcha() {
-		super.setDescripcion(this.toString());
+	public Transformador() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -48,8 +50,19 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	/* ............................................. */
 
 	@Override
+	public Integer getNumero(String discriminante) {
+
+		Pattern p = Pattern.compile("-?\\d+");
+
+		Matcher m = p.matcher(discriminante);
+		m.find();
+
+		return new Integer(m.group());
+	}
+
+	@Override
 	public String toString() {
-		return "G.E. en marcha";
+		return descripcion;
 	}
 
 	/* ............................................. */

@@ -10,9 +10,11 @@ import comunes.fabrica.TipoDatoFabricable;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
 import etl.equipos.Plc;
+import etl.equipos.Pozo;
 import etl.equipos.CentroControlMotores;
 import etl.equipos.Cisterna;
 import etl.equipos.Edificio;
+import etl.equipos.InstrumentoCampo;
 import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.UsarPrimerOcurrenciaExcepcion;
@@ -49,8 +51,9 @@ public class ServExpresionesRegulares {
 
 					salvarAmbiguedad(dato_fabricado, nueva_clase);
 
-					throw new CampoTextoAmbiguoExcepcion(discriminante + " [1er ocurrencia: " + dato_fabricado.getClass().getSimpleName() + " - "
-							+ "2da ocurrencia: " + nueva_clase.getSimpleName() + " ]");
+					throw new CampoTextoAmbiguoExcepcion(
+							discriminante + " [1er ocurrencia: " + dato_fabricado.getClass().getSimpleName() + " - "
+									+ "2da ocurrencia: " + nueva_clase.getSimpleName() + " ]");
 				} else
 					throw new UsarSegundaOcurrenciaExcepcion();
 
@@ -77,19 +80,38 @@ public class ServExpresionesRegulares {
 		try {
 			seg_ocurrencia = (TipoDatoFabricable) seg_ocurr.newInstance();
 
+			// (Cisterna || CamaraAspiracion) -> InstrumentoCampo
+			if ((pri_ocurrencia instanceof Cisterna || pri_ocurrencia instanceof CamaraAspiracion)
+					&& seg_ocurrencia instanceof InstrumentoCampo)
+				throw new UsarSegundaOcurrenciaExcepcion();
+
+			// InstrumentoCampo <- Pozo
+			if (pri_ocurrencia instanceof InstrumentoCampo && seg_ocurrencia instanceof Pozo)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+			// CentroControlMotores <- Valvula
+			if (pri_ocurrencia instanceof CentroControlMotores && seg_ocurrencia instanceof Valvula)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+			// Cisterna -> Plc
 			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Plc)
 				throw new UsarSegundaOcurrenciaExcepcion();
-			
+
+			// NivelAlto -> NivelRebalse
 			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
 				throw new UsarSegundaOcurrenciaExcepcion();
-			
+
+			// Cisterna -> Edificio
 			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Edificio)
 				throw new UsarSegundaOcurrenciaExcepcion();
-		
+
+			// Bomba -> CentroControlMotores
 			if (pri_ocurrencia instanceof Bomba && seg_ocurrencia instanceof CentroControlMotores)
 				throw new UsarSegundaOcurrenciaExcepcion();
 
-			if ((pri_ocurrencia instanceof Plc || pri_ocurrencia instanceof CamaraAspiracion) && seg_ocurrencia instanceof Valvula)
+			// (Plc || CamaraAspiracion) <- Valvula
+			if ((pri_ocurrencia instanceof Plc || pri_ocurrencia instanceof CamaraAspiracion)
+					&& seg_ocurrencia instanceof Valvula)
 				throw new UsarPrimerOcurrenciaExcepcion();
 
 		} catch (InstantiationException | IllegalAccessException e) {

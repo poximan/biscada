@@ -20,10 +20,12 @@ import etl.equipos.GrupoElectrogeno;
 import etl.equipos.InstrumentoCampo;
 import etl.equipos.Plc;
 import etl.equipos.Pozo;
+import etl.equipos.RejaAutomatica;
 import etl.equipos.SCADA;
 import etl.equipos.CentroControlMotores;
 import etl.equipos.Tamiz;
 import etl.equipos.TornilloCompactador;
+import etl.equipos.Transformador;
 import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
@@ -110,11 +112,15 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					RejaAutomatica.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TornilloCompactador.class.getCanonicalName());
-
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					Transformador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Valvula.class.getCanonicalName());
 
 			if (dato_fabricado == null)

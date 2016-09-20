@@ -23,7 +23,8 @@ public class ActuadoRFF extends Suceso {
 			+ "|BARRA SIN TENSION"//
 			+ "|ALIMENTACI.N DE RED"//
 			+ "|SGCA"//
-			+ "|Alarma CA";
+			+ "|Alarma CA"//
+			+ "|FALLA DE AC";
 
 	/* ............................................. */
 	/* ............................................. */

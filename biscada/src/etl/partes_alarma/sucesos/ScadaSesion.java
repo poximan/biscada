@@ -3,25 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.partes_alarma.sitios;
+package etl.partes_alarma.sucesos;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import etl.partes_alarma.familias.Potable;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ReservaOeste extends Sitio {
+public class ScadaSesion extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "B[\\.\\s]+OESTE|station\\s60|Bo. Oeste";
+	private static String expresion_regular = "Cierra Sesion";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -37,7 +35,7 @@ public class ReservaOeste extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaOeste() {
+	public ScadaSesion() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -47,13 +45,8 @@ public class ReservaOeste extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
-	}
-
-	@Override
 	public String toString() {
-		return "reserva b.oeste";
+		return "cierra sesion";
 	}
 
 	/* ............................................. */

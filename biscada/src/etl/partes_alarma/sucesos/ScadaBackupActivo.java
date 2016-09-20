@@ -12,7 +12,7 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class SCADABackupActivo extends Suceso {
+public class ScadaBackupActivo extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -35,7 +35,7 @@ public class SCADABackupActivo extends Suceso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public SCADABackupActivo() {
+	public ScadaBackupActivo() {
 		super.setDescripcion(this.toString());
 	}
 

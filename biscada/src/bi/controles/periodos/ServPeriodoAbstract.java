@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 import org.joda.time.Period;
 
 import bi.modelo.IntervaloFechas;
@@ -30,6 +31,7 @@ public abstract class ServPeriodoAbstract {
 
 	private IntervaloFechas intervalo;
 
+	private int contados_periodos;
 	private Period periodo;
 
 	/* ............................................. */
@@ -39,38 +41,15 @@ public abstract class ServPeriodoAbstract {
 
 	public ServPeriodoAbstract(IntervaloFechas intervalo) {
 		this.intervalo = intervalo;
+		this.contados_periodos = 0;
 	}
 
 	public abstract int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual);
-
-	/**
-	 * eventualmente la alarma que se esta analizando podr�a superar al mes
-	 * que se espera para ella. por este motivo es necesario preguntar por >=.
-	 * por ejemplo, si una lista de 4 alarmas posee 3 en marzo y la ultima en
-	 * junio, entonces cuando se analice la ultima alarma, esta estara dos meses
-	 * adelante del mes esperado.
-	 * 
-	 * @param fecha_alarma_actual
-	 *            es la ultima alarma recuperada de la lista
-	 * @param fecha_referencia
-	 *            es el mes esperado para la proxima alarma
-	 * @return
-	 */
-	public boolean alarmaEsMayorIgualReferencia(Calendar fecha_alarma_actual, Calendar fecha_referencia) {
-
-		if (fecha_alarma_actual.before(fecha_referencia))
-			return false;
-
-		return true;
-	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	public abstract void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar fecha_referencia,
-			List<Float> fracciones_tiempo);
 
 	public void crearPeriodo(DateTime tiempo_inicio) {
 		periodo = nuevoPeriodo(tiempo_inicio);
@@ -102,7 +81,7 @@ public abstract class ServPeriodoAbstract {
 		return periodo;
 	}
 
-	public abstract String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual);
+	public abstract String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual);
 
 	public abstract Period incrementarPeriodo();
 
@@ -115,6 +94,7 @@ public abstract class ServPeriodoAbstract {
 	public Period siguientePeriodo() {
 
 		periodo = incrementarPeriodo();
+		contados_periodos++;
 		return periodo;
 	}
 
@@ -131,7 +111,7 @@ public abstract class ServPeriodoAbstract {
 	 */
 	public float ultimaFraccion(List<Alarma> lista_interes) {
 
-		float valor_retorno = 0;
+		float cantidad_alarmas_ultimo_periodo = 0;
 		Calendar primer_alarma;
 		Collections.sort(lista_interes);
 		Collections.reverse(lista_interes);
@@ -139,34 +119,32 @@ public abstract class ServPeriodoAbstract {
 		try {
 			primer_alarma = lista_interes.get(0).getFecha_inicio();
 		} catch (IndexOutOfBoundsException excepcion) {
-			return 0;
+			return cantidad_alarmas_ultimo_periodo;
 		}
+
+		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
+		crearPeriodo(tiempo_inicio);
+		Interval intervalo = new Interval(getPeriodo(), tiempo_inicio);
 
 		for (Alarma alarma_actual : lista_interes) {
 
-			Calendar fecha_alarma_actual = alarma_actual.getFecha_inicio();
+			DateTime test = new DateTime(alarma_actual.getFecha_inicio().getTimeInMillis());
 
-			if (unidadTiempoInvolucradas(fecha_alarma_actual, primer_alarma) > 1)
+			if (!intervalo.contains(test))
 				break;
-			valor_retorno++;
+			cantidad_alarmas_ultimo_periodo++;
 		}
-
-		return valor_retorno;
+		return cantidad_alarmas_ultimo_periodo;
 	}
 
-	/**
-	 * cuenta la cantidad de unidades de tiempo existentes entre dos fechas
-	 * dadas. por ejemplo dos fechas que se separan por un mes entre si,
-	 * contadas de a mes daran como resultado 1, pero el mismo set de datos
-	 * comparado contra una unidad de tiempo quincena, resultara en 4 unidades.
-	 * por este motivo la responsabilidad de determinar las unidades de tiempo
-	 * involucradas es establecida por la clase concreta
-	 * 
-	 * @param primer_alarma
-	 * @param ultima_alarma
-	 * @return
-	 */
-	public abstract int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma);
+	public int getCantidadPeriodos(Calendar fecha_alarma_actual, Calendar ultima_alarma) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getCantidadPeriodos() {
+		return contados_periodos;
+	}
 
 	/* ............................................. */
 	/* ............................................. */

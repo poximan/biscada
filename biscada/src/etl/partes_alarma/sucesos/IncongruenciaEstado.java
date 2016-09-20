@@ -19,7 +19,7 @@ public class IncongruenciaEstado extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "INCONGRUENCIA|INCONG.DE ESTADO";
+	private static String expresion_regular = "INCONGRUENCIA|INCONG\\. ?DE ESTADO";
 
 	/* ............................................. */
 	/* ............................................. */

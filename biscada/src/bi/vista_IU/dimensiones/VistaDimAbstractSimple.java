@@ -32,6 +32,7 @@ import bi.controles.periodos.ServPeriodoAbstract;
 import bi.controles.periodos.ServPeriodoAnio;
 import bi.controles.periodos.ServPeriodoMes;
 import bi.controles.periodos.ServPeriodoQuincena;
+import bi.controles.periodos.ServPeriodoSemestre;
 import bi.controles.periodos.ServPeriodoTrimestre;
 import bi.graficas.GraficoBarras;
 import bi.graficas.GraficoLineas;
@@ -159,14 +160,14 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	private void cargarTodasLasUnidadesTiempo() {
 
-		ServPeriodoMes serv_mes = new ServPeriodoMes(intervalo);
-
 		cbox_dim_tiempo.removeAllItems();
 
-		cbox_dim_tiempo.addItem(new ServPeriodoQuincena(intervalo, serv_mes));
-		cbox_dim_tiempo.addItem(serv_mes);
-		cbox_dim_tiempo.addItem(new ServPeriodoTrimestre(intervalo));
 		cbox_dim_tiempo.addItem(new ServPeriodoAnio(intervalo));
+		ServPeriodoMes serv_mes = new ServPeriodoMes(intervalo);
+		cbox_dim_tiempo.addItem(serv_mes);
+		cbox_dim_tiempo.addItem(new ServPeriodoQuincena(intervalo, serv_mes));
+		cbox_dim_tiempo.addItem(new ServPeriodoSemestre(intervalo));
+		cbox_dim_tiempo.addItem(new ServPeriodoTrimestre(intervalo));
 	}
 
 	@Override

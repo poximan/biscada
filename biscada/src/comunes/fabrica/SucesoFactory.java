@@ -43,11 +43,13 @@ import etl.partes_alarma.sucesos.NivelAlto;
 import etl.partes_alarma.sucesos.NivelBajo;
 import etl.partes_alarma.sucesos.NivelRebalse;
 import etl.partes_alarma.sucesos.PlcErrorComunicacion;
+import etl.partes_alarma.sucesos.PlcErrorLecturaAnalogica;
 import etl.partes_alarma.sucesos.PlcErrorLog;
 import etl.partes_alarma.sucesos.PresionBaja;
 import etl.partes_alarma.sucesos.PuertaAbierta;
 import etl.partes_alarma.sucesos.Robo;
-import etl.partes_alarma.sucesos.SCADABackupActivo;
+import etl.partes_alarma.sucesos.ScadaBackupActivo;
+import etl.partes_alarma.sucesos.ScadaSesion;
 import etl.partes_alarma.sucesos.TimeOutIndefinido;
 
 /* ............................................. */
@@ -181,6 +183,8 @@ public class SucesoFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorComunicacion.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					PlcErrorLecturaAnalogica.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorLog.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PresionBaja.class.getCanonicalName());
@@ -190,7 +194,8 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Robo.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					SCADABackupActivo.class.getCanonicalName());
+					ScadaBackupActivo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ScadaSesion.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TimeOutIndefinido.class.getCanonicalName());

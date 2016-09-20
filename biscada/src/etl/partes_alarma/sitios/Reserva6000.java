@@ -21,7 +21,7 @@ public class Reserva6000 extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "R6000|station\\s50";
+	private static String expresion_regular = "R6000|station\\s50|Reserva 6000";
 
 	/* ............................................. */
 	/* ............................................. */

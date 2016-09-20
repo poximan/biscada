@@ -7,7 +7,6 @@ package bi.controles.periodos;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -62,19 +61,6 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar fecha_referencia,
-			List<Float> fracciones_tiempo) {
-
-		int quincenas_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, fecha_referencia);
-
-		while (quincenas_involucrados-- > 0)
-			fracciones_tiempo.add(new Float(0));
-
-		fecha_referencia.setTimeInMillis(fecha_alarma_actual.getTimeInMillis());
-		fecha_referencia.add(Calendar.DAY_OF_MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
-	}
-
-	@Override
 	public int getDivisor_en_dias() {
 		return divisor_en_dias;
 	}
@@ -87,15 +73,14 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new String[1];
 
-		String[] encabezado = new String[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
-				getIntervalo().getUltima_alarma())];
+		String[] encabezado = new String[getCantidadPeriodos()];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
 
-		while (unidadTiempoInvolucradas(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
+		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
 
-			encabezado[indice++] = getTextoColumnaUnidadTiempo(fecha_alarma_actual) + "'"
+			encabezado[indice++] = getDescripcionColumnasPeriodo(fecha_alarma_actual) + "'"
 					+ String.valueOf(fecha_alarma_actual.get(Calendar.YEAR)).substring(2);
 
 			fecha_alarma_actual.add(Calendar.DAY_OF_MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
@@ -115,13 +100,12 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
 			return new Date[1];
 
-		Date[] encabezado = new Date[unidadTiempoInvolucradas(getIntervalo().getPrimer_alarma(),
-				getIntervalo().getUltima_alarma())];
+		Date[] encabezado = new Date[getCantidadPeriodos()];
 
 		Calendar fecha_alarma_actual = Calendar.getInstance();
 		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
 
-		while (unidadTiempoInvolucradas(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
+		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
 
 			encabezado[indice++] = fecha_alarma_actual.getTime();
 
@@ -150,7 +134,7 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual) {
+	public String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual) {
 
 		String texto_quincena;
 
@@ -159,7 +143,7 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 		else
 			texto_quincena = "2 ";
 
-		String mes = serv_mes.getTextoColumnaUnidadTiempo(fecha_alarma_actual);
+		String mes = serv_mes.getDescripcionColumnasPeriodo(fecha_alarma_actual);
 
 		return new String(texto_quincena + mes);
 	}
@@ -173,26 +157,9 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	public Period nuevoPeriodo(DateTime tiempo_inicio) {
 		return new Period(tiempo_inicio, tiempo_inicio.plusDays(15));
 	}
-
+		
 	@Override
 	public String toString() {
 		return desripcion;
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	@Override
-	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
-
-		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return (dif_anios * 24) + getNumeroQuincena(ultima_alarma) - getNumeroQuincena(primer_alarma) + 1;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
 }

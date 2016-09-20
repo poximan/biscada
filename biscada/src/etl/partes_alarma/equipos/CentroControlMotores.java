@@ -22,7 +22,10 @@ public class CentroControlMotores extends TipoDeEquipo {
 	private static String expresion_regular = "FALTA (DE )?(FASE|RED)"//
 			+ "|FALTA  ?220V"//
 			+ "|RFF"//
+			+ "|BARRA SIN TENSION"//
+			+ "|FALLA DE AC"//
 			+ "|PARADA\\s(DE\\s)?EMERGENCIA"//
+			+ "|PARADA EMG EN"//
 			+ "|PULSADOR DE EMERGENCIA"//
 			+ "|SELECTORA ESTADO"//
 			+ "|SELECTORA TAB.-RTU"//

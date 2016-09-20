@@ -31,7 +31,6 @@ public abstract class ServPeriodoAbstract {
 
 	private IntervaloFechas intervalo;
 
-	private int contados_periodos;
 	private Period periodo;
 
 	/* ............................................. */
@@ -40,8 +39,11 @@ public abstract class ServPeriodoAbstract {
 	/* ............................................. */
 
 	public ServPeriodoAbstract(IntervaloFechas intervalo) {
+
 		this.intervalo = intervalo;
-		this.contados_periodos = 0;
+
+		DateTime tiempo_inicio = new DateTime(intervalo.getPrimer_alarma().getTimeInMillis());
+		periodo = nuevoPeriodo(tiempo_inicio);
 	}
 
 	public abstract int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual);
@@ -51,25 +53,34 @@ public abstract class ServPeriodoAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public void crearPeriodo(DateTime tiempo_inicio) {
-		periodo = nuevoPeriodo(tiempo_inicio);
+	/**
+	 * partiendo del campo de interes del argumento, devuelve el siguiente
+	 * 
+	 * @param campo_anterior
+	 * @return
+	 */
+	protected abstract DateTime getCampo_siguiente(DateTime campo_anterior);
+
+	public int getCantidadPeriodos() {
+		return getCantidadPeriodos(intervalo.getPrimer_alarma(), intervalo.getUltima_alarma());
 	}
 
-	public abstract int getDivisor_en_dias();
+	public int getCantidadPeriodos(Calendar primer_alarma, Calendar ultima_alarma) {
 
-	/**
-	 * resuelve el encabezado de las columnas de una tabla, para un intervalo de
-	 * tiempo dado.
-	 * 
-	 * @return un arreglo de string con la cantidad de elementos encontrada para
-	 *         la unidad de tiempo elegida en el intervalo
-	 */
-	public abstract String[] getEncabezado();
+		int contador_periodos = 0;
 
-	public abstract Date[] getEncabezadoFecha();
+		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
+		DateTime tiempo_fin = new DateTime(ultima_alarma.getTimeInMillis());
 
-	public IntervaloFechas getIntervalo() {
-		return intervalo;
+		Interval intervalo_patron = new Interval(tiempo_inicio, tiempo_fin);
+		Interval intervalo_test = new Interval(tiempo_inicio, getPeriodo());
+
+		while (intervalo_patron.overlaps(intervalo_test)) {
+			intervalo_test = new Interval(intervalo_test.getEnd(), siguientePeriodo());
+			contador_periodos++;
+		}
+
+		return contador_periodos;
 	}
 
 	/* ............................................. */
@@ -77,26 +88,55 @@ public abstract class ServPeriodoAbstract {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	public abstract int getDivisor_en_dias();
+
+	public String[] getEncabezado() {
+
+		int total = getCantidadPeriodos();
+
+		String[] encabezado = new String[total];
+		DateTime campo_actual = new DateTime(intervalo.getPrimer_alarma().getTimeInMillis());
+
+		for (int indice = 0; indice < total; indice++) {
+
+			encabezado[indice] = toStringCampo_actual(campo_actual);
+
+			DateTime campo_anterior = new DateTime(campo_actual);
+
+			campo_actual = getCampo_siguiente(campo_anterior);
+		}
+		return encabezado;
+	}
+
+	public abstract Date[] getEncabezadoFecha();
+
+	public IntervaloFechas getIntervalo() {
+		return intervalo;
+	}
+
 	public Period getPeriodo() {
 		return periodo;
 	}
 
-	public abstract String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual);
-
-	public abstract Period incrementarPeriodo();
+	protected abstract Period incrementarPeriodo();
 
 	public abstract Period nuevoPeriodo(DateTime tiempo_inicio);
 
-	public void setPeriodo(Period periodo) {
+	protected void setPeriodo(Period periodo) {
 		this.periodo = periodo;
 	}
 
 	public Period siguientePeriodo() {
-
-		periodo = incrementarPeriodo();
-		contados_periodos++;
-		return periodo;
+		return incrementarPeriodo();
 	}
+
+	/**
+	 * convierte a String segun el campo de interes en el argumento.
+	 * 
+	 * @param campo_actual
+	 * @return
+	 */
+	protected abstract String toStringCampo_actual(DateTime campo_actual);
 
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como
@@ -123,7 +163,7 @@ public abstract class ServPeriodoAbstract {
 		}
 
 		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
-		crearPeriodo(tiempo_inicio);
+
 		Interval intervalo = new Interval(getPeriodo(), tiempo_inicio);
 
 		for (Alarma alarma_actual : lista_interes) {
@@ -135,15 +175,6 @@ public abstract class ServPeriodoAbstract {
 			cantidad_alarmas_ultimo_periodo++;
 		}
 		return cantidad_alarmas_ultimo_periodo;
-	}
-
-	public int getCantidadPeriodos(Calendar fecha_alarma_actual, Calendar ultima_alarma) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getCantidadPeriodos() {
-		return contados_periodos;
 	}
 
 	/* ............................................. */

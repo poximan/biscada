@@ -103,8 +103,10 @@ public abstract class VistaDimAbstractSimple extends JPanel
 			this.serv_dim_sitio = (ServDimSitio) serv_dim_vista_seleccionada;
 
 		intervalo = new IntervaloFechas();
-
 		this.consulta = consultas;
+
+		intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
+		intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
 
 		iniciarComponentes();
 	}
@@ -158,14 +160,13 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		cbox_medicion.addItem(new ServMedPromedio());
 	}
 
-	private void cargarTodasLasUnidadesTiempo() {
+	private void cargarTodosLosPeriodos() {
 
 		cbox_dim_tiempo.removeAllItems();
 
 		cbox_dim_tiempo.addItem(new ServPeriodoAnio(intervalo));
-		ServPeriodoMes serv_mes = new ServPeriodoMes(intervalo);
-		cbox_dim_tiempo.addItem(serv_mes);
-		cbox_dim_tiempo.addItem(new ServPeriodoQuincena(intervalo, serv_mes));
+		cbox_dim_tiempo.addItem(new ServPeriodoMes(intervalo));
+		cbox_dim_tiempo.addItem(new ServPeriodoQuincena(intervalo));
 		cbox_dim_tiempo.addItem(new ServPeriodoSemestre(intervalo));
 		cbox_dim_tiempo.addItem(new ServPeriodoTrimestre(intervalo));
 	}
@@ -174,7 +175,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 	public void configEventos(EventoDim eventos) {
 
 		cargarTodasLasMediciones();
-		cargarTodasLasUnidadesTiempo();
+		cargarTodosLosPeriodos();
 
 		btnCalidadServicio.addActionListener(eventos);
 		btnEjecutar.addActionListener(eventos);
@@ -184,14 +185,11 @@ public abstract class VistaDimAbstractSimple extends JPanel
 	public void ejecutarDimension() {
 
 		serv_medicion = getMedicion();
-		serv_periodo = getDimensionUnidadTiempo();
+		serv_periodo = getPeriodo();
 
 		serv_dim_vista_seleccionada.realizarHash(consulta);
 
-		intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
-		intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
-
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_periodo);
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo);
 
 		encabezado_tabla = serv_periodo.getEncabezado();
 
@@ -219,23 +217,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		return consulta;
 	}
 
-	private ServPeriodoAbstract getDimensionUnidadTiempo() {
-
-		Object entidad = cbox_dim_tiempo.getSelectedItem();
-
-		if (entidad instanceof ServPeriodoQuincena)
-			return (ServPeriodoQuincena) entidad;
-		if (entidad instanceof ServPeriodoMes)
-			return (ServPeriodoMes) entidad;
-		if (entidad instanceof ServPeriodoAnio)
-			return (ServPeriodoAnio) entidad;
-		if (entidad instanceof ServPeriodoTrimestre)
-			return (ServPeriodoTrimestre) entidad;
-
-		return null;
-	}
-
-	private ServMedAbstract getMedicion() {
+	public ServMedAbstract getMedicion() {
 
 		Object entidad = cbox_medicion.getSelectedItem();
 
@@ -247,14 +229,28 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		return null;
 	}
 
+	public ServPeriodoAbstract getPeriodo() {
+
+		Object entidad = cbox_dim_tiempo.getSelectedItem();
+
+		if (entidad instanceof ServPeriodoAnio)
+			return (ServPeriodoAnio) entidad;
+		if (entidad instanceof ServPeriodoMes)
+			return (ServPeriodoMes) entidad;
+		if (entidad instanceof ServPeriodoQuincena)
+			return (ServPeriodoQuincena) entidad;
+		if (entidad instanceof ServPeriodoSemestre)
+			return (ServPeriodoSemestre) entidad;
+		if (entidad instanceof ServPeriodoTrimestre)
+			return (ServPeriodoTrimestre) entidad;
+
+		return null;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	public ServMedAbstract getMedicionSeleccionada() {
-		return getMedicion();
-	}
 
 	public ServDimSitio getServ_dim_sitio() {
 		return serv_dim_sitio;
@@ -266,10 +262,6 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	public ServPeriodoAbstract getServ_periodo() {
 		return serv_periodo;
-	}
-
-	public ServPeriodoAbstract getUnidadTiempoSeleccionada() {
-		return getDimensionUnidadTiempo();
 	}
 
 	/**

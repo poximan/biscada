@@ -28,16 +28,13 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	private static String desripcion = "quincenal";
 	private int divisor_en_dias = 15;
 
-	private ServPeriodoMes serv_mes;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServPeriodoQuincena(IntervaloFechas intervalo, ServPeriodoMes serv_mes) {
+	public ServPeriodoQuincena(IntervaloFechas intervalo) {
 		super(intervalo);
-		this.serv_mes = serv_mes;
 	}
 
 	/* ............................................. */
@@ -61,31 +58,13 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	protected DateTime getCampo_siguiente(DateTime campo_anterior) {
+		return campo_anterior.plusDays(15);
 	}
 
 	@Override
-	public String[] getEncabezado() {
-
-		int indice = 0;
-
-		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
-			return new String[1];
-
-		String[] encabezado = new String[getCantidadPeriodos()];
-
-		Calendar fecha_alarma_actual = Calendar.getInstance();
-		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
-
-		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
-
-			encabezado[indice++] = getDescripcionColumnasPeriodo(fecha_alarma_actual) + "'"
-					+ String.valueOf(fecha_alarma_actual.get(Calendar.YEAR)).substring(2);
-
-			fecha_alarma_actual.add(Calendar.DAY_OF_MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
-		}
-		return encabezado;
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
 	}
 
 	/*
@@ -134,32 +113,34 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual) {
-
-		String texto_quincena;
-
-		if (fecha_alarma_actual.get(Calendar.DAY_OF_MONTH) <= 15)
-			texto_quincena = "1 ";
-		else
-			texto_quincena = "2 ";
-
-		String mes = serv_mes.getDescripcionColumnasPeriodo(fecha_alarma_actual);
-
-		return new String(texto_quincena + mes);
-	}
-
-	@Override
 	public Period incrementarPeriodo() {
-		return getPeriodo().withDays(15);
+		setPeriodo(getPeriodo().withDays(15));
+		return getPeriodo();
 	}
 
 	@Override
 	public Period nuevoPeriodo(DateTime tiempo_inicio) {
 		return new Period(tiempo_inicio, tiempo_inicio.plusDays(15));
 	}
-		
+
 	@Override
 	public String toString() {
 		return desripcion;
+	}
+
+	@Override
+	protected String toStringCampo_actual(DateTime campo_actual) {
+
+		String texto;
+
+		if (campo_actual.getDayOfMonth() <= 15)
+			texto = "1º ";
+		else
+			texto = "2º ";
+
+		String mes = campo_actual.monthOfYear().getAsText().substring(0, 3);
+		String anio = campo_actual.year().getAsText().substring(2, 4);
+
+		return new String(texto + mes + " '" + anio);
 	}
 }

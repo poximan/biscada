@@ -47,16 +47,16 @@ public class IntervaloFechas {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
 	public String getFechaCorta(Calendar fecha_alarma) {
 
 		SimpleDateFormat format1 = new SimpleDateFormat(fecha_corta);
 		return format1.format(fecha_alarma.getTime());
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	public String getFechaLarga(Calendar fecha_alarma) {
 
@@ -64,14 +64,14 @@ public class IntervaloFechas {
 		return format1.format(fecha_alarma.getTime());
 	}
 
+	public Calendar getPrimer_alarma() {
+		return primer_alarma;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */
 	/* ............................................. */
-
-	public Calendar getPrimer_alarma() {
-		return primer_alarma;
-	}
 
 	public Calendar getUltima_alarma() {
 		return ultima_alarma;
@@ -83,5 +83,10 @@ public class IntervaloFechas {
 
 	public void setUltima_alarma(Calendar ultima_alarma) {
 		this.ultima_alarma = ultima_alarma;
+	}
+
+	@Override
+	public String toString() {
+		return primer_alarma.getTime().toString() + ", " + ultima_alarma.getTime().toString();
 	}
 }

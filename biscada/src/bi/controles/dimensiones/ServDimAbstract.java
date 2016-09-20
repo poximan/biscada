@@ -10,7 +10,6 @@ import java.util.List;
 
 import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.periodos.ServPeriodoAbstract;
-import bi.modelo.IntervaloFechas;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -43,9 +42,6 @@ public abstract class ServDimAbstract {
 
 	/**
 	 * 
-	 * @param intervalo
-	 *            intervalo de fechas [mas antigua-mas reciente] del set de
-	 *            resultados devuelto por la consulta a la BD
 	 * @param serv_medicion
 	 *            medicion que se realizar� sobre el set de datos desde el
 	 *            punto de vista de una dimension determinada.
@@ -57,8 +53,7 @@ public abstract class ServDimAbstract {
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
 	 *         tabla.
 	 */
-	public abstract float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_periodo);
+	public abstract float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo);
 
 	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
 

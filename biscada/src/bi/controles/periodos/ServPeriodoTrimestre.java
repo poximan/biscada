@@ -7,7 +7,6 @@ package bi.controles.periodos;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -58,34 +57,13 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	protected DateTime getCampo_siguiente(DateTime campo_anterior) {
+		return campo_anterior.plusMonths(3);
 	}
 
-	/**
-	 * devuelve el encabezado pero en formato "Date"
-	 */
 	@Override
-	public String[] getEncabezado() {
-
-		int indice = 0;
-
-		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
-			return new String[1];
-
-		String[] encabezado = new String[getCantidadPeriodos()];
-
-		Calendar fecha_alarma_actual = Calendar.getInstance();
-		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
-
-		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
-
-			encabezado[indice++] = getDescripcionColumnasPeriodo(fecha_alarma_actual) + "'"
-					+ String.valueOf(fecha_alarma_actual.get(Calendar.YEAR)).substring(2);
-
-			fecha_alarma_actual.add(Calendar.MONTH, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
-		}
-		return encabezado;
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
 	}
 
 	@Override
@@ -115,13 +93,9 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual) {
-		return String.valueOf(getNumeroTrimestre(fecha_alarma_actual)) + " tri";
-	}
-
-	@Override
 	public Period incrementarPeriodo() {
-		return getPeriodo().withMonths(3);
+		setPeriodo(getPeriodo().withMonths(3));
+		return getPeriodo();
 	}
 
 	@Override
@@ -132,5 +106,24 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 	@Override
 	public String toString() {
 		return desripcion;
+	}
+
+	@Override
+	protected String toStringCampo_actual(DateTime campo_actual) {
+
+		String texto;
+
+		if (campo_actual.getMonthOfYear() <= 3)
+			texto = "1º";
+		else {
+			if (campo_actual.getMonthOfYear() >= 8)
+				texto = "3º";
+			else
+				texto = "2º";
+		}
+
+		String anio = campo_actual.year().getAsText().substring(2, 4);
+
+		return new String(texto + " tri " + "'" + anio);
 	}
 }

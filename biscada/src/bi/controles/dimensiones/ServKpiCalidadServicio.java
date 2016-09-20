@@ -157,7 +157,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 		try {
-			arreglo_valores = serv_medicion.completarFila(1, lista_interes, serv_periodo);
+			arreglo_valores = serv_medicion.completarFila(lista_interes, serv_periodo);
 		} catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}

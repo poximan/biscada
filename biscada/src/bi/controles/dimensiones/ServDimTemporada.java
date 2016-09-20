@@ -6,15 +6,17 @@
 package bi.controles.dimensiones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import bi.controles.dimensiones.temporada.FabricaTemporada;
 import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.periodos.ServPeriodoAbstract;
-import bi.modelo.IntervaloFechas;
 import bi.modelo.Temporada;
 import comunes.modelo.Alarma;
 
@@ -57,8 +59,7 @@ public class ServDimTemporada extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_periodo) {
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
 
 		int indice = 0;
 		float[][] valor_retorno = new float[map.size()][1];
@@ -68,8 +69,7 @@ public class ServDimTemporada extends ServDimAbstract {
 
 			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
 
-			valor_retorno[indice] = serv_medicion.completarFila(intervalo.getPrimer_alarma().getTimeInMillis(),
-					lista_alarmas_una_clave, serv_periodo);
+			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
 			indice++;
 		}
 		return valor_retorno;
@@ -113,6 +113,18 @@ public class ServDimTemporada extends ServDimAbstract {
 				map.put(key, new ArrayList<Alarma>());
 
 			map.get(key).add(alarma_actual);
+		}
+
+		Iterator<Entry<Temporada, List<Alarma>>> it = map.entrySet().iterator();
+
+		while (it.hasNext()) {
+
+			Entry<Temporada, List<Alarma>> pair = it.next();
+
+			List<Alarma> lista = pair.getValue();
+			Collections.sort(lista);
+
+			map.put(pair.getKey(), lista);
 		}
 	}
 

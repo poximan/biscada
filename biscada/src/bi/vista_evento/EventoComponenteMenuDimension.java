@@ -107,9 +107,8 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimSitioSimple vista_temporal = (VistaDimSitioSimple) menu_dimension.getContentPane();
-		vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getMedicionSeleccionada(),
-				vista_temporal.getUnidadTiempoSeleccionada(), vista_temporal.getConsulta(),
-				menu_dimension.getConsulta_comparador());
+		vista_compuesta = new VistaDimSitioCompuesta(vista_temporal.getMedicion(), vista_temporal.getPeriodo(),
+				vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
 
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
 	}
@@ -118,9 +117,8 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimSucesoSimple vista_temporal = (VistaDimSucesoSimple) menu_dimension.getContentPane();
-		vista_compuesta = new VistaDimSucesoCompuesta(vista_temporal.getMedicionSeleccionada(),
-				vista_temporal.getUnidadTiempoSeleccionada(), vista_temporal.getConsulta(),
-				menu_dimension.getConsulta_comparador());
+		vista_compuesta = new VistaDimSucesoCompuesta(vista_temporal.getMedicion(), vista_temporal.getPeriodo(),
+				vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
 
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
 	}
@@ -129,9 +127,8 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimTemporadaSimple vista_temporal = (VistaDimTemporadaSimple) menu_dimension.getContentPane();
-		vista_compuesta = new VistaDimTemporadaCompuesta(vista_temporal.getMedicionSeleccionada(),
-				vista_temporal.getUnidadTiempoSeleccionada(), vista_temporal.getConsulta(),
-				menu_dimension.getConsulta_comparador());
+		vista_compuesta = new VistaDimTemporadaCompuesta(vista_temporal.getMedicion(), vista_temporal.getPeriodo(),
+				vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
 
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
 	}
@@ -140,9 +137,8 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 			VistaDimAbstractCompuesta vista_compuesta) {
 
 		VistaDimTiempoDespejeSimple vista_temporal = (VistaDimTiempoDespejeSimple) menu_dimension.getContentPane();
-		vista_compuesta = new VistaDimTiempoDespejeCompuesta(vista_temporal.getMedicionSeleccionada(),
-				vista_temporal.getUnidadTiempoSeleccionada(), vista_temporal.getConsulta(),
-				menu_dimension.getConsulta_comparador());
+		vista_compuesta = new VistaDimTiempoDespejeCompuesta(vista_temporal.getMedicion(), vista_temporal.getPeriodo(),
+				vista_temporal.getConsulta(), menu_dimension.getConsulta_comparador());
 
 		lanzarVentana(frame_menu_dimension, vista_compuesta);
 	}

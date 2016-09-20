@@ -16,7 +16,6 @@ import java.util.Set;
 
 import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.periodos.ServPeriodoAbstract;
-import bi.modelo.IntervaloFechas;
 import comunes.modelo.Alarma;
 import comunes.modelo.Sitio;
 
@@ -56,19 +55,18 @@ public class ServDimSitio extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_periodo) {
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
 
 		int indice = 0;
-		float[][] valor_retorno = new float[map.size()][1];
+
+		float[][] valor_retorno = new float[map.size()][serv_periodo.getCantidadPeriodos()];
 		List<Alarma> lista_alarmas_una_clave = null;
 
 		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {
 
 			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
 
-			valor_retorno[indice] = serv_medicion.completarFila(intervalo.getPrimer_alarma().getTimeInMillis(),
-					lista_alarmas_una_clave, serv_periodo);
+			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
 			indice++;
 		}
 		return valor_retorno;
@@ -131,7 +129,8 @@ public class ServDimSitio extends ServDimAbstract {
 
 			List<Alarma> lista = pair.getValue();
 			Collections.sort(lista);
-			pair.setValue(lista);
+
+			map.put(pair.getKey(), lista);
 		}
 	}
 

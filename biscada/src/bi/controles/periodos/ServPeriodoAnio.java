@@ -48,30 +48,13 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public int getDivisor_en_dias() {
-		return divisor_en_dias;
+	protected DateTime getCampo_siguiente(DateTime campo_anterior) {
+		return campo_anterior.plusYears(1);
 	}
 
 	@Override
-	public String[] getEncabezado() {
-
-		int indice = 0;
-
-		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
-			return new String[1];
-
-		String[] encabezado = new String[getCantidadPeriodos()];
-
-		Calendar fecha_alarma_actual = Calendar.getInstance();
-		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
-
-		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
-
-			encabezado[indice++] = getDescripcionColumnasPeriodo(fecha_alarma_actual);
-
-			fecha_alarma_actual.add(Calendar.YEAR, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
-		}
-		return encabezado;
+	public int getDivisor_en_dias() {
+		return divisor_en_dias;
 	}
 
 	@Override
@@ -96,20 +79,16 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 		return encabezado;
 	}
 
-	@Override
-	public String getDescripcionColumnasPeriodo(Calendar fecha_alarma_actual) {
-		return String.valueOf(fecha_alarma_actual.get(Calendar.YEAR));
-	}
-
-	@Override
-	public Period incrementarPeriodo() {
-		return getPeriodo().withYears(1);
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	@Override
+	public Period incrementarPeriodo() {
+		setPeriodo(getPeriodo().withYears(1));
+		return getPeriodo();
+	}
 
 	@Override
 	public Period nuevoPeriodo(DateTime tiempo_inicio) {
@@ -119,5 +98,10 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	@Override
 	public String toString() {
 		return desripcion;
+	}
+
+	@Override
+	protected String toStringCampo_actual(DateTime campo_actual) {
+		return campo_actual.year().getAsText();
 	}
 }

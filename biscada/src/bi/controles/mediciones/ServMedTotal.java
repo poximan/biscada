@@ -39,11 +39,10 @@ public class ServMedTotal extends ServMedAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
+	public float[] completarFila(List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
 			throws IndexOutOfBoundsException {
 
-		DateTime tiempo_inicio = new DateTime(tiempo_ini);
-		serv_periodo.crearPeriodo(tiempo_inicio);
+		DateTime tiempo_inicio = new DateTime(serv_periodo.getIntervalo().getPrimer_alarma().getTimeInMillis());
 
 		Interval intervalo = new Interval(tiempo_inicio, serv_periodo.getPeriodo());
 

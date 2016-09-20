@@ -44,13 +44,13 @@ public class ServMedPromedio extends ServMedAbstract {
 	}
 
 	@Override
-	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
+	public float[] completarFila(List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
 			throws IndexOutOfBoundsException {
 
 		List<Float> fracciones_tiempo = new ArrayList<Float>();
 
 		ServMedTotal serv_med_total = new ServMedTotal();
-		float totales[] = serv_med_total.completarFila(tiempo_ini, alarmas, serv_periodo);
+		float totales[] = serv_med_total.completarFila(alarmas, serv_periodo);
 
 		calcularPromedio(fracciones_tiempo, totales, serv_periodo);
 

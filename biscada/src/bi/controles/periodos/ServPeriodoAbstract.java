@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import bi.modelo.IntervaloFechas;
 import comunes.modelo.Alarma;
 
@@ -27,6 +30,8 @@ public abstract class ServPeriodoAbstract {
 
 	private IntervaloFechas intervalo;
 
+	private Period periodo;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
@@ -36,10 +41,7 @@ public abstract class ServPeriodoAbstract {
 		this.intervalo = intervalo;
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
+	public abstract int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual);
 
 	/**
 	 * eventualmente la alarma que se esta analizando podr�a superar al mes
@@ -62,8 +64,17 @@ public abstract class ServPeriodoAbstract {
 		return true;
 	}
 
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
+
 	public abstract void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar fecha_referencia,
 			List<Float> fracciones_tiempo);
+
+	public void crearPeriodo(DateTime tiempo_inicio) {
+		periodo = nuevoPeriodo(tiempo_inicio);
+	}
 
 	public abstract int getDivisor_en_dias();
 
@@ -86,6 +97,26 @@ public abstract class ServPeriodoAbstract {
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	public Period getPeriodo() {
+		return periodo;
+	}
+
+	public abstract String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual);
+
+	public abstract Period incrementarPeriodo();
+
+	public abstract Period nuevoPeriodo(DateTime tiempo_inicio);
+
+	public void setPeriodo(Period periodo) {
+		this.periodo = periodo;
+	}
+
+	public Period siguientePeriodo() {
+
+		periodo = incrementarPeriodo();
+		return periodo;
+	}
 
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como
@@ -123,10 +154,6 @@ public abstract class ServPeriodoAbstract {
 		return valor_retorno;
 	}
 
-	public abstract int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual);
-
-	public abstract String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual);
-
 	/**
 	 * cuenta la cantidad de unidades de tiempo existentes entre dos fechas
 	 * dadas. por ejemplo dos fechas que se separan por un mes entre si,
@@ -140,7 +167,7 @@ public abstract class ServPeriodoAbstract {
 	 * @return
 	 */
 	public abstract int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma);
-	
+
 	/* ............................................. */
 	/* ............................................. */
 	/* SET'S ....................................... */

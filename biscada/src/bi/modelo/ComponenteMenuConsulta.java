@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import bi.vista_IU.VistaConsultaSimple;
+import bi.vista_IU.consultas.VistaConsultaSimple;
 import comunes.controles.GestorPropiedades;
 import comunes.controles.ServPropiedades;
 import etl.controles.GestorETL;

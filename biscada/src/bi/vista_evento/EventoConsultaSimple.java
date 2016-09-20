@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import bi.modelo.ComponenteMenuDimension;
-import bi.vista_IU.VistaConsultaSimple;
-import bi.vista_IU.VistaDimSitioSimple;
-import bi.vista_IU.VistaDimSucesoSimple;
-import bi.vista_IU.VistaDimTemporadaSimple;
-import bi.vista_IU.VistaDimTiempoDespejeSimple;
+import bi.vista_IU.consultas.VistaConsultaSimple;
+import bi.vista_IU.dimensiones.VistaDimSitioSimple;
+import bi.vista_IU.dimensiones.VistaDimSucesoSimple;
+import bi.vista_IU.dimensiones.VistaDimTemporadaSimple;
+import bi.vista_IU.dimensiones.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
 /* ............................................. */

@@ -38,7 +38,9 @@ public abstract class ServMedAbstract {
 	/**
 	 * por cada llamado completa una fila de la matriz de dos dimensiones que
 	 * luego se usara como parametro para crear el modelo de la tabla
-	 * @param tiempo_ini TODO
+	 * 
+	 * @param tiempo_ini
+	 *            TODO
 	 * @param serv_intervalo
 	 *            es el servicio de manejo de intervalos de fechas. en
 	 *            particular interesa en intervalo mayor, que es el que incluye
@@ -47,7 +49,7 @@ public abstract class ServMedAbstract {
 	 * @throws IndexOutOfBoundsException
 	 * 
 	 */
-	public abstract float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_unidad_tiempo)
+	public abstract float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
 			throws IndexOutOfBoundsException;
 
 	/**

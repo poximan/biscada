@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.partes_alarma.equipos;
 
 import comunes.modelo.TipoDeEquipo;
 
@@ -39,7 +39,7 @@ public class RejaAutomatica extends TipoDeEquipo {
 	public RejaAutomatica() {
 		super(descripcion);
 	}
-	
+
 	@Override
 	public Integer getNumero(String discriminante) {
 		return new Integer(1);

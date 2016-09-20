@@ -9,27 +9,27 @@ import java.util.regex.PatternSyntaxException;
 
 import etl.controles.CampoTextoDefectuoso;
 import etl.controles.servicios.ServExpresionesRegulares;
-import etl.equipos.Bomba;
-import etl.equipos.CamaraAspiracion;
-import etl.equipos.CanalDescarga;
-import etl.equipos.CargadorBateria;
-import etl.equipos.CentroControlMotores;
-import etl.equipos.Cisterna;
-import etl.equipos.Desarenador;
-import etl.equipos.Edificio;
-import etl.equipos.Forzador;
-import etl.equipos.GrupoElectrogeno;
-import etl.equipos.InstrumentoCampo;
-import etl.equipos.Plc;
-import etl.equipos.Pozo;
-import etl.equipos.RejaAutomatica;
-import etl.equipos.SCADA;
-import etl.equipos.Tamiz;
-import etl.equipos.TornilloCompactador;
-import etl.equipos.Transformador;
-import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
+import etl.partes_alarma.equipos.Bomba;
+import etl.partes_alarma.equipos.CamaraAspiracion;
+import etl.partes_alarma.equipos.CanalDescarga;
+import etl.partes_alarma.equipos.CargadorBateria;
+import etl.partes_alarma.equipos.CentroControlMotores;
+import etl.partes_alarma.equipos.Cisterna;
+import etl.partes_alarma.equipos.Desarenador;
+import etl.partes_alarma.equipos.Edificio;
+import etl.partes_alarma.equipos.Forzador;
+import etl.partes_alarma.equipos.GrupoElectrogeno;
+import etl.partes_alarma.equipos.InstrumentoCampo;
+import etl.partes_alarma.equipos.Plc;
+import etl.partes_alarma.equipos.Pozo;
+import etl.partes_alarma.equipos.RejaAutomatica;
+import etl.partes_alarma.equipos.SCADA;
+import etl.partes_alarma.equipos.Tamiz;
+import etl.partes_alarma.equipos.TornilloCompactador;
+import etl.partes_alarma.equipos.Transformador;
+import etl.partes_alarma.equipos.Valvula;
 
 /* ............................................. */
 /* ............................................. */

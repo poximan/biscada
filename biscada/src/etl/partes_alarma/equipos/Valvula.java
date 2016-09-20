@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.partes_alarma.equipos;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,16 +61,16 @@ public class Valvula extends TipoDeEquipo {
 
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(V.LV\\.DIAFRAGMA|C90 - V0)" + Constantes.CIERRA_EXP_REG))
 			return new Integer(0);
-		
+
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(V(R|)1|V250)" + Constantes.CIERRA_EXP_REG))
 			return new Integer(1);
 
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(V(R|)2|V300)" + Constantes.CIERRA_EXP_REG))
 			return new Integer(2);
-		
+
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "V400" + Constantes.CIERRA_EXP_REG))
 			return new Integer(3);
-		
+
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "V500" + Constantes.CIERRA_EXP_REG))
 			return new Integer(4);
 

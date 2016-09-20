@@ -71,7 +71,7 @@ public class ServCRUDEquipoEnSitio implements InterfazCRUD, ClaveIdentificable {
 
 		int indice;
 		alarma_actual.getEquipo_en_sitio().setSitio(alarma_actual.getSitio());
-		
+
 		if ((indice = lista.lastIndexOf(alarma_actual.getEquipo_en_sitio())) != -1)
 			alarma_actual.setEquipo_en_sitio(lista.get(indice));
 		else {

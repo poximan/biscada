@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
-import org.joda.time.Period;
 
 import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
@@ -40,13 +39,13 @@ public class ServMedTotal extends ServMedAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_unidad_tiempo)
+	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_periodo)
 			throws IndexOutOfBoundsException {
 
 		DateTime tiempo_inicio = new DateTime(tiempo_ini);
-		Period periodo = new Period(tiempo_inicio, tiempo_inicio.plusMonths(1));
+		serv_periodo.crearPeriodo(tiempo_inicio);
 
-		Interval interval = new Interval(tiempo_inicio, periodo);
+		Interval intervalo = new Interval(tiempo_inicio, serv_periodo.getPeriodo());
 
 		List<Float> fracciones_tiempo = new ArrayList<Float>();
 		fracciones_tiempo.add(new Float(0));
@@ -56,9 +55,9 @@ public class ServMedTotal extends ServMedAbstract {
 
 			DateTime test = new DateTime(alarma_actual.getFecha_inicio().getTimeInMillis());
 
-			while (!interval.contains(test)) {
+			while (!intervalo.contains(test)) {
 
-				interval = new Interval(interval.getEnd(), periodo.withMonths(1));
+				intervalo = new Interval(intervalo.getEnd(), serv_periodo.siguientePeriodo());
 				fracciones_tiempo.add(new Float(0));
 			}
 			// agrego 1 al contador de alarmas del mes

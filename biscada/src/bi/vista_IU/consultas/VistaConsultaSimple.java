@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU;
+package bi.vista_IU.consultas;
 
 import java.awt.Component;
 import java.awt.ComponentOrientation;

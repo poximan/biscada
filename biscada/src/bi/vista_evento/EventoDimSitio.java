@@ -14,9 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import bi.vista_IU.TableModelMedicionTemporal;
-import bi.vista_IU.VistaDimSitioSimple;
-import bi.vista_IU.VistaKpiSitioCalidadServicio;
+import bi.vista_IU.consultas.TableModelMedicionTemporal;
+import bi.vista_IU.dimensiones.VistaDimSitioSimple;
+import bi.vista_IU.kpi.VistaKpiSitioCalidadServicio;
 import comunes.modelo.Sitio;
 
 /* ............................................. */
@@ -77,14 +77,14 @@ public class EventoDimSitio extends EventoDim implements MouseListener, VentanaL
 
 		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
 
-		int maximo_arreglo = getVista_dimension().getServ_unidad_tiempo().getEncabezado().length;
+		int maximo_arreglo = getVista_dimension().getServ_periodo().getEncabezado().length;
 		valores = Arrays.copyOf(valores, maximo_arreglo);
 
 		JFrame frame = new JFrame(sitio_actual.getDescripcion());
 		lanzarVentana(frame,
 				new VistaKpiSitioCalidadServicio(getVista_dimension().getServ_dim_sitio(),
-						getVista_dimension().getServ_unidad_tiempo(), getVista_dimension().getServ_medicion(),
-						sitio_actual, valores));
+						getVista_dimension().getServ_periodo(), getVista_dimension().getServ_medicion(), sitio_actual,
+						valores));
 	}
 
 	@Override

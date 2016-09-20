@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import bi.modelo.Temporada;
-import bi.vista_IU.VistaDimTemporadaSimple;
-import bi.vista_IU.VistaKpiSitioCalidadServicio;
-import bi.vista_IU.VistaKpiTemporada;
+import bi.vista_IU.dimensiones.VistaDimTemporadaSimple;
+import bi.vista_IU.kpi.VistaKpiSitioCalidadServicio;
+import bi.vista_IU.kpi.VistaKpiTemporada;
 
 /* ............................................. */
 /* ............................................. */

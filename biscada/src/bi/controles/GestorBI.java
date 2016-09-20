@@ -10,7 +10,7 @@ import javax.swing.WindowConstants;
 import org.apache.log4j.Logger;
 
 import bi.modelo.ComponenteMenuConsulta;
-import bi.vista_IU.VistaConsultaSimple;
+import bi.vista_IU.consultas.VistaConsultaSimple;
 
 /* ............................................. */
 /* ............................................. */

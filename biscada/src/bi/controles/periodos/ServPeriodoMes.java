@@ -10,6 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import bi.modelo.IntervaloFechas;
 
 /* ............................................. */
@@ -125,6 +128,16 @@ public class ServPeriodoMes extends ServPeriodoAbstract {
 		String descripcion_mes = new DateFormatSymbols().getMonths()[indice_mes];
 
 		return descripcion_mes.substring(0, 3);
+	}
+
+	@Override
+	public Period incrementarPeriodo() {
+		return getPeriodo().withMonths(1);
+	}
+
+	@Override
+	public Period nuevoPeriodo(DateTime tiempo_inicio) {
+		return new Period(tiempo_inicio, tiempo_inicio.plusMonths(1));
 	}
 
 	@Override

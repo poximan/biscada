@@ -58,22 +58,22 @@ public class Constantes {
 	 * de utilidad para verificar el numero de instancia durante etl
 	 */
 	public static final int MAX_BOMBAS = 6;
-	
+
 	/**
 	 * de utilidad para verificar el numero de instancia durante etl
 	 */
 	public static final int MAX_FORZADORES = 2;
-	
+
 	/**
 	 * de utilidad para verificar el numero de instancia durante etl
 	 */
 	public static final int MAX_TAMICES = 3;
-	
+
 	/**
 	 * de utilidad para verificar el numero de instancia durante etl
 	 */
 	public static final int MAX_TRANSFORMADORES = 2;
-	
+
 	/**
 	 * de utilidad para verificar el numero de instancia de valvula durante etl
 	 */

@@ -1,4 +1,4 @@
-package etl.equipos;
+package etl.partes_alarma.equipos;
 
 public interface NumeroEquipoIdentificable {
 

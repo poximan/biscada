@@ -29,11 +29,11 @@ public class Reloj {
 		tiempo_inicio = System.currentTimeMillis();
 	}
 
-	public void terminarContar() {
-		tiempo_fin = System.currentTimeMillis();
-	}
-
 	public long getTiempoEnSegundos() {
 		return (tiempo_fin - tiempo_inicio) / 1000;
+	}
+
+	public void terminarContar() {
+		tiempo_fin = System.currentTimeMillis();
 	}
 }

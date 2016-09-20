@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.temporadas;
+package bi.controles.dimensiones.temporada;
 
 import bi.modelo.Temporada;
 import comunes.modelo.Alarma;

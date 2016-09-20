@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.tiempos_despeje;
+package bi.controles.dimensiones.tiempos_despeje;
 
 import bi.modelo.TiempoDespeje;
 import comunes.modelo.Alarma;

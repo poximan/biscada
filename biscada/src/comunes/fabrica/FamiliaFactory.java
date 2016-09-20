@@ -11,13 +11,13 @@ import etl.controles.CampoTextoDefectuoso;
 import etl.controles.servicios.ServExpresionesRegulares;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;
-import etl.familias.BackupSCADA;
-import etl.familias.Cloacal;
-import etl.familias.ErrorComunicacion;
-import etl.familias.Login;
-import etl.familias.Logout;
-import etl.familias.Potable;
-import etl.familias.Reuso;
+import etl.partes_alarma.familias.BackupSCADA;
+import etl.partes_alarma.familias.Cloacal;
+import etl.partes_alarma.familias.ErrorComunicacion;
+import etl.partes_alarma.familias.Login;
+import etl.partes_alarma.familias.Logout;
+import etl.partes_alarma.familias.Potable;
+import etl.partes_alarma.familias.Reuso;
 
 /* ............................................. */
 /* ............................................. */

@@ -8,7 +8,7 @@ package bi.vista_evento;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import bi.vista_IU.VistaKpiAbstract;
+import bi.vista_IU.kpi.VistaKpiAbstract;
 
 /* ............................................. */
 /* ............................................. */

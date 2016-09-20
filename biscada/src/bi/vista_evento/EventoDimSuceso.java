@@ -13,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import bi.vista_IU.VistaDimSucesoSimple;
-import bi.vista_IU.VistaKpiSitioCalidadServicio;
-import bi.vista_IU.VistaKpiSuceso;
+import bi.vista_IU.dimensiones.VistaDimSucesoSimple;
+import bi.vista_IU.kpi.VistaKpiSitioCalidadServicio;
+import bi.vista_IU.kpi.VistaKpiSuceso;
 import comunes.modelo.Suceso;
 
 /* ............................................. */

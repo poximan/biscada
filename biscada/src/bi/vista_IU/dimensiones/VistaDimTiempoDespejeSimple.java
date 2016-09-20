@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU;
+package bi.vista_IU.dimensiones;
 
 import java.util.List;
 

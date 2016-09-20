@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import bi.vista_IU.VistaConsultaCompuesta;
+import bi.vista_IU.consultas.VistaConsultaCompuesta;
 
 /* ............................................. */
 /* ............................................. */

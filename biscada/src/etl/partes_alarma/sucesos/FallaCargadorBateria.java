@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sucesos;
+package etl.partes_alarma.sucesos;
 
 import comunes.modelo.Suceso;
 

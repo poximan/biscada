@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.familias;
+package etl.partes_alarma.familias;
 
 import comunes.modelo.Familia;
 

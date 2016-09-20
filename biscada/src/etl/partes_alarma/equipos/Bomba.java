@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.partes_alarma.equipos;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

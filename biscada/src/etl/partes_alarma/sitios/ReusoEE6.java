@@ -3,11 +3,11 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.sitios;
+package etl.partes_alarma.sitios;
 
 import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
-import etl.familias.Reuso;
+import etl.partes_alarma.familias.Reuso;
 
 /* ............................................. */
 /* ............................................. */

@@ -49,7 +49,7 @@ public abstract class ServDimAbstract {
 	 * @param serv_medicion
 	 *            medicion que se realizar� sobre el set de datos desde el
 	 *            punto de vista de una dimension determinada.
-	 * @param serv_unidad_tiempo
+	 * @param serv_periodo
 	 *            unidad de tiempo en que fraccionar� el set de datos. por
 	 *            ejemplo un set que incluye todo el a�o 2012 puede
 	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
@@ -58,7 +58,7 @@ public abstract class ServDimAbstract {
 	 *         tabla.
 	 */
 	public abstract float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_unidad_tiempo);
+			ServPeriodoAbstract serv_periodo);
 
 	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
 

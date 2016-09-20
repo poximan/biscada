@@ -16,16 +16,16 @@ import org.apache.log4j.Logger;
 
 import bi.modelo.ComponenteMenuConsulta;
 import bi.modelo.ComponenteMenuDimension;
-import bi.vista_IU.VistaConsultaCompuesta;
-import bi.vista_IU.VistaDimAbstractCompuesta;
-import bi.vista_IU.VistaDimSitioCompuesta;
-import bi.vista_IU.VistaDimSitioSimple;
-import bi.vista_IU.VistaDimSucesoCompuesta;
-import bi.vista_IU.VistaDimSucesoSimple;
-import bi.vista_IU.VistaDimTemporadaCompuesta;
-import bi.vista_IU.VistaDimTemporadaSimple;
-import bi.vista_IU.VistaDimTiempoDespejeCompuesta;
-import bi.vista_IU.VistaDimTiempoDespejeSimple;
+import bi.vista_IU.consultas.VistaConsultaCompuesta;
+import bi.vista_IU.dimensiones.VistaDimAbstractCompuesta;
+import bi.vista_IU.dimensiones.VistaDimSitioCompuesta;
+import bi.vista_IU.dimensiones.VistaDimSitioSimple;
+import bi.vista_IU.dimensiones.VistaDimSucesoCompuesta;
+import bi.vista_IU.dimensiones.VistaDimSucesoSimple;
+import bi.vista_IU.dimensiones.VistaDimTemporadaCompuesta;
+import bi.vista_IU.dimensiones.VistaDimTemporadaSimple;
+import bi.vista_IU.dimensiones.VistaDimTiempoDespejeCompuesta;
+import bi.vista_IU.dimensiones.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
 /* ............................................. */

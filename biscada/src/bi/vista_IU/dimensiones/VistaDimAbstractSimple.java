@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU;
+package bi.vista_IU.dimensiones;
 
 import java.awt.Component;
 import java.util.Collections;
@@ -38,6 +38,7 @@ import bi.graficas.GraficoLineas;
 import bi.graficas.GraficoTorta;
 import bi.modelo.ComponenteTabla;
 import bi.modelo.IntervaloFechas;
+import bi.vista_IU.consultas.TableModelMedicionTemporal;
 import bi.vista_evento.EventoConfigurable;
 import bi.vista_evento.EventoDim;
 import comunes.modelo.Alarma;
@@ -76,7 +77,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	private ServDimAbstract serv_dim_vista_seleccionada;
 	private ServDimSitio serv_dim_sitio;
-	private ServPeriodoAbstract serv_unidad_tiempo;
+	private ServPeriodoAbstract serv_periodo;
 	private ServMedAbstract serv_medicion;
 
 	private JComboBox<ServMedAbstract> cbox_medicion;
@@ -182,16 +183,16 @@ public abstract class VistaDimAbstractSimple extends JPanel
 	public void ejecutarDimension() {
 
 		serv_medicion = getMedicion();
-		serv_unidad_tiempo = getDimensionUnidadTiempo();
+		serv_periodo = getDimensionUnidadTiempo();
 
 		serv_dim_vista_seleccionada.realizarHash(consulta);
 
 		intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
 		intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
 
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_unidad_tiempo);
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_periodo);
 
-		encabezado_tabla = serv_unidad_tiempo.getEncabezado();
+		encabezado_tabla = serv_periodo.getEncabezado();
 
 		componenteTabla.setIntervalo(intervalo);
 
@@ -262,8 +263,8 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		return serv_medicion;
 	}
 
-	public ServPeriodoAbstract getServ_unidad_tiempo() {
-		return serv_unidad_tiempo;
+	public ServPeriodoAbstract getServ_periodo() {
+		return serv_periodo;
 	}
 
 	public ServPeriodoAbstract getUnidadTiempoSeleccionada() {

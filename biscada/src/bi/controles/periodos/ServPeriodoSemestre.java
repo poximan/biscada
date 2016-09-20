@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import bi.modelo.IntervaloFechas;
 
 /* ............................................. */
@@ -129,6 +132,16 @@ public class ServPeriodoSemestre extends ServPeriodoAbstract {
 	@Override
 	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual) {
 		return String.valueOf(getNumeroTrimestre(fecha_alarma_actual)) + " tri";
+	}
+
+	@Override
+	public Period incrementarPeriodo() {
+		return getPeriodo().withMonths(6);
+	}
+
+	@Override
+	public Period nuevoPeriodo(DateTime tiempo_inicio) {
+		return new Period(tiempo_inicio, tiempo_inicio.plusMonths(6));
 	}
 
 	@Override

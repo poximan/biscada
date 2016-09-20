@@ -13,9 +13,9 @@ import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 import comunes.modelo.Sitio;
-import etl.familias.Cloacal;
-import etl.familias.Potable;
-import etl.familias.Reuso;
+import etl.partes_alarma.familias.Cloacal;
+import etl.partes_alarma.familias.Potable;
+import etl.partes_alarma.familias.Reuso;
 
 /* ............................................. */
 /* ............................................. */
@@ -52,7 +52,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return 0;
 	}
 
-	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
+	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
@@ -70,7 +70,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 					if (esDeInteres(alarmas_nivel))
 						lista_interes.add(alarmas_nivel);
 			}
-		return serv_unidad_tiempo.ultimaFraccion(lista_interes);
+		return serv_periodo.ultimaFraccion(lista_interes);
 	}
 
 	// Se realiza el c�lculo del m�ximo
@@ -136,7 +136,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return totalFilaMultiple(datos) / ((datos.length - 1) * columna_mayor);
 	}
 
-	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
+	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		float[] arreglo_valores;
@@ -157,7 +157,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 			}
 
 		try {
-			arreglo_valores = serv_medicion.completarFila(1, lista_interes, serv_unidad_tiempo);
+			arreglo_valores = serv_medicion.completarFila(1, lista_interes, serv_periodo);
 		} catch (IndexOutOfBoundsException excepcion) {
 			return 0;
 		}

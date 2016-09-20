@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import bi.modelo.TiempoDespeje;
-import bi.vista_IU.VistaDimTiempoDespejeSimple;
-import bi.vista_IU.VistaKpiSitioCalidadServicio;
-import bi.vista_IU.VistaKpiTiempoDespeje;
+import bi.vista_IU.dimensiones.VistaDimTiempoDespejeSimple;
+import bi.vista_IU.kpi.VistaKpiSitioCalidadServicio;
+import bi.vista_IU.kpi.VistaKpiTiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */

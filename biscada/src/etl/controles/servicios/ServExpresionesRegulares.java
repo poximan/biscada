@@ -7,22 +7,22 @@ import org.apache.log4j.Logger;
 
 import comunes.fabrica.Constantes;
 import comunes.fabrica.TipoDatoFabricable;
-import etl.equipos.Bomba;
-import etl.equipos.CamaraAspiracion;
-import etl.equipos.CentroControlMotores;
-import etl.equipos.Cisterna;
-import etl.equipos.Edificio;
-import etl.equipos.InstrumentoCampo;
-import etl.equipos.Plc;
-import etl.equipos.Pozo;
-import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.UsarPrimerOcurrenciaExcepcion;
 import etl.excepciones.UsarSegundaOcurrenciaExcepcion;
-import etl.sucesos.ActuadoParadaEmergencia;
-import etl.sucesos.ComandoParada;
-import etl.sucesos.NivelAlto;
-import etl.sucesos.NivelRebalse;
+import etl.partes_alarma.equipos.Bomba;
+import etl.partes_alarma.equipos.CamaraAspiracion;
+import etl.partes_alarma.equipos.CentroControlMotores;
+import etl.partes_alarma.equipos.Cisterna;
+import etl.partes_alarma.equipos.Edificio;
+import etl.partes_alarma.equipos.InstrumentoCampo;
+import etl.partes_alarma.equipos.Plc;
+import etl.partes_alarma.equipos.Pozo;
+import etl.partes_alarma.equipos.Valvula;
+import etl.partes_alarma.sucesos.ActuadoParadaEmergencia;
+import etl.partes_alarma.sucesos.ComandoParada;
+import etl.partes_alarma.sucesos.NivelAlto;
+import etl.partes_alarma.sucesos.NivelRebalse;
 
 public class ServExpresionesRegulares {
 
@@ -74,6 +74,25 @@ public class ServExpresionesRegulares {
 		return nuevo_valor;
 	}
 
+	private String getExpresion_regular(String nombre_canonico_clase) {
+
+		String expresion_regular = null;
+
+		try {
+			nueva_clase = Class.forName(nombre_canonico_clase);
+			Method nuevo_metodo = nueva_clase.getMethod("getExpresion_regular");
+			expresion_regular = (String) nuevo_metodo.invoke(nueva_clase);
+
+		} catch (ClassNotFoundException e /* nueva clase */) {
+			log.error("ERROR: clase no encontrada");
+		} catch (NoSuchMethodException | SecurityException e /* nuevo metodo */) {
+			log.error("ERROR: metodo no encontrado");
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e /* invocar */) {
+			log.error("ERROR: metodo no pudo ser invocado (ejecutado)");
+		}
+		return expresion_regular;
+	}
+
 	private void salvarAmbiguedad(TipoDatoFabricable pri_ocurrencia, Class<?> seg_ocurr)
 			throws UsarPrimerOcurrenciaExcepcion, UsarSegundaOcurrenciaExcepcion {
 
@@ -123,24 +142,5 @@ public class ServExpresionesRegulares {
 		} catch (InstantiationException | IllegalAccessException e) {
 			log.error("ERROR: no se pudo pedir nueva instancia de clase " + seg_ocurr.getSimpleName());
 		}
-	}
-
-	private String getExpresion_regular(String nombre_canonico_clase) {
-
-		String expresion_regular = null;
-
-		try {
-			nueva_clase = Class.forName(nombre_canonico_clase);
-			Method nuevo_metodo = nueva_clase.getMethod("getExpresion_regular");
-			expresion_regular = (String) nuevo_metodo.invoke(nueva_clase);
-
-		} catch (ClassNotFoundException e /* nueva clase */) {
-			log.error("ERROR: clase no encontrada");
-		} catch (NoSuchMethodException | SecurityException e /* nuevo metodo */) {
-			log.error("ERROR: metodo no encontrado");
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e /* invocar */) {
-			log.error("ERROR: metodo no pudo ser invocado (ejecutado)");
-		}
-		return expresion_regular;
 	}
 }

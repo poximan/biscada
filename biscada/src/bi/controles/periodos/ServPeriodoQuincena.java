@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import bi.modelo.IntervaloFechas;
 
 /* ............................................. */
@@ -159,6 +162,16 @@ public class ServPeriodoQuincena extends ServPeriodoAbstract {
 		String mes = serv_mes.getTextoColumnaUnidadTiempo(fecha_alarma_actual);
 
 		return new String(texto_quincena + mes);
+	}
+
+	@Override
+	public Period incrementarPeriodo() {
+		return getPeriodo().withDays(15);
+	}
+
+	@Override
+	public Period nuevoPeriodo(DateTime tiempo_inicio) {
+		return new Period(tiempo_inicio, tiempo_inicio.plusDays(15));
 	}
 
 	@Override

@@ -54,7 +54,7 @@ public class ServDimSuceso extends ServDimAbstract {
 
 	@Override
 	public float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_unidad_tiempo) {
+			ServPeriodoAbstract serv_periodo) {
 
 		int indice = 0;
 		float[][] valor_retorno = new float[map.size()][1];
@@ -65,7 +65,7 @@ public class ServDimSuceso extends ServDimAbstract {
 			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
 
 			valor_retorno[indice] = serv_medicion.completarFila(intervalo.getPrimer_alarma().getTimeInMillis(),
-					lista_alarmas_una_clave, serv_unidad_tiempo);
+					lista_alarmas_una_clave, serv_periodo);
 			indice++;
 		}
 		return valor_retorno;

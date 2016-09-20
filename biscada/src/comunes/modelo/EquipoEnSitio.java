@@ -82,7 +82,7 @@ public final class EquipoEnSitio implements TipoDatoFabricable {
 
 		if (this.sitio.equals(equipo_a_comparar.getSitio())
 				&& this.tipo_de_equipo.equals(equipo_a_comparar.getTipo_de_equipo())
-			&& this.id_equipo.equals(equipo_a_comparar.getId_equipo())//
+				&& this.id_equipo.equals(equipo_a_comparar.getId_equipo())//
 		)
 			return true;
 

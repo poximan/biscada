@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.partes_alarma.equipos;
 
 import comunes.modelo.TipoDeEquipo;
 

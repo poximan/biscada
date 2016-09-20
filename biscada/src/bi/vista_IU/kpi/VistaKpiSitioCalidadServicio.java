@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU;
+package bi.vista_IU.kpi;
 
 import bi.controles.dimensiones.ServDimSitio;
 import bi.controles.dimensiones.ServKpiCalidadServicio;
@@ -40,19 +40,19 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		llenarCampoTextos(datos);
 	}
 
-	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
+	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual, float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
 
 		try {
-			llenarCampoTextos(serv_dim_sitio, serv_unidad_tiempo, serv_medicion, sitio_actual);
+			llenarCampoTextos(serv_dim_sitio, serv_periodo, serv_medicion, sitio_actual);
 
 			getIndicador_kpi().cargarDatos(Float.parseFloat(getTxtTotal().getText()),
 					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
 			getIndicador_kpi().createPanel();
 
-			getHisto_kpi().cargarDatos(serv_unidad_tiempo.getEncabezadoFecha(), datosH,
+			getHisto_kpi().cargarDatos(serv_periodo.getEncabezadoFecha(), datosH,
 					Float.parseFloat(getTxtTotal().getText()), Float.parseFloat(getTxtPromedio().getText()));
 			getHisto_kpi().createPanel();
 
@@ -77,16 +77,16 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaMultiple(datos)));
 	}
 
-	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
+	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
 
 		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
 		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio,
-				serv_unidad_tiempo, serv_medicion, sitio_actual)));
-		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio,
-				serv_unidad_tiempo, serv_medicion, sitio_actual)));
+				serv_periodo, serv_medicion, sitio_actual)));
+		getTxtActual().setText(String.valueOf(
+				serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio, serv_periodo, serv_medicion, sitio_actual)));
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
 		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
 

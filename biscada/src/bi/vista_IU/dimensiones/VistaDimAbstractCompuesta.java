@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU;
+package bi.vista_IU.dimensiones;
 
 import java.util.Collections;
 import java.util.List;
@@ -65,8 +65,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* ............................................. */
 
 	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
-			List<Alarma> consulta_comparador) {
+			ServPeriodoAbstract serv_periodo, List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 
@@ -74,7 +73,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		this.consulta_comparador = consulta_comparador;
 
 		iniciarComponentes();
-		ejecutarDimension(serv_medicion, serv_unidad_tiempo);
+		ejecutarDimension(serv_medicion, serv_periodo);
 	}
 
 	/* ............................................. */
@@ -101,7 +100,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		tabPane_grafico.validate();
 	}
 
-	private void armarTablaComparador(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_unidad_tiempo) {
+	private void armarTablaComparador(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
@@ -110,11 +109,10 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		Collections.sort(consulta_comparador);
 		intervalo.setPrimer_alarma(consulta_comparador.get(0).getFecha_inicio());
 		intervalo.setUltima_alarma(consulta_comparador.get(consulta_comparador.size() - 1).getFecha_inicio());
-		
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion,
-				serv_unidad_tiempo);
 
-		encabezado_tabla_comparador = serv_unidad_tiempo.getEncabezado();
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_periodo);
+
+		encabezado_tabla_comparador = serv_periodo.getEncabezado();
 
 		compTblComparador.setIntervalo(intervalo);
 		compTblComparador.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
@@ -130,7 +128,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		Collections.sort(consulta_interes);
 		intervalo.setPrimer_alarma(consulta_interes.get(0).getFecha_inicio());
 		intervalo.setUltima_alarma(consulta_interes.get(consulta_interes.size() - 1).getFecha_inicio());
-		
+
 		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(intervalo, serv_medicion, serv_unidad_tiempo);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
@@ -140,10 +138,10 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		compTblInteres.contruirModeloEntradaColumnas(datos_tabla_interes, encabezado_tabla_interes);
 	}
 
-	public void ejecutarDimension(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_unidad_tiempo) {
+	public void ejecutarDimension(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
 
-		armarTablaInteres(serv_medicion, serv_unidad_tiempo);
-		armarTablaComparador(serv_medicion, serv_unidad_tiempo);
+		armarTablaInteres(serv_medicion, serv_periodo);
+		armarTablaComparador(serv_medicion, serv_periodo);
 
 		armarSolapasGraficas();
 	}

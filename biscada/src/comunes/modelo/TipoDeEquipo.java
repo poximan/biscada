@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
-import etl.equipos.NumeroEquipoIdentificable;
+import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
 
 /* ............................................. */
 /* ............................................. */

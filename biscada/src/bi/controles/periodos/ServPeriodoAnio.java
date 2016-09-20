@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import bi.modelo.IntervaloFechas;
 
 /* ............................................. */
@@ -123,14 +126,24 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	}
 
 	@Override
-	public String toString() {
-		return desripcion;
+	public Period incrementarPeriodo() {
+		return getPeriodo().withYears(1);
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
+
+	@Override
+	public Period nuevoPeriodo(DateTime tiempo_inicio) {
+		return new Period(tiempo_inicio, tiempo_inicio.plusYears(1));
+	}
+
+	@Override
+	public String toString() {
+		return desripcion;
+	}
 
 	@Override
 	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {

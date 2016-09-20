@@ -5,6 +5,7 @@
 
 package comunes.modelo;
 
+import java.nio.file.Path;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -74,6 +75,15 @@ public final class ArchivoDBF implements Comparable<ArchivoDBF> {
 	public ArchivoDBF() {
 	}
 
+	public ArchivoDBF(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public ArchivoDBF(String ruta, Calendar comienzo) {
+		this(ruta);
+		this.comienzo = comienzo;
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
@@ -88,14 +98,11 @@ public final class ArchivoDBF implements Comparable<ArchivoDBF> {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof ArchivoDBF)) {
+		if (!(object instanceof ArchivoDBF))
 			return false;
-		}
-		ArchivoDBF archivo_a_comparar = (ArchivoDBF) object;
-		if (this.ruta.compareTo(archivo_a_comparar.getRuta()) == 0)
-			return true;
 
-		return false;
+		ArchivoDBF archivo_a_comparar = (ArchivoDBF) object;
+		return this.ruta.equals(archivo_a_comparar.getRuta());
 	}
 
 	public Calendar getComienzo() {

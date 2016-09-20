@@ -61,14 +61,11 @@ public class Familia implements TipoDatoFabricable {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Familia)) {
+		if (!(object instanceof Familia))
 			return false;
-		}
-		Familia familia_a_comparar = (Familia) object;
-		if (this.descripcion.compareTo(familia_a_comparar.getDescripcion()) == 0)
-			return true;
 
-		return false;
+		Familia familia_a_comparar = (Familia) object;
+		return this.descripcion.equals(familia_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {

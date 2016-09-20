@@ -8,7 +8,11 @@ package etl.equipos;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jfree.util.Log;
+
+import comunes.fabrica.Constantes;
 import comunes.modelo.TipoDeEquipo;
+import etl.excepciones.NumeroEquipoExcedidoExcepcion;
 
 /* ............................................. */
 /* ............................................. */
@@ -57,7 +61,16 @@ public class Transformador extends TipoDeEquipo {
 		Matcher m = p.matcher(discriminante);
 		m.find();
 
-		return new Integer(m.group());
+		Integer numero = new Integer(m.group());
+
+		if (numero == null || numero.intValue() > Constantes.MAX_TRANSFORMADORES)
+			try {
+				throw new NumeroEquipoExcedidoExcepcion(numero.toString());
+			} catch (NumeroEquipoExcedidoExcepcion e) {
+				Log.error(e.getMessage());
+			}
+
+		return numero;
 	}
 
 	@Override

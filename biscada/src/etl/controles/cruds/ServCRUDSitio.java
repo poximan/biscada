@@ -70,14 +70,13 @@ public class ServCRUDSitio implements InterfazCRUD, ClaveIdentificable {
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
 		int indice;
-		Sitio sitio_actual = new Sitio(alarma_actual.getSitio().getDescripcion());
 
-		if ((indice = lista.lastIndexOf(sitio_actual)) != -1)
+		if ((indice = lista.lastIndexOf(alarma_actual.getSitio())) != -1)
 			alarma_actual.setSitio((Sitio) lista.get(indice));
 		else {
-			crear(sitio_actual);
-			alarma_actual.setSitio(sitio_actual);
+			crear(new Sitio(alarma_actual.getSitio().getDescripcion()));
 			actualizarLista();
+			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
 

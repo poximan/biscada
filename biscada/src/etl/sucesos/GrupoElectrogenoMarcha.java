@@ -22,7 +22,8 @@ public class GrupoElectrogenoMarcha extends Suceso {
 	private static String expresion_regular = "GENO EN MARCHA"//
 			+ "|(ELETROGENO|GENERADOR|RUTNA)(?!FALLA)"//
 			+ "|(?<!FALLA)(ELECTROGENO|GENERADOR|RUTIA)"//
-			+ "|ACTIVACION RUTINA EMERGENCIA";
+			+ "|ACTIVACION RUTINA EMERGENCIA"//
+			+ "|Activacion de RUTINA";
 
 	/* ............................................. */
 	/* ............................................. */

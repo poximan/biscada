@@ -19,7 +19,8 @@ public class FallaCargadorBateria extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "Cargador Bater.a";
+	private static String expresion_regular = "Cargador Bater.a"//
+			+ "|Falla cargador";
 
 	/* ............................................. */
 	/* ............................................. */

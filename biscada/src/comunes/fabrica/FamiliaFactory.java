@@ -15,6 +15,7 @@ import etl.familias.BackupSCADA;
 import etl.familias.Cloacal;
 import etl.familias.ErrorComunicacion;
 import etl.familias.Login;
+import etl.familias.Logout;
 import etl.familias.Potable;
 import etl.familias.Reuso;
 
@@ -85,8 +86,9 @@ public class FamiliaFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ErrorComunicacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Login.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Logout.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getCanonicalName());
 
 			if (dato_fabricado == null)

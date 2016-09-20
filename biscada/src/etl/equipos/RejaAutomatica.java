@@ -39,6 +39,11 @@ public class RejaAutomatica extends TipoDeEquipo {
 	public RejaAutomatica() {
 		super(descripcion);
 	}
+	
+	@Override
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
+	}
 
 	/* ............................................. */
 	/* ............................................. */

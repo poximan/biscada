@@ -5,29 +5,22 @@
 
 package etl.equipos;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.jfree.util.Log;
-
-import comunes.fabrica.Constantes;
 import comunes.modelo.TipoDeEquipo;
-import etl.excepciones.NumeroEquipoExcedidoExcepcion;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Tamiz extends TipoDeEquipo {
+public class CanalDescarga extends TipoDeEquipo {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TAMIZ";
-	private static String descripcion = "tamiz";
+	private static String expresion_regular = "Cargador Bater.a";
+	private static String descripcion = "cargador baterias";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,7 +36,7 @@ public class Tamiz extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Tamiz() {
+	public CanalDescarga() {
 		super(descripcion);
 	}
 
@@ -54,22 +47,7 @@ public class Tamiz extends TipoDeEquipo {
 
 	@Override
 	public Integer getNumero(String discriminante) {
-
-		Pattern p = Pattern.compile("-?\\d+");
-
-		Matcher m = p.matcher(discriminante);
-		m.find();
-
-		Integer numero = new Integer(m.group());
-
-		if (numero == null || numero.intValue() > Constantes.MAX_TAMICES)
-			try {
-				throw new NumeroEquipoExcedidoExcepcion(numero.toString());
-			} catch (NumeroEquipoExcedidoExcepcion e) {
-				Log.error(e.getMessage());
-			}
-
-		return numero;
+		return new Integer(1);
 	}
 
 	@Override

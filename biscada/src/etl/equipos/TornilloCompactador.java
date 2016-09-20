@@ -40,6 +40,11 @@ public class TornilloCompactador extends TipoDeEquipo {
 		super(descripcion);
 	}
 
+	@Override
+	public Integer getNumero(String discriminante) {
+		return new Integer(1);
+	}
+
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */

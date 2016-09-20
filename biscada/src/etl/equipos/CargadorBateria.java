@@ -19,8 +19,8 @@ public class CargadorBateria extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "Cargador Bater.a";
-	private static String descripcion = "cargador baterias";
+	private static String expresion_regular = "CANAL DE DESCARGA";
+	private static String descripcion = "canal de descarga";
 
 	/* ............................................. */
 	/* ............................................. */

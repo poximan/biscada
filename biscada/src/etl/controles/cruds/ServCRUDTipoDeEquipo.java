@@ -70,15 +70,13 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
 		int indice;
-		TipoDeEquipo tipo_de_equipo_actual = new TipoDeEquipo(
-				alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion());
 
-		if ((indice = lista.lastIndexOf(tipo_de_equipo_actual)) != -1)
+		if ((indice = lista.lastIndexOf(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo())) != -1)
 			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo((TipoDeEquipo) lista.get(indice));
 		else {
-			crear(tipo_de_equipo_actual);
-			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo(tipo_de_equipo_actual);
+			crear(new TipoDeEquipo(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion()));
 			actualizarLista();
+			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
 

@@ -62,14 +62,11 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificab
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof TipoDeEquipo)) {
+		if (!(object instanceof TipoDeEquipo))
 			return false;
-		}
-		TipoDeEquipo equipo_a_comparar = (TipoDeEquipo) object;
-		if (this.descripcion.compareTo(equipo_a_comparar.getDescripcion()) == 0)
-			return true;
 
-		return false;
+		TipoDeEquipo equipo_a_comparar = (TipoDeEquipo) object;
+		return this.descripcion.equals(equipo_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {

@@ -70,14 +70,13 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
 		int indice;
-		Familia familia_actual = new Familia(alarma_actual.getFamilia().getDescripcion());
 
-		if ((indice = lista.lastIndexOf(familia_actual)) != -1)
+		if ((indice = lista.lastIndexOf(alarma_actual.getFamilia())) != -1)
 			alarma_actual.setFamilia((Familia) lista.get(indice));
 		else {
-			crear(familia_actual);
-			alarma_actual.setFamilia(familia_actual);
+			crear(new Familia(alarma_actual.getFamilia().getDescripcion()));
 			actualizarLista();
+			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
 

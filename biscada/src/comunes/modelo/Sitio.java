@@ -61,14 +61,11 @@ public class Sitio implements TipoDatoFabricable, FamiliaPorDefecto {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Sitio)) {
+		if (!(object instanceof Sitio))
 			return false;
-		}
+		
 		Sitio sitio_a_comparar = (Sitio) object;
-		if (this.descripcion.compareTo(sitio_a_comparar.getDescripcion()) == 0)
-			return true;
-
-		return false;
+		return this.descripcion.equals(sitio_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {

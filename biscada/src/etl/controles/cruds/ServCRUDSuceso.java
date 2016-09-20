@@ -70,14 +70,13 @@ public class ServCRUDSuceso implements InterfazCRUD, ClaveIdentificable {
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
 		int indice;
-		Suceso suceso_actual = new Suceso(alarma_actual.getSuceso().getDescripcion());
 
-		if ((indice = lista.lastIndexOf(suceso_actual)) != -1)
+		if ((indice = lista.lastIndexOf(alarma_actual.getSuceso())) != -1)
 			alarma_actual.setSuceso((Suceso) lista.get(indice));
 		else {
-			crear(suceso_actual);
-			alarma_actual.setSuceso(suceso_actual);
+			crear(new Suceso(alarma_actual.getSuceso().getDescripcion()));
 			actualizarLista();
+			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
 

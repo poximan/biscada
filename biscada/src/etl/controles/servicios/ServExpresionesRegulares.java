@@ -19,6 +19,8 @@ import etl.equipos.Valvula;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.UsarPrimerOcurrenciaExcepcion;
 import etl.excepciones.UsarSegundaOcurrenciaExcepcion;
+import etl.sucesos.ActuadoParadaEmergencia;
+import etl.sucesos.ComandoParada;
 import etl.sucesos.NivelAlto;
 import etl.sucesos.NivelRebalse;
 
@@ -79,6 +81,10 @@ public class ServExpresionesRegulares {
 
 		try {
 			seg_ocurrencia = (TipoDatoFabricable) seg_ocurr.newInstance();
+
+			// ActuadoParadaEmergencia <- ComandoParada
+			if (pri_ocurrencia instanceof ActuadoParadaEmergencia && seg_ocurrencia instanceof ComandoParada)
+				throw new UsarPrimerOcurrenciaExcepcion();
 
 			// (Cisterna || CamaraAspiracion) -> InstrumentoCampo
 			if ((pri_ocurrencia instanceof Cisterna || pri_ocurrencia instanceof CamaraAspiracion)

@@ -61,14 +61,11 @@ public class Suceso implements TipoDatoFabricable {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Suceso)) {
+		if (!(object instanceof Suceso))
 			return false;
-		}
-		Suceso suceso_a_comparar = (Suceso) object;
-		if (this.descripcion.compareTo(suceso_a_comparar.getDescripcion()) == 0)
-			return true;
 
-		return false;
+		Suceso suceso_a_comparar = (Suceso) object;
+		return this.descripcion.equals(suceso_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {

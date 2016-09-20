@@ -3,31 +3,23 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.equipos;
+package etl.sucesos;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.jfree.util.Log;
-
-import comunes.fabrica.Constantes;
-import comunes.modelo.TipoDeEquipo;
-import etl.excepciones.NumeroEquipoExcedidoExcepcion;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class Tamiz extends TipoDeEquipo {
+public class PresionBaja extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TAMIZ";
-	private static String descripcion = "tamiz";
+	private static String expresion_regular = "BAJA PRESION";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,8 +35,8 @@ public class Tamiz extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public Tamiz() {
-		super(descripcion);
+	public PresionBaja() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -53,28 +45,8 @@ public class Tamiz extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-
-		Pattern p = Pattern.compile("-?\\d+");
-
-		Matcher m = p.matcher(discriminante);
-		m.find();
-
-		Integer numero = new Integer(m.group());
-
-		if (numero == null || numero.intValue() > Constantes.MAX_TAMICES)
-			try {
-				throw new NumeroEquipoExcedidoExcepcion(numero.toString());
-			} catch (NumeroEquipoExcedidoExcepcion e) {
-				Log.error(e.getMessage());
-			}
-
-		return numero;
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "presion baja";
 	}
 
 	/* ............................................. */

@@ -19,7 +19,9 @@ public class ActuadoParadaEmergencia extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "PARADA EMERGENCIA";
+	private static String expresion_regular = "PARADA EMERGENCIA"//
+			+ "|EMERGENCIA ACTUADA"//
+			+ "|PULSADOR DE EMERGENCIA";
 
 	/* ............................................. */
 	/* ............................................. */

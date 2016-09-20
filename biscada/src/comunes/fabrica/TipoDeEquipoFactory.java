@@ -11,6 +11,7 @@ import etl.controles.CampoTextoDefectuoso;
 import etl.controles.servicios.ServExpresionesRegulares;
 import etl.equipos.Bomba;
 import etl.equipos.CamaraAspiracion;
+import etl.equipos.CanalDescarga;
 import etl.equipos.CargadorBateria;
 import etl.equipos.CentroControlMotores;
 import etl.equipos.Cisterna;
@@ -97,26 +98,28 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					CamaraAspiracion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					CanalDescarga.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					CargadorBateria.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					CentroControlMotores.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Cisterna.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Desarenador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Edificio.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogeno.class.getCanonicalName());
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InstrumentoCampo.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Pozo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					RejaAutomatica.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, SCADA.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Tamiz.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					TornilloCompactador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,

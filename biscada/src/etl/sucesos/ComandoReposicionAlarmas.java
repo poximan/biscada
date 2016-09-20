@@ -19,7 +19,8 @@ public class ComandoReposicionAlarmas extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "COMANDO REPOSICION DE ALARMAS";
+	private static String expresion_regular = "COMANDO REPOSICION DE ALARMAS"//
+			+ "|ACEPTACION DE ALARMAS TPyM";
 
 	/* ............................................. */
 	/* ............................................. */

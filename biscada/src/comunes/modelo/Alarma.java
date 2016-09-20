@@ -129,14 +129,11 @@ public final class Alarma implements Comparable<Alarma> {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Alarma)) {
+		if (!(object instanceof Alarma))
 			return false;
-		}
-		Alarma alarma_actual = (Alarma) object;
-		if (this.id.compareTo(alarma_actual.id) == 0)
-			return true;
 
-		return false;
+		Alarma alarma_actual = (Alarma) object;
+		return this.id.equals(alarma_actual.id);
 	}
 
 	public ArchivoDBF getArchivo_propietario() {

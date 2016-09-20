@@ -44,6 +44,7 @@ import etl.sucesos.NivelBajo;
 import etl.sucesos.NivelRebalse;
 import etl.sucesos.PlcErrorComunicacion;
 import etl.sucesos.PlcErrorLog;
+import etl.sucesos.PresionBaja;
 import etl.sucesos.PuertaAbierta;
 import etl.sucesos.Robo;
 import etl.sucesos.SCADABackupActivo;
@@ -181,6 +182,8 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorComunicacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorLog.class.getCanonicalName());
+
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PresionBaja.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PuertaAbierta.class.getCanonicalName());

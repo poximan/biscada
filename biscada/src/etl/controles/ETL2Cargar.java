@@ -78,17 +78,22 @@ public class ETL2Cargar implements ObjetosBorrables {
 
 	public void cargarAlarmasAceptadas() {
 
+		/*
+		 * solo importa el dbf propietario de una alarma las demas tendran el
+		 * mismo dbf
+		 */
+		dbf_servicio_crud.buscarEnMemoriaPrimaria(alarmas_transformadas.get(0));
+		ArchivoDBF archivo = alarmas_transformadas.get(0).getArchivo_propietario();
+
 		for (Alarma alarma_actual : alarmas_transformadas) {
 
-			dbf_servicio_crud.buscarEnMemoriaPrimaria(alarma_actual);
+			alarma_actual.setArchivo_propietario(archivo);
+
 			familia_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
 			sitio_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
 			suceso_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
-
-			if (alarma_actual.getEquipo_en_sitio() != null) {
-				tipo_de_equipo_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
-				equipo_en_sitio_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
-			}
+			tipo_de_equipo_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
+			equipo_en_sitio_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
 
 			alarma_servicios_crud.crear(alarma_actual);
 		}

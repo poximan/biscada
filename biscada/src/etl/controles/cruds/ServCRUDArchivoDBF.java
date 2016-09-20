@@ -36,16 +36,12 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	private List<ArchivoDBF> list_disponibles;
 	private List<ArchivoDBF> list_procesados;
 
-	private ArchivoDBF archivo_propietario;
-
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public ServCRUDArchivoDBF() {
-
-		archivo_propietario = new ArchivoDBF();
 
 		em = Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM();
 
@@ -95,9 +91,9 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		list_disponibles.add(archivo_actual);
 	}
 
-	public void agregarDisponibles(Path entrada_archivo) {
+	public void agregarDisponibles(Path path_entrada_archivo) {
 
-		ArchivoDBF archivo_propietario = crearDBF(entrada_archivo);
+		ArchivoDBF archivo_propietario = new ArchivoDBF(path_entrada_archivo.toString());
 		list_disponibles.add(archivo_propietario);
 	}
 
@@ -111,12 +107,14 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 
 		int indice;
 
-		if ((indice = getIndiceCacheBD(alarma_actual)) != -1)
+		if ((indice = getIndiceCacheBD(alarma_actual)) != -1) {
 			alarma_actual.setArchivo_propietario(list_procesados.get(indice));
-		else {
 			alarma_actual.getArchivo_propietario().setValido(true);
-			crear(alarma_actual.getArchivo_propietario());
+		} else {
+			crear(new ArchivoDBF(alarma_actual.getArchivo_propietario().getRuta(),
+					alarma_actual.getArchivo_propietario().getComienzo()));
 			actualizarLista();
+			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
 
@@ -125,16 +123,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		em.persist(entidad);
 	}
 
-	private ArchivoDBF crearDBF(Path entrada_archivo) {
+	public boolean existeEnBD(Path entrada_archivo) {
 
 		ArchivoDBF archivo_propietario = new ArchivoDBF();
 		archivo_propietario.setRuta(entrada_archivo.toString());
-		return archivo_propietario;
-	}
 
-	public boolean existeEnBD(Path entrada_archivo) {
-
-		archivo_propietario.setRuta(entrada_archivo.toString());
 		return list_procesados.contains(archivo_propietario);
 	}
 
@@ -153,7 +146,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 
 	@Override
 	public Query getQueryTodos() {
-
 		return Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM().createNamedQuery("ArchivoDBF.buscTodos");
 	}
 

@@ -6,9 +6,9 @@
 package bi.vista_IU;
 
 import bi.controles.dimensiones.ServDimSitio;
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
 import bi.controles.dimensiones.ServKpiCalidadServicio;
 import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import bi.vista_evento.EventoKPI;
 import comunes.modelo.Sitio;
 
@@ -40,7 +40,7 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		llenarCampoTextos(datos);
 	}
 
-	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual, float[] datosH) {
 
 		super.configEventos(new EventoKPI(this));
@@ -77,7 +77,7 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaMultiple(datos)));
 	}
 
-	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.dimensiones;
+package bi.controles.periodos;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +16,7 @@ import bi.modelo.IntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
+public class ServPeriodoQuincena extends ServPeriodoAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -26,14 +26,14 @@ public class ServDimUnidadTiempoQuincena extends ServDimUnidadTiempoAbstract {
 	private static String desripcion = "quincenal";
 	private int divisor_en_dias = 15;
 
-	private ServDimUnidadTiempoMes serv_mes;
+	private ServPeriodoMes serv_mes;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServDimUnidadTiempoQuincena(IntervaloFechas intervalo, ServDimUnidadTiempoMes serv_mes) {
+	public ServPeriodoQuincena(IntervaloFechas intervalo, ServPeriodoMes serv_mes) {
 		super(intervalo);
 		this.serv_mes = serv_mes;
 	}

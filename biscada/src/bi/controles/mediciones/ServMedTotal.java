@@ -11,7 +11,8 @@ import java.util.List;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+
+import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -39,7 +40,7 @@ public class ServMedTotal extends ServMedAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServDimUnidadTiempoAbstract serv_unidad_tiempo)
+	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_unidad_tiempo)
 			throws IndexOutOfBoundsException {
 
 		DateTime tiempo_inicio = new DateTime(tiempo_ini);

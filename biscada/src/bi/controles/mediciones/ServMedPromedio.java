@@ -8,7 +8,7 @@ package bi.controles.mediciones;
 import java.util.ArrayList;
 import java.util.List;
 
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -36,7 +36,7 @@ public class ServMedPromedio extends ServMedAbstract {
 	/* ............................................. */
 
 	private void calcularPromedio(List<Float> fracciones_tiempo, float[] totales,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+			ServPeriodoAbstract serv_unidad_tiempo) {
 
 		for (int indice = 0; indice < totales.length; indice++) {
 			Float nuevo_promedio = new Float(promedioParaUnidadTiempo(totales[indice], serv_unidad_tiempo));
@@ -45,7 +45,7 @@ public class ServMedPromedio extends ServMedAbstract {
 	}
 
 	@Override
-	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServDimUnidadTiempoAbstract serv_unidad_tiempo)
+	public float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_unidad_tiempo)
 			throws IndexOutOfBoundsException {
 
 		List<Float> fracciones_tiempo = new ArrayList<Float>();
@@ -58,7 +58,7 @@ public class ServMedPromedio extends ServMedAbstract {
 		return envolturaFloatHaciaFloat(fracciones_tiempo.toArray(new Float[fracciones_tiempo.size()]));
 	}
 
-	private float promedioParaUnidadTiempo(float total_mes, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	private float promedioParaUnidadTiempo(float total_mes, ServPeriodoAbstract serv_unidad_tiempo) {
 
 		return total_mes / serv_unidad_tiempo.getDivisor_en_dias();
 	}

@@ -5,7 +5,6 @@
 
 package comunes.modelo;
 
-import java.nio.file.Path;
 import java.util.Calendar;
 
 import javax.persistence.Column;

@@ -16,8 +16,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
 import bi.controles.dimensiones.ServDimAbstract;
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
 import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import bi.graficas.GraficoComparable;
 import bi.modelo.ComponenteTabla;
 import bi.modelo.IntervaloFechas;
@@ -65,7 +65,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	/* ............................................. */
 
 	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
+			ServPeriodoAbstract serv_unidad_tiempo, List<Alarma> consulta_interes,
 			List<Alarma> consulta_comparador) {
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
@@ -101,7 +101,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		tabPane_grafico.validate();
 	}
 
-	private void armarTablaComparador(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	private void armarTablaComparador(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_comparador);
 
@@ -121,7 +121,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		compTblComparador.contruirModeloEntradaColumnas(datos_tabla_comparador, encabezado_tabla_comparador);
 	}
 
-	private void armarTablaInteres(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	private void armarTablaInteres(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_unidad_tiempo) {
 
 		serv_dim_vista_seleccionada.realizarHash(consulta_interes);
 
@@ -140,7 +140,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		compTblInteres.contruirModeloEntradaColumnas(datos_tabla_interes, encabezado_tabla_interes);
 	}
 
-	public void ejecutarDimension(ServMedAbstract serv_medicion, ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+	public void ejecutarDimension(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_unidad_tiempo) {
 
 		armarTablaInteres(serv_medicion, serv_unidad_tiempo);
 		armarTablaComparador(serv_medicion, serv_unidad_tiempo);

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import bi.modelo.IntervaloFechas;
 import bi.modelo.TiempoDespeje;
 import bi.tiempos_despeje.FabricaTiempoDespeje;
@@ -57,7 +58,7 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 
 	@Override
 	public float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo) {
+			ServPeriodoAbstract serv_unidad_tiempo) {
 
 		int indice = 0;
 		float[][] valor_retorno = new float[map.size()][1];

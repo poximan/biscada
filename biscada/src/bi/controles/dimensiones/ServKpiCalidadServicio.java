@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 import comunes.modelo.Sitio;
 import etl.familias.Cloacal;
@@ -51,7 +52,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return 0;
 	}
 
-	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		List<Alarma> lista_interes = new ArrayList<Alarma>();
@@ -135,7 +136,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return totalFilaMultiple(datos) / ((datos.length - 1) * columna_mayor);
 	}
 
-	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServDimUnidadTiempoAbstract serv_unidad_tiempo,
+	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_unidad_tiempo,
 			ServMedAbstract serv_medicion, Sitio sitio_actual) {
 
 		float[] arreglo_valores;

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.dimensiones;
+package bi.controles.periodos;
 
 import java.util.Calendar;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import comunes.modelo.Alarma;
 /* INTERFASE ................................... */
 /* ............................................. */
 
-public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalculable {
+public abstract class ServPeriodoAbstract implements FraccionTiempoCalculable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -32,7 +32,7 @@ public abstract class ServDimUnidadTiempoAbstract implements FraccionTiempoCalcu
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServDimUnidadTiempoAbstract(IntervaloFechas intervalo) {
+	public ServPeriodoAbstract(IntervaloFechas intervalo) {
 		this.intervalo = intervalo;
 	}
 

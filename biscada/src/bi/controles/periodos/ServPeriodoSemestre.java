@@ -3,9 +3,8 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.dimensiones;
+package bi.controles.periodos;
 
-import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -17,22 +16,22 @@ import bi.modelo.IntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
+public class ServPeriodoSemestre extends ServPeriodoAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String desripcion = "mensual";
-	private int divisor_en_dias = 30;
+	private static String desripcion = "trimestral";
+	private int divisor_en_dias = 90;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServDimUnidadTiempoMes(IntervaloFechas intervalo) {
+	public ServPeriodoSemestre(IntervaloFechas intervalo) {
 		super(intervalo);
 	}
 
@@ -43,16 +42,25 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 
 	@Override
 	public int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual) {
-		return 1;
+
+		int trimestre_original = getNumeroTrimestre(fecha_alarma_actual), nuevos_meses;
+
+		Calendar fecha_incrementable = Calendar.getInstance();
+		fecha_incrementable.setTimeInMillis(fecha_alarma_actual.getTimeInMillis());
+
+		for (nuevos_meses = 0; trimestre_original == getNumeroTrimestre(fecha_incrementable); nuevos_meses++)
+			fecha_incrementable.add(Calendar.MONTH, 1);
+
+		return nuevos_meses;
 	}
 
 	@Override
 	public void contrarNuevasFraccionesTiempo(Calendar fecha_alarma_actual, Calendar proxima_fraccion,
 			List<Float> fracciones_tiempo) {
 
-		int meses_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, proxima_fraccion);
+		int trimestres_involucrados = unidadTiempoInvolucradas(fecha_alarma_actual, proxima_fraccion);
 
-		while (meses_involucrados-- > 0)
+		while (trimestres_involucrados-- > 0)
 			fracciones_tiempo.add(new Float(0));
 
 		proxima_fraccion.setTimeInMillis(fecha_alarma_actual.getTimeInMillis());
@@ -64,13 +72,9 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 		return divisor_en_dias;
 	}
 
-	/*
-	 * Genero un nuevo m�todo para devolver el encabezado pero en formato
-	 * "Date" (non-Javadoc)
-	 * 
-	 * @see control_dimensiones.ServDimUnidadTiempoAbstract#getEncabezado()
+	/**
+	 * devuelve el encabezado pero en formato "Date"
 	 */
-
 	@Override
 	public String[] getEncabezado() {
 
@@ -118,13 +122,13 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 		return encabezado;
 	}
 
+	private int getNumeroTrimestre(Calendar caledar_actual) {
+		return caledar_actual.get(Calendar.MONTH) / 3 + 1;
+	}
+
 	@Override
 	public String getTextoColumnaUnidadTiempo(Calendar fecha_alarma_actual) {
-
-		int indice_mes = fecha_alarma_actual.get(Calendar.MONTH);
-		String descripcion_mes = new DateFormatSymbols().getMonths()[indice_mes];
-
-		return descripcion_mes.substring(0, 3);
+		return String.valueOf(getNumeroTrimestre(fecha_alarma_actual)) + " tri";
 	}
 
 	@Override
@@ -141,7 +145,7 @@ public class ServDimUnidadTiempoMes extends ServDimUnidadTiempoAbstract {
 	public int unidadTiempoInvolucradas(Calendar primer_alarma, Calendar ultima_alarma) {
 
 		int dif_anios = ultima_alarma.get(Calendar.YEAR) - primer_alarma.get(Calendar.YEAR);
-		return ((dif_anios * 12) + ultima_alarma.get(Calendar.MONTH) - primer_alarma.get(Calendar.MONTH)) + 1;
+		return ((dif_anios * 4) + getNumeroTrimestre(ultima_alarma) - getNumeroTrimestre(primer_alarma)) + 1;
 	}
 
 	/* ............................................. */

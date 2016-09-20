@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bi.controles.mediciones.ServMedAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import bi.modelo.IntervaloFechas;
 import comunes.modelo.Alarma;
 
@@ -57,7 +58,7 @@ public abstract class ServDimAbstract {
 	 *         tabla.
 	 */
 	public abstract float[][] completarTabla(IntervaloFechas intervalo, ServMedAbstract serv_medicion,
-			ServDimUnidadTiempoAbstract serv_unidad_tiempo);
+			ServPeriodoAbstract serv_unidad_tiempo);
 
 	private void extraerCelda(float[][] valor_retorno, int columna_nula, List<Float> lista, int fila_actual) {
 

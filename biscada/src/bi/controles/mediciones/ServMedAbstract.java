@@ -7,7 +7,7 @@ package bi.controles.mediciones;
 
 import java.util.List;
 
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
+import bi.controles.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -47,7 +47,7 @@ public abstract class ServMedAbstract {
 	 * @throws IndexOutOfBoundsException
 	 * 
 	 */
-	public abstract float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServDimUnidadTiempoAbstract serv_unidad_tiempo)
+	public abstract float[] completarFila(long tiempo_ini, List<Alarma> alarmas, ServPeriodoAbstract serv_unidad_tiempo)
 			throws IndexOutOfBoundsException;
 
 	/**

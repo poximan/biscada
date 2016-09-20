@@ -25,14 +25,14 @@ import javax.swing.border.TitledBorder;
 
 import bi.controles.dimensiones.ServDimAbstract;
 import bi.controles.dimensiones.ServDimSitio;
-import bi.controles.dimensiones.ServDimUnidadTiempoAbstract;
-import bi.controles.dimensiones.ServDimUnidadTiempoAnio;
-import bi.controles.dimensiones.ServDimUnidadTiempoMes;
-import bi.controles.dimensiones.ServDimUnidadTiempoQuincena;
-import bi.controles.dimensiones.ServDimUnidadTiempoTrimestre;
 import bi.controles.mediciones.ServMedAbstract;
 import bi.controles.mediciones.ServMedPromedio;
 import bi.controles.mediciones.ServMedTotal;
+import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.periodos.ServPeriodoAnio;
+import bi.controles.periodos.ServPeriodoMes;
+import bi.controles.periodos.ServPeriodoQuincena;
+import bi.controles.periodos.ServPeriodoTrimestre;
 import bi.graficas.GraficoBarras;
 import bi.graficas.GraficoLineas;
 import bi.graficas.GraficoTorta;
@@ -76,11 +76,11 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	private ServDimAbstract serv_dim_vista_seleccionada;
 	private ServDimSitio serv_dim_sitio;
-	private ServDimUnidadTiempoAbstract serv_unidad_tiempo;
+	private ServPeriodoAbstract serv_unidad_tiempo;
 	private ServMedAbstract serv_medicion;
 
 	private JComboBox<ServMedAbstract> cbox_medicion;
-	private JComboBox<ServDimUnidadTiempoAbstract> cbox_dim_tiempo;
+	private JComboBox<ServPeriodoAbstract> cbox_dim_tiempo;
 
 	private JButton btnCalidadServicio;
 	private JButton btnEjecutar;
@@ -158,14 +158,14 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	private void cargarTodasLasUnidadesTiempo() {
 
-		ServDimUnidadTiempoMes serv_mes = new ServDimUnidadTiempoMes(intervalo);
+		ServPeriodoMes serv_mes = new ServPeriodoMes(intervalo);
 
 		cbox_dim_tiempo.removeAllItems();
 
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoQuincena(intervalo, serv_mes));
+		cbox_dim_tiempo.addItem(new ServPeriodoQuincena(intervalo, serv_mes));
 		cbox_dim_tiempo.addItem(serv_mes);
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoTrimestre(intervalo));
-		cbox_dim_tiempo.addItem(new ServDimUnidadTiempoAnio(intervalo));
+		cbox_dim_tiempo.addItem(new ServPeriodoTrimestre(intervalo));
+		cbox_dim_tiempo.addItem(new ServPeriodoAnio(intervalo));
 	}
 
 	@Override
@@ -217,18 +217,18 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		return consulta;
 	}
 
-	private ServDimUnidadTiempoAbstract getDimensionUnidadTiempo() {
+	private ServPeriodoAbstract getDimensionUnidadTiempo() {
 
 		Object entidad = cbox_dim_tiempo.getSelectedItem();
 
-		if (entidad instanceof ServDimUnidadTiempoQuincena)
-			return (ServDimUnidadTiempoQuincena) entidad;
-		if (entidad instanceof ServDimUnidadTiempoMes)
-			return (ServDimUnidadTiempoMes) entidad;
-		if (entidad instanceof ServDimUnidadTiempoAnio)
-			return (ServDimUnidadTiempoAnio) entidad;
-		if (entidad instanceof ServDimUnidadTiempoTrimestre)
-			return (ServDimUnidadTiempoTrimestre) entidad;
+		if (entidad instanceof ServPeriodoQuincena)
+			return (ServPeriodoQuincena) entidad;
+		if (entidad instanceof ServPeriodoMes)
+			return (ServPeriodoMes) entidad;
+		if (entidad instanceof ServPeriodoAnio)
+			return (ServPeriodoAnio) entidad;
+		if (entidad instanceof ServPeriodoTrimestre)
+			return (ServPeriodoTrimestre) entidad;
 
 		return null;
 	}
@@ -262,11 +262,11 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		return serv_medicion;
 	}
 
-	public ServDimUnidadTiempoAbstract getServ_unidad_tiempo() {
+	public ServPeriodoAbstract getServ_unidad_tiempo() {
 		return serv_unidad_tiempo;
 	}
 
-	public ServDimUnidadTiempoAbstract getUnidadTiempoSeleccionada() {
+	public ServPeriodoAbstract getUnidadTiempoSeleccionada() {
 		return getDimensionUnidadTiempo();
 	}
 
@@ -304,7 +304,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		pl_tiempo = new JPanel();
 
 		cbox_medicion = new JComboBox<ServMedAbstract>();
-		cbox_dim_tiempo = new JComboBox<ServDimUnidadTiempoAbstract>();
+		cbox_dim_tiempo = new JComboBox<ServPeriodoAbstract>();
 
 		btnEjecutar = new JButton("ejecutar");
 

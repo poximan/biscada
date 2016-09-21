@@ -333,13 +333,16 @@ public class ServConsultaDinamica {
 
 		mostrarQuery();
 
-		List<Alarma> resultado;
+		List<Alarma> resultado = null;
 
 		try {
 			resultado = typed_query.getResultList();
 		} catch (QueryTimeoutException e) {
 			log.error("tiempo excedido en ejecucion de consulta");
 			resultado = null;
+		} catch (OutOfMemoryError e) {
+			log.error("la consulta sobrepaso los recursos asignados del JRE (ambiente de ejecucion java)");
+			log.info("reintentar la consulta con algunos filtros y rango de fechas mas reducido");
 		}
 
 		if (resultado == null)

@@ -156,6 +156,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual);
+			gestor.liberarObjetos();
 		}
 		metodo_insercion.enviarCacheHaciaBD();
 		metodo_insercion.limpiarCache();

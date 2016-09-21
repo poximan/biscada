@@ -23,6 +23,7 @@ import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
 import comunes.modelo.Suceso;
 import etl.controles.dbf.ArchAlarma;
+import etl.controles.servicios.CampoTextoDefectuoso;
 
 /* ............................................. */
 /* ............................................. */
@@ -87,7 +88,7 @@ public class ETL1Transformar implements ObjetosBorrables {
 		return false;
 	}
 
-	public List<Alarma> getAlarmas_transformadas() {
+	public List<Alarma> getAlarmas() {
 		return alarmas_transformadas;
 	}
 
@@ -112,8 +113,6 @@ public class ETL1Transformar implements ObjetosBorrables {
 
 		alarmas_extraidas.clear();
 		alarmas_transformadas.clear();
-
-		System.gc();
 	}
 
 	private void pasarPrimitivosDirecto(Alarma alarma_transformada, ArchAlarma alarma_no_transformada) {

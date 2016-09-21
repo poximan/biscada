@@ -57,7 +57,7 @@ public class EMFSingleton {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public synchronized static EntityManagerFactory getInstanciaEMF() {
+	private synchronized static EntityManagerFactory getInstanciaEMF() {
 
 		if (instancia_unica == null) {
 

@@ -5,7 +5,7 @@
 
 package comunes.fabrica;
 
-import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.CampoTextoDefectuoso;
 
 /* ............................................. */
 /* ............................................. */

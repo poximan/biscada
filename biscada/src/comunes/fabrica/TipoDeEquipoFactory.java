@@ -7,7 +7,7 @@ package comunes.fabrica;
 
 import java.util.regex.PatternSyntaxException;
 
-import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.CampoTextoDefectuoso;
 import etl.controles.servicios.ServExpresionesRegulares;
 import etl.excepciones.CampoTextoAmbiguoExcepcion;
 import etl.excepciones.CampoTextoNoEncontradoExcepcion;

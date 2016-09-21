@@ -101,9 +101,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 
 	@Override
 	public void liberarObjetos() {
-
 		alarmas_transformadas.clear();
-		System.gc();
 	}
 
 	public void rechazarArchivo(ArchivoDBF archivo_actual) {

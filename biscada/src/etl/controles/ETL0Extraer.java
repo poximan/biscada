@@ -5,12 +5,22 @@
 
 package etl.controles;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import comunes.controles.ObjetosBorrables;
+import org.apache.log4j.Logger;
+
 import comunes.modelo.ArchivoDBF;
 import etl.controles.dbf.ArchAlarma;
-import etl.controles.dbf.ServConexionArchivo;
+import etl.controles.dbf.ServParser;
+import nl.knaw.dans.common.dbflib.CorruptedTableException;
+import nl.knaw.dans.common.dbflib.Field;
+import nl.knaw.dans.common.dbflib.IfNonExistent;
+import nl.knaw.dans.common.dbflib.Record;
+import nl.knaw.dans.common.dbflib.Table;
 
 /* ............................................. */
 /* ............................................. */
@@ -18,23 +28,24 @@ import etl.controles.dbf.ServConexionArchivo;
 /* ............................................. */
 
 /**
- * La primera parte del proceso ETL consiste en extraer los datos desde el
- * origen, en este caso un archivo de texto. La extracci�n convierte los datos
- * a un formato preparado para iniciar el proceso de transformaci�n. Previo a
- * ello se verifica si los datos cumplen la pauta o estructura que se esperaba.
- * De no ser as� los datos son rechazados.
+ * establece la comunicacion con el archivo fuente extrae encabezado y filas de
+ * alarmas. todo sin formato
  * 
  * @author hugo
  * 
  */
-public class ETL0Extraer implements ObjetosBorrables {
+public class ETL0Extraer {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private ServConexionArchivo serv_conexion_archivo;
+	private static Logger log = Logger.getLogger(ETL0Extraer.class);
+
+	private ArchivoDBF archivo_actual;
+
+	private Table table;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -42,7 +53,9 @@ public class ETL0Extraer implements ObjetosBorrables {
 	/* ............................................. */
 
 	public ETL0Extraer(ArchivoDBF archivo_actual) {
-		serv_conexion_archivo = new ServConexionArchivo(archivo_actual);
+
+		super();
+		this.archivo_actual = archivo_actual;
 	}
 
 	/* ............................................. */
@@ -50,19 +63,45 @@ public class ETL0Extraer implements ObjetosBorrables {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public List<ArchAlarma> extraerAlarmas() {
-		return serv_conexion_archivo.getAlarmas();
+	public void cerrarArchivo() {
+
+		try {
+			table.close();
+		} catch (IOException ex) {
+			log.error("ERROR: no se puede cerrar la tabla asociada al archivo");
+		}
 	}
 
-	@Override
-	public void liberarObjetos() {
+	public List<ArchAlarma> getAlarmas() {
 
-		serv_conexion_archivo.cerrarArchivo();
-		System.gc();
+		table = new Table(new File(archivo_actual.getRuta()));
+		List<ArchAlarma> alarmas_extraidas = new ArrayList<ArchAlarma>();
+
+		try {
+			table.open(IfNonExistent.ERROR);
+
+		} catch (CorruptedTableException e) {
+
+			log.error("ERROR: tabla no se puede leer");
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			log.error("ERROR: tabla no encontrada");
+			e.printStackTrace();
+		}
+
+		List<Field> fields = table.getFields();
+
+		Iterator<Record> recordIterator = table.recordIterator();
+
+		while (recordIterator.hasNext()) {
+
+			final Record record = recordIterator.next();
+
+			ServParser serv_parser = new ServParser(record, fields);
+			alarmas_extraidas.add(serv_parser.separarCampos());
+		}
+
+		return alarmas_extraidas;
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
 }

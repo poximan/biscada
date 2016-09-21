@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.controles;
+package etl.controles.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * gestiona las alarmas rechazadas por el proceso etl. una unica instancia de
- * este objeto es compartida por las tres fabricas que obtienen sus objetos
+ * este objeto es compartida por las fabricas que obtienen sus objetos
  * analizando el campo "texto" del archivo dbf
  * 
  * @author hugo
@@ -44,7 +44,7 @@ public class CampoTextoDefectuoso {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public synchronized void agregarNuevaAlarma(String clase_propietaria, String motivo) {
+	public void agregarNuevaAlarma(String clase_propietaria, String motivo) {
 
 		String mensaje = clase_propietaria + ", " + motivo;
 
@@ -67,7 +67,6 @@ public class CampoTextoDefectuoso {
 	}
 
 	private boolean yaExiste(String campo_texto) {
-
 		return textos_rechazados.contains(campo_texto);
 	}
 }

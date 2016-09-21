@@ -11,11 +11,11 @@ import org.apache.log4j.Logger;
 
 import comunes.controles.ObjetosBorrables;
 import comunes.modelo.ArchivoDBF;
-import etl.controles.CampoTextoDefectuoso;
-import etl.controles.ETL0Extraer;
 import etl.controles.ETL1Transformar;
 import etl.controles.ETL2Cargar;
+import etl.controles.ETL0Extraer;
 import etl.controles.cruds.ServCRUDArchivoDBF;
+import etl.controles.servicios.CampoTextoDefectuoso;
 
 /* ............................................. */
 /* ............................................. */
@@ -45,11 +45,6 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	private ETL0Extraer extractor;
 
 	private ETL1Transformar transformador;
-
-	/* ............................................. */
-	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
-	/* ............................................. */
 
 	private ETL2Cargar cargador;
 
@@ -82,21 +77,21 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		dbf_servicio_crud.actualizar(archivo_actual);
 
 		extractor = new ETL0Extraer(archivo_actual);
-		alarmas_extraidas = extractor.extraerAlarmas();
+		alarmas_extraidas = extractor.getAlarmas();
 		extraidas = alarmas_extraidas.size();
 
 		transformador = new ETL1Transformar(alarmas_extraidas);
 		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
 
-		cargador = new ETL2Cargar(transformador.getAlarmas_transformadas(), dbf_servicio_crud);
+		cargador = new ETL2Cargar(transformador.getAlarmas(), dbf_servicio_crud);
 
-		if (!transformador.getAlarmas_transformadas().isEmpty())
+		if (!transformador.getAlarmas().isEmpty())
 			cargador.cargarAlarmasAceptadas();
 		else
 			cargador.rechazarArchivo(archivo_actual);
 
-		reportar(extraidas, transformador.getAlarmas_transformadas().size(), alarmas_defectuosas);
-		actualizarTotalizadores(extraidas, transformador.getAlarmas_transformadas().size());
+		reportar(extraidas, transformador.getAlarmas().size(), alarmas_defectuosas);
+		actualizarTotalizadores(extraidas, transformador.getAlarmas().size());
 
 		dbf_servicio_crud.actualizar(archivo_actual);
 	}
@@ -104,9 +99,10 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	@Override
 	public void liberarObjetos() {
 
-		extractor.liberarObjetos();
+		extractor.cerrarArchivo();
 		transformador.liberarObjetos();
 		cargador.liberarObjetos();
+		System.gc();
 	}
 
 	/**

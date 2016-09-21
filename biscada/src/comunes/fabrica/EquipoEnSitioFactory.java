@@ -7,7 +7,7 @@ package comunes.fabrica;
 
 import comunes.modelo.EquipoEnSitio;
 import comunes.modelo.TipoDeEquipo;
-import etl.controles.CampoTextoDefectuoso;
+import etl.controles.servicios.CampoTextoDefectuoso;
 
 /* ............................................. */
 /* ............................................. */

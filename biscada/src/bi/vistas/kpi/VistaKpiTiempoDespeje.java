@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.kpi;
+package bi.vistas.kpi;
 
 import bi.modelo.TiempoDespeje;
 

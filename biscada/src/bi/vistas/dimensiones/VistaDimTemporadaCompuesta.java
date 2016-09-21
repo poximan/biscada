@@ -3,13 +3,13 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.dimensiones;
+package bi.vistas.dimensiones;
 
 import java.util.List;
 
-import bi.controles.dimensiones.ServDimTemporada;
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.dimensiones.ServDimTemporada;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */

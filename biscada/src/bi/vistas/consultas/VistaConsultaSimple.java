@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.consultas;
+package bi.vistas.consultas;
 
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -20,7 +20,7 @@ import javax.swing.border.TitledBorder;
 
 import bi.modelo.ComponenteConsulta;
 import bi.modelo.ComponenteMenuConsulta;
-import bi.vista_evento.EventoConsultaSimple;
+import bi.vistas.eventos.EventoConsultaSimple;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
 

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,16 +16,16 @@ import org.apache.log4j.Logger;
 
 import bi.modelo.ComponenteMenuConsulta;
 import bi.modelo.ComponenteMenuDimension;
-import bi.vista_IU.consultas.VistaConsultaCompuesta;
-import bi.vista_IU.dimensiones.VistaDimAbstractCompuesta;
-import bi.vista_IU.dimensiones.VistaDimSitioCompuesta;
-import bi.vista_IU.dimensiones.VistaDimSitioSimple;
-import bi.vista_IU.dimensiones.VistaDimSucesoCompuesta;
-import bi.vista_IU.dimensiones.VistaDimSucesoSimple;
-import bi.vista_IU.dimensiones.VistaDimTemporadaCompuesta;
-import bi.vista_IU.dimensiones.VistaDimTemporadaSimple;
-import bi.vista_IU.dimensiones.VistaDimTiempoDespejeCompuesta;
-import bi.vista_IU.dimensiones.VistaDimTiempoDespejeSimple;
+import bi.vistas.consultas.VistaConsultaCompuesta;
+import bi.vistas.dimensiones.VistaDimAbstractCompuesta;
+import bi.vistas.dimensiones.VistaDimSitioCompuesta;
+import bi.vistas.dimensiones.VistaDimSitioSimple;
+import bi.vistas.dimensiones.VistaDimSucesoCompuesta;
+import bi.vistas.dimensiones.VistaDimSucesoSimple;
+import bi.vistas.dimensiones.VistaDimTemporadaCompuesta;
+import bi.vistas.dimensiones.VistaDimTemporadaSimple;
+import bi.vistas.dimensiones.VistaDimTiempoDespejeCompuesta;
+import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
 /* ............................................. */

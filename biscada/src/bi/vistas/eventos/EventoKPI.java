@@ -3,12 +3,12 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import bi.vista_IU.kpi.VistaKpiAbstract;
+import bi.vistas.kpi.VistaKpiAbstract;
 
 /* ............................................. */
 /* ............................................. */

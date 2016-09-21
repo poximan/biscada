@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.consultas;
+package bi.vistas.consultas;
 
 import javax.swing.table.AbstractTableModel;
 

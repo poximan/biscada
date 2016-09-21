@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.kpi;
+package bi.vistas.kpi;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -25,10 +25,10 @@ import javax.swing.border.LineBorder;
 
 import bi.graficas.GraficoHistorial;
 import bi.graficas.GraficoKPI;
-import bi.vista_evento.EventoKPI;
-import bi.vista_evento.EventoKPIConfigurable;
-import comunes.controles.ServPropiedades;
+import bi.vistas.eventos.EventoKPI;
+import bi.vistas.eventos.EventoKPIConfigurable;
 import comunes.vistas.PanelIniciable;
+import propiedades.controles.servicios.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */

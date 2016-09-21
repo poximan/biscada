@@ -15,7 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import bi.vista_evento.EventoComponenteMenuDimension;
+import bi.vistas.eventos.EventoComponenteMenuDimension;
 import comunes.modelo.Alarma;
 import comunes.vistas.EventoConfigurable;
 

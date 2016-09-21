@@ -3,13 +3,13 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.kpi;
+package bi.vistas.kpi;
 
-import bi.controles.dimensiones.ServDimSitio;
-import bi.controles.dimensiones.ServKpiCalidadServicio;
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.periodos.ServPeriodoAbstract;
-import bi.vista_evento.EventoKPI;
+import bi.controles.servicios.dimensiones.ServDimSitio;
+import bi.controles.servicios.dimensiones.ServKpiCalidadServicio;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
+import bi.vistas.eventos.EventoKPI;
 import comunes.modelo.Sitio;
 
 /* ............................................. */

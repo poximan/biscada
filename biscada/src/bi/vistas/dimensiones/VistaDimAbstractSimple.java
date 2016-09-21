@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.dimensiones;
+package bi.vistas.dimensiones;
 
 import java.awt.Component;
 import java.util.Collections;
@@ -23,25 +23,25 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import bi.controles.dimensiones.ServDimAbstract;
-import bi.controles.dimensiones.ServDimSitio;
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.mediciones.ServMedPromedio;
-import bi.controles.mediciones.ServMedTotal;
-import bi.controles.periodos.ServPeriodoAbstract;
-import bi.controles.periodos.ServPeriodoAnio;
-import bi.controles.periodos.ServPeriodoMes;
-import bi.controles.periodos.ServPeriodoQuincena;
-import bi.controles.periodos.ServPeriodoSemestre;
-import bi.controles.periodos.ServPeriodoTrimestre;
+import bi.controles.servicios.dimensiones.ServDimAbstract;
+import bi.controles.servicios.dimensiones.ServDimSitio;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.mediciones.ServMedPromedio;
+import bi.controles.servicios.mediciones.ServMedTotal;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAnio;
+import bi.controles.servicios.periodos.ServPeriodoMes;
+import bi.controles.servicios.periodos.ServPeriodoQuincena;
+import bi.controles.servicios.periodos.ServPeriodoSemestre;
+import bi.controles.servicios.periodos.ServPeriodoTrimestre;
 import bi.graficas.GraficoBarras;
 import bi.graficas.GraficoLineas;
 import bi.graficas.GraficoTorta;
 import bi.modelo.ComponenteTabla;
 import bi.modelo.IntervaloFechas;
-import bi.vista_IU.consultas.TableModelMedicionTemporal;
-import bi.vista_evento.EventoConfigurable;
-import bi.vista_evento.EventoDim;
+import bi.vistas.consultas.TableModelMedicionTemporal;
+import bi.vistas.eventos.EventoConfigurable;
+import bi.vistas.eventos.EventoDim;
 import comunes.modelo.Alarma;
 import comunes.vistas.PanelIniciable;
 

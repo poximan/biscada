@@ -15,6 +15,8 @@ import javax.persistence.PersistenceUnit;
 
 import org.apache.log4j.Logger;
 
+import propiedades.controles.servicios.ServPropiedades;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.dimensiones;
+package bi.vistas.dimensiones;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,9 +15,9 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
-import bi.controles.dimensiones.ServDimAbstract;
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.dimensiones.ServDimAbstract;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import bi.graficas.GraficoComparable;
 import bi.modelo.ComponenteTabla;
 import bi.modelo.IntervaloFechas;

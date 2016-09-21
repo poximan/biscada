@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.periodos;
+package bi.controles.servicios.periodos;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -117,7 +117,7 @@ public class ServPeriodoSemestre extends ServPeriodoAbstract {
 			texto = "1º";
 		else
 			texto = "2º";
-		
+
 		String anio = campo_actual.year().getAsText().substring(2, 4);
 		return new String(texto + " sem " + "'" + anio);
 	}

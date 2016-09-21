@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.dimensiones;
+package bi.controles.servicios.dimensiones;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,8 +15,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import bi.controles.dimensiones.tiempos_despeje.FabricaTiempoDespeje;
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import bi.modelo.TiempoDespeje;
 import comunes.modelo.Alarma;
 

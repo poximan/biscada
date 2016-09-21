@@ -49,8 +49,8 @@ import com.toedter.calendar.JDateChooser;
 
 import bi.controles.ServConsultaDinamica;
 import bi.controles.ServConsultaEstatica;
-import bi.vista_evento.EventoComponenteConsulta;
-import bi.vista_evento.EventoManejable;
+import bi.vistas.eventos.EventoComponenteConsulta;
+import bi.vistas.eventos.EventoManejable;
 import comunes.modelo.Alarma;
 import comunes.modelo.EquipoEnSitio;
 import comunes.modelo.Familia;

@@ -3,14 +3,14 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.dimensiones;
+package bi.controles.servicios.dimensiones;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import bi.controles.mediciones.ServMedAbstract;
-import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 import comunes.modelo.Sitio;
 import etl.partes_alarma.familias.Cloacal;

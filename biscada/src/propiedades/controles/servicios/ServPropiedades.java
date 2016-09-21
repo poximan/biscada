@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.controles;
+package propiedades.controles.servicios;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

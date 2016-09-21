@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

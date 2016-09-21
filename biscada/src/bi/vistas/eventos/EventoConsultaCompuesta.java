@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import bi.vista_IU.consultas.VistaConsultaCompuesta;
+import bi.vistas.consultas.VistaConsultaCompuesta;
 
 /* ............................................. */
 /* ............................................. */

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import bi.modelo.ComponenteMenuDimension;
-import bi.vista_IU.consultas.VistaConsultaSimple;
-import bi.vista_IU.dimensiones.VistaDimSitioSimple;
-import bi.vista_IU.dimensiones.VistaDimSucesoSimple;
-import bi.vista_IU.dimensiones.VistaDimTemporadaSimple;
-import bi.vista_IU.dimensiones.VistaDimTiempoDespejeSimple;
+import bi.vistas.consultas.VistaConsultaSimple;
+import bi.vistas.dimensiones.VistaDimSitioSimple;
+import bi.vistas.dimensiones.VistaDimSucesoSimple;
+import bi.vistas.dimensiones.VistaDimTemporadaSimple;
+import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */
 /* ............................................. */

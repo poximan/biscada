@@ -3,14 +3,14 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_IU.dimensiones;
+package bi.vistas.dimensiones;
 
 import java.util.List;
 
-import bi.controles.dimensiones.ServDimSitio;
-import bi.controles.dimensiones.ServDimSuceso;
-import bi.vista_evento.EventoDim;
-import bi.vista_evento.EventoDimSuceso;
+import bi.controles.servicios.dimensiones.ServDimSitio;
+import bi.controles.servicios.dimensiones.ServDimSuceso;
+import bi.vistas.eventos.EventoDim;
+import bi.vistas.eventos.EventoDimSuceso;
 import comunes.modelo.Alarma;
 
 /* ............................................. */

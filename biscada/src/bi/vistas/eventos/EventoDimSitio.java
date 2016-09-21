@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -14,9 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import bi.vista_IU.consultas.TableModelMedicionTemporal;
-import bi.vista_IU.dimensiones.VistaDimSitioSimple;
-import bi.vista_IU.kpi.VistaKpiSitioCalidadServicio;
+import bi.vistas.consultas.TableModelMedicionTemporal;
+import bi.vistas.dimensiones.VistaDimSitioSimple;
+import bi.vistas.kpi.VistaKpiSitioCalidadServicio;
 import comunes.modelo.Sitio;
 
 /* ............................................. */

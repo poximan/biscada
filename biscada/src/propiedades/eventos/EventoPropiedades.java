@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.vistas;
+package propiedades.eventos;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -15,8 +15,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import comunes.controles.ServPropiedades;
-import comunes.excepciones.ReiniciarAplicacionExcepcion;
+import propiedades.controles.servicios.ServPropiedades;
+import propiedades.excepciones.ReiniciarAplicacionExcepcion;
+import propiedades.vistas.VistaPropiedades;
 
 /* ............................................. */
 /* ............................................. */

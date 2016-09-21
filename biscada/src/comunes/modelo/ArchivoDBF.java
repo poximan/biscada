@@ -38,7 +38,7 @@ import javax.persistence.TemporalType;
 @Table(name = "archivo_dbf")
 @NamedQueries({ @NamedQuery(name = "ArchivoDBF.buscTodos", query = "SELECT tabla FROM ArchivoDBF tabla"),
 		@NamedQuery(name = "ArchivoDBF.buscRuta", query = "SELECT tabla FROM ArchivoDBF tabla WHERE tabla.ruta = :ruta"), })
-public final class ArchivoDBF implements Comparable<ArchivoDBF> {
+public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	/* ............................................. */
 	/* ............................................. */

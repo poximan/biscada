@@ -35,7 +35,7 @@ import org.eclipse.persistence.annotations.Index;
  */
 @Entity
 @Table(name = "alarma")
-public final class Alarma implements Comparable<Alarma> {
+public class Alarma implements Comparable<Alarma> {
 
 	/* ............................................. */
 	/* ............................................. */

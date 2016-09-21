@@ -3,12 +3,12 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.mediciones;
+package bi.controles.servicios.mediciones;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import bi.controles.periodos.ServPeriodoAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */

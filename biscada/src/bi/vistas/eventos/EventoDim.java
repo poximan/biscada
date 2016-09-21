@@ -3,13 +3,13 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.vista_evento;
+package bi.vistas.eventos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import bi.vista_IU.dimensiones.VistaDimAbstractSimple;
+import bi.vistas.dimensiones.VistaDimAbstractSimple;
 
 /* ............................................. */
 /* ............................................. */

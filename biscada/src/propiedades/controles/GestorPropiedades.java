@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.controles;
+package propiedades.controles;
 
 import java.awt.BorderLayout;
 
@@ -12,7 +12,7 @@ import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
-import comunes.vistas.VistaPropiedades;
+import propiedades.vistas.VistaPropiedades;
 
 /* ............................................. */
 /* ............................................. */

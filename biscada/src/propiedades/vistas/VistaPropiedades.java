@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.vistas;
+package propiedades.vistas;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -26,8 +26,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import comunes.controles.ServPropiedades;
+import comunes.vistas.EventoConfigurable;
+import comunes.vistas.PanelIniciable;
 import etl.modelo.ComponenteSeleccionarDireccion;
+import propiedades.controles.servicios.ServPropiedades;
+import propiedades.eventos.EventoPropiedades;
 
 /* ............................................. */
 /* ............................................. */

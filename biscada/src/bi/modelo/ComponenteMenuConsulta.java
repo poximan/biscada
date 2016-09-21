@@ -17,10 +17,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import bi.vista_IU.consultas.VistaConsultaSimple;
-import comunes.controles.GestorPropiedades;
-import comunes.controles.ServPropiedades;
+import bi.vistas.consultas.VistaConsultaSimple;
 import etl.controles.GestorETL;
+import propiedades.controles.GestorPropiedades;
+import propiedades.controles.servicios.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */

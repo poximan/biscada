@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.controles.periodos;
+package bi.controles.servicios.periodos;
 
 import java.util.Calendar;
 import java.util.Collections;

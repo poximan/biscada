@@ -74,7 +74,7 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		int extraidas;
 		CampoTextoDefectuoso alarmas_defectuosas = new CampoTextoDefectuoso();
 
-		dbf_servicio_crud.actualizar(archivo_actual);
+		dbf_servicio_crud.inicia(archivo_actual);
 
 		extractor = new ETL0Extraer(archivo_actual);
 		alarmas_extraidas = extractor.getAlarmas();
@@ -85,6 +85,8 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 
 		cargador = new ETL2Cargar(transformador.getAlarmas(), dbf_servicio_crud);
 
+		dbf_servicio_crud.termina(archivo_actual);
+
 		if (!transformador.getAlarmas().isEmpty())
 			cargador.cargarAlarmasAceptadas();
 		else
@@ -92,8 +94,6 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 
 		reportar(extraidas, transformador.getAlarmas().size(), alarmas_defectuosas);
 		actualizarTotalizadores(extraidas, transformador.getAlarmas().size());
-
-		dbf_servicio_crud.actualizar(archivo_actual);
 	}
 
 	@Override

@@ -56,13 +56,14 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 
 	@Override
 	public void actualizar(Object entidad) {
+	}
 
-		ArchivoDBF archivo_actual = (ArchivoDBF) entidad;
+	public void inicia(ArchivoDBF archivo_actual) {
+		archivo_actual.setComienzo(Calendar.getInstance());
+	}
 
-		if (archivo_actual.getComienzo() == null)
-			archivo_actual.setComienzo(Calendar.getInstance());
-		else if (archivo_actual.getFin() == null)
-			archivo_actual.setFin(Calendar.getInstance());
+	public void termina(ArchivoDBF archivo_actual) {
+		archivo_actual.setFin(Calendar.getInstance());
 	}
 
 	@Override

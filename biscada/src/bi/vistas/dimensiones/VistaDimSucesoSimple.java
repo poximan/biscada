@@ -9,7 +9,6 @@ import java.util.List;
 
 import bi.controles.servicios.dimensiones.ServDimSitio;
 import bi.controles.servicios.dimensiones.ServDimSuceso;
-import bi.vistas.eventos.EventoDim;
 import bi.vistas.eventos.EventoDimSuceso;
 import comunes.modelo.Alarma;
 
@@ -41,11 +40,5 @@ public class VistaDimSucesoSimple extends VistaDimAbstractSimple {
 
 		super(new ServDimSuceso(), new ServDimSitio(), consultas);
 		configEventos(new EventoDimSuceso(this));
-	}
-
-	@Override
-	public void configEventos(EventoDim eventos) {
-
-		super.configEventos(eventos);
 	}
 }

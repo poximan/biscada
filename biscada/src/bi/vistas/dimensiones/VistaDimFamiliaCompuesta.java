@@ -7,9 +7,9 @@ package bi.vistas.dimensiones;
 
 import java.util.List;
 
-import bi.controles.servicios.dimensiones.ServDimSitio;
-import bi.controles.servicios.dimensiones.ServDimTiempoDespeje;
-import bi.vistas.eventos.EventoDimTiempoDespeje;
+import bi.controles.servicios.dimensiones.ServDimFamilia;
+import bi.controles.servicios.mediciones.ServMedAbstract;
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import comunes.modelo.Alarma;
 
 /* ............................................. */
@@ -17,7 +17,7 @@ import comunes.modelo.Alarma;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class VistaDimTiempoDespejeSimple extends VistaDimAbstractSimple {
+public class VistaDimFamiliaCompuesta extends VistaDimAbstractCompuesta {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -36,9 +36,9 @@ public class VistaDimTiempoDespejeSimple extends VistaDimAbstractSimple {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public VistaDimTiempoDespejeSimple(List<Alarma> consultas) {
+	public VistaDimFamiliaCompuesta(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo,
+			List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
 
-		super(new ServDimTiempoDespeje(), new ServDimSitio(), consultas);
-		configEventos(new EventoDimTiempoDespeje(this));
+		super(new ServDimFamilia(), serv_medicion, serv_periodo, consultas_interes, consultas_comparador);
 	}
 }

@@ -14,18 +14,17 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import bi.controles.dimensiones.tiempos_despeje.FabricaTiempoDespeje;
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import bi.modelo.TiempoDespeje;
 import comunes.modelo.Alarma;
+import comunes.modelo.Familia;
 
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ServDimTiempoDespeje extends ServDimAbstract {
+public class ServDimFamilia extends ServDimAbstract {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,7 +42,7 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	 * rehashed (that is, internal data structures are rebuilt) so that the hash
 	 * table has approximately twice the number of buckets.
 	 */
-	private Map<TiempoDespeje, List<Alarma>> map;
+	private Map<Familia, List<Alarma>> map;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -55,6 +54,24 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	@Override
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
+
+		int indice = 0;
+
+		float[][] valor_retorno = new float[map.size()][serv_periodo.getCantidadPeriodos()];
+		List<Alarma> lista_alarmas_una_clave = null;
+
+		for (Map.Entry<Familia, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {
+
+			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
+
+			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
+			indice++;
+		}
+		return valor_retorno;
+	}
+
 	/**
 	 * pide los nombres de los grupos que se obtienen de observar una lista
 	 * desde una dimension espec�fica.
@@ -65,41 +82,50 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	@Override
 	public Object[] getGrupos() {
 
-		List<TiempoDespeje> lista_segun_despeje = new ArrayList<TiempoDespeje>();
+		List<Familia> lista_de_familias = new ArrayList<Familia>();
 
-		Set<TiempoDespeje> keys = map.keySet();
+		Set<Familia> keys = map.keySet();
 
-		for (TiempoDespeje rango_encontrado : keys)
-			lista_segun_despeje.add(rango_encontrado);
+		for (Familia familia_encontrada : keys)
+			lista_de_familias.add(familia_encontrada);
 
-		TiempoDespeje arreglo_tiempos[] = new TiempoDespeje[lista_segun_despeje.size()];
-		arreglo_tiempos = lista_segun_despeje.toArray(arreglo_tiempos);
-		lista_segun_despeje.clear();
+		Familia arreglo_familia[] = new Familia[lista_de_familias.size()];
+		arreglo_familia = lista_de_familias.toArray(arreglo_familia);
+		lista_de_familias.clear();
 
-		return arreglo_tiempos;
+		return arreglo_familia;
 	}
+
+	public Map<Familia, List<Alarma>> getMap() {
+		return map;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	@Override
 	public void realizarHash(List<Alarma> consultas) {
 
-		map = new HashMap<TiempoDespeje, List<Alarma>>();
-		FabricaTiempoDespeje fabrica_key = new FabricaTiempoDespeje();
+		map = new HashMap<Familia, List<Alarma>>();
 
 		for (Alarma alarma_actual : consultas) {
 
-			TiempoDespeje key = fabrica_key.buscarRango(alarma_actual);
+			Familia key = alarma_actual.getFamilia();
 
+			// si no existe la clave, se crea
 			if (map.get(key) == null)
 				map.put(key, new ArrayList<Alarma>());
 
 			map.get(key).add(alarma_actual);
 		}
 
-		Iterator<Entry<TiempoDespeje, List<Alarma>>> it = map.entrySet().iterator();
+		Iterator<Entry<Familia, List<Alarma>>> it = map.entrySet().iterator();
 
 		while (it.hasNext()) {
 
-			Entry<TiempoDespeje, List<Alarma>> pair = it.next();
+			Entry<Familia, List<Alarma>> pair = it.next();
 
 			List<Alarma> lista = pair.getValue();
 			Collections.sort(lista);
@@ -107,28 +133,6 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 			map.put(pair.getKey(), lista);
 		}
 	}
-
-	@Override
-	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
-
-		int indice = 0;
-		float[][] valor_retorno = new float[map.size()][1];
-		List<Alarma> lista_alarmas_una_clave = null;
-
-		for (Map.Entry<TiempoDespeje, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {
-
-			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
-
-			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
-			indice++;
-		}
-		return valor_retorno;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
 
 	/* ............................................. */
 	/* ............................................. */

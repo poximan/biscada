@@ -21,6 +21,7 @@ import comunes.modelo.Alarma;
  * solo provee servicios, de ser necesario reutilizar no es necesario clonar.
  * 
  * @author hdonato
+ * @param <Tipo>
  *
  */
 public abstract class ServDimAbstract {

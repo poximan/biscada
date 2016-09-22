@@ -8,6 +8,7 @@ package bi.vistas.dimensiones;
 import java.awt.Component;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -44,6 +45,7 @@ import bi.vistas.eventos.EventoConfigurable;
 import bi.vistas.eventos.EventoDim;
 import comunes.modelo.Alarma;
 import comunes.vistas.PanelIniciable;
+import java.awt.Color;
 
 /* ............................................. */
 /* ............................................. */
@@ -105,8 +107,14 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		intervalo = new IntervaloFechas();
 		this.consulta = consultas;
 
-		intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
-		intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
+		try {
+			intervalo.setPrimer_alarma(Collections.min(consulta).getFecha_inicio());
+			intervalo.setUltima_alarma(Collections.max(consulta).getFecha_inicio());
+		} catch (NoSuchElementException e) { /*
+												 * util para que no reviente con
+												 * windowsBuilder
+												 */
+		}
 
 		iniciarComponentes();
 	}
@@ -290,7 +298,8 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		// -------------------------------------
 
 		lbl_medicion = new JLabel("Medicion");
-		lbl_dim_tiempo = new JLabel("Dimension tiempo");
+		lbl_dim_tiempo = new JLabel("Periodo");
+		lbl_dim_tiempo.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		splitPane = new JSplitPane();
 		splitPane.setDividerSize(8);
@@ -353,8 +362,9 @@ public abstract class VistaDimAbstractSimple extends JPanel
 				.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE).addContainerGap()));
 		gl_contentPane.linkSize(SwingConstants.VERTICAL, new Component[] { pl_tiempo, pl_kpi });
 
-		pl_tiempo.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tercer nivel evaluacion",
-				TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pl_tiempo.setBorder(
+				new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tercer nivel evaluacion - Medicion",
+						TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 

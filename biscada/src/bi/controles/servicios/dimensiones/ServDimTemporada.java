@@ -50,30 +50,10 @@ public class ServDimTemporada extends ServDimAbstract {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServDimTemporada() {
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@Override
-	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
-
-		int indice = 0;
-		float[][] valor_retorno = new float[map.size()][1];
-		List<Alarma> lista_alarmas_una_clave = null;
-
-		for (Map.Entry<Temporada, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {
-
-			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
-
-			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
-			indice++;
-		}
-		return valor_retorno;
-	}
 
 	/**
 	 * pide los nombres de los grupos que se obtienen de observar una lista
@@ -126,6 +106,23 @@ public class ServDimTemporada extends ServDimAbstract {
 
 			map.put(pair.getKey(), lista);
 		}
+	}
+
+	@Override
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
+
+		int indice = 0;
+		float[][] valor_retorno = new float[map.size()][1];
+		List<Alarma> lista_alarmas_una_clave = null;
+
+		for (Map.Entry<Temporada, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {
+
+			lista_alarmas_una_clave = hash_alarmas_una_clave.getValue();
+
+			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
+			indice++;
+		}
+		return valor_retorno;
 	}
 
 	/* ............................................. */

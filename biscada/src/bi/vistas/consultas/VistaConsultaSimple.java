@@ -23,6 +23,7 @@ import bi.modelo.ComponenteMenuConsulta;
 import bi.vistas.eventos.EventoConsultaSimple;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
+import java.awt.Color;
 
 /* ............................................. */
 /* ............................................. */
@@ -50,6 +51,7 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 	private JButton btnSuceso;
 	private JButton btnSitio;
 	private JButton btnTemporada;
+	private JButton btnFamilia;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -68,6 +70,7 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 
 		EventoConsultaSimple eventos = new EventoConsultaSimple(this);
 
+		btnFamilia.addActionListener(eventos);
 		btnSitio.addActionListener(eventos);
 		btnSuceso.addActionListener(eventos);
 		btnTiempoDespeje.addActionListener(eventos);
@@ -83,6 +86,10 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 	/* GET'S ....................................... */
 	/* ............................................. */
 
+	public JButton getBtnFamilia() {
+		return btnSuceso;
+	}
+	
 	public JButton getBtnSuceso() {
 		return btnSuceso;
 	}
@@ -133,9 +140,14 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		btnSitio.setPreferredSize(new Dimension(105, 23));
 		btnSitio.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		btnSitio.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-				"Segundo nivel evaluacion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Segundo nivel evaluacion - Dimension", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		
+		btnFamilia = new JButton("familia");
+		btnFamilia.setPreferredSize(new Dimension(105, 23));
+		btnFamilia.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		btnFamilia.setAlignmentX(1.0f);
+		panelDimensiones.add(btnFamilia);
 		panelDimensiones.add(btnSitio);
 		panelDimensiones.add(btnSuceso);
 		panelDimensiones.add(btnTiempoDespeje);

@@ -518,8 +518,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 										GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(25, Short.MAX_VALUE)));
 
-		panelFiltros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Primer nivel evaluacion",
-				TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelFiltros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Primer nivel evaluacion - Consulta", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 
 		txt_reg_encontrados = new JTextField();
 		txt_reg_encontrados.setEditable(false);

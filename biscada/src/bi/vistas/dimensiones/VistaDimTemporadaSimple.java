@@ -9,7 +9,6 @@ import java.util.List;
 
 import bi.controles.servicios.dimensiones.ServDimSitio;
 import bi.controles.servicios.dimensiones.ServDimTemporada;
-import bi.vistas.eventos.EventoDim;
 import bi.vistas.eventos.EventoDimTemporada;
 import comunes.modelo.Alarma;
 
@@ -41,11 +40,5 @@ public class VistaDimTemporadaSimple extends VistaDimAbstractSimple {
 
 		super(new ServDimTemporada(), new ServDimSitio(), consultas);
 		configEventos(new EventoDimTemporada(this));
-	}
-
-	@Override
-	public void configEventos(EventoDim eventos) {
-
-		super.configEventos(eventos);
 	}
 }

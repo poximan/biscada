@@ -19,7 +19,7 @@ public class ScadaSesion extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "Cierra Sesion";
+	private static String expresion_regular = "Cierra Sesi.n";
 
 	/* ............................................. */
 	/* ............................................. */

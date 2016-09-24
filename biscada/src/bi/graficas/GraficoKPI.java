@@ -16,6 +16,8 @@ import org.jfree.chart.plot.MeterPlot;
 import org.jfree.data.Range;
 import org.jfree.data.general.DefaultValueDataset;
 
+import bi.excepciones.ConstructorAdelantadoExcepcion;
+
 /* ............................................. */
 /* ............................................. */
 /* CLASE ....................................... */
@@ -33,10 +35,11 @@ public class GraficoKPI extends JPanel {
 	private static DefaultValueDataset dataset;
 
 	private static double canTotal;
+
 	private MeterInterval intervaloNormal;
 	private MeterInterval intervaloAdvertencia;
-
 	private MeterInterval intervaloPeligro;
+
 	private JPanel panel;
 	private double promHist;
 	private double porcentajeF;
@@ -50,6 +53,7 @@ public class GraficoKPI extends JPanel {
 	/* ............................................. */
 
 	public GraficoKPI() {
+
 	}
 
 	/* ............................................. */
@@ -125,15 +129,12 @@ public class GraficoKPI extends JPanel {
 		return jfreechart;
 	}
 
-	public JPanel createPanel() {
+	public void createPanel() {
 
 		JFreeChart chart = createChart();
-		ChartPanel chartpanel = new ChartPanel(chart);
-		chartpanel.setPreferredSize(new Dimension(300, 300));
-		panel = chartpanel;
-		add(panel);
+		panel = new ChartPanel(chart);
 		panel.setPreferredSize(new Dimension(300, 300));
-		return panel;
+		add(panel);
 	}
 
 	/**
@@ -142,11 +143,15 @@ public class GraficoKPI extends JPanel {
 	 */
 	public void Porcentaje(int porcentaje) {
 
-		porcentajeF = (promHist * porcentaje) / 100;
+		setPorcentaje(porcentaje);
 		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
 
 		actualizarIntervalos();
 		refreshChart();
+	}
+
+	public void setPorcentaje(int porcentaje) {
+		porcentajeF = (promHist * porcentaje) / 100;
 	}
 
 	/**
@@ -155,14 +160,21 @@ public class GraficoKPI extends JPanel {
 	 */
 	private void refreshChart() {
 
-		panel.removeAll();
-		panel.revalidate(); // remueve el dibujo anterior
-		JFreeChart aChart = createChart();
-		aChart.removeLegend();
-		ChartPanel chartPanel = new ChartPanel(aChart);
-		chartPanel.setPreferredSize(new Dimension(300, 300));
-		panel.setLayout(new BorderLayout());
-		panel.add(chartPanel);
-		panel.repaint(); // se muestra el nuevo dibujo
+		try {
+			panel.revalidate(); // remueve el dibujo anterior
+			JFreeChart aChart = createChart();
+			aChart.removeLegend();
+			ChartPanel chartPanel = new ChartPanel(aChart);
+			chartPanel.setPreferredSize(new Dimension(300, 300));
+			panel.setLayout(new BorderLayout());
+			panel.add(chartPanel);
+			panel.repaint(); // se muestra el nuevo dibujo
+		} catch (NullPointerException e) {
+			try {
+				throw new ConstructorAdelantadoExcepcion();
+			} catch (ConstructorAdelantadoExcepcion e1) {
+				System.out.println("catch!!");
+			}
+		}
 	}
 }

@@ -34,6 +34,7 @@ public class GraficoHistorial extends JPanel {
 	private static double promedio;
 
 	private static JFreeChart createChart(XYDataset xydataset) {
+		
 		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas", "Cantidad", xydataset,
 				PlotOrientation.VERTICAL, false, true, false);
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
@@ -66,27 +67,7 @@ public class GraficoHistorial extends JPanel {
 		valuemarker.setLabelAnchor(RectangleAnchor.TOP_LEFT);
 		valuemarker.setLabelTextAnchor(TextAnchor.BOTTOM_LEFT);
 		xyplot.addRangeMarker(valuemarker);
-
-		/*
-		 * Hour hour = new Hour(18, 30, 6, 2005); Hour hour1 = new Hour(20, 30,
-		 * 6, 2005); double d = hour.getFirstMillisecond(); double d1 =
-		 * hour1.getFirstMillisecond();
-		 * 
-		 * IntervalMarker intervalmarker = new IntervalMarker(d, d1);
-		 * intervalmarker.setLabelOffsetType(LengthAdjustmentType.EXPAND);
-		 * intervalmarker.setPaint(new Color(150, 150, 255));
-		 * intervalmarker.setLabel("Mes actual");
-		 * intervalmarker.setLabelFont(new Font("SansSerif", 0, 11));
-		 * intervalmarker.setLabelPaint(Color.blue);
-		 * intervalmarker.setLabelAnchor(RectangleAnchor.TOP_LEFT);
-		 * intervalmarker.setLabelTextAnchor(TextAnchor.TOP_RIGHT);
-		 * xyplot.addDomainMarker(intervalmarker, Layer.BACKGROUND); ValueMarker
-		 * valuemarker1 = new ValueMarker(d, Color.blue, new BasicStroke(2.0F));
-		 * ValueMarker valuemarker2 = new ValueMarker(d1, Color.blue, new
-		 * BasicStroke(2.0F)); xyplot.addDomainMarker(valuemarker1,
-		 * Layer.BACKGROUND); xyplot.addDomainMarker(valuemarker2,
-		 * Layer.BACKGROUND);
-		 */
+		
 		return jfreechart;
 	}
 

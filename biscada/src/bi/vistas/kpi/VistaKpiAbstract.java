@@ -7,7 +7,6 @@ package bi.vistas.kpi;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -78,16 +77,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* ............................................. */
 
 	public VistaKpiAbstract() {
-		setBorder(null);
 
 		iniciarComponentes();
-		indicador_kpi = new GraficoKPI();
-
-		panelIndicador.add(indicador_kpi);
-		panelIndicador.validate();
-
-		histo_kpi = new GraficoHistorial();
-		panelHistograma.setViewportView(histo_kpi);
 	}
 
 	/* ............................................. */
@@ -97,9 +88,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	@Override
 	public void configEventos(EventoKPI eventos) {
-
 		spinner_porcentaje.getModel().addChangeListener(eventos);
-
 	}
 
 	public GraficoHistorial getHisto_kpi() {
@@ -162,7 +151,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		// seccion componentes visuales
 		// -------------------------------------
 
+		indicador_kpi = new GraficoKPI();
 		panelIndicador = new JPanel();
+		panelIndicador.add(indicador_kpi);
+
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new LineBorder(new Color(0, 0, 0)));
 
@@ -177,6 +169,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		}
 
 		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
+		indicador_kpi.setPorcentaje(valor_inicial);
 
 		lblTotal = new JLabel("Total");
 		lblPromedio = new JLabel("Promedio");
@@ -194,8 +187,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		panelResumen.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		lblMedidasDeDispersin = new JLabel("   Medidas de Dispersi\u00F3n     ");
-		lblMedidasDeDispersin.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblMedidasDeDispersin = new JLabel("Medidas de dispersión");
 		panelResumen.add(lblMedidasDeDispersin);
 
 		labelMaximo = new JLabel("M\u00E1ximo");
@@ -233,27 +225,29 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelHistograma = new JScrollPane();
 		panelHistograma.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 
+		histo_kpi = new GraficoHistorial();
+		panelHistograma.setViewportView(histo_kpi);
+
 		gl_panelGeneral = new GroupLayout(this);
 		gl_panelGeneral
 				.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelGeneral.createSequentialGroup().addGap(21).addGroup(gl_panelGeneral
 								.createParallelGroup(Alignment.LEADING).addComponent(panelHistograma,
-										Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+										Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
 								.addGroup(gl_panelGeneral.createSequentialGroup()
 										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 272,
 												GroupLayout.PREFERRED_SIZE)
 										.addGap(18)
-										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))
+										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
 								.addGap(23)));
 		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(gl_panelGeneral
-				.createSequentialGroup()
+				.createSequentialGroup().addContainerGap()
 				.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelGeneral.createSequentialGroup().addGap(27).addComponent(panelResumen,
-								GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap().addComponent(panelIndicador,
-								GroupLayout.PREFERRED_SIZE, 315, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
+						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE).addContainerGap()));
+				.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE).addContainerGap()));
 
 		panelResumen.add(lblActual);
 
@@ -284,8 +278,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelResumen.add(lblPromedio_1);
 
 		panelResumen.add(spinner_porcentaje);
-
-		// indicador_kpi.Porcentaje(valor_inicial);
 
 		setLayout(gl_panelGeneral);
 	}

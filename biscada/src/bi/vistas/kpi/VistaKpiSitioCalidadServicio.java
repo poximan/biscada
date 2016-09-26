@@ -84,12 +84,12 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 
 		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
 		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio,
-				serv_periodo, serv_medicion, sitio_actual)));
+				serv_periodo, serv_medicion, sitio_actual)));		
 		getTxtActual().setText(String.valueOf(
 				serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio, serv_periodo, serv_medicion, sitio_actual)));
+		
 		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
 		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
-
 		getTextFieldMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_maximo()));
 		getTextFieldMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_minimo()));
 

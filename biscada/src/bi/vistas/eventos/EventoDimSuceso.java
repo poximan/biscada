@@ -5,16 +5,13 @@
 
 package bi.vistas.eventos;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import bi.vistas.dimensiones.VistaDimSucesoSimple;
-import bi.vistas.kpi.VistaKpiSitioCalidadServicio;
 import bi.vistas.kpi.VistaKpiSuceso;
 import comunes.modelo.Suceso;
 
@@ -23,7 +20,7 @@ import comunes.modelo.Suceso;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimSuceso extends EventoDim implements MouseListener, VentanaLanzable {
+public class EventoDimSuceso extends EventoDim implements MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,26 +40,6 @@ public class EventoDimSuceso extends EventoDim implements MouseListener, Ventana
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@Override
-	public void actionPerformed(ActionEvent evt) {
-
-		super.actionPerformed(evt);
-
-		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
-
-			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getValoresTabla()));
-		}
-	}
-
-	@Override
-	public void lanzarVentana(JFrame frame, JPanel vista) {
-
-		frame.setContentPane(vista);
-		frame.pack();
-		frame.setVisible(true);
-	}
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {

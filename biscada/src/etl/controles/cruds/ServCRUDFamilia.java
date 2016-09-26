@@ -6,13 +6,12 @@
 package etl.controles.cruds;
 
 import java.beans.Beans;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import org.jdesktop.observablecollections.ObservableCollections;
 
 import comunes.controles.EMFSingleton;
 import comunes.modelo.Alarma;
@@ -32,7 +31,7 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 
 	private EntityManager em;
 
-	private List<Object> lista;
+	private List<Familia> lista;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -54,12 +53,11 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 	public void actualizar(Object entidad) {
 	}
 
-	@Override
 	@SuppressWarnings("unchecked")
+	@Override
 	public void actualizarLista() {
-
 		lista = Beans.isDesignTime() ? Collections.emptyList()
-				: ObservableCollections.observableList(getQueryTodos().getResultList());
+				: new ArrayList<Familia>(getQueryTodos().getResultList());
 	}
 
 	@Override
@@ -69,13 +67,14 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
-		int indice;
+		int indice = lista.lastIndexOf(alarma_actual.getFamilia());
 
-		if ((indice = lista.lastIndexOf(alarma_actual.getFamilia())) != -1)
+		if (indice != -1)
 			alarma_actual.setFamilia((Familia) lista.get(indice));
 		else {
-			crear(new Familia(alarma_actual.getFamilia().getDescripcion()));
-			actualizarLista();
+			Familia nuevo_objeto = new Familia(alarma_actual.getFamilia().getDescripcion());
+			crear(nuevo_objeto);
+			lista.add(nuevo_objeto);
 			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}
@@ -87,7 +86,6 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public Query getQueryTodos() {
-
 		return em.createNamedQuery("Familia.buscTodos");
 	}
 

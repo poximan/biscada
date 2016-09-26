@@ -94,7 +94,6 @@ public class ETL2Cargar implements ObjetosBorrables {
 			suceso_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
 			tipo_de_equipo_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
 			equipo_en_sitio_servicios_crud.buscarEnMemoriaPrimaria(alarma_actual);
-
 			alarma_servicios_crud.crear(alarma_actual);
 		}
 	}

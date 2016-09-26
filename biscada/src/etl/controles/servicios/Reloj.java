@@ -33,6 +33,10 @@ public class Reloj {
 		return (tiempo_fin - tiempo_inicio) / 1000;
 	}
 
+	public long getTiempoEnMilisegundos() {
+		return tiempo_fin - tiempo_inicio;
+	}
+
 	public void terminarContar() {
 		tiempo_fin = System.currentTimeMillis();
 	}

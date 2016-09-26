@@ -6,13 +6,12 @@
 package etl.controles.cruds;
 
 import java.beans.Beans;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import org.jdesktop.observablecollections.ObservableCollections;
 
 import comunes.controles.EMFSingleton;
 import comunes.modelo.Alarma;
@@ -32,7 +31,7 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 
 	private EntityManager em;
 
-	private List<Object> lista;
+	private List<TipoDeEquipo> lista;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -57,9 +56,8 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
-
 		lista = Beans.isDesignTime() ? Collections.emptyList()
-				: ObservableCollections.observableList(getQueryTodos().getResultList());
+				: new ArrayList<TipoDeEquipo>(getQueryTodos().getResultList());
 	}
 
 	@Override
@@ -69,13 +67,15 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public void buscarEnMemoriaPrimaria(Alarma alarma_actual) {
 
-		int indice;
+		int indice = lista.lastIndexOf(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo());
 
-		if ((indice = lista.lastIndexOf(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo())) != -1)
+		if (indice != -1)
 			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo((TipoDeEquipo) lista.get(indice));
 		else {
-			crear(new TipoDeEquipo(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion()));
-			actualizarLista();
+			TipoDeEquipo nuevo_objeto = new TipoDeEquipo(
+					alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion());
+			crear(nuevo_objeto);
+			lista.add(nuevo_objeto);
 			buscarEnMemoriaPrimaria(alarma_actual);
 		}
 	}

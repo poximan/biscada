@@ -29,18 +29,14 @@ public class ServKpiCalidadServicio implements ServKpi {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private int columna_mayor;
 	private float arregloVarianza[];
+	
 	private float varianza;
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
-
-	public ServKpiCalidadServicio() {
-		columna_mayor = 1;
-	}
 
 	/* ............................................. */
 	/* ............................................. */
@@ -49,7 +45,9 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 	@Override
 	public float actualFilaMultiple(float[][] datos) {
-		return 0;
+
+		float[] resultado = sumarFilasAgruparEnColumna(datos);
+		return resultado[resultado.length - 1];
 	}
 
 	public float actualFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
@@ -133,7 +131,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 	@Override
 	public float promedioFilaMultiple(float[][] datos) {
 
-		return totalFilaMultiple(datos) / ((datos.length - 1) * columna_mayor);
+		return totalFilaMultiple(datos) / (datos.length + datos[0].length);
 	}
 
 	public float promedioFilaSimple(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
@@ -167,38 +165,27 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return promediar(arreglo_valores);
 	}
 
-	private float[] resumirEnFilaUnica(float[][] datos) {
-
-		try {
-			float[] columna_con_filas_sumadas = new float[datos.length - 1];
-
-			for (int ind_fila = 0; ind_fila < datos.length - 1; ind_fila++) {
-				columna_con_filas_sumadas[ind_fila] = sumarFilasUnaColumna(datos[ind_fila]);
-
-				if (datos[ind_fila].length - 1 > columna_mayor)
-					columna_mayor = datos[ind_fila].length - 1;
-			}
-
-			return columna_con_filas_sumadas;
-		} catch (NegativeArraySizeException excepcion) {
-			return new float[1];
-		}
-	}
-
-	private float sumarFilasUnaColumna(float[] columnas_de_fila_unica) {
-
-		float total = 0;
-
-		for (float fila_actual : columnas_de_fila_unica)
-			total += fila_actual;
-		return total;
-	}
-
 	@Override
 	public float totalFilaMultiple(float[][] datos) {
 
-		float[] columna_con_filas_sumadas = resumirEnFilaUnica(datos);
-		return sumarFilasUnaColumna(columna_con_filas_sumadas);
+		float resultado = 0;
+		float[] columna_con_filas_sumadas = sumarFilasAgruparEnColumna(datos);
+
+		for (int ind_columna = 1; ind_columna < columna_con_filas_sumadas.length; ind_columna++)
+			resultado += columna_con_filas_sumadas[ind_columna];
+
+		return resultado;
+	}
+
+	private float[] sumarFilasAgruparEnColumna(float[][] datos) {
+
+		float[] columna_con_filas_sumadas = new float[datos[0].length];
+
+		for (int ind_columna = 0; ind_columna < columna_con_filas_sumadas.length; ind_columna++)
+			for (int ind_fila = 0; ind_fila < datos[0].length; ind_fila++)
+				columna_con_filas_sumadas[ind_columna] += datos[ind_fila][ind_columna];
+
+		return columna_con_filas_sumadas;
 	}
 
 	public float totalFilaSimple(ServDimSitio serv_dim_sitio, Sitio sitio_actual) {
@@ -228,18 +215,14 @@ public class ServKpiCalidadServicio implements ServKpi {
 		float divisor = arregloVarianza.length;
 		float promedioCuadrado = 0;
 
-		for (int i = 0; i < arregloVarianza.length; i++) {
-			System.out.print("el cuadrado de " + arregloVarianza[i]);
-			varianza = (float) (varianza + Math.pow(arregloVarianza[i], 2));
-			System.out.println(" es " + varianza);
-		}
+		for (int i = 0; i < arregloVarianza.length; i++)
 
-		System.out.println("la varianza al cuadrado es: " + varianza + " divisor " + divisor);
+			varianza = (float) (varianza + Math.pow(arregloVarianza[i], 2));
 
 		promedioCuadrado = (float) Math.pow(promediar(arregloVarianza), 2);
-		System.out.println("el promedio al 2 es " + promedioCuadrado);
+
 		varianza = (varianza / divisor) - promedioCuadrado;
-		System.out.println("a enviar " + varianza);
+
 		return varianza;
 	}
 

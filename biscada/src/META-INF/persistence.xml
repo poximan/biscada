@@ -18,9 +18,6 @@
 
 			<property name="javax.persistence.schema-generation.database.action"
 				value="create" />
-			<property
-				name="javax.persistence.schema-generation.create-database-schemas"
-				value="false" />
 
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
@@ -38,7 +35,7 @@
 			<property name="eclipselink.cache.size.default" value="200" />
 
 			<property name="eclipselink.exclude-eclipselink-orm" value="true" />
-			<property name="eclipselink.orm.validate.schema" value="false" />
+			<property name="eclipselink.orm.validate.schema" value="false" />			
 
 		</properties>
 	</persistence-unit>

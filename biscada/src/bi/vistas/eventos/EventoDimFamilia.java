@@ -5,13 +5,11 @@
 
 package bi.vistas.eventos;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import bi.vistas.consultas.TableModelMedicionTemporal;
@@ -23,7 +21,7 @@ import comunes.modelo.Familia;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class EventoDimFamilia extends EventoDim implements MouseListener, VentanaLanzable {
+public class EventoDimFamilia extends EventoDim implements MouseListener {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -43,25 +41,6 @@ public class EventoDimFamilia extends EventoDim implements MouseListener, Ventan
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
-
-	@Override
-	public void actionPerformed(ActionEvent evt) {
-
-		super.actionPerformed(evt);
-
-		if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
-
-			JFrame frame = new JFrame();
-		}
-	}
-
-	@Override
-	public void lanzarVentana(JFrame frame, JPanel vista) {
-
-		frame.setContentPane(vista);
-		frame.pack();
-		frame.setVisible(true);
-	}
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {

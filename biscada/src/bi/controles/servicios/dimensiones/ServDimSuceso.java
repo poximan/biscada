@@ -58,7 +58,8 @@ public class ServDimSuceso extends ServDimAbstract {
 	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
 
 		int indice = 0;
-		float[][] valor_retorno = new float[map.size()][1];
+				
+		float[][] valor_retorno = new float[map.size()][0];
 		List<Alarma> lista_alarmas_una_clave = null;
 
 		for (Map.Entry<Suceso, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {

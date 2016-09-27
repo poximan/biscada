@@ -6,7 +6,6 @@
 package bi.vistas.kpi;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -28,6 +27,10 @@ import bi.vistas.eventos.EventoKPI;
 import bi.vistas.eventos.EventoKPIConfigurable;
 import comunes.vistas.PanelIniciable;
 import propiedades.controles.servicios.ServPropiedades;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.border.TitledBorder;
 
 /* ............................................. */
 /* ............................................. */
@@ -48,13 +51,13 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	private JPanel panelIndicador;
 	private JPanel panelResumen;
 
-	private JLabel labelMaximo;
-	private JLabel labelMinimo;
+	private JLabel lblMaximo;
+	private JLabel lblMinimo;
 	private JLabel lblTotal;
 	private JLabel lblPromedio;
 	private JLabel lblActual;
-	private JLabel labelVarianza;
-	private JLabel labelDesvEstandar;
+	private JLabel lblVarianza;
+	private JLabel lblD_estandar;
 
 	private JTextField txtTotal;
 	private JTextField txtPromedio;
@@ -65,11 +68,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	private JScrollPane panelHistograma;
 	private GraficoHistorial histo_kpi;
-	private JTextField textFieldVarianza;
-	private JTextField textFieldDesvEstandar;
-	private JLabel lblMedidasDeDispersin;
-	private JTextField textFieldMinimo;
-	private JTextField textFieldMaximo;
+	private JTextField txtVarianza;
+	private JTextField txtD_estandar;
+	private JTextField txtMinimo;
+	private JTextField txtMaximo;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -91,58 +93,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		spinner_porcentaje.getModel().addChangeListener(eventos);
 	}
 
-	public GraficoHistorial getHisto_kpi() {
-		return histo_kpi;
-	}
-
-	/**
-	 * se solicita el grafico instanciado en la superclase y que hasta este
-	 * momento no posee datos especificos relacionados con la dimension concreta
-	 * que esta realizando la solicitud
-	 * 
-	 * @return
-	 */
-	public GraficoKPI getIndicador_kpi() {
-		return indicador_kpi;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
-	public JSpinner getSpinner_porcentaje() {
-		return spinner_porcentaje;
-	}
-
-	public JTextField getTextFieldDesvEstandar() {
-		return textFieldDesvEstandar;
-	}
-
-	public JTextField getTextFieldMaximo() {
-		return textFieldMaximo;
-	}
-
-	public JTextField getTextFieldMinimo() {
-		return textFieldMinimo;
-	}
-
-	public JTextField getTextFieldVarianza() {
-		return textFieldVarianza;
-	}
-
-	public JTextField getTxtActual() {
-		return txtActual;
-	}
-
-	public JTextField getTxtPromedio() {
-		return txtPromedio;
-	}
-
-	public JTextField getTxtTotal() {
-		return txtTotal;
-	}
-
 	@Override
 	public void iniciarComponentes() {
 
@@ -153,13 +103,12 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		indicador_kpi = new GraficoKPI();
 		panelIndicador = new JPanel();
+		panelIndicador
+				.setBorder(new TitledBorder(null, "Indicador", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		panelIndicador.add(indicador_kpi);
 
 		panelResumen = new JPanel();
-		panelResumen.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-		JLabel lblPromedio_1 = new JLabel("% Promedio");
-		spinner_porcentaje = new JSpinner();
+		panelResumen.setBorder(new TitledBorder(null, "Mediciones", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 
 		int valor_inicial = 1;
 		try {
@@ -168,118 +117,252 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		} catch (NumberFormatException e) {
 		}
 
-		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
-		indicador_kpi.setPorcentaje(valor_inicial);
+		GridBagLayout gbl_panelResumen = new GridBagLayout();
+		gbl_panelResumen.columnWidths = new int[] { 0, 20, 46, 14, 12, 56, 0 };
+		gbl_panelResumen.rowHeights = new int[] { 0, 20, 20, 20, 0 };
+		gbl_panelResumen.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panelResumen.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panelResumen.setLayout(gbl_panelResumen);
+
+		lblMaximo = new JLabel("M\u00E1ximo");
+		GridBagConstraints gbc_lblMaximo = new GridBagConstraints();
+		gbc_lblMaximo.gridwidth = 2;
+		gbc_lblMaximo.anchor = GridBagConstraints.EAST;
+		gbc_lblMaximo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMaximo.gridx = 0;
+		gbc_lblMaximo.gridy = 0;
+		panelResumen.add(lblMaximo, gbc_lblMaximo);
+
+		txtMaximo = new JTextField();
+		txtMaximo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMaximo.setEditable(false);
+		txtMaximo.setColumns(10);
+		GridBagConstraints gbc_txtMaximo = new GridBagConstraints();
+		gbc_txtMaximo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMaximo.anchor = GridBagConstraints.NORTH;
+		gbc_txtMaximo.insets = new Insets(0, 0, 5, 5);
+		gbc_txtMaximo.gridx = 2;
+		gbc_txtMaximo.gridy = 0;
+		panelResumen.add(txtMaximo, gbc_txtMaximo);
+
+		lblMinimo = new JLabel("M\u00EDnimo");
+		GridBagConstraints gbc_lblMinimo = new GridBagConstraints();
+		gbc_lblMinimo.gridwidth = 2;
+		gbc_lblMinimo.anchor = GridBagConstraints.EAST;
+		gbc_lblMinimo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMinimo.gridx = 3;
+		gbc_lblMinimo.gridy = 0;
+		panelResumen.add(lblMinimo, gbc_lblMinimo);
+
+		txtMinimo = new JTextField();
+		txtMinimo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMinimo.setEditable(false);
+		txtMinimo.setColumns(10);
+		GridBagConstraints gbc_txtMinimo = new GridBagConstraints();
+		gbc_txtMinimo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtMinimo.anchor = GridBagConstraints.NORTH;
+		gbc_txtMinimo.insets = new Insets(0, 0, 5, 0);
+		gbc_txtMinimo.gridx = 5;
+		gbc_txtMinimo.gridy = 0;
+		panelResumen.add(txtMinimo, gbc_txtMinimo);
 
 		lblTotal = new JLabel("Total");
-		lblPromedio = new JLabel("Promedio");
-		lblActual = new JLabel("Actual");
+
+		lblTotal.setBounds(10, 12, 57, 20);
+		GridBagConstraints gbc_lblTotal = new GridBagConstraints();
+		gbc_lblTotal.anchor = GridBagConstraints.EAST;
+		gbc_lblTotal.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTotal.gridwidth = 2;
+		gbc_lblTotal.gridx = 0;
+		gbc_lblTotal.gridy = 1;
+		panelResumen.add(lblTotal, gbc_lblTotal);
 
 		txtTotal = new JTextField();
-		txtPromedio = new JTextField();
-		txtActual = new JTextField();
 
 		txtTotal.setEditable(false);
 		txtTotal.setBounds(10, 31, 57, 20);
 
+		txtTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_txtTotal = new GridBagConstraints();
+		gbc_txtTotal.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtTotal.anchor = GridBagConstraints.NORTH;
+		gbc_txtTotal.insets = new Insets(0, 0, 5, 5);
+		gbc_txtTotal.gridx = 2;
+		gbc_txtTotal.gridy = 1;
+		panelResumen.add(txtTotal, gbc_txtTotal);
+		txtTotal.setColumns(10);
+		lblPromedio = new JLabel("Promedio");
+
+		lblPromedio.setBounds(10, 62, 57, 20);
+		GridBagConstraints gbc_lblPromedio = new GridBagConstraints();
+		gbc_lblPromedio.gridwidth = 2;
+		gbc_lblPromedio.anchor = GridBagConstraints.EAST;
+		gbc_lblPromedio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPromedio.gridx = 3;
+		gbc_lblPromedio.gridy = 1;
+		panelResumen.add(lblPromedio, gbc_lblPromedio);
+		txtPromedio = new JTextField();
+
 		txtPromedio.setEditable(false);
 		txtPromedio.setBounds(10, 82, 57, 20);
 
-		panelResumen.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		lblMedidasDeDispersin = new JLabel("Medidas de dispersión");
-		panelResumen.add(lblMedidasDeDispersin);
-
-		labelMaximo = new JLabel("M\u00E1ximo");
-		panelResumen.add(labelMaximo);
-
-		textFieldMaximo = new JTextField();
-		textFieldMaximo.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldMaximo.setEditable(false);
-		textFieldMaximo.setColumns(10);
-		panelResumen.add(textFieldMaximo);
-
-		labelMinimo = new JLabel("M\u00EDnimo");
-		panelResumen.add(labelMinimo);
-
-		textFieldMinimo = new JTextField();
-		textFieldMinimo.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldMinimo.setEditable(false);
-		textFieldMinimo.setColumns(10);
-		panelResumen.add(textFieldMinimo);
-
-		lblTotal.setBounds(10, 12, 57, 20);
-		panelResumen.add(lblTotal);
-
-		txtTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		panelResumen.add(txtTotal);
-		txtTotal.setColumns(10);
-
-		lblPromedio.setBounds(10, 62, 57, 20);
-		panelResumen.add(lblPromedio);
-
 		txtPromedio.setHorizontalAlignment(SwingConstants.CENTER);
-		panelResumen.add(txtPromedio);
+		GridBagConstraints gbc_txtPromedio = new GridBagConstraints();
+		gbc_txtPromedio.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtPromedio.anchor = GridBagConstraints.NORTH;
+		gbc_txtPromedio.insets = new Insets(0, 0, 5, 0);
+		gbc_txtPromedio.gridx = 5;
+		gbc_txtPromedio.gridy = 1;
+		panelResumen.add(txtPromedio, gbc_txtPromedio);
 		txtPromedio.setColumns(10);
 
-		panelHistograma = new JScrollPane();
-		panelHistograma.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		lblVarianza = new JLabel("Varianza");
+		GridBagConstraints gbc_lblVarianza = new GridBagConstraints();
+		gbc_lblVarianza.anchor = GridBagConstraints.EAST;
+		gbc_lblVarianza.insets = new Insets(0, 0, 5, 5);
+		gbc_lblVarianza.gridwidth = 2;
+		gbc_lblVarianza.gridx = 0;
+		gbc_lblVarianza.gridy = 2;
+		panelResumen.add(lblVarianza, gbc_lblVarianza);
 
-		histo_kpi = new GraficoHistorial();
-		panelHistograma.setViewportView(histo_kpi);
+		txtVarianza = new JTextField();
+		txtVarianza.setHorizontalAlignment(SwingConstants.CENTER);
+		txtVarianza.setEditable(false);
+		txtVarianza.setColumns(10);
+		GridBagConstraints gbc_txtVarianza = new GridBagConstraints();
+		gbc_txtVarianza.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtVarianza.anchor = GridBagConstraints.NORTH;
+		gbc_txtVarianza.insets = new Insets(0, 0, 5, 5);
+		gbc_txtVarianza.gridx = 2;
+		gbc_txtVarianza.gridy = 2;
+		panelResumen.add(txtVarianza, gbc_txtVarianza);
 
-		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral
-				.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelGeneral.createSequentialGroup().addGap(21).addGroup(gl_panelGeneral
-								.createParallelGroup(Alignment.LEADING).addComponent(panelHistograma,
-										Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-								.addGroup(gl_panelGeneral.createSequentialGroup()
-										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 272,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))
-								.addGap(23)));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(gl_panelGeneral
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)
-						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE).addContainerGap()));
+		lblD_estandar = new JLabel("D. estandar");
+		GridBagConstraints gbc_lblD_estandar = new GridBagConstraints();
+		gbc_lblD_estandar.anchor = GridBagConstraints.EAST;
+		gbc_lblD_estandar.insets = new Insets(0, 0, 5, 5);
+		gbc_lblD_estandar.gridwidth = 2;
+		gbc_lblD_estandar.gridx = 3;
+		gbc_lblD_estandar.gridy = 2;
+		panelResumen.add(lblD_estandar, gbc_lblD_estandar);
 
-		panelResumen.add(lblActual);
+		txtD_estandar = new JTextField();
+		txtD_estandar.setHorizontalAlignment(SwingConstants.CENTER);
+		txtD_estandar.setEditable(false);
+		txtD_estandar.setColumns(10);
+		GridBagConstraints gbc_txtD_estandar = new GridBagConstraints();
+		gbc_txtD_estandar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtD_estandar.insets = new Insets(0, 0, 5, 0);
+		gbc_txtD_estandar.anchor = GridBagConstraints.NORTH;
+		gbc_txtD_estandar.gridx = 5;
+		gbc_txtD_estandar.gridy = 2;
+		panelResumen.add(txtD_estandar, gbc_txtD_estandar);
+		lblActual = new JLabel("Actual");
+
+		GridBagConstraints gbc_lblActual = new GridBagConstraints();
+		gbc_lblActual.anchor = GridBagConstraints.EAST;
+		gbc_lblActual.insets = new Insets(0, 0, 0, 5);
+		gbc_lblActual.gridwidth = 2;
+		gbc_lblActual.gridx = 0;
+		gbc_lblActual.gridy = 3;
+		panelResumen.add(lblActual, gbc_lblActual);
+		txtActual = new JTextField();
 
 		txtActual.setHorizontalAlignment(SwingConstants.CENTER);
 		txtActual.setEditable(false);
 		txtActual.setColumns(10);
 
-		panelResumen.add(txtActual);
+		GridBagConstraints gbc_txtActual = new GridBagConstraints();
+		gbc_txtActual.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtActual.anchor = GridBagConstraints.NORTH;
+		gbc_txtActual.insets = new Insets(0, 0, 0, 5);
+		gbc_txtActual.gridx = 2;
+		gbc_txtActual.gridy = 3;
+		panelResumen.add(txtActual, gbc_txtActual);
 
-		labelVarianza = new JLabel("Varianza");
-		panelResumen.add(labelVarianza);
+		panelHistograma = new JScrollPane();
+		panelHistograma.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 
-		textFieldVarianza = new JTextField();
-		textFieldVarianza.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldVarianza.setEditable(false);
-		textFieldVarianza.setColumns(10);
-		panelResumen.add(textFieldVarianza);
+		histo_kpi = new GraficoHistorial();
+		histo_kpi.setBorder(new TitledBorder(null, "Histograma", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		panelHistograma.setViewportView(histo_kpi);
 
-		labelDesvEstandar = new JLabel("Desv. Estandar");
-		panelResumen.add(labelDesvEstandar);
+		gl_panelGeneral = new GroupLayout(this);
+		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup().addGap(21)
+						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addComponent(panelHistograma,
+								Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+								.addGroup(gl_panelGeneral.createSequentialGroup()
+										.addComponent(panelResumen, GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
+						.addGap(23)));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addComponent(panelResumen, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+						.addContainerGap()));
 
-		textFieldDesvEstandar = new JTextField();
-		textFieldDesvEstandar.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldDesvEstandar.setEditable(false);
-		textFieldDesvEstandar.setColumns(10);
-		panelResumen.add(textFieldDesvEstandar);
+		JLabel lblAceptacion = new JLabel("%");
 
-		panelResumen.add(lblPromedio_1);
+		GridBagConstraints gbc_lblAceptacion = new GridBagConstraints();
+		gbc_lblAceptacion.anchor = GridBagConstraints.EAST;
+		gbc_lblAceptacion.insets = new Insets(0, 0, 0, 5);
+		gbc_lblAceptacion.gridx = 4;
+		gbc_lblAceptacion.gridy = 3;
+		panelResumen.add(lblAceptacion, gbc_lblAceptacion);
+		spinner_porcentaje = new JSpinner();
 
-		panelResumen.add(spinner_porcentaje);
+		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
+
+		GridBagConstraints gbc_spinner_porcentaje = new GridBagConstraints();
+		gbc_spinner_porcentaje.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinner_porcentaje.anchor = GridBagConstraints.NORTH;
+		gbc_spinner_porcentaje.gridx = 5;
+		gbc_spinner_porcentaje.gridy = 3;
+		panelResumen.add(spinner_porcentaje, gbc_spinner_porcentaje);
 
 		setLayout(gl_panelGeneral);
+	}
+
+	public GraficoKPI getIndicador_kpi() {
+		return indicador_kpi;
+	}
+
+	public JSpinner getSpinner_porcentaje() {
+		return spinner_porcentaje;
+	}
+
+	public JTextField getTxtTotal() {
+		return txtTotal;
+	}
+
+	public JTextField getTxtPromedio() {
+		return txtPromedio;
+	}
+
+	public JTextField getTxtActual() {
+		return txtActual;
+	}
+
+	public JTextField getTxtVarianza() {
+		return txtVarianza;
+	}
+
+	public JTextField getTxtD_estandar() {
+		return txtD_estandar;
+	}
+
+	public JTextField getTxtMinimo() {
+		return txtMinimo;
+	}
+
+	public JTextField getTxtMaximo() {
+		return txtMaximo;
 	}
 
 	public void notificarError(String mensaje) {

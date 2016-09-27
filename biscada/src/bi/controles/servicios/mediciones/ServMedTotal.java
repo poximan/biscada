@@ -5,7 +5,6 @@
 
 package bi.controles.servicios.mediciones;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -46,8 +45,8 @@ public class ServMedTotal extends ServMedAbstract {
 
 		Interval intervalo = new Interval(tiempo_inicio, serv_periodo.getPeriodo());
 
-		List<Float> fracciones_tiempo = new ArrayList<Float>();
-		fracciones_tiempo.add(new Float(0));
+		int indice = 0;
+		float[] fracciones_tiempo = new float[serv_periodo.getCantidadPeriodos()];
 
 		// analiza de a una todas las alarmas clasificadas dentro del grupo
 		for (Alarma alarma_actual : alarmas) {
@@ -57,13 +56,11 @@ public class ServMedTotal extends ServMedAbstract {
 			while (!intervalo.contains(test)) {
 
 				intervalo = new Interval(intervalo.getEnd(), serv_periodo.siguientePeriodo());
-				fracciones_tiempo.add(new Float(0));
+				indice++;
 			}
-			// agrego 1 al contador de alarmas del mes
-			float ultimo_valor = fracciones_tiempo.get(fracciones_tiempo.size() - 1).floatValue();
-			fracciones_tiempo.set(fracciones_tiempo.size() - 1, ultimo_valor + 1);
+			fracciones_tiempo[indice] += 1;
 		}
-		return envolturaFloatHaciaFloat(fracciones_tiempo.toArray(new Float[fracciones_tiempo.size()]));
+		return fracciones_tiempo;
 	}
 
 	@Override

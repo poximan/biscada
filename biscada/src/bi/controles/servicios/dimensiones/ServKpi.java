@@ -17,9 +17,10 @@ public interface ServKpi {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public float actualFilaMultiple(float[][] datos);
+	public int totalAlarmas();
 
-	public float promedioFilaMultiple(float[][] datos);
+	public float promedio();
 
-	public float totalFilaMultiple(float[][] datos);
+	public int actual();
+
 }

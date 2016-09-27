@@ -198,7 +198,7 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 
 				if (RowSorterEvent.Type.SORT_ORDER_CHANGED == e.getType()) {
 					@SuppressWarnings("unchecked")
-					RowSorter<Object> sorter = e.getSource();
+					RowSorter<Float> sorter = e.getSource();
 					tbl_medicion.getRowSorter().setSortKeys(sorter.getSortKeys());
 					tbl_titulo_filas.getRowSorter().setSortKeys(sorter.getSortKeys());
 				}

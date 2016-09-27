@@ -5,12 +5,10 @@
 
 package bi.vistas.kpi;
 
-import bi.controles.servicios.dimensiones.ServDimSitio;
+import java.util.Arrays;
+
 import bi.controles.servicios.dimensiones.ServKpiCalidadServicio;
-import bi.controles.servicios.mediciones.ServMedAbstract;
-import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import bi.vistas.eventos.EventoKPI;
-import comunes.modelo.Sitio;
 
 /* ............................................. */
 /* ............................................. */
@@ -32,35 +30,45 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	/* ............................................. */
 
 	/**
-	 * @wbp.parser.constructor
+	 * 
+	 * @param datos
 	 */
 	public VistaKpiSitioCalidadServicio(float datos[][]) {
 
 		super.configEventos(new EventoKPI(this));
-		llenarCampoTextos(datos);
+		calculosComunes(datos);
 	}
 
-	public VistaKpiSitioCalidadServicio(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
-			ServMedAbstract serv_medicion, Sitio sitio_actual, float[] datosH) {
+	/**
+	 * utilizado cuando se selecciona una fila de sitio desde esa dimension. en
+	 * otras dimensiones este constructor no tiene utilidad.
+	 * 
+	 * @param serv_dim_sitio
+	 * @param serv_periodo
+	 * @param serv_medicion
+	 * @param sitio_actual
+	 * @param filas_datos
+	 */
+	public VistaKpiSitioCalidadServicio(float[] filas_datos) {
 
 		super.configEventos(new EventoKPI(this));
 
-		try {
-			llenarCampoTextos(serv_dim_sitio, serv_periodo, serv_medicion, sitio_actual);
+		float[][] matriz_datos = convertir(filas_datos);
 
-			getIndicador_kpi().cargarDatos(Float.parseFloat(getTxtTotal().getText()),
-					Float.parseFloat(getTxtPromedio().getText()), Float.parseFloat(getTxtActual().getText()));
-			getIndicador_kpi().createPanel();
+		calculosComunes(matriz_datos);
+	}
 
-			getHisto_kpi().cargarDatos(serv_periodo.getEncabezadoFecha(), datosH,
-					Float.parseFloat(getTxtTotal().getText()), Float.parseFloat(getTxtPromedio().getText()));
-			getHisto_kpi().createPanel();
+	/**
+	 * convierte a dos dimensiones para tratarlo los datos de la misma forma
+	 * 
+	 * @param filas_datos
+	 * @return
+	 */
+	private float[][] convertir(float[] filas_datos) {
 
-		} catch (NumberFormatException excepcion) {
-			getIndicador_kpi().cargarDatos(0, 0, 0);
-		} catch (NullPointerException excepcion) {
-			notificarError("tabla vacia, presione Ejecutar para llenar la tabla");
-		}
+		float[][] matriz_datos = new float[1][filas_datos.length];
+		matriz_datos[0] = Arrays.copyOf(filas_datos, filas_datos.length);
+		return matriz_datos;
 	}
 
 	/* ............................................. */
@@ -68,30 +76,19 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	private void llenarCampoTextos(float[][] datos) {
+	private void calculosComunes(float datos[][]) {
 
-		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
+		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio(datos);
 
-		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaMultiple(datos)));
-		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaMultiple(datos)));
-		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actualFilaMultiple(datos)));
-	}
+		getTxtMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.maximo()));
+		getTxtMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
 
-	private void llenarCampoTextos(ServDimSitio serv_dim_sitio, ServPeriodoAbstract serv_periodo,
-			ServMedAbstract serv_medicion, Sitio sitio_actual) {
+		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalAlarmas()));
+		getTxtPromedio().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.promedio()));
 
-		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio();
+		getTxtVarianza().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.varianza()));
+		getTxtD_estandar().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.desviacionEstandar()));
 
-		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalFilaSimple(serv_dim_sitio, sitio_actual)));
-		getTxtPromedio().setText(String.valueOf(serv_kpi_calidad_servicio.promedioFilaSimple(serv_dim_sitio,
-				serv_periodo, serv_medicion, sitio_actual)));		
-		getTxtActual().setText(String.valueOf(
-				serv_kpi_calidad_servicio.actualFilaSimple(serv_dim_sitio, serv_periodo, serv_medicion, sitio_actual)));
-		
-		getTextFieldVarianza().setText(String.valueOf(serv_kpi_calidad_servicio.Varianza()));
-		getTextFieldDesvEstandar().setText(String.valueOf(serv_kpi_calidad_servicio.desviacionEstandar()));
-		getTextFieldMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_maximo()));
-		getTextFieldMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.calculo_minimo()));
-
+		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actual()));
 	}
 }

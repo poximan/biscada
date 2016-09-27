@@ -32,20 +32,19 @@ public class GraficoKPI extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static DefaultValueDataset dataset;
-
-	private static double canTotal;
+	private DefaultValueDataset dataset;
 
 	private MeterInterval intervaloNormal;
 	private MeterInterval intervaloAdvertencia;
 	private MeterInterval intervaloPeligro;
 
 	private JPanel panel;
-	private double promHist;
+	private double promedio_historico;
 	private double porcentajeF;
 
-	private double rangoMin;
-	private double rangoMax;
+	private double normal_max;
+	private double advertencia_max;
+	private double peligro_max;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -67,24 +66,25 @@ public class GraficoKPI extends JPanel {
 	 */
 	public void actualizarIntervalos() {
 
-		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, rangoMin), Color.black, new BasicStroke(3.0F),
-				new Color(255, 255, 0, 64));
+		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, normal_max), Color.black,
+				new BasicStroke(3.0F), new Color(255, 255, 0, 64));
 
-		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(rangoMin, rangoMax), Color.black,
-				new BasicStroke(2.0F), Color.yellow.brighter());
+		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(normal_max, advertencia_max),
+				Color.black, new BasicStroke(2.0F), Color.yellow.brighter());
 
-		intervaloPeligro = new MeterInterval("Peligro", new Range(rangoMax, canTotal), Color.black,
+		intervaloPeligro = new MeterInterval("Peligro", new Range(advertencia_max, peligro_max), Color.black,
 				new BasicStroke(3.0F), Color.RED);
 	}
 
 	/**
 	 * Se cargan los datos para ser reflejados en el sem�foro
 	 */
-	public void cargarDatos(float cantTotal, float promH, float cantAct) {
+	public void cargarDatos(float total_alarmas, float promedio_historico, float cantAct) {
+
+		peligro_max = total_alarmas;
+		this.promedio_historico = promedio_historico;
 
 		dataset = new DefaultValueDataset(cantAct);
-		promHist = promH;
-		canTotal = cantTotal;
 	}
 
 	/**
@@ -92,12 +92,12 @@ public class GraficoKPI extends JPanel {
 	 */
 	private JFreeChart createChart() {
 
-		rangoMin = promHist - porcentajeF;
-		rangoMax = promHist + porcentajeF;
+		normal_max = promedio_historico - porcentajeF;
+		advertencia_max = promedio_historico + porcentajeF;
 
 		MeterPlot meterplot = new MeterPlot(dataset);
 		// Fijamos el rango m�nimo y m�ximo
-		meterplot.setRange(new Range(0, canTotal));
+		meterplot.setRange(new Range(0, peligro_max));
 
 		// Fijamos el rango de aceptaci�n y sus respectivos colores
 		actualizarIntervalos();
@@ -144,14 +144,14 @@ public class GraficoKPI extends JPanel {
 	public void Porcentaje(int porcentaje) {
 
 		setPorcentaje(porcentaje);
-		System.out.println("El " + porcentaje + " % de " + promHist + " es " + porcentajeF);
+		System.out.println("El " + porcentaje + " % de " + promedio_historico + " es " + porcentajeF);
 
 		actualizarIntervalos();
 		refreshChart();
 	}
 
 	public void setPorcentaje(int porcentaje) {
-		porcentajeF = (promHist * porcentaje) / 100;
+		porcentajeF = (promedio_historico * porcentaje) / 100;
 	}
 
 	/**

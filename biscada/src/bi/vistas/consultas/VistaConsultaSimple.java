@@ -77,19 +77,19 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		btnTemporada.addActionListener(eventos);
 	}
 
-	public JButton getBtnSitio() {
-		return btnSitio;
-	}
-
 	/* ............................................. */
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
 
 	public JButton getBtnFamilia() {
-		return btnSuceso;
+		return btnFamilia;
 	}
-	
+
+	public JButton getBtnSitio() {
+		return btnSitio;
+	}
+
 	public JButton getBtnSuceso() {
 		return btnSuceso;
 	}
@@ -140,22 +140,25 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		btnSitio.setPreferredSize(new Dimension(105, 23));
 		btnSitio.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		btnSitio.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panelDimensiones.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Segundo nivel evaluacion - Dimension", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelDimensiones.setBorder(
+				new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Segundo nivel evaluacion - Dimension",
+						TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelDimensiones.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		
+
 		btnFamilia = new JButton("familia");
 		btnFamilia.setPreferredSize(new Dimension(105, 23));
 		btnFamilia.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		btnFamilia.setAlignmentX(1.0f);
-		panelDimensiones.add(btnFamilia);
-		panelDimensiones.add(btnSitio);
-		panelDimensiones.add(btnSuceso);
-		panelDimensiones.add(btnTiempoDespeje);
 
 		btnTemporada = new JButton("temporada");
 		btnTemporada.setPreferredSize(new Dimension(105, 23));
 		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		
+		panelDimensiones.add(btnFamilia);
+		panelDimensiones.add(btnSitio);
+		panelDimensiones.add(btnSuceso);
+		panelDimensiones.add(btnTiempoDespeje);
 		panelDimensiones.add(btnTemporada);
 
 		setLayout(groupLayout);

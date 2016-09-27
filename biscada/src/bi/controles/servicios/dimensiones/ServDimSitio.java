@@ -59,7 +59,7 @@ public class ServDimSitio extends ServDimAbstract {
 
 		int indice = 0;
 
-		float[][] valor_retorno = new float[map.size()][serv_periodo.getCantidadPeriodos()];
+		float[][] valor_retorno = new float[map.size()][0];
 		List<Alarma> lista_alarmas_una_clave = null;
 
 		for (Map.Entry<Sitio, List<Alarma>> hash_alarmas_una_clave : map.entrySet()) {

@@ -29,12 +29,12 @@ import org.jfree.ui.TextAnchor;
 public class GraficoHistorial extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static double Total;
+	private static int Total;
 
 	private static double promedio;
 
 	private static JFreeChart createChart(XYDataset xydataset) {
-		
+
 		JFreeChart jfreechart = ChartFactory.createXYLineChart(null, "Alarmas", "Cantidad", xydataset,
 				PlotOrientation.VERTICAL, false, true, false);
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
@@ -67,7 +67,7 @@ public class GraficoHistorial extends JPanel {
 		valuemarker.setLabelAnchor(RectangleAnchor.TOP_LEFT);
 		valuemarker.setLabelTextAnchor(TextAnchor.BOTTOM_LEFT);
 		xyplot.addRangeMarker(valuemarker);
-		
+
 		return jfreechart;
 	}
 
@@ -81,7 +81,7 @@ public class GraficoHistorial extends JPanel {
 	/*
 	 * Se crea el dataset de datos
 	 */
-	public void cargarDatos(Date[] fechas, float[] datos, float Total, float promedio) {
+	public void cargarDatos(Date[] fechas, float[] datos, int Total, double promedio) {
 
 		GraficoHistorial.Total = Total;
 		GraficoHistorial.promedio = promedio;

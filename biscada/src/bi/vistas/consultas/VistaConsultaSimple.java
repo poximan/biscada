@@ -5,6 +5,7 @@
 
 package bi.vistas.consultas;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -23,7 +24,6 @@ import bi.modelo.ComponenteMenuConsulta;
 import bi.vistas.eventos.EventoConsultaSimple;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
-import java.awt.Color;
 
 /* ............................................. */
 /* ............................................. */

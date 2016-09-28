@@ -90,4 +90,8 @@ public abstract class TiempoDespeje {
 	public void setInicio(int inicio) {
 		this.inicio = inicio;
 	}
+
+	public String getDescripcion() {
+		return toString();
+	}
 }

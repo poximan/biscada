@@ -6,6 +6,12 @@
 package bi.vistas.kpi;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -20,17 +26,15 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
+import bi.controles.servicios.dimensiones.ServKpiCalidadServicio;
 import bi.graficas.GraficoHistorial;
 import bi.graficas.GraficoKPI;
 import bi.vistas.eventos.EventoKPI;
 import bi.vistas.eventos.EventoKPIConfigurable;
 import comunes.vistas.PanelIniciable;
 import propiedades.controles.servicios.ServPropiedades;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.border.TitledBorder;
 
 /* ............................................. */
 /* ............................................. */
@@ -78,15 +82,63 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public VistaKpiAbstract() {
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public VistaKpiAbstract(float datos[][]) {
 
 		iniciarComponentes();
+		calculosComunes(datos);
+	}
+
+	public VistaKpiAbstract(float fila_datos[]) {
+
+		this(convertir(fila_datos));
 	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	/**
+	 * convierte a dos dimensiones para tratarlo los datos de la misma forma
+	 * 
+	 * @param filas_datos
+	 * @return
+	 */
+	private static float[][] convertir(float[] fila_datos) {
+
+		float[][] matriz_datos = new float[1][fila_datos.length];
+		matriz_datos[0] = Arrays.copyOf(fila_datos, fila_datos.length);
+		return matriz_datos;
+	}
+
+	private void calculosComunes(float datos[][]) {
+
+		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio(datos);
+
+		txtMaximo.setText(String.valueOf(serv_kpi_calidad_servicio.maximo()));
+		txtMinimo.setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
+
+		int total = serv_kpi_calidad_servicio.totalAlarmas();
+		txtTotal.setText(String.valueOf(total));
+
+		double promedio = serv_kpi_calidad_servicio.promedio();
+		txtPromedio.setText(ServKpiCalidadServicio.formatear(promedio));
+
+		txtVarianza.setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.varianza()));
+		txtD_estandar.setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.desviacionEstandar()));
+
+		int actual = serv_kpi_calidad_servicio.actual();
+		txtActual.setText(String.valueOf(actual));
+
+		indicador_kpi.cargarDatos(total, actual, promedio);
+
+		Date[] fechas = { new Date(Calendar.getInstance().getTimeInMillis() / 2),
+				new Date(Calendar.getInstance().getTimeInMillis()) };
+		histo_kpi.cargarDatos(fechas, datos[0], total, promedio);
+	}
 
 	@Override
 	public void configEventos(EventoKPI eventos) {
@@ -104,7 +156,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelIndicador = new JPanel();
 		panelIndicador
 				.setBorder(new TitledBorder(null, "Indicador", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-		// panelIndicador.add(indicador_kpi);
+		indicador_kpi = new GraficoKPI();
+		panelIndicador.add(indicador_kpi);
 
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new TitledBorder(null, "Mediciones", TitledBorder.CENTER, TitledBorder.TOP, null, null));
@@ -314,8 +367,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		gbc_lblAceptacion.gridx = 4;
 		gbc_lblAceptacion.gridy = 3;
 		panelResumen.add(lblAceptacion, gbc_lblAceptacion);
-		spinner_porcentaje = new JSpinner();
 
+		spinner_porcentaje = new JSpinner();
 		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
 
 		GridBagConstraints gbc_spinner_porcentaje = new GridBagConstraints();
@@ -334,39 +387,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public JSpinner getSpinner_porcentaje() {
 		return spinner_porcentaje;
-	}
-
-	public JTextField getTxtTotal() {
-		return txtTotal;
-	}
-
-	public JTextField getTxtPromedio() {
-		return txtPromedio;
-	}
-
-	public JTextField getTxtActual() {
-		return txtActual;
-	}
-
-	public JTextField getTxtVarianza() {
-		return txtVarianza;
-	}
-
-	public JTextField getTxtD_estandar() {
-		return txtD_estandar;
-	}
-
-	public JTextField getTxtMinimo() {
-		return txtMinimo;
-	}
-
-	public JTextField getTxtMaximo() {
-		return txtMaximo;
-	}
-
-	public void setIndicador_kpi(GraficoKPI indicador_kpi) {
-		this.indicador_kpi = indicador_kpi;
-		panelIndicador.add(indicador_kpi);
 	}
 
 	public void notificarError(String mensaje) {

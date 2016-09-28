@@ -70,7 +70,7 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 		int indice = lista.lastIndexOf(alarma_actual.getEquipo_en_sitio().getTipo_de_equipo());
 
 		if (indice != -1)
-			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo((TipoDeEquipo) lista.get(indice));
+			alarma_actual.getEquipo_en_sitio().setTipo_de_equipo(lista.get(indice));
 		else {
 			TipoDeEquipo nuevo_objeto = new TipoDeEquipo(
 					alarma_actual.getEquipo_en_sitio().getTipo_de_equipo().getDescripcion());

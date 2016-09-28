@@ -70,7 +70,7 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 		int indice = lista.lastIndexOf(alarma_actual.getFamilia());
 
 		if (indice != -1)
-			alarma_actual.setFamilia((Familia) lista.get(indice));
+			alarma_actual.setFamilia(lista.get(indice));
 		else {
 			Familia nuevo_objeto = new Familia(alarma_actual.getFamilia().getDescripcion());
 			crear(nuevo_objeto);

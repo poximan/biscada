@@ -8,12 +8,10 @@ package bi.vistas.eventos;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import bi.modelo.TiempoDespeje;
 import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
-import bi.vistas.kpi.VistaKpiTiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */
@@ -45,11 +43,11 @@ public class EventoDimTiempoDespeje extends EventoDim implements MouseListener {
 	public void mouseClicked(MouseEvent evt) {
 
 		JTable tabla = (JTable) evt.getSource();
-		int fila = tabla.getSelectedRow();
-		TiempoDespeje tiempo_despeje_actual = (TiempoDespeje) tabla.getValueAt(fila, 0);
 
-		JFrame frame = new JFrame();
-		lanzarVentana(frame, new VistaKpiTiempoDespeje(tiempo_despeje_actual));
+		int fila = tabla.getSelectedRow();
+		TiempoDespeje fila_actual = (TiempoDespeje) tabla.getValueAt(fila, 0);
+
+		terminarConfigVentana(fila, fila_actual.getDescripcion());
 	}
 
 	@Override

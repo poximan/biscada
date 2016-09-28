@@ -5,6 +5,7 @@
 
 package bi.vistas.dimensiones;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.util.Collections;
 import java.util.List;
@@ -45,7 +46,6 @@ import bi.vistas.eventos.EventoConfigurable;
 import bi.vistas.eventos.EventoDim;
 import comunes.modelo.Alarma;
 import comunes.vistas.PanelIniciable;
-import java.awt.Color;
 
 /* ............................................. */
 /* ............................................. */
@@ -185,6 +185,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		cargarTodasLasMediciones();
 		cargarTodosLosPeriodos();
 
+		componenteTabla.getTbl_titulo_filas().addMouseListener(eventos);
 		btnCalidadServicio.addActionListener(eventos);
 		btnEjecutar.addActionListener(eventos);
 	}

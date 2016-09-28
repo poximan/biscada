@@ -69,7 +69,7 @@ public class ServCRUDSitio implements InterfazCRUD, ClaveIdentificable {
 		int indice = lista.lastIndexOf(alarma_actual.getSitio());
 
 		if (indice != -1)
-			alarma_actual.setSitio((Sitio) lista.get(indice));
+			alarma_actual.setSitio(lista.get(indice));
 		else {
 			Sitio nuevo_objeto = new Sitio(alarma_actual.getSitio().getDescripcion());
 			crear(nuevo_objeto);

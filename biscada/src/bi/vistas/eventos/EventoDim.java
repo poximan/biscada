@@ -12,8 +12,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import bi.vistas.consultas.TableModelMedicionTemporal;
 import bi.vistas.dimensiones.VistaDimAbstractSimple;
-import bi.vistas.kpi.VistaKpiSitioCalidadServicio;
+import bi.vistas.kpi.VistaKpiCalidadServicio;
 
 /* ............................................. */
 /* ............................................. */
@@ -51,8 +52,17 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 		} else if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiSitioCalidadServicio(getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiCalidadServicio(getVista_dimension().getValoresTabla()));
 		}
+	}
+
+	public void terminarConfigVentana(int fila, String descripcion) {
+
+		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getComponenteTabla().getTbl_medicion()
+				.getModel()).getDatosFila(fila);
+
+		JFrame frame = new JFrame(descripcion);
+		lanzarVentana(frame, new VistaKpiCalidadServicio(valores));
 	}
 
 	@Override

@@ -8,11 +8,9 @@ package bi.vistas.eventos;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import bi.vistas.dimensiones.VistaDimSucesoSimple;
-import bi.vistas.kpi.VistaKpiSuceso;
 import comunes.modelo.Suceso;
 
 /* ............................................. */
@@ -47,10 +45,9 @@ public class EventoDimSuceso extends EventoDim implements MouseListener {
 		JTable tabla = (JTable) evt.getSource();
 
 		int fila = tabla.getSelectedRow();
-		Suceso suceso_actual = (Suceso) tabla.getValueAt(fila, 0);
+		Suceso fila_actual = (Suceso) tabla.getValueAt(fila, 0);
 
-		JFrame frame = new JFrame();
-		lanzarVentana(frame, new VistaKpiSuceso(suceso_actual));
+		terminarConfigVentana(fila, fila_actual.getDescripcion());
 	}
 
 	@Override

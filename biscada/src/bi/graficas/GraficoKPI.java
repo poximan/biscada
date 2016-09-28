@@ -50,8 +50,7 @@ public class GraficoKPI extends JPanel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public GraficoKPI(int total, int actual, double promedio) {
-
+	public void cargarDatos(int total, int actual, double promedio) {
 		peligro_max = total;
 		dataset = new DefaultValueDataset(actual);
 		this.promedio = promedio;

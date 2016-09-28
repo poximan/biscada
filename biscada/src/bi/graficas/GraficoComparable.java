@@ -161,8 +161,6 @@ public class GraficoComparable extends JPanel {
 		tbl_titulo_filas_comparar = tbl_titulo_filas_comparacion;
 		datos_tabla_comparar = datos_tabla_comparacion;
 		encabezado_tabla_comparar = encabezado_tabla_comparacion;
-		System.out.println("esto es " + tbl_titulo_filas_comparacion.getRowCount());
-		System.out.println("porque se queja? " + tbl_titulo_filas_comparar.getRowCount());
 	}
 
 }

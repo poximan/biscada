@@ -8,6 +8,7 @@ package bi.vistas.kpi;
 import java.util.Arrays;
 
 import bi.controles.servicios.dimensiones.ServKpiCalidadServicio;
+import bi.graficas.GraficoKPI;
 import bi.vistas.eventos.EventoKPI;
 
 /* ............................................. */
@@ -83,12 +84,18 @@ public class VistaKpiSitioCalidadServicio extends VistaKpiAbstract {
 		getTxtMaximo().setText(String.valueOf(serv_kpi_calidad_servicio.maximo()));
 		getTxtMinimo().setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
 
-		getTxtTotal().setText(String.valueOf(serv_kpi_calidad_servicio.totalAlarmas()));
-		getTxtPromedio().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.promedio()));
+		int total = serv_kpi_calidad_servicio.totalAlarmas();
+		getTxtTotal().setText(String.valueOf(total));
+		
+		double promedio = serv_kpi_calidad_servicio.promedio();
+		getTxtPromedio().setText(ServKpiCalidadServicio.formatear(promedio));
 
 		getTxtVarianza().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.varianza()));
 		getTxtD_estandar().setText(ServKpiCalidadServicio.formatear(serv_kpi_calidad_servicio.desviacionEstandar()));
 
-		getTxtActual().setText(String.valueOf(serv_kpi_calidad_servicio.actual()));
+		int actual = serv_kpi_calidad_servicio.actual();
+		getTxtActual().setText(String.valueOf(actual));
+		
+		setIndicador_kpi(new GraficoKPI(total, actual, promedio));
 	}
 }

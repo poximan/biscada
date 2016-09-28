@@ -17,6 +17,7 @@ import org.jfree.data.Range;
 import org.jfree.data.general.DefaultValueDataset;
 
 import bi.excepciones.ConstructorAdelantadoExcepcion;
+import propiedades.controles.servicios.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */
@@ -39,8 +40,8 @@ public class GraficoKPI extends JPanel {
 	private MeterInterval intervaloPeligro;
 
 	private JPanel panel;
-	private double promedio_historico;
-	private double porcentajeF;
+	private double promedio;
+	private double porcentaje;
 
 	private double normal_max;
 	private double advertencia_max;
@@ -48,17 +49,19 @@ public class GraficoKPI extends JPanel {
 
 	/* ............................................. */
 	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
-	/* ............................................. */
-
-	public GraficoKPI() {
-
-	}
-
-	/* ............................................. */
-	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	public GraficoKPI(int total, int actual, double promedio) {
+
+		peligro_max = total;
+		dataset = new DefaultValueDataset(actual);
+		this.promedio = promedio;
+
+		porcentaje = Double.parseDouble(
+				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+		createPanel();
+	}
 
 	/**
 	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
@@ -77,23 +80,12 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * Se cargan los datos para ser reflejados en el sem�foro
-	 */
-	public void cargarDatos(float total_alarmas, float promedio_historico, float cantAct) {
-
-		peligro_max = total_alarmas;
-		this.promedio_historico = promedio_historico;
-
-		dataset = new DefaultValueDataset(cantAct);
-	}
-
-	/**
 	 * Se genera el dibujo con los datos ingresados.
 	 */
 	private JFreeChart createChart() {
 
-		normal_max = promedio_historico - porcentajeF;
-		advertencia_max = promedio_historico + porcentajeF;
+		normal_max = promedio - porcentaje;
+		advertencia_max = promedio + porcentaje;
 
 		MeterPlot meterplot = new MeterPlot(dataset);
 		// Fijamos el rango m�nimo y m�ximo
@@ -124,12 +116,11 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValuePaint(Color.black);
 		meterplot.setValueFont(new Font("Arial", 1, 14));
 
-		JFreeChart jfreechart = new JFreeChart("KPI Indicador de rendimiento", JFreeChart.DEFAULT_TITLE_FONT, meterplot,
-				true);
+		JFreeChart jfreechart = new JFreeChart(meterplot);
 		return jfreechart;
 	}
 
-	public void createPanel() {
+	private void createPanel() {
 
 		JFreeChart chart = createChart();
 		panel = new ChartPanel(chart);
@@ -143,15 +134,9 @@ public class GraficoKPI extends JPanel {
 	 */
 	public void Porcentaje(int porcentaje) {
 
-		setPorcentaje(porcentaje);
-		System.out.println("El " + porcentaje + " % de " + promedio_historico + " es " + porcentajeF);
-
+		this.porcentaje = (promedio * porcentaje) / 100;
 		actualizarIntervalos();
 		refreshChart();
-	}
-
-	public void setPorcentaje(int porcentaje) {
-		porcentajeF = (promedio_historico * porcentaje) / 100;
 	}
 
 	/**

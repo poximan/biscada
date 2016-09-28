@@ -53,8 +53,6 @@ public class EventoDimSitio extends EventoDim implements MouseListener {
 		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getComponenteTabla().getTbl_medicion()
 				.getModel()).getDatosFila(fila);
 
-		System.out.println("encontrando nombre sitio " + sitio_actual.getDescripcion());
-
 		int maximo_arreglo = getVista_dimension().getServ_periodo().getEncabezado().length;
 		valores = Arrays.copyOf(valores, maximo_arreglo);
 

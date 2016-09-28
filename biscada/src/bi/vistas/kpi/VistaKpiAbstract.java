@@ -101,11 +101,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		// seccion componentes visuales
 		// -------------------------------------
 
-		indicador_kpi = new GraficoKPI();
 		panelIndicador = new JPanel();
 		panelIndicador
 				.setBorder(new TitledBorder(null, "Indicador", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-		panelIndicador.add(indicador_kpi);
+		// panelIndicador.add(indicador_kpi);
 
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new TitledBorder(null, "Mediciones", TitledBorder.CENTER, TitledBorder.TOP, null, null));
@@ -363,6 +362,11 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	public JTextField getTxtMaximo() {
 		return txtMaximo;
+	}
+
+	public void setIndicador_kpi(GraficoKPI indicador_kpi) {
+		this.indicador_kpi = indicador_kpi;
+		panelIndicador.add(indicador_kpi);
 	}
 
 	public void notificarError(String mensaje) {

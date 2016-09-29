@@ -200,7 +200,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo);
 
-		encabezado_tabla = serv_periodo.getEncabezado();
+		encabezado_tabla = serv_periodo.getEncabezadoString();
 
 		componenteTabla.setIntervalo(intervalo);
 

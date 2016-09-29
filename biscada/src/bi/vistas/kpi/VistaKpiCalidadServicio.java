@@ -5,6 +5,7 @@
 
 package bi.vistas.kpi;
 
+import bi.controles.servicios.periodos.ServPeriodoAbstract;
 import bi.vistas.eventos.EventoKPI;
 
 /* ............................................. */
@@ -27,12 +28,13 @@ public class VistaKpiCalidadServicio extends VistaKpiAbstract {
 	/* ............................................. */
 
 	/**
+	 * @param servPeriodoAbstract
 	 * @wbp.parser.constructor
 	 */
-	public VistaKpiCalidadServicio(float datos[][]) {
-		
-		super(datos);
-		super.configEventos(new EventoKPI(this));		
+	public VistaKpiCalidadServicio(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
+
+		super(datos, servPeriodoAbstract);
+		super.configEventos(new EventoKPI(this));
 	}
 
 	/**
@@ -45,9 +47,9 @@ public class VistaKpiCalidadServicio extends VistaKpiAbstract {
 	 * @param sitio_actual
 	 * @param filas_datos
 	 */
-	public VistaKpiCalidadServicio(float[] fila_datos) {
+	public VistaKpiCalidadServicio(float[] fila_datos, ServPeriodoAbstract servPeriodoAbstract) {
 
-		super(fila_datos);
+		super(fila_datos, servPeriodoAbstract);
 		super.configEventos(new EventoKPI(this));
 	}
 }

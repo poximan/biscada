@@ -113,6 +113,13 @@ public class GraficoKPI extends JPanel {
 
 		JFreeChart jfreechart = new JFreeChart(meterplot);
 
+		try {
+			remove(panel);
+			panel.revalidate();
+			panel.repaint();
+		} catch (NullPointerException e) {
+		}
+
 		panel = new ChartPanel(jfreechart);
 		panel.setPreferredSize(new Dimension(250, 200));
 		add(panel);

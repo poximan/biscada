@@ -5,7 +5,6 @@
 
 package bi.controles.servicios.periodos;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.joda.time.DateTime;
@@ -43,11 +42,6 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	/* ............................................. */
 
 	@Override
-	public int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual) {
-		return 1;
-	}
-
-	@Override
 	protected DateTime getCampo_siguiente(DateTime campo_anterior) {
 		return campo_anterior.plusYears(1);
 	}
@@ -55,28 +49,6 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	@Override
 	public int getDivisor_en_dias() {
 		return divisor_en_dias;
-	}
-
-	@Override
-	public Date[] getEncabezadoFecha() {
-
-		int indice = 0;
-
-		if (getIntervalo().getPrimer_alarma() == null || getIntervalo().getUltima_alarma() == null)
-			return new Date[1];
-
-		Date[] encabezado = new Date[getCantidadPeriodos()];
-
-		Calendar fecha_alarma_actual = Calendar.getInstance();
-		fecha_alarma_actual.setTimeInMillis(getIntervalo().getPrimer_alarma().getTimeInMillis());
-
-		while (getCantidadPeriodos(fecha_alarma_actual, getIntervalo().getUltima_alarma()) > 0) {
-
-			encabezado[indice++] = fecha_alarma_actual.getTime();
-
-			fecha_alarma_actual.add(Calendar.YEAR, agregarHastaProximaUnidadTiempo(fecha_alarma_actual));
-		}
-		return encabezado;
 	}
 
 	/* ............................................. */
@@ -103,5 +75,10 @@ public class ServPeriodoAnio extends ServPeriodoAbstract {
 	@Override
 	protected String toStringCampo_actual(DateTime campo_actual) {
 		return campo_actual.year().getAsText();
+	}
+
+	@Override
+	protected Date toDateCampo_actual(DateTime campo_actual) {
+		return campo_actual.toDate();
 	}
 }

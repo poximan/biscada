@@ -52,7 +52,8 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 		} else if (evt.getSource() == getVista_dimension().getBtnCalidadServicio()) {
 
 			JFrame frame = new JFrame();
-			lanzarVentana(frame, new VistaKpiCalidadServicio(getVista_dimension().getValoresTabla()));
+			lanzarVentana(frame, new VistaKpiCalidadServicio(getVista_dimension().getValoresTabla(),
+					vista_dimension.getServ_periodo()));
 		}
 	}
 
@@ -62,7 +63,7 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 				.getModel()).getDatosFila(fila);
 
 		JFrame frame = new JFrame(descripcion);
-		lanzarVentana(frame, new VistaKpiCalidadServicio(valores));
+		lanzarVentana(frame, new VistaKpiCalidadServicio(valores, vista_dimension.getServ_periodo()));
 	}
 
 	@Override

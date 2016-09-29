@@ -46,8 +46,6 @@ public abstract class ServPeriodoAbstract {
 		periodo = nuevoPeriodo(tiempo_inicio);
 	}
 
-	public abstract int agregarHastaProximaUnidadTiempo(Calendar fecha_alarma_actual);
-
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
@@ -90,7 +88,7 @@ public abstract class ServPeriodoAbstract {
 
 	public abstract int getDivisor_en_dias();
 
-	public String[] getEncabezado() {
+	public String[] getEncabezadoString() {
 
 		int total = getCantidadPeriodos();
 
@@ -108,7 +106,23 @@ public abstract class ServPeriodoAbstract {
 		return encabezado;
 	}
 
-	public abstract Date[] getEncabezadoFecha();
+	public Date[] getEncabezadoFecha() {
+
+		int total = getCantidadPeriodos();
+
+		Date[] encabezado = new Date[total];
+		DateTime campo_actual = new DateTime(intervalo.getPrimer_alarma().getTimeInMillis());
+
+		for (int indice = 0; indice < total; indice++) {
+
+			encabezado[indice] = toDateCampo_actual(campo_actual);
+
+			DateTime campo_anterior = new DateTime(campo_actual);
+
+			campo_actual = getCampo_siguiente(campo_anterior);
+		}
+		return encabezado;
+	}
 
 	public IntervaloFechas getIntervalo() {
 		return intervalo;
@@ -137,6 +151,14 @@ public abstract class ServPeriodoAbstract {
 	 * @return
 	 */
 	protected abstract String toStringCampo_actual(DateTime campo_actual);
+
+	/**
+	 * convierte a Date segun el campo de interes en el argumento.
+	 * 
+	 * @param campo_actual
+	 * @return
+	 */
+	protected abstract Date toDateCampo_actual(DateTime campo_actual);
 
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como

@@ -112,7 +112,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo);
 
-		encabezado_tabla_comparador = serv_periodo.getEncabezado();
+		encabezado_tabla_comparador = serv_periodo.getEncabezadoString();
 
 		compTblComparador.setIntervalo(intervalo);
 		compTblComparador.contruirModeloEntradaFila(serv_dim_vista_seleccionada);
@@ -131,7 +131,7 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_unidad_tiempo);
 
-		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezado();
+		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezadoString();
 
 		compTblInteres.setIntervalo(intervalo);
 		compTblInteres.contruirModeloEntradaFila(serv_dim_vista_seleccionada);

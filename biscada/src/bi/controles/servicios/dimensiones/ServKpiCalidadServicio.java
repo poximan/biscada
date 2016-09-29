@@ -125,7 +125,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)
-				if (datos[fila][columna] > 0)
+				if (datos[fila][columna] >= 0)
 					celdas_utiles++;
 
 		return celdas_utiles;

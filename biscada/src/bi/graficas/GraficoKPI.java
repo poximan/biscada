@@ -1,6 +1,7 @@
 package bi.graficas;
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -50,7 +51,20 @@ public class GraficoKPI extends JPanel {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public GraficoKPI() {
+	}
+
+	public JPanel createPanel() {
+
+		JFreeChart chart = createChart();
+		ChartPanel chartpanel = new ChartPanel(chart);
+		panel = chartpanel;
+		add(panel);
+		return panel;
+	}
+
 	public void cargarDatos(int total, int actual, double promedio) {
+
 		peligro_max = total;
 		dataset = new DefaultValueDataset(actual);
 		this.promedio = promedio;
@@ -58,10 +72,7 @@ public class GraficoKPI extends JPanel {
 		porcentaje = Double.parseDouble(
 				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
 
-		normal_max = promedio - porcentaje;
-		advertencia_max = promedio + porcentaje;
-
-		refreshChart();
+		createPanel();
 	}
 
 	/**
@@ -70,17 +81,29 @@ public class GraficoKPI extends JPanel {
 	 */
 	public void actualizarIntervalos() {
 
-		intervaloNormal = new MeterInterval("Estado Normal", new Range(0, normal_max), Color.black,
-				new BasicStroke(3.0F), Color.GREEN);
+		try {
+			intervaloNormal = new MeterInterval("Estado Normal", new Range(0, normal_max), Color.black,
+					new BasicStroke(3.0F), Color.GREEN);
 
-		intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(normal_max, advertencia_max),
-				Color.black, new BasicStroke(2.0F), Color.YELLOW);
+			intervaloAdvertencia = new MeterInterval("Estado Aceptable", new Range(normal_max, advertencia_max),
+					Color.black, new BasicStroke(2.0F), Color.YELLOW);
 
-		intervaloPeligro = new MeterInterval("Peligro", new Range(advertencia_max, peligro_max), Color.black,
-				new BasicStroke(3.0F), Color.RED);
+			intervaloPeligro = new MeterInterval("Peligro", new Range(advertencia_max, peligro_max), Color.black,
+					new BasicStroke(3.0F), Color.RED);
+
+		} catch (IllegalArgumentException e) {
+
+			intervaloNormal = new MeterInterval("Estado Normal", new Range(0, 0), Color.black, new BasicStroke(3.0F),
+					Color.GREEN);
+
+			intervaloPeligro = intervaloAdvertencia = intervaloNormal;
+		}
 	}
 
-	private void createPanel() {
+	private JFreeChart createChart() {
+
+		normal_max = promedio - porcentaje;
+		advertencia_max = promedio + porcentaje;
 
 		MeterPlot meterplot = new MeterPlot(dataset);
 		// Fijamos el rango m�nimo y m�ximo
@@ -111,18 +134,7 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValuePaint(Color.black);
 		meterplot.setValueFont(new Font("Arial", 1, 10));
 
-		JFreeChart jfreechart = new JFreeChart(meterplot);
-
-		try {
-			remove(panel);
-			panel.revalidate();
-			panel.repaint();
-		} catch (NullPointerException e) {
-		}
-
-		panel = new ChartPanel(jfreechart);
-		panel.setPreferredSize(new Dimension(250, 200));
-		add(panel);
+		return new JFreeChart(meterplot);
 	}
 
 	/**
@@ -132,7 +144,8 @@ public class GraficoKPI extends JPanel {
 	public void Porcentaje(int porcentaje) {
 
 		this.porcentaje = (promedio * porcentaje) / 100;
-		panel.removeAll();
+
+		actualizarIntervalos();
 		refreshChart();
 	}
 
@@ -142,7 +155,16 @@ public class GraficoKPI extends JPanel {
 	 */
 	private void refreshChart() {
 
-		actualizarIntervalos();
-		createPanel();
+		panel.removeAll();
+		panel.revalidate(); // remueve el dibujo anterior
+
+		JFreeChart aChart = createChart();
+		aChart.removeLegend();
+		ChartPanel chartPanel = new ChartPanel(aChart);
+
+		panel.setPreferredSize(new Dimension(250, 200));
+		panel.setLayout(new BorderLayout());
+		panel.add(chartPanel);
+		panel.repaint(); // se muestra el nuevo dibujo
 	}
 }

@@ -2,6 +2,7 @@ package bi.graficas;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -105,13 +106,14 @@ public class GraficoHistorial extends JPanel {
 		}
 
 		coleccion.addSeries(serieFecha);
+		createPanel();
 	}
 
 	public JPanel createPanel() {
 		// XYDataset xydataset = createDataset();
 		JFreeChart jfreechart = createChart(coleccion);
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		// chartpanel.setPreferredSize(new Dimension(900, 300));
+		chartpanel.setPreferredSize(new Dimension(1800, 300));
 		chartpanel.setDomainZoomable(true);
 		chartpanel.setRangeZoomable(true);
 

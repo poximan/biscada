@@ -120,7 +120,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		ServKpiCalidadServicio serv_kpi_calidad_servicio = new ServKpiCalidadServicio(datos);
 
-		txtMaximo.setText(String.valueOf(serv_kpi_calidad_servicio.maximo()));
+		int maximo = serv_kpi_calidad_servicio.maximo();
+		txtMaximo.setText(String.valueOf(maximo));
 		txtMinimo.setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
 
 		int total = serv_kpi_calidad_servicio.totalAlarmas();
@@ -137,7 +138,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		indicador_kpi.cargarDatos(total, actual, promedio);
 
-		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], total, promedio);
+		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], total, promedio);		
 	}
 
 	@Override
@@ -157,7 +158,9 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelIndicador
 				.setBorder(new TitledBorder(null, "Indicador", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		indicador_kpi = new GraficoKPI();
+		
 		panelIndicador.add(indicador_kpi);
+		panelIndicador.validate();
 
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new TitledBorder(null, "Mediciones", TitledBorder.CENTER, TitledBorder.TOP, null, null));

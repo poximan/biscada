@@ -37,8 +37,9 @@ public class VistaDimTiempoDespejeCompuesta extends VistaDimAbstractCompuesta {
 	/* ............................................. */
 
 	public VistaDimTiempoDespejeCompuesta(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo,
-			List<Alarma> consultas_interes, List<Alarma> consultas_comparador) {
+			List<Alarma> consultas_interes, List<Alarma> consultas_comparador, boolean contar_periodos_nulos) {
 
-		super(new ServDimTiempoDespeje(), serv_medicion, serv_periodo, consultas_interes, consultas_comparador);
+		super(new ServDimTiempoDespeje(), serv_medicion, serv_periodo, consultas_interes, consultas_comparador,
+				contar_periodos_nulos);
 	}
 }

@@ -54,6 +54,8 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 			JFrame frame = new JFrame();
 			lanzarVentana(frame, new VistaKpiCalidadServicio(getVista_dimension().getValoresTabla(),
 					vista_dimension.getServ_periodo()));
+		} else if (evt.getSource() == getVista_dimension().getChckbxContarPeriodosNulos()) {
+
 		}
 	}
 

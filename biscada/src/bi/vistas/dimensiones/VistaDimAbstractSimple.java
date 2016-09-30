@@ -46,6 +46,7 @@ import bi.vistas.eventos.EventoConfigurable;
 import bi.vistas.eventos.EventoDim;
 import comunes.modelo.Alarma;
 import comunes.vistas.PanelIniciable;
+import javax.swing.JCheckBox;
 
 /* ............................................. */
 /* ............................................. */
@@ -85,6 +86,8 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	private JComboBox<ServMedAbstract> cbox_medicion;
 	private JComboBox<ServPeriodoAbstract> cbox_dim_tiempo;
+	
+	private JCheckBox chckbxContarPeriodosNulos;
 
 	private JButton btnCalidadServicio;
 	private JButton btnEjecutar;
@@ -188,6 +191,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		componenteTabla.getTbl_titulo_filas().addMouseListener(eventos);
 		btnCalidadServicio.addActionListener(eventos);
 		btnEjecutar.addActionListener(eventos);
+		chckbxContarPeriodosNulos.addActionListener(eventos);
 	}
 
 	@Override
@@ -198,7 +202,7 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		serv_dim_vista_seleccionada.realizarHash(consulta);
 
-		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo);
+		datos_tabla = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo, chckbxContarPeriodosNulos.isSelected());
 
 		encabezado_tabla = serv_periodo.getEncabezadoString();
 
@@ -216,6 +220,10 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 	public JButton getBtnEjecutar() {
 		return btnEjecutar;
+	}
+
+	public JCheckBox getChckbxContarPeriodosNulos() {
+		return chckbxContarPeriodosNulos;
 	}
 
 	public ComponenteTabla getComponenteTabla() {
@@ -311,31 +319,47 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		cbox_dim_tiempo = new JComboBox<ServPeriodoAbstract>();
 
 		btnEjecutar = new JButton("ejecutar");
+		
+		chckbxContarPeriodosNulos = new JCheckBox("Contar periodos nulos");
 
 		gl_pl_tiempo = new GroupLayout(pl_tiempo);
-		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 129, Short.MAX_VALUE).addComponent(btnEjecutar)
-						.addContainerGap()));
-		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
+		gl_pl_tiempo.setHorizontalGroup(
+			gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pl_tiempo.createSequentialGroup()
-						.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_pl_tiempo.createSequentialGroup().addContainerGap()
-										.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.BASELINE)
-												.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(lbl_medicion).addComponent(btnEjecutar)))
-								.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(15).addComponent(lbl_dim_tiempo))
-								.addGroup(gl_pl_tiempo.createSequentialGroup().addGap(12).addComponent(cbox_dim_tiempo,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] { cbox_medicion, cbox_dim_tiempo });
+					.addContainerGap()
+					.addComponent(lbl_medicion)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+					.addComponent(chckbxContarPeriodosNulos)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnEjecutar)
+					.addContainerGap())
+		);
+		gl_pl_tiempo.setVerticalGroup(
+			gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pl_tiempo.createSequentialGroup()
+					.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_pl_tiempo.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lbl_medicion)
+								.addComponent(btnEjecutar)
+								.addComponent(chckbxContarPeriodosNulos)))
+						.addGroup(gl_pl_tiempo.createSequentialGroup()
+							.addGap(15)
+							.addComponent(lbl_dim_tiempo))
+						.addGroup(gl_pl_tiempo.createSequentialGroup()
+							.addGap(12)
+							.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_pl_tiempo.linkSize(SwingConstants.HORIZONTAL, new Component[] {cbox_medicion, cbox_dim_tiempo});
 		pl_kpi = new JPanel();
 		btnCalidadServicio = new JButton("indicador KPI");
 

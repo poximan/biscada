@@ -55,7 +55,8 @@ public class ServDimSitio extends ServDimAbstract {
 	/* ............................................. */
 
 	@Override
-	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo,
+			boolean contar_periodos_nulos) {
 
 		int indice = 0;
 
@@ -69,7 +70,7 @@ public class ServDimSitio extends ServDimAbstract {
 			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
 			indice++;
 		}
-		return valor_retorno;
+		return postProcesarTabla(valor_retorno, contar_periodos_nulos);
 	}
 
 	/**

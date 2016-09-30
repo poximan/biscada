@@ -59,13 +59,18 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 	private String[] encabezado_tabla_interes;
 	private String[] encabezado_tabla_comparador;
 
+	private boolean contar_periodos_nulos;
+
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
 	public VistaDimAbstractCompuesta(ServDimAbstract serv_dim_vista_seleccionada, ServMedAbstract serv_medicion,
-			ServPeriodoAbstract serv_periodo, List<Alarma> consulta_interes, List<Alarma> consulta_comparador) {
+			ServPeriodoAbstract serv_periodo, List<Alarma> consulta_interes, List<Alarma> consulta_comparador,
+			boolean contar_periodos_nulos) {
+
+		this.contar_periodos_nulos = contar_periodos_nulos;
 
 		this.serv_dim_vista_seleccionada = serv_dim_vista_seleccionada;
 
@@ -110,7 +115,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		intervalo.setPrimer_alarma(consulta_comparador.get(0).getFecha_inicio());
 		intervalo.setUltima_alarma(consulta_comparador.get(consulta_comparador.size() - 1).getFecha_inicio());
 
-		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo);
+		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo,
+				contar_periodos_nulos);
 
 		encabezado_tabla_comparador = serv_periodo.getEncabezadoString();
 
@@ -129,7 +135,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 		intervalo.setPrimer_alarma(consulta_interes.get(0).getFecha_inicio());
 		intervalo.setUltima_alarma(consulta_interes.get(consulta_interes.size() - 1).getFecha_inicio());
 
-		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_unidad_tiempo);
+		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_unidad_tiempo,
+				contar_periodos_nulos);
 
 		encabezado_tabla_interes = serv_unidad_tiempo.getEncabezadoString();
 

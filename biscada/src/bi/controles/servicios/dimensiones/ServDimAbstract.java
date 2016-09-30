@@ -40,6 +40,10 @@ public abstract class ServDimAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
+	public float[][] postProcesarTabla(float[][] valor_retorno, boolean contar_periodos_nulos) {
+		return valor_retorno;
+	}
+
 	/**
 	 * 
 	 * @param serv_medicion
@@ -50,10 +54,12 @@ public abstract class ServDimAbstract {
 	 *            ejemplo un set que incluye todo el a�o 2012 puede
 	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
 	 *            tiempo quincena, etc.
+	 * @param b
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
 	 *         tabla.
 	 */
-	public abstract float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo);
+	public abstract float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo,
+			boolean contar_periodo_nulo);
 
 	/**
 	 * pide los nombres de los grupos que se obtienen de observar una lista

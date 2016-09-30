@@ -109,10 +109,11 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 	}
 
 	@Override
-	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo) {
+	public float[][] completarTabla(ServMedAbstract serv_medicion, ServPeriodoAbstract serv_periodo,
+			boolean contar_periodos_nulos) {
 
 		int indice = 0;
-				
+
 		float[][] valor_retorno = new float[map.size()][0];
 		List<Alarma> lista_alarmas_una_clave = null;
 
@@ -123,7 +124,7 @@ public class ServDimTiempoDespeje extends ServDimAbstract {
 			valor_retorno[indice] = serv_medicion.completarFila(lista_alarmas_una_clave, serv_periodo);
 			indice++;
 		}
-		return valor_retorno;
+		return postProcesarTabla(valor_retorno, contar_periodos_nulos);
 	}
 
 	/* ............................................. */

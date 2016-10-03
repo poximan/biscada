@@ -61,7 +61,7 @@ public class EMFSingleton {
 
 		if (instancia_unica == null) {
 
-			log.trace("se crea EMF por primera vez");
+			log.info("se crea EMF por primera vez");
 			instancia_unica = new EMFSingleton();
 		}
 		return emf;

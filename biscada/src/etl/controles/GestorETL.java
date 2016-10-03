@@ -53,12 +53,12 @@ public class GestorETL {
 	private GestorETL() {
 
 		frame_etl = new JFrame("ETL - archivos .DBF -> MySQL");
-		log.trace("se crea marco para panel etl");
+		log.info("se crea marco para panel etl");
 
 		vista_etl = new VistaETL();
 
 		frame_etl.getContentPane().add(vista_etl, BorderLayout.CENTER);
-		log.trace("se lanza pantalla etl");
+		log.info("se lanza pantalla etl");
 	}
 
 	public void mostrarVentana() {

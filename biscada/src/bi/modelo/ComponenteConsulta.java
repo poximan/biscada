@@ -148,7 +148,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			@Override
 			public void run() {
 
-				log.trace("colectando datos desde IU");
+				log.info("colectando datos desde IU");
 				DatosConsulta datos_consulta = new DatosConsulta(//
 						choosDesde.getCalendar(), //
 						rbtnDesdeInicio, rbtnDesdeAck, rbtnDesdeFin, //

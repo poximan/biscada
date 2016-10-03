@@ -88,15 +88,15 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 */
 	public VistaETL() {
 
-		log.trace("set direccion por defecto para origen de datos");
+		log.info("set direccion por defecto para origen de datos");
 
-		log.trace("inicia componentes");
+		log.info("inicia componentes");
 		iniciarComponentes();
 
-		log.trace("carga eventos");
+		log.info("carga eventos");
 		configEventos();
 
-		log.trace("llenar listas");
+		log.info("llenar listas");
 		actionRestablecer();
 	}
 

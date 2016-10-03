@@ -67,7 +67,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 			menu_dimension.dispose();
 		else if (evt.getSource() == menu_dimension.getItem_configurar()) {
 
-			log.trace("comienza consulta para utilizar como comparador");
+			log.info("comienza consulta para utilizar como comparador");
 
 			ComponenteMenuConsulta frame_menu_bi = new ComponenteMenuConsulta(
 					"BIS - consulta para usar como comparador");
@@ -78,7 +78,7 @@ public class EventoComponenteMenuDimension implements ActionListener, VentanaLan
 
 		} else if (evt.getSource() == menu_dimension.getItem_ejecutar()) {
 
-			log.trace("comienza doble tabla, consulta de interes mas consulta como comparador");
+			log.info("comienza doble tabla, consulta de interes mas consulta como comparador");
 
 			ComponenteMenuDimension frame_menu_dimension = new ComponenteMenuDimension("BIS - comparador de periodos");
 			VistaDimAbstractCompuesta vista_compuesta = null;

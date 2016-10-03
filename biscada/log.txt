@@ -1,0 +1,10 @@
+2016-10-03 08:51:23,762 [INFO ] comunes.controles.Principal:55		- 
+
+2016-10-03 08:51:23,762 [INFO ] comunes.controles.Principal:56		- ################# Comienza aplicacion #################
+2016-10-03 08:51:23,887 [DEBUG] comunes.controles.Principal:128		- heap reservado = 15.5 MB
+2016-10-03 08:51:23,903 [DEBUG] comunes.controles.Principal:129		- heap libre = 13.07818603515625 MB
+2016-10-03 08:51:23,903 [DEBUG] comunes.controles.Principal:130		- heap maximo = 247.5 MB
+
+2016-10-03 08:51:24,012 [INFO ] bi.controles.GestorBI:53		- se crea marco para panel consultas
+2016-10-03 08:51:24,028 [INFO ] comunes.controles.EMFSingleton:64		- se crea EMF por primera vez
+2016-10-03 08:51:26,120 [INFO ] bi.controles.GestorBI:56		- se lanza pantalla de consultas

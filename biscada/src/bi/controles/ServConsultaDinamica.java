@@ -320,15 +320,15 @@ public class ServConsultaDinamica {
 
 	public List<Alarma> buscAlarma(DatosConsulta datos_consulta) {
 
-		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
+		log.info("...   ...   ...   ...   ...   ...   ...   ...   ...   ...");
 
-		log.trace("agregando predicados...");
+		log.info("agregando predicados...");
 		agregarPredicados(datos_consulta);
 
-		log.trace("agregando condiciones consulta...");
+		log.info("agregando condiciones consulta...");
 		construirCondicionesConsulta();
 
-		log.trace("estableciendo valores de parametros...");
+		log.info("estableciendo valores de parametros...");
 		establecerParametros(datos_consulta);
 
 		mostrarQuery();
@@ -342,17 +342,17 @@ public class ServConsultaDinamica {
 			resultado = null;
 		} catch (OutOfMemoryError e) {
 			log.error("la consulta sobrepaso los recursos asignados del JRE (ambiente de ejecucion java)");
-			log.info("reintentar la consulta con algunos filtros y rango de fechas mas reducido");
+			log.error("reintentar la consulta con algunos filtros y rango de fechas mas reducido");
 		}
 
 		if (resultado == null)
 			resultado = new ArrayList<Alarma>();
 
-		log.trace("consulta finalizada. se trajeron " + resultado.size() + " resultados\n");
+		log.info("consulta finalizada. se trajeron " + resultado.size() + " resultados\n");
 
 		descartarIncompletas(resultado, datos_consulta);
 
-		log.trace("...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
+		log.info("...   ...   ...   ...   ...   ...   ...   ...   ...   ...\n");
 
 		return resultado;
 	}
@@ -387,7 +387,7 @@ public class ServConsultaDinamica {
 					(!datos_consulta.isIncluir_ack_incompleta() && alarma_actual.getFecha_ack() == null))
 				iterator.remove();
 		}
-		log.trace("se extrajeron " + (total_alarmas - lista_alarmas.size())
+		log.info("se extrajeron " + (total_alarmas - lista_alarmas.size())
 				+ " alarmas que les faltaba alguna fecha solicitada");
 	}
 
@@ -441,6 +441,6 @@ public class ServConsultaDinamica {
 		consulta.prepareCall(sesion, new DatabaseRecord());
 		String sql_string = consulta.getSQLString();
 
-		log.trace(sql_string);
+		log.info(sql_string);
 	}
 }

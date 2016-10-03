@@ -63,7 +63,7 @@ public class GestorPropiedades {
 
 		frame_propiedades = new JFrame("Parametros arranque");
 		frame_propiedades.getContentPane().add(new VistaPropiedades(), BorderLayout.CENTER);
-		log.trace("se crea panel de propiedades");
+		log.info("se crea panel de propiedades");
 	}
 
 	public void mostrarVentana() {

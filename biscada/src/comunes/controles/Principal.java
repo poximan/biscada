@@ -52,6 +52,9 @@ public class Principal {
 
 		PropertyConfigurator.configure("log4j.properties");
 
+		log.info("\n");
+		log.info("################# Comienza aplicacion #################");
+
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Windows".equals(info.getName())) {
@@ -68,7 +71,9 @@ public class Principal {
 			@Override
 			public void run() {
 				try {
+
 					new Principal();
+
 				} catch (Exception e) {
 					log.error("problema en implementacion runnable: " + e.getMessage());
 					e.printStackTrace();
@@ -120,9 +125,9 @@ public class Principal {
 		long heap_bytes_maximo = Runtime.getRuntime().maxMemory();
 		double heap_mbytes_maximo = heap_bytes_maximo / (Math.pow(1024, 2));
 
-		log.trace("heap reservado = " + heap_mbytes_reservado + " MB");
-		log.trace("heap libre = " + heap_mbytes_libre + " MB");
-		log.trace("heap maximo = " + heap_mbytes_maximo + " MB\n");
+		log.debug("heap reservado = " + heap_mbytes_reservado + " MB");
+		log.debug("heap libre = " + heap_mbytes_libre + " MB");
+		log.debug("heap maximo = " + heap_mbytes_maximo + " MB\n");
 
 		GestorBI.getSingleton().mostrarVentana();
 	}

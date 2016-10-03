@@ -71,13 +71,13 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 	public ComponenteTabla() {
 
 		iniciarComponentes();
-		log.trace("se iniciaron componentes");
+		log.info("se iniciaron componentes");
 
 		ordenarTabla();
-		log.trace("se ordernaron tablas");
+		log.info("se ordernaron tablas");
 
 		liberarObjetos();
-		log.trace("se liberaron objetos en desuso");
+		log.info("se liberaron objetos en desuso");
 	}
 
 	public void contruirModeloEntradaColumnas(float[][] datos_tabla, String[] encabezado_tabla) {

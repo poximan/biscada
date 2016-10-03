@@ -50,10 +50,10 @@ public class GestorBI {
 	private GestorBI() {
 
 		frame_menu_bi = new ComponenteMenuConsulta("BIS - software BI para SCADA");
-		log.trace("se crea marco para panel consultas");
+		log.info("se crea marco para panel consultas");
 
 		frame_menu_bi.setContentPane(new VistaConsultaSimple(frame_menu_bi));
-		log.trace("se lanza pantalla de consultas");
+		log.info("se lanza pantalla de consultas");
 	}
 
 	public void mostrarVentana() {

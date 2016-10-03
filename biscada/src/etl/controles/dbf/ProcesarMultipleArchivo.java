@@ -148,20 +148,22 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
 		reloj.comenzarContar();
-		metodo_insercion.beginArchivo();
 
 		while (iterador.hasNext()) {
+
+			metodo_insercion.beginArchivo();
 
 			ArchivoDBF archivo_actual = iterador.next();
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 			gestor.liberarObjetos();
-		}
-		metodo_insercion.enviarCacheHaciaBD();
-		metodo_insercion.limpiarCache();
 
-		metodo_insercion.commitArchivo();
+			metodo_insercion.enviarCacheHaciaBD();
+			metodo_insercion.limpiarCache();
+
+			metodo_insercion.commitArchivo();
+		}
 		reloj.terminarContar();
 
 		mostarInfo();

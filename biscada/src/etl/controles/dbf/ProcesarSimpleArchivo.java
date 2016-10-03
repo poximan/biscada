@@ -111,7 +111,7 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	 * @param archivo_actual
 	 */
 	public void mostarInfo(ArchivoDBF archivo_actual) {
-		log.info("Se elimino archivo "
+		log.debug("Se elimino archivo "
 				+ archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1));
 	}
 
@@ -131,17 +131,17 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 
 		System.out.println();
 
-		log.info("ETL en archivo " + archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1)
+		log.debug("ETL en archivo " + archivo_actual.getRuta().substring(archivo_actual.getRuta().lastIndexOf("\\") + 1)
 				+ " [" + actual + "-" + totales + "]");
 	}
 
 	private void reportar(int extraidas, int transformadas, CampoTextoDefectuoso alarmas_defectuosas) {
 
-		log.info("se transformaron " + transformadas + " de " + extraidas + " leidas desde archivo");
+		log.debug("se transformaron " + transformadas + " de " + extraidas + " leidas desde archivo");
 
 		if (!alarmas_defectuosas.estaVacia()) {
-			log.info("se encontraron defectos en...");
-			log.trace(alarmas_defectuosas.toString());
+			log.debug("se encontraron defectos en...");
+			log.debug(alarmas_defectuosas.toString());
 		}
 	}
 }

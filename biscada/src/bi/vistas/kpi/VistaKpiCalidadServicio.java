@@ -38,14 +38,9 @@ public class VistaKpiCalidadServicio extends VistaKpiAbstract {
 	}
 
 	/**
-	 * utilizado cuando se selecciona una fila de sitio desde esa dimension. en
-	 * otras dimensiones este constructor no tiene utilidad.
 	 * 
-	 * @param serv_dim_sitio
-	 * @param serv_periodo
-	 * @param serv_medicion
-	 * @param sitio_actual
-	 * @param filas_datos
+	 * @param fila_datos
+	 * @param servPeriodoAbstract
 	 */
 	public VistaKpiCalidadServicio(float[] fila_datos, ServPeriodoAbstract servPeriodoAbstract) {
 

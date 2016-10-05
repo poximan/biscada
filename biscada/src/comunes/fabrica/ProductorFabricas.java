@@ -38,7 +38,6 @@ import etl.controles.servicios.CampoTextoDefectuoso;
  * cliente, y lo comparo mediante equals(Constantes.FABRICA_EQUIPO_EN_SITIO) o
  * la fabrica que corresponda.
  * 
- * 
  * @author hdonato
  *
  */

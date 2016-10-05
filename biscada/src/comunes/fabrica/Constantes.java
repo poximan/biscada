@@ -32,7 +32,6 @@ package comunes.fabrica;
  * COMO INTERACTUO CON MI COLABORADOR devolviendo el valor asociado a la
  * constante solicitada
  * 
- * 
  * @author hdonato
  *
  */

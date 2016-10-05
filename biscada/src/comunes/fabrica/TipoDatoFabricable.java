@@ -26,7 +26,6 @@ package comunes.fabrica;
  * sin importar si se trata de una fabrica de familias, sitios u otra cosa,
  * todas tengan la misma interfaz
  * 
- * 
  * @author hdonato
  *
  */

@@ -28,6 +28,8 @@ package comunes.vistas;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 public interface PanelIniciable {

@@ -18,6 +18,8 @@ package comunes.modelo;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 public interface FamiliaPorDefecto {

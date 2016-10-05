@@ -35,6 +35,8 @@ import comunes.controles.EMFSingleton;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 /**

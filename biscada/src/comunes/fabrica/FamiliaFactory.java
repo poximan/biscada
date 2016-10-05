@@ -50,7 +50,6 @@ import etl.partes_alarma.familias.Reuso;
  * debo devolver nos comunicacmos a traves del mensaje getInstancia(String
  * discriminante)
  * 
- * 
  * @author hdonato
  *
  */

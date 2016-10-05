@@ -32,19 +32,24 @@ import org.eclipse.persistence.annotations.Index;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO alarma
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy una representacion en Objetos de una fila dbf
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, ademas de mis datos internos (fechas, zonas, id usuario ack,
+ * etc) conozco quien es mi archivo dbf propietario, es decir, desde que archivo
+ * origen fui construido
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, el colecta todos los datos de la fila,
+ * crea los objetos y los asocia a mis atributos
+ * 
+ * @author hdonato
  *
  */
 @Entity

@@ -41,6 +41,8 @@ import etl.controles.cruds.ServCRUDTipoDeEquipo;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 /**

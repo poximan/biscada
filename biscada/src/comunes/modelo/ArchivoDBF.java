@@ -29,29 +29,24 @@ import javax.persistence.TemporalType;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO de archivo dbf
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy una representacion en Objetos de archivo dbf
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, mi datos internos como la ruta de directorios donde me
+ * encontraron, si mi contenido es valido como fila de alarma, etc
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
- */
-/**
- * representacion en la BD de un archivo dbf cuyo contenido son una serie
- * indeterminada de alarmas (de 0 a n). es de utilidad para tener conocimiento
- * sobre los archivos que ya fueron procesados y en particular c�mo result�
- * ese procesamiento, es decir, �se pudo realizar con exito o el archivo
- * est� vac�o, da�ado, etc.?.
+ * COMO INTERACTUO CON MI COLABORADOR, si al menos una de mis filas fue una
+ * alarma valida, soy un archivo valido para el, caso contrario no lo soy.
+ * posteriormente me pediran esa informacion
  * 
- * @author hugo
+ * @author hdonato
  *
  */
 @Entity

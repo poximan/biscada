@@ -41,6 +41,8 @@ import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 @Entity

@@ -45,6 +45,8 @@ import nl.knaw.dans.common.dbflib.Table;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 /**

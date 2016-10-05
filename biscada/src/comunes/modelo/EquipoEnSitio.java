@@ -43,6 +43,8 @@ import comunes.fabrica.TipoDatoFabricable;
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ * @author hdonato
  *
  */
 @Entity

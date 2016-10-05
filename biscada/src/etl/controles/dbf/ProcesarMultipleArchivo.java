@@ -85,8 +85,6 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 	/**
 	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
 	 * 
-	 * @param metodo_borrado
-	 * 
 	 * @param lista_candidatos_extraer
 	 */
 	public void borrarArchivosSeleccionados(List<ArchivoDBF> lista_candidatos_extraer) {

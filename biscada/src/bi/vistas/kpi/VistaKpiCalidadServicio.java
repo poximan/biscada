@@ -27,10 +27,10 @@ public class VistaKpiCalidadServicio extends VistaKpiAbstract {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	/**
-	 * @param servPeriodoAbstract
-	 * @wbp.parser.constructor
-	 */
+	public VistaKpiCalidadServicio() {
+		super();
+	}
+
 	public VistaKpiCalidadServicio(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
 
 		super(datos, servPeriodoAbstract);

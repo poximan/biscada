@@ -84,7 +84,6 @@ public class GraficoComparable extends JPanel {
 	 * Creates a dataset.
 	 *
 	 */
-
 	public static CategoryDataset createDataset1() {
 		String[] fila = new String[tbl_titulo_filas.getRowCount()];
 

@@ -86,12 +86,11 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	/**
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * el campo de texto asignado para la direccion {origen - destino} de los
 	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
 	 * nuevamente la logica de negocio responsable de llenar las listas de la
 	 * vista ETL.
 	 * 
-	 * @param evt
 	 */
 	@Override
 	public void insertUpdate(DocumentEvent evt) {
@@ -103,12 +102,11 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	}
 
 	/**
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * el campo de texto asignado para la direccion {origen - destino} de los
 	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
 	 * nuevamente la logica de negocio responsable de llenar las listas de la
 	 * vista ETL.
 	 * 
-	 * @param evt
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
 		vista_etl.actionRestablecer();

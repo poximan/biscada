@@ -20,7 +20,6 @@ import comunes.modelo.Alarma;
  * solo provee servicios, de ser necesario reutilizar no es necesario clonar.
  * 
  * @author hdonato
- * @param <Tipo>
  *
  */
 public abstract class ServDimAbstract {
@@ -50,7 +49,7 @@ public abstract class ServDimAbstract {
 	 *            ejemplo un set que incluye todo el a�o 2012 puede
 	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
 	 *            tiempo quincena, etc.
-	 * @param b
+	 *            
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
 	 *         tabla.
 	 */

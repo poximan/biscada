@@ -112,9 +112,6 @@ public class ServConsultaDinamica {
 	 * utilizado por agregarPredicadoFechaDesde cuando encuentra una seleccion
 	 * para el tipo desde (que debe ser del enumerado [inicio, ack, fin])
 	 * 
-	 * @param fecha_usada
-	 * @param calendarDesde
-	 * @return
 	 */
 	private Predicate agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {
 
@@ -144,8 +141,6 @@ public class ServConsultaDinamica {
 	 * si el usuario especifico una familia de alarmas en particular, se traeran
 	 * solo alarmas cuya familia sea = a la del parametro especificado.
 	 * 
-	 * @param atributo
-	 * @return
 	 */
 	private Predicate agregarPredicadoFamilia(String atributo) {
 
@@ -157,7 +152,7 @@ public class ServConsultaDinamica {
 	 * creador de parametro dinamico.
 	 * 
 	 * si el usuario especific� una "fecha desde" en particular, se traeran
-	 * solo alarmas con fecha >= para el campo especificado [fecha inicio, ack,
+	 * solo alarmas con fecha mayor igual para el campo especificado [fecha inicio, ack,
 	 * fin]
 	 * 
 	 * @param calendarDesde
@@ -187,7 +182,7 @@ public class ServConsultaDinamica {
 	 * creador de parametro dinamico.
 	 * 
 	 * si el usuario especific� una "fecha hasta" en particular, se traeran
-	 * solo alarmas con fecha <= para el campo especificado [fecha inicio, ack,
+	 * solo alarmas con fecha menor igual para el campo especificado [fecha inicio, ack,
 	 * fin]
 	 * 
 	 * @param calendarHasta
@@ -248,11 +243,9 @@ public class ServConsultaDinamica {
 	 * minimo de vida, para descartar de esta manera alarmas que duren menos que
 	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
-	 * @param criteria
-	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
-	 * @param duracion_minima
+	 * 
 	 */
 	private Predicate agregarPredicadoRuidoMinimo(String fecha_inicio, String fecha_finalizacion) {
 

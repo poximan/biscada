@@ -96,9 +96,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	private ServPeriodoAbstract servPeriodoAbstract;
 
-	/**
-	 * @wbp.parser.constructor
-	 */
+	public VistaKpiAbstract(){
+		iniciarComponentes();
+	}
+	
 	public VistaKpiAbstract(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
 
 		this.servPeriodoAbstract = servPeriodoAbstract;

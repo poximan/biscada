@@ -39,10 +39,6 @@ public abstract class ServMedAbstract {
 	 * por cada llamado completa una fila de la matriz de dos dimensiones que
 	 * luego se usara como parametro para crear el modelo de la tabla
 	 * 
-	 * @param serv_intervalo
-	 *            es el servicio de manejo de intervalos de fechas. en
-	 *            particular interesa en intervalo mayor, que es el que incluye
-	 *            a la alarma mas antigua y a la mas reciente
 	 * @return
 	 * @throws IndexOutOfBoundsException
 	 * 

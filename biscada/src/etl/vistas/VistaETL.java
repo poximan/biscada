@@ -106,7 +106,6 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * construye la vista para gestionar los archivos .dbf de una direccion
 	 * dada. luego esta direccion podr� ser cambiada
 	 * 
-	 * @param direccion_lectura
 	 */
 	public VistaETL() {
 
@@ -163,7 +162,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * accion ejecutada al presionar el boton restablecer y el evento de cambiar
 	 * el contenido del texto.
 	 * 
-	 * el campo de texto asignado para la direccion {origen <-> destino} de los
+	 * el campo de texto asignado para la direccion {origen - destino} de los
 	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
 	 * nuevamente la logica de negocio responsable de llenar las listas de la
 	 * vista ETL.

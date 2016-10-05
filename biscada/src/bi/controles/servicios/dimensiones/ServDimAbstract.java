@@ -40,10 +40,6 @@ public abstract class ServDimAbstract {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public float[][] postProcesarTabla(float[][] valor_retorno, boolean contar_periodos_nulos) {
-		return valor_retorno;
-	}
-
 	/**
 	 * 
 	 * @param serv_medicion
@@ -69,6 +65,10 @@ public abstract class ServDimAbstract {
 	 *         simula la seguda entrada de la que posee los datos.
 	 */
 	public abstract Object[] getGrupos();
+
+	public float[][] postProcesarTabla(float[][] valor_retorno, boolean contar_periodos_nulos) {
+		return valor_retorno;
+	}
 
 	/**
 	 * crea un mapa hash donde la clave es una dimension de las especificadas en

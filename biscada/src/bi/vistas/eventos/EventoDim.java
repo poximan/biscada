@@ -59,13 +59,8 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 		}
 	}
 
-	public void terminarConfigVentana(int fila, String descripcion) {
-
-		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getComponenteTabla().getTbl_medicion()
-				.getModel()).getDatosFila(fila);
-
-		JFrame frame = new JFrame(descripcion);
-		lanzarVentana(frame, new VistaKpiCalidadServicio(valores, vista_dimension.getServ_periodo()));
+	public VistaDimAbstractSimple getVista_dimension() {
+		return vista_dimension;
 	}
 
 	@Override
@@ -81,7 +76,12 @@ public abstract class EventoDim implements ActionListener, MouseListener, Ventan
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public VistaDimAbstractSimple getVista_dimension() {
-		return vista_dimension;
+	public void terminarConfigVentana(int fila, String descripcion) {
+
+		float valores[] = ((TableModelMedicionTemporal) getVista_dimension().getComponenteTabla().getTbl_medicion()
+				.getModel()).getDatosFila(fila);
+
+		JFrame frame = new JFrame(descripcion);
+		lanzarVentana(frame, new VistaKpiCalidadServicio(valores, vista_dimension.getServ_periodo()));
 	}
 }

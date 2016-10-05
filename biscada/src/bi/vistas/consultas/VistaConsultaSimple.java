@@ -154,7 +154,7 @@ public class VistaConsultaSimple extends JPanel implements PanelIniciable, Event
 		btnTemporada.setPreferredSize(new Dimension(105, 23));
 		btnTemporada.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		btnTemporada.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		
+
 		panelDimensiones.add(btnFamilia);
 		panelDimensiones.add(btnSitio);
 		panelDimensiones.add(btnSuceso);

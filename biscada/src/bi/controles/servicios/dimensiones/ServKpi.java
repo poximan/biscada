@@ -17,10 +17,10 @@ public interface ServKpi {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public int totalAlarmas();
+	public int actual();
 
 	public float promedio();
 
-	public int actual();
+	public int totalAlarmas();
 
 }

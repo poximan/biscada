@@ -88,24 +88,6 @@ public abstract class ServPeriodoAbstract {
 
 	public abstract int getDivisor_en_dias();
 
-	public String[] getEncabezadoString() {
-
-		int total = getCantidadPeriodos();
-
-		String[] encabezado = new String[total];
-		DateTime campo_actual = new DateTime(intervalo.getPrimer_alarma().getTimeInMillis());
-
-		for (int indice = 0; indice < total; indice++) {
-
-			encabezado[indice] = toStringCampo_actual(campo_actual);
-
-			DateTime campo_anterior = new DateTime(campo_actual);
-
-			campo_actual = getCampo_siguiente(campo_anterior);
-		}
-		return encabezado;
-	}
-
 	public Date[] getEncabezadoFecha() {
 
 		int total = getCantidadPeriodos();
@@ -116,6 +98,24 @@ public abstract class ServPeriodoAbstract {
 		for (int indice = 0; indice < total; indice++) {
 
 			encabezado[indice] = toDateCampo_actual(campo_actual);
+
+			DateTime campo_anterior = new DateTime(campo_actual);
+
+			campo_actual = getCampo_siguiente(campo_anterior);
+		}
+		return encabezado;
+	}
+
+	public String[] getEncabezadoString() {
+
+		int total = getCantidadPeriodos();
+
+		String[] encabezado = new String[total];
+		DateTime campo_actual = new DateTime(intervalo.getPrimer_alarma().getTimeInMillis());
+
+		for (int indice = 0; indice < total; indice++) {
+
+			encabezado[indice] = toStringCampo_actual(campo_actual);
 
 			DateTime campo_anterior = new DateTime(campo_actual);
 
@@ -145,20 +145,20 @@ public abstract class ServPeriodoAbstract {
 	}
 
 	/**
-	 * convierte a String segun el campo de interes en el argumento.
-	 * 
-	 * @param campo_actual
-	 * @return
-	 */
-	protected abstract String toStringCampo_actual(DateTime campo_actual);
-
-	/**
 	 * convierte a Date segun el campo de interes en el argumento.
 	 * 
 	 * @param campo_actual
 	 * @return
 	 */
 	protected abstract Date toDateCampo_actual(DateTime campo_actual);
+
+	/**
+	 * convierte a String segun el campo de interes en el argumento.
+	 * 
+	 * @param campo_actual
+	 * @return
+	 */
+	protected abstract String toStringCampo_actual(DateTime campo_actual);
 
 	/**
 	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como

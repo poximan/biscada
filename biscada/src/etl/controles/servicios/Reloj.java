@@ -51,12 +51,12 @@ public class Reloj {
 		tiempo_inicio = System.currentTimeMillis();
 	}
 
-	public long getTiempoEnSegundos() {
-		return (tiempo_fin - tiempo_inicio) / 1000;
-	}
-
 	public long getTiempoEnMilisegundos() {
 		return tiempo_fin - tiempo_inicio;
+	}
+
+	public long getTiempoEnSegundos() {
+		return (tiempo_fin - tiempo_inicio) / 1000;
 	}
 
 	public void terminarContar() {

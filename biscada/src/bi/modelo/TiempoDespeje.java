@@ -70,12 +70,12 @@ public abstract class TiempoDespeje {
 	/* GET'S ....................................... */
 	/* ............................................. */
 
-	public int getFin() {
-		return fin;
+	public String getDescripcion() {
+		return toString();
 	}
 
-	public int getInicio() {
-		return inicio;
+	public int getFin() {
+		return fin;
 	}
 
 	/* ............................................. */
@@ -83,15 +83,15 @@ public abstract class TiempoDespeje {
 	/* SET'S ....................................... */
 	/* ............................................. */
 
+	public int getInicio() {
+		return inicio;
+	}
+
 	public void setFin(int fin) {
 		this.fin = fin;
 	}
 
 	public void setInicio(int inicio) {
 		this.inicio = inicio;
-	}
-
-	public String getDescripcion() {
-		return toString();
 	}
 }

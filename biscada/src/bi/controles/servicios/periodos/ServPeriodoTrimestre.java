@@ -63,6 +63,11 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 	}
 
 	@Override
+	protected Date toDateCampo_actual(DateTime campo_actual) {
+		return campo_actual.toDate();
+	}
+
+	@Override
 	public String toString() {
 		return desripcion;
 	}
@@ -84,10 +89,5 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 		String anio = campo_actual.year().getAsText().substring(2, 4);
 
 		return new String(texto + " tri " + "'" + anio);
-	}
-
-	@Override
-	protected Date toDateCampo_actual(DateTime campo_actual) {
-		return campo_actual.toDate();
 	}
 }

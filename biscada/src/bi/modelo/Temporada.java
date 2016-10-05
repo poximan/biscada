@@ -123,7 +123,7 @@ public abstract class Temporada {
 		fecha_limite_inicio.set(Calendar.MONTH, mes);
 	}
 
-	public String getDescripcion() {		
+	public String getDescripcion() {
 		return toString();
 	}
 

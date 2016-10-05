@@ -54,27 +54,6 @@ public class GraficoKPI extends JPanel {
 	public GraficoKPI() {
 	}
 
-	public JPanel createPanel() {
-
-		JFreeChart chart = createChart();
-		ChartPanel chartpanel = new ChartPanel(chart);
-		panel = chartpanel;
-		add(panel);
-		return panel;
-	}
-
-	public void cargarDatos(int total, int actual, double promedio) {
-
-		peligro_max = total;
-		dataset = new DefaultValueDataset(actual);
-		this.promedio = promedio;
-
-		porcentaje = Double.parseDouble(
-				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
-
-		createPanel();
-	}
-
 	/**
 	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
 	 * o seteo de porcentaje).
@@ -98,6 +77,18 @@ public class GraficoKPI extends JPanel {
 
 			intervaloPeligro = intervaloAdvertencia = intervaloNormal;
 		}
+	}
+
+	public void cargarDatos(int total, int actual, double promedio) {
+
+		peligro_max = total;
+		dataset = new DefaultValueDataset(actual);
+		this.promedio = promedio;
+
+		porcentaje = Double.parseDouble(
+				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+
+		createPanel();
 	}
 
 	private JFreeChart createChart() {
@@ -135,6 +126,15 @@ public class GraficoKPI extends JPanel {
 		meterplot.setValueFont(new Font("Arial", 1, 10));
 
 		return new JFreeChart(meterplot);
+	}
+
+	public JPanel createPanel() {
+
+		JFreeChart chart = createChart();
+		ChartPanel chartpanel = new ChartPanel(chart);
+		panel = chartpanel;
+		add(panel);
+		return panel;
 	}
 
 	/**

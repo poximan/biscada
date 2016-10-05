@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import bi.controles.servicios.dimensiones.ServKpiCalidadServicio;
@@ -33,7 +34,6 @@ import bi.vistas.eventos.EventoKPI;
 import bi.vistas.eventos.EventoKPIConfigurable;
 import comunes.vistas.PanelIniciable;
 import propiedades.controles.servicios.ServPropiedades;
-import javax.swing.UIManager;
 
 /* ............................................. */
 /* ............................................. */
@@ -49,60 +49,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	private static final long serialVersionUID = 1L;
 
-	private GroupLayout gl_panelGeneral;
-
-	private JPanel panelIndicador;
-	private JPanel panelResumen;
-
-	private JLabel lblMaximo;
-	private JLabel lblMinimo;
-	private JLabel lblTotal;
-	private JLabel lblPromedio;
-	private JLabel lblVarianza;
-	private JLabel lblD_estandar;
-
-	private JTextField txtTotal;
-	private JTextField txtPromedio;
-	private JTextField txtActual;
-
-	private GraficoKPI indicador_kpi;
-	private JSpinner spinner_porcentaje;
-
-	private JScrollPane panelHistograma;
-	private GraficoHistorial histo_kpi;
-	private JTextField txtVarianza;
-	private JTextField txtD_estandar;
-	private JTextField txtMinimo;
-	private JTextField txtMaximo;
-	private JLabel lblPeriodoMasReciente;
-
-	private ServPeriodoAbstract servPeriodoAbstract;
-
-	/* ............................................. */
-	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
-	/* ............................................. */
-
-	/**
-	 * @wbp.parser.constructor
-	 */
-	public VistaKpiAbstract(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
-
-		this.servPeriodoAbstract = servPeriodoAbstract;
-		iniciarComponentes();
-		calculosComunes(datos);
-	}
-
-	public VistaKpiAbstract(float fila_datos[], ServPeriodoAbstract servPeriodoAbstract) {
-
-		this(convertir(fila_datos), servPeriodoAbstract);
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
-
 	/**
 	 * convierte a dos dimensiones para tratarlo los datos de la misma forma
 	 * 
@@ -114,6 +60,60 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		float[][] matriz_datos = new float[1][fila_datos.length];
 		matriz_datos[0] = Arrays.copyOf(fila_datos, fila_datos.length);
 		return matriz_datos;
+	}
+
+	private GroupLayout gl_panelGeneral;
+	private JPanel panelIndicador;
+
+	private JPanel panelResumen;
+	private JLabel lblMaximo;
+	private JLabel lblMinimo;
+	private JLabel lblTotal;
+	private JLabel lblPromedio;
+	private JLabel lblVarianza;
+
+	private JLabel lblD_estandar;
+	private JTextField txtTotal;
+	private JTextField txtPromedio;
+
+	private JTextField txtActual;
+	private GraficoKPI indicador_kpi;
+
+	private JSpinner spinner_porcentaje;
+	private JScrollPane panelHistograma;
+	private GraficoHistorial histo_kpi;
+	private JTextField txtVarianza;
+	private JTextField txtD_estandar;
+	private JTextField txtMinimo;
+	private JTextField txtMaximo;
+
+	private JLabel lblPeriodoMasReciente;
+
+	/* ............................................. */
+	/* ............................................. */
+	/* CONSTRUCTOR ................................. */
+	/* ............................................. */
+
+	private ServPeriodoAbstract servPeriodoAbstract;
+
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public VistaKpiAbstract(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
+
+		this.servPeriodoAbstract = servPeriodoAbstract;
+		iniciarComponentes();
+		calculosComunes(datos);
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* METODOS ..................................... */
+	/* ............................................. */
+
+	public VistaKpiAbstract(float fila_datos[], ServPeriodoAbstract servPeriodoAbstract) {
+
+		this(convertir(fila_datos), servPeriodoAbstract);
 	}
 
 	private void calculosComunes(float datos[][]) {
@@ -138,12 +138,20 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		indicador_kpi.cargarDatos(total, actual, promedio);
 
-		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], total, promedio);		
+		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], total, promedio);
 	}
 
 	@Override
 	public void configEventos(EventoKPI eventos) {
 		spinner_porcentaje.getModel().addChangeListener(eventos);
+	}
+
+	public GraficoKPI getIndicador_kpi() {
+		return indicador_kpi;
+	}
+
+	public JSpinner getSpinner_porcentaje() {
+		return spinner_porcentaje;
 	}
 
 	@Override
@@ -158,7 +166,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelIndicador
 				.setBorder(new TitledBorder(null, "Indicador", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		indicador_kpi = new GraficoKPI();
-		
+
 		panelIndicador.add(indicador_kpi);
 		panelIndicador.validate();
 
@@ -312,15 +320,18 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
 						.addGap(23)));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-								.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-						.addContainerGap()));
+		gl_panelGeneral
+				.setVerticalGroup(
+						gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
+										.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+												.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 188,
+														Short.MAX_VALUE)
+												.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+										.addContainerGap()));
 
 		lblPeriodoMasReciente = new JLabel("Periodo mas reciente");
 		lblPeriodoMasReciente
@@ -402,14 +413,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		txtMinimo.setColumns(10);
 
 		setLayout(gl_panelGeneral);
-	}
-
-	public GraficoKPI getIndicador_kpi() {
-		return indicador_kpi;
-	}
-
-	public JSpinner getSpinner_porcentaje() {
-		return spinner_porcentaje;
 	}
 
 	public void notificarError(String mensaje) {

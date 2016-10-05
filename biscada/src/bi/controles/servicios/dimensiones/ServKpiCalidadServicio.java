@@ -20,22 +20,27 @@ public class ServKpiCalidadServicio implements ServKpi {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private float datos[][];
+	public static String formatear(double valor) {
+		NumberFormat formatter = new DecimalFormat("#0.00");
+		return formatter.format(valor);
+	}
 
 	/* ............................................. */
 	/* ............................................. */
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public ServKpiCalidadServicio(float[][] datos) {
-		super();
-		this.datos = datos;
-	}
+	private float datos[][];
 
 	/* ............................................. */
 	/* ............................................. */
 	/* METODOS ..................................... */
 	/* ............................................. */
+
+	public ServKpiCalidadServicio(float[][] datos) {
+		super();
+		this.datos = datos;
+	}
 
 	@Override
 	public int actual() {
@@ -46,6 +51,22 @@ public class ServKpiCalidadServicio implements ServKpi {
 			resultado += datos[ind_fila][datos[0].length - 1];
 
 		return resultado;
+	}
+
+	private int celdasUtiles() {
+
+		int celdas_utiles = 0;
+
+		for (int fila = 0; fila < datos.length; fila++)
+			for (int columna = 0; columna < datos[fila].length; columna++)
+				if (datos[fila][columna] >= 0)
+					celdas_utiles++;
+
+		return celdas_utiles;
+	}
+
+	public double desviacionEstandar() {
+		return Math.sqrt(varianza());
 	}
 
 	public int maximo() {
@@ -73,6 +94,11 @@ public class ServKpiCalidadServicio implements ServKpi {
 	}
 
 	@Override
+	public float promedio() {
+		return totalAlarmas() / celdasUtiles();
+	}
+
+	@Override
 	public int totalAlarmas() {
 
 		int resultado = 0;
@@ -82,11 +108,6 @@ public class ServKpiCalidadServicio implements ServKpi {
 				resultado += datos[fila][columna];
 
 		return resultado;
-	}
-
-	@Override
-	public float promedio() {
-		return totalAlarmas() / celdasUtiles();
 	}
 
 	public double varianza() {
@@ -113,26 +134,5 @@ public class ServKpiCalidadServicio implements ServKpi {
 			varianza += cuadrado_dif_respecto_promedio[columna];
 
 		return varianza / cuadrado_dif_respecto_promedio.length;
-	}
-
-	public double desviacionEstandar() {
-		return Math.sqrt(varianza());
-	}
-
-	private int celdasUtiles() {
-
-		int celdas_utiles = 0;
-
-		for (int fila = 0; fila < datos.length; fila++)
-			for (int columna = 0; columna < datos[fila].length; columna++)
-				if (datos[fila][columna] >= 0)
-					celdas_utiles++;
-
-		return celdas_utiles;
-	}
-
-	public static String formatear(double valor) {
-		NumberFormat formatter = new DecimalFormat("#0.00");
-		return formatter.format(valor);
 	}
 }

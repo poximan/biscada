@@ -80,14 +80,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	public void actualizar(Object entidad) {
 	}
 
-	public void inicia(ArchivoDBF archivo_actual) {
-		archivo_actual.setComienzo(Calendar.getInstance());
-	}
-
-	public void termina(ArchivoDBF archivo_actual) {
-		archivo_actual.setFin(Calendar.getInstance());
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
@@ -172,15 +164,14 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		return Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM().createNamedQuery("ArchivoDBF.buscTodos");
 	}
 
+	public void inicia(ArchivoDBF archivo_actual) {
+		archivo_actual.setComienzo(Calendar.getInstance());
+	}
+
 	@Override
 	public Object leer(Object entidad) {
 		return null;
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
 
 	@Override
 	public void liberarObjetos() {
@@ -188,6 +179,11 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 		list_disponibles.clear();
 		list_procesados.clear();
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	/**
 	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
@@ -205,6 +201,10 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	 */
 	public void quitarDisponible(ArchivoDBF archivo_actual) {
 		list_disponibles.remove(archivo_actual);
+	}
+
+	public void termina(ArchivoDBF archivo_actual) {
+		archivo_actual.setFin(Calendar.getInstance());
 	}
 
 	/* ............................................. */

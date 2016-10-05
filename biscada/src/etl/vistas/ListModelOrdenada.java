@@ -20,7 +20,6 @@ import comunes.modelo.ArchivoDBF;
 /* CLASE ....................................... */
 /* ............................................. */
 
-
 /**
  * Class Responsibility Collaborator (CRC) design:
  * 

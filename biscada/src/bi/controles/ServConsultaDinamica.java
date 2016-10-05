@@ -31,7 +31,6 @@ import org.eclipse.persistence.sessions.Session;
 import bi.modelo.DatosConsulta;
 import comunes.controles.EMFSingleton;
 import comunes.modelo.Alarma;
-import comunes.modelo.CalendarNumber;
 import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
 import comunes.modelo.Suceso;
@@ -230,9 +229,8 @@ public class ServConsultaDinamica {
 
 		ParameterExpression<Integer> param_maxima = crit_builder.parameter(Integer.class, "duracion_maxima");
 
-		Expression<CalendarNumber> diferencia_fechas = crit_builder.diff(
-				root_alarmas.get(fecha_finalizacion).as(CalendarNumber.class),
-				root_alarmas.get(fecha_inicio).as(CalendarNumber.class));
+		Expression<Float> diferencia_fechas = crit_builder.diff(root_alarmas.get(fecha_finalizacion).as(Float.class),
+				root_alarmas.get(fecha_inicio).as(Float.class));
 
 		Predicate predicado_maxima = crit_builder.le(diferencia_fechas, param_maxima);
 		return predicado_maxima;
@@ -260,9 +258,8 @@ public class ServConsultaDinamica {
 
 		ParameterExpression<Integer> param_minima = crit_builder.parameter(Integer.class, "duracion_minima");
 
-		Expression<CalendarNumber> diferencia_fechas = crit_builder.diff(
-				root_alarmas.get(fecha_finalizacion).as(CalendarNumber.class),
-				root_alarmas.get(fecha_inicio).as(CalendarNumber.class));
+		Expression<Float> diferencia_fechas = crit_builder.diff(root_alarmas.get(fecha_finalizacion).as(Float.class),
+				root_alarmas.get(fecha_inicio).as(Float.class));
 
 		Predicate predicado_minima = crit_builder.ge(diferencia_fechas, param_minima);
 		return predicado_minima;

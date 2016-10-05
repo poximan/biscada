@@ -24,6 +24,26 @@ import etl.controles.cruds.ServCRUDTipoDeEquipo;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * Es la ultima fase del proceso ETL, e implica cargar los datos en el sistema
  * de destino. Al realizar esta operaci�n se aplicar�n todas las
  * restricciones y triggers que se hayan definido (valores �nicos, integridad

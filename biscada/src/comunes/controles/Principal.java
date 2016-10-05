@@ -18,6 +18,27 @@ import bi.controles.GestorBI;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
+
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
 /**
  * la primer instancia de un objeto es de esta clase. su responsabilidad es
  * llamar al gestorBI que da comienza a la interaccion del programa con el

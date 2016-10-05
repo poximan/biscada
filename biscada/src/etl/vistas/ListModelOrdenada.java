@@ -19,6 +19,30 @@ import comunes.modelo.ArchivoDBF;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
+
+
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ListModelOrdenada extends AbstractListModel<ArchivoDBF> {
 

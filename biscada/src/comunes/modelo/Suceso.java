@@ -22,6 +22,26 @@ import comunes.fabrica.TipoDatoFabricable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
 @Entity
 @Table(name = "suceso")
 @NamedQueries({ @NamedQuery(name = "Suceso.buscTodos", query = "SELECT tabla FROM Suceso tabla"),

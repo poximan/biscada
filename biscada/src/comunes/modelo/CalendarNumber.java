@@ -11,6 +11,26 @@ package comunes.modelo;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * Tipo particular a la necesidad de resolver el problema del tiempo
  * transcurrido entre la generacion y la finalizacion de la alarma.
  * 

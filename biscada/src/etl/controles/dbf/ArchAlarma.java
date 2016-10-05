@@ -9,6 +9,29 @@ package etl.controles.dbf;
 /* ............................................. */
 /* CLASE ....................................... */
 /* ............................................. */
+
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 /**
  * represento una fila de alarma extraida de un archivo dbf. mis campos todos
  * ellos String, corresponden con cada uno de los campos de la fila en el

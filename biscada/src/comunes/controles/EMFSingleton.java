@@ -23,8 +23,24 @@ import propiedades.controles.servicios.ServPropiedades;
 /* ............................................. */
 
 /**
- * instancia unica de esta clase. entre sus atributos contiene la unica
- * instancia de entity manager factory que debe manejar la aplicacion
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
  */
 public class EMFSingleton {
 

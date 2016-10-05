@@ -18,6 +18,26 @@ import comunes.controles.EMFSingleton;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * util para optimizar insercion o eliminacion de archivos. los objetos que lo
  * implementen manejaran de forma dinamica el uso o no de transacciones a nivel
  * de lote o de archivo.

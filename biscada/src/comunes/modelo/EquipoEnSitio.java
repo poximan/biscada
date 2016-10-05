@@ -25,6 +25,26 @@ import comunes.fabrica.TipoDatoFabricable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
 @Entity
 @Table(name = "equipo_en_sitio", uniqueConstraints = @UniqueConstraint(columnNames = { "ID_SITIO", "ID_TIPO_DE_EQUIPO",
 		"NUMERO_EQUIPO" }))

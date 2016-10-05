@@ -14,6 +14,28 @@ import java.util.List;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
+/**
  * gestiona las alarmas rechazadas por el proceso etl. una unica instancia de
  * este objeto es compartida por las fabricas que obtienen sus objetos
  * analizando el campo "texto" del archivo dbf

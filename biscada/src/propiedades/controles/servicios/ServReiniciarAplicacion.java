@@ -15,6 +15,26 @@ import java.util.List;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * -------------------- clase en desuso --------------------
  * 
  * no se pudo implementar correctamente, pero se pretend�a que la aplicacion

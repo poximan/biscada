@@ -25,6 +25,26 @@ import javax.persistence.TemporalType;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * representacion en la BD de un archivo dbf cuyo contenido son una serie
  * indeterminada de alarmas (de 0 a n). es de utilidad para tener conocimiento
  * sobre los archivos que ya fueron procesados y en particular c�mo result�

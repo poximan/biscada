@@ -24,6 +24,28 @@ import etl.partes_alarma.sucesos.ComandoParada;
 import etl.partes_alarma.sucesos.NivelAlto;
 import etl.partes_alarma.sucesos.NivelRebalse;
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class ServExpresionesRegulares {
 
 	/* ............................................. */

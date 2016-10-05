@@ -28,9 +28,23 @@ import org.eclipse.persistence.annotations.Index;
 /* ............................................. */
 
 /**
- * instancia de una alarma generada por el scada
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author hugo
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
  */
 @Entity

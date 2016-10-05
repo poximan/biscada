@@ -15,11 +15,26 @@ import comunes.modelo.Alarma;
 /* ............................................. */
 
 /**
- * interfaz de uso en el ambito del paquete etl.control_CRUDs
+ * Class Responsibility Collaborator (CRC) design:
  * 
+ * ==== parte clase =========================
  * 
- * @author hugo
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
+ * @author hdonato
+ * 
  */
 public interface ClaveIdentificable {
 

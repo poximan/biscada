@@ -31,6 +31,26 @@ import etl.controles.servicios.CampoTextoDefectuoso;
 /* ............................................. */
 
 /**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
+/**
  * La segunda fase es de transformaci�n, y aplica una serie de reglas de
  * negocio o funciones sobre los datos extra�dos para convertirlos en datos
  * que ser�n cargados. Puede ser necesario aplicar algunas de las siguientes

@@ -19,6 +19,28 @@ import etl.excepciones.NumeroEquipoExcedidoExcepcion;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO,
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class Bomba extends TipoDeEquipo {
 
 	/* ............................................. */

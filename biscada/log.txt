@@ -6390,3 +6390,41 @@ Error Code: 0
 2016-10-05 13:54:39,262 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
 2016-10-05 13:54:39,263 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
 2016-10-05 13:54:39,263 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-05 20:36:13,271 [INFO ] comunes.controles.Principal:72		- 
+
+2016-10-05 20:36:13,278 [INFO ] comunes.controles.Principal:73		- ################# Comienza aplicacion #################
+2016-10-05 20:36:13,749 [DEBUG] comunes.controles.Principal:145		- heap reservado = 57.5 MB
+2016-10-05 20:36:13,756 [DEBUG] comunes.controles.Principal:146		- heap libre = 50.28972625732422 MB
+2016-10-05 20:36:13,757 [DEBUG] comunes.controles.Principal:147		- heap maximo = 844.5 MB
+
+2016-10-05 20:36:14,143 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-05 20:36:14,199 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-05 20:36:21,389 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-05 20:36:30,364 [INFO ] bi.modelo.ComponenteConsulta:151		- colectando datos desde IU
+2016-10-05 20:36:30,391 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-05 20:36:30,391 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-05 20:36:30,400 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-05 20:36:30,460 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-05 20:36:30,464 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-05 20:37:17,767 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 267779 resultados
+
+2016-10-05 20:37:17,835 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-05 20:37:17,839 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-05 20:37:56,806 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-05 20:37:56,821 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-05 20:37:56,821 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-05 20:38:36,382 [INFO ] bi.modelo.ComponenteConsulta:151		- colectando datos desde IU
+2016-10-05 20:38:36,394 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-05 20:38:36,394 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-05 20:38:36,396 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-05 20:38:36,442 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-05 20:38:36,446 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_INICIO >= ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-05 20:38:47,444 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 267136 resultados
+
+2016-10-05 20:38:47,523 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-05 20:38:47,523 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-05 20:39:03,316 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-05 20:39:03,317 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-05 20:39:03,317 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso

@@ -15,13 +15,13 @@ package comunes.controles;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, el polimorfismo de clases con contenido que debe borrarse
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, ofrezco una tratamiento polimorfico para clases diferentes
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la secuencia de pasos para vaciar listas y llamar a gc()
  * 
  * ==== parte colaboracion ==================
  * 
@@ -29,15 +29,8 @@ package comunes.controles;
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
  *
- */
-/**
- * ciertas etapas de la adquisicion de informacion desde archivos dbf implican
- * gran cantidad de datos en memoria, que una vez procesados son innecesarios.
- * este interfaz debe ser implementada por toda clase que tenga objetos de gran
- * volumen y corta vida.
- * 
  * @author hugo
- * 
+ *
  */
 public interface ObjetosBorrables {
 

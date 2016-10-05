@@ -27,19 +27,22 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un wrapper de emf
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, garantizo una implementacion Singleton de emf
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la unidad de persistencia configurada via persistence.xml
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, en la api de JPA para pedir un emf
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, a traves del metodo
+ * Persistence.createEntityManagerFactory()
+ * 
+ * @author hugo
  *
  */
 public class EMFSingleton {

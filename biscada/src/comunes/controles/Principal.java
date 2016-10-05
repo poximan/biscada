@@ -24,25 +24,21 @@ import bi.controles.GestorBI;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, la primer clase que se ejecuta del programa
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, llamar al bi.controles.GestorBI
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, configurador de log4j y la clase de entrada al proceso BI
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es el proceso BI, a traves de su clase entrada
+ * bi.controles.GestorBI
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
- */
-/**
- * la primer instancia de un objeto es de esta clase. su responsabilidad es
- * llamar al gestorBI que da comienza a la interaccion del programa con el
- * usuario
+ * COMO INTERACTUO CON MI COLABORADOR, en mi constructor creo un hilo que lanza
+ * el proceso GestorBI.getSingleton().mostrarVentana();
  * 
  * @author hugo
  *

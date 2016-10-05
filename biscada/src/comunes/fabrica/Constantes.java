@@ -10,6 +10,32 @@ package comunes.fabrica;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO constantes
+ * 
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO concentro todos las constantes
+ * 
+ * LO QUE CONOZCO el valor String o int de una nombre
+ * 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL ES todas las clases que precisen un valor constante
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR devolviendo el valor asociado a la
+ * constante solicitada
+ * 
+ * 
+ * @author hdonato
+ *
+ */
 public class Constantes {
 
 	/* ............................................. */

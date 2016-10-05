@@ -17,6 +17,34 @@ import bi.vistas.consultas.VistaConsultaSimple;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase singleton que devuelve siempre el mismo gestor para
+ * las pantallas asociadas al BI
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construyo un marco de contencion (JFrame) para los componentes
+ * graficos
+ * 
+ * LO QUE CONOZCO bi.modelo.ComponenteMenuConsulta.ComponenteMenuConsulta es la
+ * clase que conozco, ella se ocupa de devolver un JFrame adaptado cuando lo
+ * necesito
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL es ComponenteMenuConsulta
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR creo una instancia de el, y configuro los
+ * aspectos generales de los marcos, visibilidad y botones de operacion de
+ * ventanas (_|#|X)
+ * 
+ * @author hdonato
+ *
+ */
 public class GestorBI {
 
 	/* ............................................. */

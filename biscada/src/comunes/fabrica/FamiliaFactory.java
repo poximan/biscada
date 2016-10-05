@@ -27,19 +27,21 @@ import etl.partes_alarma.familias.Reuso;
 /**
  * Class Responsibility Collaborator (CRC) design:
  * 
- * parte clase ===========
+ * ==== parte clase =========================
  * 
  * YO REPRESENTO la implementacion concreta de una fabrica abstracta. patron de
  * diseño AbstractFactory
  * 
- * parte responsabilidad =====================
+ * 
+ * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO devuelvo instancias concretas de la super clase para la que fui
  * creado.
  * 
  * LO QUE CONOZCO el identificador de cada sub clase concreta y su constructor
  * 
- * parte colaboracion ==================
+ * 
+ * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL ES quien precise una instancia de los subtipos que
  * conozco
@@ -47,6 +49,7 @@ import etl.partes_alarma.familias.Reuso;
  * COMO INTERACTUO CON MI COLABORADOR este conoce el discriminante y yo lo que
  * debo devolver nos comunicacmos a traves del mensaje getInstancia(String
  * discriminante)
+ * 
  * 
  * @author hdonato
  *

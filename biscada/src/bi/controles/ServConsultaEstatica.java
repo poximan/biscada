@@ -18,6 +18,31 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO la clase para realizar consultas estaticas a la BD
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construyo NamedQuerys
+ * 
+ * LO QUE CONOZCO al framework JPA para mapeo ORM, y el formato impuesto para
+ * NamedQuery que me entrega la clase objetivo de la consulta.
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL es JPA
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, creo una instancia de NamedQuery segun el
+ * formato impuesto por su propietario (ver clases en comunes.modelo.*), llamo
+ * al gestor de entidades de JPA y le entrego la NamedQuery creada.
+ * 
+ * @author hdonato
+ *
+ */
 public class ServConsultaEstatica {
 
 	/* ............................................. */

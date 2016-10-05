@@ -42,6 +42,30 @@ import comunes.modelo.TipoDeEquipo;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO la clase para realizar consultas dinamicas a la BD
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construyo predicados con los argumento que me entrega mi cliente,
+ * para usar en consulta SQL de argumento variable
+ * 
+ * LO QUE CONOZCO al framework JPA para mapeo ORM
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL es JPA
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR , pido una instancia de CriteriaBuilder y
+ * le entrego los predicados que construi
+ * 
+ * @author hdonato
+ *
+ */
 public class ServConsultaDinamica {
 
 	/* ............................................. */

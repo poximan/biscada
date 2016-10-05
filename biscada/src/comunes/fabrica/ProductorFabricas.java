@@ -13,8 +13,31 @@ import etl.controles.servicios.CampoTextoDefectuoso;
 /* ............................................. */
 
 /**
- * parte de la implementacion del patron AbstractFactory para resolver la
- * instancia de subclases de objetos de una clase variable.
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO un productor de nuevas fabricas concretas
+ * 
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO devuelvo instancias concretar de una fabrica entre las que
+ * conozco.
+ * 
+ * LO QUE CONOZCO todas las fabricas concretas implementadas. por ejemplo
+ * conozco las fabricas de familia, sitio y suceso entre otras
+ * 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL ES la clase comunes.fabrica.Constantes que conoce el
+ * String al que debe ser igual el discriminante
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR uso el discriminante que me entrega mi
+ * cliente, y lo comparo mediante equals(Constantes.FABRICA_EQUIPO_EN_SITIO) o
+ * la fabrica que corresponda.
+ * 
  * 
  * @author hdonato
  *

@@ -57,14 +57,6 @@ public class Principal {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	/**
-	 * aqui es donde comienza la aplicacion. el metodo estatico lanza la clase
-	 * que lo contiene, es decir aqui se crea la primer instancia de un objeto.
-	 * 
-	 * @param args
-	 *            queda por convencion, no se utilizan parametros de inicio de
-	 *            aplicacion.
-	 */
 	public static void main(final String[] args) {
 
 		PropertyConfigurator.configure("log4j.properties");

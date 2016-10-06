@@ -32,29 +32,31 @@ import nl.knaw.dans.common.dbflib.Table;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al servicio que realiza la primer fase del proceso ETL. la
+ * extraccion de los datos desde el archivo fuente.
+ * 
+ * mi tiempo de vida es el necesario para extrer datos un unico archivo dbf.
+ * multiples archivos necesitaran multiples instancias de mi.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, extraigo los datos desde el archivo dbf origen. luego los
+ * convierto al tipo etl.controles.dbf.ArchAlarma. La extracción no genera
+ * impacto en el archivo origen.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, el nombre y ruta del archivo dbf que debo procesar
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, la biblioteca externa dans_dbf para procesar
+ * archivos xBase y el parser etl.controles.dbf.ServParser
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, dans_dbf me entrega los nombres de los
+ * campos y el total de registros. con esa informacion itero los registros y por
+ * cada ciclo delego en el parser el completado de campos.
  * 
  * @author hdonato
  *
- */
-/**
- * establece la comunicacion con el archivo fuente extrae encabezado y filas de
- * alarmas. todo sin formato
- * 
- * @author hugo
- * 
  */
 public class ETL0Extraer {
 

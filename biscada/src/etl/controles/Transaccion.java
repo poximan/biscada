@@ -22,29 +22,24 @@ import comunes.controles.EMFSingleton;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al wrapper de una transaccion sobre BD
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, ofrezco una manera unificada de iniciar y terminar
+ * transacciones, incluyendo rollback de ser necesario.
  * 
  * LO QUE CONOZCO,
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, el manejador de transacciones nativo de JPA
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, lo llamo para pedir la transaccion en
+ * curso o crear una nueva en otro caso. luego lo vuelvo a llamar para commit.
  * 
  * @author hdonato
  *
- */
-/**
- * util para optimizar insercion o eliminacion de archivos. los objetos que lo
- * implementen manejaran de forma dinamica el uso o no de transacciones a nivel
- * de lote o de archivo.
- * 
- * @author hugo
  */
 public class Transaccion {
 

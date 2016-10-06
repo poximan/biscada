@@ -24,19 +24,23 @@ import etl.vistas.VistaETL;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO una clase singleton que devuelve siempre el mismo gestor para
+ * las pantallas asociadas al ETL
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO construyo un marco de contencion (JFrame) para los componentes
+ * graficos
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO un JFrame generico para contener al panel
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL es JFrame
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR creo una instancia de el, y configuro los
+ * aspectos generales de los marcos, visibilidad y botones de operacion de
+ * ventanas (_|#|X)
  * 
  * @author hdonato
  *

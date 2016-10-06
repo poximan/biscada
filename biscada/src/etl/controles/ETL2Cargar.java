@@ -28,32 +28,30 @@ import etl.controles.cruds.ServCRUDTipoDeEquipo;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al servicio que realiza la tercer fase del proceso ETL. la
+ * carga de los datos en la base de datos destino.
+ * 
+ * mi tiempo de vida es el necesario para cargar en la BD los datos de un unico
+ * archivo dbf. multiples archivos necesitaran multiples instancias de mi.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, interactuo con la base de datos de destino. Al hacerlo aplico
+ * restricciones como valores únicos (no repetir informacion que ya existe en la
+ * BD) e integridad referencial.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la lista del tipo Alarma que debo cargar en la BD, y los
+ * servicios CRUD de todos los POJO's que componen una Alarma.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.cruds.ServCRUDAlarma
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, me ofrece un metodo capaz de insertar una
+ * nueva fila de Alarma en la base de datos.
  * 
  * @author hdonato
  *
- */
-/**
- * Es la ultima fase del proceso ETL, e implica cargar los datos en el sistema
- * de destino. Al realizar esta operaciï¿½n se aplicarï¿½n todas las
- * restricciones y triggers que se hayan definido (valores ï¿½nicos, integridad
- * referencial, campos obligatorios, rangos de valores). Estas restricciones y
- * triggers contribuyen a garantizar la calidad de los datos.
- * 
- * @author hugo
- * 
  */
 public class ETL2Cargar implements ObjetosBorrables {
 

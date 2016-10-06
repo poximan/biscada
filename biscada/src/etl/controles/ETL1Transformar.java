@@ -35,32 +35,36 @@ import etl.controles.servicios.CampoTextoDefectuoso;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al servicio que realiza la segunda fase del proceso ETL. la
+ * transformacion de los datos origen en datos destino.
+ * 
+ * mi tiempo de vida es el necesario para transformar los datos de un unico archivo dbf.
+ * multiples archivos necesitaran multiples instancias de mi.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, aplico funciones sobre la lista de etl.controles.dbf.ArchAlarma
+ * que me entrega el extractor (etl.controles.ETL0Extraer) para convertirla en
+ * una lista de comunes.modelo.Alarma. A veces necesito dividir una columna en
+ * varias. Tambien debo validar o rechazar una fila segun me falten datos, o
+ * sean ambiguos. Para este último llevo un registro que luego expongo en
+ * log.txt para revision manual.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la lista origen entregada por el Extractor, y la lista
+ * destino para entregar al Cargador (Load en ingles)
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es el comunes.fabrica.ProductorFabricas
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, entre los campos que debo transformar hay
+ * uno llamado TEXT (nombre asignado desde el origen dbf). alli conviven tres
+ * datos diferentes que derivaran en tres atributos distintos de Alarma. mi
+ * colabador recibe el campo TEXT y segun la fabrica concreta que lo está
+ * interpretando, me devolverá algo del tipo que espero.
  * 
  * @author hdonato
  *
- */
-/**
- * La segunda fase es de transformaciï¿½n, y aplica una serie de reglas de
- * negocio o funciones sobre los datos extraï¿½dos para convertirlos en datos
- * que serï¿½n cargados. Puede ser necesario aplicar algunas de las siguientes
- * transformaciones: 1) Seleccionar sï¿½lo ciertas columnas para su carga. 2)
- * Dividir una columna en varias.
- * 
- * @author hugo
- * 
  */
 public class ETL1Transformar implements ObjetosBorrables {
 

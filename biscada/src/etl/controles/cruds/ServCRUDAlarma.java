@@ -28,19 +28,21 @@ import comunes.modelo.Alarma;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al servicio crud concreto para el tratamiento de
+ * comunes.modelo.Alarma
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, persisto nuevas alarmas
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, Alarmas a ser persistidas
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, entity manager de JPA
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, utilizo su metodo persist para persistir
+ * nuevas alarmas. protejo la transaccion mediante rollback de ser necesario.
  *
  * @author hdonato
  * 

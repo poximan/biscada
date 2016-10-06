@@ -19,11 +19,11 @@ import comunes.modelo.Alarma;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una interfaz aplicable a los servicios CRUD's
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, establezco la forma estandar que deben tener las consultas a BD
  * 
  * LO QUE CONOZCO,
  * 

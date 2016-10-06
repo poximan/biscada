@@ -29,19 +29,24 @@ import comunes.modelo.ArchivoDBF;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, al servicio crud concreto para el tratamiento de
+ * comunes.modelo.ArchivoDBF
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, persisto nuevos archivos, marco inicio y fin del procesamiento
+ * de su contenido, protejo a quienes me piden servicio de insertar mas de una
+ * vez el mismo archivo (y todo su contenido de alarmas) en la BD
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la lista de archivos dbf disponibles para insertar en BD, y
+ * la lista de archivos dbf ya persistidos en BD.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, entity manager de JPA
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, utilizo NamedQuery a traves de mi
+ * implementacion getQueryTodos() para conocer el estado actual de la BD.
  *
  * @author hdonato
  * 

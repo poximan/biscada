@@ -26,20 +26,30 @@ import comunes.modelo.TipoDeEquipo;
  * Class Responsibility Collaborator (CRC) design:
  * 
  * ==== parte clase =========================
+ *
+ * YO REPRESENTO, al servicio crud concreto para el tratamiento de
+ * comunes.modelo.TipoDeEquipo
  * 
- * YO REPRESENTO,
+ * colaboro directamente con la fase de Carga del ETL. la fase anterior de
+ * transformacion completa los atributos del objeto Alarma con nuevos tipos,
+ * algunos obtenidos directamente y otros a traves de fabricas abstractas.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, la fase de Carga del proceso ETL me entrega la proxima Alarma
+ * que pretende persistir. de ella analizo los datos que son de mi
+ * responsabilidad. si son datos nuevos los persisto y devuelvo el tipo creado.
+ * Caso contrario obtengo el de BD y lo devuelvo.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la lista de TipoDeEquipos ya persistidos en BD.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, mi lista interna de TipoDeEquipos
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, mediante el metodo
+ * buscarEnMemoriaPrimaria(). alli obtengo el indice del objeto si es que ya
+ * existe, o creo la nueva instancia y actualizo mi lista interna.
  *
  * @author hdonato
  * 

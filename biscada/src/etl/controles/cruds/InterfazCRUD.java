@@ -15,11 +15,12 @@ package etl.controles.cruds;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una interfaz aplicable a los servicios CRUD's
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, establezco la forma estandar que deben tener las consultas
+ * CRUD's (en este caso solo alta y baja) a BD
  * 
  * LO QUE CONOZCO,
  * 

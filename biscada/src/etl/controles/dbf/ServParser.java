@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import etl.modelo.ArchAlarma;
 import nl.knaw.dans.common.dbflib.DbfLibException;
 import nl.knaw.dans.common.dbflib.Field;
 import nl.knaw.dans.common.dbflib.Record;

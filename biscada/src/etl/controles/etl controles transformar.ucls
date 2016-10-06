@@ -28,8 +28,8 @@
       <operations public="true" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="etl.controles.dbf.ArchAlarma" project="biscada" 
-    file="/biscada/src/etl/controles/dbf/ArchAlarma.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="etl.modelo.ArchAlarma" project="biscada" 
+    file="/biscada/src/etl/modelo/ArchAlarma.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="565" y="185"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -51,20 +51,20 @@
   </association>  
   <association id="8">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="alarmas_extraidas">        
-        <position height="18" width="97" x="384" y="237"/>      
+      <attribute id="9" name="transformador">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="10" minimum="0" maximum="2147483647">        
+      <multiplicity id="10" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
-    <end type="SOURCE" refId="1" navigable="false">      
+    <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="12" name="alarmas_extraidas">        
-        <position height="18" width="97" x="398" y="132"/>      
+        <position height="18" width="97" x="384" y="237"/>      
       </attribute>      
       <multiplicity id="13" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
@@ -74,15 +74,15 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="14">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="15" name="transformador">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="15" name="alarmas_extraidas">        
+        <position height="18" width="97" x="398" y="132"/>      
       </attribute>      
-      <multiplicity id="16" minimum="0" maximum="1">        
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

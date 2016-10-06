@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="etl.controles.dbf.ArchAlarma" project="biscada" 
-    file="/biscada/src/etl/controles/dbf/ArchAlarma.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="etl.modelo.ArchAlarma" project="biscada" 
+    file="/biscada/src/etl/modelo/ArchAlarma.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="579" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -39,14 +39,14 @@
   </class>  
   <association id="5">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="6" name="alarmas_extraidas">        
-        <position height="0" width="0" x="-319" y="223"/>      
+      <attribute id="6" name="extractor">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-319" y="223"/>      
+      <multiplicity id="7" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="8">    
@@ -63,10 +63,14 @@
   </association>  
   <association id="11">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="extractor"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
+      <attribute id="12" name="alarmas_extraidas">        
+        <position height="0" width="0" x="-319" y="223"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-319" y="223"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

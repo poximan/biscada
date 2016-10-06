@@ -22,8 +22,8 @@ import comunes.modelo.EquipoEnSitio;
 import comunes.modelo.Familia;
 import comunes.modelo.Sitio;
 import comunes.modelo.Suceso;
-import etl.controles.dbf.ArchAlarma;
 import etl.controles.servicios.CampoTextoDefectuoso;
+import etl.modelo.ArchAlarma;
 
 /* ............................................. */
 /* ............................................. */
@@ -38,14 +38,14 @@ import etl.controles.servicios.CampoTextoDefectuoso;
  * YO REPRESENTO, al servicio que realiza la segunda fase del proceso ETL. la
  * transformacion de los datos origen en datos destino.
  * 
- * mi tiempo de vida es el necesario para transformar los datos de un unico archivo dbf.
- * multiples archivos necesitaran multiples instancias de mi.
+ * mi tiempo de vida es el necesario para transformar los datos de un unico
+ * archivo dbf. multiples archivos necesitaran multiples instancias de mi.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO, aplico funciones sobre la lista de etl.controles.dbf.ArchAlarma
- * que me entrega el extractor (etl.controles.ETL0Extraer) para convertirla en
- * una lista de comunes.modelo.Alarma. A veces necesito dividir una columna en
+ * LO QUE HAGO, aplico funciones sobre la lista de etl.modelo.ArchAlarma que me
+ * entrega el extractor (etl.controles.ETL0Extraer) para convertirla en una
+ * lista de comunes.modelo.Alarma. A veces necesito dividir una columna en
  * varias. Tambien debo validar o rechazar una fila segun me falten datos, o
  * sean ambiguos. Para este último llevo un registro que luego expongo en
  * log.txt para revision manual.

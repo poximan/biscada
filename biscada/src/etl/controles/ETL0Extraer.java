@@ -14,8 +14,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import comunes.modelo.ArchivoDBF;
-import etl.controles.dbf.ArchAlarma;
 import etl.controles.dbf.ServParser;
+import etl.modelo.ArchAlarma;
 import nl.knaw.dans.common.dbflib.CorruptedTableException;
 import nl.knaw.dans.common.dbflib.Field;
 import nl.knaw.dans.common.dbflib.IfNonExistent;
@@ -41,8 +41,8 @@ import nl.knaw.dans.common.dbflib.Table;
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO, extraigo los datos desde el archivo dbf origen. luego los
- * convierto al tipo etl.controles.dbf.ArchAlarma. La extracción no genera
- * impacto en el archivo origen.
+ * convierto al tipo etl.modelo.ArchAlarma. La extracción no genera impacto en
+ * el archivo origen.
  * 
  * LO QUE CONOZCO, el nombre y ruta del archivo dbf que debo procesar
  * 

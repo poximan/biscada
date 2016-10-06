@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.controles.dbf;
+package etl.modelo;
 
 /* ............................................. */
 /* ............................................. */
@@ -15,30 +15,26 @@ package etl.controles.dbf;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO como conclusion de una fila de alarma tal como es
+ * extraida de un archivo dbf
+ * 
+ * colaboro directamente con la primer fase del ETL. los datos extraidos del dbf
+ * se corresponden uno a uno con mis atributos.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy una representacion intermedia en Objetos de una fila dbf
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, mis datos internos (fechas, zonas, id usuario ack, etc)
  * 
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
- *
+ * 
  * @author hdonato
- * 
- */
-/**
- * represento una fila de alarma extraida de un archivo dbf. mis campos todos
- * ellos String, corresponden con cada uno de los campos de la fila en el
- * archivo origen
- * 
- * @author hugo
- * 
+ *
  */
 public class ArchAlarma {
 
@@ -64,17 +60,12 @@ public class ArchAlarma {
 
 	/* ............................................. */
 	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	public ArchAlarma() {
 		super();
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
 
 	public String getACK_NAME() {
 		return ACK_NAME;

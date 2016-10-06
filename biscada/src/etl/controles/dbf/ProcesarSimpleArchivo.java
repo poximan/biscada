@@ -16,6 +16,7 @@ import etl.controles.ETL1Transformar;
 import etl.controles.ETL2Cargar;
 import etl.controles.cruds.ServCRUDArchivoDBF;
 import etl.controles.servicios.CampoTextoDefectuoso;
+import etl.modelo.ArchAlarma;
 
 /* ............................................. */
 /* ............................................. */

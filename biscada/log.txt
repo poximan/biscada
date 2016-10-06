@@ -7202,3 +7202,121 @@ SitioFactory, no encontrado -> Falla en Bomba 1 de Impulsi?n
 2016-10-06 09:39:05,096 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
 2016-10-06 09:39:05,096 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
 2016-10-06 09:39:05,096 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-06 17:39:30,250 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-06 17:39:30,253 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-06 17:39:30,493 [DEBUG] comunes.controles.Principal:137		- heap reservado = 61.5 MB
+2016-10-06 17:39:30,495 [DEBUG] comunes.controles.Principal:138		- heap libre = 54.75818634033203 MB
+2016-10-06 17:39:30,495 [DEBUG] comunes.controles.Principal:139		- heap maximo = 903.5 MB
+
+2016-10-06 17:39:30,766 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-06 17:39:30,784 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-06 17:39:42,516 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-06 17:39:47,145 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-06 17:39:47,149 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-06 17:39:47,150 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-06 17:39:47,616 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-06 17:39:47,617 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-06 17:39:47,775 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:39:47,775 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:39:47,778 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:39:47,795 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-06 17:39:51,643 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010108.DBF [1-1]
+2016-10-06 17:39:52,680 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 224 de 224 leidas desde archivo
+2016-10-06 17:39:53,403 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 1 segundos
+2016-10-06 17:39:53,403 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 224 filas de potenciales alarmas
+2016-10-06 17:39:53,404 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 224 filas del total extraidas
+2016-10-06 17:39:53,431 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:39:53,431 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3323 archivos disponibles
+2016-10-06 17:39:53,435 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 1 archivos procesados
+2016-10-06 17:49:31,961 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-06 17:49:31,964 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-06 17:49:32,102 [DEBUG] comunes.controles.Principal:137		- heap reservado = 61.5 MB
+2016-10-06 17:49:32,105 [DEBUG] comunes.controles.Principal:138		- heap libre = 54.758277893066406 MB
+2016-10-06 17:49:32,105 [DEBUG] comunes.controles.Principal:139		- heap maximo = 903.5 MB
+
+2016-10-06 17:49:32,315 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-06 17:49:32,331 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-06 17:49:43,675 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-06 17:50:47,643 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-06 17:50:47,648 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-06 17:50:47,648 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-06 17:50:47,848 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-06 17:50:47,849 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-06 17:50:47,896 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:50:47,896 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:50:47,897 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:50:47,914 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-06 17:50:49,725 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010108.DBF [1-1]
+2016-10-06 17:50:50,665 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 224 de 224 leidas desde archivo
+2016-10-06 17:50:51,406 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 1 segundos
+2016-10-06 17:50:51,406 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 224 filas de potenciales alarmas
+2016-10-06 17:50:51,406 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 224 filas del total extraidas
+2016-10-06 17:50:51,433 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:50:51,434 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3323 archivos disponibles
+2016-10-06 17:50:51,435 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 1 archivos procesados
+2016-10-06 17:50:55,949 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:50:55,949 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:50:55,950 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:51:13,520 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010108.DBF [1-1]
+2016-10-06 17:51:13,937 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 224 de 224 leidas desde archivo
+2016-10-06 17:51:14,857 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 1 segundos
+2016-10-06 17:51:14,857 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 448 filas de potenciales alarmas
+2016-10-06 17:51:14,857 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 448 filas del total extraidas
+2016-10-06 17:51:14,870 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:14,870 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3323 archivos disponibles
+2016-10-06 17:51:14,871 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 1 archivos procesados
+2016-10-06 17:51:36,869 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:36,869 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:51:36,870 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:51:39,056 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010108.DBF [1-1]
+2016-10-06 17:51:39,468 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 224 de 224 leidas desde archivo
+2016-10-06 17:51:39,699 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 0 segundos
+2016-10-06 17:51:39,699 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 672 filas de potenciales alarmas
+2016-10-06 17:51:39,700 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 672 filas del total extraidas
+2016-10-06 17:51:39,713 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:39,713 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3323 archivos disponibles
+2016-10-06 17:51:39,714 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 1 archivos procesados
+2016-10-06 17:51:42,971 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:42,972 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:51:42,972 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:51:47,016 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010108.DBF [1-3]
+2016-10-06 17:51:47,360 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 224 de 224 leidas desde archivo
+2016-10-06 17:51:47,541 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010109.DBF [2-3]
+2016-10-06 17:51:47,589 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 6 de 6 leidas desde archivo
+2016-10-06 17:51:48,278 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010110.DBF [3-3]
+2016-10-06 17:51:48,366 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 15 de 15 leidas desde archivo
+2016-10-06 17:51:48,586 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 1 segundos
+2016-10-06 17:51:48,587 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 917 filas de potenciales alarmas
+2016-10-06 17:51:48,587 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 917 filas del total extraidas
+2016-10-06 17:51:48,608 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:48,608 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3321 archivos disponibles
+2016-10-06 17:51:48,609 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 3 archivos procesados
+2016-10-06 17:51:51,899 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:51:51,899 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3324 archivos disponibles
+2016-10-06 17:51:51,903 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 0 archivos procesados
+2016-10-06 17:52:45,071 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010110.DBF [1-3]
+2016-10-06 17:52:45,140 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 15 de 15 leidas desde archivo
+2016-10-06 17:52:45,940 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010111.DBF [2-3]
+2016-10-06 17:52:46,038 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 10 de 10 leidas desde archivo
+2016-10-06 17:52:46,239 [DEBUG] controles.dbf.ProcesarSimpleArchivo:156		- ETL en archivo AL010112.DBF [3-3]
+2016-10-06 17:52:46,413 [DEBUG] controles.dbf.ProcesarSimpleArchivo:162		- se transformaron 68 de 68 leidas desde archivo
+2016-10-06 17:52:46,511 [INFO ] controles.dbf.ProcesarMultipleArchivo:206		- la operacion demoro 1 segundos
+2016-10-06 17:52:46,511 [INFO ] controles.dbf.ProcesarMultipleArchivo:207		- se extrajeron 1010 filas de potenciales alarmas
+2016-10-06 17:52:46,511 [INFO ] controles.dbf.ProcesarMultipleArchivo:208		- se transformaron 1010 filas del total extraidas
+2016-10-06 17:52:46,524 [INFO ] controles.dbf.ProcesarMultipleArchivo:140		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-06 17:52:46,525 [INFO ] controles.dbf.ProcesarMultipleArchivo:141		- 3321 archivos disponibles
+2016-10-06 17:52:46,525 [INFO ] controles.dbf.ProcesarMultipleArchivo:142		- 3 archivos procesados

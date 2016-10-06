@@ -71,10 +71,6 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	@Override
-	public void actualizar(Object entidad) {
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public void actualizarLista() {
@@ -109,10 +105,5 @@ public class ServCRUDFamilia implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public Query getQueryTodos() {
 		return em.createNamedQuery("Familia.buscTodos");
-	}
-
-	@Override
-	public Object leer(Object entidad) {
-		return null;
 	}
 }

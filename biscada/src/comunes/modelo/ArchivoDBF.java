@@ -6,7 +6,9 @@
 package comunes.modelo;
 
 import java.util.Calendar;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,10 +16,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.eclipse.persistence.annotations.PrivateOwned;
 
 /* ............................................. */
 /* ............................................. */
@@ -81,6 +86,13 @@ public class ArchivoDBF implements Comparable<ArchivoDBF> {
 
 	@Column(name = "VALIDO")
 	private Boolean valido;
+
+	/*
+	 * mantiene la integridad referencial en caso de borrado del archivo
+	 */
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "archivo_propietario")
+	@PrivateOwned
+	private Collection<Alarma> lista_alarmas;
 
 	/* ............................................. */
 	/* ............................................. */

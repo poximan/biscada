@@ -72,10 +72,6 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
-	}
-
-	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 		lista = Beans.isDesignTime() ? Collections.emptyList()
@@ -110,10 +106,5 @@ public class ServCRUDTipoDeEquipo implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public Query getQueryTodos() {
 		return em.createNamedQuery("TipoDeEquipo.buscTodos");
-	}
-
-	@Override
-	public Object leer(Object entidad) {
-		return null;
 	}
 }

@@ -71,13 +71,7 @@ public class ServCRUDAlarma implements InterfazCRUD {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
-
-	}
-
-	@Override
 	public void borrar(Object entidad) {
-
 	}
 
 	@Override
@@ -106,10 +100,5 @@ public class ServCRUDAlarma implements InterfazCRUD {
 				}
 			}
 		}
-	}
-
-	@Override
-	public Object leer(Object entidad) {
-		return null;
 	}
 }

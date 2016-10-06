@@ -77,33 +77,9 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
-	}
-
-	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
-
 		list_procesados = getQueryTodos().getResultList();
-	}
-
-	/**
-	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
-	 * listas con valores iniciales relativo al contexto (archivos para
-	 * procesador, archivos insertados en BD). en la medida que el usuario usa
-	 * la pantalla este contexto comienza a cambiar. para mantaner los
-	 * contadores y listas de valores en orden se utilizan metodos de soporte,
-	 * uno de ellos es este.
-	 * 
-	 * PRE: archivo fue borrado de BD ... ... ... ... ... ... ... ... ... ...
-	 * ... ... ... ... ... ... ... ... ... ... agrega un nuevo archivo a la
-	 * lista de disponibles, no debe existir en la BD.
-	 * 
-	 * @param archivo_actual
-	 */
-	public void agregarDisponible(ArchivoDBF archivo_actual) {
-		archivo_actual.setId(null);
-		list_disponibles.add(archivo_actual);
 	}
 
 	public void agregarDisponibles(Path path_entrada_archivo) {
@@ -169,11 +145,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	}
 
 	@Override
-	public Object leer(Object entidad) {
-		return null;
-	}
-
-	@Override
 	public void liberarObjetos() {
 
 		list_disponibles.clear();
@@ -184,24 +155,6 @@ public class ServCRUDArchivoDBF implements InterfazCRUD, ClaveIdentificable, Obj
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	/**
-	 * cuando se lanza la ventana de operacion ETL completa los contadores y las
-	 * listas con valores iniciales relativo al contexto (archivos para
-	 * procesador, archivos insertados en BD). en la medida que el usuario usa
-	 * la pantalla este contexto comienza a cambiar. para mantaner los
-	 * contadores y listas de valores en orden se utilizan metodos de soporte,
-	 * uno de ellos es este.
-	 * 
-	 * PRE: archivo existe en BD ... ... ... ... ... ... ... ... ... ... ... ...
-	 * ... ... ... ... ... ... ... ... ... quita un archivo a la lista de
-	 * disponibles si es que se pudo ingresar satisfactoriamente a la BD.
-	 * 
-	 * @param archivo_actual
-	 */
-	public void quitarDisponible(ArchivoDBF archivo_actual) {
-		list_disponibles.remove(archivo_actual);
-	}
 
 	public void termina(ArchivoDBF archivo_actual) {
 		archivo_actual.setFin(Calendar.getInstance());

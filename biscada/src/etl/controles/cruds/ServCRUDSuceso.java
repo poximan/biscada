@@ -73,10 +73,6 @@ public class ServCRUDSuceso implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
-	}
-
-	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 
@@ -110,12 +106,6 @@ public class ServCRUDSuceso implements InterfazCRUD, ClaveIdentificable {
 
 	@Override
 	public Query getQueryTodos() {
-
 		return Beans.isDesignTime() ? null : EMFSingleton.getInstanciaEM().createNamedQuery("Suceso.buscTodos");
-	}
-
-	@Override
-	public Object leer(Object entidad) {
-		return null;
 	}
 }

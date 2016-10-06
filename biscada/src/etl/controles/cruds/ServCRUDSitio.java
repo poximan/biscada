@@ -72,10 +72,6 @@ public class ServCRUDSitio implements InterfazCRUD, ClaveIdentificable {
 	/* ............................................. */
 
 	@Override
-	public void actualizar(Object entidad) {
-	}
-
-	@Override
 	@SuppressWarnings("unchecked")
 	public void actualizarLista() {
 		lista = Beans.isDesignTime() ? Collections.emptyList() : new ArrayList<Sitio>(getQueryTodos().getResultList());
@@ -108,10 +104,5 @@ public class ServCRUDSitio implements InterfazCRUD, ClaveIdentificable {
 	@Override
 	public Query getQueryTodos() {
 		return em.createNamedQuery("Sitio.buscTodos");
-	}
-
-	@Override
-	public Object leer(Object entidad) {
-		return null;
 	}
 }

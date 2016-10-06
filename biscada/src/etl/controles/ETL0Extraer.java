@@ -7,6 +7,9 @@ package etl.controles;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,13 +17,14 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import comunes.modelo.ArchivoDBF;
-import etl.controles.dbf.ServParser;
 import etl.modelo.ArchAlarma;
 import nl.knaw.dans.common.dbflib.CorruptedTableException;
+import nl.knaw.dans.common.dbflib.DbfLibException;
 import nl.knaw.dans.common.dbflib.Field;
 import nl.knaw.dans.common.dbflib.IfNonExistent;
 import nl.knaw.dans.common.dbflib.Record;
 import nl.knaw.dans.common.dbflib.Table;
+import nl.knaw.dans.common.dbflib.ValueTooLargeException;
 
 /* ............................................. */
 /* ............................................. */
@@ -49,11 +53,12 @@ import nl.knaw.dans.common.dbflib.Table;
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL, la biblioteca externa dans_dbf para procesar
- * archivos xBase y el parser etl.controles.dbf.ServParser
+ * archivos xBase
  * 
  * COMO INTERACTUO CON MI COLABORADOR, dans_dbf me entrega los nombres de los
- * campos y el total de registros. con esa informacion itero los registros y por
- * cada ciclo delego en el parser el completado de campos.
+ * campos y el total de registros. itero los registros y sobre ellos los campos
+ * que lo componen. por cada campo usando refleccion defino los valores (metodo
+ * separarCampos(Record)).
  * 
  * @author hdonato
  *
@@ -70,6 +75,8 @@ public class ETL0Extraer {
 	private ArchivoDBF archivo_actual;
 
 	private Table table;
+
+	private List<Field> fields;
 
 	/* ............................................. */
 	/* ............................................. */
@@ -114,18 +121,60 @@ public class ETL0Extraer {
 			e.printStackTrace();
 		}
 
-		List<Field> fields = table.getFields();
+		fields = table.getFields();
 
 		Iterator<Record> recordIterator = table.recordIterator();
 
 		while (recordIterator.hasNext()) {
 
-			final Record record = recordIterator.next();
-
-			ServParser serv_parser = new ServParser(record, fields);
-			alarmas_extraidas.add(serv_parser.separarCampos());
+			Record record = recordIterator.next();
+			alarmas_extraidas.add(separarCampos(record));
 		}
 
 		return alarmas_extraidas;
+	}
+
+	private ArchAlarma separarCampos(Record record) {
+
+		ArchAlarma alarma_actual = new ArchAlarma();
+
+		for (final Field field : fields) {
+			try {
+
+				byte[] rawValue = record.getRawValue(field);
+
+				String str = (rawValue == null ? null : new String(rawValue, StandardCharsets.UTF_8));
+
+				Method metodo = null;
+
+				try {
+					metodo = alarma_actual.getClass().getMethod("set" + field.getName(), String.class);
+
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				}
+				try {
+					metodo.invoke(alarma_actual, str);
+
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				}
+
+			} catch (ValueTooLargeException vtle) {
+
+				log.error("ERROR: problema desconocido en la biblioteca \"dans-dbf-lib-1.0.0-beta-10.jar\"");
+			} catch (DbfLibException e) {
+
+				log.error("ERROR: no se puede leer fila");
+				e.printStackTrace();
+			}
+		}
+		return alarma_actual;
 	}
 }

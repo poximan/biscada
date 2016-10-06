@@ -33,8 +33,8 @@ import etl.controles.servicios.Reloj;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO, un servicio de procesamiento multiple de archivos dbf. es
- * multiple porque puede procesar [1..n] archivos.
+ * YO REPRESENTO, un servicio de procesamiento multiple de archivos dbf. soy
+ * multiple porque puedo procesar [1..n] archivos.
  * 
  * ==== parte responsabilidad ===============
  * 
@@ -84,7 +84,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	/* ............................................. */
 	/* ............................................. */
-	/* CONSTRUCTOR ................................. */
+	/* METODOS ..................................... */
 	/* ............................................. */
 
 	public ProcesarMultipleArchivo(String directorio) {
@@ -93,11 +93,6 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		obj_direccion = Paths.get(directorio);
 		dbf_servicio_crud = new ServCRUDArchivoDBF();
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* METODOS ..................................... */
-	/* ............................................. */
 
 	/**
 	 * comieza el proceso de eliminacion de archivos y todos sus dependientes
@@ -131,9 +126,7 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 
 	/**
 	 * usando la carpeta origen como unico punto para recoleccion de archivos,
-	 * comienza la lectura de todos ellos. algunos posiblemente hayan sido
-	 * insertados en una ejecucion previa, en ese caso no se insertara
-	 * nuevamente
+	 * comienza la lectura de todos ellos.
 	 */
 	public void buscarNuevosArchivos() {
 
@@ -211,11 +204,6 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		dbf_servicio_crud.liberarObjetos();
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
-
 	private void mostarInfo() {
 
 		System.out.println();
@@ -225,9 +213,4 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		log.info("se transformaron " + ProcesarSimpleArchivo.getTotalizador_transformadas()
 				+ " filas del total extraidas");
 	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
 }

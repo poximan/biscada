@@ -52,7 +52,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 	/**
 	 * convierte a dos dimensiones para tratarlo los datos de la misma forma
 	 * 
-	 * @param filas_datos
+	 * @param fila_datos
+	 * 
 	 * @return
 	 */
 	private static float[][] convertir(float[] fila_datos) {
@@ -96,10 +97,10 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 	private ServPeriodoAbstract servPeriodoAbstract;
 
-	public VistaKpiAbstract(){
+	public VistaKpiAbstract() {
 		iniciarComponentes();
 	}
-	
+
 	public VistaKpiAbstract(float datos[][], ServPeriodoAbstract servPeriodoAbstract) {
 
 		this.servPeriodoAbstract = servPeriodoAbstract;

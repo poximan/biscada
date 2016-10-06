@@ -30,19 +30,25 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO de una instancia de Equipo en un Sitio en especial
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, asocio los Equipos como generico a un identificador individual y
+ * un Sitio
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, Equipos y Sitios
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, no todas las alarmas estan directamente
+ * vinculadas a un Equipo observable, palpable (valvulas, bombas, tornillo
+ * compactador, etc), algunas alarmas ("porton abierto" por ej) no pertenecen a
+ * un Equipo en esos terminos, entonces decimos que son parte del Edificio, y en
+ * ese sentido el Edificio actua de Equipo, aunque no lo sea en terminos
+ * normales.
  * 
  * @author hdonato
  *

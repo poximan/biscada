@@ -22,19 +22,23 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO de Familia de alarmas, como pueden ser originadas en
+ * sitios que tratan agua POTABLE, CLOACAL o REUSO entre otras.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy representacion en Objetos de una Familia de alarmas.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
+ * la familia concreta de la alarma que se esta procesando. cuando la encuentra
+ * crea una instancia de uno de mis subtipos, alojados en
+ * etl.partes_alarma.familias crea los objetos y los asocia a mis atributos
  * 
  * @author hdonato
  *

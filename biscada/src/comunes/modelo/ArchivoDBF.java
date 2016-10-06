@@ -44,7 +44,8 @@ import javax.persistence.TemporalType;
  * 
  * COMO INTERACTUO CON MI COLABORADOR, si al menos una de mis filas fue una
  * alarma valida, soy un archivo valido para el, caso contrario no lo soy.
- * posteriormente me pediran esa informacion
+ * posteriormente me pediran esa informacion para saber si ese archivo debe
+ * intentar procesarse
  * 
  * @author hdonato
  *

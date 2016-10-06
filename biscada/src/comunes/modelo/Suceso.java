@@ -27,19 +27,25 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO de Sucesos
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy representacion en Objetos del Suceso ocurrido
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
+ * el Suceso del que se trata la alarma que se esta procesando. cuando lo
+ * encuentra crea una instancia con uno de mis subtipos, alojados en
+ * etl.partes_alarma.sucesos
+ * 
+ * se habla de suceso y no alarma porque alarma es un dato mas complejo que
+ * entre sus partes posee la descripcion de lo que paso, el suceso
  * 
  * @author hdonato
  *

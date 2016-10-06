@@ -22,7 +22,7 @@ package comunes.modelo;
  * 
  * COMO INTERACTUO CON MI COLABORADOR, a veces la fabrica abstracta de Familias
  * no logra dar con la Familia si esta no fue agregada en el campo TEXT del dbf.
- * en esos casos, yo puedo preguntarle al Sitio a que Familia pertenece
+ * en esos casos, puedo preguntarle al Sitio a que Familia pertenece
  * 
  * @author hdonato
  *

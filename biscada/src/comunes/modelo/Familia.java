@@ -22,8 +22,8 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO, un POJO de Familia de alarmas, como pueden ser originadas en
- * sitios que tratan agua POTABLE, CLOACAL o REUSO entre otras.
+ * YO REPRESENTO, un POJO de Familia de alarmas, como POTABLE, CLOACAL o REUSO
+ * entre otras.
  * 
  * ==== parte responsabilidad ===============
  * 
@@ -38,7 +38,7 @@ import comunes.fabrica.TipoDatoFabricable;
  * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
  * la familia concreta de la alarma que se esta procesando. cuando la encuentra
  * crea una instancia de uno de mis subtipos, alojados en
- * etl.partes_alarma.familias crea los objetos y los asocia a mis atributos
+ * etl.partes_alarma.familias
  * 
  * @author hdonato
  *

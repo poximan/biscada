@@ -15,28 +15,32 @@ package comunes.vistas;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una interfaz implementada unicamente por componentes visuales
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, asocio los subcomponentes de un componente visual a un manejador
+ * de eventos
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, los subcomponentes que deben darse de alta y el responsable
+ * de resolver los eventos
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, el responsable de resolver los eventos
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
- */
-/**
- * interfaz estandar para todos los casos en donde sea necesario configurar
- * eventos visuales. no aplica al caso particular de configuracion de eventos en
- * pantallas de dimension, porque alli es necesario un parametro adicional
+ * bi.vistas.eventos.EventoComponenteMenuDimension
+ * bi.vistas.eventos.EventoComponenteConsulta.EventoComponenteConsulta
+ * bi.vistas.eventos.EventoConsultaSimple
+ * bi.vistas.eventos.EventoConsultaCompuesta etl.vistas.EventoETL
+ * propiedades.eventos.EventoPropiedades
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, creo una instancia del manejador de
+ * eventos y se la agrego al ActionListener de todos los componentes que deseo
+ * estar notificado
  * 
  * @author hdonato
- * 
+ *
  */
 public interface EventoConfigurable {
 

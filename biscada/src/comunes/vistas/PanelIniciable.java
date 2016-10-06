@@ -15,19 +15,21 @@ package comunes.vistas;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una interfaz implementada unicamente por componentes visuales
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, genero instancias de todos los subcomponentes del componente que
+ * estoy iniciando. tambien los ordeno en contenedores respetando algun layout
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, los subcomponentes que deben darse de alta
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, el propio panel que estoy iniciando
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, a traves de sus metodos heredados de
+ * JPanel
  * 
  * @author hdonato
  *

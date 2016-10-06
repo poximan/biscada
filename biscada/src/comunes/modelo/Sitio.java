@@ -27,19 +27,21 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un POJO de Sitios
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy representacion en Objetos del Sitio donde ocurrio la alarma
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
+ * el Sitio concreto donde ocurrio la alarma que se esta procesando. cuando lo encuentra
+ * crea una instancia con uno de mis subtipos, alojados en etl.partes_alarma.sitios
  * 
  * @author hdonato
  *

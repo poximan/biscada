@@ -6,16 +6,13 @@
 package bi.controles.servicios.periodos;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 
 import bi.modelo.IntervaloFechas;
-import comunes.modelo.Alarma;
 
 /* ............................................. */
 /* ............................................. */
@@ -65,7 +62,7 @@ public abstract class ServPeriodoAbstract {
 
 	public int getCantidadPeriodos(Calendar primer_alarma, Calendar ultima_alarma) {
 
-		int contador_periodos = 0;
+		int contador_periodos = 1;
 
 		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
 		DateTime tiempo_fin = new DateTime(ultima_alarma.getTimeInMillis());
@@ -159,45 +156,6 @@ public abstract class ServPeriodoAbstract {
 	 * @return
 	 */
 	protected abstract String toStringCampo_actual(DateTime campo_actual);
-
-	/**
-	 * de un set de alarmas que fue fraccionado segun una unidad de tiempo como
-	 * quincena, mes, etc se busca la ultima, es decir la ultima quincena,
-	 * ultimo mes, etc del intervalo definido por el rango. De todas las que
-	 * pertenecen a la ultima fraccion se devuelve el total de repeticiones, es
-	 * decir cu�ntas ocurrencias hubieron de una determinada dimension durante
-	 * la ultima fraccion de tiempo
-	 * 
-	 * @param lista_interes
-	 * @return
-	 */
-	public float ultimaFraccion(List<Alarma> lista_interes) {
-
-		float cantidad_alarmas_ultimo_periodo = 0;
-		Calendar primer_alarma;
-		Collections.sort(lista_interes);
-		Collections.reverse(lista_interes);
-
-		try {
-			primer_alarma = lista_interes.get(0).getFecha_inicio();
-		} catch (IndexOutOfBoundsException excepcion) {
-			return cantidad_alarmas_ultimo_periodo;
-		}
-
-		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
-
-		Interval intervalo = new Interval(getPeriodo(), tiempo_inicio);
-
-		for (Alarma alarma_actual : lista_interes) {
-
-			DateTime test = new DateTime(alarma_actual.getFecha_inicio().getTimeInMillis());
-
-			if (!intervalo.contains(test))
-				break;
-			cantidad_alarmas_ultimo_periodo++;
-		}
-		return cantidad_alarmas_ultimo_periodo;
-	}
 
 	/* ............................................. */
 	/* ............................................. */

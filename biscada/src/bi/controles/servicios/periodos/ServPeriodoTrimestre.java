@@ -75,16 +75,19 @@ public class ServPeriodoTrimestre extends ServPeriodoAbstract {
 	@Override
 	protected String toStringCampo_actual(DateTime campo_actual) {
 
-		String texto;
+		String texto = "Er!";
 
-		if (campo_actual.getMonthOfYear() <= 3)
+		if (campo_actual.getMonthOfYear() <= 2)
 			texto = "1º";
-		else {
-			if (campo_actual.getMonthOfYear() >= 8)
-				texto = "3º";
-			else
-				texto = "2º";
-		}
+
+		if (campo_actual.getMonthOfYear() >= 3 && campo_actual.getMonthOfYear() <= 5)
+			texto = "2º";
+
+		if (campo_actual.getMonthOfYear() >= 6 && campo_actual.getMonthOfYear() <= 8)
+			texto = "3º";
+
+		if (campo_actual.getMonthOfYear() >= 9)
+			texto = "4º";
 
 		String anio = campo_actual.year().getAsText().substring(2, 4);
 

@@ -127,7 +127,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		txtMinimo.setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
 
 		int total = serv_kpi_calidad_servicio.totalAlarmas();
-		txtTotal.setText(String.valueOf(total));
+		txtTotal.setText(String.valueOf(maximo));
 
 		double promedio = serv_kpi_calidad_servicio.promedio();
 		txtPromedio.setText(ServKpiCalidadServicio.formatear(promedio));
@@ -138,14 +138,20 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		int actual = serv_kpi_calidad_servicio.actual();
 		txtActual.setText(String.valueOf(actual));
 
-		indicador_kpi.cargarDatos(total, actual, promedio);
+		indicador_kpi.cargarDatos(maximo, actual, promedio);
 
-		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], total, promedio);
+		histo_kpi.cargarDatos(servPeriodoAbstract.getEncabezadoFecha(), datos[0], maximo, promedio);
 	}
 
 	@Override
 	public void configEventos(EventoKPI eventos) {
+
 		spinner_porcentaje.getModel().addChangeListener(eventos);
+
+		int valor_inicial = Integer
+				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+
+		spinner_porcentaje.getModel().setValue(valor_inicial);
 	}
 
 	public GraficoKPI getIndicador_kpi() {
@@ -174,13 +180,6 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 
 		panelResumen = new JPanel();
 		panelResumen.setBorder(new TitledBorder(null, "Mediciones", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-
-		int valor_inicial = 1;
-		try {
-			valor_inicial = Integer.valueOf(
-					ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
-		} catch (NumberFormatException e) {
-		}
 
 		GridBagLayout gbl_panelResumen = new GridBagLayout();
 		gbl_panelResumen.columnWidths = new int[] { 20, 80, 12, 56, 0 };
@@ -293,7 +292,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelResumen.add(lblAceptacion, gbc_lblAceptacion);
 
 		spinner_porcentaje = new JSpinner();
-		spinner_porcentaje.setModel(new SpinnerNumberModel(valor_inicial, 1, 100, 1));
+		spinner_porcentaje.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 
 		GridBagConstraints gbc_spinner_porcentaje = new GridBagConstraints();
 		gbc_spinner_porcentaje.insets = new Insets(0, 0, 5, 0);
@@ -311,29 +310,29 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelHistograma.setViewportView(histo_kpi);
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup().addGap(21)
-						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-								.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 479,
-										Short.MAX_VALUE)
-								.addGroup(gl_panelGeneral.createSequentialGroup()
-										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 218,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
-						.addGap(23)));
-		gl_panelGeneral
-				.setVerticalGroup(
-						gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
-										.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-												.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 188,
-														Short.MAX_VALUE)
-												.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-										.addContainerGap()));
+		gl_panelGeneral.setHorizontalGroup(
+			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup()
+					.addGap(21)
+					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+						.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+						.addGroup(gl_panelGeneral.createSequentialGroup()
+							.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
+					.addGap(23))
+		);
+		gl_panelGeneral.setVerticalGroup(
+			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 
 		lblPeriodoMasReciente = new JLabel("Periodo mas reciente");
 		lblPeriodoMasReciente

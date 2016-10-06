@@ -33,19 +33,36 @@ import etl.controles.servicios.Reloj;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un servicio de procesamiento multiple de archivos dbf. es
+ * multiple porque puede procesar [1..n] archivos.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, a partir de una direccion de carpeta puedo escanear en busca de
+ * archivos con extension dbf (metodo esExtensionValida(entrada_archivo)).
  * 
- * LO QUE CONOZCO,
+ * de los validos considero solo aquellos que no existan en BD (metodo
+ * existeEnBD(entrada_archivo)).
+ * 
+ * cuando el usuario solicita agregar o quitar archivos de BD, uso los servicios
+ * de etl.controles.dbf.ProcesarSimpleArchivo
+ * 
+ * LO QUE CONOZCO, la carpeta donde debo buscar los archivos dbf y el servicio
+ * etl.controles.cruds.ServCRUDArchivoDBF que se encarga de agendar los nuevos
+ * archivos alojados en la direccion dada.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, etl.controles.dbf.ProcesarSimpleArchivo
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, nuestra comunicacion es volatil. creo la
+ * instancia de ProcesarSimpleArchivo cuando la necesito para insertar o borrar
+ * archivos de BD. luego es descartada. cada nueva tarea de insercion o borrado
+ * implica una nueva instancia de ProcesarSimpleArchivo.
+ * 
+ * no conozco los detalles de ProcesarSimpleArchivo, pero cuando me notifica que
+ * ha terminado, puedo generar un reporte a log.txt con datos sobre la tarea
+ * realizada por este.
  *
  * @author hdonato
  * 

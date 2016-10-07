@@ -43,6 +43,7 @@ public class ActuadoRFF extends Suceso {
 
 	private static String expresion_regular = "FALTA (DE )?(FASE|RED| ?220)"//
 			+ "|BARRA SIN TENSION"//
+			+ "|TENSION EN BARRA"//
 			+ "|ALIMENTACI.N DE RED"//
 			+ "|SGCA"//
 			+ "|Alarma CA"//

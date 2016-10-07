@@ -43,7 +43,7 @@ public class ReservaTomaRio extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TOMA\\W|station\\s10\\.|Muelle|planta toma";
+	private static String expresion_regular = "TOMA\\W|station\\s10\\.|Muelle|planta toma|Planta Toma";
 
 	/* ............................................. */
 	/* ............................................. */

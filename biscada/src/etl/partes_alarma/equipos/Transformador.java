@@ -48,7 +48,9 @@ public class Transformador extends TipoDeEquipo {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TRANSFORMADOR";
+	private static String expresion_regular = "TRANSFORMADOR"//
+			+ "|\\sT1\\s"//
+			+ "|\\sT2\\s";
 
 	private static String descripcion = "transformador";
 

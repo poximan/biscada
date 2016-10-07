@@ -45,11 +45,14 @@ public class InstrumentoCampo extends TipoDeEquipo {
 			+ "|ALARMA NIVEL"//
 			+ "|\\sPERA\\s"//
 			+ "|ALARMA DE ALTO NIVEL"//
+			+ "|MEDIDOR DE NIVEL"//
 			+ "|SENSOR DE NIVEL"//
 			+ "|ALTO NIVEL SALA BOMBAS"//
 			+ "|ALARMA M.XIMO NIVEL"//
 			+ "|BAJO NIVEL"//
 			+ "|ALTO NIVEL"//
+			+ "|Alto nivel"//
+			+ "|NIVEL ALTO (PERA)"//
 			+ "|MEDICION DE PRESION"//
 			+ "|NIVEL FUERA DE RANGO"//
 			+ "|BAJA PRESION"//

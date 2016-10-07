@@ -43,7 +43,9 @@ public class ReservaLomaMariaEST extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "(LOMA\\s|L\\.)\\s?MARIA|station\\s35";
+	private static String expresion_regular = "(LOMA\\s|L\\.)\\s?MARIA"//
+			+ "|station\\s35"//
+			+ "|Loma Mar.a";
 
 	/* ............................................. */
 	/* ............................................. */

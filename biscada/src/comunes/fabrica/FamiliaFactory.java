@@ -18,6 +18,7 @@ import etl.partes_alarma.familias.Login;
 import etl.partes_alarma.familias.Logout;
 import etl.partes_alarma.familias.Potable;
 import etl.partes_alarma.familias.Reuso;
+import etl.partes_alarma.familias.WizconLang;
 
 /* ............................................. */
 /* ............................................. */
@@ -92,6 +93,7 @@ public class FamiliaFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Potable.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reuso.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, WizconLang.class.getCanonicalName());
 
 			if (dato_fabricado == null)
 				throw new CampoTextoNoEncontradoExcepcion(discriminante);

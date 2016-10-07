@@ -41,8 +41,10 @@ import etl.partes_alarma.sucesos.MotorEstatorConAgua;
 import etl.partes_alarma.sucesos.MotorVibracion;
 import etl.partes_alarma.sucesos.NivelAlto;
 import etl.partes_alarma.sucesos.NivelBajo;
+import etl.partes_alarma.sucesos.NivelIndefinido;
 import etl.partes_alarma.sucesos.NivelRebalse;
 import etl.partes_alarma.sucesos.PlcErrorComunicacion;
+import etl.partes_alarma.sucesos.PlcErrorDIRemota;
 import etl.partes_alarma.sucesos.PlcErrorLecturaAnalogica;
 import etl.partes_alarma.sucesos.PlcErrorLog;
 import etl.partes_alarma.sucesos.PresionBaja;
@@ -180,11 +182,15 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelAlto.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelBajo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, NivelRebalse.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					NivelIndefinido.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorComunicacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorLecturaAnalogica.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					PlcErrorDIRemota.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorLog.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PresionBaja.class.getCanonicalName());

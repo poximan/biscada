@@ -44,9 +44,11 @@ public class NivelAlto extends Suceso {
 	private static String expresion_regular = "MAXIMO"//
 			+ "|M.XIMO NIVEL"//
 			+ "|ALTO NIVEL"//
+			+ "|Alto nivel"//
 			+ "|NIVEL DE POZO"//
 			+ "|ALARMA ACT PERA"//
 			+ "|NIVEL ALTO"//
+			+ "|PERA HI HI"//
 			+ "|NIVEL CRITICO";
 
 	/* ............................................. */

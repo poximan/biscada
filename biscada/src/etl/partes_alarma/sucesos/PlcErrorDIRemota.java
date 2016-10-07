@@ -3,11 +3,9 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.partes_alarma.sitios;
+package etl.partes_alarma.sucesos;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import etl.partes_alarma.familias.Potable;
+import comunes.modelo.Suceso;
 
 /* ............................................. */
 /* ............................................. */
@@ -36,20 +34,14 @@ import etl.partes_alarma.familias.Potable;
  * @author hdonato
  * 
  */
-public class ReservaKM11 extends Sitio {
+public class PlcErrorDIRemota extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "R\\s?15000"//
-			+ "|KM11"//
-			+ "|KM 11"//
-			+ "|KM.11"//
-			+ "|KM. 11"//
-			+ "|station\\s40\\."//
-			+ "|Reserva 5000";
+	private static String expresion_regular = "DI REMOTAS";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -65,7 +57,7 @@ public class ReservaKM11 extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaKM11() {
+	public PlcErrorDIRemota() {
 		super.setDescripcion(this.toString());
 	}
 
@@ -75,13 +67,8 @@ public class ReservaKM11 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
-	}
-
-	@Override
 	public String toString() {
-		return "reserva km11";
+		return "falla DI remotas";
 	}
 
 	/* ............................................. */

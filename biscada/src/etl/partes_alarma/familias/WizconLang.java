@@ -3,11 +3,9 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.partes_alarma.sitios;
+package etl.partes_alarma.familias;
 
 import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import etl.partes_alarma.familias.Potable;
 
 /* ............................................. */
 /* ............................................. */
@@ -36,20 +34,15 @@ import etl.partes_alarma.familias.Potable;
  * @author hdonato
  * 
  */
-public class ReservaKM11 extends Sitio {
+public class WizconLang extends Familia {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "R\\s?15000"//
-			+ "|KM11"//
-			+ "|KM 11"//
-			+ "|KM.11"//
-			+ "|KM. 11"//
-			+ "|station\\s40\\."//
-			+ "|Reserva 5000";
+	private static String expresion_regular = "WIZWIL";
+	private static String descripcion = "wiz languaje";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -65,8 +58,8 @@ public class ReservaKM11 extends Sitio {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public ReservaKM11() {
-		super.setDescripcion(this.toString());
+	public WizconLang() {
+		super(descripcion);
 	}
 
 	/* ............................................. */
@@ -75,13 +68,8 @@ public class ReservaKM11 extends Sitio {
 	/* ............................................. */
 
 	@Override
-	public Familia getFamiliaPorDefecto() {
-		return new Potable();
-	}
-
-	@Override
 	public String toString() {
-		return "reserva km11";
+		return descripcion;
 	}
 
 	/* ............................................. */

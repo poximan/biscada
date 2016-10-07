@@ -41,7 +41,7 @@ public class MotorBobinadoAltaTemperatura extends Suceso {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "TEMPERATURA";
+	private static String expresion_regular = "TEMPERATURA|Temperatura Motor";
 
 	/* ............................................. */
 	/* ............................................. */

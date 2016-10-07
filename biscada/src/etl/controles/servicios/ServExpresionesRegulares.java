@@ -14,7 +14,6 @@ import etl.partes_alarma.equipos.Bomba;
 import etl.partes_alarma.equipos.CamaraAspiracion;
 import etl.partes_alarma.equipos.CentroControlMotores;
 import etl.partes_alarma.equipos.Cisterna;
-import etl.partes_alarma.equipos.Edificio;
 import etl.partes_alarma.equipos.InstrumentoCampo;
 import etl.partes_alarma.equipos.Plc;
 import etl.partes_alarma.equipos.Pozo;
@@ -71,6 +70,12 @@ public class ServExpresionesRegulares {
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + expresion_regular + Constantes.CIERRA_EXP_REG)) {
 
 			try {
+				/*
+				 * dato_fabricado debe ser nulo en este momemto, caso contrario
+				 * ya se encontró otra instancia diferente a la que se esta
+				 * evaluando ahora. esto implica ambigüedad en la localizacion
+				 * de la clase
+				 */
 				if (dato_fabricado != null) {
 
 					salvarAmbiguedad(dato_fabricado, nueva_clase);
@@ -92,6 +97,7 @@ public class ServExpresionesRegulares {
 					log.error("ERROR: no se pudo pedir nueva instancia de clase " + nueva_clase.getSimpleName());
 				}
 			}
+
 		}
 		return nuevo_valor;
 	}
@@ -123,42 +129,37 @@ public class ServExpresionesRegulares {
 		try {
 			seg_ocurrencia = (TipoDatoFabricable) seg_ocurr.newInstance();
 
-			// ActuadoParadaEmergencia <- ComandoParada
-			if (pri_ocurrencia instanceof ActuadoParadaEmergencia && seg_ocurrencia instanceof ComandoParada)
-				throw new UsarPrimerOcurrenciaExcepcion();
-
 			// (Cisterna || CamaraAspiracion) -> InstrumentoCampo
 			if ((pri_ocurrencia instanceof Cisterna || pri_ocurrencia instanceof CamaraAspiracion)
 					&& seg_ocurrencia instanceof InstrumentoCampo)
-				throw new UsarSegundaOcurrenciaExcepcion();
-
-			// InstrumentoCampo <- Pozo
-			if (pri_ocurrencia instanceof InstrumentoCampo && seg_ocurrencia instanceof Pozo)
-				throw new UsarPrimerOcurrenciaExcepcion();
-
-			// CentroControlMotores <- Valvula
-			if (pri_ocurrencia instanceof CentroControlMotores && seg_ocurrencia instanceof Valvula)
-				throw new UsarPrimerOcurrenciaExcepcion();
-
-			// Cisterna -> Plc
-			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Plc)
 				throw new UsarSegundaOcurrenciaExcepcion();
 
 			// NivelAlto -> NivelRebalse
 			if (pri_ocurrencia instanceof NivelAlto && seg_ocurrencia instanceof NivelRebalse)
 				throw new UsarSegundaOcurrenciaExcepcion();
 
-			// Cisterna -> Edificio
-			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Edificio)
-				throw new UsarSegundaOcurrenciaExcepcion();
-
 			// Bomba -> CentroControlMotores
 			if (pri_ocurrencia instanceof Bomba && seg_ocurrencia instanceof CentroControlMotores)
 				throw new UsarSegundaOcurrenciaExcepcion();
 
-			// (Plc || CamaraAspiracion) <- Valvula
-			if ((pri_ocurrencia instanceof Plc || pri_ocurrencia instanceof CamaraAspiracion)
-					&& seg_ocurrencia instanceof Valvula)
+			// InstrumentoCampo <- Pozo
+			if (pri_ocurrencia instanceof InstrumentoCampo && seg_ocurrencia instanceof Pozo)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+			// ActuadoParadaEmergencia <- ComandoParada
+			if (pri_ocurrencia instanceof ActuadoParadaEmergencia && seg_ocurrencia instanceof ComandoParada)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+			// Cisterna -> Plc
+			if (pri_ocurrencia instanceof Cisterna && seg_ocurrencia instanceof Plc)
+				throw new UsarSegundaOcurrenciaExcepcion();
+
+			// CentroControlMotores <- Valvula
+			if (pri_ocurrencia instanceof CentroControlMotores && seg_ocurrencia instanceof Valvula)
+				throw new UsarPrimerOcurrenciaExcepcion();
+
+			// Plc <- Valvula
+			if (pri_ocurrencia instanceof Plc && seg_ocurrencia instanceof Valvula)
 				throw new UsarPrimerOcurrenciaExcepcion();
 
 		} catch (InstantiationException | IllegalAccessException e) {

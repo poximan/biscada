@@ -43,9 +43,9 @@ public class ReservaOeste extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular ="B[\\.\\s]+OESTE"//
+	private static String expresion_regular = "B[\\.\\s]+OESTE"//
 			+ "|station\\s60"//
-			+ "|Barrio Oeste"//
+			+ "|[Bb]arrio Oeste"//
 			+ "|Bo. Oeste";
 
 	/* ............................................. */

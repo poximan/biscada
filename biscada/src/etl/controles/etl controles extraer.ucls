@@ -3,71 +3,50 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="etl.controles.dbf.ProcesarSimpleArchivo" project="biscada" 
     file="/biscada/src/etl/controles/dbf/ProcesarSimpleArchivo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="206" y="437"/>    
+    <position height="333" width="332" x="75" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="etl.controles.dbf.ServParser" project="biscada" 
-    file="/biscada/src/etl/controles/dbf/ServParser.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="531" y="96"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="etl.modelo.ArchAlarma" project="biscada" 
+  <class id="2" language="java" name="etl.modelo.ArchAlarma" project="biscada" 
     file="/biscada/src/etl/modelo/ArchAlarma.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="579" y="446"/>    
+    <position height="315" width="119" x="41" y="410"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="etl.controles.ETL0Extraer" project="biscada" 
+  <class id="3" language="java" name="etl.controles.ETL0Extraer" project="biscada" 
     file="/biscada/src/etl/controles/ETL0Extraer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="200" y="84"/>    
+    <position height="153" width="207" x="200" y="410"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <association id="4">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="6" name="extractor">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="5" name="alarmas_extraidas">        
+        <position height="0" width="0" x="-319" y="223"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="alarma_actual">        
-        <position height="18" width="75" x="595" y="194"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="1">        
+      <multiplicity id="6" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-319" y="223"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="11">    
+  <association id="7">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="alarmas_extraidas">        
-        <position height="0" width="0" x="-319" y="223"/>      
+      <attribute id="8" name="extractor">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="13" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-319" y="223"/>      
+      <multiplicity id="9" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    

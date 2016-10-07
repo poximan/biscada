@@ -28,19 +28,24 @@ import javax.swing.JTextField;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un componente grafico que se utiliza en la pantalla ETL
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, doy al usuario la posibilidad de elegir la direccion en la
+ * estrucutra de directorios desde la cual se leeran los archivos dbf, si es que
+ * hay alguno alli.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la direccion en String que eligió el usuario. disponible para
+ * los servicios que la necesiten
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es javax.swing.JFileChooser
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, puedo delegarle el manejo de ventana
+ * desplegable con todos los botones de navegacion y seleccion de nueva
+ * direccion.
  *
  * @author hdonato
  * 

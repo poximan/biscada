@@ -17,13 +17,18 @@ import comunes.modelo.Familia;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, la implementacion concreta de la super clase
+ * comunes.modelo.Familia
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
+ * comunes.fabrica.FamiliaFactory, concluye que mi expresion regular estatica
+ * (antes de la instancia) es un buen definidor del discriminante que está
+ * leyendo.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
+ * mostrar en componentes visuales
  * 
  * ==== parte colaboracion ==================
  * 
@@ -34,7 +39,7 @@ import comunes.modelo.Familia;
  * @author hdonato
  * 
  */
-public class Cloacal extends Familia implements CalidadServicioDiferenciable {
+public class Cloacal extends Familia {
 
 	/* ............................................. */
 	/* ............................................. */

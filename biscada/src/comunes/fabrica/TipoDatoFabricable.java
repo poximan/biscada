@@ -8,14 +8,12 @@ package comunes.fabrica;
  * YO REPRESENTO una interfaz para facilitar el polimorfismo de tipos obtenidos
  * desde fabricas
  * 
- * 
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO soy la interfaz polimorfica de las clases Familia, Sitio, Suceso,
  * entre otras
  * 
  * LO QUE CONOZCO todas las clases obtenidas desde fabricas
- * 
  * 
  * ==== parte colaboracion ==================
  * 

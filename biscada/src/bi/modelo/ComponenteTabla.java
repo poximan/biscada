@@ -29,7 +29,6 @@ import org.apache.log4j.Logger;
 import bi.controles.servicios.dimensiones.ServDimAbstract;
 import bi.vistas.consultas.TableModelEntradaFila;
 import bi.vistas.consultas.TableModelMedicionTemporal;
-import comunes.controles.ObjetosBorrables;
 import comunes.vistas.PanelIniciable;
 
 /* ............................................. */
@@ -37,7 +36,7 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
-public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBorrables {
+public class ComponenteTabla extends JPanel implements PanelIniciable {
 
 	/* ............................................. */
 	/* ............................................. */
@@ -75,9 +74,6 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 
 		ordenarTabla();
 		log.info("se ordernaron tablas");
-
-		liberarObjetos();
-		log.info("se liberaron objetos en desuso");
 	}
 
 	public void contruirModeloEntradaColumnas(float[][] datos_tabla, String[] encabezado_tabla) {
@@ -180,11 +176,6 @@ public class ComponenteTabla extends JPanel implements PanelIniciable, ObjetosBo
 	/* ............................................. */
 	/* GET'S ....................................... */
 	/* ............................................. */
-
-	@Override
-	public void liberarObjetos() {
-
-	}
 
 	private void ordenarTabla() {
 

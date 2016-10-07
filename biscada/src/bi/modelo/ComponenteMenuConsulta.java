@@ -27,6 +27,33 @@ import propiedades.controles.servicios.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, un componente grafico que se utiliza en la pantalla BI
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, doy a la pantalla de consultas del BI un marco de contencion
+ * para todos sus componentes. extiendo de JFrame y mi especializacion incluye
+ * el agregado de un menu superior.
+ * 
+ * LO QUE CONOZCO, como soy el marco de la primer pantalla que se ve al ejecutar
+ * la aplicacion, a traves de mis menues es posible acceder a las demas
+ * pantallas (aplicar dimension elegida sobre la consulta, proceso etl,
+ * configuracion de propiedades).
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class ComponenteMenuConsulta extends JFrame {
 
 	/* ............................................. */

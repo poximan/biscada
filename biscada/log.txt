@@ -11813,3 +11813,124 @@ TipoDeEquipoFactory, ambiguo -> KM. 11: BOMBA EN MARCHA ( NO operar VALVULA) [1e
 2016-10-07 08:18:59,152 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL081112.DBF [362-706]
 2016-10-07 08:18:59,852 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 351 de 351 leidas desde archivo
 2016-10-07 08:19:00,185 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL081113.DBF [363-706]
+2016-10-07 17:21:32,586 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-07 17:21:32,596 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-07 17:21:32,978 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-07 17:21:32,983 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28973388671875 MB
+2016-10-07 17:21:32,984 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-07 17:21:33,365 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-07 17:21:33,425 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-07 17:21:38,774 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-07 17:21:40,858 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:21:40,921 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:21:40,921 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:21:40,931 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:21:41,027 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:21:41,031 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-07 17:22:20,120 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 267779 resultados
+
+2016-10-07 17:22:20,182 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:22:20,185 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 17:23:30,083 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-07 17:23:30,109 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-07 17:23:30,110 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-07 17:32:23,600 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-07 17:32:23,608 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-07 17:32:23,990 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-07 17:32:23,996 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28972625732422 MB
+2016-10-07 17:32:23,996 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-07 17:32:24,302 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-07 17:32:24,365 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-07 17:32:29,335 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-07 17:32:37,355 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:32:37,390 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:32:37,391 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:32:37,404 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:32:37,471 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:32:37,475 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((ID_SITIO = ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-07 17:32:56,646 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 40045 resultados
+
+2016-10-07 17:32:56,666 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:32:56,670 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 17:33:02,467 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-07 17:33:02,468 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-07 17:33:02,469 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-07 17:50:16,341 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-07 17:50:16,350 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-07 17:50:16,792 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-07 17:50:16,799 [DEBUG] comunes.controles.Principal:138		- heap libre = 49.98875427246094 MB
+2016-10-07 17:50:16,800 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-07 17:50:17,283 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-07 17:50:17,348 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-07 17:50:23,309 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-07 17:50:32,692 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:50:32,714 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:50:32,714 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:50:32,729 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:50:32,828 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:50:32,834 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT t0.ID_ALARMA, t0.ACK_USUARIO, t0.ATRIBUTO, t0.CLASE, t0.FECHA_ACK, t0.FECHA_FIN, t0.FECHA_INICIO, t0.ID_ESTACION, t0.IDENTIFICACION, t0.SEVERIDAD, t0.ZONA, t0.ID_ARCHIVO_DBF, t0.ID_EQUIPO_EN_SITIO, t0.ID_FAMILIA, t0.ID_SITIO, t0.ID_SUCESO FROM alarma t0, equipo_en_sitio t1 WHERE ((((t0.ID_SITIO = ?) AND (t1.ID_TIPO_DE_EQUIPO = ?)) AND ((t0.FECHA_FIN - t0.FECHA_INICIO) >= ?)) AND (t1.ID_EQUIPO_EN_SITIO = t0.ID_EQUIPO_EN_SITIO))
+2016-10-07 17:50:57,554 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 0 resultados
+
+2016-10-07 17:50:57,554 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:50:57,557 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 17:51:10,396 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:51:10,414 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:51:10,414 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:51:10,414 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:51:10,415 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:51:10,416 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((ID_SITIO = ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-07 17:51:28,536 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 40045 resultados
+
+2016-10-07 17:51:28,559 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:51:28,559 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 17:51:32,743 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-07 17:51:32,745 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-07 17:51:32,746 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-07 17:57:20,091 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-07 17:57:20,097 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-07 17:57:20,493 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-07 17:57:20,499 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28972625732422 MB
+2016-10-07 17:57:20,500 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-07 17:57:20,801 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-07 17:57:20,856 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-07 17:57:25,919 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-07 17:57:31,626 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:57:31,659 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:57:31,659 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:57:31,670 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:57:31,728 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:57:31,731 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((ID_SITIO = ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-07 17:57:42,093 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 24057 resultados
+
+2016-10-07 17:57:42,105 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:57:42,110 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 17:57:46,192 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-07 17:57:46,193 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-07 17:57:46,194 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso
+2016-10-07 17:59:17,931 [INFO ] bi.modelo.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-07 17:59:17,942 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-07 17:59:17,942 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-07 17:59:17,942 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-07 17:59:17,943 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-07 17:59:17,945 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-07 17:59:50,840 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 267779 resultados
+
+2016-10-07 17:59:50,897 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-07 17:59:50,897 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-07 18:00:00,142 [INFO ] bi.modelo.ComponenteTabla:74		- se iniciaron componentes
+2016-10-07 18:00:00,142 [INFO ] bi.modelo.ComponenteTabla:77		- se ordernaron tablas
+2016-10-07 18:00:00,143 [INFO ] bi.modelo.ComponenteTabla:80		- se liberaron objetos en desuso

@@ -126,8 +126,8 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		txtMaximo.setText(String.valueOf(maximo));
 		txtMinimo.setText(String.valueOf(serv_kpi_calidad_servicio.minimo()));
 
-		int total = serv_kpi_calidad_servicio.totalAlarmas();
-		txtTotal.setText(String.valueOf(maximo));
+		double total = serv_kpi_calidad_servicio.totalAlarmas();
+		txtTotal.setText(String.valueOf(total));
 
 		double promedio = serv_kpi_calidad_servicio.promedio();
 		txtPromedio.setText(ServKpiCalidadServicio.formatear(promedio));

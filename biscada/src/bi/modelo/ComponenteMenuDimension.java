@@ -24,6 +24,31 @@ import comunes.vistas.EventoConfigurable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, un componente grafico que se utiliza en la pantalla BI
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, doy a la pantalla de dimension del BI un marco de contencion
+ * para todos sus componentes. extiendo de JFrame y mi especializacion incluye
+ * el agregado de un menu superior.
+ * 
+ * LO QUE CONOZCO, a traves de mis menues es posible acceder a la configuracion
+ * de una consulta paralela para poder comparar resultados.
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class ComponenteMenuDimension extends JFrame implements EventoConfigurable {
 
 	/* ............................................. */

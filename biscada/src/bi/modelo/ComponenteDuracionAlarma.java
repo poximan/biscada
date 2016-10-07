@@ -22,6 +22,30 @@ import comunes.vistas.EventoConfigurable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, un componente grafico que se utiliza en la pantalla BI
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, doy al usuario la posibilidad de limitar la busqueda a alarmas
+ * cuya duracion este contenida en un intervalo configurable
+ * 
+ * LO QUE CONOZCO, la clase javax.swing.JSpinner que me provee un selector para
+ * definir el tiempo en segundos
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class ComponenteDuracionAlarma extends JPanel implements EventoConfigurable {
 
 	/* ............................................. */

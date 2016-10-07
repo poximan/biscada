@@ -19,8 +19,8 @@ public interface ServKpi {
 
 	public int actual();
 
-	public float promedio();
+	public double promedio();
 
-	public int totalAlarmas();
+	public double totalAlarmas();
 
 }

@@ -59,10 +59,14 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)
-				if (datos[fila][columna] >= 0)
+				if (esCeldaUtil(fila, columna))
 					celdas_utiles++;
 
 		return celdas_utiles;
+	}
+
+	private boolean esCeldaUtil(int fila, int columna) {
+		return datos[fila][columna] > 0;
 	}
 
 	public double desviacionEstandar() {
@@ -87,21 +91,21 @@ public class ServKpiCalidadServicio implements ServKpi {
 
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)
-				if (datos[fila][columna] < minimo && datos[fila][columna] > 0)
+				if (datos[fila][columna] < minimo && datos[fila][columna] >= 0)
 					minimo = (int) datos[fila][columna];
 
 		return minimo;
 	}
 
 	@Override
-	public float promedio() {
+	public double promedio() {
 		return totalAlarmas() / celdasUtiles();
 	}
 
 	@Override
-	public int totalAlarmas() {
+	public double totalAlarmas() {
 
-		int resultado = 0;
+		double resultado = 0;
 
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)
@@ -110,11 +114,14 @@ public class ServKpiCalidadServicio implements ServKpi {
 		return resultado;
 	}
 
+	/**
+	 * la media de las diferencias con la media, elevadas al cuadrado.
+	 */
 	public double varianza() {
 
 		int indice_diferencias = 0;
-		float promedio = promedio();
-		float varianza = 0;
+		double promedio = promedio();
+		double varianza = 0;
 
 		double[] cuadrado_dif_respecto_promedio = new double[celdasUtiles()];
 
@@ -124,7 +131,7 @@ public class ServKpiCalidadServicio implements ServKpi {
 		 */
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)
-				if (datos[fila][columna] > 0) {
+				if (esCeldaUtil(fila, columna)) {
 
 					double dif_respecto_promedio = promedio - datos[fila][columna];
 					cuadrado_dif_respecto_promedio[indice_diferencias++] = Math.pow(dif_respecto_promedio, 2);

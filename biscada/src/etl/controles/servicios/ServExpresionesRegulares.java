@@ -28,20 +28,42 @@ import etl.partes_alarma.sucesos.NivelRebalse;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un servicio capaz de obtener la expresion regular de una
+ * entidad y devolver la instancia que corresponde
+ * 
+ * soy de utilidad durante la etapa de comparacion de todas las fabricas
+ * concretas que necesitan saber si una frase dada se parece (o no) a una clase
+ * objetivo
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, dados el nombre canonico de una clase y un discriminante, puedo
+ * reconstruir la clase del nombre canonico (por refleccion) y obtener su
+ * expresion regular para compararla con el discriminante.
  * 
- * LO QUE CONOZCO,
+ * si la comparacion da coincidente, pido una instancia de la clase reflejada.
+ * 
+ * ademas recibo una referencia "TipoDatoFabricable dato_fabricado" que debe ser
+ * nula. caso contrario una iteracion previa de mi mismo ha encontrado una
+ * coincidencia, lo que implica ambigüedad. para tratar de salvar este problema
+ * uso el metodo salvarAmbiguedad(...) que posee una serie de recetas del tipo
+ * "si la ambigüedad se parece a X, aplicar solucion Y"
+ * 
+ * LO QUE CONOZCO, el nombre canonico de la clase a analizar, el discriminante
+ * conque debo resolver la coincidencia y la referencia donde debo crear la
+ * nueva instancia (el TipoDatoFabricable dato_fabricado que debe ser nulo)
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, java.lang.reflect
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
+ * COMO INTERACTUO CON MI COLABORADOR, en el metodo getExpresion_regular()
+ * concentro mi interaccion con la biblioteca reflect. obtengo el nombre de la
+ * clase partiendo del canonico (Class.forName(...)). luego pido un metodo
+ * estatico cuyo nombre ya conozco (getMethod("getExpresion_regular") e
+ * nuevo_metodo.invoke(...)). si las expresiones coinciden pido una instancia
+ * (nueva_clase.newInstance())
+ * 
  * @author hdonato
  * 
  */

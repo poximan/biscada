@@ -18,29 +18,33 @@ import java.util.List;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un repositorio de alarmas que no superaron alguna de las
+ * fabricas abstractas (metodo
+ * etl.controles.ETL1Transformar.transformarAlarmas(...)) durante la segunda
+ * fase del proceso ETL (transformacion).
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, acompaño el proceso descrito en la clase
+ * etl.controles.ETL1Transformar.
  * 
- * LO QUE CONOZCO,
+ * si durante el procesamiento del campo TEXT del objeto ArchAlarma que se está
+ * analizando, se detecta algun tipo de anomalia (no identifica un determinado
+ * campo, o es ambiguo) me notifica. en otro caso no participo del ETL.
+ * 
+ * LO QUE CONOZCO, la lista de textos que no pudieron concretarse en alguno de
+ * los subtipos que ofrecen las fabricas concretas (descritas en el paquete
+ * comunes.fabrica.*)
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, comunes.fabrica.FabricaAbstracta
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, me provee de un mecanismo para que las
+ * fabricas concretas puedan localizarme llamando a su super clase, en donde
+ * piden mi instancia.
  *
  * @author hdonato
- * 
- */
-/**
- * gestiona las alarmas rechazadas por el proceso etl. una unica instancia de
- * este objeto es compartida por las fabricas que obtienen sus objetos
- * analizando el campo "texto" del archivo dbf
- * 
- * @author hugo
  * 
  */
 public class CampoTextoDefectuoso {

@@ -15,13 +15,16 @@ package etl.controles.servicios;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, un servicio de manejo de espacios de tiempo
+ * 
+ * de utilidad para calcular cuanto tiempo demoró un procesamiento. es
+ * informacion que se saca por terminal o al log.txt
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, calculo el tiempo transcurrido entre una fecha inicio y una fin.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, las fecha inicio y fin.
  * 
  * ==== parte colaboracion ==================
  * 

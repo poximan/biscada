@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package propiedades.eventos;
+package propiedades.vistas;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -17,7 +17,6 @@ import javax.swing.SwingUtilities;
 
 import propiedades.controles.servicios.ServPropiedades;
 import propiedades.excepciones.ReiniciarAplicacionExcepcion;
-import propiedades.vistas.VistaPropiedades;
 
 /* ............................................. */
 /* ............................................. */

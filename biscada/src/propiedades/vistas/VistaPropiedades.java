@@ -30,7 +30,6 @@ import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
 import etl.modelo.ComponenteSeleccionarDireccion;
 import propiedades.controles.servicios.ServPropiedades;
-import propiedades.eventos.EventoPropiedades;
 
 /**
  * Class Responsibility Collaborator (CRC) design:

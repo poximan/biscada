@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="comunes.modelo.Alarma" project="biscada" 
-    file="/biscada/src/comunes/modelo/Alarma.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="comunes.entidades.Alarma" project="biscada" 
+    file="/biscada/src/comunes/entidades/Alarma.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="746" y="541"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="comunes.modelo.ArchivoDBF" project="biscada" 
-    file="/biscada/src/comunes/modelo/ArchivoDBF.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="comunes.entidades.ArchivoDBF" project="biscada" 
+    file="/biscada/src/comunes/entidades/ArchivoDBF.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1030" y="486"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="bi.modelo.ComponenteConsulta" project="biscada" 
-    file="/biscada/src/bi/modelo/ComponenteConsulta.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="bi.entidades.ComponenteConsulta" project="biscada" 
+    file="/biscada/src/bi/entidades/ComponenteConsulta.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="604" y="124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -65,36 +65,36 @@
     </display>  
   </class>  
   <association id="8">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="9" name="archivo_propietario">        
-        <position height="0" width="0" x="133" y="-62"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="1">        
-        <position height="0" width="0" x="133" y="-62"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="12">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="13" name="consultas">        
+      <attribute id="9" name="consultas">        
         <position height="0" width="0" x="-136" y="-623"/>      
       </attribute>      
-      <multiplicity id="14" minimum="0" maximum="2147483647">        
+      <multiplicity id="10" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-136" y="-623"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="15">    
+  <association id="11">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="12" name="archivo_propietario">        
+        <position height="0" width="0" x="133" y="-62"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="133" y="-62"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="14">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
   </dependency>  
   <association id="16">    
     <end type="SOURCE" refId="2" navigable="false">      
@@ -109,67 +109,67 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="19">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="20" name="serv_consulta">        
-        <position height="0" width="0" x="141" y="-451"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="20" name="vista_simple">        
+        <position height="0" width="0" x="-130" y="228"/>      
       </attribute>      
       <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="141" y="-451"/>      
+        <position height="0" width="0" x="-130" y="228"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="22">    
+  <dependency id="22">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="25">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="23" name="componenteConsulta">        
+      <attribute id="26" name="componenteConsulta">        
         <position height="0" width="0" x="102" y="-249"/>      
       </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
+      <multiplicity id="27" minimum="0" maximum="1">        
         <position height="0" width="0" x="102" y="-249"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="25">    
+  <dependency id="28">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="26">    
+  <association id="29">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="30" name="serv_consulta">        
+        <position height="0" width="0" x="141" y="-451"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="141" y="-451"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="27" name="lista_alarmas">        
+      <attribute id="33" name="lista_alarmas">        
         <position height="0" width="0" x="-136" y="-623"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="2147483647">        
+      <multiplicity id="34" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-136" y="-623"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="29">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="30">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="31">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="32">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="33" name="vista_simple">        
-        <position height="0" width="0" x="-130" y="228"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-130" y="228"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.modelo;
+package bi.entidades;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -51,12 +51,12 @@ import bi.controles.ServConsultaDinamica;
 import bi.controles.ServConsultaEstatica;
 import bi.vistas.eventos.EventoComponenteConsulta;
 import bi.vistas.eventos.EventoManejable;
-import comunes.modelo.Alarma;
-import comunes.modelo.EquipoEnSitio;
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import comunes.modelo.Suceso;
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.Alarma;
+import comunes.entidades.EquipoEnSitio;
+import comunes.entidades.Familia;
+import comunes.entidades.Sitio;
+import comunes.entidades.Suceso;
+import comunes.entidades.TipoDeEquipo;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
 

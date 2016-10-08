@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 import javax.swing.AbstractListModel;
 
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */

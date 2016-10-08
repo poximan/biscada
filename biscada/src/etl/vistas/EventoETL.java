@@ -17,7 +17,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import bi.controles.GestorBI;
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */

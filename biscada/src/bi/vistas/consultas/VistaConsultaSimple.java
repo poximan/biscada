@@ -19,8 +19,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import bi.modelo.ComponenteConsulta;
-import bi.modelo.ComponenteMenuConsulta;
+import bi.entidades.ComponenteConsulta;
+import bi.entidades.ComponenteMenuConsulta;
 import bi.vistas.eventos.EventoConsultaSimple;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;

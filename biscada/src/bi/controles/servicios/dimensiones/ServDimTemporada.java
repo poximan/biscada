@@ -17,8 +17,8 @@ import java.util.Set;
 import bi.controles.dimensiones.temporada.FabricaTemporada;
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import bi.modelo.Temporada;
-import comunes.modelo.Alarma;
+import bi.entidades.Temporada;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

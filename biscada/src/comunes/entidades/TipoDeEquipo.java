@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.modelo;
+package comunes.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
+import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
 
 /* ............................................. */
 /* ............................................. */
@@ -27,11 +28,11 @@ import comunes.fabrica.TipoDatoFabricable;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO, un POJO de Sucesos
+ * YO REPRESENTO, un POJO de TipoDeEquipo
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO, doy representacion en Objetos del Suceso ocurrido
+ * LO QUE HAGO, doy representacion en Objetos del TipoDeEquipo al que pertenece la alarma
  * 
  * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
@@ -40,31 +41,28 @@ import comunes.fabrica.TipoDatoFabricable;
  * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
  * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
- * el Suceso del que se trata la alarma que se esta procesando. cuando lo
+ * el TipoDeEquipo del que se trata la alarma que se esta procesando. cuando lo
  * encuentra crea una instancia con uno de mis subtipos, alojados en
- * etl.partes_alarma.sucesos
- * 
- * se habla de suceso y no alarma porque alarma es un dato mas complejo que
- * entre sus partes posee la descripcion de lo que paso, el suceso
+ * etl.partes_alarma.equipos
  * 
  * @author hdonato
  *
  */
 @Entity
-@Table(name = "suceso")
-@NamedQueries({ @NamedQuery(name = "Suceso.buscTodos", query = "SELECT tabla FROM Suceso tabla"),
-		@NamedQuery(name = "Suceso.buscDescripcion", query = "SELECT tabla FROM Suceso tabla WHERE tabla.descripcion = :descripcion"), })
-public class Suceso implements TipoDatoFabricable {
+@Table(name = "tipo_de_equipo")
+@NamedQueries({ @NamedQuery(name = "TipoDeEquipo.buscTodos", query = "SELECT tabla FROM TipoDeEquipo tabla"),
+		@NamedQuery(name = "TipoDeEquipo.buscDescripcion", query = "SELECT tabla FROM TipoDeEquipo tabla WHERE tabla.descripcion = :descripcion"), })
+public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	@Column(name = "ID_SUCESO")
+	@Column(name = "ID_TIPO_DE_EQUIPO")
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_suceso")
-	@TableGenerator(name = "gen_suceso", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_equipo")
+	@TableGenerator(name = "gen_equipo", initialValue = 1, allocationSize = 1)
 	private Integer id;
 
 	private String descripcion;
@@ -74,10 +72,10 @@ public class Suceso implements TipoDatoFabricable {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Suceso() {
+	public TipoDeEquipo() {
 	}
 
-	public Suceso(String descripcion) {
+	public TipoDeEquipo(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -89,16 +87,26 @@ public class Suceso implements TipoDatoFabricable {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Suceso))
+		if (!(object instanceof TipoDeEquipo))
 			return false;
 
-		Suceso suceso_a_comparar = (Suceso) object;
-		return this.descripcion.equals(suceso_a_comparar.getDescripcion());
+		TipoDeEquipo equipo_a_comparar = (TipoDeEquipo) object;
+		return this.descripcion.equals(equipo_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
+
+	@Override
+	public Integer getNumero(String discriminante) {
+		return null;
+	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* GET'S ....................................... */
+	/* ............................................. */
 
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
@@ -123,21 +131,15 @@ public class Suceso implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */
-	/* GET'S ....................................... */
+	/* SET'S ....................................... */
 	/* ............................................. */
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/* ............................................. */
-	/* ............................................. */
-	/* SET'S ....................................... */
-	/* ............................................. */
-
 	@Override
 	public String toString() {
-
 		return descripcion;
 	}
 }

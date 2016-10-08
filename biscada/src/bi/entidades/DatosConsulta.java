@@ -3,16 +3,16 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.modelo;
+package bi.entidades;
 
 import java.util.Calendar;
 
 import javax.swing.JRadioButton;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import comunes.modelo.Suceso;
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.Familia;
+import comunes.entidades.Sitio;
+import comunes.entidades.Suceso;
+import comunes.entidades.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */

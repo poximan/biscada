@@ -14,8 +14,8 @@ import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
-import bi.modelo.ComponenteMenuConsulta;
-import bi.modelo.ComponenteMenuDimension;
+import bi.entidades.ComponenteMenuConsulta;
+import bi.entidades.ComponenteMenuDimension;
 import bi.vistas.consultas.VistaConsultaCompuesta;
 import bi.vistas.dimensiones.VistaDimAbstractCompuesta;
 import bi.vistas.dimensiones.VistaDimFamiliaCompuesta;

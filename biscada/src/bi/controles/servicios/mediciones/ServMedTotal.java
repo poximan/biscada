@@ -11,7 +11,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.modelo;
+package bi.entidades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import bi.vistas.eventos.EventoComponenteMenuDimension;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 import comunes.vistas.EventoConfigurable;
 
 /* ............................................. */

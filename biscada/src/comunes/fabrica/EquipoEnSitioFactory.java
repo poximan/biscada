@@ -5,8 +5,8 @@
 
 package comunes.fabrica;
 
-import comunes.modelo.EquipoEnSitio;
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.EquipoEnSitio;
+import comunes.entidades.TipoDeEquipo;
 import etl.controles.servicios.CampoTextoDefectuoso;
 
 /* ............................................. */

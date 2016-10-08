@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 import org.jfree.util.Log;
 
+import comunes.entidades.TipoDeEquipo;
 import comunes.fabrica.Constantes;
-import comunes.modelo.TipoDeEquipo;
 import etl.excepciones.NumeroEquipoExcedidoExcepcion;
 
 /* ............................................. */

@@ -5,7 +5,7 @@
 
 package etl.partes_alarma.familias;
 
-import comunes.modelo.Familia;
+import comunes.entidades.Familia;
 
 /* ............................................. */
 /* ............................................. */

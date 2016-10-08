@@ -16,8 +16,8 @@ import java.util.Set;
 
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import comunes.modelo.Alarma;
-import comunes.modelo.Sitio;
+import comunes.entidades.Alarma;
+import comunes.entidades.Sitio;
 
 /* ............................................. */
 /* ............................................. */

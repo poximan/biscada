@@ -3,11 +3,11 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.modelo;
+package bi.entidades;
 
 import java.util.Calendar;
 
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

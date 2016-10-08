@@ -16,8 +16,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import comunes.modelo.ArchivoDBF;
-import etl.modelo.ArchAlarma;
+import comunes.entidades.ArchivoDBF;
+import etl.entidades.ArchAlarma;
 import nl.knaw.dans.common.dbflib.CorruptedTableException;
 import nl.knaw.dans.common.dbflib.DbfLibException;
 import nl.knaw.dans.common.dbflib.Field;

@@ -9,7 +9,7 @@ import java.util.List;
 
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

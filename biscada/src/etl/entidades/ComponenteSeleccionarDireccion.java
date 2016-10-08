@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.modelo;
+package etl.entidades;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

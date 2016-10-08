@@ -28,13 +28,13 @@ import org.eclipse.persistence.queries.DatabaseQuery;
 import org.eclipse.persistence.sessions.DatabaseRecord;
 import org.eclipse.persistence.sessions.Session;
 
-import bi.modelo.DatosConsulta;
+import bi.entidades.DatosConsulta;
 import comunes.controles.EMFSingleton;
-import comunes.modelo.Alarma;
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import comunes.modelo.Suceso;
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.Alarma;
+import comunes.entidades.Familia;
+import comunes.entidades.Sitio;
+import comunes.entidades.Suceso;
+import comunes.entidades.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */

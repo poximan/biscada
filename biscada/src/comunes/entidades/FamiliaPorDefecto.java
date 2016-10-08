@@ -1,4 +1,4 @@
-package comunes.modelo;
+package comunes.entidades;
 
 /**
  * Class Responsibility Collaborator (CRC) design:

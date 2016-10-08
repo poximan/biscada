@@ -16,8 +16,8 @@ import javax.persistence.Query;
 
 import comunes.controles.EMFSingleton;
 import comunes.controles.ObjetosBorrables;
-import comunes.modelo.Alarma;
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.Alarma;
+import comunes.entidades.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */

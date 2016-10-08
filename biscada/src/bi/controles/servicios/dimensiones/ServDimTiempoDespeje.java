@@ -17,8 +17,8 @@ import java.util.Set;
 import bi.controles.dimensiones.tiempos_despeje.FabricaTiempoDespeje;
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
-import bi.modelo.TiempoDespeje;
-import comunes.modelo.Alarma;
+import bi.entidades.TiempoDespeje;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

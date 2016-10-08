@@ -16,7 +16,7 @@ import org.eclipse.persistence.exceptions.DatabaseException;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import comunes.controles.EMFSingleton;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

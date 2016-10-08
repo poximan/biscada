@@ -12,18 +12,18 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import comunes.controles.ObjetosBorrables;
+import comunes.entidades.Alarma;
+import comunes.entidades.ArchivoDBF;
+import comunes.entidades.EquipoEnSitio;
+import comunes.entidades.Familia;
+import comunes.entidades.Sitio;
+import comunes.entidades.Suceso;
 import comunes.fabrica.Constantes;
 import comunes.fabrica.FabricaAbstracta;
 import comunes.fabrica.ProductorFabricas;
 import comunes.fabrica.TipoDatoFabricable;
-import comunes.modelo.Alarma;
-import comunes.modelo.ArchivoDBF;
-import comunes.modelo.EquipoEnSitio;
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
-import comunes.modelo.Suceso;
 import etl.controles.servicios.CampoTextoDefectuoso;
-import etl.modelo.ArchAlarma;
+import etl.entidades.ArchAlarma;
 
 /* ............................................. */
 /* ............................................. */

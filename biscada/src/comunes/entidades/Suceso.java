@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.modelo;
+package comunes.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,17 +17,21 @@ import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
 
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 /**
  * Class Responsibility Collaborator (CRC) design:
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO, un POJO de Familia de alarmas, como POTABLE, CLOACAL o REUSO
- * entre otras.
+ * YO REPRESENTO, un POJO de Sucesos
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO, doy representacion en Objetos de una Familia de alarmas.
+ * LO QUE HAGO, doy representacion en Objetos del Suceso ocurrido
  * 
  * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
@@ -36,33 +40,31 @@ import comunes.fabrica.TipoDatoFabricable;
  * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
  * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
- * la familia concreta de la alarma que se esta procesando. cuando la encuentra
- * crea una instancia de uno de mis subtipos, alojados en
- * etl.partes_alarma.familias
+ * el Suceso del que se trata la alarma que se esta procesando. cuando lo
+ * encuentra crea una instancia con uno de mis subtipos, alojados en
+ * etl.partes_alarma.sucesos
+ * 
+ * se habla de suceso y no alarma porque alarma es un dato mas complejo que
+ * entre sus partes posee la descripcion de lo que paso, el suceso
  * 
  * @author hdonato
  *
  */
-/* ............................................. */
-/* ............................................. */
-/* CLASE ....................................... */
-/* ............................................. */
-
 @Entity
-@Table(name = "familia")
-@NamedQueries({ @NamedQuery(name = "Familia.buscTodos", query = "SELECT tabla FROM Familia tabla"),
-		@NamedQuery(name = "Familia.buscDescripcion", query = "SELECT tabla FROM Familia tabla WHERE tabla.descripcion = :descripcion"), })
-public class Familia implements TipoDatoFabricable {
+@Table(name = "suceso")
+@NamedQueries({ @NamedQuery(name = "Suceso.buscTodos", query = "SELECT tabla FROM Suceso tabla"),
+		@NamedQuery(name = "Suceso.buscDescripcion", query = "SELECT tabla FROM Suceso tabla WHERE tabla.descripcion = :descripcion"), })
+public class Suceso implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	@Column(name = "ID_FAMILIA")
+	@Column(name = "ID_SUCESO")
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_familia")
-	@TableGenerator(name = "gen_familia", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_suceso")
+	@TableGenerator(name = "gen_suceso", initialValue = 1, allocationSize = 1)
 	private Integer id;
 
 	private String descripcion;
@@ -72,10 +74,10 @@ public class Familia implements TipoDatoFabricable {
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public Familia() {
+	public Suceso() {
 	}
 
-	public Familia(String descripcion) {
+	public Suceso(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -87,11 +89,11 @@ public class Familia implements TipoDatoFabricable {
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof Familia))
+		if (!(object instanceof Suceso))
 			return false;
 
-		Familia familia_a_comparar = (Familia) object;
-		return this.descripcion.equals(familia_a_comparar.getDescripcion());
+		Suceso suceso_a_comparar = (Suceso) object;
+		return this.descripcion.equals(suceso_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {
@@ -135,6 +137,7 @@ public class Familia implements TipoDatoFabricable {
 
 	@Override
 	public String toString() {
+
 		return descripcion;
 	}
 }

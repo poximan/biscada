@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import bi.modelo.ComponenteMenuDimension;
+import bi.entidades.ComponenteMenuDimension;
 import bi.vistas.consultas.VistaConsultaSimple;
 import bi.vistas.dimensiones.VistaDimSitioSimple;
 import bi.vistas.dimensiones.VistaDimSucesoSimple;

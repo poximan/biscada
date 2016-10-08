@@ -15,8 +15,8 @@ import javax.persistence.Query;
 import org.jdesktop.observablecollections.ObservableCollections;
 
 import comunes.controles.EMFSingleton;
-import comunes.modelo.Alarma;
-import comunes.modelo.Suceso;
+import comunes.entidades.Alarma;
+import comunes.entidades.Suceso;
 
 /* ............................................. */
 /* ............................................. */

@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package bi.modelo;
+package bi.entidades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

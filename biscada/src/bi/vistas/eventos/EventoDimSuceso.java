@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JTable;
 
 import bi.vistas.dimensiones.VistaDimSucesoSimple;
-import comunes.modelo.Suceso;
+import comunes.entidades.Suceso;
 
 /* ............................................. */
 /* ............................................. */

@@ -14,8 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import comunes.controles.EMFSingleton;
-import comunes.modelo.Alarma;
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.Alarma;
+import comunes.entidades.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */

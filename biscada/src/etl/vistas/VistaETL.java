@@ -23,11 +23,11 @@ import javax.swing.SwingConstants;
 import org.apache.log4j.Logger;
 
 import comunes.controles.ObjetosBorrables;
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.ArchivoDBF;
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
 import etl.controles.dbf.ProcesarMultipleArchivo;
-import etl.modelo.ComponenteSeleccionarDireccion;
+import etl.entidades.ComponenteSeleccionarDireccion;
 import propiedades.controles.servicios.ServPropiedades;
 
 /* ............................................. */

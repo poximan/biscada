@@ -12,7 +12,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 
-import bi.modelo.IntervaloFechas;
+import bi.entidades.IntervaloFechas;
 
 /* ............................................. */
 /* ............................................. */

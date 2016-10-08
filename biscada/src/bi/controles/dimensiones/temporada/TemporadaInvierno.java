@@ -7,7 +7,7 @@ package bi.controles.dimensiones.temporada;
 
 import java.util.Calendar;
 
-import bi.modelo.Temporada;
+import bi.entidades.Temporada;
 
 /* ............................................. */
 /* ............................................. */

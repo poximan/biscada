@@ -5,7 +5,7 @@
 
 package etl.partes_alarma.equipos;
 
-import comunes.modelo.TipoDeEquipo;
+import comunes.entidades.TipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */

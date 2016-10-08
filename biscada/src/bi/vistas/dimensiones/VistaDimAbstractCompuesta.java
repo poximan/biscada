@@ -18,10 +18,10 @@ import javax.swing.SwingConstants;
 import bi.controles.servicios.dimensiones.ServDimAbstract;
 import bi.controles.servicios.mediciones.ServMedAbstract;
 import bi.controles.servicios.periodos.ServPeriodoAbstract;
+import bi.entidades.ComponenteTabla;
+import bi.entidades.IntervaloFechas;
 import bi.graficas.GraficoComparable;
-import bi.modelo.ComponenteTabla;
-import bi.modelo.IntervaloFechas;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 import comunes.vistas.PanelIniciable;
 
 /* ............................................. */

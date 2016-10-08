@@ -5,7 +5,7 @@
 
 package bi.controles.dimensiones.tiempos_despeje;
 
-import bi.modelo.TiempoDespeje;
+import bi.entidades.TiempoDespeje;
 
 /* ............................................. */
 /* ............................................. */

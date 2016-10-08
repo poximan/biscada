@@ -7,7 +7,7 @@ package etl.vistas;
 
 import javax.swing.JList;
 
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.ArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */

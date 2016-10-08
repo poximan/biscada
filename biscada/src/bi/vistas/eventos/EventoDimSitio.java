@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JTable;
 
 import bi.vistas.dimensiones.VistaDimSitioSimple;
-import comunes.modelo.Sitio;
+import comunes.entidades.Sitio;
 
 /* ............................................. */
 /* ............................................. */

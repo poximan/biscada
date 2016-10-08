@@ -7,7 +7,7 @@ package etl.controles.cruds;
 
 import javax.persistence.Query;
 
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

@@ -37,15 +37,15 @@ import bi.controles.servicios.periodos.ServPeriodoMes;
 import bi.controles.servicios.periodos.ServPeriodoQuincena;
 import bi.controles.servicios.periodos.ServPeriodoSemestre;
 import bi.controles.servicios.periodos.ServPeriodoTrimestre;
+import bi.entidades.ComponenteTabla;
+import bi.entidades.IntervaloFechas;
 import bi.graficas.GraficoBarras;
 import bi.graficas.GraficoLineas;
 import bi.graficas.GraficoTorta;
-import bi.modelo.ComponenteTabla;
-import bi.modelo.IntervaloFechas;
 import bi.vistas.consultas.TableModelMedicionTemporal;
 import bi.vistas.eventos.EventoConfigurable;
 import bi.vistas.eventos.EventoDim;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 import comunes.vistas.PanelIniciable;
 
 /* ............................................. */

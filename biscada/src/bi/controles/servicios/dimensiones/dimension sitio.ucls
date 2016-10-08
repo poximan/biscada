@@ -64,8 +64,8 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="bi.modelo.ComponenteTabla" project="biscada" 
-    file="/biscada/src/bi/modelo/ComponenteTabla.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="bi.entidades.ComponenteTabla" project="biscada" 
+    file="/biscada/src/bi/entidades/ComponenteTabla.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="124" y="162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,89 +91,89 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
   <generalization id="12">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
   <association id="13">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="14" name="componenteTabla">        
-        <position height="0" width="0" x="-13" y="-19"/>      
-      </attribute>      
-      <multiplicity id="15" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-13" y="-19"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="16">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="17">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="18" name="serv_dim_vista_seleccionada">        
+      <attribute id="14" name="serv_dim_vista_seleccionada">        
         <position height="0" width="0" x="-61" y="212"/>      
       </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
+      <multiplicity id="15" minimum="0" maximum="1">        
         <position height="0" width="0" x="-332" y="656"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="20">    
-    <bendpoint x="726" y="733"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="21">    
-    <bendpoint x="407" y="775"/>    
+  <association id="16">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="22" name="serv_dim_sitio">        
-        <position height="0" width="0" x="-164" y="255"/>      
-      </attribute>      
-      <multiplicity id="23" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-502" y="655"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="25">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="26" name="serv_medicion">        
+      <attribute id="17" name="serv_medicion">        
         <position height="0" width="0" x="-11" y="-72"/>      
       </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
+      <multiplicity id="18" minimum="0" maximum="1">        
         <position height="0" width="0" x="-11" y="-72"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="28">    
+  <generalization id="19">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="20">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="21" name="componenteTabla">        
+        <position height="0" width="0" x="-13" y="-19"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-13" y="-19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
     <bendpoint x="354" y="680"/>    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="29" name="serv_periodo">        
+      <attribute id="24" name="serv_periodo">        
         <position height="0" width="0" x="-317" y="166"/>      
       </attribute>      
-      <multiplicity id="30" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="-317" y="166"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="26">    
+    <bendpoint x="726" y="733"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="27">    
+    <bendpoint x="407" y="775"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="28" name="serv_dim_sitio">        
+        <position height="0" width="0" x="-164" y="255"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-502" y="655"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

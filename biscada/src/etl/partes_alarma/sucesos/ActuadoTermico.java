@@ -5,7 +5,7 @@
 
 package etl.partes_alarma.sucesos;
 
-import comunes.modelo.Suceso;
+import comunes.entidades.Suceso;
 
 /* ............................................. */
 /* ............................................. */

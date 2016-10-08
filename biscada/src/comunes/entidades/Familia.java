@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.modelo;
+package comunes.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,23 +16,18 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import comunes.fabrica.TipoDatoFabricable;
-import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
-
-/* ............................................. */
-/* ............................................. */
-/* CLASE ....................................... */
-/* ............................................. */
 
 /**
  * Class Responsibility Collaborator (CRC) design:
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO, un POJO de TipoDeEquipo
+ * YO REPRESENTO, un POJO de Familia de alarmas, como POTABLE, CLOACAL o REUSO
+ * entre otras.
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO, doy representacion en Objetos del TipoDeEquipo al que pertenece la alarma
+ * LO QUE HAGO, doy representacion en Objetos de una Familia de alarmas.
  * 
  * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 
@@ -41,28 +36,33 @@ import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
  * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
  * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
- * el TipoDeEquipo del que se trata la alarma que se esta procesando. cuando lo
- * encuentra crea una instancia con uno de mis subtipos, alojados en
- * etl.partes_alarma.equipos
+ * la familia concreta de la alarma que se esta procesando. cuando la encuentra
+ * crea una instancia de uno de mis subtipos, alojados en
+ * etl.partes_alarma.familias
  * 
  * @author hdonato
  *
  */
+/* ............................................. */
+/* ............................................. */
+/* CLASE ....................................... */
+/* ............................................. */
+
 @Entity
-@Table(name = "tipo_de_equipo")
-@NamedQueries({ @NamedQuery(name = "TipoDeEquipo.buscTodos", query = "SELECT tabla FROM TipoDeEquipo tabla"),
-		@NamedQuery(name = "TipoDeEquipo.buscDescripcion", query = "SELECT tabla FROM TipoDeEquipo tabla WHERE tabla.descripcion = :descripcion"), })
-public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificable {
+@Table(name = "familia")
+@NamedQueries({ @NamedQuery(name = "Familia.buscTodos", query = "SELECT tabla FROM Familia tabla"),
+		@NamedQuery(name = "Familia.buscDescripcion", query = "SELECT tabla FROM Familia tabla WHERE tabla.descripcion = :descripcion"), })
+public class Familia implements TipoDatoFabricable {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	@Column(name = "ID_TIPO_DE_EQUIPO")
+	@Column(name = "ID_FAMILIA")
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_equipo")
-	@TableGenerator(name = "gen_equipo", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "gen_familia")
+	@TableGenerator(name = "gen_familia", initialValue = 1, allocationSize = 1)
 	private Integer id;
 
 	private String descripcion;
@@ -72,10 +72,10 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificab
 	/* CONSTRUCTOR ................................. */
 	/* ............................................. */
 
-	public TipoDeEquipo() {
+	public Familia() {
 	}
 
-	public TipoDeEquipo(String descripcion) {
+	public Familia(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -87,26 +87,16 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificab
 	@Override
 	public boolean equals(Object object) {
 
-		if (!(object instanceof TipoDeEquipo))
+		if (!(object instanceof Familia))
 			return false;
 
-		TipoDeEquipo equipo_a_comparar = (TipoDeEquipo) object;
-		return this.descripcion.equals(equipo_a_comparar.getDescripcion());
+		Familia familia_a_comparar = (Familia) object;
+		return this.descripcion.equals(familia_a_comparar.getDescripcion());
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
-
-	@Override
-	public Integer getNumero(String discriminante) {
-		return null;
-	}
-
-	/* ............................................. */
-	/* ............................................. */
-	/* GET'S ....................................... */
-	/* ............................................. */
 
 	/**
 	 * Los objetos que son iguales deben tener el mismo codigo hash. Esto no
@@ -131,12 +121,17 @@ public class TipoDeEquipo implements TipoDatoFabricable, NumeroEquipoIdentificab
 
 	/* ............................................. */
 	/* ............................................. */
-	/* SET'S ....................................... */
+	/* GET'S ....................................... */
 	/* ............................................. */
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	/* ............................................. */
+	/* ............................................. */
+	/* SET'S ....................................... */
+	/* ............................................. */
 
 	@Override
 	public String toString() {

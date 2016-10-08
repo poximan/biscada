@@ -15,9 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import bi.modelo.ComponenteConsulta;
-import bi.modelo.ComponenteMenuConsulta;
-import bi.modelo.ComponenteMenuDimension;
+import bi.entidades.ComponenteConsulta;
+import bi.entidades.ComponenteMenuConsulta;
+import bi.entidades.ComponenteMenuDimension;
 import bi.vistas.eventos.EventoConsultaCompuesta;
 import bi.vistas.eventos.EventoManejable;
 import comunes.vistas.EventoConfigurable;

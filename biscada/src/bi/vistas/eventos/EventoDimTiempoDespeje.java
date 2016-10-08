@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JTable;
 
-import bi.modelo.TiempoDespeje;
+import bi.entidades.TiempoDespeje;
 import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
 
 /* ............................................. */

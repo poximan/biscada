@@ -5,8 +5,8 @@
 
 package bi.controles.dimensiones.temporada;
 
-import bi.modelo.Temporada;
-import comunes.modelo.Alarma;
+import bi.entidades.Temporada;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

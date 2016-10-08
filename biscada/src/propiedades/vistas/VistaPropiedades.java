@@ -28,7 +28,7 @@ import javax.swing.border.TitledBorder;
 
 import comunes.vistas.EventoConfigurable;
 import comunes.vistas.PanelIniciable;
-import etl.modelo.ComponenteSeleccionarDireccion;
+import etl.entidades.ComponenteSeleccionarDireccion;
 import propiedades.controles.servicios.ServPropiedades;
 
 /**

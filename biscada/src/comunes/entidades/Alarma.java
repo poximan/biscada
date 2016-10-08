@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package comunes.modelo;
+package comunes.entidades;
 
 import java.util.Calendar;
 

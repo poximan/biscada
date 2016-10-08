@@ -5,8 +5,8 @@
 
 package etl.partes_alarma.sitios;
 
-import comunes.modelo.Familia;
-import comunes.modelo.Sitio;
+import comunes.entidades.Familia;
+import comunes.entidades.Sitio;
 import etl.partes_alarma.familias.Reuso;
 
 /* ............................................. */

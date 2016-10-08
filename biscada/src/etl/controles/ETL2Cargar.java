@@ -8,8 +8,8 @@ package etl.controles;
 import java.util.List;
 
 import comunes.controles.ObjetosBorrables;
-import comunes.modelo.Alarma;
-import comunes.modelo.ArchivoDBF;
+import comunes.entidades.Alarma;
+import comunes.entidades.ArchivoDBF;
 import etl.controles.cruds.ServCRUDAlarma;
 import etl.controles.cruds.ServCRUDArchivoDBF;
 import etl.controles.cruds.ServCRUDEquipoEnSitio;

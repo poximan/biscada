@@ -10,7 +10,7 @@ import java.util.List;
 import bi.controles.servicios.dimensiones.ServDimSitio;
 import bi.controles.servicios.dimensiones.ServDimSuceso;
 import bi.vistas.eventos.EventoDimSuceso;
-import comunes.modelo.Alarma;
+import comunes.entidades.Alarma;
 
 /* ............................................. */
 /* ............................................. */

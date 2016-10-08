@@ -118,7 +118,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 		configEventos();
 
 		log.info("llenar listas");
-		actionRestablecer();
+		actualizarListas();
 	}
 
 	/* ............................................. */
@@ -135,7 +135,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 				if (!list_procesados.isSelectionEmpty())
 					procesador_archivos.borrarArchivosSeleccionados(list_procesados.getSelectedValuesList());
 
-				actionRestablecer();
+				actualizarListas();
 			}
 		};
 		final Thread hilo_consulta = new Thread(consulta);
@@ -151,7 +151,7 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 				if (!list_disponibles.isSelectionEmpty())
 					procesador_archivos.insertarArchivosSeleccionados(list_disponibles.getSelectedValuesList());
 
-				actionRestablecer();
+				actualizarListas();
 			}
 		};
 		final Thread hilo_consulta = new Thread(consulta);
@@ -159,18 +159,16 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	}
 
 	/**
-	 * accion ejecutada al presionar el boton restablecer y el evento de cambiar
-	 * el contenido del texto.
+	 * accion ejecutada por el evento de cambiar el contenido del texto.
 	 * 
 	 * el campo de texto asignado para la direccion {origen - destino} de los
-	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
-	 * nuevamente la logica de negocio responsable de llenar las listas de la
-	 * vista ETL.
+	 * archivos .dbf tiene asociado un evento que le permite pedir que se
+	 * actualicen las listas de archivos
 	 * 
 	 * pide las listas del servicio CRUD de archivos dbf y completa en los
 	 * componentes graficos que corresponden
 	 */
-	public void actionRestablecer() {
+	public void actualizarListas() {
 
 		procesador_archivos = new ProcesarMultipleArchivo(txtDireccionFuente.getText());
 		procesador_archivos.buscarNuevosArchivos();

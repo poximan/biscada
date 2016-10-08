@@ -378,10 +378,7 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 		btnBuscar.addActionListener(eventos);
 
 		try {
-			cargarTodasLasFamilias();
-			cargarTodosLosSitios();
-			cargarTodosLosSucesos();
-			cargarTodosLosEquipos();
+			cargarTodosLosCampos();
 		} catch (NullPointerException excepcion) {
 			log.error("falla servicio MySQL, modificar en administrador de servicios del SO");
 		}
@@ -687,5 +684,13 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 	@Override
 	public void resolver() {
 
+	}
+
+	public void cargarTodosLosCampos() {
+
+		cargarTodasLasFamilias();
+		cargarTodosLosSitios();
+		cargarTodosLosSucesos();
+		cargarTodosLosEquipos();
 	}
 }

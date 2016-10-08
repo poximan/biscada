@@ -88,5 +88,7 @@ public class GestorBI {
 
 		frame_menu_bi.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame_menu_bi.setVisible(true);
+		VistaConsultaSimple panel = (VistaConsultaSimple) frame_menu_bi.getContentPane();
+		panel.getComponenteConsulta().cargarTodosLosCampos();
 	}
 }

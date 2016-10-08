@@ -109,7 +109,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 	 * 
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
-		vista_etl.actionRestablecer();
+		vista_etl.actualizarListas();
 	}
 
 	@Override

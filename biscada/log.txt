@@ -11955,3 +11955,137 @@ TipoDeEquipoFactory, ambiguo -> KM. 11: BOMBA EN MARCHA ( NO operar VALVULA) [1e
 2016-10-07 18:08:09,336 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
 2016-10-07 18:08:09,339 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
 
+2016-10-08 16:24:31,304 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-08 16:24:31,314 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-08 16:24:32,339 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-08 16:24:32,358 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28913116455078 MB
+2016-10-08 16:24:32,361 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-08 16:24:32,897 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-08 16:24:33,169 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-08 16:24:40,621 [ERROR] comunes.controles.EMFSingleton:110		- no se pudo crear EMF, revisar modelo
+2016-10-08 16:24:40,622 [ERROR] comunes.controles.EMFSingleton:111		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-08 16:24:41,550 [ERROR] bi.entidades.ComponenteConsulta:386		- falla servicio MySQL, modificar en administrador de servicios del SO
+2016-10-08 16:24:41,661 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-08 16:24:46,465 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-08 16:24:46,493 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-08 16:24:46,495 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-08 16:24:47,582 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-08 16:24:47,584 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-08 16:25:56,707 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-08 16:25:56,716 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-08 16:25:57,115 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-08 16:25:57,122 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28870391845703 MB
+2016-10-08 16:25:57,124 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-08 16:25:57,484 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-08 16:25:57,550 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-08 16:26:01,389 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: No [EntityType] was found for the key class [comunes.entidades.Alarma] in the Metamodel - please verify that the [Entity] class was referenced in persistence.xml using a specific <class>comunes.entidades.Alarma</class> property or a global <exclude-unlisted-classes>false</exclude-unlisted-classes> element.
+2016-10-08 16:26:48,219 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-08 16:26:48,250 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-08 16:26:48,644 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-08 16:26:48,651 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.288856506347656 MB
+2016-10-08 16:26:48,651 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-08 16:26:49,084 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-08 16:26:49,147 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-08 16:26:55,077 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-08 16:26:58,614 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-08 16:26:58,621 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-08 16:26:58,622 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-08 16:26:59,424 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-08 16:26:59,427 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-08 16:27:01,864 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-08 16:27:01,866 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 1573 archivos disponibles
+2016-10-08 16:27:01,924 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1751 archivos procesados
+2016-10-08 16:27:02,002 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-08 16:37:22,328 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-08 16:37:22,337 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-08 16:37:22,726 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-08 16:37:22,732 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.28870391845703 MB
+2016-10-08 16:37:22,732 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-08 16:37:23,104 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-08 16:37:23,180 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-08 16:37:29,840 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-08 16:37:34,480 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-08 16:37:34,486 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-08 16:37:34,487 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-08 16:37:35,459 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-08 16:37:35,461 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-08 16:37:37,895 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-08 16:37:37,895 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 1573 archivos disponibles
+2016-10-08 16:37:37,957 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1751 archivos procesados
+2016-10-08 16:37:38,040 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-08 16:41:14,199 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-08 16:41:14,206 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-08 16:41:14,604 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-08 16:41:14,613 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.2890625 MB
+2016-10-08 16:41:14,613 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-08 16:41:14,951 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-08 16:41:15,050 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-08 16:41:38,609 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-08 16:41:45,160 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-08 16:41:45,166 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-08 16:41:45,167 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-08 16:41:46,191 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-08 16:41:46,195 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-08 16:41:46,509 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-08 16:41:46,521 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3324 archivos disponibles
+2016-10-08 16:41:46,531 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 0 archivos procesados
+2016-10-08 16:41:46,556 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-08 16:41:50,400 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010109.DBF [1-1]
+2016-10-08 16:41:52,378 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 6 de 6 leidas desde archivo
+2016-10-08 16:41:52,852 [INFO ] controles.dbf.ProcesarMultipleArchivo:211		- la operacion demoro 2 segundos
+2016-10-08 16:41:52,852 [INFO ] controles.dbf.ProcesarMultipleArchivo:212		- se extrajeron 6 filas de potenciales alarmas
+2016-10-08 16:41:52,853 [INFO ] controles.dbf.ProcesarMultipleArchivo:213		- se transformaron 6 filas del total extraidas
+2016-10-08 16:41:52,916 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-08 16:41:52,916 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3323 archivos disponibles
+2016-10-08 16:41:52,918 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1 archivos procesados
+2016-10-08 16:42:11,541 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010113.DBF [1-1]
+2016-10-08 16:42:14,620 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 379 de 379 leidas desde archivo
+2016-10-08 16:42:15,988 [INFO ] controles.dbf.ProcesarMultipleArchivo:211		- la operacion demoro 4 segundos
+2016-10-08 16:42:15,988 [INFO ] controles.dbf.ProcesarMultipleArchivo:212		- se extrajeron 385 filas de potenciales alarmas
+2016-10-08 16:42:15,988 [INFO ] controles.dbf.ProcesarMultipleArchivo:213		- se transformaron 385 filas del total extraidas
+2016-10-08 16:42:16,025 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-08 16:42:16,025 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3322 archivos disponibles
+2016-10-08 16:42:16,027 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 2 archivos procesados
+2016-10-08 16:42:27,079 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-08 16:42:27,134 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-08 16:42:27,135 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-08 16:42:27,143 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-08 16:42:27,209 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-08 16:42:27,215 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-08 16:42:27,734 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 261 resultados
+
+2016-10-08 16:42:27,736 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-08 16:42:27,736 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-08 16:42:43,146 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-08 16:42:43,155 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-08 16:42:43,155 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-08 16:42:43,156 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-08 16:42:43,158 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-08 16:42:43,159 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma
+2016-10-08 16:42:43,316 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 385 resultados
+
+2016-10-08 16:42:43,317 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-08 16:42:43,317 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-08 16:42:47,937 [INFO ] bi.entidades.ComponenteTabla:73		- se iniciaron componentes
+2016-10-08 16:42:47,966 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas

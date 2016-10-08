@@ -6,13 +6,13 @@
 
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-		<class>comunes.modelo.Alarma</class>
-		<class>comunes.modelo.ArchivoDBF</class>
-		<class>comunes.modelo.EquipoEnSitio</class>
-		<class>comunes.modelo.Familia</class>
-		<class>comunes.modelo.Sitio</class>
-		<class>comunes.modelo.Suceso</class>
-		<class>comunes.modelo.TipoDeEquipo</class>
+		<class>comunes.entidades.Alarma</class>
+		<class>comunes.entidades.ArchivoDBF</class>
+		<class>comunes.entidades.EquipoEnSitio</class>
+		<class>comunes.entidades.Familia</class>
+		<class>comunes.entidades.Sitio</class>
+		<class>comunes.entidades.Suceso</class>
+		<class>comunes.entidades.TipoDeEquipo</class>
 
 		<properties>
 

@@ -25,19 +25,23 @@ import comunes.entidades.ArchivoDBF;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una implementacion concreta de javax.swing.AbstractListModel
+ * para manejo de comunes.entidades.ArchivoDBF
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, altas y bajas sobre las listas de archivos disponibles y
+ * procesados, de forma ordenada. al finalizar una operacion de alta o baja, la
+ * lista siempre esta ordenada
  * 
  * LO QUE CONOZCO,
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, el ordenador java.util.SortedSet
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, es mi modelo de datos, y esto me asegura
+ * que internamente estan ordenados
  *
  * @author hdonato
  * 

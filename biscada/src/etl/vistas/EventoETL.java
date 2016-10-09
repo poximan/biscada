@@ -29,19 +29,24 @@ import comunes.entidades.ArchivoDBF;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, el gestor de eventos exclusivo de etl.vistas.VistaETL
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, cuando sucede un evento en la vista de la que soy responsable,
+ * examino sus componentes visuales en busca del que cambio de estado.
  * 
- * LO QUE CONOZCO,
+ * cuando lo encuentro, ejecuto la operacion reservada para esa situacion.
+ * 
+ * LO QUE CONOZCO, la vista de la que soy responsable de gestionar sus eventos.
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es java.awt.event.ActionListener (y otras de la
+ * jerarquia de eventos)
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, a traves de esta interfaz soy un gestor
+ * autorizado para escuchar eventos.
  *
  * @author hdonato
  * 

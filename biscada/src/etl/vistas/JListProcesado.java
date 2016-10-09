@@ -19,19 +19,29 @@ import comunes.entidades.ArchivoDBF;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, una especializacion de javax.swing.JList para manejo de
+ * comunes.entidades.ArchivoDBF
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, a traves de mi como especializacion de JList, quien pregunta
+ * usando instanceof sabe si se trata de mi o de un par mio. si no existieran mi
+ * par y yo, las preguntas por JList siempre darían verdadero
+ * 
+ * esto es de utilidad en el metodo etl.vistas.EventoETL.valueChanged(...). alli
+ * se actualizan los contadores al pie de cada lista (lista de archivos
+ * disponibles y procesados)
  * 
  * LO QUE CONOZCO,
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es etl.vistas.JListDisponible
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, no lo hago directamente, pero necesito
+ * que exista para que la logica de comparacion implementada en
+ * etl.vistas.EventoETL.valueChanged(...) sepa a que especializacion de JList
+ * refiere el objeto que se esta comparando
  *
  * @author hdonato
  * 

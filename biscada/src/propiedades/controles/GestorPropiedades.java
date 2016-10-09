@@ -24,29 +24,25 @@ import propiedades.vistas.VistaPropiedades;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO una clase singleton que devuelve siempre el mismo gestor para
+ * la pantalla asociada al manejo del archivo properties
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO construyo un marco de contencion (JFrame) para los componentes
+ * graficos
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO un JFrame generico para contener al panel
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL es el JFrame generico
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
- */
-/**
- * responsable de contruir un marco y agregar all� el panel de edicion y
- * consulta para las propiedades de arranque de la aplicacion.
+ * COMO INTERACTUO CON MI COLABORADOR creo una instancia de el, y configuro los
+ * aspectos generales de los marcos, visibilidad y botones de operacion de
+ * ventanas (_|#|X)
  * 
- * implementa singleton para asegurar que la interfaz visual de edicion sea
- * siempre la misma.
- * 
- * @author hugo
+ * @author hdonato
  *
  */
 public class GestorPropiedades {

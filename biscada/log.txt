@@ -12089,3 +12089,23 @@ Error Code: 0
 
 2016-10-08 16:42:47,937 [INFO ] bi.entidades.ComponenteTabla:73		- se iniciaron componentes
 2016-10-08 16:42:47,966 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas
+2016-10-09 18:48:25,226 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-09 18:48:25,229 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-09 18:48:25,930 [DEBUG] comunes.controles.Principal:137		- heap reservado = 61.5 MB
+2016-10-09 18:48:25,933 [DEBUG] comunes.controles.Principal:138		- heap libre = 54.75818634033203 MB
+2016-10-09 18:48:25,933 [DEBUG] comunes.controles.Principal:139		- heap maximo = 903.5 MB
+
+2016-10-09 18:48:26,944 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-09 18:48:26,963 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-09 18:48:30,604 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-09 18:48:47,781 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-09 18:48:47,784 [INFO ] etl.vistas.VistaETL:112		- set direccion por defecto para origen de datos
+2016-10-09 18:48:47,784 [INFO ] etl.vistas.VistaETL:114		- inicia componentes
+2016-10-09 18:48:48,216 [INFO ] etl.vistas.VistaETL:117		- carga eventos
+2016-10-09 18:48:48,217 [INFO ] etl.vistas.VistaETL:120		- llenar listas
+2016-10-09 18:48:48,293 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-09 18:48:48,293 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3307 archivos disponibles
+2016-10-09 18:48:48,303 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 17 archivos procesados
+2016-10-09 18:48:48,323 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl

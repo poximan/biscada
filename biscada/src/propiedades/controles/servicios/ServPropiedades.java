@@ -24,28 +24,21 @@ import org.apache.log4j.Logger;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, el servicio de mediacion entre la vista del usuario y el
+ * archivo propertires que esta manipulando
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, opero sobre el archivo properties, abrirlo, cerrarlo y ABMC
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, el nombre del archivo properties
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, es java.io.FileInputStream
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
- *
- */
-/**
- * recupera y de ser necesario actualiza el archivo de propiedades de arranque
- * de la aplicacion.
- * 
- * mediante singleton asegura una unica via unidireccional de acceso al archivo.
- * 
- * @author hugo
+ * COMO INTERACTUO CON MI COLABORADOR, me permite trabajar a nivel de objetos
+ * con el archivo properties
  *
  */
 public class ServPropiedades {

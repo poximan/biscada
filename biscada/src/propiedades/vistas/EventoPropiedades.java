@@ -105,7 +105,7 @@ public class EventoPropiedades implements ActionListener {
 				|| !ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA").equals(txtContrasenia.getText()))
 
 			respuesta_usuario = JOptionPane.showConfirmDialog((Component) null,
-					"para nuevos parametros de conexion, la aplicacion debe reiniciar", "ï¿½desea reiniciar?",
+					"para nuevos parametros de conexion, la aplicacion debe reiniciar", "¿desea reiniciar?",
 					JOptionPane.YES_NO_OPTION);
 
 		if (!deseaReiniciar(respuesta_usuario))

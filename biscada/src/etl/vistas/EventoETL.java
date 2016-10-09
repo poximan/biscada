@@ -87,7 +87,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 
 	/**
 	 * el campo de texto asignado para la direccion {origen - destino} de los
-	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
+	 * archivos .dbf tiene asociado un evento para que permitira lanzar
 	 * nuevamente la logica de negocio responsable de llenar las listas de la
 	 * vista ETL.
 	 * 
@@ -103,9 +103,8 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 
 	/**
 	 * el campo de texto asignado para la direccion {origen - destino} de los
-	 * archivos .dbf tiene asociado un evento para que permitir� lanzar
-	 * nuevamente la logica de negocio responsable de llenar las listas de la
-	 * vista ETL.
+	 * archivos .dbf tiene asociado un evento que permitira lanzar nuevamente la
+	 * logica de negocio responsable de llenar las listas de la vista ETL.
 	 * 
 	 */
 	public void resolverCambioTextoDireccion(DocumentEvent evt) {
@@ -126,6 +125,7 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 			clase_propietaria = Class.forName(elemento.getClass().getName());
 			cons = clase_propietaria.getConstructor();
 			objeto_resultante = cons.newInstance();
+
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
 				| IllegalAccessException | IllegalArgumentException | InvocationTargetException excepcion) {
 			excepcion.printStackTrace();

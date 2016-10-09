@@ -40,19 +40,32 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, el panel ETL completo, con todos los componentes necesarios
+ * para el proceso ETL.
+ * 
+ * soy desplegado por mi gestor etl.controles.GestorETL, quien crea un marco
+ * generico, agrega mi clase en él, y me pasa el control
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, soy una interfaz visual que cubre las necesidades del usuario
+ * para el proceso ETL. puedo insertar todas las alarmas de un archivo dbf y
+ * puedo extraer de la base de datos todas las alarmas emparentadas con un
+ * archivo dbf
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, todos los archivos dbf disponibles en una direccion local
+ * dada, y todos los archivos dbf que estan al momento insertados en la base de
+ * datos
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL,
+ * MI COLABORADOR PRINCIPAL, son las especializaciones de lista
+ * etl.vistas.JListDisponible.JListDisponible y
+ * etl.vistas.JListDisponible.JListProcesado
  * 
- * COMO INTERACTUO CON MI COLABORADOR,
+ * COMO INTERACTUO CON MI COLABORADOR, delego en ellos todas las tareas de
+ * binding contra la direccion de carpeta local y base de datos, para que lo
+ * visto en pantalla refleje el estado actual.
  *
  * @author hdonato
  * 

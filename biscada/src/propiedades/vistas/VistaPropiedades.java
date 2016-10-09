@@ -36,13 +36,19 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO,
+ * YO REPRESENTO, el panel propiedades completo, con todos los componentes
+ * necesarios para manipular el archivo properties
+ * 
+ * soy desplegado por mi gestor propiedades.controles.GestorPropiedades, quien
+ * crea un marco generico, agrega mi clase en él, y me pasa el control
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO,
+ * LO QUE HAGO, soy una interfaz visual que cubre las necesidades del usuario
+ * que desea modificar algun atributo del archivo properties. puedo modificar
+ * valores y traer los establecidos por defecto.
  * 
- * LO QUE CONOZCO,
+ * LO QUE CONOZCO, todos los atributos del archivo properties
  * 
  * ==== parte colaboracion ==================
  * 
@@ -50,12 +56,9 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
  *
+ * @author hdonato
+ * 
  */
-/* ............................................. */
-/* ............................................. */
-/* CLASE ....................................... */
-/* ............................................. */
-
 public class VistaPropiedades extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */
@@ -303,27 +306,26 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
 
 		GroupLayout gl_panelConexionBD = new GroupLayout(panelConexionBD);
-		gl_panelConexionBD
-				.setHorizontalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelConexionBD.createSequentialGroup().addContainerGap()
-								.addGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panelConexionBD.createSequentialGroup()
-												.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 35,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 130,
-														Short.MAX_VALUE)
-												.addGap(4)
-												.addComponent(lblContrasenia, GroupLayout.PREFERRED_SIZE, 66,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED).addComponent(
-														txtContrasenia, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-										.addGroup(gl_panelConexionBD.createSequentialGroup()
-												.addComponent(lblURL, GroupLayout.PREFERRED_SIZE, 52,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtURL, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
-								.addGap(3)));
+		gl_panelConexionBD.setHorizontalGroup(
+				gl_panelConexionBD.createParallelGroup(Alignment.LEADING).addGroup(gl_panelConexionBD
+						.createSequentialGroup().addContainerGap().addGroup(gl_panelConexionBD
+								.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelConexionBD.createSequentialGroup()
+										.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 35,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+										.addGap(4)
+										.addComponent(lblContrasenia, GroupLayout.PREFERRED_SIZE, 66,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+								.addGroup(gl_panelConexionBD.createSequentialGroup()
+										.addComponent(lblURL, GroupLayout.PREFERRED_SIZE, 52,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(txtURL, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+						.addGap(3)));
 		gl_panelConexionBD.setVerticalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_panelConexionBD.createSequentialGroup().addContainerGap().addGroup(gl_panelConexionBD
 						.createParallelGroup(Alignment.LEADING).addComponent(lblURL)

@@ -12109,3 +12109,58 @@ Error Code: 0
 2016-10-09 18:48:48,293 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3307 archivos disponibles
 2016-10-09 18:48:48,303 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 17 archivos procesados
 2016-10-09 18:48:48,323 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-09 22:02:22,260 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-09 22:02:22,267 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-09 22:02:22,418 [DEBUG] comunes.controles.Principal:137		- heap reservado = 61.5 MB
+2016-10-09 22:02:22,421 [DEBUG] comunes.controles.Principal:138		- heap libre = 54.41383361816406 MB
+2016-10-09 22:02:22,421 [DEBUG] comunes.controles.Principal:139		- heap maximo = 903.5 MB
+
+2016-10-09 22:02:22,596 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-09 22:02:22,613 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-09 22:02:24,312 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-09 22:02:26,465 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-09 22:02:26,478 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-09 22:02:26,482 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-09 22:02:26,488 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-09 22:02:26,515 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-09 22:02:26,517 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-09 22:02:27,091 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 1605 resultados
+
+2016-10-09 22:02:27,093 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-09 22:02:27,094 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-09 22:02:29,876 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-09 22:02:29,880 [INFO ] etl.vistas.VistaETL:125		- set direccion por defecto para origen de datos
+2016-10-09 22:02:29,881 [INFO ] etl.vistas.VistaETL:127		- inicia componentes
+2016-10-09 22:02:30,209 [INFO ] etl.vistas.VistaETL:130		- carga eventos
+2016-10-09 22:02:30,210 [INFO ] etl.vistas.VistaETL:133		- llenar listas
+2016-10-09 22:02:30,261 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-09 22:02:30,262 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3307 archivos disponibles
+2016-10-09 22:02:30,263 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 17 archivos procesados
+2016-10-09 22:02:30,283 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-09 22:02:32,021 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010311.DBF [1-1]
+2016-10-09 22:02:33,444 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 272 de 272 leidas desde archivo
+2016-10-09 22:02:34,412 [INFO ] controles.dbf.ProcesarMultipleArchivo:211		- la operacion demoro 2 segundos
+2016-10-09 22:02:34,412 [INFO ] controles.dbf.ProcesarMultipleArchivo:212		- se extrajeron 272 filas de potenciales alarmas
+2016-10-09 22:02:34,412 [INFO ] controles.dbf.ProcesarMultipleArchivo:213		- se transformaron 272 filas del total extraidas
+2016-10-09 22:02:34,442 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-09 22:02:34,443 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3306 archivos disponibles
+2016-10-09 22:02:34,444 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 18 archivos procesados
+2016-10-09 22:02:39,984 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-09 22:02:39,992 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-09 22:02:39,992 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-09 22:02:39,994 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-09 22:02:39,997 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-09 22:02:39,998 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((ID_FAMILIA = ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-09 22:02:40,071 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 446 resultados
+
+2016-10-09 22:02:40,072 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-09 22:02:40,072 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-09 22:02:42,543 [INFO ] bi.entidades.ComponenteTabla:73		- se iniciaron componentes
+2016-10-09 22:02:42,544 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas
+2016-10-09 22:02:59,469 [INFO ] bi.entidades.ComponenteTabla:73		- se iniciaron componentes
+2016-10-09 22:02:59,470 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas

@@ -16,9 +16,30 @@ import bi.entidades.IntervaloFechas;
 
 /* ............................................. */
 /* ............................................. */
-/* INTERFASE ................................... */
+/* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase Abstracta que contiene los metodos comunes
+ * de las clases para calcular los periodos
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO obtener el tiempo de inicio y pasarlo a la clase del tipo de periodo correspondiente
+ * 
+ * LO QUE CONOZCO el periodo en el que se requieren que se realicen los calculos
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServDimAbstract
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, devolviendo los calculos requeridos
+ *
+ */
 public abstract class ServPeriodoAbstract {
 
 	/* ............................................. */

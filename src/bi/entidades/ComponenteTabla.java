@@ -36,6 +36,27 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO un componente tabla
+ *  
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construir la tabla de resultado del tercer nivel de evaluacion
+ * con todos sus componentes. 
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, 
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ */
 public class ComponenteTabla extends JPanel implements PanelIniciable {
 
 	/* ............................................. */

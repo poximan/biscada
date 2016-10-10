@@ -15,6 +15,28 @@ import comunes.entidades.Alarma;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase Abstracta de Servicio de Mediciones
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO pasar los datos que se encuentran en un arreglo a listas e interactuar 
+ * con las clases para calcular el tipo de medicion correspondiente (totales o promedios).
+ * 
+ * LO QUE CONOZCO el set de datos recibido
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServDimAbstract
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, mediante cualquiera de las clases que extiendan
+ * de ServDimAbstract
+ *
+ */
 public abstract class ServMedAbstract {
 
 	/* ............................................. */

@@ -14,11 +14,24 @@ import java.util.Calendar;
 /* ............................................. */
 
 /**
- * registra primer y ultima alarma en un intervalod de fecha. se puede pensar
- * como una entidad, ya que si bien no se persiste, tampoco posee ningun tipo de
- * logica asociada, es decir no presta servicios de ningun tipo
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author hugo
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase que registra la primer y ultima alarma en un intervaloFecha
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO registrar la primer y ultima alarma 
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServPeriodoAbs
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,  entregando la primer o ultima alarma segun la necesidad 
+ * de la clase ServPeriodoAbs
  * 
  */
 public class IntervaloFechas {

@@ -17,9 +17,25 @@ import comunes.entidades.Alarma;
 /* ............................................. */
 
 /**
- * solo provee servicios, de ser necesario reutilizar no es necesario clonar.
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author hdonato
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO la clase de Servicios de Dimension
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO Proveer servicios de medicion y periodo.
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, cualquier de las clases de ServDim que extiendan de esta clase.
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, mediante la utilizacion de cualquier clase que extienda
+ * de esta, para pasar al tercer nivel de evaluacion, definiendo el tipo de medicion y el 
+ * periodo de tiempo con que se quiere ver los resultados
  *
  */
 public abstract class ServDimAbstract {

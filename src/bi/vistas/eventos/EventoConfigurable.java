@@ -11,11 +11,24 @@ package bi.vistas.eventos;
 /* ............................................. */
 
 /**
- * normaliza la configuracion de eventos visuales. no se utilizo la interfaz
- * EventoConfigurable porque era necesario agregar un argumento adicional
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author hdonato
+ * ==== parte clase =========================
  * 
+ * YO REPRESENTO una interfaz
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO normalizar la configuracion de eventos visuales
+ * 
+ * LO QUE CONOZCO todos los eventos que seran escuchados en la vista que lo implemente
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, EventoDim
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, 
+ *
  */
 public interface EventoConfigurable {
 

@@ -18,6 +18,27 @@ import comunes.entidades.Familia;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase que extiende de EventoDim	
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO ejecutar el evento correspondiente 
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, EventoDim
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, recibiendo el comportamiento
+ * segun el evento que sea escuchado
+ *
+ */
 public class EventoDimFamilia extends EventoDim implements MouseListener {
 
 	/* ............................................. */

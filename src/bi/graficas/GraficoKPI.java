@@ -23,6 +23,26 @@ import propiedades.controles.servicios.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO el grafico de KPI.
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construir un panel donde se contruye un grafico KPI.
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, VistaKpiabstract. 
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, recibiendo los datos para el grafico
+ *
+ */
 public class GraficoKPI extends JPanel {
 
 	/* ............................................. */

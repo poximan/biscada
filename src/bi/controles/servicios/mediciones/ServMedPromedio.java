@@ -16,6 +16,27 @@ import comunes.entidades.Alarma;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO el servicio de medicion Promedio
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO calcular el promedio del set de datos recibido.
+ * 
+ * LO QUE CONOZCO el set de datos y el periodo recibido mediante el metodo 
+ * completarFila
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServMedAbstrac
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, devolviendo el promedio calculado del set de datos recibido.
+ *
+ */
 public class ServMedPromedio extends ServMedAbstract {
 
 	/* ............................................. */

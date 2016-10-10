@@ -40,6 +40,27 @@ import propiedades.controles.servicios.ServPropiedades;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO la VistaKpiAbstract
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO generar el comportamiento de la vista KpiCalidadServicio, generando
+ * todos sus componentes y configurando sus eventos
+ *  
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, 
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ * 
+ */
 public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable, EventoKPIConfigurable {
 
 	/* ............................................. */

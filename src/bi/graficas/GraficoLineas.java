@@ -23,6 +23,27 @@ import org.jfree.data.general.AbstractDataset;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase que extiende de GraficoAbstract	
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO generar el grafico de Lineas
+ * 
+ * LO QUE CONOZCO la libreria JFreeChart donde se pasaran los datos para 
+ * generar el grafico de Lineas
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, VistaDimAbstractSimple
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, recibiendo los datos para generar el gráfico 
+ *
+ */
 public class GraficoLineas extends GraficoAbstract {
 
 	/* ............................................. */

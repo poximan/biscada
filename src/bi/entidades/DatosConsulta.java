@@ -20,10 +20,24 @@ import comunes.entidades.TipoDeEquipo;
 /* ............................................. */
 
 /**
- * envuelve todos los datos de una nueva consulta en un unico objeto de
- * intercambio. facilita el pasaje de parametros.
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author donat
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO,
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, envolver todos los datos de una nueva consulta en un unico
+ * objeto de intercambio
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ComponenteConsulta
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, facilito el pasaje de parametros
  *
  */
 public class DatosConsulta {

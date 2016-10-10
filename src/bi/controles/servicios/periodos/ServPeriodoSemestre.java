@@ -17,6 +17,26 @@ import bi.entidades.IntervaloFechas;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase que extiende de ServPeriodoAbstract
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO devolver los calculos del periodo en semestres
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServPeriodoAbst
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, 
+ *
+ */
 public class ServPeriodoSemestre extends ServPeriodoAbstract {
 
 	/* ............................................. */

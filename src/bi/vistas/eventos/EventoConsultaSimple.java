@@ -25,6 +25,31 @@ import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO un evento generado por un accion de la pantalla Principal
+ * para poder pasar al segundo nivel de evaluacion
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO lanzar la ventana del segundo nivel de evaluacion segun
+ * corresponda (FAMILIA, SUCESO, ..)
+ * 
+ * LO QUE CONOZCO el evento generado por la pantalla del BI
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ComponenteMenuDimension
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, creo una instancia de el, lanzando una ventana segun el tipo 
+ * evento al que corresponda.
+ * 
+ * @author hdonato
+ *
+ */
 public class EventoConsultaSimple implements ActionListener, VentanaLanzable {
 
 	/* ............................................. */

@@ -25,6 +25,27 @@ import comunes.entidades.Alarma;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase que extiende de ServDimAbstract
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO crear un mapa hash 
+ * 
+ * LO QUE CONOZCO la clave de la dimension sobre la cual trabajar en el segundo
+ * nivel de evaluacion
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, ServDimAbstract
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, 
+ *
+ */
 public class ServDimTiempoDespeje extends ServDimAbstract {
 
 	/* ............................................. */

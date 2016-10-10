@@ -21,6 +21,27 @@ import bi.vistas.kpi.VistaKpiCalidadServicio;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase abstracta EventoDim
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO manejar todos los eventos que seran escuchados y delegarlos
+ * a la vista que lo implementa
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, 
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, 
+ *
+ */
 public abstract class EventoDim implements ActionListener, MouseListener, VentanaLanzable {
 
 	/* ............................................. */

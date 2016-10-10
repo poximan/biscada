@@ -53,6 +53,29 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO una clase abstracta que contiene la grafica que comparten cada
+ * una de las vistas.
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO construyo un marco sobre el cual se almacenaran los componentes del
+ * segundo nivel de evaluacion.
+ * 
+ * LO QUE CONOZCO 
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, cualquiera de las vistas simples. 
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, entregando el marco de desarrollo segun el 
+ * evento que corresponda.
+ *
+ */
 public abstract class VistaDimAbstractSimple extends JPanel
 		implements PanelIniciable, EventoConfigurable, DimensionCalculable {
 

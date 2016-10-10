@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="comunes.fabrica.FamiliaFactory" project="biscada" 
     file="/biscada/src/comunes/fabrica/FamiliaFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="324" y="478"/>    
+    <position height="117" width="232" x="585" y="212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="comunes.fabrica.FabricaAbstracta" project="biscada" 
     file="/biscada/src/comunes/fabrica/FabricaAbstracta.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="321" y="104"/>    
+    <position height="135" width="259" x="313" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="comunes.fabrica.SitioFactory" project="biscada" 
     file="/biscada/src/comunes/fabrica/SitioFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="495" y="313"/>    
+    <position height="117" width="232" x="41" y="212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="comunes.fabrica.SucesoFactory" project="biscada" 
     file="/biscada/src/comunes/fabrica/SucesoFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="155" y="309"/>    
+    <position height="117" width="232" x="313" y="212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="bi.vistas.kpi.VistaKpiCalidadServicio" project="biscada" 
     file="/biscada/src/bi/vistas/kpi/VistaKpiCalidadServicio.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="215" y="353"/>    
+    <position height="117" width="285" x="41" y="320"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="bi.vistas.kpi.VistaKpiAbstract" project="biscada" 
     file="/biscada/src/bi/vistas/kpi/VistaKpiAbstract.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="199" y="151"/>    
+    <position height="243" width="253" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      

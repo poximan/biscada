@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="bi.vistas.eventos.EventoConsultaSimple" project="biscada" 
     file="/biscada/src/bi/vistas/eventos/EventoConsultaSimple.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="157" y="246"/>    
+    <position height="153" width="238" x="247" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <interface id="2" language="java" name="bi.vistas.eventos.VentanaLanzable" project="biscada" 
     file="/biscada/src/bi/vistas/eventos/VentanaLanzable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="298" y="50"/>    
+    <position height="81" width="196" x="289" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </interface>  
   <class id="3" language="java" name="bi.vistas.eventos.EventoDim" project="biscada" 
     file="/biscada/src/bi/vistas/eventos/EventoDim.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="428" y="297"/>    
+    <position height="171" width="246" x="525" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="bi.vistas.eventos.EventoDimSuceso" project="biscada" 
     file="/biscada/src/bi/vistas/eventos/EventoDimSuceso.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="565" y="588"/>    
+    <position height="171" width="231" x="525" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="bi.vistas.dimensiones.VistaDimSucesoSimple" project="biscada" 
     file="/biscada/src/bi/vistas/dimensiones/VistaDimSucesoSimple.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="562" y="817"/>    
+    <position height="99" width="207" x="811" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <interface id="6" language="java" name="bi.vistas.dimensiones.DimensionCalculable" project="biscada" 
     file="/biscada/src/bi/vistas/dimensiones/DimensionCalculable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="126" y="431"/>    
+    <position height="99" width="166" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,11 +60,11 @@
     <end type="TARGET" refId="3"/>  
   </generalization>  
   <realization id="8">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
   <realization id="9">    
-    <end type="SOURCE" refId="1"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -12164,3 +12164,39 @@ Error Code: 0
 2016-10-09 22:02:42,544 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas
 2016-10-09 22:02:59,469 [INFO ] bi.entidades.ComponenteTabla:73		- se iniciaron componentes
 2016-10-09 22:02:59,470 [INFO ] bi.entidades.ComponenteTabla:76		- se ordernaron tablas
+2016-10-10 14:01:08,301 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-10 14:01:08,321 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-10 14:01:09,750 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-10 14:01:09,771 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.594757080078125 MB
+2016-10-10 14:01:09,774 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-10 14:01:10,283 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-10 14:01:10,348 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-10 14:01:14,033 [ERROR] comunes.controles.EMFSingleton:110		- no se pudo crear EMF, revisar modelo
+2016-10-10 14:01:14,034 [ERROR] comunes.controles.EMFSingleton:111		- Exception [EclipseLink-4003] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Exception Description: Configuration error.  Class [com.mysql.jdbc.Driver] not found.
+2016-10-10 14:01:14,934 [ERROR] bi.entidades.ComponenteConsulta:383		- falla servicio MySQL, modificar en administrador de servicios del SO
+2016-10-10 14:01:14,954 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-10 14:01:15,625 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: null
+2016-10-10 14:02:01,704 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-10 14:02:01,712 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-10 14:02:02,129 [DEBUG] comunes.controles.Principal:137		- heap reservado = 57.5 MB
+2016-10-10 14:02:02,137 [DEBUG] comunes.controles.Principal:138		- heap libre = 50.594696044921875 MB
+2016-10-10 14:02:02,139 [DEBUG] comunes.controles.Principal:139		- heap maximo = 844.5 MB
+
+2016-10-10 14:02:02,492 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-10 14:02:02,550 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-10 14:02:09,390 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-10 14:02:12,899 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-10 14:02:12,924 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-10 14:02:12,924 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-10 14:02:12,936 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-10 14:02:13,004 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-10 14:02:13,008 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-10 14:02:13,739 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 261 resultados
+
+2016-10-10 14:02:13,741 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-10 14:02:13,745 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+

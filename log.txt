@@ -13060,3 +13060,62 @@ TipoDeEquipoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
 
 2016-10-11 13:25:36,307 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
 2016-10-11 13:25:36,323 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-11 13:27:56,429 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-11 13:27:56,429 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-11 13:27:56,586 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-11 13:27:56,586 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.075477600097656 MB
+2016-10-11 13:27:56,586 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-11 13:27:56,727 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-11 13:27:56,758 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-11 13:27:59,085 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-11 13:28:04,266 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 13:28:04,266 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 13:28:04,266 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 13:28:04,266 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 13:28:04,298 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 13:28:04,298 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-11 13:28:10,041 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 48505 resultados
+
+2016-10-11 13:28:10,041 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 13:28:10,042 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 13:28:11,353 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
+2016-10-11 13:28:11,354 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-11 13:46:19,249 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-11 13:46:19,249 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-11 13:46:19,405 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-11 13:46:19,405 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.082405090332031 MB
+2016-10-11 13:46:19,405 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-11 13:46:19,545 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-11 13:46:19,561 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-11 13:46:21,811 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-11 13:46:29,990 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 13:46:29,991 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 13:46:29,991 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 13:46:30,023 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 13:46:30,054 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 13:46:30,054 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_INICIO >= ?) AND ((FECHA_FIN - FECHA_INICIO) >= ?))
+2016-10-11 13:46:31,162 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 5127 resultados
+
+2016-10-11 13:46:31,178 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 13:46:31,178 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 13:46:34,269 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
+2016-10-11 13:46:34,269 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-11 13:51:14,316 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 13:51:14,317 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 13:51:14,317 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 13:51:14,317 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 13:51:14,317 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 13:51:14,317 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-11 13:51:18,859 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 48505 resultados
+
+2016-10-11 13:51:18,859 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 13:51:18,859 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 13:51:26,868 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
+2016-10-11 13:51:26,868 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas

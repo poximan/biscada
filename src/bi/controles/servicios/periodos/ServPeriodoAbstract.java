@@ -24,12 +24,13 @@ import bi.entidades.IntervaloFechas;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO una clase Abstracta que contiene los metodos comunes
- * de las clases para calcular los periodos
+ * YO REPRESENTO una clase Abstracta que contiene los metodos comunes de las
+ * clases para calcular los periodos
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO obtener el tiempo de inicio y pasarlo a la clase del tipo de periodo correspondiente
+ * LO QUE HAGO obtener el tiempo de inicio y pasarlo a la clase del tipo de
+ * periodo correspondiente
  * 
  * LO QUE CONOZCO el periodo en el que se requieren que se realicen los calculos
  * 
@@ -83,15 +84,15 @@ public abstract class ServPeriodoAbstract {
 
 	public int getCantidadPeriodos(Calendar primer_alarma, Calendar ultima_alarma) {
 
-		int contador_periodos = 0;
+		int contador_periodos = 1;
 
 		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
 		DateTime tiempo_fin = new DateTime(ultima_alarma.getTimeInMillis());
 
-		Interval intervalo_patron = new Interval(tiempo_inicio, tiempo_fin);
+		Interval intervalo_patron = new Interval(getPeriodo(), tiempo_fin);
 		Interval intervalo_test = new Interval(tiempo_inicio, getPeriodo());
 
-		while (intervalo_patron.overlaps(intervalo_test)) {
+		while (!intervalo_test.isAfter(intervalo_patron)) {
 			intervalo_test = new Interval(intervalo_test.getEnd(), siguientePeriodo());
 			contador_periodos++;
 		}

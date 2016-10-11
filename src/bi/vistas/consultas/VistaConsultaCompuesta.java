@@ -29,12 +29,39 @@ import comunes.vistas.PanelIniciable;
 /* ............................................. */
 
 /**
- * reutiliza los servicios de consulta a base de datos, pero una vez devuelta la
- * consulta la ventana se cierra, entregando la lista a la ventana que solicito
- * una consulta adicional para realizar comparacion contra una consulta origen
+ * Class Responsibility Collaborator (CRC) design:
  * 
- * @author hdonato
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, lo mismo que bi.vistas.consultas.VistaConsultaSimple pero
+ * reacciono diferente una vez obtenido el resultado de la consulta
+ * 
+ * soy desplegado por el gestor
+ * bi.vistas.eventos.EventoComponenteMenuDimension.actionPerformed(...) que es
+ * el gestor para los eventos generados desde los menues superiores en el panel
+ * de dimensiones.
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, soy una interfaz visual que cubre las necesidades del usuario
+ * para realizar una consulta a BD. puedo filtrar la busqueda segun cada campo o
+ * una combinacion de ellos. ademas, a traves del menu que me provee mi JFrame
+ * bi.entidades.ComponenteMenuConsulta puedo anexar otros filtros adicionales.
+ * 
+ * cuando obtengo el resultado de la consulta, lo transfieron a la ventana que
+ * solicito una consulta adicional para realizar comparacion contra un set
+ * patron.
+ * 
+ * LO QUE CONOZCO,
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL,
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
+ * @author hdonato
+ * 
  */
 public class VistaConsultaCompuesta extends JPanel implements PanelIniciable, EventoConfigurable, EventoManejable {
 

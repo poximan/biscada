@@ -12200,3 +12200,794 @@ Exception Description: Configuration error.  Class [com.mysql.jdbc.Driver] not f
 2016-10-10 14:02:13,741 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
 2016-10-10 14:02:13,745 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
 
+2016-10-11 08:41:29,405 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-11 08:41:29,405 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-11 08:41:29,842 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-11 08:41:29,858 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.140243530273438 MB
+2016-10-11 08:41:29,858 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-11 08:41:30,278 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-11 08:41:30,387 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-11 08:41:44,108 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-11 08:41:47,862 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2016-10-11 08:41:47,894 [INFO ] etl.vistas.VistaETL:125		- set direccion por defecto para origen de datos
+2016-10-11 08:41:47,894 [INFO ] etl.vistas.VistaETL:127		- inicia componentes
+2016-10-11 08:41:48,548 [INFO ] etl.vistas.VistaETL:130		- carga eventos
+2016-10-11 08:41:48,548 [INFO ] etl.vistas.VistaETL:133		- llenar listas
+2016-10-11 08:41:48,720 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-11 08:41:48,720 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3324 archivos disponibles
+2016-10-11 08:41:48,720 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 0 archivos procesados
+2016-10-11 08:41:48,720 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2016-10-11 08:41:52,753 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010108.DBF [1-315]
+2016-10-11 08:41:53,844 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 224 de 224 leidas desde archivo
+2016-10-11 08:41:54,312 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010109.DBF [2-315]
+2016-10-11 08:41:54,406 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 6 de 6 leidas desde archivo
+2016-10-11 08:41:54,483 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010110.DBF [3-315]
+2016-10-11 08:41:54,577 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 15 de 15 leidas desde archivo
+2016-10-11 08:41:54,873 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010111.DBF [4-315]
+2016-10-11 08:41:54,952 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 10 de 10 leidas desde archivo
+2016-10-11 08:41:55,029 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010112.DBF [5-315]
+2016-10-11 08:41:55,232 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 68 de 68 leidas desde archivo
+2016-10-11 08:41:55,481 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010113.DBF [6-315]
+2016-10-11 08:41:56,384 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 379 de 379 leidas desde archivo
+2016-10-11 08:41:56,663 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010114.DBF [7-315]
+2016-10-11 08:41:56,835 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 52 de 52 leidas desde archivo
+2016-10-11 08:41:56,959 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010115.DBF [8-315]
+2016-10-11 08:41:57,457 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 221 de 221 leidas desde archivo
+2016-10-11 08:41:57,673 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010116.DBF [9-315]
+2016-10-11 08:41:58,078 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 142 de 142 leidas desde archivo
+2016-10-11 08:41:58,312 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010207.DBF [10-315]
+2016-10-11 08:41:58,405 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 16 de 16 leidas desde archivo
+2016-10-11 08:41:58,561 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010208.DBF [11-315]
+2016-10-11 08:41:58,951 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 161 de 161 leidas desde archivo
+2016-10-11 08:41:59,387 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010209.DBF [12-315]
+2016-10-11 08:41:59,449 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2 de 2 leidas desde archivo
+2016-10-11 08:41:59,605 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010210.DBF [13-315]
+2016-10-11 08:41:59,825 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 98 de 98 leidas desde archivo
+2016-10-11 08:41:59,950 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010211.DBF [14-315]
+2016-10-11 08:42:01,195 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 641 de 641 leidas desde archivo
+2016-10-11 08:42:02,458 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010212.DBF [15-315]
+2016-10-11 08:42:02,861 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 215 de 215 leidas desde archivo
+2016-10-11 08:42:03,188 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010213.DBF [16-315]
+2016-10-11 08:42:04,169 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 552 de 552 leidas desde archivo
+2016-10-11 08:42:05,711 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010214.DBF [17-315]
+2016-10-11 08:42:05,806 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2016-10-11 08:42:05,883 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010215.DBF [18-315]
+2016-10-11 08:42:06,055 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 86 de 86 leidas desde archivo
+2016-10-11 08:42:06,195 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010216.DBF [19-315]
+2016-10-11 08:42:06,818 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 342 de 342 leidas desde archivo
+2016-10-11 08:42:07,038 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010308.DBF [20-315]
+2016-10-11 08:42:07,287 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 126 de 126 leidas desde archivo
+2016-10-11 08:42:07,411 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010309.DBF [21-315]
+2016-10-11 08:42:07,489 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 10 de 10 leidas desde archivo
+2016-10-11 08:42:07,567 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010310.DBF [22-315]
+2016-10-11 08:42:07,941 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 198 de 198 leidas desde archivo
+2016-10-11 08:42:08,082 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010311.DBF [23-315]
+2016-10-11 08:42:08,549 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 272 de 272 leidas desde archivo
+2016-10-11 08:42:08,720 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010312.DBF [24-315]
+2016-10-11 08:42:08,892 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 71 de 71 leidas desde archivo
+2016-10-11 08:42:09,016 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010313.DBF [25-315]
+2016-10-11 08:42:09,905 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 478 de 478 leidas desde archivo
+2016-10-11 08:42:10,294 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010314.DBF [26-315]
+2016-10-11 08:42:10,513 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 100 de 100 leidas desde archivo
+2016-10-11 08:42:10,638 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010315.DBF [27-315]
+2016-10-11 08:42:10,793 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 59 de 59 leidas desde archivo
+2016-10-11 08:42:10,918 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010316.DBF [28-315]
+2016-10-11 08:42:11,728 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 476 de 476 leidas desde archivo
+2016-10-11 08:42:11,978 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010408.DBF [29-315]
+2016-10-11 08:42:12,087 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 44 de 44 leidas desde archivo
+2016-10-11 08:42:12,211 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010409.DBF [30-315]
+2016-10-11 08:42:12,320 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 44 de 44 leidas desde archivo
+2016-10-11 08:42:12,429 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010410.DBF [31-315]
+2016-10-11 08:42:12,476 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 10 de 10 leidas desde archivo
+2016-10-11 08:42:12,585 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010411.DBF [32-315]
+2016-10-11 08:42:13,442 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 515 de 515 leidas desde archivo
+2016-10-11 08:42:13,691 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010412.DBF [33-315]
+2016-10-11 08:42:15,295 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 922 de 922 leidas desde archivo
+2016-10-11 08:42:15,700 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010413.DBF [34-315]
+2016-10-11 08:42:16,915 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 677 de 677 leidas desde archivo
+2016-10-11 08:42:17,321 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010414.DBF [35-315]
+2016-10-11 08:42:17,804 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 123 de 123 leidas desde archivo
+2016-10-11 08:42:18,162 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010415.DBF [36-315]
+2016-10-11 08:42:18,350 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 78 de 78 leidas desde archivo
+2016-10-11 08:42:18,599 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010416.DBF [37-315]
+2016-10-11 08:42:18,848 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 102 de 102 leidas desde archivo
+2016-10-11 08:42:19,050 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010507.DBF [38-315]
+2016-10-11 08:42:19,128 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2016-10-11 08:42:19,253 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010508.DBF [39-315]
+2016-10-11 08:42:19,398 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 34 de 34 leidas desde archivo
+2016-10-11 08:42:19,491 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010509.DBF [40-315]
+2016-10-11 08:42:19,647 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 52 de 52 leidas desde archivo
+2016-10-11 08:42:19,787 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010510.DBF [41-315]
+2016-10-11 08:42:19,881 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 14 de 14 leidas desde archivo
+2016-10-11 08:42:20,005 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010511.DBF [42-315]
+2016-10-11 08:42:20,768 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 398 de 398 leidas desde archivo
+2016-10-11 08:42:21,096 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010512.DBF [43-315]
+2016-10-11 08:42:22,311 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 676 de 676 leidas desde archivo
+2016-10-11 08:42:22,670 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010513.DBF [44-315]
+2016-10-11 08:42:24,461 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1041 de 1041 leidas desde archivo
+2016-10-11 08:42:24,836 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010514.DBF [45-315]
+2016-10-11 08:42:24,960 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 24 de 24 leidas desde archivo
+2016-10-11 08:42:25,069 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010515.DBF [46-315]
+2016-10-11 08:42:25,240 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 41 de 41 leidas desde archivo
+2016-10-11 08:42:25,334 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010516.DBF [47-315]
+2016-10-11 08:42:25,583 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 86 de 86 leidas desde archivo
+2016-10-11 08:42:25,771 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010608.DBF [48-315]
+2016-10-11 08:42:25,989 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 102 de 102 leidas desde archivo
+2016-10-11 08:42:26,113 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010609.DBF [49-315]
+2016-10-11 08:42:26,347 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 106 de 106 leidas desde archivo
+2016-10-11 08:42:26,472 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010610.DBF [50-315]
+2016-10-11 08:42:26,736 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 142 de 142 leidas desde archivo
+2016-10-11 08:42:26,862 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010611.DBF [51-315]
+2016-10-11 08:42:27,220 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 182 de 182 leidas desde archivo
+2016-10-11 08:42:27,360 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010612.DBF [52-315]
+2016-10-11 08:42:28,045 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 217 de 217 leidas desde archivo
+2016-10-11 08:42:28,514 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010613.DBF [53-315]
+2016-10-11 08:42:32,391 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2362 de 2362 leidas desde archivo
+2016-10-11 08:42:33,451 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010614.DBF [54-315]
+2016-10-11 08:42:34,122 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 381 de 381 leidas desde archivo
+2016-10-11 08:42:34,324 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010615.DBF [55-315]
+2016-10-11 08:42:34,496 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 36 de 36 leidas desde archivo
+2016-10-11 08:42:34,606 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010616.DBF [56-315]
+2016-10-11 08:42:35,151 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 136 de 136 leidas desde archivo
+2016-10-11 08:42:35,509 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010708.DBF [57-315]
+2016-10-11 08:42:35,634 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 35 de 35 leidas desde archivo
+2016-10-11 08:42:35,961 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010709.DBF [58-315]
+2016-10-11 08:42:36,304 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 163 de 163 leidas desde archivo
+2016-10-11 08:42:36,522 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010710.DBF [59-315]
+2016-10-11 08:42:36,757 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 109 de 109 leidas desde archivo
+2016-10-11 08:42:36,959 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010711.DBF [60-315]
+2016-10-11 08:42:37,052 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 16 de 16 leidas desde archivo
+2016-10-11 08:42:37,161 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010712.DBF [61-315]
+2016-10-11 08:42:38,096 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 437 de 437 leidas desde archivo
+2016-10-11 08:42:38,466 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010713.DBF [62-315]
+2016-10-11 08:42:39,027 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 288 de 288 leidas desde archivo
+2016-10-11 08:42:39,323 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010714.DBF [63-315]
+2016-10-11 08:42:39,402 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 25 de 25 leidas desde archivo
+2016-10-11 08:42:39,495 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010715.DBF [64-315]
+2016-10-11 08:42:39,588 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 21 de 21 leidas desde archivo
+2016-10-11 08:42:39,713 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010808.DBF [65-315]
+2016-10-11 08:42:39,853 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 35 de 35 leidas desde archivo
+2016-10-11 08:42:39,947 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010809.DBF [66-315]
+2016-10-11 08:42:40,024 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 14 de 14 leidas desde archivo
+2016-10-11 08:42:40,087 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010810.DBF [67-315]
+2016-10-11 08:42:40,242 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2016-10-11 08:42:40,351 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010811.DBF [68-315]
+2016-10-11 08:42:40,680 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 158 de 158 leidas desde archivo
+2016-10-11 08:42:40,820 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010812.DBF [69-315]
+2016-10-11 08:42:42,159 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 781 de 781 leidas desde archivo
+2016-10-11 08:42:42,502 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010813.DBF [70-315]
+2016-10-11 08:42:42,829 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 148 de 148 leidas desde archivo
+2016-10-11 08:42:43,079 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010814.DBF [71-315]
+2016-10-11 08:42:43,312 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2016-10-11 08:42:43,422 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010815.DBF [72-315]
+2016-10-11 08:42:43,562 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 48 de 48 leidas desde archivo
+2016-10-11 08:42:43,687 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010905.DBF [73-315]
+2016-10-11 08:42:44,061 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 163 de 163 leidas desde archivo
+2016-10-11 08:42:44,279 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010907.DBF [74-315]
+2016-10-11 08:42:44,403 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 17 de 17 leidas desde archivo
+2016-10-11 08:42:44,513 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010908.DBF [75-315]
+2016-10-11 08:42:44,747 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 84 de 84 leidas desde archivo
+2016-10-11 08:42:44,887 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010909.DBF [76-315]
+2016-10-11 08:42:45,058 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 48 de 48 leidas desde archivo
+2016-10-11 08:42:45,230 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010910.DBF [77-315]
+2016-10-11 08:42:45,354 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 33 de 33 leidas desde archivo
+2016-10-11 08:42:45,666 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010911.DBF [78-315]
+2016-10-11 08:42:46,212 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 110 de 110 leidas desde archivo
+2016-10-11 08:42:46,834 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010912.DBF [79-315]
+2016-10-11 08:42:47,116 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 92 de 92 leidas desde archivo
+2016-10-11 08:42:47,271 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010913.DBF [80-315]
+2016-10-11 08:42:48,782 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 879 de 879 leidas desde archivo
+2016-10-11 08:42:49,390 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010914.DBF [81-315]
+2016-10-11 08:42:49,842 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 196 de 196 leidas desde archivo
+2016-10-11 08:42:50,014 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL010915.DBF [82-315]
+2016-10-11 08:42:50,185 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:42:50,326 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011007.DBF [83-315]
+2016-10-11 08:42:50,403 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:42:50,512 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011008.DBF [84-315]
+2016-10-11 08:42:50,653 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 60 de 60 leidas desde archivo
+2016-10-11 08:42:50,917 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011009.DBF [85-315]
+2016-10-11 08:42:51,027 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 37 de 37 leidas desde archivo
+2016-10-11 08:42:51,167 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011010.DBF [86-315]
+2016-10-11 08:42:51,884 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 324 de 324 leidas desde archivo
+2016-10-11 08:42:52,164 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011011.DBF [87-315]
+2016-10-11 08:42:53,380 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 580 de 580 leidas desde archivo
+2016-10-11 08:42:53,972 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011012.DBF [88-315]
+2016-10-11 08:42:54,533 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 174 de 174 leidas desde archivo
+2016-10-11 08:42:54,690 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011013.DBF [89-315]
+2016-10-11 08:42:56,854 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1166 de 1166 leidas desde archivo
+2016-10-11 08:42:57,322 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011014.DBF [90-315]
+2016-10-11 08:42:57,634 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 111 de 111 leidas desde archivo
+2016-10-11 08:42:57,852 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011015.DBF [91-315]
+2016-10-11 08:42:58,085 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 75 de 75 leidas desde archivo
+2016-10-11 08:42:58,211 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011107.DBF [92-315]
+2016-10-11 08:42:58,554 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 158 de 158 leidas desde archivo
+2016-10-11 08:42:58,694 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011108.DBF [93-315]
+2016-10-11 08:42:58,912 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 86 de 86 leidas desde archivo
+2016-10-11 08:42:59,036 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011109.DBF [94-315]
+2016-10-11 08:42:59,503 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 245 de 245 leidas desde archivo
+2016-10-11 08:42:59,769 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011110.DBF [95-315]
+2016-10-11 08:42:59,863 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 30 de 30 leidas desde archivo
+2016-10-11 08:42:59,956 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011111.DBF [96-315]
+2016-10-11 08:43:01,233 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 656 de 656 leidas desde archivo
+2016-10-11 08:43:01,826 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011112.DBF [97-315]
+2016-10-11 08:43:02,340 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 270 de 270 leidas desde archivo
+2016-10-11 08:43:02,559 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011113.DBF [98-315]
+2016-10-11 08:43:02,901 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 148 de 148 leidas desde archivo
+2016-10-11 08:43:03,104 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011114.DBF [99-315]
+2016-10-11 08:43:03,306 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:43:03,415 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011115.DBF [100-315]
+2016-10-11 08:43:03,634 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 74 de 74 leidas desde archivo
+2016-10-11 08:43:03,836 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011207.DBF [101-315]
+2016-10-11 08:43:04,179 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 119 de 119 leidas desde archivo
+2016-10-11 08:43:04,895 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011208.DBF [102-315]
+2016-10-11 08:43:05,021 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 18 de 18 leidas desde archivo
+2016-10-11 08:43:05,114 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011209.DBF [103-315]
+2016-10-11 08:43:05,146 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:43:05,255 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011210.DBF [104-315]
+2016-10-11 08:43:05,613 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 175 de 179 leidas desde archivo
+2016-10-11 08:43:05,629 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:43:05,629 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> C90 - V2: FALLA ? ALARMA PRESENTE
+SucesoFactory, no encontrado -> C90 - V1: FALLA ? ALARMA PRESENTE
+
+2016-10-11 08:43:05,988 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011211.DBF [105-315]
+2016-10-11 08:43:06,147 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:43:06,350 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011212.DBF [106-315]
+2016-10-11 08:43:17,574 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 6634 de 6634 leidas desde archivo
+2016-10-11 08:43:20,247 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011213.DBF [107-315]
+2016-10-11 08:43:22,074 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 719 de 719 leidas desde archivo
+2016-10-11 08:43:22,840 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011214.DBF [108-315]
+2016-10-11 08:43:22,950 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 39 de 39 leidas desde archivo
+2016-10-11 08:43:23,121 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL011215.DBF [109-315]
+2016-10-11 08:43:23,419 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 136 de 136 leidas desde archivo
+2016-10-11 08:43:23,778 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020108.DBF [110-315]
+2016-10-11 08:43:24,356 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 280 de 280 leidas desde archivo
+2016-10-11 08:43:25,231 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020109.DBF [111-315]
+2016-10-11 08:43:25,371 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2 de 2 leidas desde archivo
+2016-10-11 08:43:25,450 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020110.DBF [112-315]
+2016-10-11 08:43:25,560 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 43 de 43 leidas desde archivo
+2016-10-11 08:43:25,684 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020111.DBF [113-315]
+2016-10-11 08:43:25,762 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 18 de 18 leidas desde archivo
+2016-10-11 08:43:25,841 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020112.DBF [114-315]
+2016-10-11 08:43:25,965 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 58 de 58 leidas desde archivo
+2016-10-11 08:43:26,106 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020113.DBF [115-315]
+2016-10-11 08:43:26,652 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 289 de 289 leidas desde archivo
+2016-10-11 08:43:26,919 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020114.DBF [116-315]
+2016-10-11 08:43:29,010 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1068 de 1068 leidas desde archivo
+2016-10-11 08:43:29,761 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020115.DBF [117-315]
+2016-10-11 08:43:29,979 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 67 de 67 leidas desde archivo
+2016-10-11 08:43:30,120 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020116.DBF [118-315]
+2016-10-11 08:43:30,214 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 32: EPN: FALTA DE TENSION EN BARRA T2                            
+2016-10-11 08:43:30,261 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 77: EPN: FALTA DE TENSION EN BARRA T2                            
+2016-10-11 08:43:30,386 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 185: EPN: FALTA DE TENSION EN BARRA T2                            
+2016-10-11 08:43:30,433 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 230: EPN: FALTA DE TENSION EN BARRA T2                            
+2016-10-11 08:43:30,823 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 302 de 306 leidas desde archivo
+2016-10-11 08:43:30,823 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:43:30,823 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+TipoDeEquipoFactory, no encontrado -> EPN: FALTA DE TENSION EN BARRA T2
+
+2016-10-11 08:43:31,057 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020207.DBF [119-315]
+2016-10-11 08:43:31,120 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2016-10-11 08:43:31,198 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020208.DBF [120-315]
+2016-10-11 08:43:32,065 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 168 de 182 leidas desde archivo
+2016-10-11 08:43:32,065 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:43:32,065 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> R6000: ALARMA FALLA BOMBA 2
+SucesoFactory, no encontrado -> R6000: ALARMA FALLA BOMBA 1
+
+2016-10-11 08:43:32,564 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020209.DBF [121-315]
+2016-10-11 08:43:32,628 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:43:32,721 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020210.DBF [122-315]
+2016-10-11 08:43:32,987 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 130 de 130 leidas desde archivo
+2016-10-11 08:43:33,205 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020211.DBF [123-315]
+2016-10-11 08:43:33,830 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 356 de 356 leidas desde archivo
+2016-10-11 08:43:34,190 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020212.DBF [124-315]
+2016-10-11 08:43:34,408 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 99 de 99 leidas desde archivo
+2016-10-11 08:43:34,643 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020213.DBF [125-315]
+2016-10-11 08:43:35,314 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 386 de 386 leidas desde archivo
+2016-10-11 08:43:35,908 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020214.DBF [126-315]
+2016-10-11 08:43:35,970 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2 de 2 leidas desde archivo
+2016-10-11 08:43:36,064 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020215.DBF [127-315]
+2016-10-11 08:43:36,205 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 50 de 50 leidas desde archivo
+2016-10-11 08:43:36,361 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020216.DBF [128-315]
+2016-10-11 08:43:36,658 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 100 de 100 leidas desde archivo
+2016-10-11 08:43:36,924 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020308.DBF [129-315]
+2016-10-11 08:43:37,251 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 102 de 102 leidas desde archivo
+2016-10-11 08:43:37,454 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020309.DBF [130-315]
+2016-10-11 08:43:37,690 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 43 de 43 leidas desde archivo
+2016-10-11 08:43:37,892 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020310.DBF [131-315]
+2016-10-11 08:43:38,127 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 77 de 77 leidas desde archivo
+2016-10-11 08:43:38,267 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020311.DBF [132-315]
+2016-10-11 08:43:40,609 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 843 de 843 leidas desde archivo
+2016-10-11 08:43:41,218 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020312.DBF [133-315]
+2016-10-11 08:43:41,484 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 99 de 99 leidas desde archivo
+2016-10-11 08:43:41,687 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020313.DBF [134-315]
+2016-10-11 08:43:42,468 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 292 de 292 leidas desde archivo
+2016-10-11 08:43:42,983 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020314.DBF [135-315]
+2016-10-11 08:43:43,141 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 55 de 55 leidas desde archivo
+2016-10-11 08:43:43,343 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020315.DBF [136-315]
+2016-10-11 08:43:43,515 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 45 de 45 leidas desde archivo
+2016-10-11 08:43:43,749 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020316.DBF [137-315]
+2016-10-11 08:43:44,140 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 135 de 135 leidas desde archivo
+2016-10-11 08:43:44,484 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020408.DBF [138-315]
+2016-10-11 08:43:44,921 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 246 de 246 leidas desde archivo
+2016-10-11 08:43:45,218 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020409.DBF [139-315]
+2016-10-11 08:43:45,328 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 42 de 42 leidas desde archivo
+2016-10-11 08:43:45,453 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020410.DBF [140-315]
+2016-10-11 08:43:45,515 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 14 de 14 leidas desde archivo
+2016-10-11 08:43:45,687 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020411.DBF [141-315]
+2016-10-11 08:43:46,233 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 287 de 287 leidas desde archivo
+2016-10-11 08:43:46,874 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020412.DBF [142-315]
+2016-10-11 08:43:48,498 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 944 de 944 leidas desde archivo
+2016-10-11 08:43:49,295 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020413.DBF [143-315]
+2016-10-11 08:43:50,154 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 443 de 443 leidas desde archivo
+2016-10-11 08:43:50,467 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020414.DBF [144-315]
+2016-10-11 08:43:50,623 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 50 de 50 leidas desde archivo
+2016-10-11 08:43:50,795 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020415.DBF [145-315]
+2016-10-11 08:43:51,013 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 69 de 69 leidas desde archivo
+2016-10-11 08:43:51,138 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020416.DBF [146-315]
+2016-10-11 08:43:51,794 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 331 de 331 leidas desde archivo
+2016-10-11 08:43:52,061 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020508.DBF [147-315]
+2016-10-11 08:43:52,202 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 54 de 54 leidas desde archivo
+2016-10-11 08:43:52,311 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020509.DBF [148-315]
+2016-10-11 08:43:52,467 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 52 de 52 leidas desde archivo
+2016-10-11 08:43:52,592 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020510.DBF [149-315]
+2016-10-11 08:43:53,185 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 333 de 333 leidas desde archivo
+2016-10-11 08:43:53,405 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020511.DBF [150-315]
+2016-10-11 08:43:54,045 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 365 de 365 leidas desde archivo
+2016-10-11 08:43:54,357 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020512.DBF [151-315]
+2016-10-11 08:43:54,764 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 126 de 126 leidas desde archivo
+2016-10-11 08:43:55,716 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020513.DBF [152-315]
+2016-10-11 08:43:57,028 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 691 de 691 leidas desde archivo
+2016-10-11 08:43:57,732 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020514.DBF [153-315]
+2016-10-11 08:43:57,825 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 14 de 14 leidas desde archivo
+2016-10-11 08:43:57,934 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020515.DBF [154-315]
+2016-10-11 08:43:58,215 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 42 de 42 leidas desde archivo
+2016-10-11 08:43:58,419 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020516.DBF [155-315]
+2016-10-11 08:43:58,685 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 98 de 98 leidas desde archivo
+2016-10-11 08:43:58,935 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020607.DBF [156-315]
+2016-10-11 08:43:58,997 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2 de 2 leidas desde archivo
+2016-10-11 08:43:59,091 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020608.DBF [157-315]
+2016-10-11 08:43:59,184 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 24 de 24 leidas desde archivo
+2016-10-11 08:43:59,294 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020609.DBF [158-315]
+2016-10-11 08:43:59,560 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 96 de 96 leidas desde archivo
+2016-10-11 08:43:59,747 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020610.DBF [159-315]
+2016-10-11 08:43:59,872 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 5 de 5 leidas desde archivo
+2016-10-11 08:43:59,966 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020611.DBF [160-315]
+2016-10-11 08:44:00,419 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 191 de 191 leidas desde archivo
+2016-10-11 08:44:00,707 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020612.DBF [161-315]
+2016-10-11 08:44:01,238 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 114 de 114 leidas desde archivo
+2016-10-11 08:44:01,487 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020613.DBF [162-315]
+2016-10-11 08:44:02,690 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 669 de 669 leidas desde archivo
+2016-10-11 08:44:03,295 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020614.DBF [163-315]
+2016-10-11 08:44:03,576 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 81 de 81 leidas desde archivo
+2016-10-11 08:44:03,779 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020615.DBF [164-315]
+2016-10-11 08:44:04,014 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 46 de 46 leidas desde archivo
+2016-10-11 08:44:04,123 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020616.DBF [165-315]
+2016-10-11 08:44:04,358 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 99 de 99 leidas desde archivo
+2016-10-11 08:44:04,592 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020708.DBF [166-315]
+2016-10-11 08:44:04,795 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 60 de 60 leidas desde archivo
+2016-10-11 08:44:05,014 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020709.DBF [167-315]
+2016-10-11 08:44:05,201 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 78 de 78 leidas desde archivo
+2016-10-11 08:44:05,404 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020710.DBF [168-315]
+2016-10-11 08:44:05,545 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 59 de 59 leidas desde archivo
+2016-10-11 08:44:05,717 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020711.DBF [169-315]
+2016-10-11 08:44:05,935 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 62 de 62 leidas desde archivo
+2016-10-11 08:44:06,077 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020712.DBF [170-315]
+2016-10-11 08:44:08,340 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1247 de 1247 leidas desde archivo
+2016-10-11 08:44:08,903 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020713.DBF [171-315]
+2016-10-11 08:44:09,356 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 122 de 122 leidas desde archivo
+2016-10-11 08:44:09,819 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020714.DBF [172-315]
+2016-10-11 08:44:10,334 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 50 de 50 leidas desde archivo
+2016-10-11 08:44:10,724 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020715.DBF [173-315]
+2016-10-11 08:44:11,240 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 52 de 52 leidas desde archivo
+2016-10-11 08:44:11,381 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020808.DBF [174-315]
+2016-10-11 08:44:11,521 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 50 de 50 leidas desde archivo
+2016-10-11 08:44:11,662 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020809.DBF [175-315]
+2016-10-11 08:44:11,755 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 14 de 14 leidas desde archivo
+2016-10-11 08:44:11,834 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020810.DBF [176-315]
+2016-10-11 08:44:12,053 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 51 de 51 leidas desde archivo
+2016-10-11 08:44:12,365 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020811.DBF [177-315]
+2016-10-11 08:44:12,646 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 124 de 124 leidas desde archivo
+2016-10-11 08:44:12,927 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020812.DBF [178-315]
+2016-10-11 08:44:14,811 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 849 de 849 leidas desde archivo
+2016-10-11 08:44:15,452 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020813.DBF [179-315]
+2016-10-11 08:44:15,779 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 118 de 118 leidas desde archivo
+2016-10-11 08:44:15,998 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020814.DBF [180-315]
+2016-10-11 08:44:16,249 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 98 de 98 leidas desde archivo
+2016-10-11 08:44:16,374 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020815.DBF [181-315]
+2016-10-11 08:44:16,514 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 46 de 46 leidas desde archivo
+2016-10-11 08:44:16,639 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020905.DBF [182-315]
+2016-10-11 08:44:17,607 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 548 de 548 leidas desde archivo
+2016-10-11 08:44:18,310 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020907.DBF [183-315]
+2016-10-11 08:44:18,420 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 13 de 13 leidas desde archivo
+2016-10-11 08:44:18,576 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020908.DBF [184-315]
+2016-10-11 08:44:18,888 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 140 de 140 leidas desde archivo
+2016-10-11 08:44:19,092 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020909.DBF [185-315]
+2016-10-11 08:44:19,123 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 12: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,154 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 40: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,186 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 61: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,186 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 72: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,201 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 82: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,217 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 84: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,217 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 95: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,232 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 105: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,248 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 117: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,264 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 133: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,279 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 136: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,279 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 146: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,310 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 166: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,310 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 169: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,326 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 180: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,342 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 201: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,357 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 210: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,357 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 213: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,373 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 224: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,404 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 245: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,404 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 251: L. MARIA: Falla Motor 1                                      
+2016-10-11 08:44:19,576 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 238 de 259 leidas desde archivo
+2016-10-11 08:44:19,576 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:44:19,576 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> L. MARIA: Falla Motor 1
+TipoDeEquipoFactory, no encontrado -> L. MARIA: Falla Motor 1
+
+2016-10-11 08:44:19,841 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020910.DBF [186-315]
+2016-10-11 08:44:20,091 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 113 de 113 leidas desde archivo
+2016-10-11 08:44:20,264 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020911.DBF [187-315]
+2016-10-11 08:44:23,323 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1593 de 1593 leidas desde archivo
+2016-10-11 08:44:24,152 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020912.DBF [188-315]
+2016-10-11 08:44:24,339 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 55 de 55 leidas desde archivo
+2016-10-11 08:44:24,480 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020913.DBF [189-315]
+2016-10-11 08:44:25,870 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 814 de 814 leidas desde archivo
+2016-10-11 08:44:26,573 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020914.DBF [190-315]
+2016-10-11 08:44:26,885 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 164 de 164 leidas desde archivo
+2016-10-11 08:44:27,136 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL020915.DBF [191-315]
+2016-10-11 08:44:27,620 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 210 de 210 leidas desde archivo
+2016-10-11 08:44:27,948 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021005.DBF [192-315]
+2016-10-11 08:44:28,105 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 23 de 23 leidas desde archivo
+2016-10-11 08:44:28,230 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021007.DBF [193-315]
+2016-10-11 08:44:28,417 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2016-10-11 08:44:28,526 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021008.DBF [194-315]
+2016-10-11 08:44:28,683 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:44:28,807 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021009.DBF [195-315]
+2016-10-11 08:44:28,886 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 3 de 3 leidas desde archivo
+2016-10-11 08:44:28,964 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021010.DBF [196-315]
+2016-10-11 08:44:29,121 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 40 de 40 leidas desde archivo
+2016-10-11 08:44:29,339 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021011.DBF [197-315]
+2016-10-11 08:44:30,369 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 557 de 557 leidas desde archivo
+2016-10-11 08:44:30,683 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021012.DBF [198-315]
+2016-10-11 08:44:37,739 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 3582 de 3582 leidas desde archivo
+2016-10-11 08:44:39,223 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021013.DBF [199-315]
+2016-10-11 08:44:40,535 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 714 de 714 leidas desde archivo
+2016-10-11 08:44:40,973 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021014.DBF [200-315]
+2016-10-11 08:44:41,238 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 128 de 128 leidas desde archivo
+2016-10-11 08:44:41,472 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021015.DBF [201-315]
+2016-10-11 08:44:41,753 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 113 de 113 leidas desde archivo
+2016-10-11 08:44:41,957 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021107.DBF [202-315]
+2016-10-11 08:44:42,254 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 140 de 140 leidas desde archivo
+2016-10-11 08:44:42,566 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021108.DBF [203-315]
+2016-10-11 08:44:43,128 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 38 de 38 leidas desde archivo
+2016-10-11 08:44:43,301 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021109.DBF [204-315]
+2016-10-11 08:44:44,035 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 401 de 401 leidas desde archivo
+2016-10-11 08:44:44,550 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021110.DBF [205-315]
+2016-10-11 08:44:44,785 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 104 de 104 leidas desde archivo
+2016-10-11 08:44:44,941 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021111.DBF [206-315]
+2016-10-11 08:44:45,097 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 46 de 46 leidas desde archivo
+2016-10-11 08:44:45,238 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021112.DBF [207-315]
+2016-10-11 08:44:45,456 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 81 de 81 leidas desde archivo
+2016-10-11 08:44:45,893 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021113.DBF [208-315]
+2016-10-11 08:44:46,168 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 124 de 126 leidas desde archivo
+2016-10-11 08:44:46,168 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:44:46,168 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> B.OESTE: FALLA ALIM. 220 A RTU
+
+2016-10-11 08:44:46,495 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021114.DBF [209-315]
+2016-10-11 08:44:46,667 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 23 de 23 leidas desde archivo
+2016-10-11 08:44:46,776 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021115.DBF [210-315]
+2016-10-11 08:44:47,042 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 110 de 110 leidas desde archivo
+2016-10-11 08:44:47,246 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021207.DBF [211-315]
+2016-10-11 08:44:47,511 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 88 de 88 leidas desde archivo
+2016-10-11 08:44:47,839 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021208.DBF [212-315]
+2016-10-11 08:44:48,011 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 22 de 22 leidas desde archivo
+2016-10-11 08:44:48,198 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021209.DBF [213-315]
+2016-10-11 08:44:48,324 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:44:48,402 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021210.DBF [214-315]
+2016-10-11 08:44:49,994 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 586 de 586 leidas desde archivo
+2016-10-11 08:44:50,885 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021211.DBF [215-315]
+2016-10-11 08:44:51,166 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 119 de 119 leidas desde archivo
+2016-10-11 08:44:51,339 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021212.DBF [216-315]
+2016-10-11 08:44:59,284 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4685 de 4685 leidas desde archivo
+2016-10-11 08:45:01,674 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021213.DBF [217-315]
+2016-10-11 08:45:02,065 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 171 de 171 leidas desde archivo
+2016-10-11 08:45:02,439 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021214.DBF [218-315]
+2016-10-11 08:45:02,642 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 81 de 81 leidas desde archivo
+2016-10-11 08:45:03,282 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL021215.DBF [219-315]
+2016-10-11 08:45:03,580 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 88 de 88 leidas desde archivo
+2016-10-11 08:45:03,752 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030108.DBF [220-315]
+2016-10-11 08:45:04,158 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 176 de 176 leidas desde archivo
+2016-10-11 08:45:04,470 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030109.DBF [221-315]
+2016-10-11 08:45:04,596 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 12 de 12 leidas desde archivo
+2016-10-11 08:45:04,705 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030110.DBF [222-315]
+2016-10-11 08:45:05,283 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 41 de 41 leidas desde archivo
+2016-10-11 08:45:05,485 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030111.DBF [223-315]
+2016-10-11 08:45:05,883 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 222 de 222 leidas desde archivo
+2016-10-11 08:45:06,242 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030112.DBF [224-315]
+2016-10-11 08:45:07,444 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 692 de 692 leidas desde archivo
+2016-10-11 08:45:08,241 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030113.DBF [225-315]
+2016-10-11 08:45:09,287 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 581 de 581 leidas desde archivo
+2016-10-11 08:45:09,787 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030114.DBF [226-315]
+2016-10-11 08:45:09,928 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2016-10-11 08:45:10,006 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030115.DBF [227-315]
+2016-10-11 08:45:10,146 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 49 de 49 leidas desde archivo
+2016-10-11 08:45:10,271 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030116.DBF [228-315]
+2016-10-11 08:45:11,567 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 690 de 690 leidas desde archivo
+2016-10-11 08:45:12,270 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030208.DBF [229-315]
+2016-10-11 08:45:12,645 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 175 de 175 leidas desde archivo
+2016-10-11 08:45:13,011 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030209.DBF [230-315]
+2016-10-11 08:45:13,073 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:45:13,152 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030210.DBF [231-315]
+2016-10-11 08:45:13,495 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 184 de 184 leidas desde archivo
+2016-10-11 08:45:13,698 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030211.DBF [232-315]
+2016-10-11 08:45:14,479 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 414 de 414 leidas desde archivo
+2016-10-11 08:45:14,823 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030212.DBF [233-315]
+2016-10-11 08:45:15,651 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 456 de 456 leidas desde archivo
+2016-10-11 08:45:16,057 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030213.DBF [234-315]
+2016-10-11 08:45:24,066 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4471 de 4471 leidas desde archivo
+2016-10-11 08:45:26,159 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030214.DBF [235-315]
+2016-10-11 08:45:26,644 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 189 de 189 leidas desde archivo
+2016-10-11 08:45:27,018 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030215.DBF [236-315]
+2016-10-11 08:45:27,175 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 63 de 63 leidas desde archivo
+2016-10-11 08:45:27,360 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030216.DBF [237-315]
+2016-10-11 08:45:27,657 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 111 de 111 leidas desde archivo
+2016-10-11 08:45:27,969 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030308.DBF [238-315]
+2016-10-11 08:45:28,391 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 180 de 180 leidas desde archivo
+2016-10-11 08:45:28,652 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030309.DBF [239-315]
+2016-10-11 08:45:28,808 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 42 de 42 leidas desde archivo
+2016-10-11 08:45:28,980 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030310.DBF [240-315]
+2016-10-11 08:45:29,246 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 107 de 107 leidas desde archivo
+2016-10-11 08:45:29,417 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030311.DBF [241-315]
+2016-10-11 08:45:30,261 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 408 de 408 leidas desde archivo
+2016-10-11 08:45:30,667 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030312.DBF [242-315]
+2016-10-11 08:45:30,840 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 11 de 11 leidas desde archivo
+2016-10-11 08:45:30,918 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030313.DBF [243-315]
+2016-10-11 08:45:32,245 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 506 de 506 leidas desde archivo
+2016-10-11 08:45:33,120 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030314.DBF [244-315]
+2016-10-11 08:45:33,323 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 43 de 43 leidas desde archivo
+2016-10-11 08:45:33,462 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030315.DBF [245-315]
+2016-10-11 08:45:33,852 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 194 de 194 leidas desde archivo
+2016-10-11 08:45:34,320 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030316.DBF [246-315]
+2016-10-11 08:45:34,742 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 122 de 122 leidas desde archivo
+2016-10-11 08:45:35,088 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030399.DBF [247-315]
+2016-10-11 08:45:35,088 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 1: Alarma bomba 1 barrio Oeste                                  
+2016-10-11 08:45:35,135 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 0 de 1 leidas desde archivo
+2016-10-11 08:45:35,135 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:45:35,135 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+FamiliaFactory, no encontrado -> 
+SucesoFactory, no encontrado -> Alarma bomba 1 barrio Oeste
+TipoDeEquipoFactory, no encontrado -> Alarma bomba 1 barrio Oeste
+
+2016-10-11 08:45:35,213 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030408.DBF [248-315]
+2016-10-11 08:45:35,478 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 90 de 90 leidas desde archivo
+2016-10-11 08:45:35,650 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030409.DBF [249-315]
+2016-10-11 08:45:35,806 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 50 de 50 leidas desde archivo
+2016-10-11 08:45:35,916 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030410.DBF [250-315]
+2016-10-11 08:45:35,979 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 7 de 7 leidas desde archivo
+2016-10-11 08:45:36,088 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030411.DBF [251-315]
+2016-10-11 08:45:36,728 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 340 de 340 leidas desde archivo
+2016-10-11 08:45:37,056 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030412.DBF [252-315]
+2016-10-11 08:45:37,410 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 111 de 111 leidas desde archivo
+2016-10-11 08:45:37,629 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030413.DBF [253-315]
+2016-10-11 08:45:38,706 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 513 de 513 leidas desde archivo
+2016-10-11 08:45:39,035 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030414.DBF [254-315]
+2016-10-11 08:45:39,285 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 102 de 102 leidas desde archivo
+2016-10-11 08:45:39,472 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030415.DBF [255-315]
+2016-10-11 08:45:39,675 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 90 de 90 leidas desde archivo
+2016-10-11 08:45:39,847 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030416.DBF [256-315]
+2016-10-11 08:45:41,143 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 219 de 219 leidas desde archivo
+2016-10-11 08:45:41,815 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030508.DBF [257-315]
+2016-10-11 08:45:42,003 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 42 de 42 leidas desde archivo
+2016-10-11 08:45:42,128 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030509.DBF [258-315]
+2016-10-11 08:45:42,284 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 45 de 45 leidas desde archivo
+2016-10-11 08:45:42,441 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030510.DBF [259-315]
+2016-10-11 08:45:42,753 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 141 de 141 leidas desde archivo
+2016-10-11 08:45:42,972 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030511.DBF [260-315]
+2016-10-11 08:45:43,690 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 359 de 359 leidas desde archivo
+2016-10-11 08:45:44,143 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030512.DBF [261-315]
+2016-10-11 08:45:44,299 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:45:44,456 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030513.DBF [262-315]
+2016-10-11 08:45:45,720 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 657 de 657 leidas desde archivo
+2016-10-11 08:45:46,189 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030514.DBF [263-315]
+2016-10-11 08:45:46,330 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 24 de 24 leidas desde archivo
+2016-10-11 08:45:46,502 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030515.DBF [264-315]
+2016-10-11 08:45:46,658 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 20 de 20 leidas desde archivo
+2016-10-11 08:45:46,783 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030516.DBF [265-315]
+2016-10-11 08:45:46,971 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2016-10-11 08:45:47,111 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030607.DBF [266-315]
+2016-10-11 08:45:47,174 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:45:47,236 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030608.DBF [267-315]
+2016-10-11 08:45:47,392 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 66 de 66 leidas desde archivo
+2016-10-11 08:45:48,126 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030609.DBF [268-315]
+2016-10-11 08:45:48,299 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 84 de 84 leidas desde archivo
+2016-10-11 08:45:48,502 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030610.DBF [269-315]
+2016-10-11 08:45:48,627 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 13 de 14 leidas desde archivo
+2016-10-11 08:45:48,627 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:45:48,627 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> R6000: ALARMA FALLA BOMBA 2
+
+2016-10-11 08:45:48,751 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030611.DBF [270-315]
+2016-10-11 08:45:48,986 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 104 de 104 leidas desde archivo
+2016-10-11 08:45:49,267 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030612.DBF [271-315]
+2016-10-11 08:45:49,705 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 148 de 148 leidas desde archivo
+2016-10-11 08:45:49,986 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030613.DBF [272-315]
+2016-10-11 08:45:51,001 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 420 de 420 leidas desde archivo
+2016-10-11 08:45:51,455 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030614.DBF [273-315]
+2016-10-11 08:45:51,658 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 41 de 41 leidas desde archivo
+2016-10-11 08:45:51,829 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030615.DBF [274-315]
+2016-10-11 08:45:51,954 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 38 de 38 leidas desde archivo
+2016-10-11 08:45:52,064 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030616.DBF [275-315]
+2016-10-11 08:45:52,252 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2016-10-11 08:45:52,392 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030708.DBF [276-315]
+2016-10-11 08:45:52,580 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 60 de 60 leidas desde archivo
+2016-10-11 08:45:52,720 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030709.DBF [277-315]
+2016-10-11 08:45:52,798 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:45:52,892 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030710.DBF [278-315]
+2016-10-11 08:45:53,064 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 66 de 66 leidas desde archivo
+2016-10-11 08:45:53,173 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030711.DBF [279-315]
+2016-10-11 08:45:53,845 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 317 de 317 leidas desde archivo
+2016-10-11 08:45:54,111 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030712.DBF [280-315]
+2016-10-11 08:45:55,359 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 743 de 743 leidas desde archivo
+2016-10-11 08:45:56,157 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030713.DBF [281-315]
+2016-10-11 08:45:56,500 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 169 de 169 leidas desde archivo
+2016-10-11 08:45:56,860 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030714.DBF [282-315]
+2016-10-11 08:45:57,422 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 276 de 276 leidas desde archivo
+2016-10-11 08:45:57,687 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030715.DBF [283-315]
+2016-10-11 08:45:57,876 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 45 de 45 leidas desde archivo
+2016-10-11 08:45:58,001 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030808.DBF [284-315]
+2016-10-11 08:45:58,219 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 80 de 80 leidas desde archivo
+2016-10-11 08:45:58,344 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030809.DBF [285-315]
+2016-10-11 08:45:58,406 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 13 de 13 leidas desde archivo
+2016-10-11 08:45:58,500 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030810.DBF [286-315]
+2016-10-11 08:45:59,218 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 76 de 76 leidas desde archivo
+2016-10-11 08:45:59,406 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030811.DBF [287-315]
+2016-10-11 08:45:59,641 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 110 de 110 leidas desde archivo
+2016-10-11 08:46:00,187 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030812.DBF [288-315]
+2016-10-11 08:46:01,124 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 528 de 528 leidas desde archivo
+2016-10-11 08:46:01,624 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030813.DBF [289-315]
+2016-10-11 08:46:01,983 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 178 de 178 leidas desde archivo
+2016-10-11 08:46:02,311 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030814.DBF [290-315]
+2016-10-11 08:46:02,499 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 56 de 56 leidas desde archivo
+2016-10-11 08:46:02,640 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030815.DBF [291-315]
+2016-10-11 08:46:02,968 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 154 de 154 leidas desde archivo
+2016-10-11 08:46:03,186 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030905.DBF [292-315]
+2016-10-11 08:46:03,904 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 321 de 321 leidas desde archivo
+2016-10-11 08:46:04,374 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030907.DBF [293-315]
+2016-10-11 08:46:04,514 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 20 de 20 leidas desde archivo
+2016-10-11 08:46:04,623 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030908.DBF [294-315]
+2016-10-11 08:46:04,842 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 40 de 40 leidas desde archivo
+2016-10-11 08:46:04,936 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030909.DBF [295-315]
+2016-10-11 08:46:05,061 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 52 de 52 leidas desde archivo
+2016-10-11 08:46:05,186 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030910.DBF [296-315]
+2016-10-11 08:46:05,389 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2016-10-11 08:46:05,514 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030911.DBF [297-315]
+2016-10-11 08:46:07,934 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1224 de 1224 leidas desde archivo
+2016-10-11 08:46:08,653 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030912.DBF [298-315]
+2016-10-11 08:46:09,043 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 183 de 183 leidas desde archivo
+2016-10-11 08:46:09,341 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030913.DBF [299-315]
+2016-10-11 08:46:10,137 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 400 de 400 leidas desde archivo
+2016-10-11 08:46:10,559 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030914.DBF [300-315]
+2016-10-11 08:46:10,747 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 46 de 46 leidas desde archivo
+2016-10-11 08:46:11,636 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL030915.DBF [301-315]
+2016-10-11 08:46:12,106 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 120 de 120 leidas desde archivo
+2016-10-11 08:46:12,449 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031005.DBF [302-315]
+2016-10-11 08:46:12,558 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 21 de 21 leidas desde archivo
+2016-10-11 08:46:12,668 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031007.DBF [303-315]
+2016-10-11 08:46:12,872 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 10 de 10 leidas desde archivo
+2016-10-11 08:46:13,028 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031008.DBF [304-315]
+2016-10-11 08:46:13,277 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 104 de 104 leidas desde archivo
+2016-10-11 08:46:13,512 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031009.DBF [305-315]
+2016-10-11 08:46:14,323 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 452 de 452 leidas desde archivo
+2016-10-11 08:46:14,761 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031010.DBF [306-315]
+2016-10-11 08:46:15,105 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 142 de 142 leidas desde archivo
+2016-10-11 08:46:15,308 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031011.DBF [307-315]
+2016-10-11 08:46:17,150 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 973 de 973 leidas desde archivo
+2016-10-11 08:46:18,493 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031012.DBF [308-315]
+2016-10-11 08:46:23,380 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2873 de 2873 leidas desde archivo
+2016-10-11 08:46:24,614 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031013.DBF [309-315]
+2016-10-11 08:46:25,521 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 512 de 512 leidas desde archivo
+2016-10-11 08:46:25,989 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031014.DBF [310-315]
+2016-10-11 08:46:26,037 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 24: EPS: ERROR LECTURA AN (Pos falta 24Vcc)                      
+2016-10-11 08:46:26,396 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 188 de 189 leidas desde archivo
+2016-10-11 08:46:26,396 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2016-10-11 08:46:26,396 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+TipoDeEquipoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+
+2016-10-11 08:46:26,849 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031015.DBF [311-315]
+2016-10-11 08:46:27,130 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 94 de 94 leidas desde archivo
+2016-10-11 08:46:27,336 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031107.DBF [312-315]
+2016-10-11 08:46:27,601 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 129 de 129 leidas desde archivo
+2016-10-11 08:46:27,882 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031108.DBF [313-315]
+2016-10-11 08:46:27,991 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4 de 4 leidas desde archivo
+2016-10-11 08:46:28,116 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031109.DBF [314-315]
+2016-10-11 08:46:28,397 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 121 de 121 leidas desde archivo
+2016-10-11 08:46:28,601 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL031110.DBF [315-315]
+2016-10-11 08:46:28,773 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 63 de 63 leidas desde archivo
+2016-10-11 08:46:28,929 [INFO ] controles.dbf.ProcesarMultipleArchivo:211		- la operacion demoro 276 segundos
+2016-10-11 08:46:28,929 [INFO ] controles.dbf.ProcesarMultipleArchivo:212		- se extrajeron 84826 filas de potenciales alarmas
+2016-10-11 08:46:28,929 [INFO ] controles.dbf.ProcesarMultipleArchivo:213		- se transformaron 84778 filas del total extraidas
+2016-10-11 08:46:29,132 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2016-10-11 08:46:29,132 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 3009 archivos disponibles
+2016-10-11 08:46:29,132 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 315 archivos procesados
+2016-10-11 08:52:40,572 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 08:52:40,588 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 08:52:40,588 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 08:52:40,589 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 08:52:40,620 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 08:52:40,620 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-11 08:52:45,463 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 48266 resultados
+
+2016-10-11 08:52:45,464 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 08:52:45,464 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 08:52:57,167 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 08:52:57,167 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 08:52:57,167 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 08:52:57,167 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 08:52:57,168 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 08:52:57,168 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma
+2016-10-11 08:53:02,058 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 84778 resultados
+
+2016-10-11 08:53:02,059 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 08:53:02,059 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 08:53:07,184 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
+2016-10-11 08:53:07,185 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-11 08:53:32,817 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 08:53:32,817 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 08:53:32,817 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 08:53:32,817 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 08:53:32,817 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 08:53:32,817 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE (FECHA_INICIO <= ?)
+2016-10-11 08:53:35,631 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 80742 resultados
+
+2016-10-11 08:53:35,631 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 08:53:35,631 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 08:53:48,057 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 08:53:48,058 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 08:53:48,058 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 08:53:48,058 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 08:53:48,058 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 08:53:48,058 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE (FECHA_INICIO <= ?)
+2016-10-11 08:53:50,137 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 81192 resultados
+
+2016-10-11 08:53:50,137 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 08:53:50,137 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+2016-10-11 08:53:54,905 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
+2016-10-11 08:53:54,905 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-11 08:57:27,314 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-11 08:57:27,314 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-11 08:57:27,454 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-11 08:57:27,454 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.138519287109375 MB
+2016-10-11 08:57:27,454 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-11 08:57:27,579 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-11 08:57:27,595 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-11 08:57:29,654 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-11 08:57:34,374 [INFO ] bi.entidades.ComponenteConsulta:176		- colectando datos desde IU
+2016-10-11 08:57:34,374 [INFO ] bi.controles.ServConsultaDinamica:337		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+2016-10-11 08:57:34,374 [INFO ] bi.controles.ServConsultaDinamica:339		- agregando predicados...
+2016-10-11 08:57:34,375 [INFO ] bi.controles.ServConsultaDinamica:342		- agregando condiciones consulta...
+2016-10-11 08:57:34,406 [INFO ] bi.controles.ServConsultaDinamica:345		- estableciendo valores de parametros...
+2016-10-11 08:57:34,406 [INFO ] bi.controles.ServConsultaDinamica:458		- SELECT ID_ALARMA, ACK_USUARIO, ATRIBUTO, CLASE, FECHA_ACK, FECHA_FIN, FECHA_INICIO, ID_ESTACION, IDENTIFICACION, SEVERIDAD, ZONA, ID_ARCHIVO_DBF, ID_EQUIPO_EN_SITIO, ID_FAMILIA, ID_SITIO, ID_SUCESO FROM alarma WHERE ((FECHA_FIN - FECHA_INICIO) >= ?)
+2016-10-11 08:57:41,930 [INFO ] bi.controles.ServConsultaDinamica:365		- consulta finalizada. se trajeron 48266 resultados
+
+2016-10-11 08:57:41,931 [INFO ] bi.controles.ServConsultaDinamica:404		- se extrajeron 0 alarmas que les faltaba alguna fecha solicitada
+2016-10-11 08:57:41,931 [INFO ] bi.controles.ServConsultaDinamica:369		- ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+

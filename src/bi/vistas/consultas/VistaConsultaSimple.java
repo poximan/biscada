@@ -30,6 +30,40 @@ import comunes.vistas.PanelIniciable;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, el panel BI completo, con todos los componentes necesarios
+ * para realizar una consulta a base de dato y avanzar al siguiente nivel de
+ * procesamiento segun una dimension elegida.
+ * 
+ * soy desplegado desde el gestor de eventos bi.vistas.eventos.EventoComponenteMenuDimension, quien crea un marco
+ * especial bi.entidades.ComponenteMenuConsulta (un JFrame tipico mas un menu
+ * superior), agrega mi clase en él, y me pasa el control
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, soy una interfaz visual que cubre las necesidades del usuario
+ * para realizar una consulta a BD. puedo filtrar la busqueda segun cada campo o
+ * una combinacion de ellos. ademas, a traves del menu que me provee mi JFrame
+ * bi.entidades.ComponenteMenuConsulta puedo anexar otros filtros adicionales.
+ * 
+ * LO QUE CONOZCO, bi.entidades.ComponenteConsulta que es el subpanel en mi que
+ * se ocupa de la consulta, y atraves de mi gestor de eventos
+ * bi.vistas.eventos.EventoConsultaSimple puedo llevar al usuario al siguiente
+ * nivel de evaluacion (dimension elegida)
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, son mis subpaneles y mi gestor de eventos
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR,
+ *
+ * @author hdonato
+ * 
+ */
 public class VistaConsultaSimple extends JPanel implements PanelIniciable, EventoConfigurable {
 
 	/* ............................................. */

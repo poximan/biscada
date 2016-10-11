@@ -111,9 +111,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		IntervaloFechas intervalo = new IntervaloFechas();
 
-		Collections.sort(consulta_comparador);
-		intervalo.setPrimer_alarma(consulta_comparador.get(0).getFecha_inicio());
-		intervalo.setUltima_alarma(consulta_comparador.get(consulta_comparador.size() - 1).getFecha_inicio());
+		intervalo.setPrimer_alarma(Collections.min(consulta_comparador).getFecha_inicio());
+		intervalo.setUltima_alarma(Collections.max(consulta_comparador).getFecha_inicio());
 
 		datos_tabla_comparador = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_periodo,
 				contar_periodos_nulos);
@@ -131,9 +130,8 @@ public abstract class VistaDimAbstractCompuesta extends JPanel implements PanelI
 
 		IntervaloFechas intervalo = new IntervaloFechas();
 
-		Collections.sort(consulta_interes);
-		intervalo.setPrimer_alarma(consulta_interes.get(0).getFecha_inicio());
-		intervalo.setUltima_alarma(consulta_interes.get(consulta_interes.size() - 1).getFecha_inicio());
+		intervalo.setPrimer_alarma(Collections.min(consulta_comparador).getFecha_inicio());
+		intervalo.setUltima_alarma(Collections.max(consulta_comparador).getFecha_inicio());
 
 		datos_tabla_interes = serv_dim_vista_seleccionada.completarTabla(serv_medicion, serv_unidad_tiempo,
 				contar_periodos_nulos);

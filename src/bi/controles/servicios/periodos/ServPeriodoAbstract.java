@@ -83,7 +83,7 @@ public abstract class ServPeriodoAbstract {
 
 	public int getCantidadPeriodos(Calendar primer_alarma, Calendar ultima_alarma) {
 
-		int contador_periodos = 1;
+		int contador_periodos = 0;
 
 		DateTime tiempo_inicio = new DateTime(primer_alarma.getTimeInMillis());
 		DateTime tiempo_fin = new DateTime(ultima_alarma.getTimeInMillis());

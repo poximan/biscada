@@ -21,24 +21,23 @@ import comunes.entidades.Alarma;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO la clase de Servicios de Dimension
+ * YO REPRESENTO, la superclase de todos los servicios que son necesarios para
+ * operar en una dimension
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO Proveer servicios de medicion y periodo.
+ * LO QUE HAGO, establezco la forma estandar que deben tener los metodos
  * 
- * LO QUE CONOZCO
+ * LO QUE CONOZCO,
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, cualquier de las clases de ServDim que extiendan de
- * esta clase.
+ * MI COLABORADOR PRINCIPAL,
  * 
- * COMO INTERACTUO CON MI COLABORADOR, mediante la utilizacion de cualquier
- * clase que extienda de esta, para pasar al tercer nivel de evaluacion,
- * definiendo el tipo de medicion y el periodo de tiempo con que se quiere ver
- * los resultados
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
+ * @author hdonato
+ * 
  */
 public abstract class ServDimAbstract {
 

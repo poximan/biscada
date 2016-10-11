@@ -30,20 +30,28 @@ import comunes.entidades.Alarma;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO una clase que extiende de ServDimAbstract
+ * YO REPRESENTO los servicios concretos que necesitan las vistas
+ * bi.vistas.dimensiones.VistaDimTiempoDespejeSimple y
+ * bi.vistas.dimensiones.VistaDimTiempoDespejeCompuesta
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO crear un mapa hash 
+ * LO QUE HAGO soy responsable de los servicios de dimension en las superclases
+ * bi.vistas.dimensiones.VistaDimAbstractSimple y
+ * bi.vistas.dimensiones.VistaDimAbstractCompuesta
  * 
- * LO QUE CONOZCO la clave de la dimension sobre la cual trabajar en el segundo
- * nivel de evaluacion
+ * LO QUE CONOZCO el mapa hash {clave, valor} para agrupar la consulta (simil
+ * "group by" de sql) segun la dimension elegida
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, ServDimAbstract
+ * MI COLABORADOR PRINCIPAL, las herramientas de hash y ordenamiento de
+ * colecciones
  * 
- * COMO INTERACTUO CON MI COLABORADOR, 
+ * COMO INTERACTUO CON MI COLABORADOR, las herramientas hash me permiten crear
+ * el mapa, dada una clave pedir los valores y visceversa. con el ordenamiento
+ * de colecciones aseguro que mis mapa tenga sus valores (las alarmas) ordenadas
+ * siempre de menor a mayor.
  *
  */
 public class ServDimTiempoDespeje extends ServDimAbstract {

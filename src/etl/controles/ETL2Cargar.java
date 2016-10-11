@@ -10,13 +10,13 @@ import java.util.List;
 import comunes.controles.ObjetosBorrables;
 import comunes.entidades.Alarma;
 import comunes.entidades.ArchivoDBF;
-import etl.controles.cruds.ServCRUDAlarma;
-import etl.controles.cruds.ServCRUDArchivoDBF;
-import etl.controles.cruds.ServCRUDEquipoEnSitio;
-import etl.controles.cruds.ServCRUDFamilia;
-import etl.controles.cruds.ServCRUDSitio;
-import etl.controles.cruds.ServCRUDSuceso;
-import etl.controles.cruds.ServCRUDTipoDeEquipo;
+import etl.controles.servicios.cruds.ServCRUDAlarma;
+import etl.controles.servicios.cruds.ServCRUDArchivoDBF;
+import etl.controles.servicios.cruds.ServCRUDEquipoEnSitio;
+import etl.controles.servicios.cruds.ServCRUDFamilia;
+import etl.controles.servicios.cruds.ServCRUDSitio;
+import etl.controles.servicios.cruds.ServCRUDSuceso;
+import etl.controles.servicios.cruds.ServCRUDTipoDeEquipo;
 
 /* ............................................. */
 /* ............................................. */

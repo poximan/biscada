@@ -3,7 +3,7 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.controles.cruds;
+package etl.controles.servicios.cruds;
 
 import java.beans.Beans;
 import java.util.ArrayList;

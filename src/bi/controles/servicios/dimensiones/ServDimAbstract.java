@@ -27,15 +27,17 @@ import comunes.entidades.Alarma;
  * 
  * LO QUE HAGO Proveer servicios de medicion y periodo.
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, cualquier de las clases de ServDim que extiendan de esta clase.
+ * MI COLABORADOR PRINCIPAL, cualquier de las clases de ServDim que extiendan de
+ * esta clase.
  * 
- * COMO INTERACTUO CON MI COLABORADOR, mediante la utilizacion de cualquier clase que extienda
- * de esta, para pasar al tercer nivel de evaluacion, definiendo el tipo de medicion y el 
- * periodo de tiempo con que se quiere ver los resultados
+ * COMO INTERACTUO CON MI COLABORADOR, mediante la utilizacion de cualquier
+ * clase que extienda de esta, para pasar al tercer nivel de evaluacion,
+ * definiendo el tipo de medicion y el periodo de tiempo con que se quiere ver
+ * los resultados
  *
  */
 public abstract class ServDimAbstract {
@@ -58,14 +60,14 @@ public abstract class ServDimAbstract {
 	/**
 	 * 
 	 * @param serv_medicion
-	 *            medicion que se realizarï¿½ sobre el set de datos desde el
-	 *            punto de vista de una dimension determinada.
+	 *            medicion que se realizara sobre el set de datos desde el punto
+	 *            de vista de una dimension determinada.
+	 * 
 	 * @param serv_periodo
-	 *            unidad de tiempo en que fraccionarï¿½ el set de datos. por
-	 *            ejemplo un set que incluye todo el aï¿½o 2012 puede
-	 *            presentarse en 12 unidades de tiempo mes, en 24 unidades de
-	 *            tiempo quincena, etc.
-	 *            
+	 *            periodo en que se fraccionara el set de datos. por ejemplo un
+	 *            set que incluye todo el anio 2012 puede presentarse en 12
+	 *            periodos mensuales, en 24 quincenas, 1 anio, etc.
+	 * 
 	 * @return el tipo de datos el dos dimensiones que interpreta el Model de la
 	 *         tabla.
 	 */
@@ -81,13 +83,23 @@ public abstract class ServDimAbstract {
 	 */
 	public abstract Object[] getGrupos();
 
+	/**
+	 * sin utilidad por el momento. es la interfaz para tomar una tabla y
+	 * alterar su tamaño segun el parametro bool
+	 * 
+	 * @param valor_retorno
+	 * @param contar_periodos_nulos
+	 * 
+	 * @return la tabla modificada
+	 */
 	public float[][] postProcesarTabla(float[][] valor_retorno, boolean contar_periodos_nulos) {
 		return valor_retorno;
 	}
 
 	/**
 	 * crea un mapa hash donde la clave es una dimension de las especificadas en
-	 * el segundo nivel de evaluacion (ver documento de vision)
+	 * el segundo nivel de evaluacion (ver documento de vision), y los valores
+	 * siempre son alarmas
 	 * 
 	 * @param consultas
 	 */

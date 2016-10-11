@@ -20,8 +20,8 @@ import comunes.controles.EMFSingleton;
 import comunes.controles.ObjetosBorrables;
 import comunes.entidades.ArchivoDBF;
 import etl.controles.Transaccion;
-import etl.controles.cruds.ServCRUDArchivoDBF;
 import etl.controles.servicios.Reloj;
+import etl.controles.servicios.cruds.ServCRUDArchivoDBF;
 
 /* ............................................. */
 /* ............................................. */

@@ -13,6 +13,29 @@ import java.text.NumberFormat;
 /* CLASE ....................................... */
 /* ............................................. */
 
+/**
+ * Class Responsibility Collaborator (CRC) design:
+ * 
+ * ==== parte clase =========================
+ * 
+ * YO REPRESENTO, la servicio para pantallas de indicadores de rendimiento.
+ * 
+ * ==== parte responsabilidad ===============
+ * 
+ * LO QUE HAGO, realizo operaciones matematicas sobre la tabla que conozco.
+ * 
+ * LO QUE CONOZCO, la tabla de datos resultado de la consulta a BD
+ * 
+ * ==== parte colaboracion ==================
+ * 
+ * MI COLABORADOR PRINCIPAL, java.lang.Math
+ * 
+ * COMO INTERACTUO CON MI COLABORADOR, realiza los calculos de potencia y raiz
+ * necesarios para obtener la desviacion estandar y la varianza
+ *
+ * @author hdonato
+ * 
+ */
 public class ServKpiCalidadServicio implements ServKpi {
 
 	/* ............................................. */

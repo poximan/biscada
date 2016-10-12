@@ -23,14 +23,15 @@ import bi.vistas.eventos.EventoKPI;
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO genera una vista que representa el cuarto nivel de evaluacion
- *  
- * LO QUE CONOZCO 
+ * 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL, VistaKpiAbstract
  * 
- * COMO INTERACTUO CON MI COLABORADOR, recibiendo el comportamiento de VistaKpiAbstract
+ * COMO INTERACTUO CON MI COLABORADOR, recibiendo el comportamiento de
+ * VistaKpiAbstract
  * 
  */
 public class VistaKpiCalidadServicio extends VistaKpiAbstract {

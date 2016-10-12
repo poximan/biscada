@@ -63,17 +63,17 @@ import comunes.vistas.PanelIniciable;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO construyo un marco sobre el cual se almacenaran los componentes del
- * segundo nivel de evaluacion.
+ * LO QUE HAGO construyo un marco sobre el cual se almacenaran los componentes
+ * del segundo nivel de evaluacion.
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, cualquiera de las vistas simples. 
+ * MI COLABORADOR PRINCIPAL, cualquiera de las vistas simples.
  * 
- * COMO INTERACTUO CON MI COLABORADOR, entregando el marco de desarrollo segun el 
- * evento que corresponda.
+ * COMO INTERACTUO CON MI COLABORADOR, entregando el marco de desarrollo segun
+ * el evento que corresponda.
  *
  */
 public abstract class VistaDimAbstractSimple extends JPanel
@@ -347,17 +347,23 @@ public abstract class VistaDimAbstractSimple extends JPanel
 		chckbxContarPeriodosNulos = new JCheckBox("Contar periodos nulos");
 
 		gl_pl_tiempo = new GroupLayout(pl_tiempo);
-		gl_pl_tiempo.setHorizontalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pl_tiempo.createSequentialGroup().addContainerGap().addComponent(lbl_medicion)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-						.addComponent(chckbxContarPeriodosNulos).addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnEjecutar).addContainerGap()));
+		gl_pl_tiempo
+				.setHorizontalGroup(
+						gl_pl_tiempo.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_pl_tiempo.createSequentialGroup().addContainerGap()
+										.addComponent(lbl_medicion).addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(cbox_medicion, GroupLayout.PREFERRED_SIZE, 84,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(lbl_dim_tiempo, GroupLayout.PREFERRED_SIZE, 88,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(cbox_dim_tiempo, GroupLayout.PREFERRED_SIZE, 0,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+										.addComponent(chckbxContarPeriodosNulos)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnEjecutar)
+										.addContainerGap()));
 		gl_pl_tiempo.setVerticalGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(gl_pl_tiempo
 				.createSequentialGroup()
 				.addGroup(gl_pl_tiempo.createParallelGroup(Alignment.LEADING).addGroup(gl_pl_tiempo
@@ -380,23 +386,25 @@ public abstract class VistaDimAbstractSimple extends JPanel
 
 		pl_kpi.add(btnCalidadServicio);
 		gl_contentPane = new GroupLayout(this);
-		gl_contentPane
-				.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+		gl_contentPane.setHorizontalGroup(
+				gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING,
+										gl_contentPane.createSequentialGroup()
 												.addComponent(pl_tiempo, GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
 												.addPreferredGap(ComponentPlacement.RELATED).addComponent(pl_kpi,
 														GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-										.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
-								.addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(pl_kpi, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(pl_tiempo, GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE).addContainerGap()));
+								.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
+						.addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(pl_kpi, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addComponent(pl_tiempo, GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE).addContainerGap()));
 		gl_contentPane.linkSize(SwingConstants.VERTICAL, new Component[] { pl_tiempo, pl_kpi });
 
 		pl_tiempo.setBorder(

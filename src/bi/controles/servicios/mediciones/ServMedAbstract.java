@@ -24,8 +24,9 @@ import comunes.entidades.Alarma;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO pasar los datos que se encuentran en un arreglo a listas e interactuar 
- * con las clases para calcular el tipo de medicion correspondiente (totales o promedios).
+ * LO QUE HAGO pasar los datos que se encuentran en un arreglo a listas e
+ * interactuar con las clases para calcular el tipo de medicion correspondiente
+ * (totales o promedios).
  * 
  * LO QUE CONOZCO el set de datos recibido
  * 
@@ -33,8 +34,8 @@ import comunes.entidades.Alarma;
  * 
  * MI COLABORADOR PRINCIPAL, ServDimAbstract
  * 
- * COMO INTERACTUO CON MI COLABORADOR, mediante cualquiera de las clases que extiendan
- * de ServDimAbstract
+ * COMO INTERACTUO CON MI COLABORADOR, mediante cualquiera de las clases que
+ * extiendan de ServDimAbstract
  *
  */
 public abstract class ServMedAbstract {

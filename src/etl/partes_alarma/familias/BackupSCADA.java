@@ -23,9 +23,9 @@ import comunes.entidades.Familia;
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
- * comunes.fabrica.FamiliaFactory, concluye que mi expresion regular
- * estatica (antes de la instancia) es un buen definidor del discriminante que
- * está leyendo.
+ * comunes.fabrica.FamiliaFactory, concluye que mi expresion regular estatica
+ * (antes de la instancia) es un buen definidor del discriminante que está
+ * leyendo.
  * 
  * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
  * mostrar en componentes visuales

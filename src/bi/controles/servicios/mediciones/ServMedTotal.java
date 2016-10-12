@@ -27,8 +27,8 @@ import comunes.entidades.Alarma;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO completar las filas con los totales de las alarmas
- * segun el periodo de tiempo sobre el cual se este trabajando
+ * LO QUE HAGO completar las filas con los totales de las alarmas segun el
+ * periodo de tiempo sobre el cual se este trabajando
  * 
  * LO QUE CONOZCO el set de datos de alarmas y periodos recibidos
  * 

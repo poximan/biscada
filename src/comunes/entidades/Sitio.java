@@ -40,8 +40,9 @@ import comunes.fabrica.TipoDatoFabricable;
  * MI COLABORADOR PRINCIPAL, es etl.controles.ETL1Transformar
  * 
  * COMO INTERACTUO CON MI COLABORADOR, el usa una fabrica abstracta para obtener
- * el Sitio concreto donde ocurrio la alarma que se esta procesando. cuando lo encuentra
- * crea una instancia con uno de mis subtipos, alojados en etl.partes_alarma.sitios
+ * el Sitio concreto donde ocurrio la alarma que se esta procesando. cuando lo
+ * encuentra crea una instancia con uno de mis subtipos, alojados en
+ * etl.partes_alarma.sitios
  * 
  * @author hdonato
  *

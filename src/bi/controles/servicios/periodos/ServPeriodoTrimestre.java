@@ -28,13 +28,13 @@ import bi.entidades.IntervaloFechas;
  * 
  * LO QUE HAGO devolver los calculos del periodo en trimestres
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL, ServPeriodoAbst
  * 
- * COMO INTERACTUO CON MI COLABORADOR, 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
  */
 public class ServPeriodoTrimestre extends ServPeriodoAbstract {

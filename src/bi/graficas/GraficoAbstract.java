@@ -27,16 +27,17 @@ import org.jfree.data.general.AbstractDataset;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO construir el panel para generar los diferentes graficos
- * segun corresponda
+ * LO QUE HAGO construir el panel para generar los diferentes graficos segun
+ * corresponda
  * 
  * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, cualquiera de las clases que extiendan de esta clase
+ * MI COLABORADOR PRINCIPAL, cualquiera de las clases que extiendan de esta
+ * clase
  * 
- * COMO INTERACTUO CON MI COLABORADOR, 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
  */
 public abstract class GraficoAbstract extends JFrame {

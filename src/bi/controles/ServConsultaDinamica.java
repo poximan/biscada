@@ -152,8 +152,8 @@ public class ServConsultaDinamica {
 	 * creador de parametro dinamico.
 	 * 
 	 * si el usuario especific� una "fecha desde" en particular, se traeran
-	 * solo alarmas con fecha mayor igual para el campo especificado [fecha inicio, ack,
-	 * fin]
+	 * solo alarmas con fecha mayor igual para el campo especificado [fecha
+	 * inicio, ack, fin]
 	 * 
 	 * @param calendarDesde
 	 * @param rbtnDesdeInicio
@@ -182,8 +182,8 @@ public class ServConsultaDinamica {
 	 * creador de parametro dinamico.
 	 * 
 	 * si el usuario especific� una "fecha hasta" en particular, se traeran
-	 * solo alarmas con fecha menor igual para el campo especificado [fecha inicio, ack,
-	 * fin]
+	 * solo alarmas con fecha menor igual para el campo especificado [fecha
+	 * inicio, ack, fin]
 	 * 
 	 * @param calendarHasta
 	 * @param rbtnHastaInicio

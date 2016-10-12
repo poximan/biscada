@@ -21,13 +21,14 @@ package bi.vistas.eventos;
  * 
  * LO QUE HAGO normalizar la configuracion de eventos visuales
  * 
- * LO QUE CONOZCO todos los eventos que seran escuchados en la vista que lo implemente
+ * LO QUE CONOZCO todos los eventos que seran escuchados en la vista que lo
+ * implemente
  * 
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL, EventoDim
  * 
- * COMO INTERACTUO CON MI COLABORADOR, 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
  */
 public interface EventoConfigurable {

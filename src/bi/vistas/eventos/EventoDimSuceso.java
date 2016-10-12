@@ -23,20 +23,20 @@ import comunes.entidades.Suceso;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO una clase que extiende de EventoDim	
+ * YO REPRESENTO una clase que extiende de EventoDim
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO ejecutar el evento correspondiente 
+ * LO QUE HAGO ejecutar el evento correspondiente
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
  * MI COLABORADOR PRINCIPAL, EventoDim
  * 
- * COMO INTERACTUO CON MI COLABORADOR, recibiendo el comportamiento
- * segun el evento que sea escuchado
+ * COMO INTERACTUO CON MI COLABORADOR, recibiendo el comportamiento segun el
+ * evento que sea escuchado
  *
  */
 public class EventoDimSuceso extends EventoDim implements MouseListener {

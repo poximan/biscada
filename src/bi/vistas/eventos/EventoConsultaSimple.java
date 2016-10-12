@@ -30,8 +30,8 @@ import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
  * 
  * ==== parte clase =========================
  * 
- * YO REPRESENTO un evento generado por un accion de la pantalla Principal
- * para poder pasar al segundo nivel de evaluacion
+ * YO REPRESENTO un evento generado por un accion de la pantalla Principal para
+ * poder pasar al segundo nivel de evaluacion
  * 
  * ==== parte responsabilidad ===============
  * 
@@ -44,8 +44,8 @@ import bi.vistas.dimensiones.VistaDimTiempoDespejeSimple;
  * 
  * MI COLABORADOR PRINCIPAL, ComponenteMenuDimension
  * 
- * COMO INTERACTUO CON MI COLABORADOR, creo una instancia de el, lanzando una ventana segun el tipo 
- * evento al que corresponda.
+ * COMO INTERACTUO CON MI COLABORADOR, creo una instancia de el, lanzando una
+ * ventana segun el tipo evento al que corresponda.
  * 
  * @author hdonato
  *

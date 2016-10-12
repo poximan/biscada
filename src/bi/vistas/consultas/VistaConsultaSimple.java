@@ -39,9 +39,10 @@ import comunes.vistas.PanelIniciable;
  * para realizar una consulta a base de dato y avanzar al siguiente nivel de
  * procesamiento segun una dimension elegida.
  * 
- * soy desplegado desde el gestor de eventos bi.vistas.eventos.EventoComponenteMenuDimension, quien crea un marco
- * especial bi.entidades.ComponenteMenuConsulta (un JFrame tipico mas un menu
- * superior), agrega mi clase en él, y me pasa el control
+ * soy desplegado desde el gestor de eventos
+ * bi.vistas.eventos.EventoComponenteMenuDimension, quien crea un marco especial
+ * bi.entidades.ComponenteMenuConsulta (un JFrame tipico mas un menu superior),
+ * agrega mi clase en él, y me pasa el control
  * 
  * ==== parte responsabilidad ===============
  * 

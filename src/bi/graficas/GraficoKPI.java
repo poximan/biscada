@@ -34,11 +34,11 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * LO QUE HAGO construir un panel donde se contruye un grafico KPI.
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, VistaKpiabstract. 
+ * MI COLABORADOR PRINCIPAL, VistaKpiabstract.
  * 
  * COMO INTERACTUO CON MI COLABORADOR, recibiendo los datos para el grafico
  *

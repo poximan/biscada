@@ -49,14 +49,14 @@ import propiedades.controles.servicios.ServPropiedades;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO generar el comportamiento de la vista KpiCalidadServicio, generando
- * todos sus componentes y configurando sus eventos
- *  
- * LO QUE CONOZCO 
+ * LO QUE HAGO generar el comportamiento de la vista KpiCalidadServicio,
+ * generando todos sus componentes y configurando sus eventos
+ * 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, 
+ * MI COLABORADOR PRINCIPAL,
  * 
  * COMO INTERACTUO CON MI COLABORADOR,
  * 
@@ -331,29 +331,27 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		panelHistograma.setViewportView(histo_kpi);
 
 		gl_panelGeneral = new GroupLayout(this);
-		gl_panelGeneral.setHorizontalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addGap(21)
-					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-						.addGroup(gl_panelGeneral.createSequentialGroup()
-							.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
-					.addGap(23))
-		);
-		gl_panelGeneral.setVerticalGroup(
-			gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		gl_panelGeneral.setHorizontalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup().addGap(21)
+						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+								.addComponent(panelHistograma, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 406,
+										Short.MAX_VALUE)
+								.addGroup(gl_panelGeneral.createSequentialGroup()
+										.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, 218,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
+						.addGap(23)));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE,
+										188, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+						.addContainerGap()));
 
 		lblPeriodoMasReciente = new JLabel("Periodo mas reciente");
 		lblPeriodoMasReciente

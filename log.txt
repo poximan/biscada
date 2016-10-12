@@ -13119,3 +13119,119 @@ TipoDeEquipoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
 
 2016-10-11 13:51:26,868 [INFO ] bi.entidades.ComponenteTabla:94		- se iniciaron componentes
 2016-10-11 13:51:26,868 [INFO ] bi.entidades.ComponenteTabla:97		- se ordernaron tablas
+2016-10-12 07:19:14,324 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:19:14,324 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:19:14,730 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:19:14,730 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:19:14,730 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:19:14,871 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:19:14,887 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-12 07:19:20,504 [ERROR] comunes.controles.EMFSingleton:110		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:19:20,504 [ERROR] comunes.controles.EMFSingleton:111		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:19:20,772 [ERROR] bi.entidades.ComponenteConsulta:383		- falla servicio MySQL, modificar en administrador de servicios del SO
+2016-10-12 07:19:20,772 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-12 07:19:20,881 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: null
+2016-10-12 07:25:58,868 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:25:58,884 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:25:59,040 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:25:59,040 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:25:59,040 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:25:59,197 [INFO ] bi.controles.GestorBI:83		- se crea marco para panel consultas
+2016-10-12 07:25:59,228 [INFO ] comunes.controles.EMFSingleton:83		- se crea EMF por primera vez
+2016-10-12 07:26:05,064 [ERROR] comunes.controles.EMFSingleton:110		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:26:05,064 [ERROR] comunes.controles.EMFSingleton:111		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:26:05,354 [ERROR] bi.entidades.ComponenteConsulta:383		- falla servicio MySQL, modificar en administrador de servicios del SO
+2016-10-12 07:26:05,354 [INFO ] bi.controles.GestorBI:86		- se lanza pantalla de consultas
+2016-10-12 07:31:06,032 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:31:06,032 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:31:06,235 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:31:06,250 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:31:06,250 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:31:06,375 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:31:06,406 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2016-10-12 07:31:12,039 [ERROR] comunes.controles.EMFSingleton:112		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:31:12,039 [ERROR] comunes.controles.EMFSingleton:113		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:31:53,841 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: null
+2016-10-12 07:34:11,980 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:34:11,980 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:34:12,200 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:34:12,200 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:34:12,200 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:34:12,371 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:34:12,403 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2016-10-12 07:34:18,082 [ERROR] comunes.controles.EMFSingleton:112		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:34:18,082 [ERROR] comunes.controles.EMFSingleton:113		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:34:38,800 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: null
+2016-10-12 07:38:36,063 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:38:36,079 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:38:36,266 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:38:36,266 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:38:36,266 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:38:36,406 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:38:36,437 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2016-10-12 07:38:42,242 [ERROR] comunes.controles.EMFSingleton:112		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:38:42,242 [ERROR] comunes.controles.EMFSingleton:113		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:38:44,093 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: No se pudo conectar a BD. Verificar actividad del servicio
+2016-10-12 07:40:08,819 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:40:08,819 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:40:08,990 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:40:08,990 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:40:08,990 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:40:09,131 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:40:09,162 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2016-10-12 07:40:14,935 [ERROR] comunes.controles.EMFSingleton:112		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:40:14,935 [ERROR] comunes.controles.EMFSingleton:113		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:40:19,135 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2016-10-12 07:40:19,214 [ERROR] comunes.controles.Principal:87		- problema en implementacion runnable: null
+2016-10-12 07:41:10,665 [INFO ] comunes.controles.Principal:64		- 
+
+2016-10-12 07:41:10,665 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2016-10-12 07:41:10,806 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2016-10-12 07:41:10,821 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.134841918945312 MB
+2016-10-12 07:41:10,821 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2016-10-12 07:41:10,946 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2016-10-12 07:41:10,977 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2016-10-12 07:41:16,953 [ERROR] comunes.controles.EMFSingleton:112		- no se pudo crear EMF, revisar modelo
+2016-10-12 07:41:16,953 [ERROR] comunes.controles.EMFSingleton:113		- Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Error Code: 0
+2016-10-12 07:41:21,064 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas

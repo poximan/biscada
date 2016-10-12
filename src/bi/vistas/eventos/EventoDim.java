@@ -30,16 +30,16 @@ import bi.vistas.kpi.VistaKpiCalidadServicio;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO manejar todos los eventos que seran escuchados y delegarlos
- * a la vista que lo implementa
+ * LO QUE HAGO manejar todos los eventos que seran escuchados y delegarlos a la
+ * vista que lo implementa
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 
- * MI COLABORADOR PRINCIPAL, 
+ * MI COLABORADOR PRINCIPAL,
  * 
- * COMO INTERACTUO CON MI COLABORADOR, 
+ * COMO INTERACTUO CON MI COLABORADOR,
  *
  */
 public abstract class EventoDim implements ActionListener, MouseListener, VentanaLanzable {

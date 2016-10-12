@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 
@@ -109,6 +111,16 @@ public class EMFSingleton {
 		} catch (Exception excepcion) {
 			log.error("no se pudo crear EMF, revisar modelo");
 			log.error(excepcion.getMessage());
+
+			notificarError(excepcion.getCause().getMessage());
 		}
+	}
+
+	public void notificarError(String mensaje) {
+
+		JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.ERROR_MESSAGE);
+		JDialog dialog = optionPane.createDialog("error");
+		dialog.setAlwaysOnTop(true);
+		dialog.setVisible(true);
 	}
 }

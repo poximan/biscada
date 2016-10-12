@@ -32,7 +32,8 @@ import etl.partes_alarma.equipos.NumeroEquipoIdentificable;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO, doy representacion en Objetos del TipoDeEquipo al que pertenece la alarma
+ * LO QUE HAGO, doy representacion en Objetos del TipoDeEquipo al que pertenece
+ * la alarma
  * 
  * LO QUE CONOZCO, mi identidifcador interno, un String que dice quien soy.
  * 

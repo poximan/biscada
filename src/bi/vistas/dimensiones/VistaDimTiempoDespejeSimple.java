@@ -26,10 +26,10 @@ import comunes.entidades.Alarma;
  * 
  * ==== parte responsabilidad ===============
  * 
- * LO QUE HAGO extender de la clase VistaDimAbstractSimple que contiene las propiedas 
- * de la vista
+ * LO QUE HAGO extender de la clase VistaDimAbstractSimple que contiene las
+ * propiedas de la vista
  * 
- * LO QUE CONOZCO 
+ * LO QUE CONOZCO
  * 
  * ==== parte colaboracion ==================
  * 

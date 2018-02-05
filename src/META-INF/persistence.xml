@@ -35,7 +35,7 @@
 			<property name="eclipselink.cache.size.default" value="200" />
 
 			<property name="eclipselink.exclude-eclipselink-orm" value="true" />
-			<property name="eclipselink.orm.validate.schema" value="false" />			
+			<property name="eclipselink.orm.validate.schema" value="false" />
 
 		</properties>
 	</persistence-unit>

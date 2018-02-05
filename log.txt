@@ -13235,3 +13235,275 @@ Internal Exception: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Com
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
 Error Code: 0
 2016-10-12 07:41:21,064 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2018-02-05 11:58:28,765 [INFO ] comunes.controles.Principal:64		- 
+
+2018-02-05 11:58:28,768 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2018-02-05 11:58:29,114 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2018-02-05 11:58:29,125 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.278663635253906 MB
+2018-02-05 11:58:29,126 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2018-02-05 11:58:29,502 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2018-02-05 11:58:29,522 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2018-02-05 12:00:35,107 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2018-02-05 12:00:57,136 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2018-02-05 12:00:57,139 [INFO ] etl.vistas.VistaETL:125		- set direccion por defecto para origen de datos
+2018-02-05 12:00:57,139 [INFO ] etl.vistas.VistaETL:127		- inicia componentes
+2018-02-05 12:00:59,083 [INFO ] etl.vistas.VistaETL:130		- carga eventos
+2018-02-05 12:00:59,085 [INFO ] etl.vistas.VistaETL:133		- llenar listas
+2018-02-05 12:00:59,352 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:00:59,352 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 0 archivos disponibles
+2018-02-05 12:00:59,363 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1792 archivos procesados
+2018-02-05 12:00:59,378 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2018-02-05 12:01:31,387 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:01:31,387 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 2124 archivos disponibles
+2018-02-05 12:01:31,399 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1792 archivos procesados
+2018-02-05 12:01:54,730 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141114.DBF [1-375]
+2018-02-05 12:01:55,125 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 35 de 35 leidas desde archivo
+2018-02-05 12:01:55,349 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141116.DBF [2-375]
+2018-02-05 12:01:55,745 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 105 de 107 leidas desde archivo
+2018-02-05 12:01:55,745 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:01:55,745 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> LOTEO SOCIAL: FALLA COMUNC. CON SITIO
+
+2018-02-05 12:01:55,995 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141117.DBF [3-375]
+2018-02-05 12:01:56,358 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 120 de 124 leidas desde archivo
+2018-02-05 12:01:56,358 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:01:56,358 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> EPN: TORNILLO MODO MANUAL
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 55.
+
+2018-02-05 12:01:56,584 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141207.DBF [4-375]
+2018-02-05 12:01:57,089 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 176 de 176 leidas desde archivo
+2018-02-05 12:01:57,499 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141208.DBF [5-375]
+2018-02-05 12:01:57,650 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 12 de 12 leidas desde archivo
+2018-02-05 12:01:57,750 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141209.DBF [6-375]
+2018-02-05 12:01:57,904 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 33 de 33 leidas desde archivo
+2018-02-05 12:01:58,009 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141210.DBF [7-375]
+2018-02-05 12:01:58,304 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 83 de 83 leidas desde archivo
+2018-02-05 12:01:58,484 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141211.DBF [8-375]
+2018-02-05 12:02:00,017 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 714 de 714 leidas desde archivo
+2018-02-05 12:02:00,811 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141212.DBF [9-375]
+2018-02-05 12:02:03,863 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1511 de 1511 leidas desde archivo
+2018-02-05 12:02:04,720 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141213.DBF [10-375]
+2018-02-05 12:02:05,224 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 239 de 239 leidas desde archivo
+2018-02-05 12:02:05,496 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141214.DBF [11-375]
+2018-02-05 12:02:05,744 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 93 de 93 leidas desde archivo
+2018-02-05 12:02:05,980 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141215.DBF [12-375]
+2018-02-05 12:02:06,267 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 76 de 76 leidas desde archivo
+2018-02-05 12:02:06,463 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141216.DBF [13-375]
+2018-02-05 12:02:06,758 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 99 de 103 leidas desde archivo
+2018-02-05 12:02:06,759 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:02:06,759 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> LOTEO SOCIAL: FALLA COMUNC. CON SITIO
+SitioFactory, no encontrado -> LOTEO SOCIAL: TERMICO ACTUADO - BA
+SitioFactory, no encontrado -> LOTEO SOCIAL: RELE FALTA DE FASE ACTUADO
+
+2018-02-05 12:02:06,959 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141217.DBF [14-375]
+2018-02-05 12:02:07,235 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 99 de 102 leidas desde archivo
+2018-02-05 12:02:07,235 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:02:07,235 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> EPN: TORNILLO MODO MANUAL
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 55.
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 56.
+
+2018-02-05 12:02:07,426 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL141298.DBF [15-375]
+2018-02-05 12:02:07,429 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 1: Falta de Fase en Bo. Pujol                                   
+2018-02-05 12:02:07,456 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 0 de 1 leidas desde archivo
+2018-02-05 12:02:07,457 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:02:07,457 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> Falta de Fase en Bo. Pujol
+FamiliaFactory, no encontrado -> 
+
+2018-02-05 12:02:07,535 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150107.DBF [16-375]
+2018-02-05 12:02:07,589 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2 de 2 leidas desde archivo
+2018-02-05 12:02:07,678 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150108.DBF [17-375]
+2018-02-05 12:02:07,870 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 70 de 70 leidas desde archivo
+2018-02-05 12:02:08,017 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150109.DBF [18-375]
+2018-02-05 12:02:08,087 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2018-02-05 12:02:08,181 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150110.DBF [19-375]
+2018-02-05 12:02:09,290 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 21 de 21 leidas desde archivo
+2018-02-05 12:02:09,437 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150111.DBF [20-375]
+2018-02-05 12:02:10,137 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 343 de 343 leidas desde archivo
+2018-02-05 12:02:10,751 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150112.DBF [21-375]
+2018-02-05 12:02:12,122 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 651 de 651 leidas desde archivo
+2018-02-05 12:02:12,725 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150113.DBF [22-375]
+2018-02-05 12:02:15,546 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1255 de 1255 leidas desde archivo
+2018-02-05 12:02:16,266 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150114.DBF [23-375]
+2018-02-05 12:02:16,350 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1 de 1 leidas desde archivo
+2018-02-05 12:02:16,507 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150115.DBF [24-375]
+2018-02-05 12:02:16,707 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 76 de 76 leidas desde archivo
+2018-02-05 12:02:16,878 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150116.DBF [25-375]
+2018-02-05 12:02:17,619 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 360 de 360 leidas desde archivo
+2018-02-05 12:02:18,030 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150117.DBF [26-375]
+2018-02-05 12:02:18,335 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 112 de 115 leidas desde archivo
+2018-02-05 12:02:18,335 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:02:18,335 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> LOTEO SOCIAL: FALLA COMUNC. CON SITIO
+
+2018-02-05 12:02:18,641 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150118.DBF [27-375]
+2018-02-05 12:02:19,096 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 70 de 238 leidas desde archivo
+2018-02-05 12:02:19,097 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:02:19,097 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 56.
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 55.
+SucesoFactory, no encontrado -> EPN: TORNILLO MODO MANUAL
+SitioFactory, no encontrado -> COTA 126: CISTERNA NIVEL BAJO
+
+2018-02-05 12:02:19,335 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150208.DBF [28-375]
+2018-02-05 12:02:19,704 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 154 de 154 leidas desde archivo
+2018-02-05 12:02:19,937 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150209.DBF [29-375]
+2018-02-05 12:02:20,046 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 10 de 10 leidas desde archivo
+2018-02-05 12:02:20,129 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150210.DBF [30-375]
+2018-02-05 12:02:20,702 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 60 de 60 leidas desde archivo
+2018-02-05 12:02:20,813 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150211.DBF [31-375]
+2018-02-05 12:02:21,049 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 94 de 94 leidas desde archivo
+2018-02-05 12:02:21,215 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150212.DBF [32-375]
+2018-02-05 12:02:21,734 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 264 de 264 leidas desde archivo
+2018-02-05 12:02:22,216 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150213.DBF [33-375]
+2018-02-05 12:02:25,979 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2013 de 2013 leidas desde archivo
+2018-02-05 12:02:27,140 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150214.DBF [34-375]
+2018-02-05 12:02:29,453 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1217 de 1217 leidas desde archivo
+2018-02-05 12:02:30,524 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150215.DBF [35-375]
+2018-02-05 12:02:30,769 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 47 de 47 leidas desde archivo
+2018-02-05 12:02:30,884 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150216.DBF [36-375]
+2018-02-05 12:02:31,693 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 408 de 408 leidas desde archivo
+2018-02-05 12:02:32,187 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150217.DBF [37-375]
+2018-02-05 12:02:32,524 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 172: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:02:32,528 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 175: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:02:32,632 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 262: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:09:30,226 [INFO ] comunes.controles.Principal:64		- 
+
+2018-02-05 12:09:30,229 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2018-02-05 12:09:30,369 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2018-02-05 12:09:30,371 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.278663635253906 MB
+2018-02-05 12:09:30,371 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2018-02-05 12:09:30,502 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2018-02-05 12:09:30,530 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2018-02-05 12:11:34,706 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas
+2018-02-05 12:11:46,289 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2018-02-05 12:11:46,293 [INFO ] etl.vistas.VistaETL:125		- set direccion por defecto para origen de datos
+2018-02-05 12:11:46,294 [INFO ] etl.vistas.VistaETL:127		- inicia componentes
+2018-02-05 12:11:47,912 [INFO ] etl.vistas.VistaETL:130		- carga eventos
+2018-02-05 12:11:47,914 [INFO ] etl.vistas.VistaETL:133		- llenar listas
+2018-02-05 12:11:48,081 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:11:48,081 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 0 archivos disponibles
+2018-02-05 12:11:48,094 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1828 archivos procesados
+2018-02-05 12:11:48,129 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2018-02-05 12:12:02,497 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:12:02,497 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 2088 archivos disponibles
+2018-02-05 12:12:02,504 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1828 archivos procesados
+2018-02-05 12:12:11,260 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150217.DBF [1-22]
+2018-02-05 12:12:11,789 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 172: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:12:11,794 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 175: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:12:11,923 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 262: NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S         
+2018-02-05 12:12:12,706 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 317 de 356 leidas desde archivo
+2018-02-05 12:12:12,706 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:12:12,706 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> NUEVA CHUBUT: REVISAR LOG DE ERRORES PLC
+SitioFactory, no encontrado -> LOTEO SOCIAL: FALLA COMUNC. CON SITIO
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 56.
+SitioFactory, no encontrado -> Communication Error: VPI MODBUSRTU station 55.
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S
+SucesoFactory, no encontrado -> NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S
+TipoDeEquipoFactory, no encontrado -> NUEVA CHUBUT CIST: FALLA COMUNICACION MODULOS DE E/S
+SitioFactory, no encontrado -> NUEVA CHUBUT: B01 TERMICO ACTUADO
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: INTERRUPTOR GENERAL ACTUADO
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: REVISAR LOG DE ERRORES PLC
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: BAJO NIVEL EN CISTERNA
+SitioFactory, no encontrado -> NUEVA CHUBUT: FALLA COMUNICACION CON CISTERNA
+SucesoFactory, no encontrado -> NUEVA CHUBUT: FALLA COMUNICACION CON CISTERNA
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: ALTO NIVEL EN CISTERNA
+SitioFactory, no encontrado -> NUEVA CHUBUT CIST: REBALSE EN CISTERNA
+SitioFactory, no encontrado -> NUEVA CHUBUT: BAJA PRESION CA�O IMPULSION
+SitioFactory, no encontrado -> LOTEO SOCIAL: TERMICO ACTUADO - BA
+SitioFactory, no encontrado -> LOTEO SOCIAL: RELE FALTA DE FASE ACTUADO
+
+2018-02-05 12:12:12,758 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150308.DBF [2-22]
+2018-02-05 12:12:13,514 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 114 de 114 leidas desde archivo
+2018-02-05 12:12:13,571 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150309.DBF [3-22]
+2018-02-05 12:12:14,029 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 34 de 34 leidas desde archivo
+2018-02-05 12:12:14,078 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150310.DBF [4-22]
+2018-02-05 12:12:14,664 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 192 de 192 leidas desde archivo
+2018-02-05 12:12:14,717 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150311.DBF [5-22]
+2018-02-05 12:12:15,320 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 72 de 72 leidas desde archivo
+2018-02-05 12:12:15,370 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150312.DBF [6-22]
+2018-02-05 12:12:20,417 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 2564 de 2564 leidas desde archivo
+2018-02-05 12:12:20,480 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150313.DBF [7-22]
+2018-02-05 12:12:32,772 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 4811 de 4811 leidas desde archivo
+2018-02-05 12:12:32,868 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150314.DBF [8-22]
+2018-02-05 12:12:36,279 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 45 de 45 leidas desde archivo
+2018-02-05 12:12:36,374 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150315.DBF [9-22]
+2018-02-05 12:12:37,017 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 90 de 90 leidas desde archivo
+2018-02-05 12:12:37,115 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150316.DBF [10-22]
+2018-02-05 12:12:37,966 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 109 de 109 leidas desde archivo
+2018-02-05 12:12:38,047 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150317.DBF [11-22]
+2018-02-05 12:12:38,111 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 37: EPS: ERROR LECTURA AN (Pos falta 24Vcc)                      
+2018-02-05 12:12:38,630 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 63 de 67 leidas desde archivo
+2018-02-05 12:12:38,630 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:12:38,630 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SitioFactory, no encontrado -> LOTEO SOCIAL: FALLA COMUNC. CON SITIO
+SucesoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+TipoDeEquipoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+
+2018-02-05 12:12:38,712 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150408.DBF [12-22]
+2018-02-05 12:12:39,286 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 84 de 84 leidas desde archivo
+2018-02-05 12:12:39,365 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150409.DBF [13-22]
+2018-02-05 12:12:40,052 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 64 de 64 leidas desde archivo
+2018-02-05 12:12:40,142 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150410.DBF [14-22]
+2018-02-05 12:12:43,247 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 1525 de 1525 leidas desde archivo
+2018-02-05 12:12:43,339 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150411.DBF [15-22]
+2018-02-05 12:12:45,367 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 178 de 178 leidas desde archivo
+2018-02-05 12:12:45,464 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150412.DBF [16-22]
+2018-02-05 12:12:47,925 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 71 de 71 leidas desde archivo
+2018-02-05 12:12:48,015 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150413.DBF [17-22]
+2018-02-05 12:12:49,122 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 342 de 342 leidas desde archivo
+2018-02-05 12:12:49,229 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150414.DBF [18-22]
+2018-02-05 12:12:49,248 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 5: EPS: ERROR LECTURA AN (Pos falta 24Vcc)                      
+2018-02-05 12:12:49,381 [ERROR] etl.controles.ETL1Transformar:177		- error leyendo fila 121: EPS: ERROR LECTURA AN (Pos falta 24Vcc)                      
+2018-02-05 12:12:50,145 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 135 de 137 leidas desde archivo
+2018-02-05 12:12:50,145 [DEBUG] controles.dbf.ProcesarSimpleArchivo:182		- se encontraron defectos en...
+2018-02-05 12:12:50,145 [DEBUG] controles.dbf.ProcesarSimpleArchivo:183		- 
+SucesoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+TipoDeEquipoFactory, no encontrado -> EPS: ERROR LECTURA AN (Pos falta 24Vcc)
+
+2018-02-05 12:12:50,239 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150415.DBF [19-22]
+2018-02-05 12:12:51,143 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 202 de 202 leidas desde archivo
+2018-02-05 12:12:51,236 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150416.DBF [20-22]
+2018-02-05 12:12:52,192 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 114 de 114 leidas desde archivo
+2018-02-05 12:12:52,288 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150417.DBF [21-22]
+2018-02-05 12:12:53,032 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 73 de 73 leidas desde archivo
+2018-02-05 12:12:53,141 [DEBUG] controles.dbf.ProcesarSimpleArchivo:173		- ETL en archivo AL150507.DBF [22-22]
+2018-02-05 12:12:53,709 [DEBUG] controles.dbf.ProcesarSimpleArchivo:179		- se transformaron 27 de 27 leidas desde archivo
+2018-02-05 12:12:53,944 [INFO ] controles.dbf.ProcesarMultipleArchivo:209		- la operacion demoro 42 segundos
+2018-02-05 12:12:53,944 [INFO ] controles.dbf.ProcesarMultipleArchivo:210		- se extrajeron 11271 filas de potenciales alarmas
+2018-02-05 12:12:53,944 [INFO ] controles.dbf.ProcesarMultipleArchivo:211		- se transformaron 11226 filas del total extraidas
+2018-02-05 12:12:54,764 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:12:54,764 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 2066 archivos disponibles
+2018-02-05 12:12:54,773 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1850 archivos procesados
+2018-02-05 12:13:28,263 [INFO ] propiedades.controles.GestorPropiedades:82		- se crea panel de propiedades
+2018-02-05 12:13:34,527 [INFO ] etl.controles.GestorETL:82		- se crea marco para panel etl
+2018-02-05 12:13:34,528 [INFO ] etl.vistas.VistaETL:125		- set direccion por defecto para origen de datos
+2018-02-05 12:13:34,528 [INFO ] etl.vistas.VistaETL:127		- inicia componentes
+2018-02-05 12:13:34,613 [INFO ] etl.vistas.VistaETL:130		- carga eventos
+2018-02-05 12:13:34,613 [INFO ] etl.vistas.VistaETL:133		- llenar listas
+2018-02-05 12:13:35,444 [INFO ] controles.dbf.ProcesarMultipleArchivo:150		- 
+... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+2018-02-05 12:13:35,444 [INFO ] controles.dbf.ProcesarMultipleArchivo:151		- 2066 archivos disponibles
+2018-02-05 12:13:35,452 [INFO ] controles.dbf.ProcesarMultipleArchivo:152		- 1850 archivos procesados
+2018-02-05 12:13:35,467 [INFO ] etl.controles.GestorETL:87		- se lanza pantalla etl
+2018-02-05 12:15:40,637 [INFO ] comunes.controles.Principal:64		- 
+
+2018-02-05 12:15:40,642 [INFO ] comunes.controles.Principal:65		- ################# Comienza aplicacion #################
+2018-02-05 12:15:40,947 [DEBUG] comunes.controles.Principal:137		- heap reservado = 15.5 MB
+2018-02-05 12:15:40,950 [DEBUG] comunes.controles.Principal:138		- heap libre = 13.279647827148438 MB
+2018-02-05 12:15:40,950 [DEBUG] comunes.controles.Principal:139		- heap maximo = 247.5 MB
+
+2018-02-05 12:15:41,146 [INFO ] bi.controles.GestorBI:81		- se crea marco para panel consultas
+2018-02-05 12:15:41,181 [INFO ] comunes.controles.EMFSingleton:85		- se crea EMF por primera vez
+2018-02-05 12:18:01,091 [INFO ] bi.controles.GestorBI:84		- se lanza pantalla de consultas

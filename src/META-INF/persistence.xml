@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="dsoft_BIS" transaction-type="RESOURCE_LOCAL">
+
+	<persistence-unit name="dsoft_BIS">
 
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
@@ -16,27 +17,23 @@
 
 		<properties>
 
-			<property name="javax.persistence.schema-generation.database.action"
-				value="create" />
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
 
-			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="database" />
 
 			<property name="eclipselink.jdbc.batch-writing" value="JDBC" />
 
+			<property name="eclipselink.target-database" value="MySQL" />
+
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localHost/bis_bd?useUnicode=yes&amp;characterEncoding=UTF-8" />
 			<property name="javax.persistence.jdbc.user" value="bis" />
 			<property name="javax.persistence.jdbc.password" value="bis" />
 
-			<property name="eclipselink.target-database" value="MySQL" />
-			<property name="eclipselink.cache.size.default" value="200" />
-
-			<property name="eclipselink.exclude-eclipselink-orm" value="true" />
-			<property name="eclipselink.orm.validate.schema" value="false" />
-
 		</properties>
+
 	</persistence-unit>
 </persistence>

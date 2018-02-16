@@ -42,7 +42,7 @@ import etl.partes_alarma.equipos.Valvula;
  * parte clase ===========
  * 
  * YO REPRESENTO la implementacion concreta de una fabrica abstracta. patron de
- * diseño AbstractFactory
+ * diseï¿½o AbstractFactory
  * 
  * parte responsabilidad =====================
  * 
@@ -110,7 +110,7 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogeno.class.getCanonicalName());
-
+			
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InstrumentoCampo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());

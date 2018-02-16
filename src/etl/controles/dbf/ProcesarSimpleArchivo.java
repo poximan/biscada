@@ -15,6 +15,7 @@ import etl.controles.ETL0Extraer;
 import etl.controles.ETL1Transformar;
 import etl.controles.ETL2Cargar;
 import etl.controles.servicios.CampoTextoDefectuoso;
+import etl.controles.servicios.Reloj;
 import etl.controles.servicios.cruds.ServCRUDArchivoDBF;
 import etl.entidades.ArchAlarma;
 
@@ -78,6 +79,8 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	private static int totalizador_extraidas = 0;
 	private static int totalizador_transformadas = 0;
 
+	private Reloj reloj;
+
 	public static int getTotalizador_extraidas() {
 		return totalizador_extraidas;
 	}
@@ -100,16 +103,15 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 	private List<ArchAlarma> alarmas_extraidas;
 
 	public ProcesarSimpleArchivo() {
+		reloj = new Reloj();
 	}
 
 	private void actualizarTotalizadores(int extraidas, int transformadas) {
-
 		totalizador_extraidas += extraidas;
 		totalizador_transformadas += transformadas;
 	}
 
 	public void borrarSimpleArchivo(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
-
 		dbf_servicio_crud.borrar(archivo_actual);
 	}
 
@@ -120,24 +122,45 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 
 		dbf_servicio_crud.inicia(archivo_actual);
 
-		extractor = new ETL0Extraer(archivo_actual);
-		alarmas_extraidas = extractor.getAlarmas();
+		reloj.comenzarContar();
+		primerEtapa(archivo_actual);
+		reloj.terminarContar();
+		log.info("la extraccion demoro " + reloj.getTiempoEnSegundos() + " segundos");
+
 		extraidas = alarmas_extraidas.size();
+		
+		reloj.comenzarContar();
+		segundaEtapa(archivo_actual, alarmas_defectuosas);
+		reloj.terminarContar();
+		log.info("la transformacion demoro " + reloj.getTiempoEnSegundos() + " segundos");
 
+		reloj.comenzarContar();
+		tercerEtapa(dbf_servicio_crud, archivo_actual);
+		reloj.terminarContar();
+		log.info("la carga demoro " + reloj.getTiempoEnSegundos() + " segundos");
+		
+		reportar(extraidas, transformador.getAlarmas().size(), alarmas_defectuosas);
+		actualizarTotalizadores(extraidas, transformador.getAlarmas().size());
+	}
+
+	private void primerEtapa(ArchivoDBF archivo_actual) {
+		extractor = new ETL0Extraer(archivo_actual);
+		alarmas_extraidas = extractor.getAlarmas();		
+	}
+	
+	private void segundaEtapa(ArchivoDBF archivo_actual, CampoTextoDefectuoso alarmas_defectuosas) {
 		transformador = new ETL1Transformar(alarmas_extraidas);
-		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
-
+		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);		
+	}
+	
+	private void tercerEtapa(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
 		cargador = new ETL2Cargar(transformador.getAlarmas(), dbf_servicio_crud);
-
 		dbf_servicio_crud.termina(archivo_actual);
 
 		if (!transformador.getAlarmas().isEmpty())
 			cargador.cargarAlarmasAceptadas();
 		else
 			cargador.rechazarArchivo(archivo_actual);
-
-		reportar(extraidas, transformador.getAlarmas().size(), alarmas_defectuosas);
-		actualizarTotalizadores(extraidas, transformador.getAlarmas().size());
 	}
 
 	@Override

@@ -24,7 +24,7 @@ import comunes.entidades.Suceso;
  * 
  * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
  * comunes.fabrica.SucesoFactory, concluye que mi expresion regular estatica
- * (antes de la instancia) es un buen definidor del discriminante que está
+ * (antes de la instancia) es un buen definidor del discriminante que estï¿½
  * leyendo.
  * 
  * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
@@ -47,7 +47,8 @@ public class PlcErrorLecturaAnalogica extends Suceso {
 	/* ............................................. */
 
 	private static String expresion_regular = "LECTURA ANA"//
-			+ "|ERROR LECTURA DE NIVEL";
+			+ "|ERROR LECTURA DE NIVEL"//
+			+ "|ERROR LECTURA AN";
 
 	/* ............................................. */
 	/* ............................................. */

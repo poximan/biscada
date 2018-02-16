@@ -23,6 +23,7 @@ import etl.partes_alarma.sucesos.ComandoParada;
 import etl.partes_alarma.sucesos.ComandoReposicionAlarmas;
 import etl.partes_alarma.sucesos.ComandoSimultaneo;
 import etl.partes_alarma.sucesos.EstadoCerrado;
+import etl.partes_alarma.sucesos.EstadoFalAla;
 import etl.partes_alarma.sucesos.EstadoRTU;
 import etl.partes_alarma.sucesos.EstadoTablero;
 import etl.partes_alarma.sucesos.EvolucionLecturaAnalogica;
@@ -36,6 +37,9 @@ import etl.partes_alarma.sucesos.GrupoElectrogenoFalla;
 import etl.partes_alarma.sucesos.GrupoElectrogenoMarcha;
 import etl.partes_alarma.sucesos.IncongruenciaEstado;
 import etl.partes_alarma.sucesos.IniciaSesion;
+import etl.partes_alarma.sucesos.ModoInactivo;
+import etl.partes_alarma.sucesos.ModoLocal;
+import etl.partes_alarma.sucesos.ModoManual;
 import etl.partes_alarma.sucesos.MotorBobinadoAltaTemperatura;
 import etl.partes_alarma.sucesos.MotorEstatorConAgua;
 import etl.partes_alarma.sucesos.MotorVibracion;
@@ -47,6 +51,8 @@ import etl.partes_alarma.sucesos.PlcErrorComunicacion;
 import etl.partes_alarma.sucesos.PlcErrorDIRemota;
 import etl.partes_alarma.sucesos.PlcErrorLecturaAnalogica;
 import etl.partes_alarma.sucesos.PlcErrorLog;
+import etl.partes_alarma.sucesos.PlcErrorModulo;
+import etl.partes_alarma.sucesos.PresionAlta;
 import etl.partes_alarma.sucesos.PresionBaja;
 import etl.partes_alarma.sucesos.PuertaAbierta;
 import etl.partes_alarma.sucesos.Robo;
@@ -65,7 +71,7 @@ import etl.partes_alarma.sucesos.TimeOutIndefinido;
  * parte clase ===========
  * 
  * YO REPRESENTO la implementacion concreta de una fabrica abstracta. patron de
- * diseño AbstractFactory
+ * diseï¿½o AbstractFactory
  * 
  * parte responsabilidad =====================
  * 
@@ -142,6 +148,8 @@ public class SucesoFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EstadoCerrado.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					EstadoFalAla.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, EstadoRTU.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					EstadoTablero.class.getCanonicalName());
@@ -173,6 +181,12 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, IniciaSesion.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ModoInactivo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ModoLocal.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ModoManual.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					MotorBobinadoAltaTemperatura.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					MotorEstatorConAgua.class.getCanonicalName());
@@ -188,11 +202,13 @@ public class SucesoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorComunicacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
-					PlcErrorLecturaAnalogica.class.getCanonicalName());
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					PlcErrorDIRemota.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					PlcErrorLecturaAnalogica.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorLog.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PlcErrorModulo.class.getCanonicalName());
 
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PresionAlta.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, PresionBaja.class.getCanonicalName());
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,

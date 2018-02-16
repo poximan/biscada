@@ -14,7 +14,11 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.apache.log4j.Logger;
+import org.eclipse.persistence.exceptions.DatabaseException;
+import org.eclipse.persistence.exceptions.ValidationException;
 
 import comunes.controles.EMFSingleton;
 import comunes.controles.ObjetosBorrables;
@@ -107,20 +111,23 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		Iterator<ArchivoDBF> iterador = lista_candidatos_extraer.iterator();
 
 		reloj.comenzarContar();
-		metodo_borrado.beginArchivo();
 
 		while (iterador.hasNext()) {
 
-			ArchivoDBF archivo_actual = iterador.next();
+			metodo_borrado.beginArchivo();
 
+			ArchivoDBF archivo_actual = iterador.next();
 			archivo_actual = EMFSingleton.getInstanciaEM().find(ArchivoDBF.class, archivo_actual.getId());
 			gestor.borrarSimpleArchivo(dbf_servicio_crud, archivo_actual);
+
+			try {
+				metodo_borrado.enviarCacheHaciaBD();
+			} catch (PersistenceException | DatabaseException | ValidationException e) {
+			}
+
+			metodo_borrado.limpiarCache();
+			metodo_borrado.commitArchivo();
 		}
-
-		metodo_borrado.enviarCacheHaciaBD();
-		metodo_borrado.limpiarCache();
-
-		metodo_borrado.commitArchivo();
 		reloj.terminarContar();
 	}
 
@@ -178,22 +185,23 @@ public class ProcesarMultipleArchivo implements ObjetosBorrables {
 		Iterator<ArchivoDBF> iterador = lista_candidatos_procesar.iterator();
 
 		reloj.comenzarContar();
-		metodo_insercion.beginArchivo();
-
+		
 		while (iterador.hasNext()) {
 
+			metodo_insercion.beginArchivo();
+			
 			ArchivoDBF archivo_actual = iterador.next();
 			gestor.mostarInfo(archivo_actual, totales, actual++);
 
 			gestor.insertarSimpleArchivo(dbf_servicio_crud, archivo_actual);
 			gestor.liberarObjetos();
+			
+			metodo_insercion.enviarCacheHaciaBD();
+			metodo_insercion.limpiarCache();
+			metodo_insercion.commitArchivo();
 		}
 		
-		metodo_insercion.commitArchivo();		
-		metodo_insercion.enviarCacheHaciaBD();
-		metodo_insercion.limpiarCache();
 		reloj.terminarContar();
-
 		mostarInfo();
 	}
 

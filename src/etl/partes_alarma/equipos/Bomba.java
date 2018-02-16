@@ -32,7 +32,7 @@ import etl.excepciones.NumeroEquipoExcedidoExcepcion;
  * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
  * comunes.fabrica.TipoDeEquipoFactory, concluye que mi expresion regular
  * estatica (antes de la instancia) es un buen definidor del discriminante que
- * está leyendo.
+ * estï¿½ leyendo.
  * 
  * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
  * mostrar en componentes visuales
@@ -82,7 +82,7 @@ public class Bomba extends TipoDeEquipo {
 	@Override
 	public Integer getNumero(String discriminante) {
 
-		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(\\sBA|BOMBA\\s?1)" + Constantes.CIERRA_EXP_REG))
+		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(\\sBA|BOMBA\\s?1|ACHIQUE)" + Constantes.CIERRA_EXP_REG))
 			return new Integer(1);
 
 		if (discriminante.matches(Constantes.ABRE_EXP_REG + "(\\sBB|BOMBA\\s?2)" + Constantes.CIERRA_EXP_REG))

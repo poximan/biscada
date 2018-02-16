@@ -20,11 +20,15 @@ import etl.partes_alarma.sitios.CloacalEPN;
 import etl.partes_alarma.sitios.CloacalEPS;
 import etl.partes_alarma.sitios.ExemysEsclavoModbus;
 import etl.partes_alarma.sitios.Reserva6000;
+import etl.partes_alarma.sitios.ReservaCota126;
 import etl.partes_alarma.sitios.ReservaCota90;
 import etl.partes_alarma.sitios.ReservaDoradilloPresurizacion;
 import etl.partes_alarma.sitios.ReservaKM11;
 import etl.partes_alarma.sitios.ReservaLomaMariaEST;
 import etl.partes_alarma.sitios.ReservaLomaMariaREP;
+import etl.partes_alarma.sitios.ReservaLoteoSocial;
+import etl.partes_alarma.sitios.ReservaNvaChubutBombeo;
+import etl.partes_alarma.sitios.ReservaNvaChubutCist;
 import etl.partes_alarma.sitios.ReservaOeste;
 import etl.partes_alarma.sitios.ReservaParquePesquero;
 import etl.partes_alarma.sitios.ReservaPlantaPotabilizadora;
@@ -49,7 +53,7 @@ import etl.partes_alarma.sitios.ReusoPTN;
  * parte clase ===========
  * 
  * YO REPRESENTO la implementacion concreta de una fabrica abstracta. patron de
- * diseño AbstractFactory
+ * diseï¿½o AbstractFactory
  * 
  * parte responsabilidad =====================
  * 
@@ -101,7 +105,9 @@ public class SitioFactory extends FabricaAbstracta {
 
 		try {
 
-			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getCanonicalName());
+			/*
+			 * sitios cloacales
+			 */			
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE1.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getCanonicalName());
@@ -109,12 +115,23 @@ public class SitioFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getCanonicalName());
+			
+			/*
+			 * sitios general
+			 */
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ExemysEsclavoModbus.class.getCanonicalName());
+			
+			
+			/*
+			 * sitios agua potable
+			 */
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Reserva6000.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaCota126.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaCota90.class.getCanonicalName());
-
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaDoradilloPresurizacion.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaKM11.class.getCanonicalName());
@@ -122,8 +139,14 @@ public class SitioFactory extends FabricaAbstracta {
 					ReservaLomaMariaEST.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaLomaMariaREP.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaLoteoSocial.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaNvaChubutBombeo.class.getCanonicalName());
+			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
+					ReservaNvaChubutCist.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getCanonicalName());
-
+			
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaParquePesquero.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
@@ -135,6 +158,9 @@ public class SitioFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaTomaRio.class.getCanonicalName());
 
+			/*
+			 * sitios reuso
+			 */
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReusoCamaraCarga.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReusoCota50.class.getCanonicalName());

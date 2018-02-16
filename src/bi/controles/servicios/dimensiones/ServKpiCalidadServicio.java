@@ -149,8 +149,8 @@ public class ServKpiCalidadServicio implements ServKpi {
 		double[] cuadrado_dif_respecto_promedio = new double[celdasUtiles()];
 
 		/*
-		 * primero se obtiene la diferencia de cada lectura respecto a la media.
-		 * luego se eleva al cuadrado.
+		 * primero se obtiene la diferencia de cada lectura respecto a la media. luego
+		 * se eleva al cuadrado.
 		 */
 		for (int fila = 0; fila < datos.length; fila++)
 			for (int columna = 0; columna < datos[fila].length; columna++)

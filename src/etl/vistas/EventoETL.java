@@ -92,9 +92,8 @@ public class EventoETL implements ActionListener, DocumentListener, ListSelectio
 
 	/**
 	 * el campo de texto asignado para la direccion {origen - destino} de los
-	 * archivos .dbf tiene asociado un evento para que permitira lanzar
-	 * nuevamente la logica de negocio responsable de llenar las listas de la
-	 * vista ETL.
+	 * archivos .dbf tiene asociado un evento para que permitira lanzar nuevamente
+	 * la logica de negocio responsable de llenar las listas de la vista ETL.
 	 * 
 	 */
 	@Override

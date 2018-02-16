@@ -342,16 +342,14 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(panelIndicador, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
 						.addGap(23)));
-		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelGeneral.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE,
-										188, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-						.addContainerGap()));
+		gl_panelGeneral.setVerticalGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING).addGroup(gl_panelGeneral
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panelGeneral.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panelIndicador, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panelResumen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(panelHistograma, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE).addContainerGap()));
 
 		lblPeriodoMasReciente = new JLabel("Periodo mas reciente");
 		lblPeriodoMasReciente

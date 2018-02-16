@@ -3,9 +3,9 @@
 /* PRELIMINAR .................................. */
 /* ............................................. */
 
-package etl.partes_alarma.equipos;
+package etl.partes_alarma.sucesos;
 
-import comunes.entidades.TipoDeEquipo;
+import comunes.entidades.Suceso;
 
 /* ............................................. */
 /* ............................................. */
@@ -18,14 +18,14 @@ import comunes.entidades.TipoDeEquipo;
  * ==== parte clase =========================
  * 
  * YO REPRESENTO, la implementacion concreta de la super clase
- * comunes.modelo.TipoDeEquipo
+ * comunes.modelo.Suceso
  * 
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
- * comunes.fabrica.TipoDeEquipoFactory, concluye que mi expresion regular
- * estatica (antes de la instancia) es un buen definidor del discriminante que
- * est� leyendo.
+ * comunes.fabrica.SucesoFactory, concluye que mi expresion regular estatica
+ * (antes de la instancia) es un buen definidor del discriminante que est�
+ * leyendo.
  * 
  * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
  * mostrar en componentes visuales
@@ -39,33 +39,14 @@ import comunes.entidades.TipoDeEquipo;
  * @author hdonato
  * 
  */
-public class InstrumentoCampo extends TipoDeEquipo {
+public class TemperaturaAlta extends Suceso {
 
 	/* ............................................. */
 	/* ............................................. */
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "MEDIDA DE CAUDAL"//
-			+ "|ALARMA NIVEL"//
-			+ "|\\sPERA\\s"//
-			+ "|ALARMA DE ALTO NIVEL"//
-			+ "|MEDIDOR DE NIVEL"//
-			+ "|SENSOR DE NIVEL"//
-			+ "|ALTO NIVEL SALA BOMBAS"//
-			+ "|ALARMA M.XIMO NIVEL"//
-			+ "|BAJO NIVEL"//
-			+ "|ALTO NIVEL"//
-			+ "|Alto nivel"//
-			+ "|NIVEL ALTO (PERA)"//
-			+ "|MEDICION DE PRESION"//
-			+ "|NIVEL FUERA DE RANGO"//
-			+ "|BAJA PRESION"//
-			+ "|NIVEL BAJO"//
-			+ "|ALTA PRESION"//
-			+ "|CAUDALIMETRO";
-
-	private static String descripcion = "instrumento de campo";
+	private static String expresion_regular = "TEMP.CAMARA";
 
 	/* ............................................. */
 	/* ............................................. */
@@ -81,8 +62,8 @@ public class InstrumentoCampo extends TipoDeEquipo {
 	/* METODOS ..................................... */
 	/* ............................................. */
 
-	public InstrumentoCampo() {
-		super(descripcion);
+	public TemperaturaAlta() {
+		super.setDescripcion(this.toString());
 	}
 
 	/* ............................................. */
@@ -91,13 +72,8 @@ public class InstrumentoCampo extends TipoDeEquipo {
 	/* ............................................. */
 
 	@Override
-	public Integer getNumero(String discriminante) {
-		return new Integer(1);
-	}
-
-	@Override
 	public String toString() {
-		return descripcion;
+		return "temp. alta";
 	}
 
 	/* ............................................. */

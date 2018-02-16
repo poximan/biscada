@@ -25,7 +25,7 @@ import comunes.entidades.TipoDeEquipo;
  * LO QUE HAGO, expongo una instancia de mi si la fabrica concreta
  * comunes.fabrica.TipoDeEquipoFactory, concluye que mi expresion regular
  * estatica (antes de la instancia) es un buen definidor del discriminante que
- * está leyendo.
+ * estï¿½ leyendo.
  * 
  * LO QUE CONOZCO, la expresion regular que me define, y mi descripcion para
  * mostrar en componentes visuales
@@ -66,7 +66,9 @@ public class CentroControlMotores extends TipoDeEquipo {
 			+ "|SGCA"//
 			+ "|Alarma CA"//
 			+ "|Falla cargador"//
-			+ "|ACEPTACION DE ALARMAS TPyM";
+			+ "|ACEPTACION DE ALARMAS TPyM"//
+			+ "|Falta de fase"//
+			+ "|FALLA ALIM. 220";
 
 	private static String descripcion = "CCM del sitio";
 

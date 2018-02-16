@@ -48,7 +48,7 @@ public class ReservaNvaChubutBombeo extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "station\\s55";
+	private static String expresion_regular = "station\\s55|NUEVA CHUBUT:";
 
 	/* ............................................. */
 	/* ............................................. */

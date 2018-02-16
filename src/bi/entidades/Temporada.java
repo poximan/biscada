@@ -63,38 +63,38 @@ public abstract class Temporada {
 	}
 
 	/**
-	 * factor de correccion. todos los rangos de fechas se miden igual salvo el
-	 * de temporada verano. alli, por como esta implementada la logica, la
-	 * comparacion de fecha inicio se hace por una fecha cuyo a�o adelantado
-	 * una unidad, por lo tanto es necesario corregir esta diferencia
+	 * factor de correccion. todos los rangos de fechas se miden igual salvo el de
+	 * temporada verano. alli, por como esta implementada la logica, la comparacion
+	 * de fecha inicio se hace por una fecha cuyo a�o adelantado una unidad, por lo
+	 * tanto es necesario corregir esta diferencia
 	 * 
 	 * @param fecha_actual
 	 *            se toma como referencia para saber si se debe aplicar la
-	 *            correccion. Incluso para la temporada verano, si la alarma es
-	 *            de la parte de la temporada que cae despues de diciembre se
-	 *            debe aplicar correccion.
+	 *            correccion. Incluso para la temporada verano, si la alarma es de
+	 *            la parte de la temporada que cae despues de diciembre se debe
+	 *            aplicar correccion.
 	 * 
-	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el
-	 *         resto de las temporadas
+	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el resto de
+	 *         las temporadas
 	 */
 	public int correccionFin(Calendar fecha_actual) {
 		return 0;
 	}
 
 	/**
-	 * factor de correccion. todos los rangos de fechas se miden igual salvo el
-	 * de temporada verano. alli, por como esta implementada la logica, la
-	 * comparacion de fecha inicio se hace por una fecha cuyo a�o adelantado
-	 * una unidad, por lo tanto es necesario corregir esta diferencia
+	 * factor de correccion. todos los rangos de fechas se miden igual salvo el de
+	 * temporada verano. alli, por como esta implementada la logica, la comparacion
+	 * de fecha inicio se hace por una fecha cuyo a�o adelantado una unidad, por lo
+	 * tanto es necesario corregir esta diferencia
 	 * 
 	 * @param fecha_actual
 	 *            se toma como referencia para saber si se debe aplicar la
-	 *            correccion. Incluso para la temporada verano, si la alarma es
-	 *            de la parte de la temporada que cae despues de diciembre se
-	 *            debe aplicar correccion.
+	 *            correccion. Incluso para la temporada verano, si la alarma es de
+	 *            la parte de la temporada que cae despues de diciembre se debe
+	 *            aplicar correccion.
 	 * 
-	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el
-	 *         resto de las temporadas
+	 * @return segun el contexto podr�a ser 1 para el verano, y 0 para el resto de
+	 *         las temporadas
 	 * 
 	 */
 	public int correccionInicio(Calendar fecha_actual) {

@@ -128,7 +128,7 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		log.info("la extraccion demoro " + reloj.getTiempoEnSegundos() + " segundos");
 
 		extraidas = alarmas_extraidas.size();
-		
+
 		reloj.comenzarContar();
 		segundaEtapa(archivo_actual, alarmas_defectuosas);
 		reloj.terminarContar();
@@ -138,21 +138,21 @@ public class ProcesarSimpleArchivo implements ObjetosBorrables {
 		tercerEtapa(dbf_servicio_crud, archivo_actual);
 		reloj.terminarContar();
 		log.info("la carga demoro " + reloj.getTiempoEnSegundos() + " segundos");
-		
+
 		reportar(extraidas, transformador.getAlarmas().size(), alarmas_defectuosas);
 		actualizarTotalizadores(extraidas, transformador.getAlarmas().size());
 	}
 
 	private void primerEtapa(ArchivoDBF archivo_actual) {
 		extractor = new ETL0Extraer(archivo_actual);
-		alarmas_extraidas = extractor.getAlarmas();		
+		alarmas_extraidas = extractor.getAlarmas();
 	}
-	
+
 	private void segundaEtapa(ArchivoDBF archivo_actual, CampoTextoDefectuoso alarmas_defectuosas) {
 		transformador = new ETL1Transformar(alarmas_extraidas);
-		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);		
+		transformador.transformarAlarmas(archivo_actual, alarmas_defectuosas);
 	}
-	
+
 	private void tercerEtapa(ServCRUDArchivoDBF dbf_servicio_crud, ArchivoDBF archivo_actual) {
 		cargador = new ETL2Cargar(transformador.getAlarmas(), dbf_servicio_crud);
 		dbf_servicio_crud.termina(archivo_actual);

@@ -37,7 +37,7 @@ import etl.controles.servicios.cruds.ServCRUDTipoDeEquipo;
  * ==== parte responsabilidad ===============
  * 
  * LO QUE HAGO, interactuo con la base de datos de destino. Al hacerlo aplico
- * restricciones como valores únicos (no repetir informacion que ya existe en la
+ * restricciones como valores ï¿½nicos (no repetir informacion que ya existe en la
  * BD) e integridad referencial.
  * 
  * LO QUE CONOZCO, la lista del tipo Alarma que debo cargar en la BD, y los
@@ -99,8 +99,7 @@ public class ETL2Cargar implements ObjetosBorrables {
 	public void cargarAlarmasAceptadas() {
 
 		/*
-		 * solo importa el dbf propietario de una alarma las demas tendran el
-		 * mismo dbf
+		 * solo importa el dbf propietario de una alarma las demas tendran el mismo dbf
 		 */
 		dbf_servicio_crud.buscarEnMemoriaPrimaria(alarmas_transformadas.get(0));
 		ArchivoDBF archivo = alarmas_transformadas.get(0).getArchivo_propietario();

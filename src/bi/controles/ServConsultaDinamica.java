@@ -109,8 +109,8 @@ public class ServConsultaDinamica {
 	 *
 	 * creador de parametro dinamico.
 	 * 
-	 * utilizado por agregarPredicadoFechaDesde cuando encuentra una seleccion
-	 * para el tipo desde (que debe ser del enumerado [inicio, ack, fin])
+	 * utilizado por agregarPredicadoFechaDesde cuando encuentra una seleccion para
+	 * el tipo desde (que debe ser del enumerado [inicio, ack, fin])
 	 * 
 	 */
 	private Predicate agregarParametroDesde(String fecha_usada, Calendar calendarDesde) {
@@ -122,8 +122,8 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * utilizado por agregarPredicadoFechaHasta cuando encuentra una seleccion
-	 * para el tipo hasta (que debe ser del enumerado [inicio, ack, fin])
+	 * utilizado por agregarPredicadoFechaHasta cuando encuentra una seleccion para
+	 * el tipo hasta (que debe ser del enumerado [inicio, ack, fin])
 	 * 
 	 * @param fecha_usada
 	 * @param calendarHasta
@@ -151,9 +151,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha desde" en particular, se traeran
-	 * solo alarmas con fecha mayor igual para el campo especificado [fecha
-	 * inicio, ack, fin]
+	 * si el usuario especific� una "fecha desde" en particular, se traeran solo
+	 * alarmas con fecha mayor igual para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarDesde
 	 * @param rbtnDesdeInicio
@@ -181,9 +181,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario especific� una "fecha hasta" en particular, se traeran
-	 * solo alarmas con fecha menor igual para el campo especificado [fecha
-	 * inicio, ack, fin]
+	 * si el usuario especific� una "fecha hasta" en particular, se traeran solo
+	 * alarmas con fecha menor igual para el campo especificado [fecha inicio, ack,
+	 * fin]
 	 * 
 	 * @param calendarHasta
 	 * @param rbtnHastaInicio
@@ -212,9 +212,9 @@ public class ServConsultaDinamica {
 	 * 
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
-	 * maximo de vida, para descartar de esta manera alarmas que duren mas que
-	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo maximo de
+	 * vida, para descartar de esta manera alarmas que duren mas que un periodo de
+	 * tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
@@ -239,9 +239,9 @@ public class ServConsultaDinamica {
 	/**
 	 * creador de parametro dinamico.
 	 * 
-	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo
-	 * minimo de vida, para descartar de esta manera alarmas que duren menos que
-	 * un periodo de tiempo indicado en segundos, este metodo ser� ejecutado.
+	 * si el usuario habilit� la opcion de filtrar las alarmas por tiempo minimo de
+	 * vida, para descartar de esta manera alarmas que duren menos que un periodo de
+	 * tiempo indicado en segundos, este metodo ser� ejecutado.
 	 * 
 	 * @param fecha_inicio
 	 * @param fecha_finalizacion
@@ -383,8 +383,8 @@ public class ServConsultaDinamica {
 	}
 
 	/**
-	 * del set de alarmas devuelto por la consulta, extrae aquellas que no
-	 * poseen fecha las fechas indicadas
+	 * del set de alarmas devuelto por la consulta, extrae aquellas que no poseen
+	 * fecha las fechas indicadas
 	 * 
 	 * @param lista_alarmas
 	 * @param datos_consulta

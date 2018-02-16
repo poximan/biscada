@@ -48,7 +48,7 @@ public class ReservaNvaChubutCist extends Sitio {
 	/* ATRIBUTOS ................................... */
 	/* ............................................. */
 
-	private static String expresion_regular = "station\\s56|NUEVA CHUBUT CIST";
+	private static String expresion_regular = "station\\s56|NUEVA CHUBUT CIST:";
 
 	/* ............................................. */
 	/* ............................................. */

@@ -59,8 +59,8 @@ public abstract class ServMedAbstract {
 	/* ............................................. */
 
 	/**
-	 * por cada llamado completa una fila de la matriz de dos dimensiones que
-	 * luego se usara como parametro para crear el modelo de la tabla
+	 * por cada llamado completa una fila de la matriz de dos dimensiones que luego
+	 * se usara como parametro para crear el modelo de la tabla
 	 * 
 	 * @return
 	 * @throws IndexOutOfBoundsException
@@ -70,11 +70,11 @@ public abstract class ServMedAbstract {
 			throws IndexOutOfBoundsException;
 
 	/**
-	 * para ciertos tratamientos de serie de valores, ha sido mas comodo
-	 * utilizar listas, pero como el Model de una tabla maneja arreglos de dos
-	 * dimensiones, es necesario el uso de metodos de acople como este. de esta
-	 * forma pasamos de arreglos a listas y retornamos, para obtener el mayor
-	 * beneficio de ambas estructuras
+	 * para ciertos tratamientos de serie de valores, ha sido mas comodo utilizar
+	 * listas, pero como el Model de una tabla maneja arreglos de dos dimensiones,
+	 * es necesario el uso de metodos de acople como este. de esta forma pasamos de
+	 * arreglos a listas y retornamos, para obtener el mayor beneficio de ambas
+	 * estructuras
 	 * 
 	 * @param arreglo_cantidades_para_cada_unidad_tiempo
 	 * @return

@@ -107,7 +107,7 @@ public class SitioFactory extends FabricaAbstracta {
 
 			/*
 			 * sitios cloacales
-			 */			
+			 */
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE1.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE2.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEE3.class.getCanonicalName());
@@ -115,15 +115,14 @@ public class SitioFactory extends FabricaAbstracta {
 
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPN.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CloacalEPS.class.getCanonicalName());
-			
+
 			/*
 			 * sitios general
 			 */
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, CentralSCADA.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ExemysEsclavoModbus.class.getCanonicalName());
-			
-			
+
 			/*
 			 * sitios agua potable
 			 */
@@ -146,7 +145,7 @@ public class SitioFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaNvaChubutCist.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, ReservaOeste.class.getCanonicalName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					ReservaParquePesquero.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,

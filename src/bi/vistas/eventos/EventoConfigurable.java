@@ -39,8 +39,7 @@ public interface EventoConfigurable {
 	/* ............................................. */
 
 	/**
-	 * agrega todos los eventos que sera escuchados en la vista que lo
-	 * implementa
+	 * agrega todos los eventos que sera escuchados en la vista que lo implementa
 	 * 
 	 * @param eventos
 	 *            manejador de eventos al que le delega la responsabilidad de

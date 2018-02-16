@@ -45,9 +45,9 @@ import etl.partes_alarma.sucesos.NivelRebalse;
  * 
  * ademas recibo una referencia "TipoDatoFabricable dato_fabricado" que debe ser
  * nula. caso contrario una iteracion previa de mi mismo ha encontrado una
- * coincidencia, lo que implica ambigüedad. para tratar de salvar este problema
+ * coincidencia, lo que implica ambigï¿½edad. para tratar de salvar este problema
  * uso el metodo salvarAmbiguedad(...) que posee una serie de recetas del tipo
- * "si la ambigüedad se parece a X, aplicar solucion Y"
+ * "si la ambigï¿½edad se parece a X, aplicar solucion Y"
  * 
  * LO QUE CONOZCO, el nombre canonico de la clase a analizar, el discriminante
  * conque debo resolver la coincidencia y la referencia donde debo crear la
@@ -93,10 +93,9 @@ public class ServExpresionesRegulares {
 
 			try {
 				/*
-				 * dato_fabricado debe ser nulo en este momemto, caso contrario
-				 * ya se encontró otra instancia diferente a la que se esta
-				 * evaluando ahora. esto implica ambigüedad en la localizacion
-				 * de la clase
+				 * dato_fabricado debe ser nulo en este momemto, caso contrario ya se encontrï¿½
+				 * otra instancia diferente a la que se esta evaluando ahora. esto implica
+				 * ambigï¿½edad en la localizacion de la clase
 				 */
 				if (dato_fabricado != null) {
 

@@ -44,7 +44,7 @@ import propiedades.controles.servicios.ServPropiedades;
  * para el proceso ETL.
  * 
  * soy desplegado por mi gestor etl.controles.GestorETL, quien crea un marco
- * generico, agrega mi clase en él, y me pasa el control
+ * generico, agrega mi clase en ï¿½l, y me pasa el control
  * 
  * ==== parte responsabilidad ===============
  * 
@@ -116,8 +116,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	/* ............................................. */
 
 	/**
-	 * construye la vista para gestionar los archivos .dbf de una direccion
-	 * dada. luego esta direccion podrï¿½ ser cambiada
+	 * construye la vista para gestionar los archivos .dbf de una direccion dada.
+	 * luego esta direccion podrï¿½ ser cambiada
 	 * 
 	 */
 	public VistaETL() {
@@ -175,8 +175,8 @@ public class VistaETL extends JPanel implements PanelIniciable, EventoConfigurab
 	 * accion ejecutada por el evento de cambiar el contenido del texto.
 	 * 
 	 * el campo de texto asignado para la direccion {origen - destino} de los
-	 * archivos .dbf tiene asociado un evento que le permite pedir que se
-	 * actualicen las listas de archivos
+	 * archivos .dbf tiene asociado un evento que le permite pedir que se actualicen
+	 * las listas de archivos
 	 * 
 	 * pide las listas del servicio CRUD de archivos dbf y completa en los
 	 * componentes graficos que corresponden

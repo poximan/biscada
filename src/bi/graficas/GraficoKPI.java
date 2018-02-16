@@ -75,8 +75,8 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio
-	 * o seteo de porcentaje).
+	 * se crean y actualizan los intervalos seg�n el evento que ocurra (inicio o
+	 * seteo de porcentaje).
 	 */
 	public void actualizarIntervalos() {
 
@@ -158,8 +158,7 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * M�todo para calcular el porcentaje y facilitar el c�lculo del
-	 * rango!!!
+	 * M�todo para calcular el porcentaje y facilitar el c�lculo del rango!!!
 	 */
 	public void Porcentaje(int porcentaje) {
 
@@ -170,8 +169,7 @@ public class GraficoKPI extends JPanel {
 	}
 
 	/**
-	 * Actualizaci�n del gr�fico cada ves que se agrande el rango del
-	 * promedio
+	 * Actualizaci�n del gr�fico cada ves que se agrande el rango del promedio
 	 */
 	private void refreshChart() {
 

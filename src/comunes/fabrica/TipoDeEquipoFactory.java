@@ -110,7 +110,7 @@ public class TipoDeEquipoFactory extends FabricaAbstracta {
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Forzador.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					GrupoElectrogeno.class.getCanonicalName());
-			
+
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante,
 					InstrumentoCampo.class.getCanonicalName());
 			dato_fabricado = serv_exp_reg.asociar(dato_fabricado, discriminante, Plc.class.getCanonicalName());

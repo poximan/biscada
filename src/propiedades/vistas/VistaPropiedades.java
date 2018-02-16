@@ -40,7 +40,7 @@ import propiedades.controles.servicios.ServPropiedades;
  * necesarios para manipular el archivo properties
  * 
  * soy desplegado por mi gestor propiedades.controles.GestorPropiedades, quien
- * crea un marco generico, agrega mi clase en él, y me pasa el control
+ * crea un marco generico, agrega mi clase en ï¿½l, y me pasa el control
  * 
  * ==== parte responsabilidad ===============
  * 
@@ -270,17 +270,19 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 								.addComponent(spinnerTiempoMinimo, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
 								.addComponent(spinnerTiempoMaximo, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 						.addContainerGap()));
-		gl_panelRuidoAlarma.setVerticalGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelRuidoAlarma.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblTiempoMaximo).addComponent(spinnerTiempoMinimo,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblTiempoMinimo).addComponent(spinnerTiempoMaximo,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panelRuidoAlarma
+				.setVerticalGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelRuidoAlarma.createSequentialGroup().addContainerGap()
+								.addGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblTiempoMaximo)
+										.addComponent(spinnerTiempoMinimo, GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_panelRuidoAlarma.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblTiempoMinimo).addComponent(spinnerTiempoMaximo,
+												GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		gl_panelRuidoAlarma.linkSize(SwingConstants.VERTICAL, new Component[] { lblTiempoMaximo, lblTiempoMinimo });
 		gl_panelRuidoAlarma.linkSize(SwingConstants.VERTICAL,
 				new Component[] { spinnerTiempoMinimo, spinnerTiempoMaximo });
@@ -306,29 +308,24 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		txtUsuario.setText(ServPropiedades.getInstancia().getProperty("Conexion.USUARIO"));
 
 		GroupLayout gl_panelConexionBD = new GroupLayout(panelConexionBD);
-		gl_panelConexionBD
-				.setHorizontalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panelConexionBD.createSequentialGroup().addContainerGap()
-								.addGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panelConexionBD.createSequentialGroup()
-												.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 35,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 130,
-														Short.MAX_VALUE)
-												.addGap(4)
-												.addComponent(lblContrasenia, GroupLayout.PREFERRED_SIZE, 66,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED).addComponent(
-														txtContrasenia, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-										.addGroup(gl_panelConexionBD.createSequentialGroup()
-												.addComponent(lblURL, GroupLayout.PREFERRED_SIZE, 52,
-														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtURL, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
-								.addGap(3)));
-		gl_panelConexionBD.setVerticalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING).addGroup(
-				gl_panelConexionBD.createSequentialGroup().addContainerGap().addGroup(gl_panelConexionBD
+		gl_panelConexionBD.setHorizontalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelConexionBD.createSequentialGroup().addContainerGap().addGroup(gl_panelConexionBD
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelConexionBD.createSequentialGroup()
+								.addComponent(lblUsuario, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(txtUsuario, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE).addGap(4)
+								.addComponent(lblContrasenia, GroupLayout.PREFERRED_SIZE, 66,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+						.addGroup(gl_panelConexionBD.createSequentialGroup()
+								.addComponent(lblURL, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(txtURL, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+						.addGap(3)));
+		gl_panelConexionBD.setVerticalGroup(gl_panelConexionBD.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelConexionBD.createSequentialGroup().addContainerGap().addGroup(gl_panelConexionBD
 						.createParallelGroup(Alignment.LEADING).addComponent(lblURL)
 						.addGroup(gl_panelConexionBD.createSequentialGroup()
 								.addComponent(txtURL, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,

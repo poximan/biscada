@@ -106,17 +106,16 @@ public class Principal {
 	 * se utilizo gc (garbage collector) concurrente (-XX:+UseConcMarkSweepGC)
 	 * 
 	 * The concurrent collector is designed for applications that prefer shorter
-	 * garbage collection pauses and that can afford to share processor
-	 * resources with the garbage collector while the application is running.
-	 * Typically applications which have a relatively large set of long-lived
-	 * data (a large tenured generation), and run on machines with two or more
-	 * processors tend to benefit from the use of this collector. However, this
-	 * collector should be considered for any application with a low pause time
-	 * requirement; for example, good results have been observed for interactive
-	 * applications with tenured generations of a modest size on a single
-	 * processor, especially if using incremental mode. The concurrent collector
-	 * is enabled with the command line option -XX:+UseConcMarkSweepGC. para mas
-	 * informacion ver
+	 * garbage collection pauses and that can afford to share processor resources
+	 * with the garbage collector while the application is running. Typically
+	 * applications which have a relatively large set of long-lived data (a large
+	 * tenured generation), and run on machines with two or more processors tend to
+	 * benefit from the use of this collector. However, this collector should be
+	 * considered for any application with a low pause time requirement; for
+	 * example, good results have been observed for interactive applications with
+	 * tenured generations of a modest size on a single processor, especially if
+	 * using incremental mode. The concurrent collector is enabled with the command
+	 * line option -XX:+UseConcMarkSweepGC. para mas informacion ver
 	 * http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html#
 	 * par_gc.oom ..............
 	 * 

@@ -12,11 +12,18 @@
   <properties>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
+  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
   </properties>
-
+	
+  <organization>
+	<name>Servicoop</name>
+  </organization>
+	
   <build>
     <plugins>
 
+      <!-- para usar exec:java -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -126,5 +133,4 @@
     </dependency>
 
   </dependencies>
-
 </project>

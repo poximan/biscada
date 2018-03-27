@@ -5,9 +5,6 @@
 
 package main.java.com.servicoop.app.comunes.controles;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,8 +13,6 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
-
-import main.java.com.servicoop.app.propiedades.controles.servicios.ServPropiedades;
 
 /* ............................................. */
 /* ............................................. */

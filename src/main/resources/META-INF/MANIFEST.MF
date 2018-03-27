@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Created-By: hugo donato
-Main-Class: main.java.com.servicoop.app.comunes.controles.Principal

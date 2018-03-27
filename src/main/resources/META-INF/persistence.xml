@@ -15,7 +15,7 @@
 		<class>main.java.com.servicoop.app.comunes.entidades.Suceso</class>
 		<class>main.java.com.servicoop.app.comunes.entidades.TipoDeEquipo</class>
 
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
 

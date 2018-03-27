@@ -213,14 +213,15 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 						Thread.sleep(200);
 
 						lblProcesando.setVisible(false);
-						Thread.sleep(40);
+						Thread.sleep(50);
 					} catch (InterruptedException excepcion) {
 						lblProcesando.setVisible(false);
 					}
 				}
+				lblProcesando.setVisible(false);
 			}
 		};
-		Thread hilo_indicador = new Thread(indicador);
+		final Thread hilo_indicador = new Thread(indicador);
 		hilo_indicador.start();
 	}
 

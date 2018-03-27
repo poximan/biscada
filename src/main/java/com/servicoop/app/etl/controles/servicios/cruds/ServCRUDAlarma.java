@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;
 
 import org.apache.log4j.Logger;
-import org.eclipse.persistence.exceptions.DatabaseException;
 
 import main.java.com.servicoop.app.comunes.controles.EMFSingleton;
 import main.java.com.servicoop.app.comunes.entidades.Alarma;
@@ -85,10 +84,6 @@ public class ServCRUDAlarma implements InterfazCRUD {
 
 			if (excepcion.getCause() instanceof NullPointerException) {
 				log.error("puntero a null");
-			} else if (excepcion.getCause() instanceof DatabaseException) {
-
-				log.error("excepcion en BD");
-				DatabaseException excepcion_bd = (DatabaseException) excepcion.getCause();
 			}
 		}
 	}

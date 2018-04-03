@@ -113,7 +113,7 @@ public class EventoPropiedades implements ActionListener {
 				|| !ServPropiedades.getInstancia().getProperty("Conexion.CONTRASENIA").equals(txtContrasenia.getText()))
 
 			respuesta_usuario = JOptionPane.showConfirmDialog((Component) null,
-					"para nuevos parametros de conexion, la aplicacion debe reiniciar", "�desea reiniciar?",
+					"para nuevos parametros de conexion, la aplicacion debe reiniciar",  "¿Desea reiniciar?",
 					JOptionPane.YES_NO_OPTION);
 
 		if (!deseaReiniciar(respuesta_usuario))
@@ -145,7 +145,7 @@ public class EventoPropiedades implements ActionListener {
 		/*
 		 * graficos
 		 */
-		ServPropiedades.getInstancia().setProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA",
+		ServPropiedades.getInstancia().setProperty("Graficos.PORCENTAJE_ACEPTACION_RESPECTO_MEDIA",
 				String.valueOf(spinnerAceptacion.getModel().getValue()));
 
 		/*
@@ -196,7 +196,7 @@ public class EventoPropiedades implements ActionListener {
 		 * graficos
 		 */
 		spinnerAceptacion.getModel().setValue(Integer.valueOf(
-				ServPropiedades.getInstancia().getProperty("Defecto.Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA")));
+				ServPropiedades.getInstancia().getProperty("Defecto.Graficos.PORCENTAJE_ACEPTACION_RESPECTO_MEDIA")));
 
 		/*
 		 * datos

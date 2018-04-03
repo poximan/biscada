@@ -106,7 +106,7 @@ public class GraficoKPI extends JPanel {
 		this.promedio = promedio;
 
 		porcentaje = Double.parseDouble(
-				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+				ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAJE_ACEPTACION_RESPECTO_MEDIA"));
 
 		createPanel();
 	}

@@ -50,7 +50,7 @@ public class ServPropiedades {
 
 	private static Logger log = Logger.getLogger(ServPropiedades.class);
 
-	private static String NOMBRE_ARCHIVO_PROPIEDADES = "cfg.properties";
+	private static String NOMBRE_ARCHIVO_PROPIEDADES = "./cfg.properties";
 
 	private static Properties propiedades = null;
 	private static ServPropiedades instancia_unica = null;
@@ -89,7 +89,7 @@ public class ServPropiedades {
 	private ServPropiedades() {
 
 		propiedades = new Properties();
-
+		
 		try {
 			FileInputStream archivo_entrada = new FileInputStream(NOMBRE_ARCHIVO_PROPIEDADES);
 			propiedades.load(archivo_entrada);

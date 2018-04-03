@@ -170,7 +170,7 @@ public abstract class VistaKpiAbstract extends JPanel implements PanelIniciable,
 		spinner_porcentaje.getModel().addChangeListener(eventos);
 
 		int valor_inicial = Integer
-				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAJE_ACEPTACION_RESPECTO_MEDIA"));
 
 		spinner_porcentaje.getModel().setValue(valor_inicial);
 	}

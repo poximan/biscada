@@ -201,7 +201,7 @@ public class VistaPropiedades extends JPanel implements PanelIniciable, EventoCo
 		panel.add(btnConfirmar);
 
 		int valor_inicial = Integer
-				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAGE_ACEPTACION_RESPECTO_MEDIA"));
+				.valueOf(ServPropiedades.getInstancia().getProperty("Graficos.PORCENTAJE_ACEPTACION_RESPECTO_MEDIA"));
 
 		btnCambiarDireccion = new ComponenteSeleccionarDireccion(txt_direccion_fuente);
 

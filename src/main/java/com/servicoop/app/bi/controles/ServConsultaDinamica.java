@@ -22,6 +22,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
+import org.eclipse.persistence.config.QueryHints;
 import org.eclipse.persistence.internal.jpa.EJBQueryImpl;
 import org.eclipse.persistence.jpa.JpaEntityManager;
 import org.eclipse.persistence.queries.DatabaseQuery;
@@ -350,6 +351,7 @@ public class ServConsultaDinamica {
 		List<Alarma> resultado = null;
 
 		try {
+			typed_query.setHint(QueryHints.JDBC_TIMEOUT, "20");
 			resultado = typed_query.getResultList();
 		} catch (QueryTimeoutException e) {
 			log.error("tiempo excedido en ejecucion de consulta");

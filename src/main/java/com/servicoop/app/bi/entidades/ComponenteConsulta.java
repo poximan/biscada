@@ -383,10 +383,10 @@ public class ComponenteConsulta extends JPanel implements PanelIniciable, Evento
 			cargarTodosLosCampos();
 			txt_reg_encontrados.setText(Integer.toString(consultas.size()));
 		} catch (NullPointerException e) {
-			
+
 			notificarError("No se pudo conectar a BD. Se prueba activar servicio");
-			
-			String[] script = {"cmd.exe", "/c", "sc", "start", "MySQL57"};
+
+			String[] script = { "cmd.exe", "/c", "sc", "start", "MySQL57" };
 			try {
 				Runtime.getRuntime().exec(script);
 			} catch (IOException e1) {

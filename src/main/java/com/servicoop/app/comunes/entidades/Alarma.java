@@ -109,7 +109,7 @@ public class Alarma implements Comparable<Alarma> {
 	@Index
 	private Familia familia; // ex nombre
 
-	@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
+	//@ManyToOne(optional = false /* JPA lo resuelve en tiempo de ejecucion */)
 	@JoinColumn(name = "ID_SITIO", referencedColumnName = "ID_SITIO", nullable = false)
 	@Index
 	private Sitio sitio; // ex primera parte de texto
